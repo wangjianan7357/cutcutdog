@@ -1,0 +1,66 @@
+<div class="main">
+<?php if ($_GET['action'] == 'edt') { ?>
+	<form action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
+		<input type="hidden" name="save" value="true" />
+
+		<div class="title1 mgt10">
+            <div class="cap">信息内容</div>
+        </div>
+        <div class="wbg pdl15 pdr15 pdt20 pdb20 cl1 bd1">
+            <table width="100%" cellspacing="0" cellspacing="0" class="table2">
+                <tr>
+                    <td align="right">类型</td>
+                    <td>
+                    <?php if (!$_GET['num']) { ?>
+                    <select name="sbt_type">
+                    <?php
+                        foreach ($cms_msg_type as $key => $value) {
+                            echo '<option value="' . $key . '">' . $value . '</option>';
+                        }
+                    ?>
+                    </select>
+                    <?php } else { ?>
+                    <?php
+                        foreach ($cms_msg_type as $key => $value) {
+                            if ($outcome['type'] == $key) {
+                                echo $value;
+                            }
+                        }
+                    ?>
+                    <?php } ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">主题</td>
+                    <td><input class="bdr3 bd2 h24 pdrl3" data-input="text" value="<?=$outcome['subject'];?>" size="50" name="sbt_subject"></td>
+                </tr>
+                <?php if ($_GET['num']) { ?>
+                <tr>
+                    <td align="right">发件人</td>
+                    <td><?=$outcome['sender']['name'];?></td>
+                </tr>
+                <?php } ?>
+                <tr>
+                    <td align="right">内容</td>
+                    <td>
+                        <textarea class="bdr3 bd2 pdrl3" rows="6" style="width: 80%;" data-input="text" name="sbt_content"><?=$outcome['content'];?></textarea>
+                    </td>
+                </tr>
+            </table><br />
+
+		</div>
+
+        <?php if ($_SESSION['admin_type'] == 1) { ?>
+		<div class="xc">
+            <input class="button1" type="submit" value="保 存" />
+        </div><br />
+        <?php } ?>
+	<form>
+
+<?php
+    } else { ?>
+    <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF'] . '?action=edt&flag=' . $_GET['flag'] . $q_url['24567'] . '&num=' . $_GET['num'];?>" method="post">
+        <?= $code_table; ?>
+    </form>
+<?php } ?>
+</div>

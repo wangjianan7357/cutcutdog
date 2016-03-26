@@ -1,0 +1,278 @@
+
+<div class="main">
+<?php if ($_GET['action'] == 'edt') { ?>
+
+    <div class="title1 mgt10">
+        <div class="cap">课程编辑</div>
+    </div>
+    <div class="wbg pdl15 pdr15 pdt20 pdb20 cl1 bd1">
+
+        <form enctype="multipart/form-data" action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
+            <input type="hidden" name="save" value="true" />
+            <input type="hidden" name="sbt_pid" value="<?=$_GET['pid'];?>" />
+
+            <table width="100%" cellspacing="0" cellspacing="0" class="table2">
+                <tr data-action="hover">
+                    <td align="right">院系</td>
+                    <td colspan="3"><?= $department[$plan['did']]; ?></td>
+                </tr>
+                <tr data-action="hover">
+                    <td align="right" width="25%">课程名称</td>
+                    <td width="25%">
+                    <?php
+                        foreach ($course as $key => $value) {
+                            if ($key == $plan['sid']) {
+                                echo $value;
+                                break;
+                            }
+                        }
+                    ?>
+                    </td>
+                    <td align="right" width="25%">课时数</td>
+                    <td width="25%"><?=$plan['hours'];?></td>
+                </tr>
+                <tr data-action="hover">
+                    <td align="right">准备员</td>
+                    <td>
+                    <?php
+                        foreach ($teacher[2] as $key => $value) {
+                            if ($key == $plan['rid']) {
+                                echo $value;
+                                break;
+                            }
+                        }
+                    ?>
+                    </td>
+                    <td align="right">学生人数</td>
+                    <td><?=$plan['number'];?></td>
+                </tr>
+                <tr data-action="hover">
+                    <td align="right">小组总数</td>
+                    <td><?=$plan['group'];?></td>
+                    <td align="right">每组人数</td>
+                    <td><?=$plan['quantity'];?></td>
+                </tr>
+                <tr data-action="hover">
+                    <td align="right">时间范围</td>
+                    <td colspan="3"><?=systemConfig('course_start') . ' 至 ' . systemConfig('course_end');?></td>
+                </tr>
+                <tr data-action="hover">
+                    <td align="right"><span class="color_warning">*</span> 小组数量</td>
+                    <td colspan="3">
+                        <select name="sbt_group" <?=$_GET['num'] ? ' onchange="changeGroup()"' : '';?>>
+                            <option value="0">-- 请选择 --</option>
+                            <?php
+                                if ($_GET['num']) {
+                                    $remain = $plan['group'];
+                                } else {
+                                    $getdata = $my_db->selectRow('SUM(`group`)', 'arrange', array('pid' => $plan['id'], 'alter' => 0));
+                                    $result = mysql_fetch_array($getdata);
+                                    $remain = $plan['group'] - intval($result[0]);
+                                }
+
+                                for ($i = 1; $i <= $remain; $i ++) {
+                                    echo '<option value="' . $i . '"' . ($outcome['group'] == $i ? ' selected="selected"' : '') . '>' . $i . '</option>';
+                                }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr data-action="hover">
+                    <td align="right"><span class="color_warning">*</span> 开课日期</td>
+                    <td colspan="3">
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_date" value="<?=$outcome['date'];?>" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd', minDate:'<?=systemConfig('course_start');?>', maxDate:'<?=systemConfig('course_end');?>'})" /> &nbsp;
+
+                        <input type="radio" name="sbt_time" class="vm" value="1" <?=(!$outcome['time'] || $outcome['time'] == 1) ? 'checked="checked"' : '';?>> 上午 &nbsp;
+                        <input type="radio" name="sbt_time" class="vm" value="2" <?=$outcome['time'] == 2 ? 'checked="checked"' : '';?>> 下午 &nbsp;
+                        <input type="radio" name="sbt_time" class="vm" value="3" <?=$outcome['time'] == 3 ? 'checked="checked"' : '';?>> 晚上 &nbsp;
+                    </td>
+                </tr>
+                <tr data-action="hover">
+                    <td align="right"><span class="color_warning">*</span> 地址</td>
+                    <td colspan="3">
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" size="60" name="sbt_address" value="<?=$outcome['address'];?>" />
+                    </td>
+                </tr>
+                <tr data-action="hover">
+                    <td align="right"><span class="color_warning">*</span> 指导书</td>
+                    <td colspan="3">
+                        <input class="pdrl3" type="file" name="sbt_book" />
+                        <?php
+                            if ($plan['book']) {
+                                echo '[<a href="../' . systemConfig('textbook_path') . $plan['book'] . '" target="_blank">查看</a>]';
+                            }
+                        ?>
+                    </td>
+                </tr>
+            </table><br />
+
+            <?php if ($_GET['num']) { ?>
+            <div class="desc1 mgb15">报名学生</div>
+            <div class="cl1">
+            <?php
+                $exist = false;
+                for ($i = 1; $i <= $outcome['group']; $i ++) {
+                    echo '<div class="fl w180 lh26">分组' . $i;
+
+                    if (!empty($enroll[$i])) {
+                        $temp = array();
+                        $exist = true;
+
+                        foreach ($enroll[$i] as $value) {
+                            $temp[] = $value['name'] . (strlen($value['name']) == 6 ? '　' : '') . ' &nbsp; ' . $value['phone'];
+                        }
+
+                        echo ' [' . count($temp) . '人]<br><p>' . implode('</p><p>', $temp) . '</p>';
+                    }
+
+                    echo '</div>';
+                }
+            ?>    
+            </div><br />
+
+            <?php } if (!$exist && $_SESSION['admin_type'] == 2) { ?>
+            <div class="xc">
+                <input class="button1" type="submit" value="保 存" /> &nbsp;&nbsp;
+                <?php if ($_GET['num']) { ?>
+                <input class="button1" type="button" value="删 除" onclick="deleteArrange(this)" />
+                <input type="hidden" name="del" value="">
+                <?php } ?>
+            </div><br />
+            <?php } ?>
+        </form>
+
+        <form enctype="multipart/form-data" action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
+            <input type="hidden" name="save" value="true" />
+            <input type="hidden" name="sbt_alter" value="1" />
+
+            <?php if ($_GET['num']) { ?>
+            <div class="desc1 mgb15">课程取消</div>
+            <table width="100%" cellspacing="0" cellspacing="0" class="table2">
+                <tr data-action="hover">
+                    <td align="right" width="25%">取消原因</td>
+                    <td>
+                        <textarea class="bdr3 bd2 pdrl3" rows="6" style="width: 80%;" data-input="text" name="sbt_message"><?=$outcome['message'];?></textarea>
+                    </td>
+                </tr>
+                <tr data-action="hover">
+                    <td align="right" width="25%">发送取消信息</td>
+                    <td>
+                        <input type="checkbox" class="vm" name="send_message" />
+                    </td>
+                </tr>
+            </table><br />
+
+            <?php } if ($exist && $_SESSION['admin_type'] == 2) { ?>
+            <div class="xc">
+                <input class="button1" type="submit" value="确定取消" />
+            </div><br />
+
+            <?php } ?>
+        </form>
+    </div>
+
+<?php } else if ($_GET['action'] == 'export') { ?>
+    <form enctype="multipart/form-data" action="<?=$_SERVER['REQUEST_URI'];?>" method="post" target="_blank">
+        <input type="hidden" name="export" value="true" />
+        <?php if ($_SESSION['admin_type'] == 1 && $_SESSION['admin_id'] != 1) { ?>
+        <input type="hidden" name="sbt_did" value="<?= $admin_arr['cid']; ?>" />
+
+        <?php } else if ($_SESSION['admin_type'] == 2) { ?>
+        <input type="hidden" name="sbt_tid" value="<?= $_SESSION['admin_id']; ?>" />
+
+        <?php } ?>
+
+        <div class="title1 mgt10">
+            <div class="cap">课程导出</div>
+        </div>
+        <div class="wbg pdl15 pdr15 pdt20 pdb20 cl1 bd1">
+            <table width="100%" cellspacing="0" cellspacing="0" class="table2">
+                <?php if ($_SESSION['admin_type'] != 1 || $_SESSION['admin_id'] == 1) { ?>
+                <tr>
+                    <td align="right" width="30%">院系</td>
+                    <td>
+                        <select name="sbt_did">
+                            <option value="">-- 全部 --</option>
+                        <?php
+                            foreach ($department as $key => $value) {
+                                echo '<option value="' . $key . '">' . $value . '</option>';
+                            }
+                        ?>
+                        </select>
+                    </td>
+                </tr>
+                <?php } ?>
+                <tr>
+                    <td align="right">课程</td>
+                    <td>
+                        <select name="sbt_sid">
+                            <option value="">-- 全部 --</option>
+                        <?php
+                            foreach ($course as $key => $value) {
+                                echo '<option value="' . $key . '">' . $value . '</option>';
+                            }
+                        ?>
+                        </select>
+                    </td>
+                </tr>
+
+                <?php if ($_SESSION['admin_type'] == 1) { ?>
+                <tr>
+                    <td align="right">老师</td>
+                    <td>
+                        <select name="sbt_tid">
+                            <option value="">-- 全部 --</option>
+                        <?php
+                            foreach ($teacher[1] as $key => $value) {
+                                echo '<option value="' . $key . '">' . $value . '</option>';
+                            }
+                        ?>
+                        </select>
+                    </td>
+                </tr>
+                <?php } ?>
+
+                <tr>
+                    <td align="right">开始日期</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_start" value="" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd', minDate:'<?=systemConfig('course_start');?>', maxDate:'<?=systemConfig('course_end');?>'})" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">结束日期</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_end" value="" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd', minDate:'<?=systemConfig('course_start');?>', maxDate:'<?=systemConfig('course_end');?>'})" />
+                    </td>
+                </tr>
+            </table><br /><br />
+
+            <div class="xc">
+                <input class="button1" type="submit" value="导 出" />
+            </div><br />
+        </div>
+    </form>
+
+<?php } else { ?>
+    <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF'] . '?action=' . $_GET['action'] . '&flag=' . $_GET['flag'] . $q_url['24567'];?>" method="post">
+        <?= $code_table; ?>
+    </form>
+
+<?php } ?>
+</div>
+
+<script language="javascript" type="text/javascript" src="../javascript/datepicker/WdatePicker.js"></script>
+<script>
+function deleteArrange(obj) {
+    if (confirm("确定要删除吗？")) {
+        $("[name='del']").val(true);
+        obj.form.submit();
+    }
+}
+
+function changeGroup() {
+    if (!confirm('修改分组将导致重新分配该课程的其他设置，确定修改吗？')) {
+        $("[name='sbt_group']").find("option").attr("selected", false);
+        $("[name='sbt_group']").find("option[value='<?=intval($outcome['group']);?>']").attr("selected", true);
+    }
+}
+</script>

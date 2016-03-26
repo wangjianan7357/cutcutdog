@@ -1,0 +1,184 @@
+
+<div class="main">
+<?php if ($_GET['action'] == 'edt') { ?>
+    <form enctype="multipart/form-data" action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
+        <input type="hidden" name="save" value="true" />
+
+        <div class="title1 mgt10">
+            <div class="cap">学生编辑</div>
+        </div>
+        <div class="wbg pdl15 pdr15 pdt20 pdb20 cl1 bd1">
+            <table width="100%" cellspacing="0" cellspacing="0" class="table2">
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 学号</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_number" value="<?=$outcome['number'];?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">密码</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_pass" type="password" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 姓名</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_name" value="<?=$outcome['name'];?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 院系</td>
+                    <td>
+                        <select name="sbt_did" class="bdr3 bd2 h24 vm minw150" onchange="selectClasses(this)">
+                            <option value="">-- 请选择 --</option>
+                        <?php
+                            foreach ($department as $key => $value) {
+                                echo '<option value="' . $key . '" ' . ($outcome['did'] == $key ? 'selected="selected"' : '') . '>' . $value . '</option>';
+                            }
+                        ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 班级</td>
+                    <td>
+                        <select name="sbt_cid" class="bdr3 bd2 h24 vm minw150">
+                            <option value="">-- 请选择 --</option>
+                        <?php
+                            foreach ($classes as $key => $value) {
+                                echo '<option value="' . $key . '" ' . ($outcome['cid'] == $key ? 'selected="selected"' : '') . '>' . $value . '</option>';
+                            }
+                        ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">性别</td>
+                    <td>
+                        <input class="vm" type="radio" name="sbt_sex" value="1" <?=$outcome['sex'] == 1 ? 'checked="checked"' : '';?> /> 男 &nbsp;
+                        <input class="vm" type="radio" name="sbt_sex" value="2" <?=$outcome['sex'] == 2 ? 'checked="checked"' : '';?> /> 女
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 联系方式</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_phone" value="<?=$outcome['phone'];?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">有效</td>
+                    <td>
+                        <input type="hidden" name="sbt_valid" value="0" />
+                        <input type="checkbox" class="vm" name="sbt_valid" <?=$outcome['valid'] ? 'checked="checked" ' : '';?>/>
+                    </td>
+                </tr>
+            </table><br />
+
+            <div class="xc">
+                <input class="button1" type="submit" value="保 存" />
+            </div><br />
+        </div>
+    </form>
+
+    <script>
+    function selectClasses(obj) {
+        if (obj.value) {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "ajax.php?method=classes&did=" + obj.value,
+                success: function(data){
+                    // 添加课程
+                    var e_option = document.createElement("option");
+                    e_option.innerHTML = "-- 请选择 --";
+                    e_option.value = "";
+                    $("[name='sbt_cid']").empty().append(e_option);
+
+                    for (k in data) {
+                        var e_option = document.createElement("option");
+                        e_option.value = k;
+                        e_option.innerHTML = data[k];
+                        $("[name='sbt_cid']").append(e_option);
+                    }
+
+                }
+            });
+        }
+    }
+    </script>
+
+<?php } else if ($_GET['action'] == 'import') { ?>
+    <form enctype="multipart/form-data" action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
+        <input type="hidden" name="import" value="true" />
+
+        <div class="title1 mgt10">
+            <div class="cap">学生导入</div>
+        </div>
+        <div class="wbg pdl15 pdr15 pdt20 pdb20 cl1 bd1">
+            <table width="100%" cellspacing="0" cellspacing="0" class="table2">
+                <tr>
+                    <td align="right" width="30%">文件</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" name="sbt_file" type="file" /> &nbsp;
+                        <a href="files/import_student.xls">模板下载</a>
+                    </td>
+                </tr>
+            </table><br /><br />
+
+            <div class="xc">
+                <input class="button1" type="submit" value="导 入" />
+            </div><br />
+        </div>
+    </form>
+
+<?php } else if ($_GET['action'] == 'export') { ?>
+    <form enctype="multipart/form-data" action="<?=$_SERVER['REQUEST_URI'];?>" method="post" target="_blank">
+        <input type="hidden" name="export" value="true" />
+
+        <div class="title1 mgt10">
+            <div class="cap">学生导出</div>
+        </div>
+        <div class="wbg pdl15 pdr15 pdt20 pdb20 cl1 bd1">
+            <table width="100%" cellspacing="0" cellspacing="0" class="table2">
+                <tr>
+                    <td align="right" width="30%">院系</td>
+                    <td>
+                        <select name="did">
+                            <option value="">-- 全部 --</option>
+                        <?php
+                            foreach ($department as $key => $value) {
+                                echo '<option value="' . $key . '">' . $value . '</option>';
+                            }
+                        ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">班级</td>
+                    <td>
+                        <select name="cid">
+                            <option value="">-- 全部 --</option>
+                        <?php
+                            foreach ($classes as $key => $value) {
+                                echo '<option value="' . $key . '">' . $value . '</option>';
+                            }
+                        ?>
+                        </select>
+                    </td>
+                </tr>
+            </table><br /><br />
+
+            <div class="xc">
+                <input class="button1" type="submit" value="导 出" />
+            </div><br />
+        </div>
+    </form>
+
+<?php } else { ?>
+    <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF'] . '?action=lst&flag=' . $_GET['flag'] . $q_url['24567'];?>" method="post">
+        <?= $code_table; ?>
+    </form>
+
+<?php } ?>
+</div>

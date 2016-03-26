@@ -1,0 +1,73 @@
+<body id="adminbody1">
+<form enctype="multipart/form-data" action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
+	<input type="hidden" name="save" value="true" />
+
+	<div id="inner_form">
+		<table width="99%" cellspacing="2">
+			<tbody>
+				<tr>
+					<td align="right">序列号 </td>
+					<td align="left"><input type="text" name="sbt_queue" value="<?=$tag_arr['queue'];?>" size="5" /></td>
+				</tr>
+				<?php if ($catalog_type) { ?>
+				<tr>
+					<td align="right"><font color="red">*</font> 分类 </td>
+					<td align="left">
+						<select name="sbt_cid"><?=catalogOption($catalog_type, $tag_arr['cid']);?></select>
+						<input type="hidden" value="0" name="sbt_tid">
+					</td>
+				</tr>
+				<?php } else { ?>
+				<tr>
+					<td align="right"><font color="red">*</font> 标签组 </td>
+					<td align="left">
+						<select name="sbt_tid">
+						<?php
+							foreach ($tag_group as $value) {
+								echo '<option value="' . $value['id'] . '">' . $value['name'] . '</option>';
+							}
+						?>
+						</select>
+						<input type="hidden" value="0" name="sbt_cid">
+					</td>
+				</tr>
+				<?php } ?>
+				<tr>
+					<td align="right"><font color="red">*</font> 名称 </td>
+					<td align="left"><input type="text" size="40" name="sbt_name" value="<?=$tag_arr['name'];?>" /></td>
+				</tr>
+				<tr>
+					<td align="right"><font color="red">*</font> 标识 </td>
+					<td align="left"><input type="text" size="40" name="sbt_mark" value="<?=$tag_arr['mark'];?>" /></td>
+				</tr>
+				<tr>
+					<td align="right">路径 </td>
+					<td align="left"><input size="40" type="text" name="sbt_path" value="<?=$tag_arr['path'];?>" <?=systemConfig('auto_refresh_path') ? 'readonly="readonly"' : '';?>/></td>
+				</tr>
+				<tr>
+					<td align="right"><font color="red">*</font> 定义 </td>
+					<td align="left">
+						<select name="sbt_define">
+						<?php
+							foreach(AttrDefine::$define as $key => $value) {
+								if (($value['catalog'] == true) === ($catalog_type != 0)) {
+									echo '<option value="' . $key . '"' . ($tag_arr['define'] == $key ? ' selected="selected"' : '') . '>' . $value['text'] . '</option>';
+								}
+							}
+						?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">有效 </td>
+					<td align="left">
+						<input type="hidden" name="sbt_valid" value="0" />
+						<input type="checkbox" name="sbt_valid" <?=$tag_arr['valid'] ? 'checked="checked" ' : '';?> />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<?=setOperate(array(), array('save' => 'true', 'lang' => 'show'));?>
+</form>

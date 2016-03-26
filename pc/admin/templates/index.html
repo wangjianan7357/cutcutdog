@@ -1,0 +1,51 @@
+
+<div class="main">
+	<?php if ($_SESSION['admin_type'] == 1) { ?>
+	<div class="title1 mgt20">
+		<div class="txt">我的信息</div>
+		<a href="#" class="more">查看更多 &gt;&gt;</a>
+	</div>
+	<!--
+	<div class="title1 mgt20">
+		<div class="txt">报表中心</div>
+		<a href="#" class="more">查看更多 &gt;&gt;</a>
+	</div>
+	<div class="wbg pd15 xc main_data bd1">
+		<a href="#" class="block color1">
+			<div class="pic"><img src="images/ico4_bag.png"></div>
+			<div class="num">21145</div>
+			<div class="cap">累计销售量</div>
+		</a>
+		<a href="#" class="block color2">
+			<div class="pic"><img src="images/ico4_user.png"></div>
+			<div class="num">21145</div>
+			<div class="cap">累计消费者</div>
+		</a>
+		<a href="#" class="block color3">
+			<div class="pic"><img src="images/ico4_money.png"></div>
+			<div class="num">21145</div>
+			<div class="cap">经营费用汇总</div>
+		</a>
+		<a href="#" class="block color4">
+			<div class="pic"><img src="images/ico4_bag.png"></div>
+			<div class="num">2114</div>
+			<div class="cap">累计销售量</div>
+		</a>
+	</div>
+	-->
+
+	<?php } else if ($_SESSION['admin_type'] == 2) { ?>
+	<div class="title1 mgt20">
+		<div class="txt">我的课程</div>
+		<a href="#" class="more">查看更多 &gt;&gt;</a>
+	</div>
+
+	<?php } else if ($_SESSION['admin_type'] == 3) { ?>
+	<div class="title1 mgt20">
+		<div class="txt">我的课程</div>
+		<a href="#" class="more">查看更多 &gt;&gt;</a>
+	</div>
+	
+
+	<?php } ?>
+</div>

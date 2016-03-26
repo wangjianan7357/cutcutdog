@@ -1,0 +1,13 @@
+RewriteEngine on
+
+RewriteRule ^(index).html $1\.php [L]
+
+RewriteRule ^([^\/]+)\-c.html catalog\.php\?path=$1 [L]
+RewriteRule ^([^\/]+)\-c(\d+).html catalog\.php\?path=$1&page=$2 [L]
+
+RewriteRule ^([^\/]+)\-p.html products\.php\?path=$1 [L]
+RewriteRule ^([^\/]+)\-i.html info\.php\?path=$1 [L]
+
+RewriteRule ^([^\/]+).html $1.php [L]
+
+RewriteRule sitemap\.xml xml\.php [L]

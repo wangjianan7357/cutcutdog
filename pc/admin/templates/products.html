@@ -1,0 +1,56 @@
+
+<div class="main">
+<?php if ($_GET['action'] == 'edt') { ?>
+    <form enctype="multipart/form-data" action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
+        <input type="hidden" name="save" value="true" />
+
+        <div class="title1 mgt10">
+            <div class="cap">耗材管理</div>
+        </div>
+        <div class="wbg pdl15 pdr15 pdt20 pdb20 cl1 bd1">
+            <table width="100%" cellspacing="0" cellspacing="0" class="table2">
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 名称</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_name" value="<?=$outcome['name'];?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 规格</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_model" value="<?=$outcome['model'];?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 单位</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_unit" value="<?=$outcome['unit'];?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 数量</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_number" value="<?=$outcome['number'];?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 价格</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_price" value="<?=$outcome['price'];?>" />
+                    </td>
+                </tr>
+            </table><br />
+
+            <div class="xc">
+                <input class="button1" type="submit" value="保 存" />
+            </div><br />
+        </div>
+    </form>
+
+<?php
+    } else { ?>
+    <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF'] . '?action=edt&flag=' . $_GET['flag'] . $q_url['24567'] . '&num=' . $_GET['num'];?>" method="post">
+        <?= $code_table; ?>
+    </form>
+<?php } ?>
+</div>

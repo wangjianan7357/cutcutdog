@@ -1,0 +1,68 @@
+
+<div class="main">
+<?php if ($_GET['action'] == 'edt') { ?>
+    <form enctype="multipart/form-data" action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
+        <input type="hidden" name="save" value="true" />
+
+        <div class="title1 mgt10">
+            <div class="cap">耗材领用</div>
+        </div>
+        <div class="wbg pdl15 pdr15 pdt20 pdb20 cl1 bd1">
+            <table width="100%" cellspacing="0" cellspacing="0" class="table2">
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 领用耗材</td>
+                    <td>
+                        <select name="sbt_pid" class="bdr3 bd2 h24 vm minw150">
+                            <option>-- 请选择 --</option>
+                        <?php
+                            foreach ($products as $key => $value) {
+                                echo '<option value="' . $key . '" ' . ($key == $outcome['pid'] ? 'selected' : '') . '>' . $value . '</option>';
+                            }
+                        ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 领用老师</td>
+                    <td>
+                        <select name="sbt_tid" class="bdr3 bd2 h24 vm minw150">
+                            <option>-- 请选择 --</option>
+                        <?php
+                            foreach ($teacher[1] as $key => $value) {
+                                echo '<option value="' . $key . '" ' . ($key == $outcome['tid'] ? 'selected' : '') . '>' . $value . '</option>';
+                            }
+                        ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 耗材数量</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_number" value="<?=$outcome['number'];?>" size="40" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 领用日期</td>
+                    <td>
+                        <input class="bdr3 bd2 h24 pdrl3" data-input="text" name="sbt_date" value="<?=$outcome['date'] ? date('Y-m-d', $outcome['date']) : '';?>" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd', minDate:'<?=systemConfig('course_start');?>', maxDate:'<?=systemConfig('course_end');?>'})" />
+                    </td>
+                </tr>
+            </table><br />
+
+            <?php if (!$_GET['num']) { ?>
+            <div class="xc">
+                <input class="button1" type="submit" value="保 存" />
+            </div><br />
+            <?php } ?>
+        </div>
+    </form>
+
+<?php
+    } else { ?>
+    <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF'] . '?action=edt&flag=' . $_GET['flag'] . $q_url['24567'] . '&num=' . $_GET['num'];?>" method="post">
+        <?= $code_table; ?>
+    </form>
+<?php } ?>
+</div>
+
+<script language="javascript" type="text/javascript" src="../javascript/datepicker/WdatePicker.js"></script>

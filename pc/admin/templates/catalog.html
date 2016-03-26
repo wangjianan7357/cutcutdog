@@ -1,0 +1,46 @@
+
+<div class="main">
+<?php if ($_GET['action'] == 'edt') { ?>
+    <form enctype="multipart/form-data" action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
+        <input type="hidden" name="save" value="true" />
+        <input type="hidden" name="sbt_type" value="<?=$_GET['type'];?>" />
+
+        <div class="title1 mgt10">
+            <div class="cap"><?=$cms_cata_type[$_GET['type']]['txt'];?></div>
+        </div>
+        <div class="wbg pdl15 pdr15 pdt20 pdb20 cl1 bd1">
+            <table width="100%" cellspacing="0" cellspacing="0" class="table2">
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 名称</td>
+                    <td><input class="bdr3 bd2 h24 pdrl3" data-input="text" value="<?=$outcome['name'];?>" size="50" name="sbt_name"></td>
+                </tr>
+                <tr>
+                    <td align="right"><span class="color_warning">*</span> 院系</td>
+                    <td>
+                        <select name="sbt_parent" class="bdr3 bd2 h24 vm minw150">
+                        <?=catalogOption($catalog_type, $outcome['parent'], $_GET['num']);?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">有效</td>
+                    <td>
+                        <input type="hidden" name="sbt_valid" value="0" />
+                        <input type="checkbox" class="vm" name="sbt_valid" <?=$outcome['valid'] ? 'checked="checked" ' : '';?>/>
+                    </td>
+                </tr>
+            </table><br />
+
+            <div class="xc">
+                <input class="button1" type="submit" value="保 存" />
+            </div><br />
+        </div>
+    </form>
+
+<?php
+    } else { ?>
+    <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF'] . '?action=edt&flag=' . $_GET['flag'] . $q_url['24567'] . '&num=' . $_GET['num'];?>" method="post">
+        <?= $code_table; ?>
+    </form>
+<?php } ?>
+</div>
