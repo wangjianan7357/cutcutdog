@@ -4,18 +4,18 @@
 /////////////////////////////////////////
 
 if(1){
-	$child_pre = 'xt_';
+	$child_pre = 'cut_';
 }
 
 
 /* 设置数据库 */
 if($_SERVER['SERVER_ADDR'] == "127.0.0.1" || $_SERVER['SERVER_ADDR'] == "::1"){
 	$con_db_set = array('host' => 'localhost', 'user' => 'root', 'pass' => '');
-	$con_db_name = 'xtclass';
+	$con_db_name = 'cutcutdog';
 }
 else {
 	$con_db_set = array('host' => 'localhost', 'user' => 'root', 'pass' => '');
-	$con_db_name = 'xtclass';
+	$con_db_name = '';
 }
 
 /* 设置语言 */
@@ -53,20 +53,13 @@ $con_lang_current = $_GET['lang'] ? $_GET['lang'] : ($_COOKIE['cookie']['lang'] 
 $con_db_table = array(
 	'role'      => $child_pre . 'role',
 	'admin'     => $child_pre . 'admin',
-	'arrange'   => $child_pre . 'arrange',
-	'plan'      => $child_pre . 'plan',
-	'teacher'   => $child_pre . 'teacher',
-	'student'   => $child_pre . 'student',
-	'purchase'  => $child_pre . 'purchase',
-	'schedule'  => $child_pre . 'schedule',
-	'system'    => $child_pre . 'system',
+	'member'   	=> $child_pre . 'member',
 	'message'   => $child_pre . 'message',
+	'likes'   	=> $child_pre . 'likes',
 	'language'  => $child_pre . 'language',
 	'constant'  => $child_pre . 'constant',
 	'log'       => $child_pre . 'log',
-	'course'    => $child_pre . 'course',
-	'evaluate'  => $child_pre . 'evaluate',
-	'usage'     => $child_pre . 'usage',
+	'system'    => $child_pre . 'system',
 
 	// 多国语言
 	'page'      => $child_pre . 'page_' . $con_lang_current,

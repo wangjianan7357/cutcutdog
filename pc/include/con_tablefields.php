@@ -40,34 +40,6 @@ return array(
         PRIMARY KEY ( `id` )',
 
 	/** 
-	 * 系统参数
-	 * tid 类型 id，1：系统信息; 2：公司信息; 3：常用设置
-	 */
-	'system' => '
-		`id` INT( 3 ) NOT NULL AUTO_INCREMENT , 
-		`tid` TINYINT( 1 ) NOT NULL DEFAULT 1 , 
-		`varname` VARCHAR( 25 ) NOT NULL DEFAULT "" , 
-		`info` VARCHAR( 100 ) NOT NULL DEFAULT "" , 
-		`type` SET("string", "integer", "boolean", "array", "hidden", "date") DEFAULT "string",
-		`lang` VARCHAR( 2 ) NOT NULL DEFAULT "" ,
-		`value` TEXT NOT NULL , 
-		PRIMARY KEY ( `id` )',
-
-	/** 
-	 * 评分
-	 */
-	'evaluate' => '
-		`id` INT( 8 ) NOT NULL AUTO_INCREMENT , 
-		`pid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "课程ID" , 
-		`eid` VARCHAR( 32 ) NOT NULL DEFAULT "" COMMENT "被评分者ID" ,
-		`etype` INT( 1 ) NOT NULL DEFAULT 0 COMMENT "被评分者类型" ,
-		`tid` INT( 3 ) NOT NULL DEFAULT 0 COMMENT "评分项" ,
-		`score` INT( 3 ) NOT NULL DEFAULT 0 COMMENT "分数" ,
-		`type` TINYINT( 1 ) NOT NULL DEFAULT 1 COMMENT "类型" ,
-		PRIMARY KEY ( `id` ) , 
-		KEY ( `pid` )',
-
-	/** 
 	 * 网站留言信息
 	 */
 	'message' => '
@@ -133,6 +105,20 @@ return array(
 		`operate` SET("add", "edt", "del", "vfy", "otr"),
 		`detail` TEXT NOT NULL , 
 		`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+		PRIMARY KEY ( `id` )',
+
+	/** 
+	 * 系统参数
+	 * tid 类型 id，1：系统信息; 2：公司信息; 3：常用设置
+	 */
+	'system' => '
+		`id` INT( 3 ) NOT NULL AUTO_INCREMENT , 
+		`tid` TINYINT( 1 ) NOT NULL DEFAULT 1 , 
+		`varname` VARCHAR( 25 ) NOT NULL DEFAULT "" , 
+		`info` VARCHAR( 100 ) NOT NULL DEFAULT "" , 
+		`type` SET("string", "integer", "boolean", "array", "hidden", "date") DEFAULT "string",
+		`lang` VARCHAR( 2 ) NOT NULL DEFAULT "" ,
+		`value` TEXT NOT NULL , 
 		PRIMARY KEY ( `id` )',
 
 
