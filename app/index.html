@@ -52,7 +52,7 @@
 	<header class="mui-bar mui-bar-nav">
 	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 	    <h1 class="mui-title">爱狗宠物店</h1>
-	    <h1 style="float: right; margin-top: 12px; font-size: 18px;"><a href="examples/setting.html">我</a></h1>
+	    
 	</header>
 	
 		<div class="mui-content">
@@ -124,7 +124,23 @@
 				
 		<div class="mui-content">
 		        <ul class="mui-table-view mui-grid-view mui-grid-9">
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="examples/indexed-list.html">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+		            	<script type="text/javascript">
+// H5 plus事件处理
+function plusReady(){
+}
+if(window.plus){
+	plusReady();
+}else{
+	document.addEventListener("plusready",plusReady,false);
+}
+
+// 创建并显示新窗口
+function openWebview(){
+	var w = plus.webview.open( "examples/indexed-list.html" );
+}
+	</script>
+		            	<a onclick="openWebview()">
 		                    <span class="mui-icon mui-icon-home"></span>
 		                    <div class="mui-media-body">資料庫</div></a></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="examples/media-list.html">
@@ -142,7 +158,7 @@
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
 		                    <span class="mui-icon mui-icon-phone"></span>
 		                    <div class="mui-media-body">傳心服務</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="examples/setting.html">
 		                    <span class="mui-icon mui-icon-gear"></span>
 		                    <div class="mui-media-body">個人主頁</div></a></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
