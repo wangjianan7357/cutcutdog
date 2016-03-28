@@ -18,13 +18,7 @@ function loginTimeout(){
 		exit();
 	}
 	else if (!$_SESSION['admin_id']) {
-		if ($_COOKIE['admin']['type'] == 1) {
-			$result = $my_db->fetchOne('admin', array('id' => $_COOKIE['admin']['id'], 'pass' => $_POST['pass']));
-		} else if ($_COOKIE['admin']['type'] == 2) {
-			$result = $my_db->fetchOne('teacher', array('id' => $_COOKIE['admin']['id'], 'pass' => $_POST['pass']));
-		} else if ($_COOKIE['admin']['type'] == 3) {
-			$result = $my_db->fetchOne('student', array('id' => $_COOKIE['admin']['id'], 'pass' => $_POST['pass']));
-		}
+		$result = $my_db->fetchOne('admin', array('id' => $_COOKIE['admin']['id'], 'pass' => $_POST['pass']));
 
 		if (!$result) {
 			echo '<script language="javascript">top.location.href = "login.php";</script>';
@@ -33,31 +27,14 @@ function loginTimeout(){
 	}
 	
 	$_SESSION['admin_id'] = $_COOKIE['admin']['id'];
-	$_SESSION['admin_type'] = $_COOKIE['admin']['type'];
 
 	setcookie('admin[id]', $_COOKIE['admin']['id'], time() + systemConfig('cms_login_time') * 60);
 	setcookie('admin[pass]', $_COOKIE['admin']['pass'], time() + systemConfig('cms_login_time') * 60);
-	setcookie('admin[type]', $_COOKIE['admin']['type'], time() + systemConfig('cms_login_time') * 60);
-
-	if ($_SESSION['admin_type'] == 1) {
-	    $admin_arr = $my_db->fetchOne('admin', array('id' => $_SESSION['admin_id']));
-
-	} else if ($_SESSION['admin_type'] == 2) {
-	    $admin_arr = $my_db->fetchOne('teacher', array('id' => $_SESSION['admin_id']));
-
-	} else if ($_SESSION['admin_type'] == 3) {
-	    $admin_arr = $my_db->fetchOne('student', array('id' => $_SESSION['admin_id']));
-	}
-
-	// 获取关联关系
-	$relate = $my_db->fetchOne('teacher', array('type' => 2, 'relate' => $_SESSION['admin_type'] . ':' . $_SESSION['admin_id']));
-	if ($relate) {
-		$admin_arr['relate'] = $relate;
-	}	
+	setcookie('admin[type]', $_COOKIE['admin']['type'], time() + systemConfig('cms_login_time') * 60);	
 }
 
 /* 后台页面检测登录 */
-loginTimeout();
+//loginTimeout();
 
 /* 初始化语言信息 */
 function langInit(){
