@@ -92,8 +92,30 @@ function getUrlParam(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
     var r = window.location.search.substr(1).match(reg);  //匹配目标参数
     if (r != null) {
-        return unescape(r[2]); 
+        return decodeURI(r[2]);
     } else {
         return null; //返回参数值
     }
+}
+
+function getCookie(name){
+    if (document.cookie.length > 0){
+        var start = document.cookie.indexOf(name + "=");
+        if (start != -1) { 
+            start += name.length + 1;
+            var end = document.cookie.indexOf(";", start);
+            
+            if (end == -1) {
+                end = document.cookie.length;
+            }
+            return unescape(document.cookie.substring(start, end));
+        }
+    }
+    return "";
+}
+
+function setCookie(name, value, expire){
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + expire);
+    document.cookie = name + "=" + escape(value) + ";path=/" + ((expire == null) ? "" : ";expires=" + exdate.toGMTString());
 }

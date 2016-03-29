@@ -159,32 +159,28 @@ function tableFields($fields = array(), $table = array()){
 		$code = '<div>';
 	}
 
-	$code .= '
-			<table width="100%" cellspacing="0" class="bd3 table3">
-				<thead class="gbg">
-					<tr height="40">';
-
+	$code .= '<table class="table table-bordered table-hover"><tr>';
 
 	foreach ($fields as $key => $value) {
 		$value = (array)$value;
 
 		if(strpos($value[0], '__') === 0) {
 			// 双下划线保留给系统
-			if ($value[0] == '__all') $code .= '<td style="white-space: nowrap;"><input type="checkbox" name="chk_all" /> 全选</td>';
-			else if ($value[0] == '__edit') $code .= '<td id="i0" style="white-space: nowrap;">操作</td>';
+			if ($value[0] == '__all') $code .= '<th style="white-space: nowrap;"><input type="checkbox" name="chk_all" /> 全选</th>';
+			else if ($value[0] == '__edit') $code .= '<th id="i0" style="white-space: nowrap;">操作</th>';
 		}
 		else if (strpos($value[0], '_') === 0) {
 			// 单下划线不提供排序
-			$code .= '<td style="white-space: nowrap;">' . substr($value[0], 1) . '</td>';
+			$code .= '<th style="white-space: nowrap;">' . substr($value[0], 1) . '</th>';
 		}
         else if (strpos($key, '[') !== false) {
-            $code .= '<td style="white-space: nowrap;">' . $value[0] . '</td>';
+            $code .= '<th style="white-space: nowrap;">' . $value[0] . '</th>';
         }
 		else {
-			$code .= '<td style="white-space: nowrap;"><a href="' . $q_url['134567'] . '&field=' . $key . '">' . $value[0] . '</a></td>';
+			$code .= '<th style="white-space: nowrap;"><a href="' . $q_url['134567'] . '&field=' . $key . '">' . $value[0] . '</a></th>';
 		}
 	}
-	$code .= '</tr></thead><tbody class="wbg">';
+	$code .= '</tr>';
 
 	$i = 0;
 	$where = $table['where'] . $condition;
@@ -194,8 +190,7 @@ function tableFields($fields = array(), $table = array()){
 	else $get_data = $my_db->selectRow('*', $table['table'], array($where), array('field' => $q_url['field'], 'method' => $q_url['flag']), $limit);
 	
 	while($result = mysql_fetch_array($get_data)){
-		$dbclick = '<div ondblclick="quickEdit(' . $result['id'] . ')">';
-		$code .= '<tr data-action="hover" ' . ($i % 2 ? 'bgcolor="#e6f0f9"' : '') . '>';
+		$code .= '<tr>';
 
 		foreach ($fields as $key => $value) {
 			$key = preg_replace('/\[\d*\]$/', '', $key);
@@ -220,7 +215,7 @@ function tableFields($fields = array(), $table = array()){
 					$code .= '<input name="' . $table['prefix'] . '_' . $key . '" size="' . $size . '" value="' . htmlspecialchars($result[$key]) . '" />';
 				} 
 				else {
-					$code .= $dbclick . ($value[2][0] == 'prefix' ? $value[2][1] : '') . $result[$key] . '</div>';
+					$code .= ($value[2][0] == 'prefix' ? $value[2][1] : '') . $result[$key] . '</div>';
 				}
 			}
 			else if($value[1] == 'select') {
@@ -232,7 +227,7 @@ function tableFields($fields = array(), $table = array()){
 						}
 					}
 					else {
-						$code .= $dbclick . (isset($value[2][1]) ? $value[2][1][$result[$key]] : $value[2][0][$result[$key]]) . '</div>';
+						$code .= (isset($value[2][1]) ? $value[2][1][$result[$key]] : $value[2][0][$result[$key]]) . '</div>';
 					}
 				}
 				else if(is_object($value[2][0])) {
@@ -240,7 +235,7 @@ function tableFields($fields = array(), $table = array()){
 						$code .= '<select name="' . $table['prefix'] . '_' . $key . '"><option value="">请选择</option>';
 						$code .= $value[2][0]->fun1($result[$key]);
 					} else {
-						$code .= $dbclick . $value[2][0]->fun2($result[$key]) . '</div>';
+						$code .= $value[2][0]->fun2($result[$key]) . '</div>';
 					}
 				}
 			}

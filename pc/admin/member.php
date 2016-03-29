@@ -5,10 +5,6 @@ require('../include/fun_admin.php');
 $err = '';
 $msg = array();
 
-$catalog_src = '../' . systemConfig('catalog_img_path') . $con_pic['pre']['catalog'];
-$catalog_type = (int)($_GET['type'] ? $_GET['type'] : ($_POST['sbt_type'] ? $_POST['sbt_type'] : 1));
-$catalog_db = $cms_cata_type[$catalog_type]['db'];
-
 if($_GET['action'] == 'edt'){
 	if($_GET['num']) $power_id = 2;
 	else if($_POST['del'] == 'true') $power_id = 3;
@@ -20,28 +16,17 @@ if($_GET['action'] == 'edt'){
 	else $outcome['valid'] = true;
 
 	if($_POST['del'] == 'true'){
-		if(!adminPower('catalog', $power_id)) warning('权限不足');
-		else delSelectedData('catalog', array('id' => $power_id), $catalog_src);
+		if(!adminPower('member', $power_id)) warning('权限不足');
+		else delSelectedData('member', array('id' => $power_id), $catalog_src);
 	}
 	else if($_POST['save'] == 'true'){
-		//if(!adminPower('catalog', $power_id)) warning('权限不足');
+		if(!adminPower('member', $power_id)) warning('权限不足');
 
-		if ($_GET['batch'] == 'true') {
-			if ($_GET['num']) {
-				foreach ($outcome as $key => $value) {
-					if (!isset($_POST['sbt_' . $key]) && $key != 'src' && $key != 'fields') {
-						$_POST['sbt_' . $key] = $value;
-					}
-				}
-			}
-			else exit;
-		}
+		$_POST['sbt_name'] = trim($_POST['sbt_name']);
 
 		$chk_post = new ChkRequest('sbt_');
 		$chk_post->chkEmpty(array('name' => '名称'));
 
-		$_POST['sbt_name'] = trim($_POST['sbt_name']);
-		$_POST['sbt_path'] = $chk_post->traFromName('name', array('name' => 'catalog', 'field' => 'path'), $outcome['path']);
 		$_POST['sbt_src'] = $chk_post->chkImage('img');
 		
 		if ($outcome['src']) {
@@ -50,57 +35,14 @@ if($_GET['action'] == 'edt'){
 			$outcome['src'] = $_POST['sbt_src'];
 		}
 
-		if($_POST['sbt_src'] && !$cms_lang_connect && systemConfig('relate_image_name')) {
-			preg_match('/(\.[\w]{3,4})$/', $_POST['sbt_src'], $match);
-			$_POST['sbt_src'] = '-' . $_POST['sbt_path'] . strtolower($match[1]);
-		}
-
 		if(!$err){
-			$submit_arr = initSubmitColumns('catalog', $_GET['num']);
+			$submit_arr = initSubmitColumns('member', $_GET['num']);
 
-			$_POST['sbt_id'] = $_GET['num'] ? $_GET['num'] : ($my_db->selectMax('catalog') + 1);
+			$_POST['sbt_id'] = $_GET['num'] ? $_GET['num'] : ($my_db->selectMax('member') + 1);
 			$_POST['sbt_type'] = $catalog_type;
 			$_POST['sbt_queue'] = min(max((int)$_POST['sbt_queue'], 0), $cms_max_num['queue']);
-			$_POST['sbt_order'] = (int)$_POST['sbt_order'];
-			$_POST['sbt_style'] = (int)$_POST['sbt_style'];
-			$_POST['sbt_valid'] = $_POST['sbt_valid'] ? 1 : 0;
-			$_POST['sbt_navi'] = $_POST['sbt_navi'] ? 1 : 0;
+			$_POST['sbt_valid'] = ($_POST['sbt_valid'] ? 1 : 0);
 
-			$parent_arr = explode(',', $_POST['sbt_parent']);
-			switch($parent_arr[0]){
-				case 1: $_POST['sbt_fields_use'] = 4; break;
-			}
-
-			function edtCatalogInfo($lang = ''){
-				global $my_db;
-				global $catalog_db;
-				global $catalog_type;
-				global $cms_page_union;
-
-				$done = 1;
-				if(!$_GET['num']) return $done;
-
-				// 更新其子类信息
-				$getdata = $my_db->selectRow('id, parent', 'catalog', array('`parent` REGEXP "(^|,)' . $_GET['num'] . '," AND `type` = ' . $catalog_type), '', '', $lang);
-				while($result = mysql_fetch_array($getdata)){
-					$result['parent'] = preg_replace('/(^[\d,]*,|^)(' . $_GET['num'] . ',)/', $_POST['sbt_parent'] . '\\2', $result['parent']);
-					$done &= $my_db->saveRow('catalog', array('parent' => $result['parent']), array('id' => $result['id']), $lang);
-				}
-
-				// 更新页面路径
-				$done &= $my_db->saveRow('page', array('path' => $_POST['sbt_path'] . '-c'), array('id' => ($cms_page_union['catalog']['id'] + $_GET['num'])), $lang);
-
-				$getdata = $my_db->selectRow('id, cid', $catalog_db, array('`cid` REGEXP "(^|,)' . $_GET['num'] . ',"'), '', '', $lang);
-				while($result = mysql_fetch_array($getdata)){
-					$tmp = array();
-					$tmp['cid'] = $_POST['sbt_parent'] . preg_replace('/(^|[\d,]+,)(' . $_GET['num'] . ',)/', '\\2', $result['cid']);
-					if($catalog_type == 1) $tmp['tid'] = 0;
-
-					$done &= $my_db->saveRow($catalog_db, $tmp, array('id' => $result['id']), $lang);
-				}
-
-				return $done;
-			}
 
 			$submit = array();
 			$submit_lan = array();
@@ -146,7 +88,6 @@ if($_GET['action'] == 'edt'){
 
 				instructLog($cms_admin_power['catalog'][$power_id] . $_POST['sbt_name'], ($poser_id == 1 ? 'add' : 'edt'));
 				$msg[0] = $cms_admin_power['catalog'][$power_id] . '成功';
-				$msg[1] = 'success';
 
 				if($_GET['num']){
 					$href = $_SERVER['PHP_SELF'] . '?action=lst' . preg_replace('/action=[^&]+|&num=\d+/', '', $_SERVER['QUERY_STRING']);
@@ -159,12 +100,12 @@ if($_GET['action'] == 'edt'){
 				mysql_query("ROLLBACK");
 				mysql_query("END");
 				$msg[0] = $cms_admin_power['catalog'][$power_id] . '失败';
-				$msg[1] = 'danger';
+				$msg[1] = 'fail';
 			}
 		}
 	}
-
-} else {
+}
+else if($_GET['action'] == 'lst'){
 	$catalog_all = array();
 	$getdata = $my_db->selectRow('*', 'catalog', array('type' => $catalog_type));
 	while($result = mysql_fetch_array($getdata)) $catalog_all[$result['id']] = $result;
@@ -174,7 +115,7 @@ if($_GET['action'] == 'edt'){
 	$cata_order = explode('|', systemConfig('info_order'));
 	unset($cata_order[0]);
 
-	$where = '`type` = ' . $catalog_type . ($_GET['cid'] ? ' AND `parent` REGEXP "' . $_GET['cid'] . '"' : '');
+	$where = '`parent` != "" AND `type` = ' . $catalog_type . ($_GET['cid'] ? ' AND `parent` REGEXP "' . $_GET['cid'] . '"' : '');
 	
 	class FieldFun {
 		function __construct($namespace = 1){
@@ -197,9 +138,9 @@ if($_GET['action'] == 'edt'){
 		array(
 			array('__all', 'edit'),
 			'id' => 'ID', 
-			'name' => array('名稱', 'text'), 
-			'parent' => array('上級', 'select', array(new FieldFun())),
-			'valid' => array('狀態', 'checkbox'),
+			'name' => array('名称', 'text'), 
+			'parent' => array('上级', 'select', array(new FieldFun())),
+			'valid' => array('有效', 'checkbox'),
 			array('__edit', 'edit', array('power' => 'catalog', 'method' => array('quick' => 2, 'detail' => 2)))
 		),
 		array(

@@ -8,9 +8,8 @@
             </a>
         </li>
         <li>   
-            <a href="index.php?r=company/index">企业管理</a>
+            <span><?=$cms_cata_type[$_GET['type']]['txt'];?></span>
         </li>
-        <li class="active"><?=$cms_cata_type[$_GET['type']]['txt'];?></li>
     </ol>
 </section>
 
@@ -18,7 +17,15 @@
 <section class="content">
     <div class="row">
         <div class="col-md-12">
+            <?php if ($msg[1]) { ?>
+            <div class="alert alert-<?= $msg[1]; ?> alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                <h4><i class="icon fa fa-check"></i> <?= $msg[0]; ?></h4>
+            </div>
+            <?php } ?>
+
             <div class="box box-primary">
+                <?php if ($_GET['action'] == 'edt') { ?>
                 <div class="box-header">
                     <h3 class="box-title"><?=$cms_cata_type[$_GET['type']]['txt'];?></h3>
                 </div><!-- /.box-header -->
@@ -26,32 +33,24 @@
                 <!-- form start -->
                 <form role="form" enctype="multipart/form-data" action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
                     <input type="hidden" name="save" value="true" />
-                    <input type="hidden" name="current[type]" value="<?=$_GET['type'];?>" />
+                    <input type="hidden" name="type" value="<?=$_GET['type'];?>" />
 
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="current_company_name">名称</label>
-                            <input type="text" class="form-control" name="current[company_name]" id="current_company_name" placeholder="企业名称" value="<?= $central['current']['company_name']; ?>" required="required">
+                            <label for="sbt_name">名稱</label>
+                            <input type="text" class="form-control" name="sbt_name" id="sbt_name" placeholder="名稱" value="<?= $outcome['name']; ?>" required="required">
                         </div>
                         <div class="form-group">
-                            <label for="current_eid">所属行业</label>
-                            <select class="form-control" name="current[eid]" id="current_eid" required="required">
-                                <option value="">-- 请选择 --</option>
-                            <?php
-                                foreach ($central['enterprise'] as $value) {
-                                    echo '<option value="' . $value['eid'] . '"' . ($central['current']['eid'] == $value['eid'] ? ' selected="selected"' : '') . '>' . $value['enterprise_name'] . '</option>';
-                                }
-                            ?>
-                            </select>
-
-                            <select name="current[parent]" class="form-control">
-                            <?=catalogOption($catalog_type, $outcome['parent'], $_GET['num']);?>
+                            <label for="sbt_parent">上級欄目</label>
+                            <select class="form-control" name="sbt_parent" id="sbt_parent">
+                                <option value="">-- 請選擇 --</option>
+                                <?=catalogOption($catalog_type, $outcome['parent'], $_GET['num']);?>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <input type="hidden" name="current[status]" value="0">
-                            <input type="checkbox" name="current[status]" value="1" <?= $central['current']['status'] == 1 ? 'checked="checked"' : ''; ?> data-on="success" data-off="warning" data-on-color="success" data-on-text="有效" data-off-text="无效" data-action="bootstrap-switch">
+                            <input type="hidden" name="sbt_valid" value="0">
+                            <input type="checkbox" name="sbt_valid" value="1" <?= $outcome['valid'] == 1 ? 'checked="checked"' : ''; ?> data-on="success" data-off="warning" data-on-color="success" data-on-text="有效" data-off-text="无效" data-action="bootstrap-switch">
                         </div>
 
                     </div><!-- /.box-body -->
@@ -60,6 +59,23 @@
                         <button type="submit" class="btn btn-primary">提交</button>
                     </div>
                 </form>
+
+                <?php } else { ?>
+            
+                <div class="box-header with-border">
+                    <h3 class="box-title"><?=$cms_cata_type[$_GET['type']]['txt'];?>列表</h3>
+
+                    <div class="box-tools">
+                        <? /* $this->render('../layouts/search', array('central' => $central)); */ ?>  
+                    </div>
+                </div><!-- /.box-header -->
+
+                <div class="box-body">
+                    <?= $code_table; ?>
+                </div><!-- /.box-body -->
+
+                <?php } ?>
+
             </div><!-- /.box -->
         </div>
     </div>
