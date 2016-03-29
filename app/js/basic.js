@@ -2,7 +2,23 @@
  * 基本配置脚本
  **/
 
-var domain = "http://xd.com/";
+var domain = "http://dog.ideal-max.com/";
+
+if(window.plus){
+    plusReady();
+} else {
+    document.addEventListener("plusready", plusReady, false);
+}
+
+// H5 plus事件处理
+function plusReady(){
+    // 创建并显示新窗口
+    $("[data-action='webview']").click(function(){
+        var w = plus.webview.open($(this).attr("href"));
+        return false;
+    });
+    
+}
 
 
 /**

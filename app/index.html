@@ -4,149 +4,133 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title></title>
-    <script src="js/mui.min.js"></script>
     <link href="css/mui.min.css" rel="stylesheet"/>
     <!--App自定义的css-->
-		<link rel="stylesheet" type="text/css" href="css/app.css"/>
-		<link rel="stylesheet" type="text/css" href="css/feedback-page.css"/>
+	<link rel="stylesheet" type="text/css" href="css/app.css"/>
+	<link rel="stylesheet" type="text/css" href="css/feedback-page.css"/>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+    <script src="js/basic.js"></script>
     <script type="text/javascript" charset="utf-8">
       	mui.init();
     </script>
     <style>
-			
-			.title{
-				margin: 20px 15px 10px;
-				color: #6d6d72;
-				font-size: 15px;
-			}
-			
-			.oa-contact-cell.mui-table .mui-table-cell {
-				padding: 11px 0;
-				vertical-align: middle;
-			}
-			
-			.oa-contact-cell {
-				position: relative;
-				margin: -11px 0;
-			}
-	
-			.oa-contact-avatar {
-				width: 75px;
-			}
-			.oa-contact-avatar img {
-				border-radius: 50%;
-			}
-			.oa-contact-content {
-				width: 100%;
-			}
-			.oa-contact-name {
-				margin-right: 20px;
-			}
-			.oa-contact-name, oa-contact-position {
-				float: left;
-			}
-			
-		</style>
+		.title{
+			margin: 20px 15px 10px;
+			color: #6d6d72;
+			font-size: 15px;
+		}
+		
+		.oa-contact-cell.mui-table .mui-table-cell {
+			padding: 11px 0;
+			vertical-align: middle;
+		}
+		
+		.oa-contact-cell {
+			position: relative;
+			margin: -11px 0;
+		}
+
+		.oa-contact-avatar {
+			width: 75px;
+		}
+		.oa-contact-avatar img {
+			border-radius: 50%;
+		}
+		.oa-contact-content {
+			width: 100%;
+		}
+		.oa-contact-name {
+			margin-right: 20px;
+		}
+		.oa-contact-name, oa-contact-position {
+			float: left;
+		}
+		
+	</style>
 </head>
 <body>
 	<header class="mui-bar mui-bar-nav">
 	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 	    <h1 class="mui-title">爱狗宠物店</h1>
-	    
 	</header>
 	
-		<div class="mui-content">
-			<div id="tabbar" class="mui-control-content mui-active">
-				<div id="slider" class="mui-slider" >
-			<div class="mui-slider-group mui-slider-loop">
-				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-				<div class="mui-slider-item mui-slider-item-duplicate">
-					<a href="#">
-						<img src="images/yuantiao.jpg">
-					</a>
+	<div class="mui-content">
+		<div id="tabbar" class="mui-control-content mui-active">
+			<div id="slider" class="mui-slider" >
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="images/yuantiao.jpg">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/shuijiao.jpg">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/muwu.jpg">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/cbd.jpg">
+						</a>
+					</div>
+					<!-- 第四张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/yuantiao.jpg">
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="images/shuijiao.jpg">
+						</a>
+					</div>
 				</div>
-				<!-- 第一张 -->
-				<div class="mui-slider-item">
-					<a href="#">
-						<img src="images/shuijiao.jpg">
-					</a>
-				</div>
-				<!-- 第二张 -->
-				<div class="mui-slider-item">
-					<a href="#">
-						<img src="images/muwu.jpg">
-					</a>
-				</div>
-				<!-- 第三张 -->
-				<div class="mui-slider-item">
-					<a href="#">
-						<img src="images/cbd.jpg">
-					</a>
-				</div>
-				<!-- 第四张 -->
-				<div class="mui-slider-item">
-					<a href="#">
-						<img src="images/yuantiao.jpg">
-					</a>
-				</div>
-				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-				<div class="mui-slider-item mui-slider-item-duplicate">
-					<a href="#">
-						<img src="images/shuijiao.jpg">
-					</a>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
 				</div>
 			</div>
-			<div class="mui-slider-indicator">
-				<div class="mui-indicator mui-active"></div>
-				<div class="mui-indicator"></div>
-				<div class="mui-indicator"></div>
-				<div class="mui-indicator"></div>
-			</div>
-		</div>
-		<script src="../js/mui.min.js"></script>
-		<script type="text/javascript" charset="utf-8">
-			mui.init({
-				swipeBack:true //启用右滑关闭功能
-			});
-			var slider = mui("#slider");
-			document.getElementById("switch").addEventListener('toggle', function(e) {
-				if (e.detail.isActive) {
-					slider.slider({
-						interval: 5000
-					});
-				} else {
-					slider.slider({
-						interval: 0
-					});
-				}
-			});
-		</script>
-				
-		<div class="mui-content">
+			<script type="text/javascript" charset="utf-8">
+				mui.init({
+					swipeBack:true //启用右滑关闭功能
+				});
+				var slider = mui("#slider");
+				document.getElementById("switch").addEventListener('toggle', function(e) {
+					if (e.detail.isActive) {
+						slider.slider({
+							interval: 5000
+						});
+					} else {
+						slider.slider({
+							interval: 0
+						});
+					}
+				});
+			</script>
+			
+			<div class="mui-content">
 		        <ul class="mui-table-view mui-grid-view mui-grid-9">
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-		            	<script type="text/javascript">
-// H5 plus事件处理
-function plusReady(){
-}
-if(window.plus){
-	plusReady();
-}else{
-	document.addEventListener("plusready",plusReady,false);
-}
-
-// 创建并显示新窗口
-function openWebview(){
-	var w = plus.webview.open( "examples/indexed-list.html" );
-}
-	</script>
-		            	<a onclick="openWebview()">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="examples/indexed-list.html" data-action="webview">
 		                    <span class="mui-icon mui-icon-home"></span>
 		                    <div class="mui-media-body">資料庫</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="examples/media-list.html">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="examples/media-list.html" data-action="webview">
 		                    <span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
 		                    <div class="mui-media-body">討論區</div></a></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="examples/imageviewer.html">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="examples/imageviewer.html" data-action="webview">
 		                    <span class="mui-icon mui-icon-chatbubble"></span>
 		                    <div class="mui-media-body">相片區</div></a></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
@@ -169,9 +153,7 @@ function openWebview(){
 		                    <div class="mui-media-body">more</div></a></li>
 		        </ul> 
 		</div>		
-				
 	</div>
-	
 </div>		
 
 </body>
