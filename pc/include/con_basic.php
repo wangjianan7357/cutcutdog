@@ -58,6 +58,7 @@ $con_db_table = array(
 	'likes'   	=> $child_pre . 'likes',
 	'language'  => $child_pre . 'language',
 	'constant'  => $child_pre . 'constant',
+	'service'   => $child_pre . 'service',
 	'log'       => $child_pre . 'log',
 	'system'    => $child_pre . 'system',
 
@@ -84,19 +85,10 @@ $con_db_table = array(
  * 以下信息会影响日志记录及页面标题
  */
 $cms_admin_power = array(
-	/*
 	'role'       => array('系统角色', '添加角色', '编辑角色', '删除角色'),
 	'admin'      => array('用户管理', '添加用户', '编辑用户', '删除用户'),
 	'system'     => array('网站信息', '系统参数', '网站参数', '常用设置', '数据备份', '数据恢复', '网站日志'),
-	'teacher'    => array('老师信息', '添加信息', '编辑信息', '删除信息'),
-	'stuednt'    => array('学生信息', '添加信息', '编辑信息', '删除信息'),
 	'module'     => array('院系班级', '添加院系班级', '编辑院系班级', '删除院系班级'),
-	*/
-	'course'     => array('实验课程', '添加课程', '编辑课程', '删除课程'),
-	'plan'       => array('课程选择', '添加选课', '编辑选课', '删除选课'),
-	
-	'products'   => array('耗材内容', '添加耗材', '编辑耗材', '删除耗材'),
-	'purchase'   => array('耗材申请', '添加申请', '审核申请', '删除申请', '确认申请'),
 	'message'    => array('留言信息', '查看留言', '回复留言', '删除留言'),
 );
 
@@ -111,10 +103,10 @@ $cms_max_num = array('queue' => 10000000, 'power' => 1000);
  * 分类模块
  * type: 0 留给其他
  */
-$cms_cata_type = array(1 => array('txt' => '院系', 'db' => 'catalog'), 2 => array('txt' => '班级', 'db' => 'catalog'));
+$cms_cata_type = array(1 => array('txt' => '資料庫', 'db' => 'info'), 2 => array('txt' => '討論區', 'db' => 'info'), 3 =>array('txt' => '相片區', 'db' => 'info'));
 
 /* 分类展示方式 */
-$cms_cata_style = array(1 => '内容整页显示', 2 => '标题列表显示', 3 => '图片及描述排列显示', 4 => '图片及标题排列显示', 5 => '标题排列显示');
+$cms_cata_style = array(1 => '内容整页显示', 2 => '标题列表显示');
 
 /* 交互模块 */
 $cms_msg_type = array(1 => '留言信息', 2 => '通知公告');
@@ -133,14 +125,5 @@ $cms_page_set = array(
 	array('priority' => 0.5, 'path' => 'tag', 'type' => 2),
 	array('priority' => 0.7, 'path' => 'catalog', 'type' => 2),
 );
-
-/* 资金动作 */
-$cms_teacher_type = array(1 => '老师', 2 => '实验室准备员');
-
-$cms_default_pass = '123456';
-
-$cms_max_classes = 10;
-
-$cms_product_status = array(0 => '待审批', 1 => '已审', 2 => '已购', 3 => '有库存', 4 => '自购');
 
 ?>

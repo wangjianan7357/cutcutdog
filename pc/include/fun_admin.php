@@ -113,7 +113,7 @@ function tableFields($fields = array(), $table = array()){
 	}
 
 	if (!empty($table['operate']) || isset($table['search'])) {
-		$code = '<div class="wbg pd10 bdr5 cl1">';
+		$code = '<div class="row">';
 
 		if (!empty($table['operate'])) {
 			$code .= '<div class="fl">&nbsp;&nbsp;';
@@ -153,34 +153,34 @@ function tableFields($fields = array(), $table = array()){
 			$code .= '</select> <input name="searchwords" value="" class="bdr3 bd2 h24 pdrl3 vm"> <input class="button1 vm" type="submit" value="搜 索" /></div>';
 		}
 
-		$code .= '</div><div class="mgt20">';
+		$code .= '</div><div class="row">';
 		
 	} else {
-		$code = '<div>';
+		$code = '<div class="row">';
 	}
 
-	$code .= '<table class="table table-bordered table-hover"><tr>';
+	$code .= '<div class="col-sm-12"><table class="table table-bordered table-hover dataTable"><thead><tr>';
 
 	foreach ($fields as $key => $value) {
 		$value = (array)$value;
 
 		if(strpos($value[0], '__') === 0) {
 			// 双下划线保留给系统
-			if ($value[0] == '__all') $code .= '<th style="white-space: nowrap;"><input type="checkbox" name="chk_all" /> 全选</th>';
+			if ($value[0] == '__all') $code .= '<th style="white-space: nowrap;"><input type="checkbox" name="chk_all" /></th>';
 			else if ($value[0] == '__edit') $code .= '<th id="i0" style="white-space: nowrap;">操作</th>';
 		}
 		else if (strpos($value[0], '_') === 0) {
 			// 单下划线不提供排序
-			$code .= '<th style="white-space: nowrap;">' . substr($value[0], 1) . '</th>';
+			$code .= '<th>' . substr($value[0], 1) . '</th>';
 		}
         else if (strpos($key, '[') !== false) {
-            $code .= '<th style="white-space: nowrap;">' . $value[0] . '</th>';
+            $code .= '<th>' . $value[0] . '</th>';
         }
 		else {
-			$code .= '<th style="white-space: nowrap;"><a href="' . $q_url['134567'] . '&field=' . $key . '">' . $value[0] . '</a></th>';
+			$code .= '<th class="sorting"><a href="' . $q_url['134567'] . '&field=' . $key . '">' . $value[0] . '</a></th>';
 		}
 	}
-	$code .= '</tr>';
+	$code .= '</tr></thead><tbody>';
 
 	$i = 0;
 	$where = $table['where'] . $condition;
@@ -262,10 +262,10 @@ function tableFields($fields = array(), $table = array()){
 				}
 				else {
 					if($result[$key]) {
-						$code .= isset($value[2]) ? $value[2][0] : '<font color="green">有效</font>';
+						$code .= isset($value[2]) ? $value[2][0] : '<span class="badge bg-green">&nbsp;&nbsp;</span>';
 					}
 					else {
-						$code .= isset($value[2]) ? $value[2][1] : '<font color="red">无效</font>';
+						$code .= isset($value[2]) ? $value[2][1] : '<span class="badge bg-gray">&nbsp;&nbsp;</span>';
 					}
 				}
 			}
@@ -319,18 +319,19 @@ function tableFields($fields = array(), $table = array()){
 		$i++;
 	}
 
-	$code .= '</tr></tbody></table>';
-	$code .= '<div class="bd1 wbg pd15 xc"><div class="pagenum pdt15">' . $q_url['page'] . '/' . ceil($total / $q_url['display']) . ' 页 &nbsp; 共 ' . $total . ' 条记录 ';
+	$code .= '</tr></tbody></table></div></div>';
+
+	$code .= '<div class="row"><div class="col-sm-5">' . $q_url['page'] . '/' . ceil($total / $q_url['display']) . ' 页 &nbsp; 共 ' . $total . ' 条记录 </div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers"><ul class="pagination">';
 
 	for ($i = 1; $i <= ceil($total / $q_url['display']); $i ++) {
 		if ($q_url['page'] == $i) {
-			$code .= '<b>' . $i . '</b> ';
+			$code .= '<li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">' . $i . '</a></li>';
 		} else {
-			$code .= '<a href="' . $q_url['1256'] . '&flag=' . $_GET['flag'] . '&page=' . $i . '">' . $i . '</a> ';
+			$code .= '<li class="paginate_button"><a href="' . $q_url['1256'] . '&flag=' . $_GET['flag'] . '&page=' . $i . '">' . $i . '</a></li>';
 		}
 	}
 
-	$code .= '</div></div></div>';
+	$code .= '</ul></div></div></div></div>';
 
 	return $code;
 }
