@@ -86,7 +86,7 @@ if($_GET['action'] == 'edt'){
 } else {
 	$q_url = queryPart('date', 'desc');
 
-	$where = $_GET['type'] ? ' AND `type` = "' . addslashes($_GET['type']) . '"' : '1';
+	$where = $_GET['type'] ? '`type` = "' . addslashes($_GET['type']) . '"' : '1';
 	
 	class FieldFun {
 		function __construct($namespace = 1){

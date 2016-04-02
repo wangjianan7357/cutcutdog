@@ -18,8 +18,27 @@ function plusReady(){
         return false;
     });
     
-}
+    // 创建并滑动出新窗口
+    $("[data-action='openwindow']").click(function(){
+        var link = $(this).attr("href");
 
+        mui.openWindow({
+            url: link,
+            id: link.replace(/\.[\w]{2,6}$/, ""),
+            show: {
+                aniShow: 'pop-in'
+            },
+            styles: {
+                popGesture: 'hide'
+            },
+            waiting: {
+                autoShow: false
+            }
+        });
+
+        return false;
+    });
+}
 
 /**
  * 公用方法

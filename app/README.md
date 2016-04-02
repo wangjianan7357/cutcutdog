@@ -6,3 +6,8 @@
 2. 支持本地注册；
 3. 支持设置手势密码，登录时可使用手势密码代替账号、密码；
 4. 支持评分、分享、拨打客服电话
+
+
+## 加楠新增功能说明
+1. 在 a 标签中加 data-action="webview" 可使用 webview 跳转功能
+2. 在 a 标签中加 data-action="openwindow" 可使用 openwindow 跳转功能
