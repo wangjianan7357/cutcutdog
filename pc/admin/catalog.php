@@ -5,7 +5,6 @@ require('../include/fun_admin.php');
 $err = '';
 $msg = array();
 
-$catalog_src = '../' . systemConfig('catalog_img_path') . $con_pic['pre']['catalog'];
 $catalog_type = (int)($_GET['type'] ? $_GET['type'] : ($_POST['sbt_type'] ? $_POST['sbt_type'] : 1));
 $catalog_db = $cms_cata_type[$catalog_type]['db'];
 
@@ -20,11 +19,11 @@ if($_GET['action'] == 'edt'){
 	else $outcome['valid'] = true;
 
 	if($_POST['del'] == 'true'){
-		if(!adminPower('catalog', $power_id)) warning('权限不足');
-		else delSelectedData('catalog', array('id' => $power_id), $catalog_src);
+		if(!adminPower('catalog', $power_id)) warning('權限不足');
+		else delSelectedData('catalog', array('id' => $power_id), '../' . systemConfig('catalog_img_path') . $con_pic['pre']['catalog']);
 	}
 	else if($_POST['save'] == 'true'){
-		//if(!adminPower('catalog', $power_id)) warning('权限不足');
+		//if(!adminPower('catalog', $power_id)) warning('權限不足');
 
 		if ($_GET['batch'] == 'true') {
 			if ($_GET['num']) {
@@ -38,7 +37,7 @@ if($_GET['action'] == 'edt'){
 		}
 
 		$chk_post = new ChkRequest('sbt_');
-		$chk_post->chkEmpty(array('name' => '名称'));
+		$chk_post->chkEmpty(array('name' => '名稱'));
 
 		$_POST['sbt_name'] = trim($_POST['sbt_name']);
 		$_POST['sbt_path'] = $chk_post->traFromName('name', array('name' => 'catalog', 'field' => 'path'), $outcome['path']);
@@ -126,6 +125,8 @@ if($_GET['action'] == 'edt'){
 				mysql_query("COMMIT");
 				mysql_query("END");
 
+				$catalog_src = '../' . systemConfig('catalog_img_path') . $con_pic['pre']['catalog'];
+
 				if($_FILES['sbt_img']['tmp_name']){
 					$imgpath = $catalog_src . $_POST['sbt_src'];
 					if(file_exists($imgpath)) unlink($imgpath);
@@ -148,12 +149,8 @@ if($_GET['action'] == 'edt'){
 				$msg[0] = $cms_admin_power['catalog'][$power_id] . '成功';
 				$msg[1] = 'success';
 
-				if($_GET['num']){
-					$href = $_SERVER['PHP_SELF'] . '?action=lst' . preg_replace('/action=[^&]+|&num=\d+/', '', $_SERVER['QUERY_STRING']);
-					header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
-				} else {
-					$outcome['parent'] = $_POST['sbt_parent'];
-				}
+				$href = $_SERVER['PHP_SELF'] . '?action=lst' . preg_replace('/action=[^&]+|&num=\d+/', '', $_SERVER['QUERY_STRING']);
+				header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
 			}
 			else {
 				mysql_query("ROLLBACK");
@@ -188,7 +185,7 @@ if($_GET['action'] == 'edt'){
 					return catalogOption($catalog_type, $str[0], $_GET['num']);
 				case '1_fun2':
 					global $catalog_all;
-					return $str[0] ? $catalog_all[preg_replace('/(^[\d,]+,|^)(\d+),$/', '\\2', $str[0])]['name'] : '<font color="red">未分类</font>';
+					return $str[0] ? $catalog_all[preg_replace('/(^[\d,]+,|^)(\d+),$/', '\\2', $str[0])]['name'] : '';
 			}
 		}
 	}
@@ -205,7 +202,6 @@ if($_GET['action'] == 'edt'){
 		array(
 			'where' => $where,
 			'table' => 'catalog',
-			'operate' => array('edt', 'delete')
 		)
 	);	
 }

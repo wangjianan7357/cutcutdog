@@ -26,11 +26,11 @@ if($_GET['action'] == 'edt'){
 	else $outcome['valid'] = true;
 
 	if($_POST['del'] == 'true'){
-		if(!adminPower('module', $power_id)) warning('权限不足');
+		if(!adminPower('module', $power_id)) warning('權限不足');
 		else delSelectedData('catalog', array('id' => $power_id, 'name' => 'module'));
 	}
 	else if($_POST['save'] == 'true'){
-		if(!adminPower('module', $power_id)) warning('权限不足');
+		if(!adminPower('module', $power_id)) warning('權限不足');
 
 		$_POST['sbt_name'] = trim($_POST['sbt_name']);
 
@@ -91,7 +91,7 @@ if($_GET['action'] == 'edt'){
 			else {
 				mysql_query("ROLLBACK");
 				mysql_query("END");
-				$msg[0] = '提交失败';
+				$msg[0] = '提交失敗';
 				$msg[1] = 'fail';
 			}
 		}

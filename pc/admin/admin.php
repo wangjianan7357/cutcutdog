@@ -21,11 +21,11 @@ if($_GET['action'] == "edt"){
 	}
 
 	if($_POST['del'] == 'true'){
-		if(!adminPower('admin', $power_id)) warning('权限不足');
+		if(!adminPower('admin', $power_id)) warning('權限不足');
 		else delSelectedData('admin', array('id' => $power_id));
 	}
 	else if($_POST['save'] == 'true'){
-		if(!adminPower('admin', $power_id)) warning('权限不足');
+		if(!adminPower('admin', $power_id)) warning('權限不足');
 
 		$chk_post = new ChkRequest('sbt_');
 
@@ -34,7 +34,7 @@ if($_GET['action'] == "edt"){
 			$chk_post->chkPassword(array('pass' => '用户密码'), array('confirm' => '确认密码'));
 		}
 
-		$chk_post->chkEmpty(array('realname' => '用户姓名', 'rid' => '用户角色', 'cid' => '院系'));
+		$chk_post->chkEmpty(array('realname' => '用户姓名', 'rid' => '用户角色'));
 
 		if(!$err){
 			$submit_arr = initSubmitColumns('admin', $_GET['num']);
@@ -57,7 +57,7 @@ if($_GET['action'] == "edt"){
 				}
 			}
 			else {
-				$msg[0] = '提交失败';
+				$msg[0] = '提交失敗';
 				$msg[1] = 'fail';
 			}
 		}

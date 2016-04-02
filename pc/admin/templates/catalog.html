@@ -1,6 +1,6 @@
 
 <section class="content-header">
-    <h1>企业管理</h1>
+    <h1>頻道分類</h1>
     <ol class="breadcrumb">
         <li>
             <a href="index.php">
@@ -66,7 +66,9 @@
                     <h3 class="box-title"><?=$cms_cata_type[$_GET['type']]['txt'];?>列表</h3>
 
                     <div class="box-tools">
-                        <? /* $this->render('../layouts/search', array('central' => $central)); */ ?>  
+                        <a href="<?= $_SERVER['PHP_SELF']; ?>?action=edt<?=$q_url[7];?>" class="btn btn-success">新 &nbsp;&nbsp; 增</a> &nbsp;
+                        <a href="javascript:void(0);" onclick="deleteSth()" class="btn btn-danger">删 &nbsp;&nbsp; 除</a>
+                        <?php /* $this->render('../layouts/search', array('central' => $central)); */ ?>  
                     </div>
                 </div><!-- /.box-header -->
 

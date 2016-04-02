@@ -108,6 +108,8 @@ $cms_cata_type = array(1 => array('txt' => '資料庫', 'db' => 'info'), 2 => ar
 /* 分类展示方式 */
 $cms_cata_style = array(1 => '内容整页显示', 2 => '标题列表显示');
 
+$cms_member_type = array(1 => '會員', 10 => '美容師');
+
 /* 交互模块 */
 $cms_msg_type = array(1 => '留言信息', 2 => '通知公告');
 

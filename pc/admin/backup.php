@@ -7,7 +7,7 @@ $msg = array();
 
 if($_GET['action'] == 'edt'){
 	if($_POST['backup'] == 'true') {
-		if(!adminPower('system', 2)) warning('权限不足');
+		if(!adminPower('system', 2)) warning('權限不足');
 
 		if(!$err){
 			$sql = '';
@@ -34,7 +34,7 @@ if($_GET['action'] == 'edt'){
 	}
 	else if($_POST['resume'] == "true"){
 		set_time_limit(400);
-		if(!adminPower('system', 3)) warning('权限不足');
+		if(!adminPower('system', 3)) warning('權限不足');
 		
 		if($_POST['resume_position'] == 'server'){
 			$file = $con_db_bakup . '/sql_a_' . $_POST['resume_s_file'] . '.bak';

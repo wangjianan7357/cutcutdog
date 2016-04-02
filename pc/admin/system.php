@@ -7,7 +7,7 @@ $msg = array();
 
 if($_GET['action'] == 'set'){
 	if($_POST['save'] == 'true'){
-		if(!adminPower('system', $_GET['type'])) warning('权限不足');
+		if(!adminPower('system', $_GET['type'])) warning('權限不足');
 
 		$data = array();
 		$getdata = $my_db->selectRow('*', 'system', array('tid' => $_GET['type'], 'lang' => ($_GET['type'] == 2 ? ($_GET['lang'] ? $_GET['lang'] : $con_lang_default) : '')));

@@ -112,37 +112,12 @@ function tableFields($fields = array(), $table = array()){
 		break;
 	}
 
-	if (!empty($table['operate']) || isset($table['search'])) {
+	if (isset($table['search'])) {
 		$code = '<div class="row">';
-
-		if (!empty($table['operate'])) {
-			$code .= '<div class="fl">&nbsp;&nbsp;';
-
-			foreach ($table['operate'] as $value) {
-				if ($value == 'delete') {
-					$code .= ' &nbsp; <a href="javascript:void(0);" onclick="deleteSth()" class="button1">删 &nbsp;&nbsp; 除</a>';
-
-				} else {
-					$code .= ' &nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?action=' . $value . $q_url[7] . '" class="button1">';
-
-					if ($value == 'import') {
-						$code .= '导 &nbsp;&nbsp; 入</a>';
-
-					} else if ($value == 'export') {
-						$code .= '导 &nbsp;&nbsp; 出</a>';
-
-					} else if ($value == 'edt') {
-						$code .= '新 &nbsp;&nbsp; 增</a>';
-					}
-				}
-			}
-
-			$code .= '</div>';
-		}
 
 		if (isset($table['search'])) {
 			// 搜索
-			$code .= '<div class="fr"><select name="searchcolumn" class="bdr3 bd2 h24 vm minw150"><option value="">-- 请选择 --</option>';
+			$code .= '<div class="fr"><select name="searchcolumn" class="bdr3 bd2 h24 vm minw150"><option value="">-- 請選擇 --</option>';
 
 			$search = explode(',', $table['search']);
 			foreach ($search as $value) {
@@ -155,11 +130,9 @@ function tableFields($fields = array(), $table = array()){
 
 		$code .= '</div><div class="row">';
 		
-	} else {
-		$code = '<div class="row">';
 	}
 
-	$code .= '<div class="col-sm-12"><table class="table table-bordered table-hover dataTable"><thead><tr>';
+	$code = '<div class="row"><div class="col-sm-12"><table class="table table-bordered table-hover dataTable"><thead><tr>';
 
 	foreach ($fields as $key => $value) {
 		$value = (array)$value;
@@ -221,7 +194,7 @@ function tableFields($fields = array(), $table = array()){
 			else if($value[1] == 'select') {
 				if(is_array($value[2][0])) {
 					if($_GET['num'] == $result['id']){
-						$code .= '<select name="' . $table['prefix'] . '_' . $key . '"><option value="">请选择</option>';
+						$code .= '<select name="' . $table['prefix'] . '_' . $key . '"><option value="">請選擇</option>';
 						foreach($value[2][0] as $key1 => $value1) {
 							$code .= '<option value="' . $key1 . '"' . ($result[$key] == $key1 ? ' selected="selected"' : '') . '>' . $value1 . '</option>';
 						}
@@ -232,7 +205,7 @@ function tableFields($fields = array(), $table = array()){
 				}
 				else if(is_object($value[2][0])) {
 					if($_GET['num'] == $result['id']){
-						$code .= '<select name="' . $table['prefix'] . '_' . $key . '"><option value="">请选择</option>';
+						$code .= '<select name="' . $table['prefix'] . '_' . $key . '"><option value="">請選擇</option>';
 						$code .= $value[2][0]->fun1($result[$key]);
 					} else {
 						$code .= $value[2][0]->fun2($result[$key]) . '</div>';
@@ -301,7 +274,7 @@ function tableFields($fields = array(), $table = array()){
 							else {
 								// 当没有“详细”时，则显示“快捷”按钮
 								$temp = '';
-								$code .= '<a href="' . $_SERVER['PHP_SELF'] . '?action=edt&num=' . $result['id'] . $q_url['24567'] . '&flag=' . $_GET['flag'] . (isset($value[2]['query']) ? $value[2]['query'] : '') . '" id="i' . ($i + 1) . '">' . (isset($value[2]['text']) ? $value[2]['text'] : '编辑') . '</a>';
+								$code .= '<a href="' . $_SERVER['PHP_SELF'] . '?action=edt&num=' . $result['id'] . $q_url['24567'] . '&flag=' . $_GET['flag'] . (isset($value[2]['query']) ? $value[2]['query'] : '') . '" id="i' . ($i + 1) . '">' . (isset($value[2]['text']) ? $value[2]['text'] : '編輯') . '</a>';
 							}
 
 							$j++;
@@ -319,9 +292,8 @@ function tableFields($fields = array(), $table = array()){
 		$i++;
 	}
 
-	$code .= '</tr></tbody></table></div></div>';
-
-	$code .= '<div class="row"><div class="col-sm-5">' . $q_url['page'] . '/' . ceil($total / $q_url['display']) . ' 页 &nbsp; 共 ' . $total . ' 条记录 </div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers"><ul class="pagination">';
+	$code .= '</tbody></table></div></div>';
+	$code .= '<div class="row"><div class="col-sm-5">' . $q_url['page'] . '/' . ceil($total / $q_url['display']) . ' 頁 &nbsp; 共 ' . $total . ' 條記錄 </div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers"><ul class="pagination">';
 
 	for ($i = 1; $i <= ceil($total / $q_url['display']); $i ++) {
 		if ($q_url['page'] == $i) {
@@ -331,7 +303,7 @@ function tableFields($fields = array(), $table = array()){
 		}
 	}
 
-	$code .= '</ul></div></div></div></div>';
+	$code .= '</ul></div></div></div>';
 
 	return $code;
 }
@@ -384,7 +356,7 @@ function selCatalog($parent = '', $i = 0){
 	$selpage = array();
 	$disable = getManageDataId('module{}');
 
-	if(!$i) $selpage['cid']['^'] = '- 显示全部 -';
+	if(!$i) $selpage['cid']['^'] = '- 顯示全部 -';
 	for($j = 0; $j < $i; $j++) $dash .= '-';
 
 	foreach($catalog_all as $value){
@@ -554,7 +526,7 @@ function delSelectedData($table, $power=array(), $src = ''){
 		if (!empty($power)) {
 			$msg[0] = $cms_admin_power[$power['name']][$power['id']] . '成功';
 		} else {
-			$msg[0] = '删除成功';
+			$msg[0] = '刪除成功';
 		}
 		//instructLog($cms_admin_power[$power['name']][$power['id']], 'del');
 	}
@@ -563,14 +535,14 @@ function delSelectedData($table, $power=array(), $src = ''){
 		mysql_query("END");
 
 		if(!$exist){
-			$msg[0] = '未选择要删除的项目';
+			$msg[0] = '未選擇刪除記錄';
 			$msg[1] = 'warn';
 		}
 		else {
 			if (!empty($power)) {
-				$msg[0] = $cms_admin_power[$power['name']][$power['id']] . '失败';
+				$msg[0] = $cms_admin_power[$power['name']][$power['id']] . '失敗';
 			} else {
-				$msg[0] = '删除失败';
+				$msg[0] = '刪除失敗';
 			}
 			$msg[1] = 'fail';
 		}

@@ -11,11 +11,11 @@ if($_GET['action'] == "edt"){
 	else $power_id = 1;
 
 	if($_POST['del'] == 'true'){
-		if(!adminPower('role', $power_id)) warning('权限不足');
+		if(!adminPower('role', $power_id)) warning('權限不足');
 		else delSelectedData('role', array('id' => $power_id));
 	}
 	else if($_POST['save'] == 'true'){
-		if(!adminPower('role', $power_id)) warning('权限不足');
+		if(!adminPower('role', $power_id)) warning('權限不足');
 
 		$chk_post = new ChkRequest('sbt_');
 		$chk_post->chkExist(array('name' => '角色'), array('name' => 'role'));
@@ -55,7 +55,7 @@ if($_GET['action'] == "edt"){
 				header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
 			}
 			else {
-				$msg[0] = $cms_admin_power['role'][$power_id] . '提交失败';
+				$msg[0] = $cms_admin_power['role'][$power_id] . '提交失敗';
 				$msg[1] = 'fail';
 			}
 		}

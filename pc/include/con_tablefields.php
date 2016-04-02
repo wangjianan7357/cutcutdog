@@ -27,7 +27,6 @@ return array(
      */
     'member' => '
         `id` int( 8 ) NOT NULL AUTO_INCREMENT,
-        `cid` varchar( 40 ) NOT NULL,
         `name` varchar( 16 ) NOT NULL DEFAULT "",
         `pass` char( 32 ) NOT NULL,
         `salt` varchar( 128 ) NOT NULL,
@@ -35,7 +34,7 @@ return array(
         `mobile` varchar( 16 ) NOT NULL DEFAULT "",
         `content` TEXT NOT NULL DEFAULT "",
         `valid` tinyint( 1 ) NOT NULL DEFAULT 0,
-        `type` int( 1 ) NOT NULL DEFAULT 0 COMMENT "1: 普通会员，10: 美容师",
+        `type` int( 2 ) NOT NULL DEFAULT 1 COMMENT "1: 普通会员，10: 美容师",
         `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY ( `id` )',
 

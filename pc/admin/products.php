@@ -15,11 +15,11 @@ if($_GET['action'] == 'edt'){
 	}
 
 	if($_POST['del'] == 'true'){
-		if(!adminPower('products', $power_id)) warning('权限不足');
+		if(!adminPower('products', $power_id)) warning('權限不足');
 		else delSelectedData('products', array('id' => $power_id));
 	}
 	else if($_POST['save'] == 'true'){
-		if(!adminPower('products', $power_id)) warning('权限不足');
+		if(!adminPower('products', $power_id)) warning('權限不足');
 
 		$chk_post = new ChkRequest('sbt_');
 		$chk_post->chkEmpty(array('name' => '名称', 'model' => '规格', 'unit' => '单位', 'number' => '数量', 'price' => '价格'));
@@ -53,7 +53,7 @@ if($_GET['action'] == 'edt'){
 				mysql_query("ROLLBACK");
 				mysql_query("END");
 
-				$msg[0] = '提交失败';
+				$msg[0] = '提交失敗';
 				$msg[1] = 'fail';
 			}
 		}

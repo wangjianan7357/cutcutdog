@@ -12,11 +12,11 @@ if($_GET['action'] == 'edt'){
 	else $power_id = 1;
 
 	if($_POST['del'] == 'true'){
-		if(!adminPower('message', $power_id)) warning('权限不足');
+		if(!adminPower('message', $power_id)) warning('權限不足');
 		else delSelectedData('message', array('id' => $power_id));
 	}
 	else if($_POST['save'] == 'true'){
-		if(!adminPower('message', $power_id)) warning('权限不足');
+		if(!adminPower('message', $power_id)) warning('權限不足');
 		
 		if(!$err) {
 			$submit = array(
@@ -41,7 +41,7 @@ if($_GET['action'] == 'edt'){
 				header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
 			}
 			else {
-				$msg[0] = '提交失败';
+				$msg[0] = '提交失敗';
 				$msg[1] = 'fail';
 			}
 		}

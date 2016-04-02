@@ -14,18 +14,9 @@
 <link href="dist/css/skins/_all-skins.min.css" rel="stylesheet">
 
 <script language="javascript">
-var head_tips = [];
 <?php
 if($err){
 	echo 'alert("' . $err . '"); history.go(-1);';
-}
-else if($msg){
-	echo 'head_tips[0] = "' . $msg[0] . '";';
-	if($msg[1]) echo 'head_tips[1] = "' . $msg[1] . '";';
-}
-else if($_GET['msg']){
-	echo 'head_tips[0] = "' . urldecode($_GET['msg'][0]) . '";';
-	if($_GET['msg'][1]) echo 'head_tips[1] = "' . $_GET['msg'][1] . '";';
 }
 
 //$msg = $my_db->existRow('message', array('`rtype` = ' . $_SESSION['admin_type'] . ' AND `rid` = ' . $_SESSION['admin_id'] . ' AND `read` = 0'));
@@ -62,10 +53,10 @@ else if($_GET['msg']){
               <li class="dropdown messages-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-envelope-o"></i>
-                  <span class="label label-success">4</span>
+                  <span class="label label-success">1</span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li class="header">You have 4 messages</li>
+                  <li class="header">You have 1 messages</li>
                   <li>
                     <!-- inner menu: contains the actual data -->
                     <ul class="menu">
@@ -81,54 +72,6 @@ else if($_GET['msg']){
                           <p>Why not buy a new awesome theme?</p>
                         </a>
                       </li><!-- end message -->
-                      <li>
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="user image"/>
-                          </div>
-                          <h4>
-                            AdminLTE Design Team
-                            <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
-                          </div>
-                          <h4>
-                            Developers
-                            <small><i class="fa fa-clock-o"></i> Today</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="user image"/>
-                          </div>
-                          <h4>
-                            Sales Department
-                            <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
-                          </div>
-                          <h4>
-                            Reviewers
-                            <small><i class="fa fa-clock-o"></i> 2 days</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li>
                     </ul>
                   </li>
                   <li class="footer"><a href="#">See All Messages</a></li>
@@ -176,76 +119,6 @@ else if($_GET['msg']){
                   <li class="footer"><a href="#">View all</a></li>
                 </ul>
               </li>
-              <!-- Tasks: style can be found in dropdown.less -->
-              <li class="dropdown tasks-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-flag-o"></i>
-                  <span class="label label-danger">9</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li class="header">You have 9 tasks</li>
-                  <li>
-                    <!-- inner menu: contains the actual data -->
-                    <ul class="menu">
-                      <li><!-- Task item -->
-                        <a href="#">
-                          <h3>
-                            Design some buttons
-                            <small class="pull-right">20%</small>
-                          </h3>
-                          <div class="progress xs">
-                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                              <span class="sr-only">20% Complete</span>
-                            </div>
-                          </div>
-                        </a>
-                      </li><!-- end task item -->
-                      <li><!-- Task item -->
-                        <a href="#">
-                          <h3>
-                            Create a nice theme
-                            <small class="pull-right">40%</small>
-                          </h3>
-                          <div class="progress xs">
-                            <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                              <span class="sr-only">40% Complete</span>
-                            </div>
-                          </div>
-                        </a>
-                      </li><!-- end task item -->
-                      <li><!-- Task item -->
-                        <a href="#">
-                          <h3>
-                            Some task I need to do
-                            <small class="pull-right">60%</small>
-                          </h3>
-                          <div class="progress xs">
-                            <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                              <span class="sr-only">60% Complete</span>
-                            </div>
-                          </div>
-                        </a>
-                      </li><!-- end task item -->
-                      <li><!-- Task item -->
-                        <a href="#">
-                          <h3>
-                            Make beautiful transitions
-                            <small class="pull-right">80%</small>
-                          </h3>
-                          <div class="progress xs">
-                            <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                              <span class="sr-only">80% Complete</span>
-                            </div>
-                          </div>
-                        </a>
-                      </li><!-- end task item -->
-                    </ul>
-                  </li>
-                  <li class="footer">
-                    <a href="#">View all tasks</a>
-                  </li>
-                </ul>
-              </li>
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -290,7 +163,6 @@ else if($_GET['msg']){
               </li>
             </ul>
           </div>
-
         </nav>
     </header>
 
@@ -325,16 +197,6 @@ else if($_GET['msg']){
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>客户服务中心</span> <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                        <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-                    </ul>
-                </li>
-
-                <li class="treeview">
-                    <a href="#">
                         <i class="fa fa-th-list"></i>
                         <span>頻道分類</span>
                         <i class="fa fa-angle-left pull-right"></i>
@@ -355,11 +217,25 @@ else if($_GET['msg']){
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href=""><i class="fa fa-circle-o"></i> <?= $value['txt']; ?>列表</a></li>
-                        <li><a href=""><i class="fa fa-circle-o"></i> 添加<?= $value['txt']; ?></a></li>
+                        <li><a href="info.php?type=<?= $key; ?>&action=lst"><i class="fa fa-circle-o"></i> <?= $value['txt']; ?>列表</a></li>
+                        <li><a href="info.php?type=<?= $key; ?>&action=edt"><i class="fa fa-circle-o"></i> 添加<?= $value['txt']; ?></a></li>
                     </ul>
                 </li>
                 <?php } ?>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-comments"></i>
+                        <span>會員用戶</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                    <?php foreach ($cms_member_type as $key => $value) { ?>
+                        <li><a href="member.php?type=<?= $key; ?>"><i class="fa fa-circle-o"></i> <?= $value; ?>列表</a></li>
+                    <?php } ?>
+                        <li><a href="member.php?action=edt"><i class="fa fa-circle-o"></i> 添加用戶</a></li>
+                    </ul>
+                </li>
 
                 <li class="treeview">
                     <a href="#">
@@ -401,12 +277,6 @@ else if($_GET['msg']){
                     <small class="label pull-right bg-red">3</small>
                     </a>
                 </li>
-                <li>
-                    <a href="pages/mailbox/mailbox.html">
-                    <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                    <small class="label pull-right bg-yellow">12</small>
-                    </a>
-                </li>
                 <li class="treeview">
                     <a href="#">
                     <i class="fa fa-share"></i> <span>Multilevel</span>
@@ -430,7 +300,6 @@ else if($_GET['msg']){
                         <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
                     </ul>
                 </li>
-                <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             </ul>
         </section>
         <!-- /.sidebar -->

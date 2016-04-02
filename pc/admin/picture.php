@@ -39,7 +39,7 @@ if ($_GET['action'] == 'upload'){
 	}
 
 	if($_POST['del'] == 'true'){
-		if(!adminPower($power_key, $power_id)) warning('权限不足');
+		if(!adminPower($power_key, $power_id)) warning('權限不足');
 		else {
 			$done = 1;
 			$imgarr = array();
@@ -104,7 +104,7 @@ if ($_GET['action'] == 'upload'){
 		}
 	}
 	else if($_POST['save'] == 'true'){
-		if(!adminPower($power_key, $power_id)) warning('权限不足');
+		if(!adminPower($power_key, $power_id)) warning('權限不足');
 
 		$chk_post = new ChkRequest('sbt_');
 
