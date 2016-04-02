@@ -25,7 +25,7 @@ if($_GET['action'] == 'edt'){
 		$_POST['sbt_name'] = trim($_POST['sbt_name']);
 
 		$chk_post = new ChkRequest('sbt_');
-		$chk_post->chkEmpty(array('name' => '名稱'));
+		$chk_post->chkEmpty(array('name' => '名稱', 'phone' => '電話'));
 
 		$_POST['sbt_src'] = $chk_post->chkImage('img');
 		
@@ -40,9 +40,7 @@ if($_GET['action'] == 'edt'){
 
 			$_POST['sbt_id'] = $_GET['num'] ? $_GET['num'] : ($my_db->selectMax('member') + 1);
 			$_POST['sbt_type'] = $member_type;
-			$_POST['sbt_queue'] = min(max((int)$_POST['sbt_queue'], 0), $cms_max_num['queue']);
 			$_POST['sbt_valid'] = ($_POST['sbt_valid'] ? 1 : 0);
-
 
 			$submit = array();
 			$submit_lan = array();
@@ -53,6 +51,9 @@ if($_GET['action'] == 'edt'){
 			}
 
 			mysql_query('BEGIN');
+
+			$done = 1;
+			$done &= $my_db->saveRow('member', $submit, ($_GET['num'] ? array('id' => $_GET['num']) : ''));
 
 			if($done){
 				mysql_query("COMMIT");
@@ -66,25 +67,12 @@ if($_GET['action'] == 'edt'){
 					move_uploaded_file($_FILES['sbt_img']['tmp_name'], $imgpath);
 				}
 
-				// 图片名称更新
-				if($outcome['src'] && $_POST['sbt_src'] != $outcome['src']) {
-					$img_path = $member_src;
-
-					if (file_exists($img_path . $outcome['src'])) {
-						copy($img_path . $outcome['src'], $img_path . $_POST['sbt_src']);
-						unlink($img_path . $outcome['src']);
-					}
-				}
 
 				instructLog($cms_admin_power['member'][$power_id] . $_POST['sbt_name'], ($poser_id == 1 ? 'add' : 'edt'));
 				$msg[0] = $cms_admin_power['member'][$power_id] . '成功';
 
-				if($_GET['num']){
-					$href = $_SERVER['PHP_SELF'] . '?action=lst' . preg_replace('/action=[^&]+|&num=\d+/', '', $_SERVER['QUERY_STRING']);
-					header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
-				} else {
-					$outcome['parent'] = $_POST['sbt_parent'];
-				}
+				$href = $_SERVER['PHP_SELF'] . '?action=lst' . preg_replace('/action=[^&]+|&num=\d+/', '', $_SERVER['QUERY_STRING']);
+				header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
 			}
 			else {
 				mysql_query("ROLLBACK");
@@ -94,12 +82,8 @@ if($_GET['action'] == 'edt'){
 			}
 		}
 	}
-}
-else if($_GET['action'] == 'lst'){
-	$member_all = array();
-	$getdata = $my_db->selectRow('*', 'member', array('type' => $member_type));
-	while($result = mysql_fetch_array($getdata)) $member_all[$result['id']] = $result;
 
+} else {
 	$q_url = queryPart('date', 'desc');
 
 	$where = $_GET['type'] ? ' AND `type` = "' . addslashes($_GET['type']) . '"' : '1';

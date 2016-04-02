@@ -32,6 +32,7 @@ return array(
         `salt` varchar( 128 ) NOT NULL,
         `sex` varchar( 1 ) NOT NULL DEFAULT 0,
         `mobile` varchar( 16 ) NOT NULL DEFAULT "",
+        `email` varchar( 128 ) NOT NULL DEFAULT "",
         `content` TEXT NOT NULL DEFAULT "",
         `valid` tinyint( 1 ) NOT NULL DEFAULT 0,
         `type` int( 2 ) NOT NULL DEFAULT 1 COMMENT "1: 普通会员，10: 美容师",

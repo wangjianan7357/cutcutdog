@@ -14,8 +14,8 @@ if($_SERVER['SERVER_ADDR'] == "127.0.0.1" || $_SERVER['SERVER_ADDR'] == "::1"){
 	$con_db_name = 'cutcutdog';
 }
 else {
-	$con_db_set = array('host' => 'localhost', 'user' => 'root', 'pass' => '');
-	$con_db_name = '';
+	$con_db_set = array('host' => 'localhost', 'user' => 'iphones1_web1', 'pass' => 'wang025971');
+	$con_db_name = 'iphones1_web1';
 }
 
 /* 设置语言 */

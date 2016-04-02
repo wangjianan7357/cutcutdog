@@ -41,6 +41,10 @@
                             <input type="text" class="form-control" name="sbt_name" id="sbt_name" placeholder="名稱" value="<?= $outcome['name']; ?>" required="required">
                         </div>
                         <div class="form-group">
+                            <label for="sbt_pass">密碼</label>
+                            <input type="password" class="form-control" name="sbt_pass" id="sbt_pass" placeholder="密碼" value="">
+                        </div>
+                        <div class="form-group">
                             <label for="sbt_parent">類型</label>
                             <select class="form-control" name="sbt_parent" id="sbt_parent">
                             <?php
@@ -51,8 +55,12 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="sbt_email">郵箱</label>
+                            <input type="email" class="form-control" name="sbt_email" id="sbt_email" placeholder="密碼" value="<?= $outcome['email']; ?>" required="required">
+                        </div>
+                        <div class="form-group">
                             <label for="sbt_name">電話</label>
-                            <input type="text" class="form-control" name="sbt_mobile" id="sbt_mobile" placeholder="電話" value="<?= $outcome['mobile']; ?>" required="required">
+                            <input type="text" class="form-control" name="sbt_mobile" id="sbt_mobile" placeholder="電話" value="<?= $outcome['mobile']; ?>">
                         </div>
 
                         <div class="form-group">

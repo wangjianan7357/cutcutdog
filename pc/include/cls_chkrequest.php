@@ -25,14 +25,14 @@ class ChkRequest {
 		}
 
 		$this->lang = array(
-			'required' => ' 为必填项目，不可留空',
-			'contain_invalid_code' => ' 含无效字符：',
-			'invalid' => ' 格式有误',
+			'required' => ' 為必填項目，不可留空',
+			'contain_invalid_code' => ' 含無效字符：',
+			'invalid' => ' 格式有誤',
 			'existed' => ' 已使用',
 			'character' => ' 字符',
-			'no_less_than' => ' 不得少于 ',
-			'no_more_than' => ' 不得多于 ',
-			'and' => ' 与 ',
+			'no_less_than' => ' 不得少於 ',
+			'no_more_than' => ' 不得多於 ',
+			'and' => ' 與 ',
 			'is_not_the_same' => ' 不符',
 		);
 	}
