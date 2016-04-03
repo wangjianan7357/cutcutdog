@@ -1,67 +1,66 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>管理员登录</title>
-<link rel="stylesheet" href="images/base.css" type="text/css" />
-<link rel="stylesheet" href="images/style.css" type="text/css" />
-<script src="javascript/jquery.min.js" language="javascript"></script>
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="dist/css/font-awesome.min.css" rel="stylesheet">
+<link href="dist/css/ionicons.min.css" rel="stylesheet">
+<link href="dist/css/AdminLTE.min.css" rel="stylesheet">
+<link rel="stylesheet" href="plugins/iCheck/square/blue.css">
 </head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            後台管理系統
+        </div><!-- /.login-logo -->
 
-<body>
-<br><br><br><br><br><br><br>
+        <div class="login-box-body">
+            <form action="<?=$_SERVER['PHP_SELF'];?>" method="post" onsubmit="javascript:encryptPass()">
+                <br>
+                <div class="form-group has-feedback">
+                    <input class="form-control" placeholder="賬號" value="<?=$_POST['name'];?>" name="name">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" placeholder="密碼" id="org_pass">
+                    <input type="hidden" name="pass" value="" id="sub_pass" />
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="驗證碼" name="verifycode">
+                    <span class="glyphicon glyphicon-text-background form-control-feedback"></span>
+                    <a href="javascript:verifyImg()" title="刷新" class="img_verify"><img src="../verifyimg.php" id="verify"></a>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox"><?=$msg;?></div>
+                    </div><!-- /.col -->
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">登錄</button>
+                    </div><!-- /.col -->
+                </div>
+                <br>
+            </form>
+        </div><!-- /.login-box-body -->
+    </div><!-- /.login-box -->
 
-<div class="mgrl_auto w870">
-    <div class="fl login_ad">
-    <?php
-        $res = $my_db->fetchOne('message', array('type' => 2));
-        if (!empty($res)) {
-            echo '<div class="notice">通知公告：' . $res['content'] . '</div>';
-        }
-    ?>
-    </div>
-
-    <form action="<?=$_SERVER['PHP_SELF'];?>" id="login" method="post" onsubmit="javascript:encryptPass()" class="fr">
-        <div class="w240 bdr3 bd2 pdr25 pdl25 pdb5 wbg">
-            <br />
-
-            <p class="fs16 pdb8">学号/登录名：</p>
-            <p><input class="bdr3 bd2 h32 pdrl3 vm wp97" value="<?=$_POST['name'];?>" data-input="text" name="name"></p>
-
-            <p class="fs16 pdb8 pdt15">密码：</p>
-            <p>
-                <input class="bdr3 bd2 h32 pdrl3 vm wp97" type="password" value="" id="org_pass" data-input="text" />
-                <input type="hidden" name="pass" value="" id="sub_pass" />
-            </p>
-
-            <p class="pdt15">
-                <input class="pdrl3 vm" name="type" value="3" type="radio" checked="checked" /> 学生 &nbsp;
-                <input class="pdrl3 vm" name="type" value="2" type="radio" /> 老师 &nbsp;
-                <input class="pdrl3 vm" name="type" value="1" type="radio" /> 管理员
-            </p>
-
-            <p class="fs16 pdb8 pdt15">验证码：</p>
-            <p>
-                <input class="bdr3 bd2 h32 pdrl3 vm wp40" data-input="text" name="verifycode" value="" style="text-transform:uppercase;">
-                <a href="javascript:verifyImg()" title="点击刷新" class="img_verify"><img src="../verifyimg.php" id="verify" class="vm"></a>
-            </p>
-            
-            <p class="xc"><input type="submit" class="button1 wp100 bdr5 h34 mgt15" value="登 录" ></p>
-
-            <div class="login_status"><?=$msg;?></div>
-
-        </div>
-    </form>
-
-    <div style="clear: both; color: white; text-align: center; font-size: 13px; line-height: 20px; font-family: 宋体;">
-        <br>
-        技术支持：绎通科技<br>
-        单　　位：湘潭大学材料科学与工程学院
-    </div>
-</div>
-
-<script src="javascript/common.js" language="javascript"></script>
-<script src="javascript/index.js" language="javascript"></script>
-<script src="javascript/script.js" language="javascript"></script>
+<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<!-- Bootstrap 3.3.2 JS -->
+<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- iCheck -->
+<script src="plugins/iCheck/icheck.min.js"></script>
+<!-- 自定义公用方法 -->
+<script src="dist/js/script.js" type="text/javascript"></script>
+<script>
+$(function () {
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' // optional
+    });
+});
+</script>
 </body>
 </html>

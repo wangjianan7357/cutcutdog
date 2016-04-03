@@ -31,13 +31,27 @@ return array(
         `pass` char( 32 ) NOT NULL,
         `salt` varchar( 128 ) NOT NULL,
         `sex` varchar( 1 ) NOT NULL DEFAULT 0,
-        `mobile` varchar( 16 ) NOT NULL DEFAULT "",
+        `phone` varchar( 16 ) NOT NULL DEFAULT "",
         `email` varchar( 128 ) NOT NULL DEFAULT "",
+        `address` varchar( 256 ) NOT NULL DEFAULT "",
         `content` TEXT NOT NULL DEFAULT "",
         `valid` tinyint( 1 ) NOT NULL DEFAULT 0,
         `type` int( 2 ) NOT NULL DEFAULT 1 COMMENT "1: 普通会员，10: 美容师",
         `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY ( `id` )',
+
+    /** 
+     * 服務
+     */
+    'service' => '
+        `id` INT( 8 ) NOT NULL AUTO_INCREMENT , 
+		`queue` INT( 7 ) NOT NULL DEFAULT 0 , 
+        `name` varchar( 32 ) NOT NULL DEFAULT "",
+        `content` TEXT NOT NULL , 
+        `valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
+        `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+        PRIMARY KEY ( `id` ) , 
+        KEY ( `type` )',
 
 	/** 
 	 * 网站留言信息
@@ -167,7 +181,7 @@ return array(
 	/** 
 	 * 链接模块
 	 */
-	'links' => '
+	'link' => '
 		`id` INT( 4 ) NOT NULL AUTO_INCREMENT , 
 		`cid` VARCHAR( 40 ) NOT NULL DEFAULT "" , 
 		`queue` INT( 7 ) NOT NULL DEFAULT 0 , 
@@ -176,9 +190,6 @@ return array(
 		`src` VARCHAR( 55 ) NOT NULL DEFAULT "" , 
 		`valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
 		`nofollow` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
-		`visitor` INT( 6 ) NOT NULL DEFAULT 0 , 
-		`start` INT( 10 ) NOT NULL DEFAULT 0 , 
-		`end` INT( 10 ) NOT NULL DEFAULT 0 , 
 		`desp` TEXT NOT NULL , 
 		`fields` MEDIUMTEXT NOT NULL , 
 		`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
@@ -197,21 +208,24 @@ return array(
 		`visitor` INT( 6 ) NOT NULL DEFAULT 0 , 
 		`valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
 		`desp` TEXT NOT NULL , 
-		`fields` MEDIUMTEXT NOT NULL , 
+		`fields` TEXT NOT NULL , 
 		`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
 		PRIMARY KEY ( `id` )',
 
 	/** 
 	 * 产品模块
 	 */
-	'products' => '
+	'product' => '
 		`id` INT( 5 ) NOT NULL AUTO_INCREMENT , 
 		`cid` VARCHAR( 40 ) NOT NULL , 
-		`name` VARCHAR( 128 ) NOT NULL DEFAULT "" , 
-		`number` INT( 7 ) NOT NULL DEFAULT 0 , 
+		`queue` INT( 7 ) NOT NULL DEFAULT 0 , 
+		`name` VARCHAR( 80 ) NOT NULL DEFAULT "" , 
+		`path` VARCHAR( 50 ) NOT NULL DEFAULT "" , 
+		`src` VARCHAR( 60 ) NOT NULL DEFAULT "" , 
 		`price` DECIMAL( 8, 2 ) NOT NULL DEFAULT 0 , 
+		`sale` DECIMAL( 8, 2 ) NOT NULL DEFAULT 0 , 
 		`valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
-		`fields` MEDIUMTEXT NOT NULL , 
+		`fields` TEXT NOT NULL , 
 		`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
 		PRIMARY KEY ( `id` )',
 

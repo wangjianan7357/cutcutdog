@@ -65,9 +65,9 @@ $con_db_table = array(
 	// 多国语言
 	'page'      => $child_pre . 'page_' . $con_lang_current,
 	'catalog'   => $child_pre . 'catalog_' . $con_lang_current,
-	'links'     => $child_pre . 'links_' . $con_lang_current,
+	'link'      => $child_pre . 'link_' . $con_lang_current,
 	'info'      => $child_pre . 'info_' . $con_lang_current,
-	'products'  => $child_pre . 'products_' . $con_lang_current,
+	'product'   => $child_pre . 'product_' . $con_lang_current,
 	'tag'       => $child_pre . 'tag_' . $con_lang_current
 );
 
@@ -85,11 +85,14 @@ $con_db_table = array(
  * 以下信息会影响日志记录及页面标题
  */
 $cms_admin_power = array(
+	'system'     => array('网站信息', '系统参数', '网站参数', '常用设置', '数据备份', '数据恢复', '网站日志'),
 	'role'       => array('系统角色', '添加角色', '编辑角色', '删除角色'),
 	'admin'      => array('用户管理', '添加用户', '编辑用户', '删除用户'),
-	'system'     => array('网站信息', '系统参数', '网站参数', '常用设置', '数据备份', '数据恢复', '网站日志'),
-	'module'     => array('院系班级', '添加院系班级', '编辑院系班级', '删除院系班级'),
-	'message'    => array('留言信息', '查看留言', '回复留言', '删除留言'),
+	'catalog'    => array('頻道分類', '添加分類', '编辑分類', '删除分類'),
+	'info'   	 => array('資訊內容', '添加資訊', '编辑資訊', '删除資訊'),
+	'product'    => array('產品內容', '添加產品', '编辑產品', '删除產品'),
+	'message'    => array('互動留言', '查看留言', '回复留言', '删除留言'),
+	'member'   	 => array('會員用戶', '添加用戶', '编辑用戶', '删除用戶'),
 );
 
 
@@ -103,7 +106,7 @@ $cms_max_num = array('queue' => 10000000, 'power' => 1000);
  * 分类模块
  * type: 0 留给其他
  */
-$cms_cata_type = array(1 => array('txt' => '資料庫', 'db' => 'info'), 2 => array('txt' => '討論區', 'db' => 'info'), 3 =>array('txt' => '相片區', 'db' => 'info'));
+$cms_cata_type = array(1 => array('txt' => '圖片廣告', 'db' => 'link', 'ico' => 'fa-picture-o'), 3 => array('txt' => '資料庫', 'db' => 'info', 'ico' => 'fa-briefcase'), 4 => array('txt' => '討論區', 'db' => 'info', 'ico' => 'fa-quote-left'), 7 =>array('txt' => '產品', 'db' => 'product', 'ico' => 'fa-shopping-cart'));
 
 /* 分类展示方式 */
 $cms_cata_style = array(1 => '内容整页显示', 2 => '标题列表显示');
@@ -115,15 +118,16 @@ $cms_msg_type = array(1 => '留言信息', 2 => '通知公告');
 
 $cms_page_union = array(
 	'catalog' => array('id' => 1000, 'fix' => 'c'), 
-	'tag' => array('id' => 2000, 'fix' => 't'), 
-	'info' => array('id' => 3000, 'fix' => 'i'), 
-	'products' => array('id' => 4000, 'fix' => 'p')
+	'tag' => array('id' => 3000, 'fix' => 't'), 
+	'product' => array('id' => 5000, 'fix' => 'p'),
+	'info' => array('id' => 7000, 'fix' => 'i'), 
 );
 
 $cms_page_set = array(
 	array('priority' => 1, 'path' => 'index', 'type' => 1),
 	array('priority' => 0.2, 'path' => 'sitemap', 'type' => 1),
 	array('priority' => 0.5, 'path' => 'info', 'type' => 2),
+	array('priority' => 0.5, 'path' => 'product', 'type' => 2),
 	array('priority' => 0.5, 'path' => 'tag', 'type' => 2),
 	array('priority' => 0.7, 'path' => 'catalog', 'type' => 2),
 );
