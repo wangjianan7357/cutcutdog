@@ -91,7 +91,7 @@
         },
         "Navigator":{
         	"description": "浏览器信息"
-        },"OAuth":{},"Share":{},"Device":{},"NativeObj":{},"File":{},"Push":{},"Statistic":{}
+        },"Share":{},"Device":{},"NativeObj":{},"File":{},"Push":{},"Statistic":{}
     },
     "plus": {
         "splashscreen": {
@@ -203,7 +203,9 @@
 					"css/mui.min.css"
 				],
 				"refer": [
-					"examples/imageviewer.html"
+					"examples/imageviewer.html",
+					"info-list.html",
+					"discuss-list.html"
 				],
 				"priority": 0
 			},
@@ -222,58 +224,9 @@
 				"refer": [
 					"index.html",
 					"reg.html",
-					"forget_password.html"
+					"forget_password.html",
+					"forget-password.html"
 				],
-				"priority": 0
-			},
-			"examples/setting.html": {
-				"resources": [
-					"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
-					"js/mui.min.js",
-					"css/mui.min.css",
-					"libs/easymob-webim-sdk/json2.js",
-					"libs/easymob-webim-sdk/jquery-1.11.1.js",
-					"js/feedback.js",
-					"css/feedback-page.css",
-					"js/feedback-page.js",
-					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
-					"js/mui.view.js",
-					"images/logo.png",
-					"fonts/mui.ttf",
-					"index.html"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"examples/imageviewer.html": {
-				"resources": [
-					"js/mui.zoom.js",
-					"images/muwu.jpg",
-					"images/yuantiao.jpg",
-					"fonts/mui.ttf",
-					"js/mui.previewimage.js",
-					"images/shuijiao.jpg"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"examples/indexed-list.html": {
-				"resources": [
-					"css/mui.indexedlist.css",
-					"js/mui.indexedlist.js"
-				],
-				"refer": [],
-				"priority": 0
-			},
-			"forget_password.html": {
-				"resources": [
-					"js/app.js",
-					"js/mui.min.js",
-					"fonts/mui.ttf",
-					"css/mui.min.css",
-					"css/style.css"
-				],
-				"refer": [],
 				"priority": 0
 			},
 			"register.html": {
@@ -287,6 +240,40 @@
 					"js/basic.js",
 					"login.html",
 					"js/app.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"forget-password.html": {
+				"resources": [
+					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"info-list.html": {
+				"resources": [
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/mui.indexedlist.css",
+					"js/basic.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"discuss-list.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/yuantiao.jpg",
+					"images/muwu.jpg",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/shuijiao.jpg"
 				],
 				"refer": [],
 				"priority": 0

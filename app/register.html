@@ -62,25 +62,24 @@
 				<label>邮箱</label>
 				<input id='email' type="email" class="mui-input-clear mui-input" placeholder="请输入邮箱">
 			</div>
+			<div class="mui-input-row">
+				<label>地址</label>
+				<input id='address' type="text" class="mui-input-clear mui-input" placeholder="请输入地址">
+			</div>
 		</form>
 		<div class="mui-content-padded">
 			<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">注册</button>
 		</div>
 	</div>
 	<script>
-	var mem = app.getState();
-		alert(mem.member.id);
 		(function($, doc) {
 			$.init();
 			$.plusReady(function() {
 				var regButton = doc.getElementById('reg');
-				var accountBox = doc.getElementById('account');
-				var passwordBox = doc.getElementById('password');
-				var passwordConfirmBox = doc.getElementById('password_confirm');
 				var emailBox = doc.getElementById('email');
 				
 				regButton.addEventListener('tap', function(event) {
-					if (passwordConfirmBox.value != passwordBox.value) {
+					if ($("#password_confirm").val() != $("#password").val()) {
 						plus.nativeUI.toast('密码两次输入不一致');
 						return;
 					}
@@ -91,9 +90,10 @@
 						dataType: "json",
 						data: {
 							action: "register",
-							account: accountBox.value,
-							password: passwordBox.value,
-							email: emailBox.value
+							account: $("#account").val(),
+							password: $("#password").val(),
+							email: emailBox.value,
+							address: $("#address").val()
 						},
 						async: true,
 						success: function(json) {
