@@ -58,13 +58,10 @@ if($_GET['action'] == 'edt'){
 
 	if(!$message_arr['read']) $my_db->saveRow('message', array('read' => 1), array('id' => $_GET['num']));
 
-	require('templates/head.html');
-
 } else {
-	require('templates/head.html');
 	$q_url = queryPart('date', 'desc');
 
-	$where = '(`rtype` = ' . $_SESSION['admin_type'] . ' AND `rid` = ' . $_SESSION['admin_id'] . ') OR `rtype` = 0';
+	$where = '1';
 
 	class FieldFun {
 		function __construct($namespace = 1){
@@ -91,11 +88,11 @@ if($_GET['action'] == 'edt'){
 		),
 		array(
 			'where' => $where,
-			'table' => 'message',
-			'operate' => ($_SESSION['admin_type'] == 1 && $_SESSION['admin_id'] == 1) ? array('edt', 'delete') : ''
+			'table' => 'message'
 		)
 	);
 }
 
+require('templates/head.html');
 require('templates/message.html');
 require('templates/foot.html');

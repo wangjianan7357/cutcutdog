@@ -31,9 +31,6 @@ $ini_system = array(
 		array('varname' => 'fullsize_display_dialog', 'info' => '全屏显示对话框', 'type' => 'hidden', 'value' => 'true'),
 		array('varname' => 'page_cache_time', 'info' => '页面缓存有效时间，0 为不缓存(秒)', 'type' => 'hidden', 'value' => 0),
 		array('varname' => 'info_order', 'info' => '信息排序方式', 'type' => 'hidden', 'value' => '|按ID升序|按ID降序|按序列号升序|按序列号降序|按发布日期升序|按发布日期降序|按浏览量升序|按浏览量降序'),
-		array('varname' => 'course_start', 'info' => '课程开始时间', 'type' => 'date', 'value' => ''),
-		array('varname' => 'course_end', 'info' => '课程结束时间', 'type' => 'date', 'value' => ''),
-		/*
 		array('varname' => 'receive_email', 'info' => '收信箱(用;区分)', 'type' => 'string', 'value' => 'wangjianan7357@163.com'),
 		array('varname' => 'img_format', 'info' => '可用的图片格式(用,区分)', 'type' => 'hidden', 'value' => 'jpeg,pjpeg,gif,png'),
 		array('varname' => 'img_max_bytes', 'info' => '缩略图最大上传量(kb)', 'type' => 'integer', 'value' => 1500),
@@ -43,7 +40,6 @@ $ini_system = array(
 		array('varname' => 'info_list_qty', 'info' => '信息列表显示数量', 'type' => 'integer', 'value' => 20),
 		array('varname' => 'products_list_qty', 'info' => '产品列表显示数量', 'type' => 'integer', 'value' => 20),
 		array('varname' => 'member_list_qty', 'info' => '会员列表显示数量', 'type' => 'integer', 'value' => 15),
-		*/
 		array('varname' => 'file_path', 'info' => '文件存放路径', 'type' => 'hidden', 'value' => 'uploads/files/'),
 		array('varname' => 'textbook_path', 'info' => '教材存放路径', 'type' => 'hidden', 'value' => 'uploads/textbook/'),
 		array('varname' => 'cms_display_qty', 'info' => '后台列表显示数量', 'type' => 'integer', 'value' => 20),
@@ -68,6 +64,7 @@ $ini_system = array(
 		array('varname' => 'qq1', 'info' => 'QQ1', 'type' => 'integer', 'lang' => $con_lang_default),
 		array('varname' => 'qq2', 'info' => 'QQ2', 'type' => 'integer', 'lang' => $con_lang_default),
 		array('varname' => 'msn', 'info' => 'MSN', 'type' => 'string', 'lang' => $con_lang_default),
+		array('varname' => 'skype', 'info' => 'SKYPE', 'type' => 'string', 'lang' => $con_lang_default),
 		array('varname' => 'email', 'info' => 'Email', 'type' => 'string', 'lang' => $con_lang_default),
 		array('varname' => 'web1', 'info' => '网址1', 'type' => 'string', 'lang' => $con_lang_default),
 		array('varname' => 'address1', 'info' => '地址1', 'type' => 'string', 'lang' => $con_lang_default, 'value' => ''),

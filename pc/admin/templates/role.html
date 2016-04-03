@@ -1,34 +1,73 @@
 
-<div class="main">
-<?php if ($_GET['action'] == 'edt') { ?>
-	<form action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
-		<input type="hidden" name="save" value="true" />
+<section class="content-header">
+    <h1>角色管理</h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="index.php">
+                <i class="fa fa-dashboard"></i> 控制台
+            </a>
+        </li>
+        <li>   
+            <span>角色管理</span>
+        </li>
+    </ol>
+</section>
 
-		<div class="title1 mgt10">
-            <div class="cap">角色编辑</div>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <?php if ($msg[1]) { ?>
+            <div class="alert alert-<?= $msg[1]; ?> alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                <h4><i class="icon fa fa-check"></i> <?= $msg[0]; ?></h4>
+            </div>
+            <?php } ?>
+
+            <div class="box box-primary">
+                <?php if ($_GET['action'] == 'edt') { ?>
+                <div class="box-header">
+                    <h3 class="box-title">角色編輯</h3>
+                </div><!-- /.box-header -->
+
+            	<form action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
+            		<input type="hidden" name="save" value="true" />
+
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="sbt_name">名稱</label>
+                            <input type="text" class="form-control" name="sbt_name" id="sbt_name" placeholder="名稱" value="<?= $outcome['name']; ?>" required="required">
+                        </div>
+                    
+                        <?=$code;?>
+
+                    </div><!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </div>
+
+                </form>
+
+                <?php } else { ?>
+            
+                <div class="box-header with-border">
+                    <h3 class="box-title">角色列表</h3>
+
+                    <div class="box-tools">
+                        <a href="<?= $_SERVER['PHP_SELF']; ?>?action=edt<?=$q_url[7];?>" class="btn btn-success">新 &nbsp;&nbsp; 增</a> &nbsp;
+                        <a href="javascript:void(0);" onclick="deleteSth()" class="btn btn-danger">删 &nbsp;&nbsp; 除</a>
+                        <?php /* $this->render('../layouts/search', array('central' => $central)); */ ?>  
+                    </div>
+                </div><!-- /.box-header -->
+
+                <div class="box-body">
+                    <?= $code_table; ?>
+                </div><!-- /.box-body -->
+
+                <?php } ?>
+
+            </div><!-- /.box -->
         </div>
-		<div class="wbg pdl15 pdr15 pdt20 pdb20 cl1 bd1">
-			<table width="100%" cellspacing="0" cellspacing="0" class="table2">
-				<tbody>
-					<tr>
-						<td align="right"><font color="red">*</font> 角色名称 </td>
-						<td align="left"><input name="sbt_name" value="<?=$role_arr['name'];?>"></td>
-					</tr>
-					<?=$code;?>
-				</tbody>
-			</table>
-
-			<div class="xc">
-                <input class="button1" type="submit" value="保 存" />
-            </div><br />
-		</div>
-
-	<form>
-
-<?php
-    } else { ?>
-    <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF'] . '?action=edt&flag=' . $_GET['flag'] . $q_url['24567'] . '&num=' . $_GET['num'];?>" method="post">
-        <?= $code_table; ?>
-    </form>
-<?php } ?>
-</div>
+    </div>
+</section>

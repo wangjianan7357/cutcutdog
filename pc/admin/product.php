@@ -59,13 +59,10 @@ if($_GET['action'] == 'edt'){
 		}
 	}
 
-	require('templates/head.html');
-
 } else {
-	require('templates/head.html');
 	$q_url = queryPart('date', 'desc');
 
-	$where = '';
+	$where = '1';
 
 	class FieldFun {
 		function __construct($namespace = 1){
@@ -87,20 +84,18 @@ if($_GET['action'] == 'edt'){
 			array('__all', 'edit'),
 			'id' => 'ID', 
 			'name' => '名称',
-			'model' => '规格',
-			'unit' => '单位',
-			'number' => '数量',
-			'price' => '价格',
-			array('__edit', 'edit', array('power' => 'products', 'method' => array('detail' => 2)))
+			'price' => '原價',
+			'sale' => '售價',
+			array('__edit', 'edit', array('power' => 'product', 'method' => array('detail' => 2)))
 		),
 		array(
 			'where' => $where,
-			'table' => 'products',
-			'operate' => array('edt', 'delete')
+			'table' => 'product',
 		)
 	);
 	
 }
 
-require('templates/products.html');
+require('templates/head.html');
+require('templates/product.html');
 require('templates/foot.html');

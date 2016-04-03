@@ -1,6 +1,6 @@
 
 <section class="content-header">
-    <h1>管理員</h1>
+    <h1><?=$cms_cata_type[$_GET['type']]['txt'];?></h1>
     <ol class="breadcrumb">
         <li>
             <a href="index.php">
@@ -8,7 +8,7 @@
             </a>
         </li>
         <li>   
-            <span>管理員</span>
+            <span><?=$cms_cata_type[$_GET['type']]['txt'];?></span>
         </li>
     </ol>
 </section>
@@ -27,48 +27,57 @@
             <div class="box box-primary">
                 <?php if ($_GET['action'] == 'edt') { ?>
                 <div class="box-header">
-                    <h3 class="box-title">管理員編輯</h3>
+                    <h3 class="box-title"><?=$cms_cata_type[$_GET['type']]['txt'];?>編輯</h3>
                 </div><!-- /.box-header -->
 
                 <!-- form start -->
                 <form role="form" enctype="multipart/form-data" action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
                     <input type="hidden" name="save" value="true" />
+                    <input type="hidden" name="type" value="<?=$_GET['type'];?>" />
 
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="sbt_name">用戶賬戶</label>
-                            <input type="text" class="form-control" name="sbt_name" id="sbt_name" placeholder="用戶賬戶" value="<?= $outcome['name']; ?>" required="required" <?=$_GET['num'] ? 'readonly="readonly" ' : '';?>>
+                            <label for="sbt_name">名稱</label>
+                            <input type="text" class="form-control" name="sbt_name" id="sbt_name" placeholder="名稱" value="<?= $outcome['name']; ?>" required="required">
                         </div>
                         <div class="form-group">
-                            <label for="sbt_pass">用戶密碼</label>
-                            <input type="text" class="form-control" name="sbt_pass" id="sbt_pass" placeholder="用戶密碼" value="" <?=$_GET['num'] ? '' : ' required="required"';?>>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="sbt_realname">真實姓名</label>
-                            <input type="text" class="form-control" name="sbt_realname" id="sbt_realname" placeholder="真實姓名" value="<?= $outcome['realname']; ?>">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="sbt_rid">用户角色</label>
-
-                            <select class="form-control" name="sbt_rid" id="sbt_rid">
+                            <label for="sbt_parent">所屬欄目</label>
+                            <select class="form-control" name="sbt_cid" id="sbt_cid">
                                 <option value="">-- 請選擇 --</option>
-                                <?=$opt_role;?>
+                                <?=catalogOption($catalog_type, $outcome['cid']);?>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="sbt_name">原價</label>
+                            <input type="text" class="form-control" name="sbt_price" id="sbt_price" placeholder="原價" value="<?= $outcome['price']; ?>" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="sbt_name">售價</label>
+                            <input type="text" class="form-control" name="sbt_sale" id="sbt_sale" placeholder="售價" value="<?= $outcome['sale']; ?>" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="sbt_parent">詳細內容</label>
+                            <textarea name="sbt_desp" rows="8" cols="60"><?=$outcome['desp'];?></textarea>
+                            <script type="text/javascript" src="../ckeditor/ckeditor.js?t=B8DJ5M3"></script>
+                            <script type="text/javascript">setCkeditor("sbt_desp");</script>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="hidden" name="sbt_valid" value="0">
+                            <input type="checkbox" name="sbt_valid" value="1" <?= $outcome['valid'] == 1 ? 'checked="checked"' : ''; ?> data-on="success" data-off="warning" data-on-color="success" data-on-text="有效" data-off-text="无效" data-action="bootstrap-switch">
+                        </div>
+
                     </div><!-- /.box-body -->
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">提交</button>
                     </div>
-
                 </form>
 
                 <?php } else { ?>
             
                 <div class="box-header with-border">
-                    <h3 class="box-title">管理員列表</h3>
+                    <h3 class="box-title"><?=$cms_cata_type[$_GET['type']]['txt'];?>列表</h3>
 
                     <div class="box-tools">
                         <a href="<?= $_SERVER['PHP_SELF']; ?>?action=edt<?=$q_url[7];?>" class="btn btn-success">新 &nbsp;&nbsp; 增</a> &nbsp;

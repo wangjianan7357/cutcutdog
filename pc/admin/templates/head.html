@@ -16,7 +16,7 @@
 <script language="javascript">
 <?php
 if($err){
-	echo 'alert("' . $err . '"); history.go(-1);';
+    echo 'alert("' . $err . '"); history.go(-1);';
 }
 
 //$msg = $my_db->existRow('message', array('`rtype` = ' . $_SESSION['admin_type'] . ' AND `rid` = ' . $_SESSION['admin_id'] . ' AND `read` = 0'));
@@ -34,18 +34,18 @@ if($err){
 
         <!-- Logo -->
         <a href="index.php" class="logo">
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini">後台</span>
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg">管理後台</span>
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini">後台</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg">管理後台</span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
-          </a>
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
           <!-- Navbar Right Menu -->
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
@@ -98,22 +98,6 @@ if($err){
                           <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page and may cause design problems
                         </a>
                       </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-users text-red"></i> 5 new members joined
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-user text-red"></i> You changed your username
-                        </a>
-                      </li>
                     </ul>
                   </li>
                   <li class="footer"><a href="#">View all</a></li>
@@ -134,19 +118,6 @@ if($err){
                       <small>Member since Nov. 2012</small>
                     </p>
                   </li>
-                  <!-- Menu Body -->
-                  <li class="user-body">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </li>
-                  <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
@@ -233,15 +204,15 @@ if($err){
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="info.php?type=<?= $key; ?>&action=lst"><i class="fa fa-circle-o"></i> <?= $value['txt']; ?>列表</a></li>
-                        <li><a href="info.php?type=<?= $key; ?>&action=edt"><i class="fa fa-circle-o"></i> 添加<?= $value['txt']; ?></a></li>
+                        <li><a href="<?= $value['db']; ?>.php?type=<?= $key; ?>&action=lst"><i class="fa fa-circle-o"></i> <?= $value['txt']; ?>列表</a></li>
+                        <li><a href="<?= $value['db']; ?>.php?type=<?= $key; ?>&action=edt"><i class="fa fa-circle-o"></i> 添加<?= $value['txt']; ?></a></li>
                     </ul>
                 </li>
                 <?php } ?>
 
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-comments"></i>
+                        <i class="fa fa-user"></i>
                         <span>會員用戶</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
@@ -260,7 +231,9 @@ if($err){
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> 顧客留言</a></li>
+                    <?php foreach ($cms_msg_type as $key => $value) { ?>
+                        <li><a href="message.php?type=<?=$key;?>"><i class="fa fa-circle-o"></i> <?= $value; ?></a></li>
+                    <?php } ?>
                     </ul>
                 </li>
 

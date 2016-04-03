@@ -112,7 +112,6 @@ if($_GET['action'] == "edt"){
 		array(
 			'where' => $where,
 			'table' => 'role',
-			'operate' => array('edt', 'delete')
 		)
 	);
 }

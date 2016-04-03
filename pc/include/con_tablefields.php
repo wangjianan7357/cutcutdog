@@ -15,11 +15,10 @@ return array(
 	 */
 	'admin' => '
 		`id` INT( 4 ) NOT NULL AUTO_INCREMENT , 
-		`did` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "院系",
 		`rid` INT( 2 ) NOT NULL , 
 		`name` VARCHAR( 20 ) NOT NULL DEFAULT "" , 
 		`pass` CHAR( 32 ) NOT NULL DEFAULT "" , 
-		`realname` VARCHAR( 10 ) NOT NULL DEFAULT "" , 
+		`realname` VARCHAR( 20 ) NOT NULL DEFAULT "" , 
 		PRIMARY KEY ( `id` )',
 
     /** 
@@ -175,23 +174,6 @@ return array(
 		`valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
 		`navi` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
 		`fields` TEXT NOT NULL , 
-		`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
-		PRIMARY KEY ( `id` )',
-
-	/** 
-	 * 链接模块
-	 */
-	'link' => '
-		`id` INT( 4 ) NOT NULL AUTO_INCREMENT , 
-		`cid` VARCHAR( 40 ) NOT NULL DEFAULT "" , 
-		`queue` INT( 7 ) NOT NULL DEFAULT 0 , 
-		`name` VARCHAR( 50 ) NOT NULL DEFAULT "" , 
-		`url` VARCHAR( 80 ) NOT NULL DEFAULT "" , 
-		`src` VARCHAR( 55 ) NOT NULL DEFAULT "" , 
-		`valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
-		`nofollow` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
-		`desp` TEXT NOT NULL , 
-		`fields` MEDIUMTEXT NOT NULL , 
 		`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
 		PRIMARY KEY ( `id` )',
 

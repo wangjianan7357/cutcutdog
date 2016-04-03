@@ -77,13 +77,13 @@ if($_GET['action'] == 'set'){
 	while($result = mysql_fetch_array($getdata)){
 		if($result['type'] == 'hidden') continue;
 
-		$code .= '<tr><td align="right">' . $result['info'] . '</td><td align="left">';
+		$code .= '<div class="form-group"><label for="sbt_' . $result['varname'] . '">' . $result['info'] . ($_GET['type'] == 2 ? ' &nbsp; <span style="color: gray; font-weight: normal;">CO_' . strtoupper($result['varname']) . '</span>' : '') . '</label>';
 
 		if($result['type'] == 'boolean') {
-			$code .= '<input type="checkbox" name="system_' . $result['varname'] . '"' . ($result['value'] == 'true' ? ' checked="checked"' : '') . '/>';
+			$code .= '<input type="checkbox" name="sbt_' . $result['varname'] . '"' . ($result['value'] == 'true' ? ' checked="checked"' : '') . '/>';
 		}
 		else if($result['type'] == 'array'){
-			$code .= '<select name="system_' . $result['varname'] . '">';
+			$code .= '<select class="form-control" name="sbt_' . $result['varname'] . '" id="sbt_' . $result['varname'] . '">';
 			preg_match('/(^[^\[]+)\[([^\]]+)\]$/', $result['value'], $match);
 			$selpro = explode('|', $match[2]);
 			for($j = 0; $j < count($selpro); $j++){
@@ -93,16 +93,16 @@ if($_GET['action'] == 'set'){
 			$code .= '</select>';
 		}
 		else if($result['type'] == 'date') {
-			$code .= '<input class="bdr3 bd2 h24 pdrl3" data-input="text" size="50" name="system_' .$result['varname'] . '" value="' . $result['value'] . '" onfocus="WdatePicker({dateFmt:\'yyyy-MM-dd\'})" />';
+			$code .= '<input type="text" class="form-control" name="sbt_' . $result['varname'] . '" value="' . $result['value'] . '" id="sbt_' . $result['varname'] . '" onfocus="WdatePicker({dateFmt:\'yyyy-MM-dd\'})" />';
 		}
-		else $code .= '<input class="bdr3 bd2 h24 pdrl3" data-input="text" size="50" name="system_' .$result['varname'] . '" value="' . $result['value'] . '" />';
+		else $code .= '<input type="text" class="form-control" name="sbt_' . $result['varname'] . '" value="' . $result['value'] . '" id="sbt_' . $result['varname'] . '" />';
 
 		// 添加功能按钮
 		if ($result['varname'] == 'page_cache_time') {
 			$code .= ' <input type="button" onclick="clearPageCache()" value="立即清除" />';
 		}
 
-		$code .= ($_GET['type'] == 2 ? ' <span class="showcon">CO_' . strtoupper($result['varname']) . '</span>' : '') . '</td></tr>';
+		$code .= '</div>';
 		$i++;
 	}
 
