@@ -3,7 +3,7 @@ require('../include/common.php');
 require('../include/fun_admin.php');
 
 $err = '';
-$msg = array();
+$msg = $_GET['msg'] ? $_GET['msg'] : array();
 
 $department = array();
 $getdata = $my_db->selectRow('id, name', 'catalog', array('`type` = 1 AND `parent` = 0'), array('valid' => 1));
@@ -50,11 +50,9 @@ if($_GET['action'] == "edt"){
 			if($my_db->saveRow('admin', $submit, ($_GET['num'] ? array('id' => $_GET['num']) : ''))){
 				instructLog($cms_admin_power['admin'][$power_id] . $_POST['sbt_name'], ($_GET['num'] ? 'edt' : 'add'));
 				$msg[0] = '提交成功';
-
-				if($_GET['num']){
-					$href = $_SERVER['PHP_SELF'] . '?action=lst' . preg_replace('/action=[^&]+|&num=\d+/', '', $_SERVER['QUERY_STRING']);
-					header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
-				}
+				$msg[1] = 'success';
+				$href = $_SERVER['PHP_SELF'] . '?action=lst' . preg_replace('/action=[^&]+|&num=\d+/', '', $_SERVER['QUERY_STRING']);
+				header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
 			}
 			else {
 				$msg[0] = '提交失敗';

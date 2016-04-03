@@ -3,7 +3,7 @@ require('../include/common.php');
 require('../include/fun_admin.php');
 
 $err = '';
-$msg = array();
+$msg = $_GET['msg'] ? $_GET['msg'] : array();
 
 if($_GET['action'] == 'edt'){
 	if($_GET['num']) $power_id = 2;
@@ -70,7 +70,7 @@ if($_GET['action'] == 'edt'){
 
 				instructLog($cms_admin_power['member'][$power_id] . $_POST['sbt_name'], ($poser_id == 1 ? 'add' : 'edt'));
 				$msg[0] = $cms_admin_power['member'][$power_id] . '成功';
-
+				$msg[1] = 'success';
 				$href = $_SERVER['PHP_SELF'] . '?action=lst' . preg_replace('/action=[^&]+|&num=\d+/', '', $_SERVER['QUERY_STRING']);
 				header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
 			}

@@ -39,9 +39,8 @@ $con_pic = array(
 	),
 	'pre' => array(
 		'catalog' => 'ct',
-		'links' => 'lk',
 		'info' => 'im',
-		'products' => 'pr',
+		'product' => 'pr',
 		'member' => 'me'
 	)
 );

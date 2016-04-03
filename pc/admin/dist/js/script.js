@@ -18,6 +18,43 @@ function verifyImg(){
 
 }
 
+function selectImg(file, img_w, img_h){
+    var getid = document.getElementById(file.name.replace("img", "name"));
+    if(getid && !getid.value){
+        getid.value = file['value'].replace(/^[\w\W]*\\/i, "").replace(/\.\w{2,4}$/i, "");
+    }
+
+    var hidden_arr = ["img_w", "img_h", "x_img"];
+    for(var i = 0; i < hidden_arr.length; i++){
+        var value = "";
+        switch(hidden_arr[i]){
+            case "img_w": value = img_w; break;
+            case "img_h": value = img_h; break;
+            case "x_img": value = file.name; break;
+        }
+
+        if(document.getElementById("id_" + hidden_arr[i])){
+            document.getElementById("id_" + hidden_arr[i]).value = value;
+        }
+        else {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", hidden_arr[i]);
+            hiddenField.setAttribute("value", value);
+            hiddenField.setAttribute("id", "id_" + hidden_arr[i]);
+            file.form.appendChild(hiddenField);
+        }
+    }
+
+    var tmp = file.form.action;
+    file.form.target = "post_frame";
+    file.form.action = "viewimg.php";
+    file.form.submit();
+
+    file.form.target = "";
+    file.form.action = tmp;
+}
+
 function encryptPass(){
     if($("#org_pass").val()){
         var md5 = new MD5();

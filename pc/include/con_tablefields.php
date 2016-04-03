@@ -49,8 +49,7 @@ return array(
         `content` TEXT NOT NULL , 
         `valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
         `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
-        PRIMARY KEY ( `id` ) , 
-        KEY ( `type` )',
+        PRIMARY KEY ( `id` )',
 
 	/** 
 	 * 网站留言信息
@@ -201,6 +200,7 @@ return array(
 		`id` INT( 5 ) NOT NULL AUTO_INCREMENT , 
 		`cid` VARCHAR( 40 ) NOT NULL , 
 		`queue` INT( 7 ) NOT NULL DEFAULT 0 , 
+        `recom` INT( 7 ) NOT NULL DEFAULT 0 , 
 		`name` VARCHAR( 80 ) NOT NULL DEFAULT "" , 
 		`path` VARCHAR( 50 ) NOT NULL DEFAULT "" , 
 		`src` VARCHAR( 60 ) NOT NULL DEFAULT "" , 

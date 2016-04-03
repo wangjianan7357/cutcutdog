@@ -67,7 +67,7 @@ function basicConstant($lang = null){
 		$src = systemConfig($key . '_img_path') . $value;
 
 		// 产品、信息、会员有多种尺寸
-		if ($key == 'products' || $key == 'info' || $key == 'member') {
+		if ($key == 'product' || $key == 'info' || $key == 'member') {
 			foreach ($con_pic['suf'] as $key1 => $value1) {
 				define('PIC_' . strtoupper($key) . '_' . strtoupper($value1), $src . $value1);
 			}

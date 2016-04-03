@@ -3,7 +3,7 @@ require('../include/common.php');
 require('../include/fun_admin.php');
 
 $err = '';
-$msg = array();
+$msg = $_GET['msg'] ? $_GET['msg'] : array();
 
 if($_GET['action'] == 'set'){
 	if($_POST['save'] == 'true'){
@@ -61,6 +61,7 @@ if($_GET['action'] == 'set'){
 
 				instructLog(($_GET['type'] == 1 ? '系统' : '网站') . '信息修改', 'edt');
 				$msg[0] = ($_GET['type'] == 1 ? '系统' : '网站') . '信息修改成功';
+				$msg[1] = 'success';
 			}
 			else {
 				mysql_query("ROLLBACK");

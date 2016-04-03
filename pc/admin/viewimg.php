@@ -15,7 +15,7 @@ if (strpos($_FILES['sbt_img']['type'], 'video/') === 0) {
 
 $err = '';
 $newwidth = 400;
-$newheight = 400;
+$newheight = 200;
 
 $chk_post = new ChkRequest();
 
@@ -58,7 +58,7 @@ if(err) alert(err);
 else if(<?=$_POST['x_img'] ? 1 : 0;?>){
 	var showimg = window.parent.document.getElementById("showimg");
 	showimg.setAttribute("src", "<?=$tmp_img;?>");
-	showimg.setAttribute("width", <?=$newwidth;?>);
+	//showimg.setAttribute("width", <?=$newwidth;?>);
 	showimg.setAttribute("height", <?=$newheight;?>);
 
 	if(window.parent.document.getElementById("tmpimg")){

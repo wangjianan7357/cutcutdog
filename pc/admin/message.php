@@ -3,8 +3,7 @@ require('../include/common.php');
 require('../include/fun_admin.php');
 
 $err = '';
-$msg = array();
-$default = 1;
+$msg = $_GET['msg'] ? $_GET['msg'] : array();
 
 if($_GET['action'] == 'edt'){
 	if($_GET['num']) $power_id = 2;
@@ -37,6 +36,7 @@ if($_GET['action'] == 'edt'){
 
 			if($done){
 				$msg[0] = '提交成功';
+				$msg[1] = 'success';
 				$href = $_SERVER['PHP_SELF'] . '?action=lst' . preg_replace('/action=[^&]+|&num=\d+/', '', $_SERVER['QUERY_STRING']);
 				header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
 			}

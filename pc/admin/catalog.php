@@ -3,10 +3,9 @@ require('../include/common.php');
 require('../include/fun_admin.php');
 
 $err = '';
-$msg = array();
+$msg = $_GET['msg'] ? $_GET['msg'] : array();
 
 $catalog_type = (int)($_GET['type'] ? $_GET['type'] : ($_POST['sbt_type'] ? $_POST['sbt_type'] : 1));
-$catalog_db = $cms_cata_type[$catalog_type]['db'];
 
 if($_GET['action'] == 'edt'){
 	if($_GET['num']) $power_id = 2;
@@ -72,11 +71,13 @@ if($_GET['action'] == 'edt'){
 
 			function edtCatalogInfo($lang = ''){
 				global $my_db;
-				global $catalog_db;
+				global $cms_cata_type;
 				global $catalog_type;
 				global $cms_page_union;
-
+				
 				$done = 1;
+				$catalog_db = $cms_cata_type[$catalog_type]['db'];
+
 				if(!$_GET['num']) return $done;
 
 				// 更新其子类信息
