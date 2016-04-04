@@ -43,23 +43,18 @@ function plusReady(){
 /**
  * 公用方法
  **/
+if (typeof(template) != "undefined") {
+    template.helper("seturlparams", function (key, value) {
+        var location = window.location.href;
+        var reg = new RegExp("(\\?|&)" + key + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        location = location.replace(reg, "") + "&" + key + "=" + value;
+        return location;
+    });
 
-template.helper("seturlparams", function (key, value) {
-    var location = window.location.href;
-    var reg = new RegExp("(\\?|&)" + key + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-    location = location.replace(reg, "") + "&" + key + "=" + value;
-
-    return location;
-});
-
-function fetchTmpl(path, target) {
-    $.ajax({ 
-        url: path, 
-        dataType: "text",
-        async: false,
-        success: function(code){
-            target.html(code);
-        }
+    template.helper("getvarious", function (name) {
+        var various;
+        eval("various = " + name);
+        return various;
     });
 }
 
@@ -146,7 +141,8 @@ function getUrlParam(name) {
         } catch (e) {
             console.log(e);
             //TODO 超出localstorage容量限制则存到plus.storage中
-            //且删除localStorage重复的数据www.bcty365.com
+            //且删除localStorage重复的数据www.bcty365.com
+
             removeItem(key);
             plus.storage.setItem(key, value);
         }

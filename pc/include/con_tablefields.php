@@ -88,6 +88,19 @@ return array(
         PRIMARY KEY ( `id` ) , 
         KEY ( `type` )',
 
+    /** 
+     * 验证
+     */
+    'verify' => '
+        `id` int( 8 ) NOT NULL AUTO_INCREMENT,
+        `mid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "会员ID" ,
+        `sign` char( 64 ) NOT NULL,
+        `time` INT( 10 ) NOT NULL DEFAULT 0 COMMENT "有效时间" ,
+        `valid` tinyint( 1 ) NOT NULL DEFAULT 0,
+        `content` VARCHAR( 256 ) NOT NULL DEFAULT "" , 
+        `type` int( 2 ) NOT NULL DEFAULT 1 COMMENT "1: 邮箱验证",
+        PRIMARY KEY ( `id` )',
+
 	/** 
 	 * 多国语言
 	 * connect 页面复制参照语言，否则独立新建页面

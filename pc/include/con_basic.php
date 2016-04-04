@@ -60,6 +60,7 @@ $con_db_table = array(
 	'service'   => $child_pre . 'service',
 	'log'       => $child_pre . 'log',
 	'system'    => $child_pre . 'system',
+	'verify'    => $child_pre . 'verify',
 
 	// 多国语言
 	'page'      => $child_pre . 'page_' . $con_lang_current,
