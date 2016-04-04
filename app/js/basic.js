@@ -113,9 +113,10 @@ function getUrlParam(name) {
 }
 
 
-(function(com, mui) {
+(function(mui, com) {
     var myStorage = {};
-    var first=null;
+    var first = null;
+
     function getItem(key) {
         var jsonStr = window.localStorage.getItem(key.toString());
         return jsonStr ? JSON.parse(jsonStr).data : null;
@@ -123,19 +124,21 @@ function getUrlParam(name) {
 
     function getItemPlus(key) {
         var jsonStr = plus.storage.getItem(key.toString());
-        console.log(new Date().getTime()-first);
+        console.log(new Date().getTime() - first);
         return jsonStr ? JSON.parse(jsonStr).data : null;
     };
+
     myStorage.getItem = function(key) {
-        first=new Date().getTime();
+        first = new Date().getTime();
         return getItem(key) || getItemPlus(key);
     };
+
     myStorage.setItem = function(key, value) {
-        first=new Date().getTime();
+        first = new Date().getTime();
         value = JSON.stringify({
             data: value
         });
-        key=key.toString();
+        key = key.toString();
         try {
              window.localStorage.setItem(key, value);
         } catch (e) {
@@ -146,7 +149,7 @@ function getUrlParam(name) {
             removeItem(key);
             plus.storage.setItem(key, value);
         }
-        console.log(new Date().getTime()-first);
+        console.log(new Date().getTime() - first);
     };
 
     function getLength() {
@@ -282,4 +285,4 @@ function getUrlParam(name) {
     com.myStorage = myStorage;
     window.myStorage = myStorage;
     
-}(common = {}, mui));
+}(mui, common = {}));
