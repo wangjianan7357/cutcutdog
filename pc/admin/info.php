@@ -138,6 +138,7 @@ if($_GET['action'] == 'edt'){
 			'name' => '名稱',
 			'cid' => array('分类', 'select', array(new FieldFun())),
 			'path' => 'URL', 
+			'valid' => array('狀態', 'checkbox'),
 			array('__edit', 'edit', array('power' => 'info', 'method' => array('detail' => 2)))
 		),
 		array(

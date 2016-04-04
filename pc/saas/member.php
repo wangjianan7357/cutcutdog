@@ -19,6 +19,7 @@ if ($_REQUEST['action'] == 'login') {
         'name' => trim(urldecode($_REQUEST['account'])),
         'pass' => md5(trim(urldecode($_REQUEST['password']))),
         'email' => trim(urldecode($_REQUEST['email'])),
+        'address' => trim(urldecode($_REQUEST['address'])),
         'type' => 1
     );
 

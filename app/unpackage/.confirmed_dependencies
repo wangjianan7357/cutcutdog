@@ -34,7 +34,8 @@
       "js/template-native.js",
       "js/jquery.min.js",
       "js/basic.js",
-      "register.html"
+      "register.html",
+      "fonts/mui.ttf"
     ],
     "refer": [
       "index.html",
@@ -137,8 +138,11 @@
       "fonts/mui.ttf",
       "css/mui.min.css",
       "css/mui.indexedlist.css",
-      "js/basic.js"
-    ]
+      "js/basic.js",
+      "info-detail.html",
+      "js/mui.indexedlist.js"
+    ],
+    "refer": []
   },
   "discuss-list.html": {
     "resources": [
@@ -150,6 +154,22 @@
       "fonts/mui.ttf",
       "css/mui.min.css",
       "images/shuijiao.jpg"
+    ],
+    "refer": []
+  },
+  "info-detail.html": {
+    "resources": [
+      "info-list.html",
+      "css/app.css",
+      "js/template-native.js",
+      "js/jquery.min.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/basic.js",
+      "fonts/mui.ttf"
+    ],
+    "refer": [
+      "info-list.html"
     ]
   }
 }

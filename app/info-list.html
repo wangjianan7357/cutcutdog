@@ -7,11 +7,6 @@
 	<link href="css/mui.min.css" rel="stylesheet" />
 	<link href="css/mui.indexedlist.css" rel="stylesheet" />
 	<style>
-		html,
-		body {
-			height: 100%;
-			overflow: hidden;
-		}
 		.mui-bar {
 			-webkit-box-shadow: none;
 			box-shadow: none;
@@ -33,77 +28,53 @@
 			<div class="mui-indexed-list-search mui-input-row mui-search">
 				<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索商店">
 			</div>
-			<div class="mui-indexed-list-bar">
-				<a>A</a>
-				<a>B</a>
-				<a>C</a>
-				<a>D</a>
-				<a>E</a>
-				<a>F</a>
-				<a>G</a>
-				<a>H</a>
-				<a>I</a>
-				<a>J</a>
-				<a>K</a>
-				<a>L</a>
-				<a>M</a>
-				<a>N</a>
-				<a>O</a>
-				<a>P</a>
-				<a>Q</a>
-				<a>R</a>
-				<a>S</a>
-				<a>T</a>
-				<a>U</a>
-				<a>V</a>
-				<a>W</a>
-				<a>X</a>
-				<a>Y</a>
-				<a>Z</a>
-			</div>
-			<div class="mui-indexed-list-alert"></div>
 			<div class="mui-indexed-list-inner">
 				<div class="mui-indexed-list-empty-alert">没有数据</div>
-				<ul class="mui-table-view">
-					<li data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</li>
-					<li data-value="AKU" data-tags="AKeSu" class="mui-table-view-cell mui-indexed-list-item"><a href="info-detail.html?url=">阿克苏机场</a></li>
-					<li data-value="BPL" data-tags="ALaShanKou" class="mui-table-view-cell mui-indexed-list-item">阿拉山口机场</li>
-					<li data-value="AAT" data-tags="ALeTai" class="mui-table-view-cell mui-indexed-list-item">阿勒泰机场</li>
-					<li data-value="NGQ" data-tags="ALiKunSha" class="mui-table-view-cell mui-indexed-list-item">阿里昆莎机场</li>
-					<li data-value="AQG" data-tags="AnQingTianZhuShan" class="mui-table-view-cell mui-indexed-list-item">安庆天柱山机场</li>
-					<li data-value="MFM" data-tags="AoMenGuoJi" class="mui-table-view-cell mui-indexed-list-item">澳门国际机场</li>
-					<li data-group="B" class="mui-table-view-divider mui-indexed-list-group">B</li>
-					<li data-value="BSD" data-tags="BaoShan" class="mui-table-view-cell mui-indexed-list-item">保山机场</li>
-					<li data-value="BAV" data-tags="BaoTou" class="mui-table-view-cell mui-indexed-list-item">包头机场</li>
-					<li data-value="BHY" data-tags="BeiHaiFuCheng" class="mui-table-view-cell mui-indexed-list-item">北海福成机场</li>
-					<li data-value="NAY" data-tags="BeiJingNanYuan" class="mui-table-view-cell mui-indexed-list-item">北京南苑机场</li>
-					<li data-value="PEK" data-tags="BeiJingShouDuGuoJi" class="mui-table-view-cell mui-indexed-list-item">北京首都国际机场</li>
-					<li data-group="C" class="mui-table-view-divider mui-indexed-list-group">C</li>
-					<li data-value="NBS" data-tags="ChangBaiShan" class="mui-table-view-cell mui-indexed-list-item">长白山机场</li>
-					<li data-value="CGQ" data-tags="ChangChunLongJiaGuoJi" class="mui-table-view-cell mui-indexed-list-item">长春龙嘉国际机场</li>
-					<li data-value="CGD" data-tags="ChangDeTaoHuaYuan" class="mui-table-view-cell mui-indexed-list-item">常德桃花源机场</li>
-					<li data-value="BPX" data-tags="ChangDuBangDa" class="mui-table-view-cell mui-indexed-list-item">昌都邦达机场</li>
-					<li data-value="CSX" data-tags="ChangShaHuangHuaGuoJi" class="mui-table-view-cell mui-indexed-list-item">长沙黄花国际机场</li>
-					<li data-value="CIH" data-tags="ChangZhiWangCun" class="mui-table-view-cell mui-indexed-list-item">长治王村机场</li>
-					<li data-value="CZX" data-tags="ChangZhouBenNiu" class="mui-table-view-cell mui-indexed-list-item">常州奔牛机场</li>
-					<li data-value="CTU" data-tags="ChengDuShuangLiuGuoJi" class="mui-table-view-cell mui-indexed-list-item">成都双流国际机场</li>
-					<li data-value="CIF" data-tags="ChiFeng" class="mui-table-view-cell mui-indexed-list-item">赤峰机场</li>					
-				</ul>
+
+				<ul class="mui-table-view" id="list-view"></ul>
+				<script id="list-view-code" type="text/html">
+				<% for (var i in list) { %>
+					<% if (!list[i]["parent"]) { %>
+						<li class="mui-table-view-divider mui-indexed-list-group"><%= list[i]["name"] %></li>
+
+						<% for (var j in list) { %>
+							<% if (list[j]["parent"] == list[i]["id"] + ",") { %>
+								<li class="mui-table-view-cell mui-indexed-list-item"><a href="info-detail.html?url=<%= list[j]["name"] %>"><%= list[j]["name"] %></li>
+							<% } %>
+						<% } %>
+					<% } %>
+				<% } %>
+				</script>
 			</div>
 		</div>
 	</div>
-	<script src="../js/mui.min.js"></script>
-	<script src="../js/mui.indexedlist.js"></script>
 	<script type="text/javascript" charset="utf-8">
-		mui.init();
-		mui.ready(function() {
-			var header = document.querySelector('header.mui-bar');
-			var list = document.getElementById('list');
-			//calc hieght
-			list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
-			//create
-			window.indexedList = new mui.IndexedList(list);
-		});
+		(function($, doc) {
+			$.init();
+			$.plusReady(function() {
+				$.ajax({
+					type: "post",
+					url: domain + "saas/catalog.php",
+					dataType: "json",
+					data: {
+						action: "list",
+						where: {type: 3}
+					},
+					async: true,
+					success: function(json) {
+						if(!json.error) {
+							jQuery("#list-view").html(template('list-view-code', json));
+							
+						} else {
+							plus.nativeUI.toast(json.message);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+
+					}
+				});
+			});
+		}(mui, document));
 	</script>
 </body>
 </html>

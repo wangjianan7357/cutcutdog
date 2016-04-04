@@ -109,9 +109,12 @@ if($_GET['action'] == 'edt'){
 		array(
 			array('__all', 'edit'),
 			'id' => 'ID', 
-			'name' => '名称',
-			'price' => '原價',
+			'queue' => array('序列', 'text'), 
+			'name' => '名稱',
+			'cid' => array('分类', 'select', array(new FieldFun())),
+			'path' => 'URL', 
 			'sale' => '售價',
+			'valid' => array('狀態', 'checkbox'),
 			array('__edit', 'edit', array('power' => 'product', 'method' => array('detail' => 2)))
 		),
 		array(

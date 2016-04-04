@@ -38,7 +38,6 @@
 	<script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
 </head>
-
 <body>
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
@@ -79,7 +78,7 @@
 				var emailBox = doc.getElementById('email');
 				
 				regButton.addEventListener('tap', function(event) {
-					if ($("#password_confirm").val() != $("#password").val()) {
+					if (jQuery("#password_confirm").val() != jQuery("#password").val()) {
 						plus.nativeUI.toast('密码两次输入不一致');
 						return;
 					}
@@ -90,10 +89,10 @@
 						dataType: "json",
 						data: {
 							action: "register",
-							account: $("#account").val(),
-							password: $("#password").val(),
+							account: jQuery("#account").val(),
+							password: jQuery("#password").val(),
 							email: emailBox.value,
-							address: $("#address").val()
+							address: jQuery("#address").val()
 						},
 						async: true,
 						success: function(json) {

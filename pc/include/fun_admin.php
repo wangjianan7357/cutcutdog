@@ -30,11 +30,10 @@ function loginTimeout(){
 
 	setcookie('admin[id]', $_COOKIE['admin']['id'], time() + systemConfig('cms_login_time') * 60);
 	setcookie('admin[pass]', $_COOKIE['admin']['pass'], time() + systemConfig('cms_login_time') * 60);
-	setcookie('admin[type]', $_COOKIE['admin']['type'], time() + systemConfig('cms_login_time') * 60);	
 }
 
 /* 后台页面检测登录 */
-//loginTimeout();
+loginTimeout();
 
 /* 初始化语言信息 */
 function langInit(){

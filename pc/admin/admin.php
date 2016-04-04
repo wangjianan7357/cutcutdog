@@ -99,6 +99,7 @@ if($_GET['action'] == "edt"){
 		)
 	);
 
+	require('templates/head.html');
 	require('templates/admin.html');
 	
 } else if($_GET['action'] == "pwd"){
@@ -108,36 +109,16 @@ if($_GET['action'] == "edt"){
 
 		$result = '';
 
-		if ($_SESSION['admin_type'] == 1) {
-			$result = $my_db->fetchOne('admin', array('id' => $_SESSION['admin_id'], 'pass' => md5($_POST['sbt_oldpwd'])));
-		} else if ($_SESSION['admin_type'] == 2) {
-			$result = $my_db->fetchOne('teacher', array('id' => $_SESSION['admin_id'], 'pass' => md5($_POST['sbt_oldpwd'])));
-
-			if (!$result && $_POST['sbt_oldpwd'] == $cms_default_pass) {
-				$result = $my_db->fetchOne('teacher', array('id' => $_SESSION['admin_id'], 'pass' => ''));
-			}
-
-		} else if ($_SESSION['admin_type'] == 3) {
-			$result = $my_db->fetchOne('student', array('id' => $_SESSION['admin_id'], 'pass' => md5($_POST['sbt_oldpwd'])));
-
-			if (!$result && $_POST['sbt_oldpwd'] == $cms_default_pass) {
-				$result = $my_db->fetchOne('student', array('id' => $_SESSION['admin_id'], 'pass' => ''));
-			}
-		}
+		$result = $my_db->fetchOne('admin', array('id' => $_SESSION['admin_id'], 'pass' => md5($_POST['sbt_oldpwd'])));
 
 		if(!$result) warning('原始密码有误');
 
 		if(!$err){
-			if ($_SESSION['admin_type'] == 1) {
-				$res = $my_db->saveRow('admin', array('pass' => md5($_POST['sbt_newpwd'])), array('id' => $_SESSION['admin_id']));
-			} else if ($_SESSION['admin_type'] == 2) {
-				$res = $my_db->saveRow('teacher', array('pass' => md5($_POST['sbt_newpwd'])), array('id' => $_SESSION['admin_id']));
-			} else if ($_SESSION['admin_type'] == 3) {
-				$res = $my_db->saveRow('student', array('pass' => md5($_POST['sbt_newpwd'])), array('id' => $_SESSION['admin_id']));
-			}
+			$res = $my_db->saveRow('admin', array('pass' => md5($_POST['sbt_newpwd'])), array('id' => $_SESSION['admin_id']));
 
 			if($res){
 				$msg[0] = '密码修改成功';
+				$msg[1] = 'success';
 			}
 			else {
 				$msg[0] = '密码修改失败';

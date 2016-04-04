@@ -166,11 +166,8 @@
 				
 				//检查 "登录状态/锁屏状态" 结束
 				var loginButton = doc.getElementById('login');
-				var accountBox = doc.getElementById('account');
 				var passwordBox = doc.getElementById('password');
 				var autoLoginButton = doc.getElementById("autoLogin");
-				var regButton = doc.getElementById('register');
-				var forgetButton = doc.getElementById('forgetPassword');
 				
 				loginButton.addEventListener('tap', function(event) {
 					$.ajax({
@@ -179,7 +176,7 @@
 						dataType: "json",
 						data: {
 							action: "login",
-							account: accountBox.value,
+							account: jQuery("#account").val(),
 							password: passwordBox.value
 						},
 						async: true,
