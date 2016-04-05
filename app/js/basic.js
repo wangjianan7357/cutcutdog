@@ -74,7 +74,7 @@ function assignTmpl(json, sign) {
         if (obj.length > len) {
             return recurData(obj, res, len)
         } else {
-            return res;
+            return typeof(res) == "undefined" ? "" : res;
         }
     }
 

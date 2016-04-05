@@ -56,19 +56,17 @@ return array(
 	 */
 	'message' => '
 		`id` INT( 8 ) NOT NULL AUTO_INCREMENT , 
-		`sid` VARCHAR( 32 ) NOT NULL DEFAULT "" COMMENT "发送者ID" ,
-		`stype` INT( 1 ) NOT NULL DEFAULT 0 COMMENT "发送者类型" ,
-		`rid` VARCHAR( 32 ) NOT NULL DEFAULT "" COMMENT "收件者ID" ,
-		`rtype` INT( 1 ) NOT NULL DEFAULT 0 COMMENT "收件者类型" ,
-		`subject` VARCHAR( 128 ) NOT NULL , 
+		`aid` INT( 6 ) NOT NULL DEFAULT 0 COMMENT "目标内容ID" ,
+		`atype` INT( 3 ) NOT NULL DEFAULT 0 COMMENT "目标内容类型" ,
+        `mid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "发送者ID" ,
+        `rid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "收获者ID" ,
 		`content` TEXT NOT NULL , 
-		`fields` TEXT NOT NULL , 
 		`valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
 		`read` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
 		`type` TINYINT( 1 ) NOT NULL DEFAULT 1 COMMENT "信件类型" ,
 		`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
 		PRIMARY KEY ( `id` ) , 
-		KEY ( `type` )',
+		KEY ( `aid` )',
 
     /** 
      * 网站点赞
@@ -77,13 +75,8 @@ return array(
         `id` INT( 8 ) NOT NULL AUTO_INCREMENT , 
         `mid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "发送者ID" ,
         `rid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "收获者ID" ,
-        `rtype` INT( 1 ) NOT NULL DEFAULT 0 COMMENT "收获者类型" ,
-        `subject` VARCHAR( 128 ) NOT NULL , 
         `content` TEXT NOT NULL , 
-        `fields` TEXT NOT NULL , 
         `valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
-        `read` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
-        `type` TINYINT( 1 ) NOT NULL DEFAULT 1 COMMENT "信件类型" ,
         `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
         PRIMARY KEY ( `id` ) , 
         KEY ( `type` )',
