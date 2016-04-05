@@ -70,7 +70,6 @@
 		}
 	</style>
 	<script src="js/mui.min.js"></script>
-	<script src="js/mui.enterfocus.js"></script>
 	<script src="js/jquery.min.js"></script>
     <script src="js/basic.js"></script>
 </head>
@@ -119,8 +118,6 @@
 			$.plusReady(function() {
 				plus.screen.lockOrientation("portrait-primary");
 
-				var settings = app.getSettings();
-				var state = app.getState();
 				var mainPage = $.preload({
 					"id": 'index',
 					"url": 'index.html'
@@ -143,6 +140,8 @@
 				
 				//检查 "登录状态/锁屏状态" 开始
 				/*
+				var state = app.getState();
+
 				if (settings.autoLogin && state.token && settings.gestures) {
 					$.openWindow({
 						url: 'unlock.html',
@@ -158,6 +157,11 @@
 					toMain();
 				}
 				*/
+				
+				var member = myStorage.getItem("member");
+				if (myStorage.getItem("autologin") && member.id && member.name) {
+					toMain();
+				}
 				
 				// 关闭 splash
 				setTimeout(function() {
@@ -182,10 +186,7 @@
 						async: true,
 						success: function(json) {
 							if(!json.error) {
-								myStorage.setItem("member", {id: 1, name: "sss"});
-								//var mem = app.getState();
-								//alert(mem.member.id);
-		
+								myStorage.setItem("member", {id: json.member.id, name: json.member.name});		
 								toMain();
 							} else {
 								plus.nativeUI.toast(json.message);
@@ -193,16 +194,11 @@
 						}
 					});
 				});
-				$.enterfocus('#login-form input', function() {
-					$.trigger(loginButton, 'tap');
-				});
 				
-				//autoLoginButton.classList[settings.autoLogin ? 'add' : 'remove']('mui-active')
 				autoLoginButton.addEventListener('toggle', function(event) {
 					setTimeout(function() {
 						var isActive = event.detail.isActive;
-						settings.autoLogin = isActive;
-						app.setSettings(settings);
+						myStorage.setItem("autologin", isActive);
 					}, 50);
 				}, false);
 				
@@ -212,7 +208,7 @@
 					if (backButtonPress > 1) {
 						plus.runtime.quit();
 					} else {
-						plus.nativeUI.toast('再按一次退出应用');
+						plus.nativeUI.toast('再按一次退出應用');
 					}
 					setTimeout(function() {
 						backButtonPress = 0;

@@ -8,8 +8,10 @@ if ($_REQUEST['action'] == 'login') {
         'pass' => md5(trim(urldecode($_REQUEST['password']))),
     );
 
-    if ($my_db->existRow('member', $submit)) {
-        callback(array('error' => 0));
+    $member = $my_db->fetchOne('member', $submit);
+
+    if (!empty($member)) {
+        callback(array('error' => 0, 'member' => $member));
     } else {
         callback(array('error' => 3));
     }
