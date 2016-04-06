@@ -3,7 +3,7 @@ require('../include/common.php');
 require('../include/fun_saas.php');
 
 if ($_REQUEST['action'] == 'insert') {
-    if ($my_db->saveRow('member', $_REQUEST['params'])) {
+    if ($my_db->saveRow('message', $_REQUEST['params'])) {
         callback(array('error' => 0));
 
     } else {

@@ -82,6 +82,7 @@
 						if(!json.error) {
 							jQuery("#list-view").html(template('list-view-code', json));
 							assignTmpl(json);
+							commentInit();
 
 							// 加载评论
 							//loadComment();
@@ -93,40 +94,42 @@
 					error: function(xhr, type, errorThrown) {}
 				});
 
-				jQuery("[data-action='comment']").click(function(){
-					var content = $(this).parent().find("textarea").html();
+				var commentInit = function() {
+					jQuery("[data-action='comment']").click(function(){
+						var content = jQuery(this).parent().find("textarea").val();
+	
+						if (content) {
+							var member = myStorage.getItem("member");
+							var target = jQuery(this).parent().find("textarea").attr("data-sign");
+	
+							$.ajax({
+								type: "post",
+								url: domain + "saas/message.php",
+								dataType: "json",
+								data: {
+									action: "insert",
+									params: {
+										aid: target,
+										atype: 3,
+										mid: member.id,
+										content: content,
+										type: 1
+									}
+								},
+								async: true,
+								success: function(json) {
+									if(!json.error) {
+										plus.nativeUI.toast("提交成功");
+									} else {
+										plus.nativeUI.toast(json.message);
+									}
+								},
+								error: function(xhr, type, errorThrown) {}
+							});
+						}
+					});
+				};
 
-					if (content) {
-						var member = myStorage.getItem("member");
-						var target = $(this).parent().find("textarea").attr("data-sign");
-
-						$.ajax({
-							type: "post",
-							url: domain + "saas/message.php",
-							dataType: "json",
-							data: {
-								action: "insert",
-								params: {
-									aid: target,
-									atype: 3,
-									mid: member.id,
-									content: content,
-									type: 1
-								}
-							},
-							async: true,
-							success: function(json) {
-								if(!json.error) {
-
-									
-								} else {
-									//plus.nativeUI.toast(json.message);
-								}
-							},
-							error: function(xhr, type, errorThrown) {}
-						});
-					}
-				});
 			});
 		}(mui, document));
 	</script>

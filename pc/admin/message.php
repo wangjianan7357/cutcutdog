@@ -80,10 +80,10 @@ if($_GET['action'] == 'edt'){
 		array(
 			array('__all', 'edit'),
 			'id' => 'ID', 
-			//'read' => array('已读', 'read', array(new FieldFun())), 
-			'subject' => '主题', 
+			'content' => '内容', 
 			'date' => '日期', 
-			//'valid' => array('有效', 'checkbox'),
+			'valid' => array('有效', 'checkbox'),
+			'read' => array('已读', 'read', array(new FieldFun())), 
 			array('__edit', 'edit', array('power' => 'message', 'method' => array('detail' => '1|2')))
 		),
 		array(
