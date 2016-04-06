@@ -79,7 +79,7 @@ return array(
         `valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
         `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
         PRIMARY KEY ( `id` ) , 
-        KEY ( `type` )',
+        KEY ( `mid` )',
 
     /** 
      * 验证
