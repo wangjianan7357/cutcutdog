@@ -15,6 +15,10 @@
 			font-size: 15px;
 		}
 	</style>
+	<script src="js/mui.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+    <script src="js/basic.js"></script>
 </head>
 
 <body>
@@ -23,15 +27,12 @@
 		<h1 class="mui-title">media list（图文列表）</h1>
 	</header>
 	<div class="mui-content">
-		
-		
 		<div class="title">
 			右侧带导航箭头
 		</div>
 		
-		<ul class="mui-table-view mui-table-view-chevron" id="list-view">
-			</ul>
-			<script id="list-view-code" type="text/html">
+		<ul class="mui-table-view mui-table-view-chevron" id="list-view"></ul>
+		<script id="list-view-code" type="text/html">
 			<% for (var i in list) { %>
 			<li class="mui-table-view-cell mui-media">
 				<a class="mui-navigate-right">
@@ -44,14 +45,98 @@
 			</li>
 			<% } %>
 		</script>
-		
 	</div>
 
-</body>
-<script src="js/mui.min.js"></script>
-<script>
-	mui.init({
-		swipeBack:true //启用右滑关闭功能
-	});
+	<script>
+		(function($, doc) {
+			$.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+
+			var loadComment = function() {
+				$.ajax({
+					type: "post",
+					url: domain + "saas/message.php",
+					dataType: "json",
+					data: {
+						action: "list",
+						where: {path: getUrlParam("url")}
+					},
+					async: true,
+					success: function(json) {
+						if(!json.error) {
+							jQuery("#list-view").html(template('list-view-code', json));
+							assignTmpl(json);
+
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+
+					}
+				});
+			}
+			
+			$.plusReady(function() {
+				$.ajax({
+					type: "post",
+					url: domain + "saas/catalog.php",
+					dataType: "json",
+					data: {
+						action: "detail",
+						where: {path: getUrlParam("url")}
+					},
+					async: true,
+					success: function(json) {
+						if(!json.error) {
+							jQuery("#list-view").html(template('list-view-code', json));
+							assignTmpl(json);
+
+							// 加载评论
+							//loadComment();
+							
+						} else {
+							plus.nativeUI.toast(json.message);
+						}
+					},
+					error: function(xhr, type, errorThrown) {}
+				});
+
+				jQuery("[data-action='comment']").click(function(){
+					var content = $(this).parent().find("textarea").html();
+
+					if (content) {
+						var member = myStorage.getItem("member");
+						var target = $(this).parent().find("textarea").attr("data-sign");
+
+						$.ajax({
+							type: "post",
+							url: domain + "saas/message.php",
+							dataType: "json",
+							data: {
+								action: "insert",
+								params: {
+									aid: target,
+									atype: 3,
+									mid: member.id,
+									content: content,
+									type: 1
+								}
+							},
+							async: true,
+							success: function(json) {
+								if(!json.error) {
+
+									
+								} else {
+									//plus.nativeUI.toast(json.message);
+								}
+							},
+							error: function(xhr, type, errorThrown) {}
+						});
+					}
+				});
+			});
+		}(mui, document));
 </script>
+</body>
 </html>
