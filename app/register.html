@@ -39,33 +39,33 @@
 <body>
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		<h1 class="mui-title">注册</h1>
+		<h1 class="mui-title">註冊</h1>
 	</header>
 	<div class="mui-content">
 		<form class="mui-input-group">
 			<div class="mui-input-row">
-				<label>账号</label>
-				<input id='account' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
+				<label>賬號</label>
+				<input id='account' type="text" class="mui-input-clear mui-input" placeholder="请输入賬號">
 			</div>
 			<div class="mui-input-row">
-				<label>密码</label>
-				<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+				<label>密碼</label>
+				<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入密碼">
 			</div>
 			<div class="mui-input-row">
-				<label>确认</label>
-				<input id='password_confirm' type="password" class="mui-input-clear mui-input" placeholder="请确认密码">
+				<label>確認</label>
+				<input id='password_confirm' type="password" class="mui-input-clear mui-input" placeholder="請確認密碼">
 			</div>
 			<div class="mui-input-row">
-				<label>邮箱</label>
-				<input id='email' type="email" class="mui-input-clear mui-input" placeholder="请输入邮箱">
+				<label>郵箱</label>
+				<input id='email' type="email" class="mui-input-clear mui-input" placeholder="請輸入郵箱">
 			</div>
 			<div class="mui-input-row">
 				<label>地址</label>
-				<input id='address' type="text" class="mui-input-clear mui-input" placeholder="请输入地址">
+				<input id='address' type="text" class="mui-input-clear mui-input" placeholder="請輸入地址">
 			</div>
 		</form>
 		<div class="mui-content-padded">
-			<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">注册</button>
+			<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">註冊</button>
 		</div>
 	</div>
 	<script>
@@ -77,7 +77,7 @@
 				
 				regButton.addEventListener('tap', function(event) {
 					if (jQuery("#password_confirm").val() != jQuery("#password").val()) {
-						plus.nativeUI.toast('密码两次输入不一致');
+						plus.nativeUI.toast('密碼兩次輸入不一致');
 						return;
 					}
 				
@@ -95,7 +95,7 @@
 						async: true,
 						success: function(json) {
 							if(!json.error) {
-								plus.nativeUI.toast('注册成功，请登录');
+								plus.nativeUI.toast('註冊成功，請登錄');
 								$.openWindow({
 									url: 'login.html',
 									id: 'login',
