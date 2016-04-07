@@ -39,7 +39,7 @@
 
 						<% for (var j in list) { %>
 							<% if (list[j]["parent"] == list[i]["id"] + ",") { %>
-								<li class="mui-table-view-cell mui-indexed-list-item"><a href="info-detail.html?url=<%= list[j]["path"] %>"><%= list[j]["name"] %></li>
+								<li class="mui-table-view-cell mui-indexed-list-item"><a href="info-detail.html?url=<%= list[j]["path"] %>" data-action="webview"><%= list[j]["name"] %></li>
 							<% } %>
 						<% } %>
 					<% } %>
