@@ -11,18 +11,15 @@ if($_GET['action'] == 'edt'){
 	else $power_id = 1;
 
 	if($_GET['num']){
-		$outcome = $my_db->fetchOne('message', array('id' => $_GET['num']));
-		$outcome['member'] = $my_db->fetchOne('member', array('id' => $outcome['mid']));
-		$outcome['target'] = $my_db->fetchOne($cms_cata_type[$outcome['atype']]['db'], array('id' => $outcome['aid']));
-		$outcome['reply'] = $my_db->fetchOne('message', array('tid' => $outcome['id']));
+		$outcome = $my_db->fetchOne('likes', array('id' => $_GET['num']));
 	}
 
 	if($_POST['del'] == 'true'){
-		if(!adminPower('message', $power_id)) warning('權限不足');
-		else delSelectedData('message', array('id' => $power_id));
+		if(!adminPower('likes', $power_id)) warning('權限不足');
+		else delSelectedData('likes', array('id' => $power_id));
 	}
 	else if($_POST['save'] == 'true'){
-		if(!adminPower('message', $power_id)) warning('權限不足');
+		if(!adminPower('likes', $power_id)) warning('權限不足');
 		
 		if(!$err) {
 			$submit = array(
@@ -30,7 +27,7 @@ if($_GET['action'] == 'edt'){
 			);
 
 			$done = 1;
-			$done &= $my_db->saveRow('message', $submit, array('id' => $_GET['num']));
+			$done &= $my_db->saveRow('likes', $submit, array('id' => $_GET['num']));
 
 			if ($_POST['sbt_reply']['id'] || $_POST['sbt_reply']['content']) {
 				$submit = array(
@@ -41,7 +38,7 @@ if($_GET['action'] == 'edt'){
 					'mid' => $_SESSION['admin_id']
 				);
 
-				$done &= $my_db->saveRow('message', $submit, ($_POST['sbt_reply']['id'] ? array('id' => $_POST['sbt_reply']['id']) : ''));
+				$done &= $my_db->saveRow('likes', $submit, ($_POST['sbt_reply']['id'] ? array('id' => $_POST['sbt_reply']['id']) : ''));
 			}
 
 			if($done){
@@ -58,13 +55,13 @@ if($_GET['action'] == 'edt'){
 	}
 
 	if(!$outcome['read']) {
-		$my_db->saveRow('message', array('read' => 1), array('id' => $_GET['num']));
+		$my_db->saveRow('likes', array('read' => 1), array('id' => $_GET['num']));
 	}
 
 } else {
 	$q_url = queryPart('date', 'desc');
 
-	$where = '`tid` = 0';
+	$where = '1';
 
 	class FieldFun {
 		function __construct($namespace = 1){
@@ -83,19 +80,16 @@ if($_GET['action'] == 'edt'){
 		array(
 			array('__all', 'edit'),
 			'id' => 'ID', 
-			'content' => '内容', 
 			'date' => '日期', 
 			'valid' => array('有效', 'checkbox'),
-			'read' => array('已读', 'read', array(new FieldFun())), 
-			array('__edit', 'edit', array('power' => 'message', 'method' => array('detail' => '1|2')))
 		),
 		array(
 			'where' => $where,
-			'table' => 'message'
+			'table' => 'likes'
 		)
 	);
 }
 
 require('templates/head.html');
-require('templates/message.html');
+require('templates/likes.html');
 require('templates/foot.html');

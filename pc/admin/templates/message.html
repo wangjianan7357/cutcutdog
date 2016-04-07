@@ -37,11 +37,32 @@
 
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="sbt_subject">主題</label>
-                            <input type="text" class="form-control" name="sbt_subject" id="sbt_subject" placeholder="主題" value="<?= $outcome['subject']; ?>" required="required">
+                            <label>評論人</label>
+                            <div class="form-control"><?= $outcome['member']['name']; ?></div>
+                        </div>
+                        <div class="form-group">
+                            <label>評論對象</label>
+                            <div class="form-control"><?= $outcome['target']['name']; ?></div>
+                        </div>
+                        <div class="form-group">
+                            <label>評論內容</label>
+                            <textarea disabled="disabled" rows="3" class="form-control"><?= $outcome['content']; ?></textarea>
                         </div>
 
+                        <div class="form-group">
+                            <label>日期</label>
+                            <div class="form-control"><?= $outcome['date']; ?></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="sbt_valid" value="0">
+                            <input type="checkbox" name="sbt_valid" value="1" <?= $outcome['valid'] == 1 ? 'checked="checked"' : ''; ?> data-on="success" data-off="warning" data-on-color="success" data-on-text="有效" data-off-text="无效" data-action="bootstrap-switch">
+                        </div>
 
+                        <div class="form-group">
+                            <label>回復</label>
+                            <textarea rows="3" class="form-control" name="sbt_reply[content]"><?= $outcome['reply']['content']; ?></textarea>
+                            <input type="hidden" name="sbt_reply[id]" value="<?= $outcome['reply']['id']; ?>">
+                        </div>
                     </div><!-- /.box-body -->
 
                     <div class="box-footer">

@@ -60,6 +60,7 @@ return array(
 		`atype` INT( 3 ) NOT NULL DEFAULT 0 COMMENT "目标内容类型" ,
         `mid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "发送者ID" ,
         `rid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "收获者ID" ,
+        `tid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "回复对应ID" ,
 		`content` TEXT NOT NULL , 
 		`valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
 		`read` TINYINT( 1 ) NOT NULL DEFAULT 0 , 

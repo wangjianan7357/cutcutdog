@@ -1,0 +1,44 @@
+
+<section class="content-header">
+    <h1><?=$cms_msg_type[$_GET['type']];?></h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="index.php">
+                <i class="fa fa-dashboard"></i> 控制台
+            </a>
+        </li>
+        <li>   
+            <span><?=$cms_msg_type[$_GET['type']];?></span>
+        </li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <?php if ($msg[1]) { ?>
+            <div class="alert alert-<?= $msg[1]; ?> alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                <h4><i class="icon fa fa-check"></i> <?= $msg[0]; ?></h4>
+            </div>
+            <?php } ?>
+
+            <div class="box box-primary">
+                
+                <div class="box-header with-border">
+                    <h3 class="box-title">點讚統計</h3>
+
+                    <div class="box-tools">
+                        <?php /* $this->render('../layouts/search', array('central' => $central)); */ ?>  
+                    </div>
+                </div><!-- /.box-header -->
+
+                <div class="box-body">
+                    <?= $code_table; ?>
+                </div><!-- /.box-body -->
+
+            </div><!-- /.box -->
+        </div>
+    </div>
+</section>
