@@ -34,4 +34,7 @@ if ($_REQUEST['action'] == 'login') {
     } else {
         callback(array('error' => 1));
     }
+
+} else if ($_REQUEST['action'] == 'profile') {  
+    print_r($_FILES);
 }

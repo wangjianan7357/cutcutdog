@@ -112,6 +112,35 @@ function getUrlParam(name) {
     }
 }
 
+function appendFile(filepath) {
+    //var datas = options.datas || [];
+
+    if(filepath){  
+        var task = plus.uploader.createUpload(domain + "saas/member.php", {  
+                method: "POST",  
+                blocksize: 204800,  
+                priority: 100  
+            },  
+            function(t, status){  
+                if (status == 200){  
+                    alert(JSON.stringify(t));
+                } else {  
+                    
+                }  
+            }  
+        );
+
+        task.addFile(filepath, {key: 'file'}); 
+        
+        var member = myStorage.getItem("member");
+		task.addData("id", member.id); 
+        task.addData("action", "profile");  
+
+        task.start();  
+    }  
+};  
+
+/* canvas
 function appendFile(path) {
     var img = new Image();
     img.src = path;
@@ -140,6 +169,7 @@ function appendFile(path) {
         pic.src = base64; //这里丢到img 的 src 里面就能看到效果了
     };
 }
+*/
 
 (function(mui, com) {
     var myStorage = {};
