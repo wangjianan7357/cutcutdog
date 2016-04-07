@@ -200,12 +200,15 @@
 					"js/basic.js",
 					"examples/setting.html",
 					"js/mui.min.js",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"personal.html",
+					"images/57x57.png"
 				],
 				"refer": [
 					"examples/imageviewer.html",
 					"info-list.html",
-					"discuss-list.html"
+					"discuss-list.html",
+					"image-list.html"
 				],
 				"priority": 0
 			},
@@ -294,6 +297,34 @@
 				],
 				"refer": [],
 				"priority": 0
+			},
+			"personal.html": {
+				"resources": [
+					"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+					"libs/easymob-webim-sdk/json2.js",
+					"js/mui.locker.js",
+					"js/feedback.js",
+					"js/feedback-page.js",
+					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+					"js/mui.view.js",
+					"index.html",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/feedback-page.css",
+					"js/basic.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"image-list.html": {
+				"resources": [
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js"
+				],
+				"refer": [],
+				"priority": 0
 			}
 		},
 		"idle": {
@@ -311,7 +342,6 @@
 				"setting.html",
 				"css/mui.css",
 				"unlock.html",
-				"js/mui.locker.js",
 				"images/user-photo.png"
 			]
 		}
