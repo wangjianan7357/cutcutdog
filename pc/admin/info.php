@@ -103,13 +103,20 @@ if($_GET['action'] == 'edt'){
 	}
 
 } else {
+	$where = 0;
+
 	$catalog_all = array();
 	$getdata = $my_db->selectRow('id, name, parent', 'catalog', array('type' => $catalog_type));
-	while($result = mysql_fetch_array($getdata)) $catalog_all[$result['id']] = $result;
+	while($result = mysql_fetch_array($getdata)) {
+		$catalog_all[$result['id']] = $result;
+		$where .= ' OR `cid` LIKE "' . $result['id'] . ',%"';
+	}
+
+	if ($where) {
+		$where = '(' . $where . ')';
+	}
 
 	$q_url = queryPart('date', 'desc');
-
-	$where = '1';
 
 	class FieldFun {
 		function __construct($namespace = 1){
