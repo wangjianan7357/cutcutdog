@@ -17,6 +17,11 @@ if(date('Ymd') > systemConfig('clear_cache')){
 	$my_db->saveRow('system', array('value' => date('Ymd')), array('varname' => 'clear_cache', 'tid' => 1));
 }
 
+$outcome = array();
+
+$outcome['member'] = array();
+$outcome['member']['count'] = $my_db->existRow('member');
+
 require('templates/head.html');
 require('templates/index.html');
 require('templates/foot.html');

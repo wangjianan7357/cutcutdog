@@ -16,7 +16,18 @@
 			"js/basic.js",
 			"examples/setting.html",
 			"personal.html",
-			"images/57x57.png"
+			"images/57x57.png",
+			"images/icon-05.png",
+			"images/icon-08.png",
+			"images/icon-07.png",
+			"images/icon-04.png",
+			"images/icon-02.png",
+			"images/icon-06.png",
+			"images/icon-09.png",
+			"images/icon-03.png",
+			"images/icon-01.png",
+			"images/top_bg.png",
+			"%3C%\u003d%20getvarious("
 		],
 		"refer": [
 			"examples/imageviewer.html",
@@ -39,7 +50,8 @@
 			"js/jquery.min.js",
 			"js/basic.js",
 			"register.html",
-			"fonts/mui.ttf"
+			"fonts/mui.ttf",
+			"images/top_bg.png"
 		],
 		"refer": [
 			"index.html",

@@ -44,6 +44,7 @@
     </style>
     <script src="js/mui.min.js"></script>
     <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
 </head>
 <body>
@@ -55,50 +56,41 @@
 <div class="mui-content">
     <div id="tabbar" class="mui-control-content mui-active">
         <div id="slider" class="mui-slider" >
-            <div class="mui-slider-group mui-slider-loop">
-                <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-                <div class="mui-slider-item mui-slider-item-duplicate">
-                    <a href="#">
-                        <img src="images/yuantiao.jpg">
-                    </a>
-                </div>
-                <!-- 第一张 -->
+            <div class="mui-slider-group mui-slider-loop" id="list-view"></div>
+            <script id="list-view-code" type="text/html">
+            <% for (var i in list_last) { %>
+            	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
                 <div class="mui-slider-item">
                     <a href="#">
-                        <img src="images/shuijiao.jpg">
+                        <img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list_last[i]["src"] %>">
                     </a>
                 </div>
-                <!-- 第二张 -->
+            <% } %>
+
+            <% for (var i in list) { %>
                 <div class="mui-slider-item">
                     <a href="#">
-                        <img src="images/muwu.jpg">
+                        <img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>">
                     </a>
                 </div>
-                <!-- 第三张 -->
+            <% } %>
+
+            <% for (var i in list) { %>
+            	<!-- 额外增加的一个节点(循环轮播：最后一张节点是第一个轮播) -->
                 <div class="mui-slider-item">
                     <a href="#">
-                        <img src="images/cbd.jpg">
+                        <img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>">
                     </a>
                 </div>
-                <!-- 第四张 -->
-                <div class="mui-slider-item">
-                    <a href="#">
-                        <img src="images/yuantiao.jpg">
-                    </a>
-                </div>
-                <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-                <div class="mui-slider-item mui-slider-item-duplicate">
-                    <a href="#">
-                        <img src="images/shuijiao.jpg">
-                    </a>
-                </div>
-            </div>
-            <div class="mui-slider-indicator">
-                <div class="mui-indicator mui-active"></div>
+            <% break; } %>
+            </script>
+            
+            <div class="mui-slider-indicator" id="list-dot"></div>
+            <script id="list-dot-code" type="text/html">
+            <% for (var i in list) { %>
                 <div class="mui-indicator"></div>
-                <div class="mui-indicator"></div>
-                <div class="mui-indicator"></div>
-            </div>
+            <% } %>
+            </script>
         </div>
         
         <div class="mui-content">
@@ -166,8 +158,8 @@
     $.init({
         swipeBack:true //启用右滑关闭功能
     });
-    var slider = $("#slider");
     /*
+    var slider = $("#slider");
     document.getElementById("switch").addEventListener('toggle', function(e) {
         if (e.detail.isActive) {
             slider.slider({
@@ -182,6 +174,42 @@
     */
 
     $.plusReady(function() {
+        $.ajax({
+            type: "post",
+            url: domain + "saas/catalog.php",
+            dataType: "json",
+            data: {
+                action: "detail",
+                where: {id: 12}
+            },
+            async: true,
+            success: function(json) {
+                if(!json.error) {
+                	var last = [];
+                	for (var k in json.list) {
+                		last = json.list[k];
+                	}
+
+                	json.list_last = [last];
+                    jQuery("#list-view").html(template('list-view-code', json));
+                    jQuery("#list-dot").html(template('list-dot-code', json));
+                    assignTmpl(json);
+                    
+                    $('.mui-slider').slider();
+					$('.mui-scroll-wrapper.mui-slider-indicator.mui-segmented-control').scroll({
+						scrollY: false,
+						scrollX: true,
+						indicators: false,
+						snap: '.mui-control-item'
+					});
+                    
+                } else {
+                    plus.nativeUI.toast(json.message);
+                }
+            },
+            error: function(xhr, type, errorThrown) {}
+        });
+
         var backButtonPress = 0;
         $.back = function(event) {
             backButtonPress++;
