@@ -41,6 +41,30 @@ return array(
         PRIMARY KEY ( `id` )',
 
     /** 
+     * 会员订单
+     * mid 会员 id
+     * type;
+     * status 订单状态
+     */
+    'order' => '
+        `id` INT( 8 ) NOT NULL AUTO_INCREMENT , 
+        `mid` INT( 8 ) NOT NULL DEFAULT 0 , 
+        `number` VARCHAR( 18 ) NOT NULL DEFAULT "" , 
+        `email` VARCHAR( 50 ) NOT NULL DEFAULT "" , 
+        `name` VARCHAR( 90 ) NOT NULL DEFAULT "" , 
+        `phone` VARCHAR( 18 ) NOT NULL DEFAULT "" , 
+        `country` VARCHAR( 6 ) NOT NULL DEFAULT "" , 
+        `city` VARCHAR( 40 ) NOT NULL DEFAULT "" , 
+        `postcode` VARCHAR( 8 ) NOT NULL DEFAULT "" , 
+        `address` VARCHAR( 256 ) NOT NULL DEFAULT "" , 
+        `amount` DECIMAL( 8, 2 ) NOT NULL DEFAULT 0 , 
+        `fields` MEDIUMTEXT NOT NULL , 
+        `status` INT( 2 ) NOT NULL DEFAULT 0 , 
+        `read` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
+        `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+        PRIMARY KEY ( `id` )',
+
+    /** 
      * 服務
      */
     'service' => '

@@ -61,6 +61,7 @@ $con_db_table = array(
 	'log'       => $child_pre . 'log',
 	'system'    => $child_pre . 'system',
 	'verify'    => $child_pre . 'verify',
+	'order'     => $child_pre . 'order',
 
 	// 多国语言
 	'page'      => $child_pre . 'page_' . $con_lang_current,

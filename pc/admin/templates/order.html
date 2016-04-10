@@ -1,6 +1,6 @@
 
 <section class="content-header">
-    <h1>會員用戶</h1>
+    <h1>訂單信息</h1>
     <ol class="breadcrumb">
         <li>
             <a href="index.php">
@@ -8,7 +8,7 @@
             </a>
         </li>
         <li>   
-            <span>用戶編輯</span>
+            <span>訂單管理</span>
         </li>
     </ol>
 </section>
@@ -27,7 +27,7 @@
             <div class="box box-primary">
                 <?php if ($_GET['action'] == 'edt') { ?>
                 <div class="box-header">
-                    <h3 class="box-title">用戶編輯</h3>
+                    <h3 class="box-title">訂單管理</h3>
                 </div><!-- /.box-header -->
 
                 <!-- form start -->
@@ -37,8 +37,8 @@
 
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="sbt_name">名稱</label>
-                            <input type="text" class="form-control" name="sbt_name" id="sbt_name" placeholder="名稱" value="<?= $outcome['name']; ?>" required="required">
+                            <label for="sbt_name">訂單號</label>
+                            <p class="form-control"><?= $outcome['number']; ?></p>
                         </div>
                         <div class="form-group">
                             <label for="sbt_pass">密碼</label>
