@@ -79,23 +79,40 @@ function assignTmpl(json, sign) {
     }
 
     $("[data-info]").each(function(){
+    	var before = "";
         var info = $(this).attr("data-info").split("=");
-
+		var various = $(this).attr("data-before-info");
+		
+		if (various) {
+			eval("before = " + various);
+		}
+		
         try {
             if (info[1]) {
                 var current = $(this).attr(info[0]);
                 if (current.indexOf(sign) != -1) {
-                    $(this).attr(info[0], current.replace(sign, recurData(info[1].split("."), json.data)));
+                    current = current.replace(sign, recurData(info[1].split("."), json));
                 } else {
-                    $(this).attr(info[0], recurData(info[1].split("."), json.data));
+                    current = recurData(info[1].split("."), json);
                 }
                 
             } else {
                 var current = $(this).html();
                 if (current.indexOf(sign) != -1) {
-                    $(this).html(current.replace(sign, recurData(info[0].split("."), json.data)));
+                    current = current.replace(sign, recurData(info[0].split("."), json));
                 } else {
-                    $(this).html(recurData(info[0].split("."), json.data));
+                    current = recurData(info[0].split("."), json);
+                }
+            }
+            
+            if (info[1]) {
+                if (current) {
+                    $(this).attr(info[0], before + current);
+                }
+                
+            } else {
+                if (current) {
+                    $(this).html(before + current);
                 }
             }
         } catch(e){}
@@ -112,7 +129,7 @@ function getUrlParam(name) {
     }
 }
 
-function appendFile(filepath) {
+function uploadFile(filepath, success) {
     //var datas = options.datas || [];
 
     if(filepath){  
@@ -121,20 +138,28 @@ function appendFile(filepath) {
                 blocksize: 204800,  
                 priority: 100  
             },  
-            function(t, status){  
-                if (status == 200){  
-                    alert(JSON.stringify(t));
+            function(res, status){  
+                if (status == 200){
+                	var json = "";
+                	eval("json = (" + res.responseText + ")");
+                	
+                    if (!json.error) {
+	                    if (success) {
+	                    	success(json);
+	                    }
+	                }
                 } else {  
                     
                 }  
             }  
         );
 
-        task.addFile(filepath, {key: 'file'}); 
+        task.addFile(filepath, {key: 'src'}); 
         
         var member = myStorage.getItem("member");
 		task.addData("id", member.id); 
-        task.addData("action", "profile");  
+        task.addData("name", member.name); 
+        task.addData("action", "update");  
 
         task.start();  
     }  

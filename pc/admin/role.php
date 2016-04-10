@@ -72,27 +72,26 @@ if($_GET['action'] == "edt"){
 	foreach($cms_admin_power as $key => $value){
 		//if($key == 'role') continue;
 
-		$tmp1 = '<tr data-action="hover">';
-		$tmp1 .= '<td align="right"><b>' . $value[0] . '</b></td><td align="left">';
+		$tmp1 = '<div class="form-group"><label for="sbt_name">' . $value[0] . '</label><div style="overflow: hidden">';
 
 		$tmp2 = '';
 		if (strpos($key, '{}') !== false) {
 			$getdata = $my_db->selectRow('*', $value[1], array($value[3]), array('field' => 'id'));
 			$j = 1;
 			while ($result = mysql_fetch_array($getdata)) {
-				$tmp2 .= '<div style="float:left; width:120px;"><input type="checkbox" id="role_' . $key . '_' . $j . '" name="sbt_' . $key . '_' . $j . '" ' . (($role_power[$i] && substr(decbin($role_power[$i]), $j, 1) == 1) ? 'checked="checked" ' : '') . '/> <label for="role_' . $key . '_' . $j . '">' . $result[$value[2]] . '</label></div>';
+				$tmp2 .= '<div style="float:left; width:120px;"><input type="checkbox" id="role_' . $key . '_' . $j . '" name="sbt_' . $key . '_' . $j . '" ' . (($role_power[$i] && substr(decbin($role_power[$i]), $j, 1) == 1) ? 'checked="checked" ' : '') . '/> ' . $result[$value[2]] . '</div>';
 				$j ++;
 			}
 
 		} else {
 			for($j = 1; $j < count($value); $j++){
 				if (adminPower($key, $j)) {
-					$tmp2 .= '<div style="float:left; width:120px;"><input type="checkbox" id="role_' . $key . '_' . $j . '" name="sbt_' . $key . '_' . $j . '" ' . (($role_power[$i] && substr(decbin($role_power[$i]), $j, 1) == 1) ? 'checked="checked" ' : '') . '/> <label for="role_' . $key . '_' . $j . '">' . $value[$j] . '</label></div>';
+					$tmp2 .= '<div style="float:left; width:120px;"><input type="checkbox" id="role_' . $key . '_' . $j . '" name="sbt_' . $key . '_' . $j . '" ' . (($role_power[$i] && substr(decbin($role_power[$i]), $j, 1) == 1) ? 'checked="checked" ' : '') . '/> ' . $value[$j] . '</div>';
 				}
 			}
 		}
 
-		$code .= $tmp2 ? $tmp1 . $tmp2 . '</td></tr>' : '';
+		$code .= $tmp2 ? $tmp1 . $tmp2 . '</div></div>' : '';
 		$i++;
 	}
 

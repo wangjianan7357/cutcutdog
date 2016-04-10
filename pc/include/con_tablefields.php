@@ -29,6 +29,7 @@ return array(
         `name` varchar( 16 ) NOT NULL DEFAULT "",
         `pass` char( 32 ) NOT NULL,
         `salt` varchar( 128 ) NOT NULL,
+        `src` varchar( 32 ) NOT NULL DEFAULT "",
         `sex` varchar( 1 ) NOT NULL DEFAULT 0,
         `phone` varchar( 16 ) NOT NULL DEFAULT "",
         `email` varchar( 128 ) NOT NULL DEFAULT "",

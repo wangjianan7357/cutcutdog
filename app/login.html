@@ -158,6 +158,11 @@
 				}
 				*/
 				
+				if (getUrlParam("action") == "logout") {
+					myStorage.setItem("member", "");
+					myStorage.setItem("autologin", false);
+				}
+				
 				var member = myStorage.getItem("member");
 				if (myStorage.getItem("autologin") && member.id && member.name) {
 					toMain();

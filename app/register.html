@@ -63,6 +63,10 @@
 				<label>地址</label>
 				<input id='address' type="text" class="mui-input-clear mui-input" placeholder="請輸入地址">
 			</div>
+			<div class="mui-input-row">
+				<label>電話</label>
+				<input id='phone' type="text" class="mui-input-clear mui-input" placeholder="請輸入電話">
+			</div>
 		</form>
 		<div class="mui-content-padded">
 			<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">註冊</button>
@@ -90,7 +94,8 @@
 							account: jQuery("#account").val(),
 							password: jQuery("#password").val(),
 							email: emailBox.value,
-							address: jQuery("#address").val()
+							address: jQuery("#address").val(),
+							phone: jQuery("#phone").val()
 						},
 						async: true,
 						success: function(json) {

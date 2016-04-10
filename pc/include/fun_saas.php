@@ -6,6 +6,7 @@ function callback($json) {
 		2 => '賬號已存在',
 		3 => '賬號或密碼有誤',
 		4 => '提交失敗',
+		5 => '查詢失敗',
 	);
 
 	if ($json['error']) {

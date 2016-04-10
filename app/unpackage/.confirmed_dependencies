@@ -27,7 +27,11 @@
 			"images/icon-03.png",
 			"images/icon-01.png",
 			"images/top_bg.png",
-			"%3C%\u003d%20getvarious("
+			"%3C%\u003d%20getvarious(",
+			"images/bg.png",
+			"images/CatDog.png",
+			"images/home.png",
+			"images/Petchat.png"
 		],
 		"refer": [
 			"examples/imageviewer.html",
@@ -35,7 +39,8 @@
 			"info-list.html",
 			"discuss-list.html",
 			"personal.html",
-			"image-list.html"
+			"image-list.html",
+			"setting.html"
 		],
 		"priority": 0
 	},
@@ -75,54 +80,6 @@
 		"refer": [
 			"login.html"
 		]
-	},
-	"examples/setting.html": {
-		"resources": [
-			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"libs/easymob-webim-sdk/json2.js",
-			"libs/easymob-webim-sdk/jquery-1.11.1.js",
-			"js/feedback.js",
-			"css/feedback-page.css",
-			"js/feedback-page.js",
-			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
-			"js/mui.view.js",
-			"images/logo.png",
-			"fonts/mui.ttf",
-			"index.html"
-		],
-		"refer": [
-			"index.html"
-		]
-	},
-	"examples/imageviewer.html": {
-		"resources": [
-			"js/mui.zoom.js",
-			"images/muwu.jpg",
-			"images/yuantiao.jpg",
-			"fonts/mui.ttf",
-			"js/mui.previewimage.js",
-			"images/shuijiao.jpg"
-		],
-		"refer": []
-	},
-	"examples/indexed-list.html": {
-		"resources": [
-			"css/mui.indexedlist.css",
-			"js/mui.indexedlist.js"
-		],
-		"refer": []
-	},
-	"forget_password.html": {
-		"resources": [
-			"js/app.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"css/style.css"
-		],
-		"refer": []
 	},
 	"register.html": {
 		"resources": [
@@ -190,7 +147,13 @@
 			"info-list.html"
 		]
 	},
-	"personal.html": {
+	"image-list.html": {
+		"resources": [
+			"js/mui.zoom.js",
+			"js/mui.previewimage.js"
+		]
+	},
+	"setting.html": {
 		"resources": [
 			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
 			"libs/easymob-webim-sdk/json2.js",
@@ -199,22 +162,20 @@
 			"js/feedback-page.js",
 			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
 			"js/mui.view.js",
-			"index.html",
 			"js/jquery.min.js",
-			"js/mui.min.js",
 			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"js/basic.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
 			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png",
 			"css/feedback-page.css",
-			"js/basic.js"
+			"images/user-photo.png"
 		],
 		"refer": [
-			"index.html"
-		]
-	},
-	"image-list.html": {
-		"resources": [
-			"js/mui.zoom.js",
-			"js/mui.previewimage.js"
+			"login.html"
 		]
 	}
 }
