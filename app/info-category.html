@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
+	<link href="css/mui.min.css" rel="stylesheet" />
+	<link href="css/mui.indexedlist.css" rel="stylesheet" />
+	<style>
+		.mui-bar {
+			-webkit-box-shadow: none;
+			box-shadow: none;
+		}
+	</style>
+	<script src="js/mui.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+    <script src="js/basic.js"></script>
+</head>
+
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
+    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
+    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
+	</header>
+	<div class="mui-content">
+		<div id='list' class="mui-indexed-list">
+			<div class="mui-indexed-list-search mui-input-row mui-search">
+				<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索商店">
+			</div>
+			<div class="mui-indexed-list-inner">
+				<div class="mui-indexed-list-empty-alert">没有数据</div>
+
+				<ul class="mui-table-view" id="list-view"></ul>
+				<script id="list-view-code" type="text/html">
+				<% for (var i in list) { %>
+					<% if (!list[i]["parent"]) { %>
+						<li class="mui-table-view-divider mui-indexed-list-group"><%= list[i]["name"] %></li>
+
+						<% for (var j in list) { %>
+							<% if (list[j]["parent"] == list[i]["id"] + ",") { %>
+								<li class="mui-table-view-cell mui-indexed-list-item"><a href="info-list.html?url=<%= list[j]["path"] %>" data-action="webview"><%= list[j]["name"] %></li>
+							<% } %>
+						<% } %>
+					<% } %>
+				<% } %>
+				</script>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" charset="utf-8">
+		(function($, doc) {
+			$.init();
+			$.plusReady(function() {
+				$.ajax({
+					type: "post",
+					url: domain + "saas/catalog.php",
+					dataType: "json",
+					data: {
+						action: "list",
+						where: {type: 3}
+					},
+					async: true,
+					success: function(json) {
+						if(!json.error) {
+							jQuery("#list-view").html(template('list-view-code', json));
+							
+						} else {
+							plus.nativeUI.toast(json.message);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+ 
+					}
+				});
+			});
+		}(mui, document));
+	</script>
+</body>
+</html>
