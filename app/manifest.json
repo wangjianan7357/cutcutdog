@@ -225,7 +225,8 @@
 					"discuss-list.html",
 					"image-list.html",
 					"setting.html",
-					"info-category.html"
+					"info-category.html",
+					"slider-table-default.html"
 				],
 				"priority": 0
 			},
@@ -241,7 +242,11 @@
 					"js/basic.js",
 					"register.html",
 					"fonts/mui.ttf",
-					"images/top_bg.png"
+					"images/top_bg.png",
+					"images/bg.png",
+					"images/CatDog.png",
+					"images/home.png",
+					"images/Petchat.png"
 				],
 				"refer": [
 					"index.html",
@@ -306,9 +311,15 @@
 					"images/CatDog.png",
 					"images/home.png",
 					"images/top_bg.png",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"js/basic.js",
+					"images/bg.png"
 				],
-				"refer": [],
+				"refer": [
+					"discuss-list-nr.html"
+				],
 				"priority": 0
 			},
 			"info-detail.html": {
@@ -335,7 +346,8 @@
 			"image-list.html": {
 				"resources": [
 					"js/mui.zoom.js",
-					"js/mui.previewimage.js"
+					"js/mui.previewimage.js",
+					"fonts/mui.ttf"
 				],
 				"refer": [],
 				"priority": 0
@@ -380,7 +392,53 @@
 					"images/top_bg.png",
 					"images/Petchat.png",
 					"js/basic.js",
-					"info-list.html"
+					"info-list.html",
+					"images/bg.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"slider-table-default.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/yuantiao.jpg",
+					"images/muwu.jpg",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"images/CatDog.png",
+					"css/mui.min.css",
+					"images/shuijiao.jpg",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png",
+					"js/basic.js"
+				],
+				"refer": [
+					"image-list.html"
+				],
+				"priority": 0
+			},
+			"discuss-list-nr.html": {
+				"resources": [
+					"images/web_heart_animation.png",
+					"images/muwu.jpg",
+					"css/dzcss.css",
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"fonts/mui.ttf",
+					"images/shuijiao.jpg",
+					"images/top_bg.png",
+					"js/basic.js",
+					"images/yuantiao.jpg",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/Petchat.png",
+					"js/mui.view.js",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js"
 				],
 				"refer": [],
 				"priority": 0
