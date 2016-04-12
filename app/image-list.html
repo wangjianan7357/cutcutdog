@@ -7,190 +7,161 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<!--标准mui.css-->
 	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" href="css/dzcss.css">
+	<link rel="stylesheet" type="text/css" href="../css/app.css" />
 	<!--App自定义的css-->
 	<style type="text/css">
-		.mui-preview-image.mui-fullscreen {
-			position: fixed;
-			z-index: 20;
-			background-color: #000;
+		.active {
+		    width: 40px;
+		    height: 40px;
+		    display: inline-block;
+		    text-align: center;
+		    background-color: #fff;
+		    border: 1px solid #e1e1e3;
+		    border-radius: 25px;
+		    background-clip: padding-box;
 		}
-		.mui-preview-header,
-		.mui-preview-footer {
-			position: absolute;
-			width: 100%;
-			left: 0;
-			z-index: 10;
+		.active span{line-height: 40px;}
+		#comment-list {
+			padding:10px 0px 10px 5px;;
+			background-color:#fff ;
+			text-align: left;
+			
+			color:#666 ;
+			font-size:14px ;
+			margin:0px 0px ;
 		}
-		.mui-preview-header {
-			height: 44px;
-			top: 0;
+		#comment-list li {
+			border-bottom: 1px  solid #ebebed; list-style:none ; background-color: #f8f8f9; padding-left: 5px;height:28px;
 		}
-		.mui-preview-footer {
-			height: 50px;
-			bottom: 0px;
-		}
-		.mui-preview-header .mui-preview-indicator {
-			display: block;
-			line-height: 25px;
-			color: #fff;
-			text-align: center;
-			margin: 15px auto 4;
-			width: 70px;
-			background-color: rgba(0, 0, 0, 0.4);
-			border-radius: 12px;
-			font-size: 16px;
-		}
-		.mui-preview-image {
-			display: none;
-			-webkit-animation-duration: 0.5s;
-			animation-duration: 0.5s;
-			-webkit-animation-fill-mode: both;
-			animation-fill-mode: both;
-		}
-		.mui-preview-image.mui-preview-in {
-			-webkit-animation-name: fadeIn;
-			animation-name: fadeIn;
-		}
-		.mui-preview-image.mui-preview-out {
-			background: none;
-			-webkit-animation-name: fadeOut;
-			animation-name: fadeOut;
-		}
-		.mui-preview-image.mui-preview-out .mui-preview-header,
-		.mui-preview-image.mui-preview-out .mui-preview-footer {
-			display: none;
-		}
-		.mui-zoom-scroller {
-			position: absolute;
-			display: -webkit-box;
-			display: -webkit-flex;
-			display: flex;
-			-webkit-box-align: center;
-			-webkit-align-items: center;
-			align-items: center;
-			-webkit-box-pack: center;
-			-webkit-justify-content: center;
-			justify-content: center;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			margin: 0;
-			-webkit-backface-visibility: hidden;
-		}
-		.mui-zoom {
-			-webkit-transform-style: preserve-3d;
-			transform-style: preserve-3d;
-		}
-		.mui-slider .mui-slider-group .mui-slider-item img {
-			width: auto;
-			height: auto;
-			max-width: 100%;
-			max-height: 100%;
-		}
-		.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
-			width: 100%;
-		}
-		.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
-			display: inline-table;
-		}
-		.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
-			display: table-cell;
-			vertical-align: middle;
-		}
-		.mui-preview-loading {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			display: none;
-		}
-		.mui-preview-loading.mui-active {
-			display: block;
-		}
-		.mui-preview-loading .mui-spinner-white {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin-left: -25px;
-			margin-top: -25px;
-			height: 50px;
-			width: 50px;
-		}
-		.mui-preview-image img.mui-transitioning {
-			-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
-			transition: transform 0.5s ease, opacity 0.5s ease;
-		}
-		@-webkit-keyframes fadeIn {
-			0% {
-				opacity: 0;
-			}
-			100% {
-				opacity: 1;
-			}
-		}
-		@keyframes fadeIn {
-			0% {
-				opacity: 0;
-			}
-			100% {
-				opacity: 1;
-			}
-		}
-		@-webkit-keyframes fadeOut {
-			0% {
-				opacity: 1;
-			}
-			100% {
-				opacity: 0;
-			}
-		}
-		@keyframes fadeOut {
-			0% {
-				opacity: 1;
-			}
-			100% {
-				opacity: 0;
-			}
-		}
-		p img {
-			max-width: 100%;
-			height: auto;
-		}
+		#comment-list li p{color:#666 ;}
 	</style>
+	<script src="js/mui.min.js"></script>
+	<script src="js/mui.zoom.js"></script>
+	<script src="js/mui.previewimage.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+    <script src="js/basic.js"></script>
 
 </head>
-
 <body>
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
+	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
+	    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
 	</header>
-	<div class="mui-content">
+	<div class="mui-content" style="background: none;">
 		<div class="mui-content-padded">
-			
 			<p>
 				<img src="images/yuantiao.jpg" data-preview-src="" data-preview-group="1" />
 			</p>
-			<p>图片全屏后，双击或双指缩放均可对图片进行放大、缩小操作，左右滑动可查看同组(data-preview-group相同的图片为一组)其它图片，点击会关闭预览  <a><span class="mui-icon mui-icon-chat"></span></a></p>
-			<p>
-				<img src="images/muwu.jpg" data-preview-src="" data-preview-group="1" />
-			</p>
-			<p>第三张图片，纯粹为了占位： </p>
-			<p>
-				<img src="images/shuijiao.jpg" data-preview-src="" data-preview-group="1" />
-			</p>
+			<p>图片全屏后，双击或双指缩放均可对图片进行放大、缩小操作，左右滑动可查看同组(data-preview-group相同的图片为一组)其它图片，  </p>
+			<article class="htmleaf-container" style="text-align: right;">
+				<div id="container" style="position: relative;">
+					<div class="heart " id="like1" rel="like"></div> 
+					<div class="likeCount" id="likeCount1">14</div>  
+				</div>
+
+				
+					<div style=" text-align: right; margin-right: 10px;" id='promptBtn'><img src="images/ioc-01.png" style="width:20px;"></div>
+				
+			</article>
+			<ul id="comment-list"></ul>
+			<script id="comment-list-code" type="text/html">
+			<% for (var i in list) { %>
+				<li>
+					<p><b><%= list[i]["member"]["name"] %>：</b> <%= list[i]["content"] %></p>
+					
+				</li>
+			<% } %>
+			</script>
+
+			
 		</div>
+		
+		
+		
 	</div>
+
+	<script type="text/javascript" charset="utf-8">
+		var member = myStorage.getItem("member");
+	
+		//mui初始化
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		
+		mui.plusReady(function() {
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/message.php",
+				dataType: "json",
+				data: {
+					action: "list",
+					where: {type: 4}
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						jQuery("#comment-list").html(template('comment-list-code', json));
+							
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {}
+			});
+		});
+
+		document.getElementById("promptBtn").addEventListener("tap", function(e) {
+			e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
+			mui.prompt('請輸入您的評語：', '', '', ['取消', '提交'], function(e) {
+				if (e.index == 1) {
+					mui.ajax({
+						type: "post",
+						url: domain + "saas/message.php",
+						dataType: "json",
+						data: {
+							action: "send",
+							id: member.id,
+							name: member.name,
+							content: e.value,
+							type: 4
+						},
+						async: true,
+						success: function(json) {
+							//alert(JSON.stringify(json))
+						},
+						error: function(xhr, type, errorThrown) {
+							//alert(JSON.stringify(xhr))
+						}
+					});
+					
+					jQuery("#comment-list").append("<li><p><b>" + member.name + "：</b></p><p>" + e.value + "</p></li>");
+				}
+			})
+		});
+
+		$(document).ready(function() {
+			$('body').on("click", '.heart', function() {
+				var A=$(this).attr("id");
+				var B=A.split("like");
+				var messageID=B[1];
+				var C=parseInt($("#likeCount"+messageID).html());
+				$(this).css("background-position","")
+				var D=$(this).attr("rel");
+			   
+				if(D === 'like') {      
+					$("#likeCount"+messageID).html(C+1);
+					$(this).addClass("heartAnimation").attr("rel","unlike");
+				} else {
+					$("#likeCount"+messageID).html(C-1);
+					$(this).removeClass("heartAnimation").attr("rel","like");
+					$(this).css("background-position","left");
+				}
+			});
+		});
+	</script>
+
 </body>
-<script src="js/mui.min.js"></script>
-<script src="js/mui.zoom.js"></script>
-<script src="js/mui.previewimage.js"></script>
-<script>
-	mui.previewImage();
-</script>
 </html>

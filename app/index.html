@@ -58,7 +58,11 @@
 <div class="mui-content">
     <div id="tabbar" class="mui-control-content mui-active">
         <div id="slider" class="mui-slider" >
-            <div class="mui-slider-group mui-slider-loop" id="list-view"></div>
+            <div class="mui-slider-group mui-slider-loop" id="list-view">
+            	<a class="active">
+						<span class="mui-spinner"></span>
+					</a>
+            </div>
             <script id="list-view-code" type="text/html">
             <% for (var i in list_last) { %>
             	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
@@ -100,7 +104,7 @@
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
                     <a href="info-category.html" data-action="webview">
                         <span class="mui-icon mui-icon-home"><img src="images/icon-01.png"></span>
-                        <div class="mui-media-body">資料庫</div>
+                        <div class="mui-media-body">資料庫</div> 
                     </a>
                 </li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">

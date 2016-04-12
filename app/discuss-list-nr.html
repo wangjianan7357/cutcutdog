@@ -17,22 +17,24 @@
 		    display: inline-block;
 		    text-align: center;
 		    background-color: #fff;
-		    border: 1px solid #ddd;
+		    border: 1px solid #e1e1e3;
 		    border-radius: 25px;
 		    background-clip: padding-box;
 		}
 		.active span{line-height: 40px;}
 		#comment-list {
-			padding:7px 0px 7px 5px;;
+			padding:10px 0px 10px 5px;;
 			background-color:#fff ;
 			text-align: left;
-			margin-top:10px ;
-			color:#333 ;
+			
+			color:#666 ;
 			font-size:14px ;
+			margin:0px 0px ;
 		}
 		#comment-list li {
-			border-bottom: 1px dashed #ccc;
+			border-bottom: 1px  solid #ebebed; list-style:none ; background-color: #f8f8f9; padding-left: 5px;height:28px;
 		}
+		#comment-list li p{color:#666 ;}
 	</style>
 	<script src="js/mui.min.js"></script>
 	<script src="js/mui.zoom.js"></script>
@@ -54,35 +56,57 @@
 				<img src="images/yuantiao.jpg" data-preview-src="" data-preview-group="1" />
 			</p>
 			<p>图片全屏后，双击或双指缩放均可对图片进行放大、缩小操作，左右滑动可查看同组(data-preview-group相同的图片为一组)其它图片，  </p>
-			<article class="htmleaf-container" style=" margin-bottom:30px; text-align: right;">
+			<article class="htmleaf-container" style="text-align: right;">
 				<div id="container" style="position: relative;">
 					<div class="heart " id="like1" rel="like"></div> 
 					<div class="likeCount" id="likeCount1">14</div>  
 				</div>
 
-				<div class="mui-content-padded" style="margin: 5px;text-align: right;">
-					<a class="active" id='promptBtn'><span class="mui-icon mui-icon-chat"></span></a>
-				</div>
+				
+					<div style=" text-align: right; margin-right: 10px;" id='promptBtn'><img src="images/ioc-01.png" style="width:20px;"></div>
+				
 			</article>
 			<ul id="comment-list"></ul>
 			<script id="comment-list-code" type="text/html">
 			<% for (var i in list) { %>
 				<li>
-					<p><b><%= list[i]["member"]["name"] %>：</b></p>
-					<p><%= list[i]["content"] %></p>
+					<p><b><%= list[i]["member"]["name"] %>：</b> <%= list[i]["content"] %></p>
+					
 				</li>
 			<% } %>
 			</script>
 
-			<p>
-				<img src="images/muwu.jpg" data-preview-src="" data-preview-group="1" />
-			</p>
 			
-			<p>第三张图片，纯粹为了占位： </p>
-			<p>
-				<img src="images/shuijiao.jpg" data-preview-src="" data-preview-group="1" />
-			</p>
 		</div>
+		
+		<div class="mui-content-padded">
+			<p>
+				<img src="images/yuantiao.jpg" data-preview-src="" data-preview-group="1" />
+			</p>
+			<p>图片全屏后，双击或双指缩放均可对图片进行放大、缩小操作，左右滑动可查看同组(data-preview-group相同的图片为一组)其它图片，  </p>
+			<article class="htmleaf-container" style="text-align: right;">
+				<div id="container" style="position: relative;">
+					<div class="heart " id="like1" rel="like"></div> 
+					<div class="likeCount" id="likeCount1">14</div>  
+				</div>
+
+				
+					<div style=" text-align: right; margin-right: 10px;" id='promptBtn'><img src="images/ioc-01.png" style="width:20px;"></div>
+				
+			</article>
+			<ul id="comment-list"></ul>
+			<script id="comment-list-code" type="text/html">
+			<% for (var i in list) { %>
+				<li>
+					<p><b><%= list[i]["member"]["name"] %>：</b> <%= list[i]["content"] %></p>
+					
+				</li>
+			<% } %>
+			</script>
+
+			
+		</div>
+		
 	</div>
 
 	<script type="text/javascript" charset="utf-8">

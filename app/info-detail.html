@@ -160,6 +160,22 @@
 			max-width: 100%;
 			height: auto;
 		}
+		.mui-content-padded p{ margin-bottom:0px;}
+		#comment-list {
+			width:95%;
+			padding:5px 0px 5px 0px;
+			background-color:#fff ;
+			text-align: left;
+			
+			color:#666 ;
+			font-size:14px ;
+			margin:0px 0px ;
+			margin:0 auto;
+		}
+		#comment-list li {
+			border-bottom: 1px  solid #ebebed; list-style:none ; background-color: #f8f8f9; padding-left: 5px; height:28px;
+		}
+		#comment-list li p{color:#666;}
 	</style>
 
 	<script src="js/mui.min.js"></script>
@@ -176,14 +192,25 @@
 	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
 	    <div style="float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
 	</header>
-	<div class="mui-content">
+	<div class="mui-content" style="background:none ;">
 		<div class="mui-content-padded" id="detail-view"></div>
 		<script id="detail-view-code" type="text/html">
 			<p>
 				<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>" data-preview-src="" data-preview-group="1" />
 			</p>
 			<p><%=# detail["desp"] %></p>
+			
 		</script>
+		<div style=" text-align: right; margin-right: 10px;" id='promptBtn'><img src="images/ioc-01.png" style="width:20px;"></div>
+		<ul id="comment-list"></ul>
+			<script id="comment-list-code" type="text/html">
+			<% for (var i in list) { %>
+				<li>
+					<p><b><%= list[i]["member"]["name"] %>：</b> <%= list[i]["content"] %></p>
+					
+				</li>
+			<% } %>
+			</script>
 		</div>
 	</div>
 
@@ -272,6 +299,85 @@
 				});
 			});
 		}(mui, document));
+	</script>
+	<script type="text/javascript" charset="utf-8">
+		var member = myStorage.getItem("member");
+	
+		//mui初始化
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		
+		mui.plusReady(function() {
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/message.php",
+				dataType: "json",
+				data: {
+					action: "list",
+					where: {type: 4}
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						jQuery("#comment-list").html(template('comment-list-code', json));
+							
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {}
+			});
+		});
+
+		document.getElementById("promptBtn").addEventListener("tap", function(e) {
+			e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
+			mui.prompt('請輸入您的評語：', '', '', ['取消', '提交'], function(e) {
+				if (e.index == 1) {
+					mui.ajax({
+						type: "post",
+						url: domain + "saas/message.php",
+						dataType: "json",
+						data: {
+							action: "send",
+							id: member.id,
+							name: member.name,
+							content: e.value,
+							type: 4
+						},
+						async: true,
+						success: function(json) {
+							//alert(JSON.stringify(json))
+						},
+						error: function(xhr, type, errorThrown) {
+							//alert(JSON.stringify(xhr))
+						}
+					});
+					
+					jQuery("#comment-list").append("<li><p><b>" + member.name + "：</b></p><p>" + e.value + "</p></li>");
+				}
+			})
+		});
+
+		$(document).ready(function() {
+			$('body').on("click", '.heart', function() {
+				var A=$(this).attr("id");
+				var B=A.split("like");
+				var messageID=B[1];
+				var C=parseInt($("#likeCount"+messageID).html());
+				$(this).css("background-position","")
+				var D=$(this).attr("rel");
+			   
+				if(D === 'like') {      
+					$("#likeCount"+messageID).html(C+1);
+					$(this).addClass("heartAnimation").attr("rel","unlike");
+				} else {
+					$("#likeCount"+messageID).html(C-1);
+					$(this).removeClass("heartAnimation").attr("rel","like");
+					$(this).css("background-position","left");
+				}
+			});
+		});
 	</script>
 </body>
 </html>
