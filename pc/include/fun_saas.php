@@ -17,3 +17,18 @@ function callback($json) {
 	echo json_encode($json);
 	exit;
 }
+
+function checkMember($member) {
+	global $my_db;
+
+	$condition = array(
+        'name' => $member['name'],
+        'id' => intval($member['id']),
+    );
+
+    if ($my_db->fetchOne('member', $condition)) {
+    	return true;
+    } else {
+    	callback(array('error' => 6));
+    }
+}

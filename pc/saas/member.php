@@ -51,6 +51,8 @@ if ($_REQUEST['action'] == 'login') {
     }
 
 } else if ($_REQUEST['action'] == 'update') {
+    checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
+    
     $where = array(
         'name' => urldecode($_REQUEST['name']),
         'id' => $_REQUEST['id'],

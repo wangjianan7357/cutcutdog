@@ -213,6 +213,7 @@ return array(
 	 */
 	'info' => '
 		`id` INT( 6 ) NOT NULL AUTO_INCREMENT , 
+        `md` INT( 8 ) NOT NULL DEFAULT 0 , 
 		`cid` VARCHAR( 40 ) NOT NULL DEFAULT "" , 
 		`queue` INT( 7 ) NOT NULL DEFAULT 0 , 
 		`name` VARCHAR( 80 ) NOT NULL DEFAULT "" , 
