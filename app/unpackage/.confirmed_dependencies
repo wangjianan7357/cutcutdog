@@ -42,7 +42,8 @@
 			"image-list.html",
 			"setting.html",
 			"info-category.html",
-			"slider-table-default.html"
+			"slider-table-default.html",
+			"discuss-category.html"
 		],
 		"priority": 0
 	},
@@ -271,6 +272,24 @@
 			"js/mui.view.js",
 			"js/mui.zoom.js",
 			"js/mui.previewimage.js"
+		]
+	},
+	"discuss-category.html": {
+		"resources": [
+			"images/cbd.jpg",
+			"images/yuantiao.jpg",
+			"images/shuijiao.jpg",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"images/bg.png",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"js/basic.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png"
 		]
 	}
 }

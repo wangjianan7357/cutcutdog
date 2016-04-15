@@ -84,7 +84,6 @@ return array(
 		`aid` INT( 6 ) NOT NULL DEFAULT 0 COMMENT "目标内容ID" ,
 		`atype` INT( 3 ) NOT NULL DEFAULT 0 COMMENT "目标内容类型" ,
         `mid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "发送者ID" ,
-        `rid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "收获者ID" ,
         `tid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "回复对应ID" ,
 		`content` TEXT NOT NULL , 
 		`valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
@@ -213,7 +212,7 @@ return array(
 	 */
 	'info' => '
 		`id` INT( 6 ) NOT NULL AUTO_INCREMENT , 
-        `md` INT( 8 ) NOT NULL DEFAULT 0 , 
+        `mid` INT( 8 ) NOT NULL DEFAULT 0 , 
 		`cid` VARCHAR( 40 ) NOT NULL DEFAULT "" , 
 		`queue` INT( 7 ) NOT NULL DEFAULT 0 , 
 		`name` VARCHAR( 80 ) NOT NULL DEFAULT "" , 
