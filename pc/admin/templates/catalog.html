@@ -40,6 +40,8 @@
                             <label for="sbt_name">名稱</label>
                             <input type="text" class="form-control" name="sbt_name" id="sbt_name" placeholder="名稱" value="<?= $outcome['name']; ?>" required="required">
                         </div>
+
+                        <?php if ($_GET['type'] != 4 && $_GET['type'] != 5) { ?>
                         <div class="form-group">
                             <label for="sbt_parent">上級欄目</label>
                             <select class="form-control" name="sbt_parent" id="sbt_parent">
@@ -47,6 +49,7 @@
                                 <?=catalogOption($catalog_type, $outcome['parent'], $_GET['num']);?>
                             </select>
                         </div>
+                        <?php } ?>
 
                         <div class="form-group">
                             <input type="hidden" name="sbt_valid" value="0">

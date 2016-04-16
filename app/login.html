@@ -81,14 +81,14 @@
     <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登入</div>
 	</header>
 	<div class="mui-content">
-		<form id='login-form' class="mui-input-group">
+		<form id="login-form" class="mui-input-group">
 			<div class="mui-input-row">
 				<label>賬號</label>
-				<input id='account' type="text" class="mui-input-clear mui-input" placeholder="請輸入賬號">
+				<input id="account" type="text" class="mui-input-clear mui-input" placeholder="請輸入賬號">
 			</div>
 			<div class="mui-input-row">
 				<label>密碼</label>
-				<input id='password' type="password" class="mui-input-clear mui-input" placeholder="請輸入密碼">
+				<input id="password" type="password" class="mui-input-clear mui-input" placeholder="請輸入密碼">
 			</div>
 		</form>
 		<form class="mui-input-group">
@@ -102,11 +102,11 @@
 			</ul>
 		</form>
 		<div class="mui-content-padded">
-			<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登錄</button>
+			<button id="login" class="mui-btn mui-btn-block mui-btn-primary">登錄</button>
 			<div class="link-area">
 				<a id="register" href="register.html" data-action="openwindow">註冊賬號</a> 
 				<span class="spliter">|</span> 
-				<a id='forgetPassword' href="forget-password.html" data-action="openwindow">忘記密碼</a>
+				<a id="forgetPassword" href="forget-password.html" data-action="openwindow">忘記密碼</a>
 			</div>
 		</div>
 		<div class="mui-content-padded oauth-area"></div>
@@ -114,24 +114,24 @@
 	<script>
 		(function($, doc) {
 			$.init({
-				statusBarBackground: '#f7f7f7'
+				statusBarBackground: "#f7f7f7"
 			});
 			
 			$.plusReady(function() {
 				plus.screen.lockOrientation("portrait-primary");
 
 				var mainPage = $.preload({
-					"id": 'index',
-					"url": 'index.html'
+					"id": "index",
+					"url": "index.html"
 				});
 
 				var toMain = function() {
-					$.fire(mainPage, 'show', null);
+					$.fire(mainPage, "show", null);
 					setTimeout(function() {
 						$.openWindow({
-							id: 'index',
+							id: "index",
 							show: {
-								aniShow: 'pop-in'
+								aniShow: "pop-in"
 							},
 							waiting: {
 								autoShow: false
@@ -146,10 +146,10 @@
 
 				if (settings.autoLogin && state.token && settings.gestures) {
 					$.openWindow({
-						url: 'unlock.html',
-						id: 'unlock',
+						url: "unlock.html",
+						id: "unlock",
 						show: {
-							aniShow: 'pop-in'
+							aniShow: "pop-in"
 						},
 						waiting: {
 							autoShow: false
@@ -176,11 +176,11 @@
 				}, 600);
 				
 				//检查 "登录状态/锁屏状态" 结束
-				var loginButton = doc.getElementById('login');
-				var passwordBox = doc.getElementById('password');
+				var loginButton = doc.getElementById("login");
+				var passwordBox = doc.getElementById("password");
 				var autoLoginButton = doc.getElementById("autoLogin");
 				
-				loginButton.addEventListener('tap', function(event) {
+				loginButton.addEventListener("tap", function(event) {
 					$.ajax({
 						type: "post",
 						url: domain + "saas/member.php",
@@ -202,7 +202,7 @@
 					});
 				});
 				
-				autoLoginButton.addEventListener('toggle', function(event) {
+				autoLoginButton.addEventListener("toggle", function(event) {
 					setTimeout(function() {
 						var isActive = event.detail.isActive;
 						myStorage.setItem("autologin", isActive);
@@ -215,7 +215,7 @@
 					if (backButtonPress > 1) {
 						plus.runtime.quit();
 					} else {
-						plus.nativeUI.toast('再按一次退出應用');
+						plus.nativeUI.toast("再按一次退出應用");
 					}
 					setTimeout(function() {
 						backButtonPress = 0;

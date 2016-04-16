@@ -19,30 +19,35 @@ if ($_REQUEST['action'] == 'list') {
 } else if ($_REQUEST['action'] == 'insert') {
     checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
 
-    $where = array(
-        'name' => urldecode($_REQUEST['name']),
-        'id' => $_REQUEST['id'],
-    );
-
+    $filename = '';
     if ($_FILES['src']['tmp_name']) {
         preg_match('/(\.[\w]{3,4})$/', $_FILES['src']['name'], $match);
+        $filename = substr(time(), -8, 8) . rand(10, 99) . strtolower($match[1]);
+        $filepath = '../' . systemConfig('info_img_path') . $con_pic['pre']['info'] . $con_pic['suf']['mid'] . $filename;
 
-        $filename = '_pic_' . $_REQUEST['id'] . '_' . rand(0, 10) . $match[1];
-        if (file_exists('../' . systemConfig('member_img_path') . $con_pic['pre']['member'] . $filename)) {
-            unlink('../' . systemConfig('member_img_path') . $con_pic['pre']['member'] . $filename);
+        if (file_exists($filepath)) {
+            unlink($filepath);
         }
 
-        move_uploaded_file($_FILES['src']['tmp_name'], '../' . systemConfig('member_img_path') . $con_pic['pre']['member'] . $filename);
-
-        $member = $my_db->saveRow('member', array('src' => systemConfig('member_img_path') . $con_pic['pre']['member'] . $filename), $where);
+        move_uploaded_file($_FILES['src']['tmp_name'], $filepath);
     }
 
-    $member = $my_db->fetchOne('member', $where);
+    $chk_post = new ChkRequest('sbt_');
 
-    if (!empty($member)) {
-        callback(array('error' => 0, 'member' => $member));
+    $submit = array(
+        'src' => $filename,
+        'mid' => $_POST['id'],
+        'name' => $_POST['sbt_name'],
+        'desp' => $_POST['sbt_desp'],
+        'cid' => $_POST['sbt_cid'] . ',',
+        'valid' => 1,
+        'path' => $chk_post->traFromName('name', array('name' => 'info', 'field' => 'path'))
+    );
+
+    if ($my_db->saveRow('info', $submit)) {
+        callback(array('error' => 0));
     } else {
-        callback(array('error' => 5));
+        callback(array('error' => 4));
     }
 
 }

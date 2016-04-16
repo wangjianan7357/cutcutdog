@@ -111,6 +111,7 @@ $cms_cata_type = array(
 	1 => array('txt' => '圖片廣告', 'db' => 'info', 'ico' => 'fa-picture-o'), 
 	3 => array('txt' => '資料庫', 'db' => 'info', 'ico' => 'fa-briefcase'), 
 	4 => array('txt' => '討論區', 'db' => 'info', 'ico' => 'fa-quote-left'), 
+	5 => array('txt' => '圖片區', 'db' => 'info', 'ico' => 'fa-camera'), 
 	7 => array('txt' => '產品', 'db' => 'product', 'ico' => 'fa-shopping-cart')
 );
 

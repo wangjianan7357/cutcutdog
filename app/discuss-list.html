@@ -26,45 +26,33 @@
 <body>
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
+	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
+	    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
 	</header>
-	<div class="mui-content">
-		
+
+	<div class="mui-content" id="list-view"></div>
+	<script id="list-view-code" type="text/html">
 		<div class="title">
-			<strong>寵物生活討論區</strong> <span style="float: right;"><a href="discuss-list-nr.html" style="color: #565656;" data-action="webview">更多</a></span>
+			<strong><%= detail["name"] %></strong>
 		</div>
-		<ul class="mui-table-view mui-table-view-chevron">
-			<li class="mui-table-view-cell mui-media">
-				<a class="mui-navigate-right" href="discuss-list-nr.html" data-action="webview">
-					<img class="mui-media-object mui-pull-left" src="images/cbd.jpg">
-					<div class="mui-media-body">
-						CBD
-						<p class='mui-ellipsis'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
-					</div>
-				</a>
-			</li>
-			<li class="mui-table-view-cell mui-media">
-				<a class='mui-navigate-right' href="discuss-list-nr.html" data-action="webview">
-					<img class="mui-media-object mui-pull-left" src="images/yuantiao.jpg">
-					<div class="mui-media-body">
-						远眺
-						<p class='mui-ellipsis'>静静的看这个世界，最后终于疯了</p>
-					</div>
-				</a>
-			</li>
-			<li class="mui-table-view-cell mui-media">
-				<a class="mui-navigate-right" href="discuss-list-nr.html" data-action="webview">
-					<img class="mui-media-object mui-pull-left" src="images/shuijiao.jpg">
-					<div class="mui-media-body">
-						幸福
-						<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-					</div>
-				</a>
-			</li>
-		</ul>
 		
-	</div>
+		<ul class="mui-table-view mui-table-view-chevron">
+
+		<% for (var i in list) { %>
+			<li class="mui-table-view-cell mui-media">
+				<a class='mui-navigate-right' href="discuss-detail.html?url=<%= list[i]["path"] %>" data-action="webview">
+					<img class="mui-media-object mui-pull-left" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>">
+					<div class="mui-media-body">
+						<%= list[i]["name"] %>
+						<p class='mui-ellipsis'><%= list[i]["summary"] %></p>
+					</div>
+				</a>
+			</li>
+		<% } %>
+		
+		</ul>
+	</script>
+	
 	<script>
 		(function(mui, doc) {
 			mui.init({

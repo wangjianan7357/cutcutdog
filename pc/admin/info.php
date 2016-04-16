@@ -112,9 +112,7 @@ if($_GET['action'] == 'edt'){
 		$where .= ' OR `cid` LIKE "' . $result['id'] . ',%"';
 	}
 
-	if ($where) {
-		$where = '(' . $where . ')';
-	}
+	$where = '(' . $where . ')';
 
 	$q_url = queryPart('date', 'desc');
 

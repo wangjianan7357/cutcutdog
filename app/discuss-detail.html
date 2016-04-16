@@ -51,22 +51,25 @@
 	    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
 	</header>
 	<div class="mui-content" style="background: none;">
-		<div class="mui-content-padded">
+		<div class="mui-content-padded" id="detail-view"></div>
+		<script id="detail-view-code" type="text/html">
 			<p>
-				<img src="images/yuantiao.jpg" data-preview-src="" data-preview-group="1" />
+				<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>" data-preview-src="" data-preview-group="1" />
 			</p>
-			<p>图片全屏后，双击或双指缩放均可对图片进行放大、缩小操作，左右滑动可查看同组(data-preview-group相同的图片为一组)其它图片，  </p>
-			<article class="htmleaf-container" style="text-align: right;">
-				<div id="container" style="position: relative;">
-					<div class="heart " id="like1" rel="like"></div> 
-					<div class="likeCount" id="likeCount1">14</div>  
-				</div>
+			<p><%=# detail["desp"] %></p>
+			
+		</script>
+		
+		<article class="htmleaf-container" style="text-align: right;">
+			<div id="container" style="position: relative;">
+				<div class="heart " id="like1" rel="like"></div> 
+				<div class="likeCount" id="likeCount1">14</div>  
+			</div>
 
-				
-					<div style=" text-align: right; margin-right: 10px;" id='promptBtn'><img src="images/ioc-01.png" style="width:20px;"></div>
-				
-			</article>
-			<ul id="comment-list"></ul>
+			<div style=" text-align: right; margin-right: 10px;" id='promptBtn'><img src="images/ioc-01.png" style="width:20px;"></div>
+			
+		</article>
+		<ul id="comment-list"></ul>
 			<script id="comment-list-code" type="text/html">
 			<% for (var i in list) { %>
 				<li>

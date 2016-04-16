@@ -34,31 +34,25 @@
 		
 	<script id="list-view-code" type="text/html">
 	<% for (var i in list) { %>
-		<% if (!list[i]["parent"]) { %>
-			<div class="title">
-				<strong><%= list[i]["name"] %></strong> <span style="float: right;"><a href="discuss-list.html?url=<%= list[i]["path"] %>" style="color: #565656;" data-action="webview">更多</a></span>
-			</div>
-			
-			<ul class="mui-table-view mui-table-view-chevron">
+		<div class="title">
+			<strong><%= list[i]["name"] %></strong> <span style="float: right;"><a href="discuss-list.html?url=<%= list[i]["path"] %>" style="color: #565656;" data-action="webview">更多</a></span>
+		</div>
+		
+		<ul class="mui-table-view mui-table-view-chevron">
 
-			<% for (var j in list) { %>
-				<% if (list[j]["parent"] == list[i]["id"] + ",") { %>
-					<li class="mui-table-view-cell mui-media">
-						<a class='mui-navigate-right' href="discuss-list-nr.html" data-action="webview">
-							<img class="mui-media-object mui-pull-left" src="images/yuantiao.jpg">
-							<div class="mui-media-body">
-								远眺
-								<p class='mui-ellipsis'>静静的看这个世界，最后终于疯了</p>
-							</div>
-						</a>
-					</li>
-					
-					<li class="mui-table-view-cell mui-indexed-list-item"><a href="info-list.html?url=<%= list[j]["path"] %>" data-action="webview"><%= list[j]["name"] %></li>
-				<% } %>
-			<% } %>
-			
-			</ul>
+		<% for (var j in list[i]["list"]) { %>
+			<li class="mui-table-view-cell mui-media">
+				<a class='mui-navigate-right' href="discuss-detail.html?url=<%= list[i]["list"][j]["path"] %>" data-action="webview">
+					<img class="mui-media-object mui-pull-left" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["list"][j]["src"] %>">
+					<div class="mui-media-body">
+						<%= list[i]["list"][j]["name"] %>
+						<p class='mui-ellipsis'><%= list[i]["list"][j]["summary"] %></p>
+					</div>
+				</a>
+			</li>
 		<% } %>
+		
+		</ul>
 	<% } %>
 	</script>
 		

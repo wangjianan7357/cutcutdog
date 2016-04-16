@@ -129,11 +129,11 @@ function getUrlParam(name) {
     }
 }
 
-function uploadFile(filepath, success) {
+function uploadFileData(filepath, data, url, success) {
     //var datas = options.datas || [];
 
     if(filepath){  
-        var task = plus.uploader.createUpload(domain + "saas/member.php", {  
+        var task = plus.uploader.createUpload(domain + url, {  
                 method: "POST",  
                 blocksize: 204800,  
                 priority: 100  
@@ -159,8 +159,11 @@ function uploadFile(filepath, success) {
         var member = myStorage.getItem("member");
 		task.addData("id", member.id); 
         task.addData("name", member.name); 
-        task.addData("action", "update");  
-
+        
+        for (d in data) {
+        	task.addData(d, data[d]);  
+        }
+       
         task.start();  
     }  
 };  

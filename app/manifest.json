@@ -375,7 +375,8 @@
 					"images/user-photo.png"
 				],
 				"refer": [
-					"login.html"
+					"login.html",
+					"publish-discuss.html"
 				],
 				"priority": 0
 			},
@@ -459,9 +460,48 @@
 					"images/CatDog.png",
 					"css/mui.min.css",
 					"images/home.png",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"discuss-list.html"
 				],
 				"refer": [],
+				"priority": 0
+			},
+			"profile.html": {
+				"resources": [
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png",
+					"css/feedback-page.css",
+					"images/user-photo.png",
+					"js/basic.js",
+					"js/mui.view.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"publish-discuss.html": {
+				"resources": [
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png",
+					"css/feedback-page.css",
+					"js/basic.js",
+					"js/mui.view.js",
+					"js/template-native.js"
+				],
+				"refer": [
+					"profile.html"
+				],
 				"priority": 0
 			}
 		},
