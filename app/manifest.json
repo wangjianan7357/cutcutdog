@@ -316,7 +316,9 @@
 					"js/template-native.js",
 					"js/jquery.min.js",
 					"js/basic.js",
-					"images/bg.png"
+					"images/bg.png",
+					"discuss-detail.html",
+					"discuss-category.html"
 				],
 				"refer": [
 					"discuss-list-nr.html"
@@ -339,7 +341,8 @@
 					"images/CatDog.png",
 					"images/home.png",
 					"images/top_bg.png",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"images/ioc-01.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -376,7 +379,8 @@
 				],
 				"refer": [
 					"login.html",
-					"publish-discuss.html"
+					"publish-discuss.html",
+					"my-discuss.html"
 				],
 				"priority": 0
 			},
@@ -461,7 +465,8 @@
 					"css/mui.min.css",
 					"images/home.png",
 					"images/Petchat.png",
-					"discuss-list.html"
+					"discuss-list.html",
+					"discuss-detail.html"
 				],
 				"refer": [],
 				"priority": 0
@@ -502,6 +507,29 @@
 				"refer": [
 					"profile.html"
 				],
+				"priority": 0
+			},
+			"discuss-detail.html": {
+				"resources": [
+					"images/web_heart_animation.png",
+					"js/mui.zoom.js",
+					"css/dzcss.css",
+					"js/mui.previewimage.js",
+					"discuss-list.html",
+					"images/ioc-01.png",
+					"discuss-category.html",
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"fonts/mui.ttf",
+					"images/top_bg.png",
+					"js/basic.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/Petchat.png"
+				],
+				"refer": [],
 				"priority": 0
 			}
 		},

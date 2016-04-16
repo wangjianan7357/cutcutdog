@@ -3,14 +3,15 @@ require('../include/common.php');
 require('../include/fun_saas.php');
 
 if ($_REQUEST['action'] == 'send') {
-    if (!$my_db->existRow('member', array('name' => $_POST['name'], 'id' => $_POST['id']))) {
-        callback(array('error' => 6));
-    }
+    checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
 
     $submit = array(
         'content' => strip_tags(urldecode($_POST['content'])),
-        'type' => intval($_POST['type']),
-        'mid' => intval($_POST['id'])
+        'type' => 1,
+        'mid' => intval($_POST['id']),
+        'atype' => intval($_POST['atype']),
+        'aid' => intval($_POST['aid']),
+        'valid' => 1,
     );
 
     if ($my_db->saveRow('message', $submit)) {

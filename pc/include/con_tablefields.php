@@ -98,13 +98,13 @@ return array(
      */
     'likes' => '
         `id` INT( 8 ) NOT NULL AUTO_INCREMENT , 
+        `aid` INT( 6 ) NOT NULL DEFAULT 0 COMMENT "目标内容ID" ,
+        `atype` INT( 3 ) NOT NULL DEFAULT 0 COMMENT "目标内容类型" ,
         `mid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "发送者ID" ,
-        `rid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "收获者ID" ,
-        `content` TEXT NOT NULL , 
         `valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
         `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
         PRIMARY KEY ( `id` ) , 
-        KEY ( `mid` )',
+        KEY ( `aid` )',
 
     /** 
      * 验证

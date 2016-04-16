@@ -45,16 +45,6 @@
 										</a>
 									</li>
 									<li class="mui-table-view-cell">
-										<a>選擇類別
-											<select id="discuss-category"></select>
-											<script id="discuss-category-code" type="text/html">
-											<% for (var i in list) { %>
-												<option value="<%= list[i]["id"] %>"><%= list[i]["name"] %></option>
-											<% } %>
-											</script>
-										</a>
-									</li>
-									<li class="mui-table-view-cell">
 										<a>標題
 											<input value="" id="discuss_name">
 										</a>
@@ -156,8 +146,7 @@
 		uploadFileData(jQuery("#picture-path").val(), {
 				"action": "insert",
 				"sbt_name": jQuery("#discuss_name").val(),
-				"sbt_desp": jQuery("#discuss_desp").val(),
-				"sbt_cid": jQuery("#discuss-category").val()
+				"sbt_desp": jQuery("#discuss_desp").val()
 			}, 
 			"saas/info.php", 
 			function(res) {
