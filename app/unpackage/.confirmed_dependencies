@@ -31,7 +31,8 @@
 			"images/bg.png",
 			"images/CatDog.png",
 			"images/home.png",
-			"images/Petchat.png"
+			"images/Petchat.png",
+			"discuss-category.html"
 		],
 		"refer": [
 			"examples/imageviewer.html",
@@ -298,11 +299,13 @@
 			"images/home.png",
 			"images/Petchat.png",
 			"discuss-list.html",
-			"discuss-detail.html"
+			"discuss-detail.html",
+			"index.html"
 		],
 		"refer": [
 			"discuss-list.html",
-			"discuss-detail.html"
+			"discuss-detail.html",
+			"index.html"
 		]
 	},
 	"profile.html": {

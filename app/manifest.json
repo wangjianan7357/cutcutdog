@@ -217,7 +217,8 @@
 					"images/bg.png",
 					"images/CatDog.png",
 					"images/home.png",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"discuss-category.html"
 				],
 				"refer": [
 					"examples/imageviewer.html",
@@ -226,8 +227,7 @@
 					"image-list.html",
 					"setting.html",
 					"info-category.html",
-					"slider-table-default.html",
-					"discuss-category.html"
+					"slider-table-default.html"
 				],
 				"priority": 0
 			},
@@ -466,7 +466,8 @@
 					"images/home.png",
 					"images/Petchat.png",
 					"discuss-list.html",
-					"discuss-detail.html"
+					"discuss-detail.html",
+					"index.html"
 				],
 				"refer": [],
 				"priority": 0

@@ -62,8 +62,8 @@
 				swipeBack:true //启用右滑关闭功能
 			});
 
-			mui.plusReady(function() {
-				mui.ajax({
+			mui.plusReady(function() {	
+				ajaxCache({
 					type: "post",
 					url: domain + "saas/catalog.php",
 					dataType: "json",
@@ -82,6 +82,7 @@
 					},
 					error: function(xhr, type, errorThrown) {}
 				});
+
 			});
 		}(mui, document));
 	</script>

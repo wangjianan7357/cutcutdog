@@ -183,12 +183,12 @@ function uploadFileData(filepath, data, url, success) {
         return jsonStr ? JSON.parse(jsonStr).data : null;
     };
 
-    myStorage.getItem = function(key, plus) {
+    myStorage.getItem = function(key, useplus) {
         first = new Date().getTime();
         return getItem(key) || getItemPlus(key);
     };
 
-    myStorage.setItem = function(key, value, plus) {
+    myStorage.setItem = function(key, value, useplus) {
         first = new Date().getTime();
         value = JSON.stringify({
             data: value
@@ -343,40 +343,43 @@ function uploadFileData(filepath, data, url, success) {
 }(mui, common = {}));
 
 
-function ajaxCache(params) {
-    var mark = {};
+function ajaxCache(params, refresh) {
+	var mark = {};
     mark.url = params.url;
     mark.data = params.data;
-
+				
     var identify = MD5(JSON.stringify(mark));
-    var cache = myStorage.getItem(identify, true);
-
-    if (!cache) {
-        if (params.success) {
-            var fun = params.success;
-            params.success = function(json) {
-                if(!json.error) {
-                    myStorage.setItem(identify, json, true);
-                }
-
-                fun(json);
-            };
-
-        } else {
-            params.success = function(json) {
-                if(!json.error) {
-                    myStorage.setItem(identify, json, true);
-                }
-            };
-        }
-
-        mui.ajax(params);
-
-    } else {
-        if (params.success) {
-            params.success(cache);
-        }
-    }
+	    
+    try {
+	    var cache = myStorage.getItem(identify, true);
+	
+	    if (!cache || refresh) {
+	        if (params.success) {
+	            var fun = params.success;
+	            params.success = function(json) {
+	                if(!json.error) {
+	                    myStorage.setItem(identify, json, true);
+	                }
+	
+	                fun(json);
+	            };
+	
+	        } else {
+	            params.success = function(json) {
+	                if(!json.error) {
+	                    myStorage.setItem(identify, json, true);
+	                }
+	            };
+	        }
+	
+	        mui.ajax(params);
+	
+	    } else {
+	        if (params.success) {
+	            params.success(cache);
+	        }
+	    }
+	} catch(e){}
 }
 
 
