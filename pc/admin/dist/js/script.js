@@ -55,6 +55,18 @@ function selectImg(file, img_w, img_h){
     file.form.action = tmp;
 }
 
+function deleteSth(){
+    if(confirm("确定要删除吗？")){
+        var getform = document.getElementsByTagName("form")[0];
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "del");
+        hiddenField.setAttribute("value", "true");
+        getform.appendChild(hiddenField);
+        getform.submit();
+    }
+}
+
 function encryptPass(){
     if($("#org_pass").val()){
         var md5 = new MD5();

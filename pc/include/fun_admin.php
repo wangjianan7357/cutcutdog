@@ -307,19 +307,6 @@ function tableFields($fields = array(), $table = array()){
 	return $code;
 }
 
-/*
- * 生成操作项目
- * $table['name', 'where']
- * 数据库名称和条件
- * $operate['power' => 'catalog', 'new' => 1, 'del' => 3, 'search' => 'name|名称,path|路径,queue|序列号', 'save' => true, 'lang' => true]
- * 操作项：权限名，新增(权限)，删除(权限)，搜索(字段|说明)，保存(保存按钮)，语言(显示参照语言)
- * $selpage['type' => $cms_cata_type]
- * 切换页面(设置搜索条件)
- */
-function setOperate($table = array(), $operate = array(), $selpage = array()){
-
-}
-
 /* 
  * 查询管理所属的无权限数据ID
  */
@@ -507,7 +494,7 @@ function delSelectedData($table, $power=array(), $src = ''){
 		mysql_query("END");
 
 		for($i = 0; $i < count($imgarr); $i++){
-			if ($table == 'products' || $table == 'info') {
+			if ($table == 'product' || $table == 'info') {
 				$big_img = $src . $con_pic['suf']['big'] . $imgarr[$i];
 				$mid_img = $src . $con_pic['suf']['mid'] . $imgarr[$i];
 				$sml_img = $src . $con_pic['suf']['sml'] . $imgarr[$i];
@@ -527,6 +514,8 @@ function delSelectedData($table, $power=array(), $src = ''){
 		} else {
 			$msg[0] = '刪除成功';
 		}
+
+		$msg[1] = 'success';
 		//instructLog($cms_admin_power[$power['name']][$power['id']], 'del');
 	}
 	else {
