@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--标准mui.css-->
+	<link rel="stylesheet" href="css/mui.min.css">
+	<style>
+		.title {
+			padding: 20px 15px 10px;
+			color: #333;
+			font-size: 18px;
+			background-color:#fff ;
+			
+		}
+		.top_bg{ height:30px; background-color: #a669c0;opacity:0.5;}
+	</style>
+	<script src="js/mui.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+    <script src="js/basic.js"></script>
+</head>
+
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
+	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
+	    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
+	</header>
+	
+	<div class="mui-content" >
+		<div class="top_bg"></div>
+	 <div style=" padding-left: 3%; padding-right:3%;">	
+	  <div class="pl-cs">
+	  	<a href="discuss-category.html" data-action="openwindow">
+	  	<div class="pl-cs-left"><img src="images/tu_02.jpg"></div>
+	  	<div class="pl-cs-zi">寵物吹水谷</div>
+	  	</a>
+	  </div>
+	  
+	  <div class="pl-cs">
+	  	<div class="pl-cs-left-two"><img src="images/tu_03.jpg"></div>
+	  	<div class="pl-cs-zi">寵物食物谷</div>
+	  </div>
+	  
+	   <div class="pl-cs">
+	  	<div class="pl-cs-left-two" style=" background-color:#94d9f8 ;"><img src="images/tu_04.jpg"></div>
+	  	<div class="pl-cs-zi">寵物健康谷</div>
+	  </div>
+	  
+	  <div class="pl-cs">
+	  	<div class="pl-cs-left-two" style=" background-color:#c376b1 ;"><img src="images/tu_05.jpg"></div>
+	  	<div class="pl-cs-zi">寵物美容谷</div>
+	  </div>
+	  
+	  <div class="pl-cs">
+	  	<div class="pl-cs-left-two" style=" background-color:#bddc93 ;"><img src="images/tu_06.jpg"></div>
+	  	<div class="pl-cs-zi">寵物關係谷</div>
+	  </div>
+	  
+	  <div class="pl-cs">
+	  	<div class="pl-cs-left-two" style=" background-color:#ffd386 ;"><img src="images/tu_07.jpg"></div>
+	  	<div class="pl-cs-zi">愛心領養谷</div>
+	  </div>
+	 <div style="height:5px ;"></div>	
+	</div>
+	</div>
+	<!--	
+	<script id="list-view-code" type="text/html">
+	<% for (var i in list) { %>
+		<div class="title">
+			<strong><%= list[i]["name"] %></strong> <span style="float: right;"><a href="discuss-list.html?url=<%= list[i]["path"] %>" style="color: #565656;" data-action="webview">更多</a></span>
+		</div>
+		
+		<ul class="mui-table-view mui-table-view-chevron">
+
+		<% for (var j in list[i]["list"]) { %>
+			<li class="mui-table-view-cell mui-media">
+				<a class='mui-navigate-right' href="discuss-detail.html?url=<%= list[i]["list"][j]["path"] %>" data-action="webview">
+					<img class="mui-media-object mui-pull-left" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["list"][j]["src"] %>">
+					<div class="mui-media-body">
+						<%= list[i]["list"][j]["name"] %>
+						<p class='mui-ellipsis'><%= list[i]["list"][j]["summary"] %></p>
+					</div>
+				</a>
+			</li>
+		<% } %>
+		
+		</ul>
+	<% } %>
+	</script>
+		
+	<script>
+		(function(mui, doc) {
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+
+			mui.plusReady(function() {	
+				ajaxCache({
+					type: "post",
+					url: domain + "saas/catalog.php",
+					dataType: "json",
+					data: {
+						action: "list",
+						where: {type: 4}
+					},
+					async: true,
+					success: function(json) {
+						if(!json.error) {
+							jQuery("#list-view").html(template('list-view-code', json));
+							
+						} else {
+							plus.nativeUI.toast(json.message);
+						}
+					},
+					error: function(xhr, type, errorThrown) {}
+				});
+
+			});
+		}(mui, document));
+	</script>
+	-->
+</body>
+</html>

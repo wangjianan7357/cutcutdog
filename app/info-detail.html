@@ -7,23 +7,9 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<!--标准mui.css-->
 	<link rel="stylesheet" href="css/mui.min.css">
-	<link rel="stylesheet" href="css/dzcss.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css"/>
 	<!--App自定义的css-->
-	<style type="text/css">
-		#comment-list {
-			padding:10px 0px 10px 5px;;
-			background-color:#fff ;
-			text-align: left;
-			
-			color:#666 ;
-			font-size:14px ;
-			margin:0px 0px ;
-		}
-		#comment-list li {
-			border-bottom: 1px  solid #ebebed; list-style:none ; background-color: #f8f8f9; padding-left: 5px;height:28px;
-		}
-		#comment-list li p{color:#666 ;}
-	</style>
+	
 	<script src="js/mui.min.js"></script>
 	<script src="js/mui.zoom.js"></script>
 	<script src="js/mui.previewimage.js"></script>
@@ -38,139 +24,22 @@
 	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
 	    <div style="float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
 	</header>
-	<div class="mui-content" style="background: none;">
-		<div class="mui-content-padded" id="detail-view"></div>
-		<script id="detail-view-code" type="text/html">
-			<p>
-				<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>" data-preview-src="" data-preview-group="1" />
-			</p>
-			<p><%=# detail["desp"] %></p>
-			<input type="hidden" id="aid" value="<%= detail["id"] %>">
-
-			<article class="htmleaf-container" style="text-align: right;">
-				<div id="container" style="position: relative;">
-					<div class="heart" id="likes" rel="like"></div> 
-					<div class="likesCount" id="likesCount"><%= detail["likes"] %></div>  
-				</div>
-
-				<div style="text-align: right; margin-right: 10px;" id="promptBtn"><img src="images/ioc-01.png" style="width:20px;"></div>
-			</article>
-
-			<ul id="comment-list">
-			<% for (var i in detail["comments"]) { %>
-				<li>
-					<p><b><%= detail["comments"][i]["member"]["name"] %>：</b> <%= detail["comments"][i]["content"] %></p>
-				</li>
-			<% } %>
-			</ul>
-		</script>
+	<div class="mui-content">
+		<div><img src="images/cbd.jpg"></div>
+		<div class="z-hao">110</div>
+		<div class="li-bg-two fl-mar">
+				<div>
+				<div class="za-zi">Petline</div>
+				<div class="dz-add" style=" margin-top:15px ;">長沙灣青山道383號地鋪</div>
+				<div class="mui-tal" style=" margin-top:15px ;">2666 6666</div>
+			</div>
+		</div>
+	
+   <div style=" text-align: center;">
+   	 <div class="zh-good">讚好</div><div class="zh-good" style=" margin-left:10px ;">評論</div><div class="zh-good" style=" margin-left:10px ;">分享</div>
+   	
+   </div>	
 	</div>
-
-	<script type="text/javascript" charset="utf-8">
-		var cata_type = 3;
-		var member = myStorage.getItem("member");
-	
-		//mui初始化
-		mui.init({
-			swipeBack: true //启用右滑关闭功能
-		});
 		
-		mui.plusReady(function() {
-			mui.ajax({
-				type: "post",
-				url: domain + "saas/info.php",
-				dataType: "json",
-				data: {
-					action: "detail",
-					where: {type: cata_type, path: getUrlParam("url")}
-				},
-				async: true,
-				success: function(json) {
-					if(!json.error) {
-						jQuery("#detail-view").html(template("detail-view-code", json));
-						initComment();
-							
-					} else {
-						plus.nativeUI.toast(json.message);
-					}
-				},
-				error: function(xhr, type, errorThrown) {}
-			});
-		});
-
-		function initComment() {
-			document.getElementById("promptBtn").addEventListener("tap", function(e) {
-				e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
-	
-				mui.prompt("請輸入您的評語：", "", "", ["取消", "提交"], function(e) {
-					if (e.index == 1) {
-						mui.ajax({
-							type: "post",
-							url: domain + "saas/message.php",
-							dataType: "json",
-							data: {
-								action: "send",
-								id: member.id,
-								name: member.name,
-								content: e.value,
-								atype: cata_type,
-								aid: jQuery("#aid").val()
-							},
-							async: true,
-							success: function(json) {
-								//alert(JSON.stringify(json))
-							},
-							error: function(xhr, type, errorThrown) {
-								//alert(JSON.stringify(xhr))
-							}
-						});
-						
-						jQuery("#comment-list").prepend("<li><p><b>" + member.name + "：</b>" + e.value + "</p></li>");
-					}
-				})
-			});
-			
-			var setLikes = function(action) {
-				mui.ajax({
-					type: "post",
-					url: domain + "saas/likes.php",
-					dataType: "json",
-					data: {
-						action: action,
-						id: member.id,
-						name: member.name,
-						atype: cata_type,
-						aid: jQuery("#aid").val()
-					},
-					async: true,
-					success: function(json) {
-						//alert(JSON.stringify(json))
-					},
-					error: function(xhr, type, errorThrown) {
-						//alert(JSON.stringify(xhr))
-					}
-				});
-			};
-	
-			$("body").on("click", ".heart", function() {
-				var count = parseInt($("#likesCount").html());
-				$(this).css("background-position", "");
-				
-				var rel = $(this).attr("rel");
-			   
-				if(rel == 'like') {      
-					setLikes("insert");
-					$("#likesCount").html(count + 1);
-					$(this).addClass("heartAnimation").attr("rel", "unlike");
-				} else {
-					setLikes("delete");
-					$("#likesCount").html(count - 1);
-					$(this).removeClass("heartAnimation").attr("rel", "like");
-					$(this).css("background-position", "left");
-				}
-			});
-		}
-	</script>
-
 </body>
 </html>

@@ -6,11 +6,39 @@
 	<title></title>
 	<link href="css/mui.min.css" rel="stylesheet" />
 	<link href="css/mui.indexedlist.css" rel="stylesheet" />
+	<link href="css/mui.picker.css" rel="stylesheet" />
+	<link href="css/mui.poppicker.css" rel="stylesheet" />
 	<style>
 		.mui-bar {
 			-webkit-box-shadow: none;
 			box-shadow: none;
 		}
+		.title {
+			padding: 20px 15px 10px;
+			color: #4f4d4e;
+			font-size: 20px;
+			margin-top: 20px;
+			
+		}
+		.top_bg{ height:30px; background-color: #a669c0;opacity:0.5;}
+		.mui-btn {
+				font-size: 16px;
+				padding: 8px;
+				margin: 3px;
+				   
+			}
+			h5.mui-content-padded {
+				margin-left: 3px;
+				margin-top: 20px !important;
+			}
+			h5.mui-content-padded:first-child {
+				margin-top: 12px !important;
+			}
+			.ui-alert {
+				text-align: center;
+				padding: 20px 10px;
+				font-size: 16px;
+			}
 	</style>
 	<script src="js/mui.min.js"></script>
     <script src="js/jquery.min.js"></script>
@@ -25,6 +53,26 @@
     <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
 	</header>
 	<div class="mui-content">
+		<div class="top_bg"></div>
+		<div class="title">
+			<div style=" float: left; line-height: 50px; margin-right: 10px;"><strong>店鋪名稱</strong></div>
+			<div><input type="text" placeholder="普通输入框" style="width:68%;"></div>
+		</div>
+		
+				
+				<div style="width:100%; padding-left: 4%;" id='showCityPicker'>
+				<button  class="mui-btn mui-btn-block" type='button'><span>地區</span></button><div class="butt_right" ><img src="images/Info_button-02.png"></div>
+				</div>
+				
+				<div style="width:100%; padding-left: 4%; margin-top:20px ;" id='showCityPicker'>
+				<button  class="mui-btn mui-btn-block" type='button'><span>服務範圍</span></button><div class="butt_right" ><img src="images/Info_button-02.png"></div>
+				</div>
+				<div style="width:100%; text-align:center;margin-top:20px ;" id='showCityPicker'>
+				 <a href="info-list.html" data-action="webview"><div class="soso">搜尋</div></a>
+				</div>
+				<div id='cityResult' class="ui-alert"></div>
+<!--				
+				
 		<div id='list' class="mui-indexed-list">
 			<div class="mui-indexed-list-search mui-input-row mui-search">
 				<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索商店">
@@ -48,7 +96,41 @@
 				</script>
 			</div>
 		</div>
+		
+		
 	</div>
+	-->
+	<script src="js/mui.picker.js"></script>
+		<script src="js/mui.poppicker.js"></script>
+		<script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script>
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+					
+					
+					//级联示例
+					var cityPicker = new $.PopPicker({
+						layer: 2
+					});
+					cityPicker.setData(cityData);
+					var showCityPickerButton = doc.getElementById('showCityPicker');
+					var cityResult = doc.getElementById('cityResult');
+					showCityPickerButton.addEventListener('tap', function(event) {
+						cityPicker.show(function(items) {
+							cityResult.innerText = "" + items[0].text + " " + items[1].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					//-----------------------------------------
+					
+				});
+			})(mui, document);
+		</script>
+		
+	
 	<script type="text/javascript" charset="utf-8">
 		(function($, doc) {
 			$.init();
@@ -77,5 +159,6 @@
 			});
 		}(mui, document));
 	</script>
+	
 </body>
 </html>

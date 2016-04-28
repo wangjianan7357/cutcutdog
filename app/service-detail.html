@@ -1,0 +1,181 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hello MUI</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--标准mui.css-->
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" href="css/dzcss.css">
+	<link rel="stylesheet" type="text/css" href="../css/app.css" />
+	<!--App自定义的css-->
+	<style type="text/css">
+		.active {
+		    width: 40px;
+		    height: 40px;
+		    display: inline-block;
+		    text-align: center;
+		    background-color: #fff;
+		    border: 1px solid #e1e1e3;
+		    border-radius: 25px;
+		    background-clip: padding-box;
+		}
+		.active span{line-height: 40px;}
+		#comment-list {
+			padding:10px 0px 10px 5px;;
+			background-color:#fff ;
+			text-align: left;
+			
+			color:#666 ;
+			font-size:14px ;
+			margin:0px 0px ;
+		}
+		#comment-list li {
+			border-bottom: 1px  solid #ebebed; list-style:none ; background-color: #f8f8f9; padding-left: 5px;height:28px;
+		}
+		#comment-list li p{color:#666 ;}
+		.top_bg{ height:30px; background-color: #a669c0;opacity:0.5;}
+	</style>
+	<script src="js/mui.min.js"></script>
+	<script src="js/mui.zoom.js"></script>
+	<script src="js/mui.previewimage.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+    <script src="js/basic.js"></script>
+
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
+	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
+	    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
+	</header>
+	<div class="mui-content bg-two">
+		<div class="top_bg"></div>
+		
+		<div class="mui-content-padded" style=" margin:0px ; padding:10px ;">
+			<p>
+				<img src="images/shuijiao.jpg" data-preview-src="" data-preview-group="1" />
+			</p>
+			<div class="serv-my-zi mar">美容師名：阿賢</div>
+			<div class="serv-my-zi mar">年資：10年</div>
+			<div class="serv-my-zi">
+				<span>服務範圍：</span><img src="images/service-button-01.png"><img src="images/service-button-02.png"><img src="images/service-button-03.png">	
+				
+			</div>
+			<div class="serv-my-zi">查詢電話：2888 9909 <a href="service-detail-nr.html" data-action="openwindow"><span class="serv-ljyy">立即預約</span></a></div>
+			
+	</div>	
+	</div>
+			
+		<!--	
+			<article class="htmleaf-container" style="text-align: right;">
+				<div id="container" style="position: relative;">
+					<div class="heart " id="like1" rel="like"></div> 
+					<div class="likeCount" id="likeCount1">14</div>  
+				</div>
+
+				
+					<div style=" text-align: right; margin-right: 10px;" id='promptBtn'><img src="images/ioc-01.png" style="width:20px;"></div>
+				
+			</article>
+			<ul id="comment-list"></ul>
+			<script id="comment-list-code" type="text/html">
+			<% for (var i in list) { %>
+				<li>
+					<p><b><%= list[i]["member"]["name"] %>：</b> <%= list[i]["content"] %></p>
+					
+				</li>
+			<% } %>
+			</script>
+
+			
+		</div>
+		
+		
+		-->
+	
+
+	<script type="text/javascript" charset="utf-8">
+		var member = myStorage.getItem("member");
+	
+		//mui初始化
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		
+		mui.plusReady(function() {
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/message.php",
+				dataType: "json",
+				data: {
+					action: "list",
+					where: {type: 4}
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						jQuery("#comment-list").html(template('comment-list-code', json));
+							
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {}
+			});
+		});
+
+		document.getElementById("promptBtn").addEventListener("tap", function(e) {
+			e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
+			mui.prompt('請輸入您的評語：', '', '', ['取消', '提交'], function(e) {
+				if (e.index == 1) {
+					mui.ajax({
+						type: "post",
+						url: domain + "saas/message.php",
+						dataType: "json",
+						data: {
+							action: "send",
+							id: member.id,
+							name: member.name,
+							content: e.value,
+							type: 4
+						},
+						async: true,
+						success: function(json) {
+							//alert(JSON.stringify(json))
+						},
+						error: function(xhr, type, errorThrown) {
+							//alert(JSON.stringify(xhr))
+						}
+					});
+					
+					jQuery("#comment-list").append("<li><p><b>" + member.name + "：</b></p><p>" + e.value + "</p></li>");
+				}
+			})
+		});
+
+		$(document).ready(function() {
+			$('body').on("click", '.heart', function() {
+				var A=$(this).attr("id");
+				var B=A.split("like");
+				var messageID=B[1];
+				var C=parseInt($("#likeCount"+messageID).html());
+				$(this).css("background-position","")
+				var D=$(this).attr("rel");
+			   
+				if(D === 'like') {      
+					$("#likeCount"+messageID).html(C+1);
+					$(this).addClass("heartAnimation").attr("rel","unlike");
+				} else {
+					$("#likeCount"+messageID).html(C-1);
+					$(this).removeClass("heartAnimation").attr("rel","like");
+					$(this).css("background-position","left");
+				}
+			});
+		});
+	</script>
+
+</body>
+</html>
