@@ -204,8 +204,8 @@ if($err){
 						<i class="fa fa-angle-left pull-right"></i>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="<?= $value['db']; ?>.php?type=<?= $key; ?>&action=lst"><i class="fa fa-circle-o"></i> <?= $value['txt']; ?>列表</a></li>
-						<li><a href="<?= $value['db']; ?>.php?type=<?= $key; ?>&action=edt"><i class="fa fa-circle-o"></i> 添加<?= $value['txt']; ?></a></li>
+						<li><a href="<?= $value['db']; ?>.php?action=lst&type=<?= $key; ?>"><i class="fa fa-circle-o"></i> <?= $value['txt']; ?>列表</a></li>
+						<li><a href="<?= $value['db']; ?>.php?action=edt&type=<?= $key; ?>"><i class="fa fa-circle-o"></i> 添加<?= $value['txt']; ?></a></li>
 					</ul>
 				</li>
 				<?php } ?>

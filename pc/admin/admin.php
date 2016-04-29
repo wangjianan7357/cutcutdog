@@ -77,7 +77,6 @@ if($_GET['action'] == "edt"){
 		$role_all[$result['id']] = $result['name'];
 	}
 
-	require('templates/head.html');
 	$q_url = queryPart('name');
 
 	$where = '`rid` != 1';
@@ -86,7 +85,6 @@ if($_GET['action'] == "edt"){
 		array(
 			array('__all', 'edit'),
 			'id' => 'ID', 
-            'cid' => array('院系', 'read', array($department)),
 			'name' => '账号',
 			'realname' => array('姓名', 'text'), 
 			'rid' => array('角色', 'read', array($role_all)), 
@@ -95,7 +93,6 @@ if($_GET['action'] == "edt"){
 		array(
 			'where' => $where,
 			'table' => 'admin',
-			'operate' => array('edt', 'delete')
 		)
 	);
 
@@ -106,8 +103,6 @@ if($_GET['action'] == "edt"){
 	if(isset($_POST['sbt_oldpwd'])){
 		$chk_post = new ChkRequest('sbt_');
 		$chk_post->chkPassword(array('newpwd' => '新密码'), array('conpwd' => '确认密码'));
-
-		$result = '';
 
 		$result = $my_db->fetchOne('admin', array('id' => $_SESSION['admin_id'], 'pass' => md5($_POST['sbt_oldpwd'])));
 

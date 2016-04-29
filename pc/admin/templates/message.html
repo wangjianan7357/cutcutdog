@@ -73,18 +73,20 @@
 
                 <?php } else { ?>
             
-                <div class="box-header with-border">
-                    <h3 class="box-title"><?=$cms_msg_type[$_GET['type']];?>列表</h3>
+                <form action="<?=$_SERVER['PHP_SELF'] . '?action=edt&flag=' . $_GET['flag'] . $q_url['24567'];?>" method="post">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><?=$cms_msg_type[$_GET['type']];?>列表</h3>
 
-                    <div class="box-tools">
-                        <a href="javascript:void(0);" onclick="deleteSth()" class="btn btn-danger">删 &nbsp;&nbsp; 除</a>
-                        <?php /* $this->render('../layouts/search', array('central' => $central)); */ ?>  
-                    </div>
-                </div><!-- /.box-header -->
+                        <div class="box-tools">
+                            <a href="javascript:void(0);" onclick="deleteSth()" class="btn btn-danger">删 &nbsp;&nbsp; 除</a>
+                            <?php /* $this->render('../layouts/search', array('central' => $central)); */ ?>  
+                        </div>
+                    </div><!-- /.box-header -->
 
-                <div class="box-body">
-                    <?= $code_table; ?>
-                </div><!-- /.box-body -->
+                    <div class="box-body">
+                        <?= $code_table; ?>
+                    </div><!-- /.box-body -->
+                </form>
 
                 <?php } ?>
 

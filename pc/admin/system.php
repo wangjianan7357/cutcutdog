@@ -17,21 +17,18 @@ if($_GET['action'] == 'set'){
 				continue;
 			}
 			else if($result['type'] == 'boolean'){
-				$value = $_POST['system_' . $result['varname']] == 'on' ? 'true' : 'false';
+				$value = $_POST['sbt_' . $result['varname']] == 'on' ? 'true' : 'false';
 			}
 			else if($result['type'] == 'integer'){
 				if($value < 0) warning($result['info'] . '不得小于 0');
-				else $value = (int)$_POST['system_' . $result['varname']];
+				else $value = (int)$_POST['sbt_' . $result['varname']];
 			}
 			else if($result['type'] == 'array'){
-				$value = preg_replace('/^[^\[]*\[/', $_POST['system_' . $result['varname']] . '[', $result['value']);
+				$value = preg_replace('/^[^\[]*\[/', $_POST['sbt_' . $result['varname']] . '[', $result['value']);
 			}
-			else $value = $_POST['system_' . $result['varname']];
+			else $value = $_POST['sbt_' . $result['varname']];
 
 			switch($result['varname']){
-				case 'pr_img_sml_size':
-					if($value < 50) warning($result['info'] . '须大于 50');
-				break;
 				case 'receive_email':
 					$email_arr = explode(';', $value);
 					foreach ($email_arr as $email) {

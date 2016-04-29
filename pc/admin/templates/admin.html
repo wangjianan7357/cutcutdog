@@ -46,13 +46,13 @@
 
                         <div class="form-group">
                             <label for="sbt_realname">真實姓名</label>
-                            <input type="text" class="form-control" name="sbt_realname" id="sbt_realname" placeholder="真實姓名" value="<?= $outcome['realname']; ?>">
+                            <input type="text" class="form-control" name="sbt_realname" id="sbt_realname" placeholder="真實姓名" value="<?= $outcome['realname']; ?>" required="required">
                         </div>
 
                         <div class="form-group">
                             <label for="sbt_rid">用户角色</label>
 
-                            <select class="form-control" name="sbt_rid" id="sbt_rid">
+                            <select class="form-control" name="sbt_rid" id="sbt_rid" required="required">
                                 <option value="">-- 請選擇 --</option>
                                 <?=$opt_role;?>
                             </select>
@@ -66,20 +66,22 @@
                 </form>
 
                 <?php } else { ?>
-            
-                <div class="box-header with-border">
-                    <h3 class="box-title">管理員列表</h3>
+                
+                <form action="<?=$_SERVER['PHP_SELF'] . '?action=edt&flag=' . $_GET['flag'] . $q_url['24567'];?>" method="post">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">管理員列表</h3>
 
-                    <div class="box-tools">
-                        <a href="<?= $_SERVER['PHP_SELF']; ?>?action=edt<?=$q_url[7];?>" class="btn btn-success">新 &nbsp;&nbsp; 增</a> &nbsp;
-                        <a href="javascript:void(0);" onclick="deleteSth()" class="btn btn-danger">删 &nbsp;&nbsp; 除</a>
-                        <?php /* $this->render('../layouts/search', array('central' => $central)); */ ?>  
-                    </div>
-                </div><!-- /.box-header -->
+                        <div class="box-tools">
+                            <a href="<?= $_SERVER['PHP_SELF']; ?>?action=edt<?=$q_url[7];?>" class="btn btn-success">新 &nbsp;&nbsp; 增</a> &nbsp;
+                            <a href="javascript:void(0);" onclick="deleteSth()" class="btn btn-danger">删 &nbsp;&nbsp; 除</a>
+                            <?php /* $this->render('../layouts/search', array('central' => $central)); */ ?>  
+                        </div>
+                    </div><!-- /.box-header -->
 
-                <div class="box-body">
-                    <?= $code_table; ?>
-                </div><!-- /.box-body -->
+                    <div class="box-body">
+                        <?= $code_table; ?>
+                    </div><!-- /.box-body -->
+                </form>
 
                 <?php } ?>
 
