@@ -52,6 +52,11 @@
                         <?php } ?>
 
                         <div class="form-group">
+                            <label for="sbt_path">路徑</label>
+                            <input type="text" class="form-control" name="sbt_path" id="sbt_path" placeholder="路徑" readonly="readonly" value="<?= $outcome['path']; ?>">
+                        </div>
+
+                        <div class="form-group">
                             <input type="hidden" name="sbt_valid" value="0">
                             <input type="checkbox" name="sbt_valid" value="1" <?= $outcome['valid'] == 1 ? 'checked="checked"' : ''; ?> data-on="success" data-off="warning" data-on-color="success" data-on-text="有效" data-off-text="无效" data-action="bootstrap-switch">
                         </div>

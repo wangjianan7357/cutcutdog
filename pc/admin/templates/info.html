@@ -55,6 +55,10 @@
                                 <?=catalogOption($catalog_type, $outcome['cid']);?>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="sbt_path">路徑</label>
+                            <input type="text" class="form-control" name="sbt_path" id="sbt_path" placeholder="路徑" readonly="readonly" value="<?= $outcome['path']; ?>">
+                        </div>
                         
                         <div class="form-group">
                             <label for="sbt_desp">詳細內容</label>
