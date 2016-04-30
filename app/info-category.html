@@ -22,23 +22,23 @@
 		}
 		.top_bg{ height:30px; background-color: #a669c0;opacity:0.5;}
 		.mui-btn {
-				font-size: 16px;
-				padding: 8px;
-				margin: 3px;
-				   
-			}
-			h5.mui-content-padded {
-				margin-left: 3px;
-				margin-top: 20px !important;
-			}
-			h5.mui-content-padded:first-child {
-				margin-top: 12px !important;
-			}
-			.ui-alert {
-				text-align: center;
-				padding: 20px 10px;
-				font-size: 16px;
-			}
+			font-size: 16px;
+			padding: 8px;
+			margin: 3px;
+			   
+		}
+		h5.mui-content-padded {
+			margin-left: 3px;
+			margin-top: 20px !important;
+		}
+		h5.mui-content-padded:first-child {
+			margin-top: 12px !important;
+		}
+		.ui-alert {
+			text-align: center;
+			padding: 20px 10px;
+			font-size: 16px;
+		}
 	</style>
 	<script src="js/mui.min.js"></script>
     <script src="js/jquery.min.js"></script>
@@ -72,7 +72,6 @@
 				</div>
 				<div id='cityResult' class="ui-alert"></div>
 <!--				
-				
 		<div id='list' class="mui-indexed-list">
 			<div class="mui-indexed-list-search mui-input-row mui-search">
 				<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索商店">
@@ -101,34 +100,33 @@
 	</div>
 	-->
 	<script src="js/mui.picker.js"></script>
-		<script src="js/mui.poppicker.js"></script>
-		<script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
-		
-		<script>
-			(function($, doc) {
-				$.init();
-				$.ready(function() {
-					
-					
-					//级联示例
-					var cityPicker = new $.PopPicker({
-						layer: 2
-					});
-					cityPicker.setData(cityData);
-					var showCityPickerButton = doc.getElementById('showCityPicker');
-					var cityResult = doc.getElementById('cityResult');
-					showCityPickerButton.addEventListener('tap', function(event) {
-						cityPicker.show(function(items) {
-							cityResult.innerText = "" + items[0].text + " " + items[1].text;
-							//返回 false 可以阻止选择框的关闭
-							//return false;
-						});
-					}, false);
-					//-----------------------------------------
-					
+	<script src="js/mui.poppicker.js"></script>
+	<script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script>
+		(function($, doc) {
+			$.init();
+			$.ready(function() {
+				
+				//级联示例
+				var cityPicker = new $.PopPicker({
+					layer: 2
 				});
-			})(mui, document);
-		</script>
+				cityPicker.setData(cityData);
+				var showCityPickerButton = doc.getElementById('showCityPicker');
+				var cityResult = doc.getElementById('cityResult');
+				showCityPickerButton.addEventListener('tap', function(event) {
+					cityPicker.show(function(items) {
+						cityResult.innerText = "" + items[0].text + " " + items[1].text;
+						//返回 false 可以阻止选择框的关闭
+						//return false;
+					});
+				}, false);
+				//-----------------------------------------
+				
+			});
+		})(mui, document);
+	</script>
 		
 	
 	<script type="text/javascript" charset="utf-8">

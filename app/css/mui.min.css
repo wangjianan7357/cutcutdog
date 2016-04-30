@@ -27,10 +27,8 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%}body{margin:0}article,
 .pl-cs{border-radius: 10px;background-color:#fff ;height: 55px; border: solid #56bf94 2px; margin-top:20px ; margin-bottom:20px ;}
 .pl-cs-left{ float: left;background-color:#f9a578 ;width:50%;height: 51px;  border-radius: 8px 0px 0px 8px; padding-top:3px ; border-right: solid 3px #57bf95;}
 .pl-cs-left img{width:80%; margin-left: 5px;}
-.pl-cs-zi{ font-size: 22px; 
-line-height: 50px; text-align: center; color:#333 ;}
-.pl-cs-left-two{ float: left;background-color:#fff577 ;width:50%;height: 51px;  border-radius: 8px 0px 0px 8px;padding-top:3px;border-right: solid 3px #57bf95;}
-.pl-cs-left-two img{width:80%; margin-left: 5px;}
+.pl-cs-zi{ font-size: 22px; line-height: 50px; text-align: center; color:#333 ;}
+
 .pl-list-two{margin-top:0px ; padding-left:0px ; margin-left:0px ;}
 .pl-list-two li{list-style:none ; width:100% ; height: 80px; background-color:#fff;padding-left:0px ; margin-left:0px ; padding-top:10px ; padding-bottom:10px ; overflow: hidden;}
 .pl-list-two-img{ float: left;width:25%;}.pl-list-two-img img{width:100%;}

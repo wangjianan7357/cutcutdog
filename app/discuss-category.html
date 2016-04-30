@@ -31,90 +31,26 @@
 	    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
 	</header>
 	
-	<div class="mui-content" id="list-view">
-	<div class="top_bg"></div>	
-	<div class="pl-list-two-top">寵物食物谷</div>
-	
-	  <ul class="pl-list-two">
-	  	<a href="discuss-detail.html" data-action="openwindow">
-	    <li>
-	     <div class="pl-list-two-img"><img src="images/forum_bubble-a.png"></div>	
-	     <div class="pl-tilte">
-	     	<div class="pl-tilte-two mui-ellipsis">中秋狗月餅</div>
-	     	<ul>
-	     	  <li>發帖人: user name</li>
-	     	  <li>2016-02-02</li>
-	     	</ul>	
-	     </div>
-	    </li>
-	    </a>
-	    
-	    <a href="discuss-detail.html" data-action="openwindow">
-	    <li style=" background-color:#fef9b9;">
-	     <div class="pl-list-two-img"><img src="images/forum_bubble-b.png"></div>	
-	     <div class="pl-tilte">
-	     	<div class="pl-tilte-two mui-ellipsis">注意10種狗狗不能吃的食物</div>
-	     	<ul>
-	     	  <li>發帖人: user name</li>
-	     	  <li>2016-02-02</li>
-	     	</ul>	
-	     </div>
-	    </li>
-	     </a>
-	    
-	    <a href="discuss-detail.html" data-action="openwindow">
-	    <li>
-	     <div class="pl-list-two-img"><img src="images/forum_bubble-a.png"></div>	
-	     <div class="pl-tilte">
-	     	<div class="pl-tilte-two mui-ellipsis">中秋狗月餅</div>
-	     	<ul>
-	     	  <li>發帖人: user name</li>
-	     	  <li>2016-02-02</li>
-	     	</ul>	
-	     </div>
-	    </li>
-	    </a>
-	    
-	    <a href="discuss-detail.html" data-action="openwindow">
-	    <li style=" background-color:#fef9b9;">
-	     <div class="pl-list-two-img"><img src="images/forum_bubble-b.png"></div>	
-	     <div class="pl-tilte">
-	     	<div class="pl-tilte-two mui-ellipsis">注意10種狗狗不能吃的食物</div>
-	     	<ul>
-	     	  <li>發帖人: user name</li>
-	     	  <li>2016-02-02</li>
-	     	</ul>	
-	     </div>
-	    </li>
-	    </a>
-	    
-	  </ul>
-	 
-	</div>
-	<!--	
-	<script id="list-view-code" type="text/html">
-	<% for (var i in list) { %>
-		<div class="title">
-			<strong><%= list[i]["name"] %></strong> <span style="float: right;"><a href="discuss-list.html?url=<%= list[i]["path"] %>" style="color: #565656;" data-action="webview">更多</a></span>
+	<div class="mui-content" >
+		<div class="top_bg"></div>
+		
+		<div style="padding-left: 3%; padding-right:3%;">
+			<div id="list-view"></div>
+			
+			<script id="list-view-code" type="text/html">
+			<% for (var i in list) { %>
+				<div class="pl-cs">
+					<a href="discuss-list.html?url=<%= list[i]["path"] %>" data-action="openwindow">
+					<div class="pl-cs-left" style="background: <%= list[i]["background"]; %>"><img src="<%= list[i]["src"] %>"></div>
+					<div class="pl-cs-zi"><%= list[i]["name"] %></div>
+					</a>
+				</div>
+			<% } %>
+			</script>
+		  
+			<div style="height:5px;"></div>	
 		</div>
-		
-		<ul class="mui-table-view mui-table-view-chevron">
-
-		<% for (var j in list[i]["list"]) { %>
-			<li class="mui-table-view-cell mui-media">
-				<a class='mui-navigate-right' href="discuss-detail.html?url=<%= list[i]["list"][j]["path"] %>" data-action="webview">
-					<img class="mui-media-object mui-pull-left" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["list"][j]["src"] %>">
-					<div class="mui-media-body">
-						<%= list[i]["list"][j]["name"] %>
-						<p class='mui-ellipsis'><%= list[i]["list"][j]["summary"] %></p>
-					</div>
-				</a>
-			</li>
-		<% } %>
-		
-		</ul>
-	<% } %>
-	</script>
+	</div>
 		
 	<script>
 		(function(mui, doc) {
@@ -134,6 +70,38 @@
 					async: true,
 					success: function(json) {
 						if(!json.error) {
+							var k = 1;
+							for (l in json.list) {
+								switch (k) {
+									case 1: 
+										json.list[l]["background"] = "#f9a578";
+										json.list[l]["src"] = "images/tu_02.jpg";
+									break;
+									case 2: 
+										json.list[l]["background"] = "#fff577";
+										json.list[l]["src"] = "images/tu_03.jpg";
+									break;
+									case 3: 
+										json.list[l]["background"] = "#94d9f8";
+										json.list[l]["src"] = "images/tu_04.jpg";
+									break;
+									case 4: 
+										json.list[l]["background"] = "#c376b1";
+										json.list[l]["src"] = "images/tu_05.jpg";
+									break;
+									case 5: 
+										json.list[l]["background"] = "#bddc93";
+										json.list[l]["src"] = "images/tu_06.jpg";
+									break;
+									case 6: 
+										json.list[l]["background"] = "#ffd386";
+										json.list[l]["src"] = "images/tu_07.jpg";
+									break;
+								}
+								
+								k ++;
+							}
+							
 							jQuery("#list-view").html(template('list-view-code', json));
 							
 						} else {
@@ -141,11 +109,10 @@
 						}
 					},
 					error: function(xhr, type, errorThrown) {}
-				});
+				}, true);
 
 			});
 		}(mui, document));
 	</script>
-	-->
 </body>
 </html>

@@ -184,8 +184,10 @@ function uploadFileData(filepath, data, url, success) {
     };
 
     myStorage.getItem = function(key, useplus) {
-        first = new Date().getTime();
-        return getItem(key) || getItemPlus(key);
+    	mui.plusReady(function(){
+	        first = new Date().getTime();
+	        return getItem(key) || getItemPlus(key);
+	    });
     };
 
     myStorage.setItem = function(key, value, useplus) {
@@ -194,17 +196,18 @@ function uploadFileData(filepath, data, url, success) {
             data: value
         });
         key = key.toString();
-        try {
-             window.localStorage.setItem(key, value);
-        } catch (e) {
-            console.log(e);
-            //TODO 超出localstorage容量限制则存到plus.storage中
-            //且删除localStorage重复的数据www.bcty365.com
-
-            removeItem(key);
-            plus.storage.setItem(key, value);
-        }
-        console.log(new Date().getTime() - first);
+        
+        mui.plusReady(function(){
+	        try {
+	             window.localStorage.setItem(key, value);
+	        } catch (e) {
+	            console.log(e);
+	            //TODO 超出localstorage容量限制则存到plus.storage中,且删除localStorage重复的数据
+	            removeItem(key);
+	            plus.storage.setItem(key, value);
+	        }
+	        //console.log(new Date().getTime() - first);
+	    });
     };
 
     function getLength() {

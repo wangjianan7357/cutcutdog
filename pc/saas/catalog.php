@@ -32,9 +32,16 @@ if ($_REQUEST['action'] == 'list') {
     $category = $my_db->fetchOne('catalog', $_POST['where']);
 
     if (!empty($category)) {
+        $member = array();
+        $getdata = $my_db->selectRow('*', 'member');
+        while ($result = mysql_fetch_array($getdata)) {
+            $member[$result['id']] = $result;
+        }
+
         $getdata = $my_db->selectRow('*', $cms_cata_type[$category['type']]['db'], array('`cid` LIKE "%,' . $category['id'] . '," OR `cid` = "' . $category['id'] . ',"'));
         while ($result = mysql_fetch_array($getdata)) {
             $result['summary'] = cutString(strip_tags($result['desp']), 30);
+            $result['member'] = $member[$result['mid']];
             $list[$result['id']] = $result;
         }
     }

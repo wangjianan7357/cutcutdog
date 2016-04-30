@@ -30,29 +30,62 @@
 	    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
 	</header>
 
-	<div class="mui-content" id="list-view"></div>
-	<script id="list-view-code" type="text/html">
-		<div class="title">
-			<strong><%= detail["name"] %></strong>
-		</div>
-		
-		<ul class="mui-table-view mui-table-view-chevron">
+	<div class="mui-content" id="list-view">
 
-		<% for (var i in list) { %>
-			<li class="mui-table-view-cell mui-media">
-				<a class='mui-navigate-right' href="discuss-detail.html?url=<%= list[i]["path"] %>" data-action="webview">
-					<img class="mui-media-object mui-pull-left" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>">
-					<div class="mui-media-body">
-						<%= list[i]["name"] %>
-						<p class='mui-ellipsis'><%= list[i]["summary"] %></p>
-					</div>
-				</a>
-			</li>
-		<% } %>
-		
-		</ul>
-	</script>
-	
+	<div class="mui-content">
+		<div class="top_bg"></div>
+
+		<div id="list-view"></div>
+		<script id="list-view-code" type="text/html">
+			<div class="pl-list-two-top"><%= detail["name"] %></div>
+			
+			<ul class="pl-list-two">
+
+			<% for (var i in list) { %>
+				<li>
+					<a href="discuss-detail.html?url=<%= list[i]["path"] %>" data-action="openwindow">
+						<div class="pl-list-two-img"><img src="images/forum_bubble-a.png"></div>	
+						<div class="pl-tilte">
+							<div class="pl-tilte-two mui-ellipsis"><%= list[i]["name"] %></div>
+							<ul>
+								<li>發帖人: <%= list[i]["member"]["name"] %></li>
+								<li><%= list[i]["date"] %></li>
+							</ul>	
+						</div>
+					</a>
+				</li>
+			<% } %>
+
+				<li>
+					<a href="discuss-detail.html" data-action="openwindow">
+						<div class="pl-list-two-img"><img src="images/forum_bubble-a.png"></div>	
+						<div class="pl-tilte">
+							<div class="pl-tilte-two mui-ellipsis">中秋狗月餅</div>
+							<ul>
+								<li>發帖人: user name</li>
+								<li>2016-02-02</li>
+							</ul>	
+						</div>
+					</a>
+				</li>
+
+				<li style=" background-color:#fef9b9;">
+					<a href="discuss-detail.html" data-action="openwindow">
+						<div class="pl-list-two-img"><img src="images/forum_bubble-b.png"></div>	
+						<div class="pl-tilte">
+							<div class="pl-tilte-two mui-ellipsis">注意10種狗狗不能吃的食物</div>
+							<ul>
+								<li>發帖人: user name</li>
+								<li>2016-02-02</li>
+							</ul>	
+						</div>
+					</a>
+				</li>
+			
+			</ul>
+		</script>
+	</div>
+
 	<script>
 		(function(mui, doc) {
 			mui.init({
