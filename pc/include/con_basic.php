@@ -57,7 +57,6 @@ $con_db_table = array(
 	'likes'   	=> $child_pre . 'likes',
 	'language'  => $child_pre . 'language',
 	'constant'  => $child_pre . 'constant',
-	'service'   => $child_pre . 'service',
 	'log'       => $child_pre . 'log',
 	'system'    => $child_pre . 'system',
 	'verify'    => $child_pre . 'verify',
@@ -68,6 +67,7 @@ $con_db_table = array(
 	'catalog'   => $child_pre . 'catalog_' . $con_lang_current,
 	'info'      => $child_pre . 'info_' . $con_lang_current,
 	'product'   => $child_pre . 'product_' . $con_lang_current,
+	'service'   => $child_pre . 'service_' . $con_lang_current,
 	'tag'       => $child_pre . 'tag_' . $con_lang_current
 );
 

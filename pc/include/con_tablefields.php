@@ -64,18 +64,6 @@ return array(
         `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
         PRIMARY KEY ( `id` )',
 
-    /** 
-     * 服務
-     */
-    'service' => '
-        `id` INT( 8 ) NOT NULL AUTO_INCREMENT , 
-		`queue` INT( 7 ) NOT NULL DEFAULT 0 , 
-        `name` varchar( 32 ) NOT NULL DEFAULT "",
-        `content` TEXT NOT NULL , 
-        `valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
-        `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
-        PRIMARY KEY ( `id` )',
-
 	/** 
 	 * 网站留言信息
 	 */
@@ -242,6 +230,20 @@ return array(
 		`fields` TEXT NOT NULL , 
 		`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
 		PRIMARY KEY ( `id` )',
+
+    /** 
+     * 服務
+     */
+    'service' => '
+        `id` INT( 8 ) NOT NULL AUTO_INCREMENT , 
+        `queue` INT( 7 ) NOT NULL DEFAULT 0 , 
+        `name` varchar( 32 ) NOT NULL DEFAULT "",
+        `path` VARCHAR( 50 ) NOT NULL DEFAULT "" , 
+        `src` VARCHAR( 60 ) NOT NULL DEFAULT "" , 
+        `desp` TEXT NOT NULL , 
+        `valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
+        `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+        PRIMARY KEY ( `id` )',
 
 	/** 
 	 * 标签属性
