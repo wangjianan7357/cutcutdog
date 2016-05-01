@@ -494,7 +494,7 @@ function delSelectedData($table, $power=array(), $src = ''){
 		mysql_query("END");
 
 		for($i = 0; $i < count($imgarr); $i++){
-			if ($table == 'product' || $table == 'info') {
+			if ($table == 'product' || $table == 'info' || $table == 'service') {
 				$big_img = $src . $con_pic['suf']['big'] . $imgarr[$i];
 				$mid_img = $src . $con_pic['suf']['mid'] . $imgarr[$i];
 				$sml_img = $src . $con_pic['suf']['sml'] . $imgarr[$i];

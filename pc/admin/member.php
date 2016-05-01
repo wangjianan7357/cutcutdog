@@ -10,10 +10,29 @@ if($_GET['action'] == 'edt'){
 	else if($_POST['del'] == 'true') $power_id = 3;
 	else $power_id = 1;
 
+	$service = array();
+	$getdata = $my_db->selectRow('*', 'service');
+	while($result = mysql_fetch_array($getdata)) {
+		$service[$result['id']] = $result;
+	}
+
 	if($_GET['num']){
 		$outcome = $my_db->fetchOne('member', array('id' => $_GET['num']));
+		$outcome['fields'] = json_decode($outcome['fields'], true);
+
+		$outcome['service'] = array();
+
+		$getdata = $my_db->selectRow('vid', 'property_content', array('pid' => $_GET['num'], 'sort' => 3));
+		while($result = mysql_fetch_array($getdata)) {
+			$outcome['service'][] = $result['vid'];
+		}
+
+	} else {
+		$outcome = array();
+		$outcome['valid'] = true;
+		$outcome['service'] = array();
+		$outcome['fields'] = array();
 	}
-	else $outcome['valid'] = true;
 
 	if($_POST['del'] == 'true'){
 		if(!adminPower('member', $power_id)) warning('權限不足');
@@ -39,8 +58,8 @@ if($_GET['action'] == 'edt'){
 			$submit_arr = initSubmitColumns('member', $_GET['num']);
 
 			$_POST['sbt_id'] = $_GET['num'] ? $_GET['num'] : ($my_db->selectMax('member') + 1);
-			$_POST['sbt_type'] = $member_type;
 			$_POST['sbt_valid'] = ($_POST['sbt_valid'] ? 1 : 0);
+			$_POST['sbt_fields'] = json_encode($_POST['sbt_fields']);
 
 			$submit = array();
 			$submit_lan = array();
@@ -54,6 +73,14 @@ if($_GET['action'] == 'edt'){
 
 			$done = 1;
 			$done &= $my_db->saveRow('member', $submit, ($_GET['num'] ? array('id' => $_GET['num']) : ''));
+
+			if ($_GET['num']) {
+				$done &= $my_db->deleteRow('property_content', array('sort' => 3, 'pid' => $_GET['num']));
+			}
+
+			foreach ($_POST['sbt_service'] as $key => $value) {
+				$done &= $my_db->saveRow('property_content', array('sort' => 3, 'pid' => $_POST['sbt_id'], 'vid' => $key));
+			}
 
 			if($done){
 				mysql_query("COMMIT");

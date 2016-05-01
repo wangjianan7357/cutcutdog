@@ -34,7 +34,7 @@ return array(
         `phone` varchar( 16 ) NOT NULL DEFAULT "",
         `email` varchar( 128 ) NOT NULL DEFAULT "",
         `address` varchar( 256 ) NOT NULL DEFAULT "",
-        `content` TEXT NOT NULL DEFAULT "",
+        `fields` TEXT NOT NULL DEFAULT "",
         `valid` tinyint( 1 ) NOT NULL DEFAULT 0,
         `type` int( 2 ) NOT NULL DEFAULT 1 COMMENT "1: 普通会员，10: 美容师",
         `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -157,7 +157,7 @@ return array(
      */
     'property_content' => '
         `id` INT( 8 ) NOT NULL AUTO_INCREMENT , 
-        `sort` INT( 8 ) NOT NULL DEFAULT 1 COMMENT "1：资料库服务所属，2：资料库相册", 
+        `sort` INT( 8 ) NOT NULL DEFAULT 1 COMMENT "1：资料库服务所属，2：资料库相册，3：美容师服务所属", 
         `vid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "属性值ID", 
         `pid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "内容ID", 
         `content` VARCHAR( 80 ) NOT NULL DEFAULT "" , 

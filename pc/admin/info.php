@@ -24,9 +24,9 @@ if($_GET['action'] == 'edt'){
 		$outcome = $my_db->fetchOne('info', array('id' => $_GET['num']));
 		$outcome['service'] = array();
 
-		$getdata = $my_db->selectRow('id', 'property_content', array('pid' => $_GET['num'], 'sort' => 1));
+		$getdata = $my_db->selectRow('vid', 'property_content', array('pid' => $_GET['num'], 'sort' => 1));
 		while($result = mysql_fetch_array($getdata)) {
-			$outcome['service'][] = $result['id'];
+			$outcome['service'][] = $result['vid'];
 		}
 
 	} else {
@@ -75,6 +75,10 @@ if($_GET['action'] == 'edt'){
 
 			if ($_GET['num']) {
 				$done &= $my_db->deleteRow('property_content', array('sort' => 1, 'pid' => $_GET['num']));
+			}
+
+			foreach ($_POST['sbt_service'] as $key => $value) {
+				$done &= $my_db->saveRow('property_content', array('sort' => 1, 'pid' => $_POST['sbt_id'], 'vid' => $key));
 			}
 
 			if($done){

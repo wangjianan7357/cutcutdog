@@ -45,8 +45,8 @@
                             <input type="password" class="form-control" name="sbt_pass" id="sbt_pass" placeholder="密碼" value="">
                         </div>
                         <div class="form-group">
-                            <label for="sbt_parent">類型</label>
-                            <select class="form-control" name="sbt_parent" id="sbt_parent">
+                            <label for="sbt_type">類型</label>
+                            <select class="form-control" name="sbt_type" id="sbt_type">
                             <?php
                                 foreach ($cms_member_type as $key => $value) {
                                     echo '<option value="' . $key . '">' . $value . '</option>';
@@ -62,11 +62,28 @@
                         </div>
                         <div class="form-group">
                             <label for="sbt_email">郵箱</label>
-                            <input type="email" class="form-control" name="sbt_email" id="sbt_email" placeholder="密碼" value="<?= $outcome['email']; ?>" required="required">
+                            <input type="email" class="form-control" name="sbt_email" id="sbt_email" placeholder="郵箱" value="<?= $outcome['email']; ?>" required="required">
                         </div>
                         <div class="form-group">
-                            <label for="sbt_name">電話</label>
-                            <input type="text" class="form-control" name="sbt_mobile" id="sbt_mobile" placeholder="電話" value="<?= $outcome['mobile']; ?>">
+                            <label for="sbt_phone">電話</label>
+                            <input type="text" class="form-control" name="sbt_phone" id="sbt_phone" placeholder="電話" value="<?= $outcome['phone']; ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sbt_fields_experience">年資</label>
+                            <input type="text" class="form-control" name="sbt_fields[experience]" id="sbt_fields_experience" placeholder="年資" value="<?= $outcome['fields']['experience']; ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sbt_path">提供服務</label>
+                            
+                            <div style="overflow: hidden">
+                            <?php foreach ($service as $key => $value) { ?>
+
+                            <div style="float: left; width: 150px;"><input type="checkbox" name="sbt_service[<?= $value['id']; ?>]" style="vertical-align: top;" <?= in_array($value['id'], $outcome['service']) ? 'checked="checked"' : '';?> /> <?= $value['name']; ?></div>
+                            
+                            <?php } ?>
+                            </div>
                         </div>
 
                         <div class="form-group">
