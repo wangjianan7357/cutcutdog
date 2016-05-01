@@ -14,10 +14,24 @@ if($_GET['action'] == 'edt'){
 	else if($_POST['del'] == 'true') $power_id = 3;
 	else $power_id = 1;
 
+	$service = array();
+	$getdata = $my_db->selectRow('*', 'service');
+	while($result = mysql_fetch_array($getdata)) {
+		$service[$result['id']] = $result;
+	}
+
 	if($_GET['num']){
 		$outcome = $my_db->fetchOne('info', array('id' => $_GET['num']));
+		$outcome['service'] = array();
+
+		$getdata = $my_db->selectRow('id', 'property_content', array('pid' => $_GET['num'], 'sort' => 1));
+		while($result = mysql_fetch_array($getdata)) {
+			$outcome['service'][] = $result['id'];
+		}
+
 	} else {
 		$outcome['valid'] = 1;
+		$outcome['service'] = array();
 	}
 
 	if($_POST['del'] == 'true'){
@@ -58,6 +72,10 @@ if($_GET['action'] == 'edt'){
 
 			$done = 1;
 			$done &= $my_db->saveRow('info', $submit, ($_GET['num'] ? array('id' => $_GET['num']) : ''));
+
+			if ($_GET['num']) {
+				$done &= $my_db->deleteRow('property_content', array('sort' => 1, 'pid' => $_GET['num']));
+			}
 
 			if($done){
 				mysql_query("COMMIT");

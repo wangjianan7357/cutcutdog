@@ -42,6 +42,8 @@
 	</style>
 	<script src="js/mui.min.js"></script>
     <script src="js/jquery.min.js"></script>
+	<script src="js/mui.picker.js"></script>
+	<script src="js/mui.poppicker.js"></script>
     <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
 </head>
@@ -49,8 +51,8 @@
 <body>
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
+	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
+	    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
 	</header>
 	<div class="mui-content">
 		<div class="top_bg"></div>
@@ -58,20 +60,24 @@
 			<div style=" float: left; line-height: 50px; margin-right: 10px;"><strong>店鋪名稱</strong></div>
 			<div><input type="text" placeholder="普通输入框" style="width:68%;"></div>
 		</div>
+
+		<div style="width:100%; padding-left: 4%;" id='showCityPicker'>
+			<button class="mui-btn mui-btn-block" type='button'><span data-picker="city">地區</span></button>
+			<div class="butt_right" ><img src="images/Info_button-02.png"></div>
+		</div>
+				
+		<div style="width:100%; padding-left: 4%; margin-top:20px;" id='showCityPicker'>
+			<button class="mui-btn mui-btn-block" type='button'><span>服務範圍</span></button>
+			<div class="butt_right" ><img src="images/Info_button-02.png"></div>
+		</div>
+
+		<div style="width:100%; text-align:center;margin-top:20px ;" id='showCityPicker'>
+			<a href="info-list.html" data-action="webview"><div class="soso">搜尋</div></a>
+		</div>
 		
-				
-				<div style="width:100%; padding-left: 4%;" id='showCityPicker'>
-				<button  class="mui-btn mui-btn-block" type='button'><span>地區</span></button><div class="butt_right" ><img src="images/Info_button-02.png"></div>
-				</div>
-				
-				<div style="width:100%; padding-left: 4%; margin-top:20px ;" id='showCityPicker'>
-				<button  class="mui-btn mui-btn-block" type='button'><span>服務範圍</span></button><div class="butt_right" ><img src="images/Info_button-02.png"></div>
-				</div>
-				<div style="width:100%; text-align:center;margin-top:20px ;" id='showCityPicker'>
-				 <a href="info-list.html" data-action="webview"><div class="soso">搜尋</div></a>
-				</div>
-				<div id='cityResult' class="ui-alert"></div>
-<!--				
+		<br><br>
+
+		<!--				
 		<div id='list' class="mui-indexed-list">
 			<div class="mui-indexed-list-search mui-input-row mui-search">
 				<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索商店">
@@ -95,39 +101,9 @@
 				</script>
 			</div>
 		</div>
-		
+		-->
 		
 	</div>
-	-->
-	<script src="js/mui.picker.js"></script>
-	<script src="js/mui.poppicker.js"></script>
-	<script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
-	
-	<script>
-		(function($, doc) {
-			$.init();
-			$.ready(function() {
-				
-				//级联示例
-				var cityPicker = new $.PopPicker({
-					layer: 2
-				});
-				cityPicker.setData(cityData);
-				var showCityPickerButton = doc.getElementById('showCityPicker');
-				var cityResult = doc.getElementById('cityResult');
-				showCityPickerButton.addEventListener('tap', function(event) {
-					cityPicker.show(function(items) {
-						cityResult.innerText = "" + items[0].text + " " + items[1].text;
-						//返回 false 可以阻止选择框的关闭
-						//return false;
-					});
-				}, false);
-				//-----------------------------------------
-				
-			});
-		})(mui, document);
-	</script>
-		
 	
 	<script type="text/javascript" charset="utf-8">
 		(function($, doc) {
@@ -143,11 +119,43 @@
 					},
 					async: true,
 					success: function(json) {
-						if(!json.error) {
-							jQuery("#list-view").html(template('list-view-code', json));
+						if (!json.error) {
+							var city = [];
+
+							for (p in json.list) {
+								if (json.list[p]["parent"] == "") {
+									var tmp = {value: json.list[p]["id"], text: json.list[p]["name"], children: []};
+
+									for (q in json.list) {
+										if (json.list[q]["parent"] == json.list[p]["id"] + ",") {
+											var child = {value: json.list[q]["id"], text: json.list[q]["name"]};
+											tmp.children.push(child); 
+										}
+									}
+
+									city.push(tmp);
+								}
+							}
+
+							//级联示例
+							var cityPicker = new $.PopPicker({
+								layer: 2
+							});
+							cityPicker.setData(city);
+
+							var showCityPickerButton = doc.getElementById('showCityPicker');
+							showCityPickerButton.addEventListener('tap', function(event) {
+								cityPicker.show(function(items) {
+									jQuery("[data-picker='city']").html(items[0].text + " " + items[1].text);
+									//返回 false 可以阻止选择框的关闭
+									//return false;
+								});
+							}, false);
+
+							//jQuery("#list-view").html(template('list-view-code', json));
 							
 						} else {
-							plus.nativeUI.toast(json.message);
+							//plus.nativeUI.toast(json.message);
 						}
 					},
 					error: function(xhr, type, errorThrown) {

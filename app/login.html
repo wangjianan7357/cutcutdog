@@ -198,6 +198,9 @@
 							} else {
 								plus.nativeUI.toast(json.message);
 							}
+						},
+						error: function(xhr, type, errorThrown) {}
+							//alert(JSON.stringify(xhr));
 						}
 					});
 				});

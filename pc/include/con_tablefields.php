@@ -152,6 +152,18 @@ return array(
 		`value` TEXT NOT NULL , 
 		PRIMARY KEY ( `id` )',
 
+    /** 
+     * 属性值
+     */
+    'property_content' => '
+        `id` INT( 8 ) NOT NULL AUTO_INCREMENT , 
+        `sort` INT( 8 ) NOT NULL DEFAULT 1 COMMENT "1：资料库服务所属，2：资料库相册", 
+        `vid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "属性值ID", 
+        `pid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "内容ID", 
+        `content` VARCHAR( 80 ) NOT NULL DEFAULT "" , 
+        PRIMARY KEY ( `id` ),
+        KEY ( `pid` )',
+
 
 	// multi language
 	/** 

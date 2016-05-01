@@ -277,7 +277,8 @@
 			},
 			"forget-password.html": {
 				"resources": [
-					"fonts/mui.ttf"
+					"fonts/mui.ttf",
+					"js/app.js"
 				],
 				"refer": [],
 				"priority": 0

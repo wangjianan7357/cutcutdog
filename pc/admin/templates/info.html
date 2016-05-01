@@ -63,7 +63,13 @@
                         <div class="form-group">
                             <label for="sbt_path">提供服務</label>
                             
+                            <div style="overflow: hidden">
+                            <?php foreach ($service as $key => $value) { ?>
+
+                            <div style="float: left; width: 150px;"><input type="checkbox" name="sbt_service[<?= $value['id']; ?>]" style="vertical-align: top;" <?= in_array($value['id'], $outcome['service']) ? 'checked="checked"' : '';?> /> <?= $value['name']; ?></div>
                             
+                            <?php } ?>
+                            </div>
                         </div>
                         
                         <div class="form-group">

@@ -41,6 +41,7 @@ $con_pic = array(
 		'catalog' => 'ct',
 		'info' => 'im',
 		'product' => 'pr',
+		'service' => 'se',
 		'member' => 'me'
 	)
 );
@@ -61,6 +62,8 @@ $con_db_table = array(
 	'system'    => $child_pre . 'system',
 	'verify'    => $child_pre . 'verify',
 	'order'     => $child_pre . 'order',
+
+	'property_content' => $child_pre . 'property_content',
 
 	// 多国语言
 	'page'      => $child_pre . 'page_' . $con_lang_current,
