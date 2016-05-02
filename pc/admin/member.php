@@ -134,6 +134,7 @@ if($_GET['action'] == 'edt'){
 			'id' => 'ID', 
 			'type' => array('類型', 'select', array($cms_member_type)),
 			'name' => array('名稱', 'text'), 
+			'email' => array('電郵', 'text'), 
 			'date' => array('加入時間', 'read'), 
 			'valid' => array('有效', 'checkbox'),
 			array('__edit', 'edit', array('power' => 'member', 'method' => array('quick' => 2, 'detail' => 2)))

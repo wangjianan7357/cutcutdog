@@ -5,6 +5,8 @@ require('../include/fun_admin.php');
 $err = '';
 $msg = $_GET['msg'] ? $_GET['msg'] : array();
 
+$message_type = (int)($_GET['type'] ? $_GET['type'] : ($_POST['sbt_type'] ? $_POST['sbt_type'] : 1));
+
 if($_GET['action'] == 'edt'){
 	if($_GET['num']) $power_id = 2;
 	else if($_POST['del'] == 'true') $power_id = 3;
@@ -64,7 +66,7 @@ if($_GET['action'] == 'edt'){
 } else {
 	$q_url = queryPart('date', 'desc');
 
-	$where = '`tid` = 0';
+	$where = '`tid` = 0 AND `type` = ' . $message_type;
 
 	class FieldFun {
 		function __construct($namespace = 1){

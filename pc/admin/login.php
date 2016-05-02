@@ -13,6 +13,7 @@ else if($_GET['action'] == 'logout'){
 
 	setcookie('admin[id]', '', time() - 1);
 	setcookie('admin[pass]', '', time() - 1);
+	setcookie('admin[name]', '', time() - 1);
 }
 else if($_POST['verifycode']){
 	if($_SESSION['verifycode'] == strtolower($_POST['verifycode'])){
@@ -23,6 +24,7 @@ else if($_POST['verifycode']){
 				$_SESSION['admin_id'] = $result['id'];
 				setcookie('admin[id]', $result['id'], time() + systemConfig('cms_login_time') * 60);
 				setcookie('admin[pass]', $_POST['pass'], time() + systemConfig('cms_login_time') * 60);
+				setcookie('admin[name]', $_POST['name'], time() + systemConfig('cms_login_time') * 60);
 
 				header('Location:index.php');
 			}
