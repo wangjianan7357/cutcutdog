@@ -39,7 +39,6 @@ loginTimeout();
 /* 初始化语言信息 */
 function langInit(){
 	global $my_db;
-	global $con_db_table;
 	global $con_lang_current;
 	global $cms_lang_connect;
 
@@ -52,6 +51,21 @@ function langInit(){
 }
 
 langInit();
+
+/* 初始化操作 */
+function baseInit() {
+	global $my_db;
+	global $con_db_table;
+	global $layout;
+
+	$layout = array();
+
+	$layout['message'] = array();
+	$layout['message']['new'] = $my_db->existRow('message', array('tid' => 0, 'read' => 0));
+
+}
+
+baseInit();
 
 /*
  * 生成列表的排序字段
