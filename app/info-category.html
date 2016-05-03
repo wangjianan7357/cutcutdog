@@ -54,25 +54,27 @@
 	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
 	    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
 	</header>
-	<div class="mui-content">
+	<form class="mui-content" action="info-list.html">
 		<div class="top_bg"></div>
 		<div class="title">
 			<div style=" float: left; line-height: 50px; margin-right: 10px;"><strong>店鋪名稱</strong></div>
-			<div><input type="text" placeholder="普通输入框" style="width:68%;"></div>
+			<div><input type="text" placeholder="普通输入框" style="width:68%;" name="req_name"></div>
 		</div>
 
 		<div style="width:100%; padding-left: 4%;" id='showCityPicker'>
 			<button class="mui-btn mui-btn-block" type='button'><span data-picker="city">地區</span></button>
+			<input type="hidden" name="req_cid" value="" id="req_cid" />
 			<div class="butt_right" ><img src="images/Info_button-02.png"></div>
 		</div>
 				
 		<div style="width:100%; padding-left: 4%; margin-top:20px;" id='showCityPicker'>
 			<button class="mui-btn mui-btn-block" type='button'><span>服務範圍</span></button>
+			<input type="hidden" name="req_service" value="" id="req_service" />
 			<div class="butt_right" ><img src="images/Info_button-02.png"></div>
 		</div>
 
 		<div style="width:100%; text-align:center;margin-top:20px ;" id='showCityPicker'>
-			<a href="info-list.html" data-action="webview"><div class="soso">搜尋</div></a>
+			<input type="submit" class="soso" value="搜尋" ></a>
 		</div>
 		
 		<br><br>
@@ -103,7 +105,7 @@
 		</div>
 		-->
 		
-	</div>
+	</form>
 	
 	<script type="text/javascript" charset="utf-8">
 		(function($, doc) {
