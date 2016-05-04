@@ -91,7 +91,7 @@
         },
         "Navigator":{
         	"description": "浏览器信息"
-        },"Share":{},"Device":{},"NativeObj":{},"File":{},"Push":{},"Statistic":{}
+        },"Device":{},"NativeObj":{},"File":{}
     },
     "plus": {
         "splashscreen": {
@@ -386,7 +386,8 @@
 				"refer": [
 					"login.html",
 					"publish-discuss.html",
-					"my-discuss.html"
+					"my-discuss.html",
+					"profile.html"
 				],
 				"priority": 0
 			},
