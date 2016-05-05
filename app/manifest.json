@@ -218,7 +218,10 @@
 					"images/CatDog.png",
 					"images/home.png",
 					"images/Petchat.png",
-					"discuss-category.html"
+					"discuss-category.html",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"css/mui.indexedlist.css"
 				],
 				"refer": [
 					"examples/imageviewer.html",
@@ -303,7 +306,8 @@
 					"images/Info_icon_home.png",
 					"images/Info_icon_tel.png",
 					"images/icon-10.png",
-					"images/tu_01.jpg"
+					"images/tu_01.jpg",
+					"images/bg.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -356,7 +360,15 @@
 					"images/Petchat.png",
 					"images/ioc-01.png",
 					"images/cbd.jpg",
-					"images/Info_icon_like.png"
+					"images/Info_icon_like.png",
+					"images/Info_icon_pin.png",
+					"images/bg.png",
+					"css/mui.indexedlist.css",
+					"css/mui.picker.css",
+					"images/Info_icon_home.png",
+					"images/Info_icon_tel.png",
+					"images/icon-10.png",
+					"css/mui.poppicker.css"
 				],
 				"refer": [],
 				"priority": 0
@@ -381,13 +393,18 @@
 					"images/Petchat.png",
 					"css/feedback-page.css",
 					"images/user-photo.png",
-					"images/Info_icon_pin.png"
+					"images/Info_icon_pin.png",
+					"css/mui.indexedlist.css",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css"
 				],
 				"refer": [
 					"login.html",
 					"publish-discuss.html",
 					"my-discuss.html",
-					"profile.html"
+					"profile.html",
+					"my-photo.html",
+					"publish-photo.html"
 				],
 				"priority": 0
 			},
@@ -529,7 +546,11 @@
 					"images/CatDog.png",
 					"css/mui.min.css",
 					"images/home.png",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"fonts/mui.ttf",
+					"css/mui.indexedlist.css",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css"
 				],
 				"refer": [
 					"service-detail.html"
@@ -558,7 +579,9 @@
 					"js/mui.previewimage.js",
 					"images/Petchat.png"
 				],
-				"refer": [],
+				"refer": [
+					"service-booking.html"
+				],
 				"priority": 0
 			},
 			"photo-list.html": {
@@ -575,7 +598,11 @@
 					"images/home.png",
 					"images/top_bg.png",
 					"images/Petchat.png",
-					"js/basic.js"
+					"js/basic.js",
+					"fonts/mui.ttf",
+					"css/mui.indexedlist.css",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css"
 				],
 				"refer": [
 					"image-list.html",
@@ -604,6 +631,73 @@
 					"images/photo-button-04.png",
 					"images/photo-button-01.png",
 					"images/Petchat.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"my-photo.html": {
+				"resources": [
+					"images/Info_icon_pin.png",
+					"js/jquery.min.js",
+					"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/home.png",
+					"libs/easymob-webim-sdk/json2.js",
+					"images/top_bg.png",
+					"js/mui.locker.js",
+					"images/Petchat.png",
+					"css/feedback-page.css",
+					"images/user-photo.png",
+					"js/basic.js",
+					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+					"js/mui.view.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"publish-photo.html": {
+				"resources": [
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png",
+					"css/feedback-page.css",
+					"js/basic.js",
+					"js/mui.view.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"service-booking.html": {
+				"resources": [
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"images/service-button-08.png",
+					"fonts/mui.ttf",
+					"css/dzcss.css",
+					"images/top_bg.png",
+					"js/basic.js",
+					"images/bg_two.png",
+					"js/mui.zoom.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/service-button-06.png",
+					"js/mui.previewimage.js",
+					"images/service-button-09.png",
+					"images/Petchat.png",
+					"images/Info_button-02.png",
+					"images/service-button-07.png",
+					"images/service-button-05.png"
 				],
 				"refer": [],
 				"priority": 0
