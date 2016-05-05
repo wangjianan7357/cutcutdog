@@ -91,7 +91,7 @@
         },
         "Navigator":{
         	"description": "浏览器信息"
-        },"Device":{},"NativeObj":{},"File":{}
+        },"Device":{},"NativeObj":{},"File":{},"Share":{}
     },
     "plus": {
         "splashscreen": {

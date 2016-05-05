@@ -184,10 +184,10 @@ function uploadFileData(filepath, data, url, success) {
     };
 
     myStorage.getItem = function(key, useplus) {
-    	mui.plusReady(function(){
+    	//mui.plusReady(function(){
 	        first = new Date().getTime();
 	        return getItem(key) || getItemPlus(key);
-	    });
+	    //});
     };
 
     myStorage.setItem = function(key, value, useplus) {
@@ -197,7 +197,7 @@ function uploadFileData(filepath, data, url, success) {
         });
         key = key.toString();
         
-        mui.plusReady(function(){
+        //mui.plusReady(function(){
 	        try {
 	             window.localStorage.setItem(key, value);
 	        } catch (e) {
@@ -207,7 +207,7 @@ function uploadFileData(filepath, data, url, success) {
 	            plus.storage.setItem(key, value);
 	        }
 	        //console.log(new Date().getTime() - first);
-	    });
+	    //});
     };
 
     function getLength() {
