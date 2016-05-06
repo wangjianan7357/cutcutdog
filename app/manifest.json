@@ -253,13 +253,16 @@
 					"images/bg.png",
 					"images/CatDog.png",
 					"images/home.png",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"css/mui.indexedlist.css",
+					"forget-password.html"
 				],
 				"refer": [
 					"index.html",
 					"reg.html",
-					"forget_password.html",
-					"forget-password.html"
+					"forget_password.html"
 				],
 				"priority": 0
 			},
@@ -273,7 +276,12 @@
 					"css/style.css",
 					"js/basic.js",
 					"login.html",
-					"js/app.js"
+					"js/app.js",
+					"images/bg.png",
+					"images/CatDog.png",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -281,7 +289,18 @@
 			"forget-password.html": {
 				"resources": [
 					"fonts/mui.ttf",
-					"js/app.js"
+					"js/app.js",
+					"css/style.css",
+					"login.html",
+					"js/jquery.min.js",
+					"images/bg.png",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"images/top_bg.png",
+					"js/basic.js",
+					"images/CatDog.png",
+					"images/home.png",
+					"images/Petchat.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -430,7 +449,8 @@
 					"js/city.data.js",
 					"css/mui.poppicker.css",
 					"css/mui.picker.css",
-					"images/Info_button-02.png"
+					"images/Info_button-02.png",
+					"css/style.css"
 				],
 				"refer": [],
 				"priority": 0
@@ -698,6 +718,28 @@
 					"images/Info_button-02.png",
 					"images/service-button-07.png",
 					"images/service-button-05.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"my-discuss.html": {
+				"resources": [
+					"js/jquery.min.js",
+					"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/home.png",
+					"libs/easymob-webim-sdk/json2.js",
+					"images/top_bg.png",
+					"js/mui.locker.js",
+					"images/Petchat.png",
+					"css/feedback-page.css",
+					"images/user-photo.png",
+					"js/basic.js",
+					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+					"js/mui.view.js"
 				],
 				"refer": [],
 				"priority": 0
