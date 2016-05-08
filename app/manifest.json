@@ -221,7 +221,8 @@
 					"discuss-category.html",
 					"css/mui.poppicker.css",
 					"css/mui.picker.css",
-					"css/mui.indexedlist.css"
+					"css/mui.indexedlist.css",
+					"service-list.html"
 				],
 				"refer": [
 					"examples/imageviewer.html",
@@ -232,7 +233,6 @@
 					"info-category.html",
 					"slider-table-default.html",
 					"discuss-category-list.html",
-					"service-list.html",
 					"photo-list.html"
 				],
 				"priority": 0
@@ -719,7 +719,8 @@
 					"images/Petchat.png",
 					"images/Info_button-02.png",
 					"images/service-button-07.png",
-					"images/service-button-05.png"
+					"images/service-button-05.png",
+					"images/xz.png"
 				],
 				"refer": [],
 				"priority": 0

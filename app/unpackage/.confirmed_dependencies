@@ -35,7 +35,8 @@
 			"discuss-category.html",
 			"css/mui.poppicker.css",
 			"css/mui.picker.css",
-			"css/mui.indexedlist.css"
+			"css/mui.indexedlist.css",
+			"service-list.html"
 		],
 		"refer": [
 			"examples/imageviewer.html",
@@ -541,7 +542,8 @@
 			"images/Petchat.png",
 			"images/Info_button-02.png",
 			"images/service-button-07.png",
-			"images/service-button-05.png"
+			"images/service-button-05.png",
+			"images/xz.png"
 		]
 	},
 	"my-discuss.html": {
