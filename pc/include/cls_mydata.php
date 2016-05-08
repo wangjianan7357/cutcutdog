@@ -63,9 +63,24 @@ class MyData {
 			// eg: array('value' => 'test', 'value = "test"')
 			$sql .= ' WHERE 1';
 			foreach($where as $key => $value){
-				if(gettype($key) == 'string') $sql .= ' AND `' . $key . '` = "' . addslashes($value) . '"';
-				// * 以下方式未作引号检测，以适应类似 name="name"，输入时要先做检测 *
-				else if(gettype($key) == 'integer' && $value) $sql .= ' AND ' . $value;
+				if(gettype($key) == 'string') {
+					if (is_array($value)) {
+						if (strtolower(key($value)) == 'in') {
+							$v = addslashes(current($value));
+						} else {
+							$v = '"' . addslashes(current($value)) . '"';
+						}
+
+						$sql .= ' AND `' . addslashes($key) . '` ' . addslashes(key($value)) . ' ' . $v;
+
+					} else {
+						$sql .= ' AND `' . addslashes($key) . '` = "' . addslashes($value) . '"';
+					}
+
+				} else if(gettype($key) == 'integer' && $value) {
+					// * 以下方式未作引号检测，以适应类似 name="name"，输入时要先做检测 *
+					$sql .= ' AND ' . $value;
+				}
 			}
 		}
 

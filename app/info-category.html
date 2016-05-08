@@ -62,24 +62,23 @@
 			<div><input type="text" placeholder="店鋪名稱" style="width:68%;" name="req_name"></div>
 		</div>
 
-		<div style="width:100%; padding-left: 4%;" id='showCityPicker'>
-			<button class="mui-btn mui-btn-block" type='button'><span data-picker="city">地區</span></button>
+		<div style="width:100%; padding-left: 4%;" id="showCityPicker">
+			<button class="mui-btn mui-btn-block" type="button"><span data-picker="city">地區</span></button>
 			<input type="hidden" name="req_cid" value="" id="req_cid" />
 			<div class="butt_right" ><img src="images/Info_button-02.png"></div>
 		</div>
 				
-		<div style="width:100%; padding-left: 4%; margin-top:20px;" id='showCityPicker'>
-			<button class="mui-btn mui-btn-block" type='button'><span>服務範圍</span></button>
+		<div style="width:100%; padding-left: 4%; margin-top:20px;" id="showServicePicker">
+			<button class="mui-btn mui-btn-block" type="button"><span data-picker="service">服務範圍</span></button>
 			<input type="hidden" name="req_service" value="" id="req_service" />
 			<div class="butt_right" ><img src="images/Info_button-02.png"></div>
 		</div>
 
-		<div style="width:100%; text-align:center;margin-top:20px ;" id='showCityPicker'>
+		<div style="width:100%; text-align:center; margin-top:20px;">
 			<input type="submit" class="soso" value="搜尋" ></a>
 		</div>
 		
 		<br><br>
-</div>
 		<!--				
 		<div id='list' class="mui-indexed-list">
 			<div class="mui-indexed-list-search mui-input-row mui-search">
@@ -124,6 +123,7 @@
 					success: function(json) {
 						if (!json.error) {
 							var city = [];
+							var service = [];
 
 							for (p in json.list) {
 								if (json.list[p]["parent"] == "") {
@@ -140,18 +140,32 @@
 								}
 							}
 
-							//级联示例
-							var cityPicker = new $.PopPicker({
-								layer: 2
-							});
+							for (p in json.service) {
+								var tmp = {value: json.service[p]["id"], text: json.service[p]["name"]};
+								service.push(tmp);
+							}
+
+							// 城市
+							var cityPicker = new $.PopPicker({layer: 2});
 							cityPicker.setData(city);
 
-							var showCityPickerButton = doc.getElementById('showCityPicker');
-							showCityPickerButton.addEventListener('tap', function(event) {
+							var showCityPickerButton = doc.getElementById("showCityPicker");
+							showCityPickerButton.addEventListener("tap", function(event) {
 								cityPicker.show(function(items) {
 									jQuery("[data-picker='city']").html(items[0].text + " " + items[1].text);
-									//返回 false 可以阻止选择框的关闭
-									//return false;
+									jQuery("#req_cid").val(items[1].value);
+								});
+							}, false);
+
+							// 服务
+							var servicePicker = new $.PopPicker({layer: 1});
+							servicePicker.setData(service);
+
+							var showServicePickerButton = doc.getElementById("showServicePicker");
+							showServicePickerButton.addEventListener("tap", function(event) {
+								servicePicker.show(function(items) {
+									jQuery("[data-picker='service']").html(items[0].text);
+									jQuery("#req_service").val(items[0].value);
 								});
 							}, false);
 

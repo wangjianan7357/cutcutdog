@@ -4,8 +4,51 @@ require('../include/fun_saas.php');
 
 if ($_REQUEST['action'] == 'list') {
     $list = array();
-    $getdata = $my_db->selectRow('*', 'info', $_POST['where']);
+    $where = $_POST['where'];
+    $catalog = array();
+
+    if ($_POST['type'] == 3) {
+        $where = array();
+
+        if ($_POST['where']['name'] && $_POST['where']['name']['like'] != '%%') {
+            $where['name'] = $_POST['where']['name'];
+        }
+
+        if ($_POST['where']['cid']) {
+            $where['cid'] = array('like' => '%,' . $_POST['where']['cid'] . ',');
+        } else {
+            $getdata = $my_db->selectRow('id', 'catalog', array('type' => $_POST['type']));
+            while ($result = mysql_fetch_array($getdata)) {
+                $catalog[] = $result['id'];
+            }
+        }
+
+        if (intval($_POST['where']['service'])) {
+            $pids = array();
+            $getdata = $my_db->selectRow('pid', 'property_content', array('sort' => 1, 'vid' => intval($_POST['where']['service'])));
+            while ($result = mysql_fetch_array($getdata)) {
+                $pids[] = $result['pid'];
+            }
+
+            if (!empty($pids)) {
+                $where['id'] = array('in' => '(' . implode(',', $pids) . ')');
+            } else {
+                callback(array('error' => 0, 'list' => $list));
+            }
+        }
+
+        $getdata = $my_db->selectRow('id', 'catalog', array('type' => intval($_POST['type'])));
+
+    }
+
+    $where['valid'] = 1;
+
+    $getdata = $my_db->selectRow('*', 'info', $where);
     while ($result = mysql_fetch_array($getdata)) {
+        if (!empty($catalog) && !preg_match('/(^|,)(' . implode('|', $catalog) . '),$/', $result['cid'])) {
+            continue;
+        }
+
         $list[$result['id']] = $result;
     }
 

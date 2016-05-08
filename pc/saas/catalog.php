@@ -4,6 +4,7 @@ require('../include/fun_saas.php');
 
 if ($_REQUEST['action'] == 'list') {
     $list = array();
+    $service = array();
     
     if (is_array($_POST['where'])) {
         $getdata = $my_db->selectRow('*', 'catalog', $_POST['where']);
@@ -21,11 +22,17 @@ if ($_REQUEST['action'] == 'list') {
             
             $list[$result['id']] = $result;
         }
+
+        $getdata = $my_db->selectRow('*', 'service', array('valid' => 1));
+        while ($result = mysql_fetch_array($getdata)) {
+            $service[$result['id']] = $result;
+        }
+
     } else {
         callback(array('error' => 5));
     }
 
-    callback(array('error' => 0, 'list' => $list));
+    callback(array('error' => 0, 'list' => $list, 'service' => $service));
 
 } else if ($_REQUEST['action'] == 'detail') {
     $list = array();
@@ -40,6 +47,10 @@ if ($_REQUEST['action'] == 'list') {
 
         $getdata = $my_db->selectRow('*', $cms_cata_type[$category['type']]['db'], array('`cid` LIKE "%,' . $category['id'] . '," OR `cid` = "' . $category['id'] . ',"'));
         while ($result = mysql_fetch_array($getdata)) {
+            if (!isset($member[$result['mid']])) {
+                $member[$result['mid']] = array('name' => '');
+            }
+
             $result['summary'] = cutString(strip_tags($result['desp']), 30);
             $result['member'] = $member[$result['mid']];
             $list[$result['id']] = $result;
