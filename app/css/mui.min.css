@@ -16,7 +16,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%}body{margin:0}article,
 .soso, input.soso{width:40%;border-radius: 10px; height: 49px; color:#fff ; background: url(../images/bottom_01.jpg) no-repeat 90% 11px; background-color:#8f72b3 ; display: inline-block; line-height: 45px;outline: none; border: none; padding: 0; font-size: 17px;}
 .li-bg{ background: url(../images/icon-10.png);margin-bottom:20px ;border-radius:10px; height:104px;}
 .img-bor{ border:solid #fff 2px ;border-radius: 10px; background-color:#fff ;}
-.za-zi{background: url(../images/Info_icon_home.png) no-repeat 0px 0px; font-size: 26px; color:#333 ; margin-top: 7px; padding-left: 30px; height:24px ; line-height:28px ;}
+.za-zi{background: url(../images/Info_icon_home.png) no-repeat 0px 0px; font-size: 22px; color:#333 ; margin-top: 7px; padding-left: 30px; height:24px ; line-height:28px ;}
 .mui-tal{ background: url(../images/Info_icon_tel.png) no-repeat 3px 0px; height:26px ; margin-top:6px ; padding-left:33px ;color: #333; line-height:25px ;}
 .mui-media-body{width:52%;}
 .z-hao{ text-align: center; background: url(../images/Info_icon_like.png) no-repeat center; height:60px ; line-height:60px ; margin-right:40px ; margin-top: 10px;  font-size:24px;text-indent:120px ; color:#333 ;}

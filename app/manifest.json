@@ -387,7 +387,8 @@
 					"images/Info_icon_home.png",
 					"images/Info_icon_tel.png",
 					"images/icon-10.png",
-					"css/mui.poppicker.css"
+					"css/mui.poppicker.css",
+					"css/dzcss.css"
 				],
 				"refer": [],
 				"priority": 0
