@@ -27,21 +27,73 @@
 	    <div style="float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
 	</header>
 	<div class="mui-content">
-		<div><img src="images/cbd.jpg"></div>
-		<div class="z-hao">110</div>
-		<div class="li-bg-two fl-mar">
-				<div>
-				<div class="za-zi">Petline</div>
-				<div class="dz-add" style=" margin-top:15px ;">長沙灣青山道383號地鋪</div>
-				<div class="mui-tal" style=" margin-top:15px ;">2666 6666</div>
-			</div>
+		<div id="detail-photo"><img src="images/cbd.jpg"></div>
+		<script id="detail-photo-code" type="text/html">
+			<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>">
+		</script>
+
+		<div class="z-hao" id="likesCount" data-info="detail.likes">0</div>
+		<div class="li-bg-san fl-mar">
+			<div class="pl_two_zi" data-info="detail.name"></div>
+			<div class="dz-add" style="margin-top: 15px;" data-info="detail.address"></div>
+			<div class="mui-tal" style="margin-top: 15px;" data-info="detail.tel"></div>
+			<input type="hidden" id="aid" data-info="value=detail.id" value="">
 		</div>
-	
-   <div style=" text-align: center;">
-   	 <div class="zh-good">讚好</div><div class="zh-good" style=" margin-left:10px ;">評論</div><div class="zh-good" style=" margin-left:10px ;">分享</div>
-   	
-   </div>	
+
+		<div style=" text-align: center;">
+			<div class="zh-good" id="heart" rel="like">讚好</div>
+			<div class="zh-good" style=" margin-left:10px;" id="promptBtn">評論</div>
+			<div class="zh-good" style=" margin-left:10px;">分享</div>
+		</div>
 	</div>
+
+	<div id="detail-view"></div>
+	<script id="detail-view-code" type="text/html">
+		<ul id="comment-list">
+		<% for (var i in detail["comments"]) { %>
+			<li>
+				<p><b><%= detail["comments"][i]["member"]["name"] %>：</b> <%= detail["comments"][i]["content"] %></p>
+			</li>
+		<% } %>
+		</ul>
+	</script>
+
+	<script type="text/javascript" charset="utf-8">
+		var cata_type = 3;
+		var member = {};
+	
+		//mui初始化
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		
+		mui.plusReady(function() {
+			member = myStorage.getItem("member");
+			
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/info.php",
+				dataType: "json",
+				data: {
+					action: "detail",
+					where: {type: cata_type, path: getUrlParam("url")}
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						jQuery("#detail-view").html(template("detail-view-code", json));
+						jQuery("#detail-photo").html(template("detail-photo-code", json));
+						assignTmpl(json);
+						initComment("promptBtn", "heart", "likesCount");
+							
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {}
+			});
+		});
+	</script>
 		
 </body>
 </html>
