@@ -8,7 +8,6 @@
 	<!--标准mui.css-->
 	<link rel="stylesheet" href="css/mui.min.css">
 	<link rel="stylesheet" href="css/dzcss.css">
-	<link rel="stylesheet" type="text/css" href="../css/app.css" />
 	<!--App自定义的css-->
 	<style type="text/css">
 		.active {
@@ -24,18 +23,32 @@
 		.active span{line-height: 40px;}
 		#comment-list {
 			padding:10px 0px 10px 5px;;
-			background-color:#fff ;
+			background-color:#fff;
 			text-align: left;
 			
-			color:#666 ;
-			font-size:14px ;
-			margin:0px 0px ;
+			color:#666;
+			font-size:14px;
+			margin:0px 0px;
 		}
 		#comment-list li {
-			border-bottom: 1px  solid #ebebed; list-style:none ; background-color: #f8f8f9; padding-left: 5px;height:28px;
+			border-bottom: 1px solid #ebebed; 
+			list-style:none; 
+			background-color: #f8f8f9; 
+			padding-left: 5px;
+			height:28px;
 		}
-		#comment-list li p{color:#666 ;}
-		.top_bg{ height:30px; background-color: #a669c0;opacity:0.5;}
+		#comment-list li p{color:#666;}
+		.top_bg { 
+			height:30px; 
+			background-color: #a669c0;
+			opacity:0.5;
+		}
+		.serv-my-zi .input1 {
+			height:38px; 
+			position: absolute; 
+			margin-left:20px;
+			width:70%;
+		}
 	</style>
 	<script src="js/mui.min.js"></script>
 	<script src="js/mui.zoom.js"></script>
@@ -54,18 +67,25 @@
 	<div class="mui-content bg-two">
 		<div class="top_bg"></div>
 		
-		<div class="mui-content-padded" style=" margin:0px ; padding:10px ;">
+		<div class="mui-content-padded" style=" margin:0px; padding:10px;">
 			
 			<div class="serv-my-zi mar">
 				<div class="floa">服務類型</div>
-				<div class="floa"><img src="images/service-button-05.png"><span>寵物洗澡</span></div>
-			    <div class="floa sa"><img src="images/service-button-06.png"><span>上門美容</span> <div class="sh_bg"><img src="images/xz.png"></div></div>
-			    <div class="floa"><img src="images/service-button-07.png"><span>寵物傳心</span></div>
+				<div class="floa sa" data-action="select">
+					<img src="images/service-button-05.png"><span>寵物洗澡</span>
+				</div>
+			    <div class="floa sa" data-action="select">
+			    	<img src="images/service-button-06.png"><span>上門美容</span> 
+			    	<div class="sh_bg"></div>
+			    </div>
+			    <div class="floa sa" data-action="select">
+			    	<img src="images/service-button-07.png"><span>寵物傳心</span>
+			    </div>
 			</div>
 			<div class="serv-my-zi mar">
 				<div class="floa">寵物類型</div>
-				<div class="floa sa"><a href="#"><img src="images/service-button-08.png"></a><a href="#"><img src="images/service-button-09.png"></a>  <div class="sh_bg"><img src="images/xz.png"></div></div>
-			    <div class="floa"><input type="text" placeholder="品種填寫" style="width:40%; height:38px ; position: absolute;"></div>
+				<div class="floa sa"><a href="#"><img src="images/service-button-08.png"></a><a href="#"><img src="images/service-button-09.png"></a>  <div class="sh_bg"></div></div>
+			    <div class="floa"><input type="text" placeholder="品種填寫" style="width:40%; height:38px; position: absolute;"></div>
 			
 			</div>
 			<div class="serv-my-zi mtop">
@@ -79,68 +99,40 @@
 			
 			<div class="serv-my-zi mar">
 				<div class="floa">姓名</div>
-				<div class="floa"><input type="text" placeholder="姓名填寫" style="width:70%; height:38px ; position: absolute; margin-left:20px ;"></div>
+				<div class="floa"><input type="text" class="input1" placeholder="姓名填寫"></div>
 			 </div>
 			 
 			 <div class="serv-my-zi mar">
 				<div class="floa">電話</div>
-				<div class="floa"><input type="text" placeholder="電話填寫" style="width:70%; height:38px ; position: absolute; margin-left:20px ;"></div>
+				<div class="floa"><input type="text" class="input1" placeholder="電話填寫"></div>
 			 </div>
 			 
 			 <div class="serv-my-zi mar">
 				<div class="floa">地址</div>
-				<div class="floa"><input type="text" placeholder="地址填寫" style="width:70%; height:38px ; position: absolute; margin-left:20px ;"></div>
+				<div class="floa"><input type="text" class="input1" placeholder="地址填寫"></div>
 			 </div>
 			 
 			 <div class="serv-my-zi mar">
 				<div class="floa">上門日期</div>
-				<div class="floa"><input type="text" placeholder="上門日期填寫" style="width:58%; height:38px ; position: absolute; margin-left:20px ;"></div>
+				<div class="floa"><input type="text" class="input1" placeholder="上門日期填寫" style="width:58%;"></div>
 			 </div>
 			 
 			 <div class="serv-my-zi mar">
 				<div class="floa">備註</div>
-				<div class="floa"><input type="text" placeholder="備註填寫" style="width:70%; height:38px ; position: absolute; margin-left:20px ;"></div>
+				<div class="floa"><input type="text" class="input1" placeholder="備註填寫"></div>
 			 </div>
 			 
 			 <div class="serv-my-zi mar">
 				<button  class="mui-btn mui-btn-block-two" type='button'><span>沒有指定美容師</span></button><div class="butt_right-two" ><img src="images/Info_button-02.png"></div>
 				</div>
 			
-			<div class="serv-my-zi mar"><a href="#"><span class="serv-ljyy-two">提交</span></a></div>
+			<div class="serv-my-zi mar"><span class="serv-ljyy-two">提交</span></div>
 			
-	</div>	
+		</div>	
 	</div>
-			
-		<!--	
-			<article class="htmleaf-container" style="text-align: right;">
-				<div id="container" style="position: relative;">
-					<div class="heart " id="like1" rel="like"></div> 
-					<div class="likeCount" id="likeCount1">14</div>  
-				</div>
-
-				
-					<div style=" text-align: right; margin-right: 10px;" id='promptBtn'><img src="images/ioc-01.png" style="width:20px;"></div>
-				
-			</article>
-			<ul id="comment-list"></ul>
-			<script id="comment-list-code" type="text/html">
-			<% for (var i in list) { %>
-				<li>
-					<p><b><%= list[i]["member"]["name"] %>：</b> <%= list[i]["content"] %></p>
-					
-				</li>
-			<% } %>
-			</script>
-
-			
-		</div>
-		
-		
-		-->
-	
 
 	<script type="text/javascript" charset="utf-8">
-		var member = myStorage.getItem("member");
+		var member = {};
 	
 		//mui初始化
 		mui.init({
@@ -148,75 +140,41 @@
 		});
 		
 		mui.plusReady(function() {
-			mui.ajax({
-				type: "post",
-				url: domain + "saas/message.php",
-				dataType: "json",
-				data: {
-					action: "list",
-					where: {type: 4}
-				},
-				async: true,
-				success: function(json) {
-					if(!json.error) {
-						jQuery("#comment-list").html(template('comment-list-code', json));
-							
-					} else {
-						plus.nativeUI.toast(json.message);
-					}
-				},
-				error: function(xhr, type, errorThrown) {}
-			});
-		});
+			member = myStorage.getItem("member");
 
-		document.getElementById("promptBtn").addEventListener("tap", function(e) {
-			e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
-			mui.prompt('請輸入您的評語：', '', '', ['取消', '提交'], function(e) {
-				if (e.index == 1) {
-					mui.ajax({
-						type: "post",
-						url: domain + "saas/message.php",
-						dataType: "json",
-						data: {
-							action: "send",
-							id: member.id,
-							name: member.name,
-							content: e.value,
-							type: 4
-						},
-						async: true,
-						success: function(json) {
-							//alert(JSON.stringify(json))
-						},
-						error: function(xhr, type, errorThrown) {
-							//alert(JSON.stringify(xhr))
-						}
-					});
-					
-					jQuery("#comment-list").append("<li><p><b>" + member.name + "：</b></p><p>" + e.value + "</p></li>");
-				}
-			})
-		});
-
-		$(document).ready(function() {
-			$('body').on("click", '.heart', function() {
-				var A=$(this).attr("id");
-				var B=A.split("like");
-				var messageID=B[1];
-				var C=parseInt($("#likeCount"+messageID).html());
-				$(this).css("background-position","")
-				var D=$(this).attr("rel");
-			   
-				if(D === 'like') {      
-					$("#likeCount"+messageID).html(C+1);
-					$(this).addClass("heartAnimation").attr("rel","unlike");
+			jQuery("[data-action='select']").click(function() {
+				if ($(this).html().indexOf("<div class=\"sh_bg\"></div>") != -1) {
+					$(this).html($(this).html().replace("<div class=\"sh_bg\"></div>", ""));
 				} else {
-					$("#likeCount"+messageID).html(C-1);
-					$(this).removeClass("heartAnimation").attr("rel","like");
-					$(this).css("background-position","left");
+					$(this).html($(this).html() + "<div class=\"sh_bg\"></div>");
 				}
 			});
+
+			document.getElementById(comment).addEventListener("tap", function(e) {
+				mui.ajax({
+                    type: "post",
+                    url: domain + "saas/booking.php",
+                    dataType: "json",
+                    data: {
+                        action: "send",
+                        id: member.id,
+                        name: member.name,
+                        content: e.value,
+                        atype: cata_type,
+                        aid: jQuery("#aid").val()
+                    },
+                    async: true,
+                    success: function(json) {
+                        //alert(JSON.stringify(json))
+                    },
+                    error: function(xhr, type, errorThrown) {
+                        //alert(JSON.stringify(xhr))
+                    }
+                });
+            });
+
 		});
+
 	</script>
 
 </body>

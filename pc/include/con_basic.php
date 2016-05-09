@@ -54,6 +54,7 @@ $con_db_table = array(
 	'role'      => $child_pre . 'role',
 	'admin'     => $child_pre . 'admin',
 	'member'   	=> $child_pre . 'member',
+	'booking'   => $child_pre . 'booking',
 	'message'   => $child_pre . 'message',
 	'likes'   	=> $child_pre . 'likes',
 	'language'  => $child_pre . 'language',
@@ -96,6 +97,7 @@ $cms_admin_power = array(
 	'product'    => array('產品內容', '添加產品', '编辑產品', '删除產品'),
 	'service'    => array('服務項目', '添加服務', '编辑服務', '删除服務'),
 	'message'    => array('互動留言', '查看留言', '回复留言', '删除留言'),
+	'bookiing'   => array('在線預約', '查看預約', '編輯預約', '删除預約'),
 	'member'   	 => array('會員用戶', '添加用戶', '编辑用戶', '删除用戶'),
 );
 
@@ -125,7 +127,7 @@ $cms_cata_style = array(1 => '内容整页显示', 2 => '标题列表显示');
 $cms_member_type = array(1 => '會員', 10 => '美容師');
 
 /* 交互模块 */
-$cms_msg_type = array(1 => '在線評論', 2 => '在線預約');
+$cms_msg_type = array(1 => '在線評論');
 
 $cms_page_union = array(
 	'catalog' => array('id' => 1000, 'fix' => 'c'), 

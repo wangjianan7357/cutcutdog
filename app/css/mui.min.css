@@ -75,7 +75,6 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%}body{margin:0}article,
 .mui-table-view-cell-img {
     position: relative;
     overflow: hidden;
-   
     -webkit-touch-callout: none;
 }
 .zi-heig{    padding: 6px 8px;}
@@ -83,14 +82,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%}body{margin:0}article,
 .log-rd{width:100%; height:49px ;border-radius: 10px; font-size:24px ;}
 .log-rd-two{width:100%; height:49px ;border-radius: 10px; line-height:40px ;}
 .sa{ position: relative;}
-.sh_bg{    position: absolute;top:0px; left:0px;}
-.sh_bg img{width:80%;}
+.sh_bg{ position: absolute; top:0px; left:0px; background-image: url(../images/xz.png); background-size: contain; background-repeat: no-repeat; width: 40%; height: 100%;}
 .sh_bg-two{    position: absolute;top:2px; left:5px;}
 .sh_bg-two img{width:90%;}
-
-
-
-
-
-
 

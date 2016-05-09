@@ -192,13 +192,12 @@ if($err){
 				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-comments"></i>
-						<span>互動留言</span>
+						<span>留言预约</span>
 						<small class="label pull-right bg-red"><?= $layout['message']['new']; ?></small>
 					</a>
 					<ul class="treeview-menu">
-					<?php foreach ($cms_msg_type as $key => $value) { ?>
-						<li><a href="message.php?type=<?=$key;?>"><i class="fa fa-circle-o"></i> <?= $value; ?></a></li>
-					<?php } ?>
+						<li><a href="message.php?type=1"><i class="fa fa-circle-o"></i> 在線評論</a></li>
+						<li><a href="booking.php"><i class="fa fa-circle-o"></i> 在線預約</a></li>
 						<li><a href="likes.php"><i class="fa fa-circle-o"></i> 點讚統計</a></li>
 					</ul>
 				</li>

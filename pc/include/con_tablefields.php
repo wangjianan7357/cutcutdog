@@ -64,6 +64,24 @@ return array(
         `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
         PRIMARY KEY ( `id` )',
 
+    /** 
+     * 网站预约
+     */
+    'booking' => '
+        `id` INT( 8 ) NOT NULL AUTO_INCREMENT , 
+        `service` VARCHAR( 90 ) NOT NULL DEFAULT "" , 
+        `pet` VARCHAR( 32 ) NOT NULL DEFAULT "" , 
+        `size` VARCHAR( 32 ) NOT NULL DEFAULT "" , 
+        `name` VARCHAR( 32 ) NOT NULL DEFAULT "" , 
+        `phone` VARCHAR( 32 ) NOT NULL DEFAULT "" , 
+        `address` VARCHAR( 128 ) NOT NULL DEFAULT "" , 
+        `time` INT( 10 ) NOT NULL DEFAULT 0 COMMENT "上门日期" ,
+        `content` VARCHAR( 512 ) NOT NULL DEFAULT "" , 
+        `valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
+        `read` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
+        `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+        PRIMARY KEY ( `id` )',
+
 	/** 
 	 * 网站留言信息
 	 */
