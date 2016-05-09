@@ -79,32 +79,6 @@
 		</div>
 		
 		<br><br>
-		<!--				
-		<div id='list' class="mui-indexed-list">
-			<div class="mui-indexed-list-search mui-input-row mui-search">
-				<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索商店">
-			</div>
-			<div class="mui-indexed-list-inner">
-				<div class="mui-indexed-list-empty-alert">没有数据</div>
-
-				<ul class="mui-table-view" id="list-view"></ul>
-				<script id="list-view-code" type="text/html">
-				<% for (var i in list) { %>
-					<% if (!list[i]["parent"]) { %>
-						<li class="mui-table-view-divider mui-indexed-list-group"><%= list[i]["name"] %></li>
-
-						<% for (var j in list) { %>
-							<% if (list[j]["parent"] == list[i]["id"] + ",") { %>
-								<li class="mui-table-view-cell mui-indexed-list-item"><a href="info-list.html?url=<%= list[j]["path"] %>" data-action="webview"><%= list[j]["name"] %></li>
-							<% } %>
-						<% } %>
-					<% } %>
-				<% } %>
-				</script>
-			</div>
-		</div>
-		-->
-		
 	</form>
 	
 	<script type="text/javascript" charset="utf-8">

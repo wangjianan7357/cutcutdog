@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Hello MUI</title>
+	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -46,27 +46,28 @@
 
 </head>
 <body>
-<header class="mui-bar mui-bar-nav">
-	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
-</header>
-<div class="mui-content" style="background: none;">
-	<div class="top_bg"></div>
-	<div><img class="img-bor-two wid" src="images/tu_01.jpg" /><span class="t-p-tile">Chung Chung，HK</span></div>
-	<div class="mui-content-padded m10">
-		<p>
-			<img src="images/shuijiao.jpg" data-preview-src="" data-preview-group="1" />
-		</p>
-		<p class="xp-p-zi">图片全屏后，双击或双指缩放均可对图片进行放大、缩小操作，左右滑动可查看同组(data-preview-group相同的图片为一组)其它图片，  </p>
-		<div class="xp-tu " style=" margin-left:5px ;">
-			<div class="zh-good-x-p"><img src="images/photo-button-01.png"></div>
-			<div class="zh-good-x-p" style=" margin-left:10px ;"><img src="images/photo-button-02.png"></div>
-			<div class="zh-good-x-p" style=" margin-left:10px ;"><img src="images/photo-button-03.png"></div>
-			<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span>14</span></div>
-		</div>
-	</div>	
-</div>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
+	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
+	    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
+	</header>
+
+	<div class="mui-content" style="background: none;">
+		<div class="top_bg"></div>
+		<div><img class="img-bor-two wid" src="images/tu_01.jpg" /><span class="t-p-tile">Chung Chung，HK</span></div>
+		<div class="mui-content-padded m10">
+			<p>
+				<img src="images/shuijiao.jpg" data-preview-src="" data-preview-group="1" />
+			</p>
+			<p class="xp-p-zi">图片全屏后，双击或双指缩放均可对图片进行放大、缩小操作，左右滑动可查看同组(data-preview-group相同的图片为一组)其它图片，  </p>
+			<div class="xp-tu " style=" margin-left:5px ;">
+				<div class="zh-good-x-p"><img src="images/photo-button-01.png"></div>
+				<div class="zh-good-x-p" style=" margin-left:10px ;"><img src="images/photo-button-02.png"></div>
+				<div class="zh-good-x-p" style=" margin-left:10px ;"><img src="images/photo-button-03.png"></div>
+				<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span>14</span></div>
+			</div>
+		</div>	
+	</div>
 			
 		<!--	
 			<article class="htmleaf-container" style="text-align: right;">
@@ -88,13 +89,9 @@
 				</li>
 			<% } %>
 			</script>
-
-			
 		</div>
 		
-		
 		-->
-	
 
 	<script type="text/javascript" charset="utf-8">
 		var member = myStorage.getItem("member");
@@ -126,54 +123,6 @@
 			});
 		});
 
-		document.getElementById("promptBtn").addEventListener("tap", function(e) {
-			e.detail.gesture.preventDefault(); //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
-			mui.prompt('請輸入您的評語：', '', '', ['取消', '提交'], function(e) {
-				if (e.index == 1) {
-					mui.ajax({
-						type: "post",
-						url: domain + "saas/message.php",
-						dataType: "json",
-						data: {
-							action: "send",
-							id: member.id,
-							name: member.name,
-							content: e.value,
-							type: 4
-						},
-						async: true,
-						success: function(json) {
-							//alert(JSON.stringify(json))
-						},
-						error: function(xhr, type, errorThrown) {
-							//alert(JSON.stringify(xhr))
-						}
-					});
-					
-					jQuery("#comment-list").append("<li><p><b>" + member.name + "：</b></p><p>" + e.value + "</p></li>");
-				}
-			})
-		});
-
-		$(document).ready(function() {
-			$('body').on("click", '.heart', function() {
-				var A=$(this).attr("id");
-				var B=A.split("like");
-				var messageID=B[1];
-				var C=parseInt($("#likeCount"+messageID).html());
-				$(this).css("background-position","")
-				var D=$(this).attr("rel");
-			   
-				if(D === 'like') {      
-					$("#likeCount"+messageID).html(C+1);
-					$(this).addClass("heartAnimation").attr("rel","unlike");
-				} else {
-					$("#likeCount"+messageID).html(C-1);
-					$(this).removeClass("heartAnimation").attr("rel","like");
-					$(this).css("background-position","left");
-				}
-			});
-		});
 	</script>
 
 </body>

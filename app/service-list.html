@@ -1,78 +1,83 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--标准mui.css-->
+	<link href="css/mui.min.css" rel="stylesheet" />
+	<link href="css/mui.indexedlist.css" rel="stylesheet" />
+	<link href="css/mui.picker.css" rel="stylesheet" />
+	<link href="css/mui.poppicker.css" rel="stylesheet" />
+	<style>
+		h5{
+	        padding-top: 8px;
+	        padding-bottom: 8px;
+	        text-indent: 12px;
+	        background-color:#efeff4;
+	    }
+		.top_bg{ height:30px; background-color: #a669c0;opacity:0.5;}
+	</style>
 
-	<head>
-		<meta charset="utf-8">
-		<title>Hello MUI</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-		<!--标准mui.css-->
-		 <link href="css/mui.min.css" rel="stylesheet" />
-	     <link href="css/mui.indexedlist.css" rel="stylesheet" />
-	     <link href="css/mui.picker.css" rel="stylesheet" />
-	     <link href="css/mui.poppicker.css" rel="stylesheet" />
-		<style>
-			h5{
-		        padding-top: 8px;
-		        padding-bottom: 8px;
-		        text-indent: 12px;
-		        background-color:#efeff4;
-		    }
-		    
-			
-			.top_bg{ height:30px; background-color: #a669c0;opacity:0.5;}
-		</style>
-		 <script src="js/mui.min.js"></script>
+	<script src="js/mui.min.js"></script>
     <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
-	</head>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
+    	<h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
+    	<div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
+	</header>
+	<div class="mui-content">
+		<div class="top_bg"></div>
+		<div class="serv-fw">
 
-	<body>
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
-		</header>
-		<div class="mui-content">
-		   <div class="top_bg"></div>
-		   <div class="serv-fw">
-		   	 
-		   	 	<div><a href="service-detail.html" data-action="openwindow"><img src="images/yuantiao.jpg"></a></div>
-		   	 	<div><a href="service-detail.html" data-action="openwindow"><img src="images/muwu.jpg"></a></div>
-		   	 	<div><a href="service-detail.html" data-action="openwindow"><img src="images/shuijiao.jpg"></a></div>
-		   	 	<div><a href="service-detail.html" data-action="openwindow"><img src="images/yuantiao.jpg"></a></div>
-		   	 	<div><a href="service-detail.html" data-action="openwindow"><img src="images/shuijiao.jpg"></a></div>
-		   	 	<div><a href="service-detail.html" data-action="openwindow"><img src="images/yuantiao.jpg"></a></div>
-		   	
-		   </div>
-		<!--	
-		    <h5 style="font-size: 18px; color: #666;"><strong>寵物世界</strong></h5>
-		    <ul class="mui-table-view mui-grid-view">
-		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
-		            <a href="image-list.html" data-action="webview">
-		                <img class="mui-media-object" src="images/shuijiao.jpg">
-		                <div class="mui-media-body">幸福就是可以一起睡觉</div></a></li>
-		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
-		            <a href="image-list.html" data-action="webview">
-		                <img class="mui-media-object" src="images/muwu.jpg">
-		                <div class="mui-media-body">想要一间这样的木屋，静静的喝咖啡</div></a></li>
-		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
-		            <a href="image-list.html" data-action="webview"><img class="mui-media-object" src="images/cbd.jpg">
-		                <div class="mui-media-body">Color of SIP CBD</div></a></li>
-		        <li class="mui-table-view-cell mui-media mui-col-xs-6">
-		            <a href="image-list.html" data-action="webview">
-		                <img class="mui-media-object" src="images/yuantiao.jpg">
-		                <div class="mui-media-body">静静看这世界</div></a></li>
-		    </ul>   
--->
+			<div><a href="service-detail.html" data-action="openwindow"><img src="images/yuantiao.jpg"></a></div>
+			<div><a href="service-detail.html" data-action="openwindow"><img src="images/muwu.jpg"></a></div>
+			<div><a href="service-detail.html" data-action="openwindow"><img src="images/shuijiao.jpg"></a></div>
+			<div><a href="service-detail.html" data-action="openwindow"><img src="images/yuantiao.jpg"></a></div>
+
 		</div>
-	</body>
-	<script src="../js/mui.min.js"></script>
+
+		<div class="serv-fw" id="list-view"></div>
+		<script id="list-view-code" type="text/html">
+			<% for (var i in list) { %>
+				<div><a href="service-detail.html?url=<%= list[i]["path"] %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/pictures/service/sem" + list[i]["src"] %>"></a></div>
+			<% } %>
+		</script>
+
+	</div>
+
 	<script>
 		mui.init({
 			swipeBack:true //启用右滑关闭功能
 		});
+
+		mui.plusReady(function() {
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/service.php",
+				dataType: "json",
+				data: {action: "list"},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						jQuery("#list-view").html(template('list-view-code', json));
+						//assignTmpl(json);
+						
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {
+					//alert(JSON.stringify(xhr))
+				}
+			});
+		});
 	</script>
+</body>
 </html>
