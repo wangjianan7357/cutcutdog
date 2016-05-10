@@ -73,9 +73,11 @@
 	mui('.mui-scroll-wrapper').scroll();
 
 	//分享操作
-	var member = myStorage.getItem("member");
+	var member = {};
 
 	mui.plusReady(function() {
+		member = myStorage.getItem("member");
+
 		mui.ajax({
 			type: "post",
 			url: domain + "saas/member.php",

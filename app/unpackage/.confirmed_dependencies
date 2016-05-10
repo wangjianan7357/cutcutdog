@@ -404,7 +404,8 @@
       "fonts/mui.ttf",
       "css/mui.indexedlist.css",
       "css/mui.picker.css",
-      "css/mui.poppicker.css"
+      "css/mui.poppicker.css",
+      "js/template-native.js"
     ],
     "refer": [
       "service-detail.html"
@@ -481,7 +482,8 @@
       "images/home.png",
       "images/photo-button-04.png",
       "images/photo-button-01.png",
-      "images/Petchat.png"
+      "images/Petchat.png",
+      "photo-list.html"
     ],
     "refer": []
   },
@@ -504,7 +506,8 @@
       "js/basic.js",
       "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
       "js/mui.view.js"
-    ]
+    ],
+    "refer": []
   },
   "publish-photo.html": {
     "resources": [
@@ -520,7 +523,8 @@
       "css/feedback-page.css",
       "js/basic.js",
       "js/mui.view.js"
-    ]
+    ],
+    "refer": []
   },
   "service-booking.html": {
     "resources": [
@@ -545,7 +549,8 @@
       "images/service-button-07.png",
       "images/service-button-05.png",
       "images/xz.png"
-    ]
+    ],
+    "refer": []
   },
   "my-discuss.html": {
     "resources": [
@@ -565,6 +570,7 @@
       "js/basic.js",
       "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
       "js/mui.view.js"
-    ]
+    ],
+    "refer": []
   }
 }

@@ -50,17 +50,6 @@
 
 				</li>
 				</a>
-
-				<a href="photo-detail.html" data-action="webview">
-				<li>
-					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
-					<div class="xp-tu-zi">想要一间这样的木屋，静静的喝咖</div>
-
-					<div class="zh-good">讚好</div><div class="zh-good" style=" margin-left:10px ;">評論</div><div class="zh-good" style=" margin-left:10px ;">分享</div>
-					<div class="z-hao-two">112</div>
-
-				</li>
-				</a>
 			</ul>
 
 			<ul id="list-view"></ul>
@@ -68,13 +57,13 @@
 			<% for (var i in list) { %>
 				<li>
 					<a href="photo-detail.html?url=<%= list[i]["path"] %>" data-action="webview">
-						<div><img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/service/sem" + list[i]["src"] %>"></div>	
+						<div><img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></div>	
 						<div class="xp-tu-zi"><%= list[i]["name"] %></div>
 
 						<div class="zh-good">讚好</div>
 						<div class="zh-good" style=" margin-left:10px ;">評論</div>
 						<div class="zh-good" style=" margin-left:10px ;">分享</div>
-						<div class="z-hao-two">112</div>
+						<div class="z-hao-two"><%= list[i]["likes"] %></div>
 					</a>
 				</li>
 			<% } %>
@@ -93,11 +82,11 @@
 				type: "post",
 				url: domain + "saas/info.php",
 				dataType: "json",
-				data: {action: "list"},
+				data: {action: "list", where: {cid: "15,"}, type: 5},
 				async: true,
 				success: function(json) {
 					if(!json.error) {
-						//jQuery("#list-view").html(template('list-view-code', json));
+						jQuery("#list-view").html(template('list-view-code', json));
 						//assignTmpl(json);
 						
 					} else {

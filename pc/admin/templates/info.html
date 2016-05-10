@@ -67,7 +67,8 @@
                             <label for="sbt_address">地址</label>
                             <input type="text" class="form-control" name="sbt_address" id="sbt_address" placeholder="地址" value="<?= $outcome['address']; ?>">
                         </div>
-
+                        
+                        <?php if ($_GET['type'] == 3) { ?>
                         <div class="form-group">
                             <label for="sbt_path">提供服務</label>
                             
@@ -79,6 +80,7 @@
                             <?php } ?>
                             </div>
                         </div>
+                        <?php } ?>
                         
                         <div class="form-group">
                             <label for="sbt_desp">詳細內容</label>

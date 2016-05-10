@@ -81,9 +81,11 @@
 	<script>
 	mui.init();
 
-	var member = myStorage.getItem("member");
+	var member = {};
 
 	mui.plusReady(function() {
+		member = myStorage.getItem("member");
+
 		mui.ajax({
 			type: "post",
 			url: domain + "saas/catalog.php",

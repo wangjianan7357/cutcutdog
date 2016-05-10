@@ -56,45 +56,46 @@
 		<div class="top_bg"></div>
 		<div><img class="img-bor-two wid" src="images/tu_01.jpg" /><span class="t-p-tile">Chung Chung，HK</span></div>
 		<div class="mui-content-padded m10">
-			<p>
-				<img src="images/shuijiao.jpg" data-preview-src="" data-preview-group="1" />
-			</p>
-			<p class="xp-p-zi">图片全屏后，双击或双指缩放均可对图片进行放大、缩小操作，左右滑动可查看同组(data-preview-group相同的图片为一组)其它图片，  </p>
+			<div id="detail-photo"><img src="images/shuijiao.jpg"></div>
+			<script id="detail-photo-code" type="text/html">
+				<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>">
+			</script>
+		
+			<p class="xp-p-zi" data-info="detail.desp"></p>
 			<div class="xp-tu " style=" margin-left:5px ;">
 				<div class="zh-good-x-p"><img src="images/photo-button-01.png"></div>
-				<div class="zh-good-x-p" style=" margin-left:10px ;"><img src="images/photo-button-02.png"></div>
-				<div class="zh-good-x-p" style=" margin-left:10px ;"><img src="images/photo-button-03.png"></div>
-				<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span>14</span></div>
+				<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-02.png"></div>
+				<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
+				<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-info="detail.likes">0</span></div>
 			</div>
 		</div>	
 	</div>
 			
 		<!--	
-			<article class="htmleaf-container" style="text-align: right;">
-				<div id="container" style="position: relative;">
-					<div class="heart " id="like1" rel="like"></div> 
-					<div class="likeCount" id="likeCount1">14</div>  
-				</div>
+		<article class="htmleaf-container" style="text-align: right;">
+			<div id="container" style="position: relative;">
+				<div class="heart " id="like1" rel="like"></div> 
+				<div class="likeCount" id="likeCount1">14</div>  
+			</div>
 
+			
+				<div style=" text-align: right; margin-right: 10px;" id='promptBtn'><img src="images/ioc-01.png" style="width:20px;"></div>
+			
+		</article>
+		<ul id="comment-list"></ul>
+		<script id="comment-list-code" type="text/html">
+		<% for (var i in list) { %>
+			<li>
+				<p><b><%= list[i]["member"]["name"] %>：</b> <%= list[i]["content"] %></p>
 				
-					<div style=" text-align: right; margin-right: 10px;" id='promptBtn'><img src="images/ioc-01.png" style="width:20px;"></div>
-				
-			</article>
-			<ul id="comment-list"></ul>
-			<script id="comment-list-code" type="text/html">
-			<% for (var i in list) { %>
-				<li>
-					<p><b><%= list[i]["member"]["name"] %>：</b> <%= list[i]["content"] %></p>
-					
-				</li>
-			<% } %>
-			</script>
-		</div>
+			</li>
+		<% } %>
+		</script>
 		
-		-->
+	-->
 
 	<script type="text/javascript" charset="utf-8">
-		var member = myStorage.getItem("member");
+		var member = {};
 	
 		//mui初始化
 		mui.init({
@@ -102,18 +103,23 @@
 		});
 		
 		mui.plusReady(function() {
+			member = myStorage.getItem("member");
+				
 			mui.ajax({
 				type: "post",
-				url: domain + "saas/message.php",
+				url: domain + "saas/info.php",
 				dataType: "json",
 				data: {
-					action: "list",
-					where: {type: 4}
+					action: "detail",
+					where: {path: getUrlParam("url")}
 				},
 				async: true,
 				success: function(json) {
 					if(!json.error) {
-						jQuery("#comment-list").html(template('comment-list-code', json));
+						//jQuery("#detail-view").html(template("detail-view-code", json));
+						jQuery("#detail-photo").html(template("detail-photo-code", json));
+						assignTmpl(json);
+						//initComment("promptBtn", "heart", "likesCount");
 							
 					} else {
 						plus.nativeUI.toast(json.message);

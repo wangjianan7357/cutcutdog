@@ -46,23 +46,32 @@
 		<div class="serv-fw" id="list-view"></div>
 		<script id="list-view-code" type="text/html">
 			<% for (var i in list) { %>
-				<div><a href="service-detail.html?url=<%= list[i]["path"] %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/pictures/service/sem" + list[i]["src"] %>"></a></div>
+				<div><a href="service-detail.html?id=<%= list[i]["id"] %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/member/me" + list[i]["src"] %>"></a></div>
 			<% } %>
 		</script>
 
 	</div>
 
 	<script>
+		var member = {};
+
 		mui.init({
 			swipeBack:true //启用右滑关闭功能
 		});
 
 		mui.plusReady(function() {
+			member = myStorage.getItem("member");
+			
 			mui.ajax({
 				type: "post",
-				url: domain + "saas/service.php",
+				url: domain + "saas/member.php",
 				dataType: "json",
-				data: {action: "list"},
+				data: {
+                    id: member.id,
+                    name: member.name,
+                    action: "list", 
+                    where: {type: 10}
+                },
 				async: true,
 				success: function(json) {
 					if(!json.error) {

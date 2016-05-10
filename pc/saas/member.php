@@ -79,5 +79,17 @@ if ($_REQUEST['action'] == 'login') {
         callback(array('error' => 5));
     }
 
+} else if ($_REQUEST['action'] == 'list') {
+    checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
+
+    $where['valid'] = 1;
+
+    $list = array();
+    $getdata = $my_db->selectRow('*', 'member', $where);
+    while ($result = mysql_fetch_array($getdata)) {
+        $list[$result['id']] = $result;
+    }
+
+    callback(array('error' => 0, 'list' => $list));
 }
 

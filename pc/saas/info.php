@@ -49,6 +49,10 @@ if ($_REQUEST['action'] == 'list') {
             continue;
         }
 
+        if (isset($_POST['type']) && $_POST['type'] == 5) {
+            $result['likes'] = $my_db->existRow('likes', array('atype' => $_POST['type'], 'aid' => $result['id'], 'valid' => 1));
+        }
+
         $list[$result['id']] = $result;
     }
 

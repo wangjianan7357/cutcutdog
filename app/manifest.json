@@ -573,7 +573,8 @@
 					"fonts/mui.ttf",
 					"css/mui.indexedlist.css",
 					"css/mui.picker.css",
-					"css/mui.poppicker.css"
+					"css/mui.poppicker.css",
+					"js/template-native.js"
 				],
 				"refer": [
 					"service-detail.html"
@@ -625,11 +626,11 @@
 					"fonts/mui.ttf",
 					"css/mui.indexedlist.css",
 					"css/mui.picker.css",
-					"css/mui.poppicker.css"
+					"css/mui.poppicker.css",
+					"photo-detail.html"
 				],
 				"refer": [
-					"image-list.html",
-					"photo-detail.html"
+					"image-list.html"
 				],
 				"priority": 0
 			},
@@ -653,7 +654,8 @@
 					"images/home.png",
 					"images/photo-button-04.png",
 					"images/photo-button-01.png",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"photo-list.html"
 				],
 				"refer": [],
 				"priority": 0

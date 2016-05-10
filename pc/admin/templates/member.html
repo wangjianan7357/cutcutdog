@@ -57,7 +57,11 @@
                         <div class="form-group">
                             <label for="sbt_name">頭像</label>
                             <div class="help-block">
-                                <img id="showimg" height="200" src="<?=$outcome['src'] ? '/' . $outcome['src'] : 'dist/img/no-photo.jpg';?>" />
+                                <input type="file" name="sbt_src" onChange="selectImg(this, 0, 0)" />
+                                <iframe id="post_frame" name="post_frame" style="display:none;" src="viewimg.php"></iframe>
+                                <div class="help-block">
+                                    <img id="showimg" height="200" src="<?=$outcome['src'] ? $member_src . $outcome['src'] : 'dist/img/no-photo.jpg';?>" />
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -66,7 +70,7 @@
                         </div>
                         <div class="form-group">
                             <label for="sbt_phone">電話</label>
-                            <input type="text" class="form-control" name="sbt_phone" id="sbt_phone" placeholder="電話" value="<?= $outcome['phone']; ?>">
+                            <input type="text" class="form-control" name="sbt_phone" id="sbt_phone" placeholder="電話" value="<?= $outcome['phone']; ?>" required="required">
                         </div>
 
                         <div class="form-group">

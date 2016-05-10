@@ -5,6 +5,8 @@ require('../include/fun_admin.php');
 $err = '';
 $msg = $_GET['msg'] ? $_GET['msg'] : array();
 
+$member_src = '../' . systemConfig('member_img_path') . $con_pic['pre']['member'];
+
 if($_GET['action'] == 'edt'){
 	if($_GET['num']) $power_id = 2;
 	else if($_POST['del'] == 'true') $power_id = 3;
@@ -46,7 +48,7 @@ if($_GET['action'] == 'edt'){
 		$chk_post = new ChkRequest('sbt_');
 		$chk_post->chkEmpty(array('name' => '名稱', 'phone' => '電話'));
 
-		$_POST['sbt_src'] = $chk_post->chkImage('img');
+		$_POST['sbt_src'] = $chk_post->chkImage('src');
 		
 		if ($outcome['src']) {
 			preg_match('/(\.[\w]{3,4})$/', $_POST['sbt_src'], $match);
@@ -86,12 +88,12 @@ if($_GET['action'] == 'edt'){
 				mysql_query("COMMIT");
 				mysql_query("END");
 
-				if($_FILES['sbt_img']['tmp_name']){
+				if($_FILES['sbt_src']['tmp_name']){
 					$imgpath = $member_src . $_POST['sbt_src'];
 					if(file_exists($imgpath)) unlink($imgpath);
 					if(file_exists($_POST['tmp_img'])) unlink($_POST['tmp_img']);
 
-					move_uploaded_file($_FILES['sbt_img']['tmp_name'], $imgpath);
+					move_uploaded_file($_FILES['sbt_src']['tmp_name'], $imgpath);
 				}
 
 
