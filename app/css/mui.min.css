@@ -54,7 +54,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%}body{margin:0}article,
 .zh-good-x-p-two{ float: right; margin-top:1px ;}.zh-good-x-p-two img{width:45%;}
 .zh-good-x-p-two span{color:#666 ; float: left; line-height:52px ;}
 .serv-fw{overflow: hidden;}
-.serv-fw div{float: left; width:50%;list-style:none ; background-color:#fff; }
+.serv-fw div{float: left; width:50%;list-style:none ; }
 .bg-two{ background: url(../images/bg_two.png);}
 .serv-my-zi{ font-size:18px ; color:#333 ; overflow: hidden;}
 .serv-my-zi span{ float: left; line-height:42px ; margin-top:0px ;}
@@ -63,6 +63,8 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%}body{margin:0}article,
 .serv-my-zi .serv-ljyy{ float:none ; background: url(../images/ljyy_bg.png) no-repeat right; background-color:#8f72b4 ; padding:5px 30px 5px 10px ;border-radius: 10px; color: #fff;}
 .floa{ float: left; line-height:38px ;}
 .floa img{width:40%;}
+.floa-san{ float: left; line-height:38px ;}
+.floa-san img{width:80%;}
 
 .serv-my-zi .floa span{ float:none; display: inline-block; vertical-align: top; color:#333 ; font-size:12px ;}
 .sw-size{border-radius: 10px; background-color: #fffcd3; border:solid 2px #58bdeb ; padding:3px 3px 3px 3px; margin-left:5px;text-align: center; line-height:15px ; color:#58bdeb ; font-size:16px ;}
@@ -83,6 +85,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%}body{margin:0}article,
 .log-rd-two{width:100%; height:49px ;border-radius: 10px; line-height:40px ;}
 .sa{ position: relative;}
 .sh_bg{ position: absolute; top:0px; left:0px; background-image: url(../images/xz.png); background-size: contain; background-repeat: no-repeat; width: 40%; height: 100%;}
-.sh_bg-two{    position: absolute;top:2px; left:5px;}
-.sh_bg-two img{width:90%;}
+.sh_bg-san{ position: absolute; top:0px; left:0px; background-image: url(../images/xz.png); background-size: contain; background-repeat: no-repeat; width: 80%; height: 100%;}
+.sh_bg-two{ position: absolute; top:0px; left:7px; background-image: url(../images/xz.png); background-size: contain; background-repeat: no-repeat; width: 100%; height: 100%;}
+
 
