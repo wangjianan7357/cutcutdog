@@ -61,40 +61,31 @@
 				<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>">
 			</script>
 		
-			<p class="xp-p-zi" data-info="detail.desp"></p>
-			<div class="xp-tu " style=" margin-left:5px ;">
-				<div class="zh-good-x-p"><img src="images/photo-button-01.png"></div>
-				<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-02.png"></div>
+			<div class="xp-p-zi" data-info="detail.desp"></div>
+			<input type="hidden" id="aid" data-info="value=detail.id" value="">
+
+			<div class="xp-tu" style="margin-left:5px;">
+				<div class="zh-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
+				<div class="zh-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
 				<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
-				<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-info="detail.likes">0</span></div>
+				<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-info="detail.likes" id="likesCount">0</span></div>
 			</div>
 		</div>	
-	</div>
-			
-		<!--	
-		<article class="htmleaf-container" style="text-align: right;">
-			<div id="container" style="position: relative;">
-				<div class="heart " id="like1" rel="like"></div> 
-				<div class="likeCount" id="likeCount1">14</div>  
-			</div>
 
-			
-				<div style=" text-align: right; margin-right: 10px;" id='promptBtn'><img src="images/ioc-01.png" style="width:20px;"></div>
-			
-		</article>
-		<ul id="comment-list"></ul>
-		<script id="comment-list-code" type="text/html">
-		<% for (var i in list) { %>
-			<li>
-				<p><b><%= list[i]["member"]["name"] %>：</b> <%= list[i]["content"] %></p>
-				
-			</li>
-		<% } %>
+		<div id="detail-view"></div>
+		<script id="detail-view-code" type="text/html">
+			<ul id="comment-list" class="li-bg-san">
+			<% for (var i in detail["comments"]) { %>
+				<li>
+					<p><b><%= detail["comments"][i]["member"]["name"] %>：</b> <%= detail["comments"][i]["content"] %></p>
+				</li>
+			<% } %>
+			</ul>
 		</script>
-		
-	-->
+	</div>
 
 	<script type="text/javascript" charset="utf-8">
+		var cata_type = 5;
 		var member = {};
 	
 		//mui初始化
@@ -111,15 +102,15 @@
 				dataType: "json",
 				data: {
 					action: "detail",
-					where: {path: getUrlParam("url")}
+					where: {path: getUrlParam("url"), type: cata_type}
 				},
 				async: true,
 				success: function(json) {
 					if(!json.error) {
-						//jQuery("#detail-view").html(template("detail-view-code", json));
 						jQuery("#detail-photo").html(template("detail-photo-code", json));
+						jQuery("#detail-view").html(template("detail-view-code", json));
 						assignTmpl(json);
-						//initComment("promptBtn", "heart", "likesCount");
+						initComment("promptBtn", "heart", "likesCount");
 							
 					} else {
 						plus.nativeUI.toast(json.message);

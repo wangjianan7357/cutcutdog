@@ -52,22 +52,23 @@
 	
 		<div style=" text-align: center;">
 			<div class="zh-good" id="heart" rel="like">讚好</div>
-			<div class="zh-good" style=" margin-left:10px;" id="promptBtn">評論</div>
-			<div class="zh-good" style=" margin-left:10px;">分享</div>
+			<div class="zh-good" style="margin-left:10px;" id="promptBtn">評論</div>
+			<div class="zh-good" style="margin-left:10px;">分享</div>
 		</div>
 	
 		
-	<div id="detail-view"></div>
-	<script id="detail-view-code" type="text/html">
-		<ul id="comment-list" class="li-bg-san">
-		<% for (var i in detail["comments"]) { %>
-			<li>
-				<p><b><%= detail["comments"][i]["member"]["name"] %>：</b> <%= detail["comments"][i]["content"] %></p>
-			</li>
-		<% } %>
-		</ul>
-	</script>
-</div>
+		<div id="detail-view"></div>
+		<script id="detail-view-code" type="text/html">
+			<ul id="comment-list" class="li-bg-san">
+			<% for (var i in detail["comments"]) { %>
+				<li>
+					<p><b><%= detail["comments"][i]["member"]["name"] %>：</b> <%= detail["comments"][i]["content"] %></p>
+				</li>
+			<% } %>
+			</ul>
+		</script>
+	</div>
+	
 	<script type="text/javascript" charset="utf-8">
 		var cata_type = 4;
 		var member = {};

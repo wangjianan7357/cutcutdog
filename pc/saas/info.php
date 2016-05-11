@@ -68,6 +68,8 @@ if ($_REQUEST['action'] == 'list') {
             $comments[] = $result;
         }
 
+        $info['member'] = $my_db->fetchOne('member', array('id' => $info['mid']));
+
         if (!empty($comments)) {
             // 添加会员名
             $member = array();
