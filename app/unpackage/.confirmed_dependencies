@@ -1,576 +1,608 @@
 {
-  "index.html": {
-    "href": "index.html",
-    "resources": [
-      "js/mui.min.js",
-      "css/mui.min.css",
-      "js/template-native.js",
-      "images/cbd.jpg",
-      "images/yuantiao.jpg",
-      "js/jquery.min.js",
-      "images/muwu.jpg",
-      "css/app.css",
-      "fonts/mui.ttf",
-      "images/shuijiao.jpg",
-      "css/feedback-page.css",
-      "js/basic.js",
-      "examples/setting.html",
-      "personal.html",
-      "images/57x57.png",
-      "images/icon-05.png",
-      "images/icon-08.png",
-      "images/icon-07.png",
-      "images/icon-04.png",
-      "images/icon-02.png",
-      "images/icon-06.png",
-      "images/icon-09.png",
-      "images/icon-03.png",
-      "images/icon-01.png",
-      "images/top_bg.png",
-      "%3C%\u003d%20getvarious(",
-      "images/bg.png",
-      "images/CatDog.png",
-      "images/home.png",
-      "images/Petchat.png",
-      "discuss-category.html",
-      "css/mui.poppicker.css",
-      "css/mui.picker.css",
-      "css/mui.indexedlist.css",
-      "service-list.html"
-    ],
-    "refer": [
-      "examples/imageviewer.html",
-      "examples/setting.html",
-      "info-list.html",
-      "discuss-list.html",
-      "personal.html",
-      "image-list.html",
-      "setting.html",
-      "info-category.html",
-      "slider-table-default.html",
-      "discuss-category.html",
-      "discuss-category-list.html",
-      "service-list.html",
-      "photo-list.html"
-    ],
-    "priority": 0
-  },
-  "login.html": {
-    "resources": [
-      "js/app.js",
-      "js/mui.min.js",
-      "css/mui.min.css",
-      "css/style.css",
-      "js/mui.enterfocus.js",
-      "js/template-native.js",
-      "js/jquery.min.js",
-      "js/basic.js",
-      "register.html",
-      "fonts/mui.ttf",
-      "images/top_bg.png",
-      "images/bg.png",
-      "images/CatDog.png",
-      "images/home.png",
-      "images/Petchat.png",
-      "css/mui.poppicker.css",
-      "css/mui.picker.css",
-      "css/mui.indexedlist.css",
-      "forget-password.html"
-    ],
-    "refer": [
-      "index.html",
-      "reg.html",
-      "forget_password.html",
-      "register.html",
-      "forget-password.html"
-    ]
-  },
-  "register.html": {
-    "resources": [
-      "fonts/mui.ttf",
-      "js/template-native.js",
-      "js/app.js",
-      "js/jquery.min.js",
-      "js/mui.min.js",
-      "css/mui.min.css",
-      "css/style.css",
-      "js/basic.js",
-      "login.html",
-      "images/bg.png",
-      "images/CatDog.png",
-      "images/home.png",
-      "images/top_bg.png",
-      "images/Petchat.png"
-    ],
-    "refer": [
-      "login.html"
-    ]
-  },
-  "forget-password.html": {
-    "resources": [
-      "fonts/mui.ttf",
-      "js/app.js",
-      "css/style.css",
-      "login.html",
-      "js/jquery.min.js",
-      "images/bg.png",
-      "js/mui.min.js",
-      "css/mui.min.css",
-      "images/top_bg.png",
-      "js/basic.js",
-      "images/CatDog.png",
-      "images/home.png",
-      "images/Petchat.png"
-    ],
-    "refer": [
-      "login.html"
-    ]
-  },
-  "info-list.html": {
-    "resources": [
-      "js/template-native.js",
-      "js/jquery.min.js",
-      "js/mui.min.js",
-      "fonts/mui.ttf",
-      "css/mui.min.css",
-      "css/mui.indexedlist.css",
-      "js/basic.js",
-      "info-detail.html",
-      "js/mui.indexedlist.js",
-      "images/CatDog.png",
-      "images/home.png",
-      "images/top_bg.png",
-      "images/Petchat.png",
-      "info-category.html",
-      "images/Info_icon_pin.png",
-      "images/Info_icon_home.png",
-      "images/Info_icon_tel.png",
-      "images/icon-10.png",
-      "images/tu_01.jpg",
-      "images/bg.png"
-    ],
-    "refer": [
-      "info-detail.html",
-      "info-category.html"
-    ]
-  },
-  "discuss-list.html": {
-    "resources": [
-      "images/cbd.jpg",
-      "images/yuantiao.jpg",
-      "images/muwu.jpg",
-      "js/mui.min.js",
-      "css/app.css",
-      "fonts/mui.ttf",
-      "css/mui.min.css",
-      "images/shuijiao.jpg",
-      "images/CatDog.png",
-      "images/home.png",
-      "images/top_bg.png",
-      "images/Petchat.png",
-      "js/template-native.js",
-      "js/jquery.min.js",
-      "js/basic.js",
-      "images/bg.png",
-      "discuss-detail.html",
-      "discuss-category.html",
-      "images/pl_top_bg.png",
-      "images/forum_bubble-a.png",
-      "images/forum_bubble-b.png"
-    ],
-    "refer": [
-      "discuss-list-nr.html",
-      "discuss-detail.html",
-      "discuss-category.html"
-    ]
-  },
-  "info-detail.html": {
-    "resources": [
-      "info-list.html",
-      "css/app.css",
-      "js/template-native.js",
-      "js/jquery.min.js",
-      "js/mui.min.js",
-      "css/mui.min.css",
-      "js/basic.js",
-      "fonts/mui.ttf",
-      "js/mui.zoom.js",
-      "js/mui.previewimage.js",
-      "info-category.html",
-      "images/CatDog.png",
-      "images/home.png",
-      "images/top_bg.png",
-      "images/Petchat.png",
-      "images/ioc-01.png",
-      "images/cbd.jpg",
-      "images/Info_icon_like.png",
-      "images/Info_icon_pin.png",
-      "images/bg.png",
-      "css/mui.indexedlist.css",
-      "css/mui.picker.css",
-      "images/Info_icon_home.png",
-      "images/Info_icon_tel.png",
-      "images/icon-10.png",
-      "css/mui.poppicker.css",
-      "css/dzcss.css"
-    ],
-    "refer": [
-      "info-list.html",
-      "info-category.html"
-    ]
-  },
-  "setting.html": {
-    "resources": [
-      "libs/easymob-webim-sdk/easemob.im-1.0.5.js",
-      "libs/easymob-webim-sdk/json2.js",
-      "js/mui.locker.js",
-      "js/feedback.js",
-      "js/feedback-page.js",
-      "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
-      "js/mui.view.js",
-      "js/jquery.min.js",
-      "fonts/mui.ttf",
-      "images/top_bg.png",
-      "js/basic.js",
-      "js/mui.min.js",
-      "images/CatDog.png",
-      "css/mui.min.css",
-      "images/home.png",
-      "images/Petchat.png",
-      "css/feedback-page.css",
-      "images/user-photo.png",
-      "images/Info_icon_pin.png",
-      "css/mui.indexedlist.css",
-      "css/mui.picker.css",
-      "css/mui.poppicker.css"
-    ],
-    "refer": [
-      "login.html",
-      "publish-discuss.html",
-      "my-discuss.html",
-      "profile.html",
-      "my-photo.html",
-      "publish-photo.html"
-    ]
-  },
-  "info-category.html": {
-    "resources": [
-      "info-detail.html",
-      "css/mui.indexedlist.css",
-      "js/template-native.js",
-      "js/jquery.min.js",
-      "js/mui.min.js",
-      "images/CatDog.png",
-      "fonts/mui.ttf",
-      "css/mui.min.css",
-      "images/home.png",
-      "images/top_bg.png",
-      "images/Petchat.png",
-      "js/basic.js",
-      "info-list.html",
-      "images/bg.png",
-      "images/bottom_01.jpg",
-      "js/mui.picker.js",
-      "js/mui.poppicker.js",
-      "js/city.data.js",
-      "css/mui.poppicker.css",
-      "css/mui.picker.css",
-      "images/Info_button-02.png",
-      "css/style.css"
-    ],
-    "refer": [
-      "info-detail.html",
-      "info-list.html"
-    ]
-  },
-  "discuss-category.html": {
-    "resources": [
-      "images/cbd.jpg",
-      "images/yuantiao.jpg",
-      "images/shuijiao.jpg",
-      "js/template-native.js",
-      "js/jquery.min.js",
-      "images/bg.png",
-      "fonts/mui.ttf",
-      "images/top_bg.png",
-      "js/basic.js",
-      "js/mui.min.js",
-      "images/CatDog.png",
-      "css/mui.min.css",
-      "images/home.png",
-      "images/Petchat.png",
-      "discuss-list.html",
-      "discuss-detail.html",
-      "index.html",
-      "images/pl_top_bg.png",
-      "images/forum_bubble-a.png",
-      "images/forum_bubble-b.png",
-      "discuss-category-list.html",
-      "images/tu_03.jpg",
-      "images/tu_04.jpg",
-      "images/tu_06.jpg",
-      "images/tu_02.jpg",
-      "images/tu_07.jpg",
-      "images/tu_05.jpg"
-    ],
-    "refer": [
-      "discuss-list.html",
-      "discuss-detail.html",
-      "index.html",
-      "discuss-category-list.html"
-    ]
-  },
-  "profile.html": {
-    "resources": [
-      "js/jquery.min.js",
-      "js/mui.min.js",
-      "images/CatDog.png",
-      "fonts/mui.ttf",
-      "css/mui.min.css",
-      "images/home.png",
-      "images/top_bg.png",
-      "images/Petchat.png",
-      "css/feedback-page.css",
-      "images/user-photo.png",
-      "js/basic.js",
-      "js/mui.view.js"
-    ],
-    "refer": []
-  },
-  "publish-discuss.html": {
-    "resources": [
-      "js/jquery.min.js",
-      "js/mui.min.js",
-      "images/CatDog.png",
-      "fonts/mui.ttf",
-      "css/mui.min.css",
-      "images/home.png",
-      "images/top_bg.png",
-      "images/Petchat.png",
-      "css/feedback-page.css",
-      "js/basic.js",
-      "js/mui.view.js",
-      "js/template-native.js"
-    ],
-    "refer": [
-      "profile.html"
-    ]
-  },
-  "discuss-detail.html": {
-    "resources": [
-      "images/web_heart_animation.png",
-      "js/mui.zoom.js",
-      "css/dzcss.css",
-      "js/mui.previewimage.js",
-      "discuss-list.html",
-      "images/ioc-01.png",
-      "discuss-category.html",
-      "js/template-native.js",
-      "js/jquery.min.js",
-      "fonts/mui.ttf",
-      "images/top_bg.png",
-      "js/basic.js",
-      "js/mui.min.js",
-      "images/CatDog.png",
-      "css/mui.min.css",
-      "images/home.png",
-      "images/Petchat.png",
-      "images/cbd.jpg",
-      "images/Info_icon_like.png",
-      "images/icon-10.png",
-      "images/bg.png",
-      "%3C%\u003d%20getvarious("
-    ],
-    "refer": [
-      "discuss-list.html",
-      "discuss-category.html"
-    ]
-  },
-  "service-list.html": {
-    "resources": [
-      "js/jquery.min.js",
-      "images/muwu.jpg",
-      "images/bg.png",
-      "images/shuijiao.jpg",
-      "images/top_bg.png",
-      "js/basic.js",
-      "images/yuantiao.jpg",
-      "css/app.css",
-      "js/mui.min.js",
-      "images/CatDog.png",
-      "css/mui.min.css",
-      "images/home.png",
-      "images/Petchat.png",
-      "fonts/mui.ttf",
-      "css/mui.indexedlist.css",
-      "css/mui.picker.css",
-      "css/mui.poppicker.css",
-      "js/template-native.js"
-    ],
-    "refer": [
-      "service-detail.html"
-    ]
-  },
-  "service-detail.html": {
-    "resources": [
-      "js/template-native.js",
-      "js/jquery.min.js",
-      "images/service-button-03.png",
-      "css/dzcss.css",
-      "fonts/mui.ttf",
-      "images/shuijiao.jpg",
-      "images/top_bg.png",
-      "images/service-button-02.png",
-      "js/basic.js",
-      "images/bg_two.png",
-      "images/service-button-01.png",
-      "images/ljyy_bg.png",
-      "js/mui.zoom.js",
-      "js/mui.min.js",
-      "images/CatDog.png",
-      "css/mui.min.css",
-      "images/home.png",
-      "js/mui.previewimage.js",
-      "images/Petchat.png"
-    ],
-    "refer": [
-      "service-booking.html"
-    ]
-  },
-  "photo-list.html": {
-    "resources": [
-      "images/Info_icon_like_two.png",
-      "images/shuijiao.jpg",
-      "js/template-native.js",
-      "js/jquery.min.js",
-      "images/bg.png",
-      "js/mui.min.js",
-      "css/app.css",
-      "images/CatDog.png",
-      "css/mui.min.css",
-      "images/home.png",
-      "images/top_bg.png",
-      "images/Petchat.png",
-      "js/basic.js",
-      "fonts/mui.ttf",
-      "css/mui.indexedlist.css",
-      "css/mui.picker.css",
-      "css/mui.poppicker.css"
-    ],
-    "refer": [
-      "image-list.html",
-      "photo-detail.html"
-    ]
-  },
-  "photo-detail.html": {
-    "resources": [
-      "js/template-native.js",
-      "images/photo-button-02.png",
-      "js/jquery.min.js",
-      "fonts/mui.ttf",
-      "css/dzcss.css",
-      "images/photo-button-03.png",
-      "images/shuijiao.jpg",
-      "images/top_bg.png",
-      "js/basic.js",
-      "js/mui.zoom.js",
-      "js/mui.min.js",
-      "images/CatDog.png",
-      "css/mui.min.css",
-      "images/tu_01.jpg",
-      "js/mui.previewimage.js",
-      "images/home.png",
-      "images/photo-button-04.png",
-      "images/photo-button-01.png",
-      "images/Petchat.png",
-      "photo-list.html"
-    ],
-    "refer": []
-  },
-  "my-photo.html": {
-    "resources": [
-      "images/Info_icon_pin.png",
-      "js/jquery.min.js",
-      "libs/easymob-webim-sdk/easemob.im-1.0.5.js",
-      "js/mui.min.js",
-      "images/CatDog.png",
-      "fonts/mui.ttf",
-      "css/mui.min.css",
-      "images/home.png",
-      "libs/easymob-webim-sdk/json2.js",
-      "images/top_bg.png",
-      "js/mui.locker.js",
-      "images/Petchat.png",
-      "css/feedback-page.css",
-      "images/user-photo.png",
-      "js/basic.js",
-      "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
-      "js/mui.view.js"
-    ],
-    "refer": []
-  },
-  "publish-photo.html": {
-    "resources": [
-      "js/template-native.js",
-      "js/jquery.min.js",
-      "js/mui.min.js",
-      "images/CatDog.png",
-      "fonts/mui.ttf",
-      "css/mui.min.css",
-      "images/home.png",
-      "images/top_bg.png",
-      "images/Petchat.png",
-      "css/feedback-page.css",
-      "js/basic.js",
-      "js/mui.view.js"
-    ],
-    "refer": []
-  },
-  "service-booking.html": {
-    "resources": [
-      "js/template-native.js",
-      "js/jquery.min.js",
-      "images/service-button-08.png",
-      "fonts/mui.ttf",
-      "css/dzcss.css",
-      "images/top_bg.png",
-      "js/basic.js",
-      "images/bg_two.png",
-      "js/mui.zoom.js",
-      "js/mui.min.js",
-      "images/CatDog.png",
-      "css/mui.min.css",
-      "images/home.png",
-      "images/service-button-06.png",
-      "js/mui.previewimage.js",
-      "images/service-button-09.png",
-      "images/Petchat.png",
-      "images/Info_button-02.png",
-      "images/service-button-07.png",
-      "images/service-button-05.png",
-      "images/xz.png"
-    ],
-    "refer": []
-  },
-  "my-discuss.html": {
-    "resources": [
-      "js/jquery.min.js",
-      "libs/easymob-webim-sdk/easemob.im-1.0.5.js",
-      "js/mui.min.js",
-      "images/CatDog.png",
-      "fonts/mui.ttf",
-      "css/mui.min.css",
-      "images/home.png",
-      "libs/easymob-webim-sdk/json2.js",
-      "images/top_bg.png",
-      "js/mui.locker.js",
-      "images/Petchat.png",
-      "css/feedback-page.css",
-      "images/user-photo.png",
-      "js/basic.js",
-      "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
-      "js/mui.view.js"
-    ],
-    "refer": []
-  }
+	"index.html": {
+		"href": "index.html",
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"js/template-native.js",
+			"images/cbd.jpg",
+			"images/yuantiao.jpg",
+			"js/jquery.min.js",
+			"images/muwu.jpg",
+			"css/app.css",
+			"fonts/mui.ttf",
+			"images/shuijiao.jpg",
+			"css/feedback-page.css",
+			"js/basic.js",
+			"examples/setting.html",
+			"personal.html",
+			"images/57x57.png",
+			"images/icon-05.png",
+			"images/icon-08.png",
+			"images/icon-07.png",
+			"images/icon-04.png",
+			"images/icon-02.png",
+			"images/icon-06.png",
+			"images/icon-09.png",
+			"images/icon-03.png",
+			"images/icon-01.png",
+			"images/top_bg.png",
+			"%3C%\u003d%20getvarious(",
+			"images/bg.png",
+			"images/CatDog.png",
+			"images/home.png",
+			"images/Petchat.png",
+			"discuss-category.html",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"css/mui.indexedlist.css",
+			"service-list.html",
+			"info-category.html"
+		],
+		"refer": [
+			"examples/imageviewer.html",
+			"examples/setting.html",
+			"info-list.html",
+			"discuss-list.html",
+			"personal.html",
+			"image-list.html",
+			"setting.html",
+			"info-category.html",
+			"slider-table-default.html",
+			"discuss-category.html",
+			"discuss-category-list.html",
+			"service-list.html",
+			"photo-list.html",
+			"buy.html"
+		],
+		"priority": 0
+	},
+	"login.html": {
+		"resources": [
+			"js/app.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"js/mui.enterfocus.js",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"js/basic.js",
+			"register.html",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"images/bg.png",
+			"images/CatDog.png",
+			"images/home.png",
+			"images/Petchat.png",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"css/mui.indexedlist.css",
+			"forget-password.html"
+		],
+		"refer": [
+			"index.html",
+			"reg.html",
+			"forget_password.html",
+			"register.html",
+			"forget-password.html"
+		]
+	},
+	"register.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"js/template-native.js",
+			"js/app.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/style.css",
+			"js/basic.js",
+			"login.html",
+			"images/bg.png",
+			"images/CatDog.png",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png"
+		],
+		"refer": [
+			"login.html"
+		]
+	},
+	"forget-password.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"js/app.js",
+			"css/style.css",
+			"login.html",
+			"js/jquery.min.js",
+			"images/bg.png",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"images/top_bg.png",
+			"js/basic.js",
+			"images/CatDog.png",
+			"images/home.png",
+			"images/Petchat.png"
+		],
+		"refer": [
+			"login.html"
+		]
+	},
+	"info-list.html": {
+		"resources": [
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/mui.indexedlist.css",
+			"js/basic.js",
+			"info-detail.html",
+			"js/mui.indexedlist.js",
+			"images/CatDog.png",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"info-category.html",
+			"images/Info_icon_pin.png",
+			"images/Info_icon_home.png",
+			"images/Info_icon_tel.png",
+			"images/icon-10.png",
+			"images/tu_01.jpg",
+			"images/bg.png"
+		],
+		"refer": [
+			"info-detail.html",
+			"info-category.html"
+		]
+	},
+	"discuss-list.html": {
+		"resources": [
+			"images/cbd.jpg",
+			"images/yuantiao.jpg",
+			"images/muwu.jpg",
+			"js/mui.min.js",
+			"css/app.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/shuijiao.jpg",
+			"images/CatDog.png",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"js/basic.js",
+			"images/bg.png",
+			"discuss-detail.html",
+			"discuss-category.html",
+			"images/pl_top_bg.png",
+			"images/forum_bubble-a.png",
+			"images/forum_bubble-b.png"
+		],
+		"refer": [
+			"discuss-list-nr.html",
+			"discuss-detail.html",
+			"discuss-category.html"
+		]
+	},
+	"info-detail.html": {
+		"resources": [
+			"info-list.html",
+			"css/app.css",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"js/basic.js",
+			"fonts/mui.ttf",
+			"js/mui.zoom.js",
+			"js/mui.previewimage.js",
+			"info-category.html",
+			"images/CatDog.png",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"images/ioc-01.png",
+			"images/cbd.jpg",
+			"images/Info_icon_like.png",
+			"images/Info_icon_pin.png",
+			"images/bg.png",
+			"css/mui.indexedlist.css",
+			"css/mui.picker.css",
+			"images/Info_icon_home.png",
+			"images/Info_icon_tel.png",
+			"images/icon-10.png",
+			"css/mui.poppicker.css",
+			"css/dzcss.css"
+		],
+		"refer": [
+			"info-list.html",
+			"info-category.html"
+		]
+	},
+	"setting.html": {
+		"resources": [
+			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+			"libs/easymob-webim-sdk/json2.js",
+			"js/mui.locker.js",
+			"js/feedback.js",
+			"js/feedback-page.js",
+			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+			"js/mui.view.js",
+			"js/jquery.min.js",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"js/basic.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png",
+			"css/feedback-page.css",
+			"images/user-photo.png",
+			"images/Info_icon_pin.png",
+			"css/mui.indexedlist.css",
+			"css/mui.picker.css",
+			"css/mui.poppicker.css"
+		],
+		"refer": [
+			"login.html",
+			"publish-discuss.html",
+			"my-discuss.html",
+			"profile.html",
+			"my-photo.html",
+			"publish-photo.html"
+		]
+	},
+	"info-category.html": {
+		"resources": [
+			"info-detail.html",
+			"css/mui.indexedlist.css",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"js/basic.js",
+			"info-list.html",
+			"images/bg.png",
+			"images/bottom_01.jpg",
+			"js/mui.picker.js",
+			"js/mui.poppicker.js",
+			"js/city.data.js",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"images/Info_button-02.png",
+			"css/style.css"
+		],
+		"refer": [
+			"info-detail.html",
+			"info-list.html"
+		]
+	},
+	"discuss-category.html": {
+		"resources": [
+			"images/cbd.jpg",
+			"images/yuantiao.jpg",
+			"images/shuijiao.jpg",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"images/bg.png",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"js/basic.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png",
+			"discuss-list.html",
+			"discuss-detail.html",
+			"index.html",
+			"images/pl_top_bg.png",
+			"images/forum_bubble-a.png",
+			"images/forum_bubble-b.png",
+			"discuss-category-list.html",
+			"images/tu_03.jpg",
+			"images/tu_04.jpg",
+			"images/tu_06.jpg",
+			"images/tu_02.jpg",
+			"images/tu_07.jpg",
+			"images/tu_05.jpg"
+		],
+		"refer": [
+			"discuss-list.html",
+			"discuss-detail.html",
+			"index.html",
+			"discuss-category-list.html"
+		]
+	},
+	"profile.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"css/feedback-page.css",
+			"images/user-photo.png",
+			"js/basic.js",
+			"js/mui.view.js"
+		],
+		"refer": []
+	},
+	"publish-discuss.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"css/feedback-page.css",
+			"js/basic.js",
+			"js/mui.view.js",
+			"js/template-native.js"
+		],
+		"refer": [
+			"profile.html"
+		]
+	},
+	"discuss-detail.html": {
+		"resources": [
+			"images/web_heart_animation.png",
+			"js/mui.zoom.js",
+			"css/dzcss.css",
+			"js/mui.previewimage.js",
+			"discuss-list.html",
+			"images/ioc-01.png",
+			"discuss-category.html",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"js/basic.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png",
+			"images/cbd.jpg",
+			"images/Info_icon_like.png",
+			"images/icon-10.png",
+			"images/bg.png",
+			"%3C%\u003d%20getvarious("
+		],
+		"refer": [
+			"discuss-list.html",
+			"discuss-category.html"
+		]
+	},
+	"service-list.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"images/muwu.jpg",
+			"images/bg.png",
+			"images/shuijiao.jpg",
+			"images/top_bg.png",
+			"js/basic.js",
+			"images/yuantiao.jpg",
+			"css/app.css",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png",
+			"fonts/mui.ttf",
+			"css/mui.indexedlist.css",
+			"css/mui.picker.css",
+			"css/mui.poppicker.css",
+			"js/template-native.js",
+			"service-detail.html"
+		],
+		"refer": [
+			"service-detail.html"
+		]
+	},
+	"service-detail.html": {
+		"resources": [
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"images/service-button-03.png",
+			"css/dzcss.css",
+			"fonts/mui.ttf",
+			"images/shuijiao.jpg",
+			"images/top_bg.png",
+			"images/service-button-02.png",
+			"js/basic.js",
+			"images/bg_two.png",
+			"images/service-button-01.png",
+			"images/ljyy_bg.png",
+			"js/mui.zoom.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"js/mui.previewimage.js",
+			"images/Petchat.png",
+			"service-list.html"
+		],
+		"refer": [
+			"service-booking.html",
+			"service-list.html"
+		]
+	},
+	"photo-list.html": {
+		"resources": [
+			"images/Info_icon_like_two.png",
+			"images/shuijiao.jpg",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"images/bg.png",
+			"js/mui.min.js",
+			"css/app.css",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"js/basic.js",
+			"fonts/mui.ttf",
+			"css/mui.indexedlist.css",
+			"css/mui.picker.css",
+			"css/mui.poppicker.css",
+			"photo-detail.html"
+		],
+		"refer": [
+			"image-list.html",
+			"photo-detail.html"
+		]
+	},
+	"photo-detail.html": {
+		"resources": [
+			"js/template-native.js",
+			"images/photo-button-02.png",
+			"js/jquery.min.js",
+			"fonts/mui.ttf",
+			"css/dzcss.css",
+			"images/photo-button-03.png",
+			"images/shuijiao.jpg",
+			"images/top_bg.png",
+			"js/basic.js",
+			"js/mui.zoom.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/tu_01.jpg",
+			"js/mui.previewimage.js",
+			"images/home.png",
+			"images/photo-button-04.png",
+			"images/photo-button-01.png",
+			"images/Petchat.png",
+			"photo-list.html"
+		],
+		"refer": [
+			"photo-list.html"
+		]
+	},
+	"my-photo.html": {
+		"resources": [
+			"images/Info_icon_pin.png",
+			"js/jquery.min.js",
+			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"libs/easymob-webim-sdk/json2.js",
+			"images/top_bg.png",
+			"js/mui.locker.js",
+			"images/Petchat.png",
+			"css/feedback-page.css",
+			"images/user-photo.png",
+			"js/basic.js",
+			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+			"js/mui.view.js"
+		],
+		"refer": []
+	},
+	"publish-photo.html": {
+		"resources": [
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"css/feedback-page.css",
+			"js/basic.js",
+			"js/mui.view.js"
+		],
+		"refer": []
+	},
+	"service-booking.html": {
+		"resources": [
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"images/service-button-08.png",
+			"fonts/mui.ttf",
+			"css/dzcss.css",
+			"images/top_bg.png",
+			"js/basic.js",
+			"images/bg_two.png",
+			"js/mui.zoom.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/service-button-06.png",
+			"js/mui.previewimage.js",
+			"images/service-button-09.png",
+			"images/Petchat.png",
+			"images/Info_button-02.png",
+			"images/service-button-07.png",
+			"images/service-button-05.png",
+			"images/xz.png"
+		],
+		"refer": []
+	},
+	"my-discuss.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"libs/easymob-webim-sdk/json2.js",
+			"images/top_bg.png",
+			"js/mui.locker.js",
+			"images/Petchat.png",
+			"css/feedback-page.css",
+			"images/user-photo.png",
+			"js/basic.js",
+			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+			"js/mui.view.js"
+		],
+		"refer": []
+	},
+	"buy.html": {
+		"resources": [
+			"images/muwu.jpg",
+			"images/yuantiao.jpg",
+			"images/shuijiao.jpg",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"images/bg.png",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"css/mui.indexedlist.css",
+			"css/mui.picker.css",
+			"js/basic.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"css/mui.poppicker.css",
+			"images/Petchat.png"
+		],
+		"refer": [
+			"service-detail.html"
+		]
+	}
 }

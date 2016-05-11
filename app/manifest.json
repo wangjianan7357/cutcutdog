@@ -222,7 +222,8 @@
 					"css/mui.poppicker.css",
 					"css/mui.picker.css",
 					"css/mui.indexedlist.css",
-					"service-list.html"
+					"service-list.html",
+					"info-category.html"
 				],
 				"refer": [
 					"examples/imageviewer.html",
@@ -230,10 +231,10 @@
 					"discuss-list.html",
 					"image-list.html",
 					"setting.html",
-					"info-category.html",
 					"slider-table-default.html",
 					"discuss-category-list.html",
-					"photo-list.html"
+					"photo-list.html",
+					"buy.html"
 				],
 				"priority": 0
 			},
@@ -574,11 +575,10 @@
 					"css/mui.indexedlist.css",
 					"css/mui.picker.css",
 					"css/mui.poppicker.css",
-					"js/template-native.js"
-				],
-				"refer": [
+					"js/template-native.js",
 					"service-detail.html"
 				],
+				"refer": [],
 				"priority": 0
 			},
 			"service-detail.html": {
@@ -601,7 +601,8 @@
 					"css/mui.min.css",
 					"images/home.png",
 					"js/mui.previewimage.js",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"service-list.html"
 				],
 				"refer": [
 					"service-booking.html"
@@ -748,6 +749,31 @@
 					"js/mui.view.js"
 				],
 				"refer": [],
+				"priority": 0
+			},
+			"buy.html": {
+				"resources": [
+					"images/muwu.jpg",
+					"images/yuantiao.jpg",
+					"images/shuijiao.jpg",
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"images/bg.png",
+					"fonts/mui.ttf",
+					"images/top_bg.png",
+					"css/mui.indexedlist.css",
+					"css/mui.picker.css",
+					"js/basic.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"css/mui.min.css",
+					"images/home.png",
+					"css/mui.poppicker.css",
+					"images/Petchat.png"
+				],
+				"refer": [
+					"service-detail.html"
+				],
 				"priority": 0
 			}
 		},
