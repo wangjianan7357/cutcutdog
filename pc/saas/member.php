@@ -91,5 +91,16 @@ if ($_REQUEST['action'] == 'login') {
     }
 
     callback(array('error' => 0, 'list' => $list));
+
+} else if ($_REQUEST['action'] == 'detail') {
+    checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
+
+    $where['valid'] = 1;
+
+    $member = $my_db->fetchOne('member', $where);
+    $member['fields'] = json_decode($member['fields'], true);
+
+    callback(array('error' => 0, 'member' => $member));
 }
+
 

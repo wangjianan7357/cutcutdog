@@ -574,11 +574,10 @@
 					"css/mui.indexedlist.css",
 					"css/mui.picker.css",
 					"css/mui.poppicker.css",
-					"js/template-native.js"
-				],
-				"refer": [
+					"js/template-native.js",
 					"service-detail.html"
 				],
+				"refer": [],
 				"priority": 0
 			},
 			"service-detail.html": {
@@ -601,7 +600,9 @@
 					"css/mui.min.css",
 					"images/home.png",
 					"js/mui.previewimage.js",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"images/user-photo.png",
+					"service-list.html"
 				],
 				"refer": [
 					"service-booking.html"

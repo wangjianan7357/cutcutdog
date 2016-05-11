@@ -152,7 +152,7 @@
 				<button  class="mui-btn mui-btn-block-two" type='button'><span>沒有指定美容師</span></button><div class="butt_right-two" ><img src="images/Info_button-02.png"></div>
 				</div>
 			
-			<div class="serv-my-zi mar"><span class="serv-ljyy-two">提交</span></div>
+			<div class="serv-my-zi mar"><span class="serv-ljyy-two" id="submit-booking">提交</span></div>
 			
 		</div>	
 	</div>
@@ -176,7 +176,7 @@
 				}
 			});
 
-			document.getElementById(comment).addEventListener("tap", function(e) {
+			document.getElementById("submit-booking").addEventListener("tap", function(e) {
 				mui.ajax({
                     type: "post",
                     url: domain + "saas/booking.php",
