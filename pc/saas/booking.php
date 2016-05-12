@@ -6,21 +6,25 @@ if ($_REQUEST['action'] == 'send') {
     checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
 
     $submit = array(
-        'content' => strip_tags(urldecode($_POST['content'])),
-        'type' => 1,
-        'mid' => intval($_POST['id']),
-        'atype' => intval($_POST['atype']),
-        'aid' => intval($_POST['aid']),
-        'valid' => 1,
+        'mid' => $_POST['id'],
+        'tid' => $_POST['params']['tid'],
+        'service' => $_POST['params']['service'],
+        'pet' => $_POST['params']['pet'],
+        'size' => $_POST['params']['size'],
+        'name' => $_POST['params']['name'],
+        'phone' => $_POST['params']['phone'],
+        'address' => $_POST['params']['address'],
+        'time' => $_POST['params']['time'],
+        'remark' => $_POST['params']['remark'],
     );
 
     if($my_db->saveRow('booking', $submit)){
-        $mail = new Emailer($con_mail_set);
-        $mail->content($content);
+        //$mail = new Emailer($con_mail_set);
+        //$mail->content($content);
 
-        if($mail->send()) {
+        //if($mail->send()) {
             callback(array('error' => 0));
-        }
+        //}
 
     } else {
         callback(array('error' => 4));

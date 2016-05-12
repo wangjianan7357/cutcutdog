@@ -71,22 +71,20 @@
 			
 			<div class="serv-my-zi mar">
 				<div class="floa">服務類型</div>
-				<div class="floa sa" data-action="select">
-					<img src="images/service-button-05.png"><span>寵物洗澡</span>
-				</div>
-			    <div class="floa sa" data-action="select">
-			    	<img src="images/service-button-06.png"><span>上門美容</span> 
-			    	<div class="sh_bg"></div>
-			    </div>
-			    <div class="floa sa" data-action="select">
-			    	<img src="images/service-button-07.png"><span>寵物傳心</span>
-			    </div>
+
+				<div id="service-list"></div>
+				<script id="service-list-code" type="text/html">
+				<% for (var i in member.service) { %>
+					<div class="floa sa" data-action="select">
+						<img src="<%= getvarious("domain") + "uploads/pictures/service/se" + member["service"][i]["icon"] %>"><span><%= member["service"][i]["name"] %></span>
+					</div>
+				<% } %>
+				</script>
 			</div>
 			<div class="serv-my-zi mar">
 				<div class="floa">寵物類型</div>
 				<div class="floa-san sa">
 					<img src="images/service-button-08.png">
-					<div class="sh_bg-san"></div>
 				</div>
 				<div class="floa-san sa">
 					<img src="images/service-button-09.png">
@@ -126,31 +124,32 @@
 			<div class="serv-my-zi mar">
 				<div class="floa">姓名</div>
 				<div class="floa"><input type="text" class="input1" id="sbt_name" placeholder="姓名填寫"></div>
-			 </div>
-			 
-			 <div class="serv-my-zi mar">
+			</div>
+
+			<div class="serv-my-zi mar">
 				<div class="floa">電話</div>
 				<div class="floa"><input type="text" class="input1" id="sbt_phone" placeholder="電話填寫"></div>
-			 </div>
-			 
-			 <div class="serv-my-zi mar">
+			</div>
+
+			<div class="serv-my-zi mar">
 				<div class="floa">地址</div>
 				<div class="floa"><input type="text" class="input1" id="sbt_address" placeholder="地址填寫"></div>
-			 </div>
-			 
-			 <div class="serv-my-zi mar">
+			</div>
+
+			<div class="serv-my-zi mar">
 				<div class="floa">上門日期</div>
-				<div class="floa"><input type="text" class="input1" id="sbt_date" placeholder="上門日期填寫" style="width:58%;"></div>
-			 </div>
-			 
-			 <div class="serv-my-zi mar">
+				<div class="floa"><input type="text" class="input1" id="sbt_time" placeholder="上門日期填寫" style="width:58%;"></div>
+			</div>
+
+			<div class="serv-my-zi mar">
 				<div class="floa">備註</div>
 				<div class="floa"><input type="text" class="input1" id="sbt_remark" placeholder="備註填寫"></div>
-			 </div>
-			 
-			 <div class="serv-my-zi mar">
-				<button  class="mui-btn mui-btn-block-two" type='button'><span>沒有指定美容師</span></button><div class="butt_right-two" ><img src="images/Info_button-02.png"></div>
-				</div>
+			</div>
+
+			<div class="serv-my-zi mar">
+				<button class="mui-btn mui-btn-block-two" type='button'><span data-info="member.name"></span></button>
+				<div class="butt_right-two" ><img src="images/Info_button-02.png"></div>
+			</div>
 			
 			<div class="serv-my-zi mar"><span class="serv-ljyy-two" id="submit-booking">提交</span></div>
 			
@@ -168,12 +167,36 @@
 		mui.plusReady(function() {
 			member = myStorage.getItem("member");
 
-			jQuery("[data-action='select']").click(function() {
-				if ($(this).html().indexOf("<div class=\"sh_bg\"></div>") != -1) {
-					$(this).html($(this).html().replace("<div class=\"sh_bg\"></div>", ""));
-				} else {
-					$(this).html($(this).html() + "<div class=\"sh_bg\"></div>");
-				}
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/member.php",
+				dataType: "json",
+				data: {
+					action: "detail",
+					name: member.name,
+					id: member.id,
+					where: {id: getUrlParam("id")}
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+
+						assignTmpl(json);
+						jQuery("#service-list").html(template('service-list-code', json));
+
+						jQuery("[data-action='select']").click(function() {
+							if ($(this).html().indexOf("<div class=\"sh_bg\"></div>") != -1) {
+								$(this).html($(this).html().replace("<div class=\"sh_bg\"></div>", ""));
+							} else {
+								$(this).html($(this).html() + "<div class=\"sh_bg\"></div>");
+							}
+						});
+							
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {}
 			});
 
 			document.getElementById("submit-booking").addEventListener("tap", function(e) {
@@ -185,9 +208,17 @@
                         action: "send",
                         id: member.id,
                         name: member.name,
-                        content: e.value,
-                        atype: cata_type,
-                        aid: jQuery("#aid").val()
+                        params: {
+                        	tid: getUrlParam("id"),
+                        	service: "",
+                        	pet: "",
+                        	size: "",
+                        	name: jQuery("#sbt_name").val(),
+                        	phone: jQuery("#sbt_phone").val(),
+                        	address: jQuery("#sbt_address").val(),
+                        	time: jQuery("#sbt_time").val(),
+                        	remark: jQuery("#sbt_remark").val()
+                        }
                     },
                     async: true,
                     success: function(json) {

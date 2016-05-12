@@ -70,18 +70,21 @@ return array(
      */
     'booking' => '
         `id` INT( 8 ) NOT NULL AUTO_INCREMENT , 
+        `mid` INT( 8 ) NOT NULL DEFAULT 0 , 
+        `tid` INT( 8 ) NOT NULL DEFAULT 0 , 
         `service` VARCHAR( 90 ) NOT NULL DEFAULT "" , 
         `pet` VARCHAR( 32 ) NOT NULL DEFAULT "" , 
         `size` VARCHAR( 32 ) NOT NULL DEFAULT "" , 
         `name` VARCHAR( 32 ) NOT NULL DEFAULT "" , 
         `phone` VARCHAR( 32 ) NOT NULL DEFAULT "" , 
         `address` VARCHAR( 128 ) NOT NULL DEFAULT "" , 
-        `time` INT( 10 ) NOT NULL DEFAULT 0 COMMENT "上门日期" ,
-        `content` VARCHAR( 512 ) NOT NULL DEFAULT "" , 
+        `time` VARCHAR( 32 ) NOT NULL DEFAULT "" COMMENT "上门日期" ,
+        `remark` VARCHAR( 512 ) NOT NULL DEFAULT "" , 
         `valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
         `read` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
         `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
-        PRIMARY KEY ( `id` )',
+        PRIMARY KEY ( `id` ),
+        KEY ( `mid` )',
 
 	/** 
 	 * 网站留言信息

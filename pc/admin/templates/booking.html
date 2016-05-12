@@ -1,6 +1,6 @@
 
 <section class="content-header">
-    <h1><?=$cms_msg_type[$_GET['type']];?>&nbsp;</h1>
+    <h1>留言預約>&nbsp;</h1>
     <ol class="breadcrumb">
         <li>
             <a href="index.php">
@@ -8,7 +8,7 @@
             </a>
         </li>
         <li>   
-            <span><?=$cms_msg_type[$_GET['type']];?></span>
+            <span>在線預約</span>
         </li>
     </ol>
 </section>
@@ -27,7 +27,7 @@
             <div class="box box-primary">
                 <?php if ($_GET['action'] == 'edt') { ?>
                 <div class="box-header">
-                    <h3 class="box-title"><?=$cms_msg_type[$_GET['type']];?>編輯</h3>
+                    <h3 class="box-title">在線預約</h3>
                 </div><!-- /.box-header -->
 
                 <!-- form start -->
@@ -37,31 +37,33 @@
 
                     <div class="box-body">
                         <div class="form-group">
-                            <label>評論人</label>
+                            <label>會員</label>
                             <div class="form-control"><?= $outcome['member']['name']; ?></div>
                         </div>
                         <div class="form-group">
-                            <label>評論對象</label>
-                            <div class="form-control"><?= $outcome['target']['name']; ?></div>
+                            <label>姓名</label>
+                            <div class="form-control"><?= $outcome['name']; ?></div>
                         </div>
                         <div class="form-group">
-                            <label>評論內容</label>
-                            <textarea disabled="disabled" rows="3" class="form-control"><?= $outcome['content']; ?></textarea>
+                            <label>電話</label>
+                            <div class="form-control"><?= $outcome['phone']; ?></div>
+                        </div>
+                        <div class="form-group">
+                            <label>地址</label>
+                            <div class="form-control"><?= $outcome['address']; ?></div>
+                        </div>
+                        <div class="form-group">
+                            <label>上門日期</label>
+                            <div class="form-control"><?= $outcome['time']; ?></div>
+                        </div>
+                        <div class="form-group">
+                            <label>備註</label>
+                            <textarea disabled="disabled" rows="3" class="form-control"><?= $outcome['remark']; ?></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <label>日期</label>
-                            <div class="form-control"><?= $outcome['date']; ?></div>
-                        </div>
                         <div class="form-group">
                             <input type="hidden" name="sbt_valid" value="0">
                             <input type="checkbox" name="sbt_valid" value="1" <?= $outcome['valid'] == 1 ? 'checked="checked"' : ''; ?> data-on="success" data-off="warning" data-on-color="success" data-on-text="有效" data-off-text="无效" data-action="bootstrap-switch">
-                        </div>
-
-                        <div class="form-group">
-                            <label>回復</label>
-                            <textarea rows="3" class="form-control" name="sbt_reply[content]"><?= $outcome['reply']['content']; ?></textarea>
-                            <input type="hidden" name="sbt_reply[id]" value="<?= $outcome['reply']['id']; ?>">
                         </div>
                     </div><!-- /.box-body -->
 
