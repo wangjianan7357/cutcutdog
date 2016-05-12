@@ -75,28 +75,33 @@
 				<div id="service-list"></div>
 				<script id="service-list-code" type="text/html">
 				<% for (var i in member.service) { %>
-					<div class="floa sa" data-action="select">
+					<div class="floa sa" data-action="select" data-role="service">
 						<img src="<%= getvarious("domain") + "uploads/pictures/service/se" + member["service"][i]["icon"] %>"><span><%= member["service"][i]["name"] %></span>
+						<input type="hidden" name="sbt_service[]" value="<%= member["service"][i]["name"] %>" data-active="false">
 					</div>
 				<% } %>
 				</script>
 			</div>
 			<div class="serv-my-zi mar">
 				<div class="floa">寵物類型</div>
-				<div class="floa-san sa">
+				<div class="floa-san sa" data-action="select" data-role="pet">
 					<img src="images/service-button-08.png">
+					<input type="hidden" name="sbt_pet[]" value="狗" data-active="false">
 				</div>
-				<div class="floa-san sa">
+				<div class="floa-san sa" data-action="select" data-role="pet">
 					<img src="images/service-button-09.png">
+					<input type="hidden" name="sbt_pet[]" value="貓" data-active="false">
 				</div>
-			    <div class="floa"><input type="text" placeholder="品種填寫" style="width:40%; height:38px; position: absolute;"></div>
+			    <div class="floa">
+			    	<input type="text" name="sbt_pet[]" placeholder="品種填寫" style="width:40%; height:38px; position: absolute;">
+			    </div>
 			
 			</div>
 			<div class="serv-my-zi mtop">
 				<div class="floa">寵物size</div>
 				<div class="floa">
 					<a href="#">
-					<div class="sw-size"><strong>XS</strong><BR><font><3kg</font></div>
+					<div class="sw-size"><strong>XS</strong><BR><font>&lt;3kg</font></div>
 					</a>
 				</div>
 				<div class="floa sa">
@@ -116,7 +121,7 @@
 				</div>
 				<div class="floa">
 					<a href="#">
-					<div class="sw-size"><strong>XL</strong><BR><font>>21kg</font>
+					<div class="sw-size"><strong>XL</strong><BR><font>&gt;21kg</font>
 					</div></a>
 				</div>
 			</div>
@@ -187,8 +192,10 @@
 						jQuery("[data-action='select']").click(function() {
 							if ($(this).html().indexOf("<div class=\"sh_bg\"></div>") != -1) {
 								$(this).html($(this).html().replace("<div class=\"sh_bg\"></div>", ""));
+								$(this).find("input").attr("data-active", "false");
 							} else {
 								$(this).html($(this).html() + "<div class=\"sh_bg\"></div>");
+								$(this).find("input").attr("data-active", "true");
 							}
 						});
 							
