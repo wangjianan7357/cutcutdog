@@ -51,9 +51,12 @@ if($_GET['action'] == 'edt'){
 		$_POST['sbt_src'] = $chk_post->chkImage('src');
 		
 		if ($outcome['src']) {
-			preg_match('/(\.[\w]{3,4})$/', $_POST['sbt_src'], $match);
-			$_POST['sbt_src'] = preg_replace('/\.[\w]{3,4}$/', '', $outcome['src']) . $match[1];
-			$outcome['src'] = $_POST['sbt_src'];
+			if ($_POST['sbt_src']) {
+				preg_match('/(\.[\w]{3,4})$/', $_POST['sbt_src'], $match);
+				$_POST['sbt_src'] = preg_replace('/\.[\w]{3,4}$/', '', $outcome['src']) . $match[1];
+				$outcome['src'] = $_POST['sbt_src'];
+			}
+			else $_POST['sbt_src'] = $outcome['src'];
 		}
 
 		if(!$err){
@@ -62,6 +65,7 @@ if($_GET['action'] == 'edt'){
 			$_POST['sbt_id'] = $_GET['num'] ? $_GET['num'] : ($my_db->selectMax('member') + 1);
 			$_POST['sbt_valid'] = ($_POST['sbt_valid'] ? 1 : 0);
 			$_POST['sbt_fields'] = json_encode($_POST['sbt_fields']);
+			$_POST['sbt_desp'] = modEditorInfo($_POST['sbt_desp'], 'save');
 
 			$submit = array();
 			$submit_lan = array();

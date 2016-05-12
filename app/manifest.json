@@ -602,8 +602,8 @@
 					"images/home.png",
 					"js/mui.previewimage.js",
 					"images/Petchat.png",
-                    "images/user-photo.png",
-                    "service-list.html"
+					"images/user-photo.png",
+					"service-list.html"
 				],
 				"refer": [
 					"service-booking.html"

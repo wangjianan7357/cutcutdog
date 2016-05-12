@@ -63,16 +63,15 @@
 			<div class="serv-my-zi mar">美容師名：<a data-info="member.name" style=" color:#333 ;"></a></div>
 			<div class="serv-my-zi mar">年資：<a data-info="member.fields.experience" style=" color:#333 ;"></a></div>
 			<div class="serv-my-zi">
-				<span>服務範圍：</span><img src="images/service-button-01.png"><img src="images/service-button-02.png"><img src="images/service-button-03.png">	
+				<span>服務範圍：</span>
+				<div id="service-list"></div>
+				<script id="service-list-code" type="text/html">
+				<% for (var i in member.service) { %>
+					<img src="<%= getvarious("domain") + "uploads/pictures/service/se" + member["service"][i]["icon"] %>">
+				<% } %>
+				</script>	
 			</div>
-            <div class="serv-my-zi mar">服務地區：新界西北各區</div>
-            <div class="serv-my-zi mar">考獲資格 :
-               <p style=" padding-left: 10px;">1.日本PSG專業美容師D證照第一名</p>
-               <p style=" padding-left: 10px;">2.日本PSG專業美容師C證照第二名</p>
-               <p style=" padding-left: 10px;">3.香港專業寵物美容師協會C級證書 </p>
-            </div>
-            <div class="serv-my-zi mar">服務说明 :
-               <p style=" padding-left: 10px;">＊貓狗美容包括基本清潔（洗澡、吹乾、梳理毛髮、拔耳毛、清潔耳朵、修剪及磨圓指甲、修腳底毛及肚毛、清理肛門腺、修剪肛門毛及修剪腳圓）及剪裝造型設計</p>
+			<div data-info="member.desp"></div>
                
             </div>
 			<div class="serv-my-zi">
@@ -109,7 +108,7 @@
 
 						assignTmpl(json);
 						jQuery("#detail-photo").html(template("detail-photo-code", json));
-						//jQuery("#comment-list").html(template('comment-list-code', json));
+						jQuery("#service-list").html(template('service-list-code', json));
 							
 					} else {
 						plus.nativeUI.toast(json.message);

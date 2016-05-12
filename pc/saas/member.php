@@ -97,8 +97,21 @@ if ($_REQUEST['action'] == 'login') {
 
     $where['valid'] = 1;
 
+    $service = array();
+    $getdata = $my_db->selectRow('*', 'service', array('valid' => 1));
+    while ($result = mysql_fetch_array($getdata)) {
+        $service[$result['id']] = $result;
+    }
+
     $member = $my_db->fetchOne('member', $where);
     $member['fields'] = json_decode($member['fields'], true);
+
+    $member['service'] = array();
+
+    $getdata = $my_db->selectRow('vid', 'property_content', array('pid' => $member['id'], 'sort' => 3));
+    while($result = mysql_fetch_array($getdata)) {
+        $member['service'][] = $service[$result['vid']];
+    }
 
     callback(array('error' => 0, 'member' => $member));
 }

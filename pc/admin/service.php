@@ -41,6 +41,11 @@ if($_GET['action'] == 'edt'){
 			else $_POST['sbt_src'] = $outcome['src'];
 		}
 
+		if ($_FILES['sbt_icon']['name']) {
+			preg_match('/(\.[\w]{3,4})$/', $_FILES['sbt_icon']['name'], $match);
+			$_POST['sbt_icon'] = substr(time(), -8, 8) . rand(10, 99) . strtolower($match[1]);
+		}
+
 		if(!$err) {
 			$submit_arr = initSubmitColumns('service', $_GET['num']);
 
@@ -84,6 +89,10 @@ if($_GET['action'] == 'edt'){
 					$imgop->resizeImage($big_img, $size['big'][0], $size['big'][1]);
 					$imgop->resizeImage($mid_img, $size['mid'][0], $size['mid'][1]);
 					$imgop->resizeImage($sml_img, $size['sml'][0], $size['sml'][1]);
+				}
+
+				if($_FILES['sbt_icon']['tmp_name']){
+					move_uploaded_file($_FILES['sbt_icon']['tmp_name'], $service_src . $_POST['sbt_icon']);
 				}
 
 				instructLog($cms_admin_power['service'][$power_id] . $_POST['sbt_name'], ($poser_id == 1 ? 'add' : 'edt'));
