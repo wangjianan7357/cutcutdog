@@ -54,42 +54,32 @@
 	<div class="mui-content bg-two">
 		<div class="top_bg"></div>
 		
-		<div class="mui-content-padded" style=" margin:0px ; padding:10px ;">
-			<p>
-				<img src="images/shuijiao.jpg" data-preview-src="" data-preview-group="1" />
-			</p>
-			<div class="serv-my-zi mar">美容師名：阿賢</div>
-			<div class="serv-my-zi mar">年資：10年</div>
+		<div class="mui-content-padded" style=" margin:0px; padding:10px;">
+			<div id="detail-photo"><img src="images/shuijiao.jpg"></div>
+			<script id="detail-photo-code" type="text/html">
+				<img src="<%= getvarious("domain") + "uploads/member/me" + member["src"] %>">
+			</script>
+
+			<div class="serv-my-zi mar">美容師名：<a data-info="member.name" style=" color:#333 ;"></a></div>
+			<div class="serv-my-zi mar">年資：<a data-info="member.fields.experience" style=" color:#333 ;"></a></div>
 			<div class="serv-my-zi">
 				<span>服務範圍：</span><img src="images/service-button-01.png"><img src="images/service-button-02.png"><img src="images/service-button-03.png">	
-				
 			</div>
-			<div class="serv-my-zi">查詢電話：2888 9909 <a href="service-booking.html" data-action="openwindow"><span class="serv-ljyy">立即預約</span></a></div>
-			
+            <div class="serv-my-zi mar">服務地區：新界西北各區</div>
+            <div class="serv-my-zi mar">考獲資格 :
+               <p style=" padding-left: 10px;">1.日本PSG專業美容師D證照第一名</p>
+               <p style=" padding-left: 10px;">2.日本PSG專業美容師C證照第二名</p>
+               <p style=" padding-left: 10px;">3.香港專業寵物美容師協會C級證書 </p>
+            </div>
+            <div class="serv-my-zi mar">服務说明 :
+               <p style=" padding-left: 10px;">＊貓狗美容包括基本清潔（洗澡、吹乾、梳理毛髮、拔耳毛、清潔耳朵、修剪及磨圓指甲、修腳底毛及肚毛、清理肛門腺、修剪肛門毛及修剪腳圓）及剪裝造型設計</p>
+               
+            </div>
+			<div class="serv-my-zi">
+				查詢電話：<a data-info="member.phone" style=" color:#333 ;"></a> <a href="" data-info="href=member.link" data-action="openwindow"><span class="serv-ljyy">立即預約</span></a>
+			</div>
 		</div>	
 	</div>
-			
-		<!--	
-			<article class="htmleaf-container" style="text-align: right;">
-				<div id="container" style="position: relative;">
-					<div class="heart " id="like1" rel="like"></div> 
-					<div class="likeCount" id="likeCount1">14</div>  
-				</div>
-
-				<div style=" text-align: right; margin-right: 10px;" id='promptBtn'><img src="images/ioc-01.png" style="width:20px;"></div>
-				
-			</article>
-			<ul id="comment-list"></ul>
-			<script id="comment-list-code" type="text/html">
-			<% for (var i in list) { %>
-				<li>
-					<p><b><%= list[i]["member"]["name"] %>：</b> <%= list[i]["content"] %></p>
-					
-				</li>
-			<% } %>
-			</script>
-		</div>
-		-->
 
 	<script type="text/javascript" charset="utf-8">
 		var member = {};
@@ -104,15 +94,21 @@
 
 			mui.ajax({
 				type: "post",
-				url: domain + "saas/service.php",
+				url: domain + "saas/member.php",
 				dataType: "json",
 				data: {
-					action: "list",
-					where: {type: 4}
+					action: "detail",
+					name: member.name,
+					id: member.id,
+					where: {id: getUrlParam("id")}
 				},
 				async: true,
 				success: function(json) {
 					if(!json.error) {
+						json.member.link = "service-booking.html?id=" + json.member.id;
+
+						assignTmpl(json);
+						jQuery("#detail-photo").html(template("detail-photo-code", json));
 						//jQuery("#comment-list").html(template('comment-list-code', json));
 							
 					} else {

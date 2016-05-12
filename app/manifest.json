@@ -602,7 +602,8 @@
 					"images/home.png",
 					"js/mui.previewimage.js",
 					"images/Petchat.png",
-					"service-list.html"
+                    "images/user-photo.png",
+                    "service-list.html"
 				],
 				"refer": [
 					"service-booking.html"
@@ -656,7 +657,8 @@
 					"images/photo-button-04.png",
 					"images/photo-button-01.png",
 					"images/Petchat.png",
-					"photo-list.html"
+					"photo-list.html",
+					"images/icon-10.png"
 				],
 				"refer": [],
 				"priority": 0

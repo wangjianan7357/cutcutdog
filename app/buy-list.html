@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<!--标准mui.css-->
+
 	<link href="css/mui.min.css" rel="stylesheet" />
 	<link href="css/mui.indexedlist.css" rel="stylesheet" />
 	<link href="css/mui.picker.css" rel="stylesheet" />
@@ -18,73 +19,85 @@
 	        text-indent: 12px;
 	        background-color:#efeff4;
 	    }
+		
 		.top_bg{ height:30px; background-color: #a669c0;opacity:0.5;}
 	</style>
-
-	<script src="js/mui.min.js"></script>
+    <script src="js/mui.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
 </head>
+
 <body>
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-    	<h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-    	<div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
+		<h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
+		<div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;">登出</div>
 	</header>
+
 	<div class="mui-content">
 		<div class="top_bg"></div>
-		<div class="serv-fw-buy">
-           
-			<div>
-				
-				<a href="buy-list.html" data-action="openwindow"><img src="images/yuantiao.jpg"></a>
-				<div class="zh-good-xing" style=" text-align: center;">服飾</div>
-				
-			</div>
-			<div>
-				<a href="buy-list.html" data-action="openwindow"><img src="images/muwu.jpg"></a>
-				<div class="zh-good-xing" style=" text-align: center;">食品</div>
-			</div>
-			
-			<div>
-				
-				<a href="buy-list.html" data-action="openwindow"><img src="images/yuantiao.jpg"></a>
-				<div class="zh-good-xing" style=" text-align: center;">玩具</div>
-				
-			</div>
-			<div>
-				<a href="buy-list.html" data-action="openwindow"><img src="images/muwu.jpg"></a>
-				<div class="zh-good-xing" style=" text-align: center;">用品</div>
-			</div>
-			
-         
-		</div>
 
-		
+		<div class="xp-tu-buy">
+			<ul>
+				<a href="photo-detail.html" data-action="webview">	
+				<li>
+					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
+					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
+                    <div class="xp-tu-zi-buy-two">$31.54</div>
+					
+
+				</li>
+				</a>
+				
+				<a href="photo-detail.html" data-action="webview">	
+				<li>
+					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
+					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
+                    <div class="xp-tu-zi-buy-two">$31.54</div>
+					
+
+				</li>
+				</a>
+				
+				<a href="photo-detail.html" data-action="webview">	
+				<li>
+					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
+					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
+                    <div class="xp-tu-zi-buy-two">$31.54</div>
+					
+
+				</li>
+				</a>
+				
+				<a href="photo-detail.html" data-action="webview">	
+				<li>
+					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
+					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
+                    <div class="xp-tu-zi-buy-two">$31.54</div>
+					
+
+				</li>
+				</a>
+				
+			</ul>
+
+			
+		</div>
 
 	</div>
 
 	<script>
-		var member = {};
-
 		mui.init({
 			swipeBack:true //启用右滑关闭功能
 		});
 
 		mui.plusReady(function() {
-			member = myStorage.getItem("member");
-			
 			mui.ajax({
 				type: "post",
-				url: domain + "saas/member.php",
+				url: domain + "saas/info.php",
 				dataType: "json",
-				data: {
-                    id: member.id,
-                    name: member.name,
-                    action: "list", 
-                    where: {type: 10}
-                },
+				data: {action: "list", where: {cid: "15,"}, type: 5},
 				async: true,
 				success: function(json) {
 					if(!json.error) {
@@ -101,5 +114,6 @@
 			});
 		});
 	</script>
+
 </body>
 </html>
