@@ -54,29 +54,30 @@
 	<div class="mui-content bg-two">
 		<div class="top_bg"></div>
 		
-		<div class="mui-content-padded" style=" margin:0px; padding:10px;">
+		
 			<div id="detail-photo"><img src="images/shuijiao.jpg"></div>
 			<script id="detail-photo-code" type="text/html">
-				<img src="<%= getvarious("domain") + "uploads/member/me" + member["src"] %>">
+				<img src="images/shuijiao.jpg">
 			</script>
-
-			<div class="serv-my-zi mar">美容師名：<a data-info="member.name" style=" color:#333 ;"></a></div>
-			<div class="serv-my-zi mar">年資：<a data-info="member.fields.experience" style=" color:#333 ;"></a></div>
-			<div class="serv-my-zi">
-				<span>服務範圍：</span>
-				<div id="service-list"></div>
-				<script id="service-list-code" type="text/html">
-				<% for (var i in member.service) { %>
-					<img src="<%= getvarious("domain") + "uploads/pictures/service/se" + member["service"][i]["icon"] %>">
-				<% } %>
-				</script>	
+            <div style=" padding:10px ; background-color:#fff ;">
+			<div class="serv-my-zi ming-he">
+				<a><strong>產品名稱：</strong></a>猫猫轉盤
 			</div>
-			<div data-info="member.desp"></div>
-               
-            
-			<div class="serv-my-zi">
-				查詢電話：<a data-info="member.phone" style=" color:#333 ;"></a> <a href="" data-info="href=member.link" data-action="openwindow"><span class="serv-ljyy">立即預約</span></a>
+			
+			<div class="serv-my-zi ming-he">
+				<a><strong>價 錢：</a>$ 30</strong>
 			</div>
+			
+			<div class="serv-my-zi ming-he">
+				<a><strong>產品資料：</strong></a>我們以最合理的價格、最完善的服务、提供最優質，最優越的服務，以質量 第一，客户至上为經營理念，力求为客户提供更好的更專業的服务
+			</div>
+			
+			<div style=" text-align: center; margin-top: 20px;">
+			   <div class="zh-good-go" id="heart" rel="like">立即購買</div>
+			   <div class="zh-good-go" style=" margin-left:10px;" id="promptBtn">加入購物車</div>
+			   <div class="zh-good-go" style=" margin-left:10px;">檢視購物車</div>
+		    </div>
+			
 			</div>
 		</div>	
 	</div>

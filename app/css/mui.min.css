@@ -95,8 +95,9 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%}body{margin:0}article,
 .xp-tu-buy ul li{ list-style:none ; display: inline-block; width: 45%; padding:10px 10px 10px 10px ;overflow: hidden; background-color:#ffffff ;border-radius: 10px; border: solid 2px #4d4c51 ; margin-bottom: 10px;}
 .xp-tu-zi-buy{ text-align:left; color:#333 ; line-height:20px ;}
 .xp-tu-zi-buy-two{ text-align:left; color:#333 ; line-height:20px ; font-size:18px ; font-weight: bold; margin-top:3px ;}
-
-
+.ming-he{ margin-top:10px ; line-height:25px ;}
+.ming-he a{ color: #8f72b4;}
+.zh-good-go{ background-color:#8f72b4 ;border-radius: 10px;float:left;padding:0px 5px 0px 5px;height:40px; line-height:42px ; font-size: 17px; color:#fff ; margin-bottom:20px ;}
 
 
 
