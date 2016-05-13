@@ -22,7 +22,7 @@ else {
 $con_lang_default = 'cn';
 
 /* 设置邮件服务器 */
-$con_mail_set = array('host' => '', 'name' => '', 'pass' => '');
+$con_mail_set = array('host' => 'smtp.qq.com', 'name' => '846691176@qq.com', 'pass' => 'canan@025971');
 
 /* 设置数据备份文件夹 */
 $con_db_bakup = 'backup/' . $child_pre;

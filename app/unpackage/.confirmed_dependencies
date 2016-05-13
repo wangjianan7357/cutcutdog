@@ -1,115 +1,116 @@
 {
-	"index.html": {
-		"resources": [
-			"images/icon-02.png",
-			"js/template-native.js",
-			"images/icon-05.png",
-			"images/icon-08.png",
-			"images/icon-06.png",
-			"images/icon-09.png",
-			"images/icon-03.png",
-			"images/icon-07.png",
-			"images/icon-01.png",
-			"css/mui.poppicker.css",
-			"css/mui.picker.css",
-			"css/mui.indexedlist.css",
-			"images/icon-04.png"
-		],
-		"refer": [
-			"service-list.html"
-		]
-	},
-	"login.html": {
-		"resources": [
-			"js/jquery.min.js",
-			"images/bg.png",
-			"js/mui.min.js",
-			"images/CatDog.png",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"images/home.png",
-			"css/style.css",
-			"images/top_bg.png",
-			"images/Petchat.png",
-			"js/basic.js"
-		],
-		"refer": [
-			"index.html"
-		]
-	},
-	"service-detail.html": {
-		"resources": [
-			"images/ljyy_bg.png",
-			"js/mui.zoom.js",
-			"css/dzcss.css",
-			"js/mui.previewimage.js",
-			"images/bg_two.png",
-			"js/template-native.js",
-			"js/jquery.min.js",
-			"fonts/mui.ttf",
-			"images/shuijiao.jpg",
-			"images/top_bg.png",
-			"js/basic.js",
-			"js/mui.min.js",
-			"images/CatDog.png",
-			"css/mui.min.css",
-			"images/home.png",
-			"images/Petchat.png",
-			"service-list.html"
-		],
-		"refer": [
-			"service-booking.html"
-		]
-	},
-	"service-list.html": {
-		"resources": [
-			"images/muwu.jpg",
-			"images/yuantiao.jpg",
-			"service-detail.html",
-			"images/shuijiao.jpg",
-			"js/template-native.js",
-			"js/jquery.min.js",
-			"images/bg.png",
-			"fonts/mui.ttf",
-			"images/top_bg.png",
-			"css/mui.indexedlist.css",
-			"css/mui.picker.css",
-			"js/basic.js",
-			"js/mui.min.js",
-			"images/CatDog.png",
-			"css/mui.min.css",
-			"images/home.png",
-			"css/mui.poppicker.css",
-			"images/Petchat.png"
-		],
-		"refer": [
-			"service-detail.html"
-		]
-	},
-	"service-booking.html": {
-		"resources": [
-			"images/service-button-08.png",
-			"images/xz.png",
-			"images/service-button-06.png",
-			"images/service-button-09.png",
-			"images/Info_button-02.png",
-			"images/service-button-07.png",
-			"images/service-button-05.png",
-			"js/template-native.js",
-			"js/jquery.min.js",
-			"fonts/mui.ttf",
-			"css/dzcss.css",
-			"images/top_bg.png",
-			"js/basic.js",
-			"images/bg_two.png",
-			"js/mui.zoom.js",
-			"js/mui.min.js",
-			"images/CatDog.png",
-			"css/mui.min.css",
-			"js/mui.previewimage.js",
-			"images/home.png",
-			"images/Petchat.png"
-		],
-		"refer": []
-	}
+  "index.html": {
+    "resources": [
+      "images/icon-02.png",
+      "js/template-native.js",
+      "images/icon-05.png",
+      "images/icon-08.png",
+      "images/icon-06.png",
+      "images/icon-09.png",
+      "images/icon-03.png",
+      "images/icon-07.png",
+      "images/icon-01.png",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "css/mui.indexedlist.css",
+      "images/icon-04.png"
+    ],
+    "refer": [
+      "service-list.html"
+    ]
+  },
+  "login.html": {
+    "resources": [
+      "js/jquery.min.js",
+      "images/bg.png",
+      "js/mui.min.js",
+      "images/CatDog.png",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "images/home.png",
+      "css/style.css",
+      "images/top_bg.png",
+      "images/Petchat.png",
+      "js/basic.js"
+    ],
+    "refer": [
+      "index.html"
+    ]
+  },
+  "service-detail.html": {
+    "resources": [
+      "images/ljyy_bg.png",
+      "js/mui.zoom.js",
+      "css/dzcss.css",
+      "js/mui.previewimage.js",
+      "images/bg_two.png",
+      "js/template-native.js",
+      "js/jquery.min.js",
+      "fonts/mui.ttf",
+      "images/shuijiao.jpg",
+      "images/top_bg.png",
+      "js/basic.js",
+      "js/mui.min.js",
+      "images/CatDog.png",
+      "css/mui.min.css",
+      "images/home.png",
+      "images/Petchat.png",
+      "service-list.html"
+    ],
+    "refer": [
+      "service-booking.html"
+    ]
+  },
+  "service-list.html": {
+    "resources": [
+      "images/muwu.jpg",
+      "images/yuantiao.jpg",
+      "service-detail.html",
+      "images/shuijiao.jpg",
+      "js/template-native.js",
+      "js/jquery.min.js",
+      "images/bg.png",
+      "fonts/mui.ttf",
+      "images/top_bg.png",
+      "css/mui.indexedlist.css",
+      "css/mui.picker.css",
+      "js/basic.js",
+      "js/mui.min.js",
+      "images/CatDog.png",
+      "css/mui.min.css",
+      "images/home.png",
+      "css/mui.poppicker.css",
+      "images/Petchat.png"
+    ],
+    "refer": [
+      "service-detail.html"
+    ]
+  },
+  "service-booking.html": {
+    "resources": [
+      "images/service-button-08.png",
+      "images/xz.png",
+      "images/service-button-06.png",
+      "images/service-button-09.png",
+      "images/Info_button-02.png",
+      "images/service-button-07.png",
+      "images/service-button-05.png",
+      "js/template-native.js",
+      "js/jquery.min.js",
+      "fonts/mui.ttf",
+      "css/dzcss.css",
+      "images/top_bg.png",
+      "js/basic.js",
+      "images/bg_two.png",
+      "js/mui.zoom.js",
+      "js/mui.min.js",
+      "images/CatDog.png",
+      "css/mui.min.css",
+      "js/mui.previewimage.js",
+      "images/home.png",
+      "images/Petchat.png",
+      "service-list.html"
+    ],
+    "refer": []
+  }
 }

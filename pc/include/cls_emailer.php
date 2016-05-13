@@ -60,27 +60,28 @@ class Emailer {
 
 	public function setFields($fields = array()){
 		$this->fields = array(
-			'subject' => '主题',
-			'msg' => '内容',
-			'name' => '联系人',
-			'company' => '公司',
+			'service' => '服務',
+			'pet' => '寵物',
+			'size' => '尺寸',
+			'name' => '姓名',
+			'phone' => '電話',
 			'address' => '地址',
-			'email' => '邮箱',
-			'telephone' => '电话',
+			'time' => '上門日期',
+			'remark' => '備註',
 		);
 
 		$this->fields = array_merge($this->fields, $fields);
 	}
 
 	public function content($data = array()){
-		$this->mail->Subject = $data['subject'];
+		$this->mail->Subject = '上門服務：' . $data['service'];
 		$this->mail->FromName = $data['name'];
 		
 		$html = '
 			<table width="95%" border="0" cellspacing="2" cellpadding="4">
 				<tbody align="left">
 					<tr>
-						<td colspan="2" style="height:30px; padding:0 0 0 20px; background:#288fd7; color:white;"><strong>客户留言：</strong></td>
+						<td colspan="2" style="height:30px; padding:0 0 0 20px; background:#288fd7; color:white;"><strong>上門服務：</strong></td>
 					</tr>';
 
 		$i = 0;
@@ -95,8 +96,7 @@ class Emailer {
 
 		$html .= '
 				</tbody>
-			</table><br />
-			<strong>邮件来自: <a href="http://' . $_SERVER['SERVER_NAME'] . '/">' . $_SERVER['SERVER_NAME'] . '</a></strong>';
+			</table><br />';
 		
 		$this->mail->WordWrap = 80;
 		$this->mail->MsgHTML($html);

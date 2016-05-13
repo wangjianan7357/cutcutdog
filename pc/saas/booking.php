@@ -1,6 +1,7 @@
 <?php
 require('../include/common.php');
 require('../include/fun_saas.php');
+require('../include/cls_emailer.php');
 
 if ($_REQUEST['action'] == 'send') {
     checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
@@ -19,12 +20,14 @@ if ($_REQUEST['action'] == 'send') {
     );
 
     if($my_db->saveRow('booking', $submit)){
-        //$mail = new Emailer($con_mail_set);
-        //$mail->content($content);
+        $mail = new Emailer($con_mail_set);
+        $mail->content($submit);
 
-        //if($mail->send()) {
+        if($mail->send()) {
             callback(array('error' => 0));
-        //}
+        } else {
+            callback(array('error' => 0));
+        }
 
     } else {
         callback(array('error' => 4));
