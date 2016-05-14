@@ -576,7 +576,8 @@
 					"css/mui.picker.css",
 					"css/mui.poppicker.css",
 					"js/template-native.js",
-					"service-detail.html"
+					"service-detail.html",
+					"service-booking.html"
 				],
 				"refer": [],
 				"priority": 0
