@@ -13,7 +13,10 @@
 			"css/mui.poppicker.css",
 			"css/mui.picker.css",
 			"css/mui.indexedlist.css",
-			"images/icon-04.png"
+			"images/icon-04.png",
+			"images/bg.png",
+			"fonts/mui.ttf",
+			"images/top_bg.png"
 		],
 		"refer": [
 			"buy.html",
@@ -74,9 +77,23 @@
 			"images/tu_06.jpg",
 			"images/tu_02.jpg",
 			"images/tu_07.jpg",
-			"images/tu_05.jpg"
+			"images/tu_05.jpg",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"images/bg.png",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"js/basic.js",
+			"fonts/mui.ttf",
+			"discuss-list.html"
 		],
-		"refer": []
+		"refer": [
+			"discuss-list.html"
+		]
 	},
 	"photo-list.html": {
 		"resources": [
@@ -254,7 +271,21 @@
 	},
 	"publish-discuss.html": {
 		"resources": [
-			"js/template-native.js"
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png",
+			"css/feedback-page.css",
+			"js/basic.js",
+			"js/mui.view.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"images/top_bg.png"
+		],
+		"refer": [
+			"profile.html"
 		]
 	},
 	"publish-photo.html": {
@@ -271,6 +302,35 @@
 			"css/feedback-page.css",
 			"js/basic.js",
 			"js/mui.view.js"
+		],
+		"refer": [
+			"profile.html"
+		]
+	},
+	"profile.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"images/user-photo.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png",
+			"css/feedback-page.css",
+			"js/basic.js",
+			"js/mui.view.js"
+		]
+	},
+	"discuss-list.html": {
+		"resources": [
+			"discuss-category.html",
+			"images/pl_top_bg.png",
+			"images/forum_bubble-a.png"
+		],
+		"refer": [
+			"discuss-category.html"
 		]
 	}
 }

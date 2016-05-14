@@ -121,7 +121,8 @@ if ($_REQUEST['action'] == 'list') {
         'desp' => $_POST['sbt_desp'],
         'cid' => $_POST['sbt_cid'] . ',',
         'valid' => 1,
-        'path' => $chk_post->traFromName('name', array('name' => 'info', 'field' => 'path'))
+        'path' => $chk_post->traFromName('name', array('name' => 'info', 'field' => 'path')),
+        'fields' => ''
     );
 
     if ($my_db->saveRow('info', $submit)) {

@@ -149,7 +149,7 @@ function uploadFileData(filepath, data, url, success) {
 	                    }
 	                }
                 } else {  
-                    
+                    //alert(JSON.stringify(res))
                 }  
             }  
         );

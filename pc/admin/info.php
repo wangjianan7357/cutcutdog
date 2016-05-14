@@ -36,7 +36,7 @@ if($_GET['action'] == 'edt'){
 
 	if($_POST['del'] == 'true'){
 		if(!adminPower('info', $power_id)) warning('權限不足');
-		else delSelectedData('info', array('id' => $power_id));
+		else delSelectedData('info', array('id' => $power_id), $info_src);
 	}
 	else if($_POST['save'] == 'true'){
 		if(!adminPower('info', $power_id)) warning('權限不足');

@@ -75,27 +75,6 @@
 
 	mui.plusReady(function() {
 		member = myStorage.getItem("member");
-		
-		mui.ajax({
-			type: "post",
-			url: domain + "saas/catalog.php",
-			dataType: "json",
-			data: {
-				action: "list",
-				where: {type: 5}
-			},
-			async: true,
-			success: function(json) {
-				if(!json.error) {
-					jQuery("#discuss-category").html(template('discuss-category-code', json));
-					
-				} else {
-					plus.nativeUI.toast(json.message);
-				}
-			},
-			error: function(xhr, type, errorThrown) {}
-		});
-
 	});
 	
 	//选择图片
@@ -148,7 +127,8 @@
 		uploadFileData(jQuery("#picture-path").val(), {
 				"action": "insert",
 				"sbt_name": jQuery("#discuss_name").val(),
-				"sbt_desp": jQuery("#discuss_desp").val()
+				"sbt_desp": jQuery("#discuss_desp").val(),
+				"sbt_cid" : "15"
 			}, 
 			"saas/info.php", 
 			function(res) {
