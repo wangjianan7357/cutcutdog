@@ -54,7 +54,12 @@
 
 	<div class="mui-content" style="background: none;">
 		<div class="top_bg"></div>
-		<div><img class="img-bor-two wid" src="images/tu_01.jpg" /><span class="t-p-tile">Chung Chung，HK</span></div>
+
+		<div id="member-photo"></div>
+		<script id="member-photo-code" type="text/html">
+			<img class="img-bor-two wid" src="<%= getvarious("domain") + detail["member"]["src"] %>" /><span class="t-p-tile"><%= detail["member"]["name"] %></span>
+		</script>
+
 		<div class="mui-content-padded m10">
 			<div id="detail-photo"><img src="images/shuijiao.jpg"></div>
 			<script id="detail-photo-code" type="text/html">
@@ -107,6 +112,9 @@
 				async: true,
 				success: function(json) {
 					if(!json.error) {
+						if (json.detail.member) {
+							jQuery("#member-photo").html(template("member-photo-code", json));
+						}
 						jQuery("#detail-photo").html(template("detail-photo-code", json));
 						jQuery("#detail-view").html(template("detail-view-code", json));
 						assignTmpl(json);
