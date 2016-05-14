@@ -1,7 +1,7 @@
 {
     "@platforms": ["android", "iPhone", "iPad"],
     "id": "H5600B080",/*应用的标识，创建应用时自动生成，勿手动修改*/
-    "name": "logn",/*应用名称，程序桌面图标名称*/
+    "name": "PetChat",/*应用名称，程序桌面图标名称*/
     "version": {
         "name": "1.0.0",/*应用版本名称*/
         "code": "83"
@@ -96,7 +96,7 @@
     "plus": {
         "splashscreen": {
             "autoclose": false,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
-            "waiting": true/*是否在程序启动界面显示等待雪花，true表示显示，false表示不显示。*/
+            "waiting": true,"delay":"0"/*是否在程序启动界面显示等待雪花，true表示显示，false表示不显示。*/
         },
         "runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
         "signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
@@ -161,7 +161,7 @@
                     "iphone": {
                         "default": "", /*iPhone3启动图片选，分辨率：320x480*/
                         "retina35": "",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-                        "retina40": ""/*4.0 英寸设备(iPhone5)启动图片，分辨率：640x1136*/
+                        "retina40": "","retina55l":"C:/Users/Administrator/Desktop/splash2208x1242.png"/*4.0 英寸设备(iPhone5)启动图片，分辨率：640x1136*/
                     },
                     "ipad": {
                         "portrait": "", /*iPad竖屏启动图片，分辨率：768x1004*/
@@ -175,11 +175,11 @@
                     }
                 },
                 "android": {
-                    "mdpi": "", /*普通屏启动图片，分辨率：240x282*/
-                    "ldpi": "", /*大屏启动图片，分辨率：320x442*/
-                    "hdpi": "", /*高分屏启动图片，分辨率：480x762*/
-                    "xhdpi": "", /*720P高分屏启动图片，分辨率：720x1242*/
-                    "xxhdpi": ""/*1080P高分屏启动图片，分辨率：1080x1882*/
+                    "mdpi": "C:/Users/Administrator/Desktop/240.png", /*普通屏启动图片，分辨率：240x282*/
+                    "ldpi": "C:/Users/Administrator/Desktop/320.png", /*大屏启动图片，分辨率：320x442*/
+                    "hdpi": "C:/Users/Administrator/Desktop/480.png", /*高分屏启动图片，分辨率：480x762*/
+                    "xhdpi": "C:/Users/Administrator/Desktop/splash720x1242.png", /*720P高分屏启动图片，分辨率：720x1242*/
+                    "xxhdpi": "C:/Users/Administrator/Desktop/splash1080x1882.png"/*1080P高分屏启动图片，分辨率：1080x1882*/
                 }
             }
         }
