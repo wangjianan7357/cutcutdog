@@ -12,6 +12,8 @@ if($_GET['action'] == 'edt'){
 
 	if($_GET['num']){
 		$outcome = $my_db->fetchOne('booking', array('id' => $_GET['num']));
+		$outcome['member'] = $my_db->fetchOne('member', array('id' => $outcome['mid']));
+		$outcome['technician'] = $my_db->fetchOne('member', array('id' => $outcome['tid']));
 	}
 
 	if($_POST['del'] == 'true'){
@@ -68,9 +70,12 @@ if($_GET['action'] == 'edt'){
 		array(
 			array('__all', 'edit'),
 			'id' => 'ID', 
-			'content' => '内容', 
-			'date' => '日期', 
-			'valid' => array('有效', 'checkbox'),
+			'service' => '服務', 
+			'pet' => '寵物', 
+			'size' => '尺寸', 
+			'name' => '姓名', 
+			'phone' => '電話', 
+			'time' => '上門日期', 
 			'read' => array('已读', 'read', array(new FieldFun())), 
 			array('__edit', 'edit', array('power' => 'booking', 'method' => array('detail' => '1|2')))
 		),

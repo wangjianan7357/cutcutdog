@@ -291,7 +291,18 @@
       "js/mui.previewimage.js",
       "images/photo-button-04.png",
       "images/photo-button-01.png",
-      "photo-list.html"
+      "photo-list.html",
+      "js/template-native.js",
+      "js/jquery.min.js",
+      "fonts/mui.ttf",
+      "images/shuijiao.jpg",
+      "images/top_bg.png",
+      "js/basic.js",
+      "js/mui.min.js",
+      "images/CatDog.png",
+      "css/mui.min.css",
+      "images/home.png",
+      "images/Petchat.png"
     ],
     "refer": [
       "photo-list.html"
