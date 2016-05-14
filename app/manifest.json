@@ -727,7 +727,9 @@
 					"images/service-button-07.png",
 					"images/service-button-05.png",
 					"images/xz.png",
-					"service-list.html"
+					"service-list.html",
+					"js/mui.picker.min.js",
+					"css/mui.picker.min.css"
 				],
 				"refer": [],
 				"priority": 0
@@ -772,11 +774,49 @@
 					"css/mui.min.css",
 					"images/home.png",
 					"css/mui.poppicker.css",
+					"images/Petchat.png",
+					"images/trade-graphic-01.png",
+					"images/trade-graphic-02.png",
+					"images/trade-graphic-03.png",
+					"images/trade-graphic-04.png"
+				],
+				"refer": [
+					"service-detail.html",
+					"buy-list.html"
+				],
+				"priority": 0
+			},
+			"buy-list.html": {
+				"resources": [
+					"images/shuijiao.jpg",
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"images/bg.png",
+					"fonts/mui.ttf",
+					"images/top_bg.png",
+					"css/mui.indexedlist.css",
+					"css/mui.picker.css",
+					"js/basic.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"css/mui.min.css",
+					"images/home.png",
+					"css/mui.poppicker.css",
 					"images/Petchat.png"
 				],
 				"refer": [
-					"service-detail.html"
+					"buy-detail.html"
 				],
+				"priority": 0
+			},
+			"buy-detail.html": {
+				"resources": [
+					"js/mui.zoom.js",
+					"css/dzcss.css",
+					"js/mui.previewimage.js",
+					"images/bg_two.png"
+				],
+				"refer": [],
 				"priority": 0
 			}
 		},
