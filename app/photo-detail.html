@@ -23,7 +23,7 @@
 		}
 		.active span{line-height: 40px;}
 		#comment-list {
-			padding:10px 0px 10px 5px;;
+			padding:10px 5px 10px 5px;;
 			background-color:#fff ;
 			text-align: left;
 			
@@ -32,9 +32,9 @@
 			margin:0px 0px ;
 		}
 		#comment-list li {
-			border-bottom: 1px  solid #ebebed; list-style:none ; background-color: #f8f8f9; padding-left: 5px;height:28px;
+			border-bottom: 1px  solid #ebebed; list-style:none ; background-color: #f8f8f9; padding-left: 5px;height:28px; padding-top:2px ;
 		}
-		#comment-list li p{color:#666 ;}
+		#comment-list li p{color:#666 ; }
 		.top_bg{ height:30px; background-color: #a669c0;opacity:0.5;}
 	</style>
 	<script src="js/mui.min.js"></script>
@@ -61,7 +61,7 @@
 		</script>
 
 		<div class="mui-content-padded m10">
-			<div id="detail-photo"><img src="images/shuijiao.jpg"></div>
+			<div id="detail-photo"><img src="images/gif.gif"></div>
 			<script id="detail-photo-code" type="text/html">
 				<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>">
 			</script>
@@ -75,8 +75,7 @@
 				<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
 				<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-info="detail.likes" id="likesCount">0</span></div>
 			</div>
-		</div>	
-
+		
 		<div id="detail-view"></div>
 		<script id="detail-view-code" type="text/html">
 			<ul id="comment-list" class="li-bg-san">
@@ -88,6 +87,7 @@
 			</ul>
 		</script>
 	</div>
+</div>	
 
 	<script type="text/javascript" charset="utf-8">
 		var cata_type = 5;
