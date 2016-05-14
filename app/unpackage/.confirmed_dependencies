@@ -141,8 +141,10 @@
       "images/home.png",
       "images/top_bg.png",
       "images/Petchat.png",
-      "js/basic.js"
-    ]
+      "js/basic.js",
+      "discuss-list.html"
+    ],
+    "refer": []
   },
   "info-category.html": {
     "resources": [
@@ -251,7 +253,8 @@
       "css/dzcss.css",
       "js/mui.previewimage.js",
       "images/bg_two.png"
-    ]
+    ],
+    "refer": []
   },
   "photo-list.html": {
     "resources": [
@@ -316,5 +319,24 @@
     "refer": [
       "profile.html"
     ]
+  },
+  "discuss-list.html": {
+    "resources": [
+      "images/pl_top_bg.png",
+      "images/forum_bubble-a.png",
+      "js/template-native.js",
+      "js/jquery.min.js",
+      "images/bg.png",
+      "fonts/mui.ttf",
+      "images/top_bg.png",
+      "js/basic.js",
+      "js/mui.min.js",
+      "images/CatDog.png",
+      "css/mui.min.css",
+      "images/home.png",
+      "images/Petchat.png",
+      "discuss-category.html"
+    ],
+    "refer": []
   }
 }
