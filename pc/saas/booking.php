@@ -20,7 +20,11 @@ if ($_REQUEST['action'] == 'send') {
     );
 
     if($my_db->saveRow('booking', $submit)){
+        $technician = $my_db->fetchOne('member', array('id' => $_POST['params']['tid']));
+        $submit['technician'] = $technician['name'];
+
         $mail = new Emailer($con_mail_set);
+        $mail->setFields(array('technician' => '美容师'));
         $mail->content($submit);
 
         if($mail->send()) {
