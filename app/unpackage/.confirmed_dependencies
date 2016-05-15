@@ -16,7 +16,14 @@
 			"images/icon-04.png",
 			"images/bg.png",
 			"fonts/mui.ttf",
-			"images/top_bg.png"
+			"images/top_bg.png",
+			"js/jquery.min.js",
+			"js/basic.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png"
 		],
 		"refer": [
 			"buy.html",
@@ -229,10 +236,22 @@
 			"images/Info_icon_tel.png",
 			"images/icon-10.png",
 			"info-category.html",
-			"info-detail.html"
+			"info-detail.html",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"images/bg.png",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"js/basic.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png"
 		],
 		"refer": [
-			"info-category.html"
+			"info-category.html",
+			"info-detail.html"
 		]
 	},
 	"info-detail.html": {
@@ -241,7 +260,10 @@
 			"js/mui.zoom.js",
 			"images/Info_icon_like.png",
 			"info-list.html",
-			"js/mui.previewimage.js"
+			"js/mui.previewimage.js",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"css/mui.indexedlist.css"
 		],
 		"refer": [
 			"info-list.html"
@@ -290,7 +312,9 @@
 		],
 		"refer": [
 			"publish-discuss.html",
-			"publish-photo.html"
+			"publish-photo.html",
+			"login.html",
+			"profile.html"
 		]
 	},
 	"publish-discuss.html": {
