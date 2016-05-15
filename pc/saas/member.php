@@ -20,10 +20,15 @@ if ($_REQUEST['action'] == 'login') {
     $submit = array(
         'name' => trim(urldecode($_REQUEST['account'])),
         'pass' => md5(trim(urldecode($_REQUEST['password']))),
+        'salt' => '',
+        'src' => '',
+        'sex' => '',
         'email' => trim(urldecode($_REQUEST['email'])),
         'address' => trim(urldecode($_REQUEST['address'])),
         'phone' => trim(urldecode($_REQUEST['phone'])),
-        'type' => 1
+        'type' => 1,
+        'fields' => '',
+        'desp' => ''
     );
 
     if ($my_db->existRow('member', array('name' => $submit['name']))) {
@@ -33,6 +38,7 @@ if ($_REQUEST['action'] == 'login') {
     if ($my_db->saveRow('member', $submit)) {
         callback(array('error' => 0));
     } else {
+
         callback(array('error' => 1));
     }
 
