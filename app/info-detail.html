@@ -27,6 +27,22 @@
 			border-bottom: 1px  solid #f8f7f7; list-style:none ; padding-left: 5px;height:28px; 
 		}
 		#comment-list li p{color:#666 ;line-height:30px ;}
+		
+		
+			p {
+				text-indent: 22px;
+			}
+			span.mui-icon {
+				font-size: 14px;
+				color: #007aff;
+				margin-left: -15px;
+				padding-right: 10px;
+			}
+			.mui-popover {
+				height: 100px;width:200px; }
+			.mui-content {
+				padding: 10px;
+			}
 	</style>
 	
 	<script src="js/mui.min.js"></script>
@@ -35,6 +51,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
+
 </head>
 
 <body>
@@ -53,7 +70,7 @@
 		<div class="li-bg-san fl-mar">
 			<div class="pl_two_zi za-zi" data-info="detail.name"></div>
 			<div class="dz-add" style="margin-top: 15px;" data-info="detail.address"></div>
-			<div class="mui-tal" style="margin-top: 15px;" data-info="detail.tel"></div>
+			<a href="#middlePopover"><div class="mui-tal" style="margin-top: 15px;" data-info="detail.tel"></div></a>
 			<input type="hidden" id="aid" data-info="value=detail.id" value="">
 		</div>
 
@@ -75,6 +92,35 @@
 		</ul>
 	</script>
 	</div>
+	
+	<div id="middlePopover" class="mui-popover">
+			<div class="mui-popover-arrow"></div>
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view">
+						<li id="tel" class="mui-table-view-cell" style=" padding: 0px; padding-left:10px ;"><a href="tel:114">呼叫</a>
+						</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			mui('.mui-scroll-wrapper').scroll();
+			mui('body').on('shown', '.mui-popover', function(e) {
+				//console.log('shown', e.detail.id);//detail为当前popover元素
+			});
+			mui('body').on('hidden', '.mui-popover', function(e) {
+				//console.log('hidden', e.detail.id);//detail为当前popover元素
+			});
+		</script>
+	
 	<script type="text/javascript" charset="utf-8">
 		var cata_type = 3;
 		var member = {};
@@ -111,6 +157,6 @@
 			});
 		});
 	</script>
-		
+	
 </body>
 </html>

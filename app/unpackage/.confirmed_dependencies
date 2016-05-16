@@ -23,7 +23,8 @@
 			"images/CatDog.png",
 			"css/mui.min.css",
 			"images/home.png",
-			"images/Petchat.png"
+			"images/Petchat.png",
+			"info-category.html"
 		],
 		"refer": [
 			"buy.html",
@@ -263,7 +264,23 @@
 			"js/mui.previewimage.js",
 			"css/mui.poppicker.css",
 			"css/mui.picker.css",
-			"css/mui.indexedlist.css"
+			"css/mui.indexedlist.css",
+			"js/template-native.js",
+			"images/Info_icon_pin.png",
+			"js/jquery.min.js",
+			"images/bg.png",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"js/basic.js",
+			"images/Info_icon_home.png",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"images/Info_icon_tel.png",
+			"images/icon-10.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png",
+			"js/mui.view.js"
 		],
 		"refer": [
 			"info-list.html"

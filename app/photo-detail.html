@@ -23,19 +23,19 @@
 		}
 		.active span{line-height: 40px;}
 		#comment-list {
-			padding:10px 5px 10px 5px;;
+			padding:0px 5px 10px 5px;;
 			background-color:#fff ;
 			text-align: left;
 			
 			color:#666 ;
-			font-size:14px ;
+			font-size:12px ;
 			margin:0px 0px ;
 		}
 		#comment-list li {
-			border-bottom: 1px  solid #ebebed; list-style:none ; background-color: #f8f8f9; padding-left: 5px;height:28px; padding-top:2px ;
+			border-bottom: 1px  solid #f5f5f5; list-style:none ;  padding-left: 5px;height:28px; padding-top:2px ;
 		}
 		#comment-list li p{color:#666 ; }
-		.top_bg{ height:30px; background-color: #a669c0;opacity:0.5;}
+		.top_bg{ height:25px; background-color: #a669c0;opacity:0.5;}
 	</style>
 	<script src="js/mui.min.js"></script>
 	<script src="js/mui.zoom.js"></script>
@@ -61,7 +61,7 @@
 		</script>
 
 		<div class="mui-content-padded m10">
-			<div id="detail-photo"><img src="images/gif.gif"></div>
+			<div id="detail-photo"><img src="images/gif.gif" style="width: 32px; height:32px ;"></div>
 			<script id="detail-photo-code" type="text/html">
 				<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>">
 			</script>
