@@ -223,7 +223,8 @@
 					"css/mui.picker.css",
 					"css/mui.indexedlist.css",
 					"service-list.html",
-					"info-category.html"
+					"info-category.html",
+					"login.html"
 				],
 				"refer": [
 					"examples/imageviewer.html",

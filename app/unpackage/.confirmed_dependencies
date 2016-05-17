@@ -24,7 +24,8 @@
       "css/mui.min.css",
       "images/home.png",
       "images/Petchat.png",
-      "info-category.html"
+      "info-category.html",
+      "login.html"
     ],
     "refer": [
       "buy.html",
@@ -32,7 +33,8 @@
       "photo-list.html",
       "service-list.html",
       "info-category.html",
-      "setting.html"
+      "setting.html",
+      "login.html"
     ]
   },
   "login.html": {
