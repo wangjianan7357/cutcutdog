@@ -20,6 +20,10 @@
 	        background-color:#efeff4;
 	    }
 		.top_bg{ height:25px; background-color: #bc9dc9;}
+		.margin1:nth-child(3n+2) {
+			margin-left: 1px; 
+			margin-right: 1px;
+		}
 	</style>
 
 	<script src="js/mui.min.js"></script>
@@ -37,17 +41,16 @@
 		<div class="top_bg"></div>
 		<div class="serv-fw">
 
-			<div><a href="service-detail.html" data-action="openwindow"><img src="images/yuantiao.jpg"></a></div>
-			<div style=" margin-left: 1px; margin-right:1px ;"><a href="service-detail.html" data-action="openwindow"><img src="images/muwu.jpg"></a></div>
-			<div><a href="service-detail.html" data-action="openwindow"><img src="images/shuijiao.jpg"></a></div>
-			<div><a href="service-detail.html" data-action="openwindow"><img src="images/yuantiao.jpg"></a></div>
-
+			<div class="margin1"><a href="service-detail.html" data-action="openwindow"><img src="images/yuantiao.jpg"></a></div>
+			<div class="margin1"><a href="service-detail.html" data-action="openwindow"><img src="images/muwu.jpg"></a></div>
+			<div class="margin1"><a href="service-detail.html" data-action="openwindow"><img src="images/shuijiao.jpg"></a></div>
+			
 		</div>
 
 		<div class="serv-fw" id="list-view"></div>
 		<script id="list-view-code" type="text/html">
 			<% for (var i in list) { %>
-				<div><a href="service-detail.html?id=<%= list[i]["id"] %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/member/me" + list[i]["src"] %>"></a></div>
+				<div class="margin1"><a href="service-detail.html?id=<%= list[i]["id"] %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/member/me" + list[i]["src"] %>"></a></div>
 			<% } %>
 		</script>
 

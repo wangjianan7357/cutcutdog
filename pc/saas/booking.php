@@ -15,6 +15,7 @@ if ($_REQUEST['action'] == 'send') {
         'name' => $_POST['params']['name'],
         'phone' => $_POST['params']['phone'],
         'address' => $_POST['params']['address'],
+        'number' => $_POST['params']['number'],
         'time' => $_POST['params']['time'],
         'remark' => $_POST['params']['remark'],
     );

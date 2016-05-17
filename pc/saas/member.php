@@ -86,12 +86,10 @@ if ($_REQUEST['action'] == 'login') {
     }
 
 } else if ($_REQUEST['action'] == 'list') {
-    checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
-
     $where['valid'] = 1;
 
     $list = array();
-    $getdata = $my_db->selectRow('*', 'member', $where);
+    $getdata = $my_db->selectRow('id, src, name, phone, email', 'member', $where);
     while ($result = mysql_fetch_array($getdata)) {
         $list[$result['id']] = $result;
     }
@@ -99,9 +97,8 @@ if ($_REQUEST['action'] == 'login') {
     callback(array('error' => 0, 'list' => $list));
 
 } else if ($_REQUEST['action'] == 'detail') {
-    checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
-
     $where['valid'] = 1;
+    $where['type'] = 10;
 
     $service = array();
     $getdata = $my_db->selectRow('*', 'service', array('valid' => 1));
@@ -110,6 +107,9 @@ if ($_REQUEST['action'] == 'login') {
     }
 
     $member = $my_db->fetchOne('member', $where);
+    unset($member['pass']);
+    unset($member['salt']);
+
     $member['fields'] = json_decode($member['fields'], true);
 
     $member['service'] = array();

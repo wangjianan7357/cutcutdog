@@ -54,6 +54,8 @@
 	<script src="js/mui.min.js"></script>
 	<script src="js/mui.zoom.js"></script>
 	<script src="js/mui.previewimage.js"></script>
+	<script src="js/mui.picker.js"></script>
+	<script src="js/mui.poppicker.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
@@ -138,9 +140,10 @@
 				<div class="floa"><input type="text" class="input1" id="sbt_address" placeholder="地址填寫"></div>
 			</div>
 			
-			<div class="serv-my-zi mar">
-				<div class="floa">數量</div>
-				<div class="floa"><input type="text" class="input1" id="sbt_address" placeholder="地址填寫"></div>
+			<div style="width:100%; padding-left: 4%; margin-top:20px;" id="showNumberPicker">
+				<button class="mui-btn mui-btn-block" type="button"><span data-picker="number">数量</span></button>
+				<input type="hidden" id="sbt_number" value="" />
+				<div class="butt_right" ><img src="images/Info_button-02.png"></div>
 			</div>
 
 			<div class="serv-my-zi mar">
@@ -174,6 +177,18 @@
 		
 		mui.plusReady(function() {
 			member = myStorage.getItem("member");
+
+			// 数量
+			var numberPicker = new mui.PopPicker({layer: 1});
+			numberPicker.setData([{value: 1, text: 1}, {value: 2, text: 2}, {value: 3, text: 3}, {value: 4, text: 4}, {value: 5, text: 5}, {value: 6, text: 6}, {value: 7, text: 7}, {value: 8, text: 8}, {value: 9, text: 9}, {value: 10, text: 10}]);
+
+			var showNumberPickerButton = document.getElementById("showNumberPicker");
+			showNumberPickerButton.addEventListener("tap", function(event) {
+				numberPicker.show(function(items) {
+					jQuery("[data-picker='number']").html(items[0].text);
+					jQuery("#sbt_number").val(items[0].value);
+				});
+			}, false);
 
 			mui.ajax({
 				type: "post",
@@ -285,6 +300,7 @@
                         	name: jQuery("#sbt_name").val(),
                         	phone: jQuery("#sbt_phone").val(),
                         	address: jQuery("#sbt_address").val(),
+                        	number: jQuery("#sbt_number").val(),
                         	time: jQuery("#sbt_time").val(),
                         	remark: jQuery("#sbt_remark").val()
                         }
