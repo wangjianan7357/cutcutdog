@@ -97,6 +97,10 @@ if ($_REQUEST['action'] == 'login') {
     callback(array('error' => 0, 'list' => $list));
 
 } else if ($_REQUEST['action'] == 'detail') {
+    if (is_array($_POST['where'])) {
+        $where = $_POST['where'];
+    }
+
     $where['valid'] = 1;
     $where['type'] = 10;
 

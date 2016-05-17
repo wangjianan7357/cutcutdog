@@ -39,7 +39,7 @@
 	    <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold;" href="#topPopover"></a>
 	</header>
 	<div class="mui-content" style=" padding-bottom:20px ; background:none ; background-color:#fff ;">
-		<div class="discuss-title">显示标题</div>
+		<div class="discuss-title" data-info="detail.name"></div>
 		<div style=" padding-left:10px ; overflow: hidden;">
 			<div class="discuss-zi-wz">來自：分类名称</div>
 			<div class="discuss-zi-wz-flo">
@@ -55,17 +55,20 @@
 		
 		
 		<div class="li-bg-san fl-mar discuss-bg" style=" margin-bottom:0px ;">
-		 <div style=" overflow: hidden; margin-bottom:20px ;">	
-			<div id="member-photo" style=" float: left;">
-			<img class="img-bor-two wid" src="images/muwu.jpg" style=" margin-left: 0px; margin-top: 0px;">
-			<span class="t-p-tile" style=" line-height: 70px; font-size:18px ;">sdfdsf</span>
-		    </div>
-		    <div style=" float: right; padding-right:10px ; line-height:70px ; color:#666 ; font-size: 14px;">2016-05-17</div>
-		</div>
+			<div style=" overflow: hidden; margin-bottom:20px ;">	
+			    <div id="member-photo" style="float: left;"></div>
+				<script id="member-photo-code" type="text/html">
+					<img class="img-bor-two wid" src="<%= getvarious("domain") + detail["member"]["src"] %>" /><span class="t-p-tile"><%= detail["member"]["name"] %></span>
+				</script>
+
+			    <div style="float: right; padding-right:10px; line-height:70px; color: #666; font-size: 14px;">2016-05-17</div>
+			</div>
+
 			<div class="pl_two_zi" data-info="detail.desp"></div>
 			<input type="hidden" id="aid" data-info="value=detail.id" value="">
 		</div>
-	<div id="detail-photo" style=" text-align: center;"><img src="images/gif.gif" style="width: 32px; height:32px ;"></div>
+		
+		<div id="detail-photo" style=" text-align: center;"><img src="images/gif.gif" style="width: 32px; height:32px ;"></div>
 		<script id="detail-photo-code" type="text/html">
 			<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>">
 		</script>
@@ -114,6 +117,9 @@
 				async: true,
 				success: function(json) {
 					if(!json.error) {
+						if (json.detail.member) {
+							jQuery("#member-photo").html(template("member-photo-code", json));
+						}
 						jQuery("#detail-view").html(template("detail-view-code", json));
 						jQuery("#detail-photo").html(template("detail-photo-code", json));
 						assignTmpl(json);

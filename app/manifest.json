@@ -744,7 +744,9 @@
 					"images/xz.png",
 					"service-list.html",
 					"js/mui.picker.min.js",
-					"css/mui.picker.min.css"
+					"css/mui.picker.min.css",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js"
 				],
 				"refer": [],
 				"priority": 0
