@@ -36,30 +36,52 @@
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
 	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-	    <div style="float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
+	    <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold;" href="#topPopover"></a>
 	</header>
-	<div class="mui-content" style=" padding-bottom:20px ;">
-		<div id="detail-photo"><img src="images/cbd.jpg"></div>
+	<div class="mui-content" style=" padding-bottom:20px ; background:none ; background-color:#fff ;">
+		<div class="discuss-title">显示标题</div>
+		<div style=" padding-left:10px ; overflow: hidden;">
+			<div class="discuss-zi-wz">來自：分类名称</div>
+			<div class="discuss-zi-wz-flo">
+				<div style="float: left;">
+				<span class="mui-icon mui-icon-chat" style="color: #b8e5fa; font-size:12px ;">
+					<a style=" color:#a9a9a9 ;">111</a>
+				</span>
+				</div>
+				<div style="float: left; padding-left:5px ;"><span class="mui-icon mui-icon-eye" style="color: #b8e5fa; font-size:14px ;">
+					<a style=" color:#a9a9a9 ; font-size:12 ;">122</a></span></div>
+			</div>
+		</div>
+		
+		
+		<div class="li-bg-san fl-mar discuss-bg" style=" margin-bottom:0px ;">
+		 <div style=" overflow: hidden; margin-bottom:20px ;">	
+			<div id="member-photo" style=" float: left;">
+			<img class="img-bor-two wid" src="images/muwu.jpg" style=" margin-left: 0px; margin-top: 0px;">
+			<span class="t-p-tile" style=" line-height: 70px; font-size:18px ;">sdfdsf</span>
+		    </div>
+		    <div style=" float: right; padding-right:10px ; line-height:70px ; color:#666 ; font-size: 14px;">2016-05-17</div>
+		</div>
+			<div class="pl_two_zi" data-info="detail.desp"></div>
+			<input type="hidden" id="aid" data-info="value=detail.id" value="">
+		</div>
+	<div id="detail-photo" style=" text-align: center;"><img src="images/gif.gif" style="width: 32px; height:32px ;"></div>
 		<script id="detail-photo-code" type="text/html">
 			<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>">
 		</script>
 
-		<div class="z-hao" id="likesCount" data-info="detail.likes">0</div>
-		<div class="li-bg-san fl-mar">
-			<div class="pl_two_zi" data-info="detail.desp"></div>
-			<input type="hidden" id="aid" data-info="value=detail.id" value="">
-		</div>
-	
-		<div style=" text-align: center;">
-			<div class="zh-good" id="heart" rel="like">讚好</div>
-			<div class="zh-good" style="margin-left:10px;" id="promptBtn">評論</div>
-			<div class="zh-good" style="margin-left:10px;">分享</div>
-		</div>
+		
+		<div class="xp-tu" style="margin-left:5px;">
+				<div class="zh-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
+				<div class="zh-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
+				<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
+				<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount" data-info="detail.likes">0</span></div>
+			</div>
 	
 		
 		<div id="detail-view"></div>
 		<script id="detail-view-code" type="text/html">
-			<ul id="comment-list" class="li-bg-san">
+			<ul id="comment-list" class="li-bg-san" style=" margin-top: 0px;">
 			<% for (var i in detail["comments"]) { %>
 				<li>
 					<p><b><%= detail["comments"][i]["member"]["name"] %>：</b> <%= detail["comments"][i]["content"] %></p>
