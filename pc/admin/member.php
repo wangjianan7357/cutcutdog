@@ -48,6 +48,11 @@ if($_GET['action'] == 'edt'){
 		$chk_post = new ChkRequest('sbt_');
 		$chk_post->chkEmpty(array('name' => '名稱', 'phone' => '電話'));
 
+		if (!$_GET['num']) {
+			$chk_post->chkEmpty(array('pass' => '密碼'));
+			$_POST['sbt_pass'] = md5(trim($_POST['sbt_pass']));
+		}
+
 		$_POST['sbt_src'] = $chk_post->chkImage('src');
 		
 		if ($outcome['src']) {
@@ -63,6 +68,9 @@ if($_GET['action'] == 'edt'){
 			$submit_arr = initSubmitColumns('member', $_GET['num']);
 
 			$_POST['sbt_id'] = $_GET['num'] ? $_GET['num'] : ($my_db->selectMax('member') + 1);
+			$_POST['sbt_salt'] = '';
+			$_POST['sbt_sex'] = '';
+			$_POST['sbt_address'] = '';
 			$_POST['sbt_valid'] = ($_POST['sbt_valid'] ? 1 : 0);
 			$_POST['sbt_fields'] = json_encode($_POST['sbt_fields']);
 			$_POST['sbt_desp'] = modEditorInfo($_POST['sbt_desp'], 'save');
