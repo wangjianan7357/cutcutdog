@@ -795,11 +795,11 @@
 					"images/trade-graphic-01.png",
 					"images/trade-graphic-02.png",
 					"images/trade-graphic-03.png",
-					"images/trade-graphic-04.png"
+					"images/trade-graphic-04.png",
+					"buy-list.html"
 				],
 				"refer": [
-					"service-detail.html",
-					"buy-list.html"
+					"service-detail.html"
 				],
 				"priority": 0
 			},
@@ -819,11 +819,11 @@
 					"css/mui.min.css",
 					"images/home.png",
 					"css/mui.poppicker.css",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"buy-detail.html",
+					"buy.html"
 				],
-				"refer": [
-					"buy-detail.html"
-				],
+				"refer": [],
 				"priority": 0
 			},
 			"buy-detail.html": {
@@ -831,7 +831,10 @@
 					"js/mui.zoom.js",
 					"css/dzcss.css",
 					"js/mui.previewimage.js",
-					"images/bg_two.png"
+					"images/bg_two.png",
+					"images/shuijiao.jpg",
+					"images/top_bg.png",
+					"buy-list.html"
 				],
 				"refer": [],
 				"priority": 0

@@ -75,7 +75,8 @@
 			"css/mui.min.css",
 			"images/home.png",
 			"css/mui.poppicker.css",
-			"images/Petchat.png"
+			"images/Petchat.png",
+			"buy-list.html"
 		],
 		"refer": [
 			"buy-list.html"
@@ -313,10 +314,13 @@
 			"css/mui.min.css",
 			"images/home.png",
 			"css/mui.poppicker.css",
-			"images/Petchat.png"
+			"images/Petchat.png",
+			"buy-detail.html",
+			"buy.html"
 		],
 		"refer": [
-			"buy-detail.html"
+			"buy-detail.html",
+			"buy.html"
 		]
 	},
 	"setting.html": {
@@ -456,7 +460,13 @@
 			"js/mui.zoom.js",
 			"css/dzcss.css",
 			"js/mui.previewimage.js",
-			"images/bg_two.png"
+			"images/bg_two.png",
+			"images/shuijiao.jpg",
+			"images/top_bg.png",
+			"buy-list.html"
+		],
+		"refer": [
+			"buy-list.html"
 		]
 	},
 	"discuss-detail.html": {
