@@ -124,7 +124,8 @@
 			"images/home.png",
 			"css/mui.poppicker.css",
 			"images/Petchat.png",
-			"photo-detail.html"
+			"photo-detail.html",
+			"js/mui.pullToRefresh.js"
 		],
 		"refer": [
 			"photo-detail.html"

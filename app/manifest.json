@@ -641,7 +641,8 @@
 					"css/mui.indexedlist.css",
 					"css/mui.picker.css",
 					"css/mui.poppicker.css",
-					"photo-detail.html"
+					"photo-detail.html",
+					"js/mui.pullToRefresh.js"
 				],
 				"refer": [
 					"image-list.html"
