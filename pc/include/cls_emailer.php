@@ -66,6 +66,7 @@ class Emailer {
 			'name' => '姓名',
 			'phone' => '電話',
 			'address' => '地址',
+			'number' => '數量',
 			'time' => '上門日期',
 			'remark' => '備註',
 		);

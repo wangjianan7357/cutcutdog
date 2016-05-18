@@ -16,7 +16,28 @@
 			background-color:#fff ;
 			
 		}
-		.top_bg{ height:30px; background-color: #a669c0;opacity:0.5;}
+		.top_bg{ height:25px; background-color: #ba9ec6;}
+		#topPopover {
+			position: fixed;
+			top: 16px;
+			right: 6px;
+		}
+		#topPopover .mui-popover-arrow {
+			left: auto;
+			right: 6px;
+		}
+		p {
+			text-indent: 22px;
+		}
+		span.mui-icon {
+			font-size: 14px;
+			color: #007aff;
+			margin-left: -15px;
+			padding-right: 10px;
+		}
+		.mui-popover {
+			height: 250px;
+		}
 	</style>
 	<script src="js/mui.min.js"></script>
     <script src="js/jquery.min.js"></script>
@@ -28,7 +49,7 @@
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
 	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-	    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
+	    <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold;" href="#topPopover"></a>
 	</header>
 	
 	<div class="mui-content" >
@@ -48,10 +69,30 @@
 			<% } %>
 			</script>
 		  
-			<div style="height:15px;"></div>	
+			<div style="height:24px;"></div>	
 		</div>
 	</div>
-		
+	<!--右上角弹出菜单-->
+	<div id="topPopover" class="mui-popover" >
+		<div class="mui-popover-arrow"></div>
+		<div class="mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a href="publish-discuss.html" class="mui-navigate-right" data-action="openwindow">發表討論</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="my-discuss.html" class="mui-navigate-right" data-action="openwindow">我的討論</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="setting.html" class="mui-navigate-right" data-action="openwindow">個人主頁</a>
+					</li>
+					<li class="mui-table-view-cell">
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+
+	</div>	
 	<script>
 		(function(mui, doc) {
 			mui.init({

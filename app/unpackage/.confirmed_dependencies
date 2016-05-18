@@ -75,8 +75,12 @@
 			"css/mui.min.css",
 			"images/home.png",
 			"css/mui.poppicker.css",
+<<<<<<< HEAD
 			"images/Petchat.png",
 			"buy-list.html"
+=======
+			"images/Petchat.png"
+>>>>>>> 05cc89e14cc3c0aaee02f087fbf3d34e9272aee1
 		],
 		"refer": [
 			"buy-list.html"
@@ -125,7 +129,12 @@
 			"images/home.png",
 			"css/mui.poppicker.css",
 			"images/Petchat.png",
+<<<<<<< HEAD
 			"photo-detail.html"
+=======
+			"photo-detail.html",
+			"js/mui.pullToRefresh.js"
+>>>>>>> 05cc89e14cc3c0aaee02f087fbf3d34e9272aee1
 		],
 		"refer": [
 			"photo-detail.html"
@@ -176,12 +185,19 @@
 			"css/mui.min.css",
 			"images/home.png",
 			"css/mui.poppicker.css",
+<<<<<<< HEAD
 			"images/Petchat.png",
 			"service-booking.html"
 		],
 		"refer": [
 			"service-detail.html",
 			"service-booking.html"
+=======
+			"images/Petchat.png"
+		],
+		"refer": [
+			"service-detail.html"
+>>>>>>> 05cc89e14cc3c0aaee02f087fbf3d34e9272aee1
 		]
 	},
 	"service-booking.html": {
@@ -207,12 +223,18 @@
 			"images/bg_two.png",
 			"fonts/mui.ttf",
 			"js/mui.picker.js",
+<<<<<<< HEAD
 			"js/mui.poppicker.js",
 			"service-list.html"
 		],
 		"refer": [
 			"service-list.html"
 		]
+=======
+			"js/mui.poppicker.js"
+		],
+		"refer": []
+>>>>>>> 05cc89e14cc3c0aaee02f087fbf3d34e9272aee1
 	},
 	"info-category.html": {
 		"resources": [
@@ -314,6 +336,7 @@
 			"css/mui.min.css",
 			"images/home.png",
 			"css/mui.poppicker.css",
+<<<<<<< HEAD
 			"images/Petchat.png",
 			"buy-detail.html",
 			"buy.html"
@@ -321,6 +344,12 @@
 		"refer": [
 			"buy-detail.html",
 			"buy.html"
+=======
+			"images/Petchat.png"
+		],
+		"refer": [
+			"buy-detail.html"
+>>>>>>> 05cc89e14cc3c0aaee02f087fbf3d34e9272aee1
 		]
 	},
 	"setting.html": {
@@ -460,6 +489,7 @@
 			"js/mui.zoom.js",
 			"css/dzcss.css",
 			"js/mui.previewimage.js",
+<<<<<<< HEAD
 			"images/bg_two.png",
 			"images/shuijiao.jpg",
 			"images/top_bg.png",
@@ -467,6 +497,9 @@
 		],
 		"refer": [
 			"buy-list.html"
+=======
+			"images/bg_two.png"
+>>>>>>> 05cc89e14cc3c0aaee02f087fbf3d34e9272aee1
 		]
 	},
 	"discuss-detail.html": {

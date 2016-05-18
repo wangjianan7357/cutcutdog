@@ -25,7 +25,7 @@ if ($_REQUEST['action'] == 'send') {
         $submit['technician'] = $technician['name'];
 
         $mail = new Emailer($con_mail_set);
-        $mail->setFields(array('technician' => '美容师'));
+        $mail->setFields(array('technician' => '美容師'));
         $mail->content($submit);
 
         if($mail->send()) {
