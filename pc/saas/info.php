@@ -62,11 +62,15 @@ if ($_REQUEST['action'] == 'list') {
     if (is_array($_POST['where'])) {
         $info = $my_db->fetchOne('info', array('path' => $_POST['where']['path']));
 
+        $cid = explode(',', trim($info['cid'], ','));
+
         $comments = array();
         $getdata = $my_db->selectRow('*', 'message', array('atype' => $_POST['where']['type'], 'aid' => $info['id'], 'valid' => 1), array('field' => 'date', 'method' => 'DESC'));
         while ($result = mysql_fetch_array($getdata)) {
             $comments[] = $result;
         }
+
+        $info['catalog'] = $my_db->fetchOne('catalog', array('id' => $cid[count($cid) - 1]));
 
         $info['member'] = $my_db->fetchOne('member', array('id' => $info['mid']));
 
@@ -87,6 +91,9 @@ if ($_REQUEST['action'] == 'list') {
         }
 
         $info['comments'] = $comments;
+
+        $info['total'] = array();
+        $info['total']['comments'] = count($comments);
 
         $info['likes'] = $my_db->existRow('likes', array('atype' => $_POST['where']['type'], 'aid' => $info['id'], 'valid' => 1));
 

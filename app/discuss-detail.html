@@ -41,15 +41,16 @@
 	<div class="mui-content" style=" padding-bottom:20px ; background:none ; background-color:#fff ;">
 		<div class="discuss-title" data-info="detail.name"></div>
 		<div style=" padding-left:10px ; overflow: hidden;">
-			<div class="discuss-zi-wz">來自：分类名称</div>
+			<div class="discuss-zi-wz">來自：<span data-info="detail.catalog.name"></span></div>
 			<div class="discuss-zi-wz-flo">
 				<div style="float: left;">
 				<span class="mui-icon mui-icon-chat" style="color: #b8e5fa; font-size:12px ;">
-					<a style=" color:#a9a9a9 ;">111</a>
+					<a style=" color:#a9a9a9 ;" data-info="detail.total.comments">0</a>
 				</span>
 				</div>
 				<div style="float: left; padding-left:5px ;"><span class="mui-icon mui-icon-eye" style="color: #b8e5fa; font-size:14px ;">
-					<a style=" color:#a9a9a9 ; font-size:12 ;">122</a></span></div>
+					<a style=" color:#a9a9a9 ; font-size:12 ;" data-info="detail.likes">0</a></span>
+				</div>
 			</div>
 		</div>
 		
@@ -61,7 +62,7 @@
 					<img class="img-bor-two wid" src="<%= getvarious("domain") + detail["member"]["src"] %>" /><span class="t-p-tile"><%= detail["member"]["name"] %></span>
 				</script>
 
-			    <div style="float: right; padding-right:10px; line-height:70px; color: #666; font-size: 14px;">2016-05-17</div>
+			    <div style="float: right; padding-right:10px; line-height:70px; color: #666; font-size: 14px;" data-info="detail.date"></div>
 			</div>
 
 			<div class="pl_two_zi" data-info="detail.desp"></div>
@@ -75,11 +76,11 @@
 
 		
 		<div class="xp-tu" style="margin-left:5px;">
-				<div class="zh-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
-				<div class="zh-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
-				<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
-				<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount" data-info="detail.likes">0</span></div>
-			</div>
+			<div class="zh-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
+			<div class="zh-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
+			<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
+			<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount" data-info="detail.likes">0</span></div>
+		</div>
 	
 		
 		<div id="detail-view"></div>
