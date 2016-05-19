@@ -100,7 +100,7 @@
         },
         "runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
         "signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
-        "distribute": {"plugins":{"share":{"weixin":{"appid":"aaa","appsecret":"aa","description":"可选，微信分享"}}},
+        "distribute": {"plugins":{"share":{"weixin":{"appid":"","appsecret":"","description":"可选，微信分享"},"qq":{"appid":"","description":"QQ分享"},"sina":{"appkey":"","appsecret":"","redirect_uri":"","description":"可选，新浪微博分享"},"tencent":{"appkey":"","appsecret":"","redirect_uri":"","description":"可选，腾讯微博分享"}}},
             "apple": {
                 "appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
                 "mobileprovision": "",/*iOS应用打包配置文件*/
@@ -115,7 +115,7 @@
                 "keystore": "",/*Android应用打包使用的密钥库文件*/
                 "password": "",/*Android应用打包使用密钥库中证书的密码*/
                 "aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
-                "permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.ACCESS_SURFACE_FLINGER\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.WRITE_SOCIAL_STREAM\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"android.permission.ADD_VOICEMAIL\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.ACCESS_LOCATION_EXTRA_COMMANDS\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.AUTHENTICATE_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-permission android:name=\"android.permission.ACCOUNT_MANAGER\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"]/*使用Native.js调用原生安卓API需要使用到的系统权限*/
+                "permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_SURFACE_FLINGER\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>","<uses-permission android:name=\"android.permission.WRITE_SOCIAL_STREAM\"/>","<uses-permission android:name=\"android.permission.ADD_VOICEMAIL\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.ACCESS_LOCATION_EXTRA_COMMANDS\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.AUTHENTICATE_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-permission android:name=\"android.permission.ACCOUNT_MANAGER\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>","<uses-permission android:name=\"android.permission.ACCESS_MOCK_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"]/*使用Native.js调用原生安卓API需要使用到的系统权限*/
             },
             "orientation": [
             "portrait-primary",
@@ -156,6 +156,7 @@
                     "xxhdpi": "unpackage/res/icons/144x144.png"/*1080P 高分屏程序图标，分辨率：144x144*/
                 }
             },
+           
             "splashscreen": {
                 "ios": {
                     "iphone": {
@@ -224,7 +225,9 @@
 					"css/mui.indexedlist.css",
 					"service-list.html",
 					"info-category.html",
-					"login.html"
+					"login.html",
+					"photo-list.html",
+					"buy.html"
 				],
 				"refer": [
 					"examples/imageviewer.html",
@@ -234,8 +237,7 @@
 					"setting.html",
 					"slider-table-default.html",
 					"discuss-category-list.html",
-					"photo-list.html",
-					"buy.html"
+					"photo-detail.html"
 				],
 				"priority": 0
 			},
@@ -561,7 +563,8 @@
 					"images/photo-button-03.png",
 					"images/photo-button-04.png",
 					"images/photo-button-01.png",
-					"images/muwu.jpg"
+					"images/muwu.jpg",
+					"js/common.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -642,7 +645,14 @@
 					"css/mui.picker.css",
 					"css/mui.poppicker.css",
 					"photo-detail.html",
-					"js/mui.pullToRefresh.js"
+					"js/mui.pullToRefresh.js",
+					"index.html",
+					"%3C%\u003d%20getvarious(",
+					"images/muwu.jpg",
+					"images/photo-button-02.png",
+					"images/photo-button-03.png",
+					"images/photo-button-04.png",
+					"images/photo-button-01.png"
 				],
 				"refer": [
 					"image-list.html"
@@ -672,7 +682,8 @@
 					"images/Petchat.png",
 					"photo-list.html",
 					"images/icon-10.png",
-					"images/gif.gif"
+					"images/gif.gif",
+					"images/muwu.jpg"
 				],
 				"refer": [],
 				"priority": 0
@@ -797,7 +808,8 @@
 					"images/trade-graphic-02.png",
 					"images/trade-graphic-03.png",
 					"images/trade-graphic-04.png",
-					"buy-list.html"
+					"buy-list.html",
+					"index.html"
 				],
 				"refer": [
 					"service-detail.html"
@@ -839,6 +851,29 @@
 				],
 				"refer": [],
 				"priority": 0
+			}
+		},
+		"share": {
+			"sina": {
+				"appkey": "",
+				"appsecret": "",
+				"redirect_uri": "",
+				"description": "新浪微博分享"
+			},
+			"tencent": {
+				"appkey": "",
+				"appsecret": "",
+				"redirect_uri": "",
+				"description": "腾讯微博分享"
+			},
+			"qq": {
+				"appid": "",
+				"description": "QQ分享"
+			},
+			"weixin": {
+				"appid": "",
+				"appsecret": "",
+				"description": "微信分享"
 			}
 		},
 		"idle": {

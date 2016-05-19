@@ -41,16 +41,16 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%}body{margin:0}article,
 .pl-list-two-top{ height:50px; background: url(../images/pl_top_bg.png) no-repeat center; background-color:#fff677 ; padding-left:10px ; border-bottom:solid 2px #56bf96 ;border-top:solid 2px #56bf96 ; line-height:48px; text-align: center;color:#333 ; font-size:25px ;}
 .pl_two_zi{ color:#333 ; font-weight: bold; font-size:16px ;}
 .li-bg-san{ background: url(../images/icon-10.png);margin-bottom:20px ;border-radius:10px; line-height:25px; padding-bottom:10px;overflow: hidden;}
-.xp-tu{ margin-top:5px ;overflow: hidden;text-align: center;}
-.xp-tu ul{ padding-left:0px;padding-right:0px;text-align: center; padding-left:5% ;}
-.xp-tu ul li{ list-style:none ; width: 95%; padding:10px 10px 10px 10px ;overflow: hidden; background-color:#ffffff ;border-radius: 10px; border: solid 2px #4d4c51 ; margin-bottom: 10px;}
+.xp-tu{ margin:0px;overflow: hidden;text-align: center; padding: 0px;}
+.xp-tu ul{ padding-left:0px;padding-right:0px;text-align: center;padding: 0px; margin:0px;}
+.xp-tu ul li{ list-style:none ; width:100%; overflow: hidden; background-color:#ffffff ;border-bottom: solid 1px #918f90 ;}
 .xp-tu-zi{ text-align:left; color:#333 ; line-height:30px ;}
 .xp-tu .zh-good{ background-color:#8f72b4 ;border-radius: 10px;width:55px; float:left;height:30px; line-height:28px ; font-size: 18px; color:#fff ; margin-top: 10px;}
 .xp-tu .z-hao-two{ float: right;width:30%;  background: url(../images/Info_icon_like_two.png) no-repeat 0px 0px; height:60px ; line-height:52px ; text-indent:40px ; font-size:20px; color:#666 ;}
 .m10{ margin: 0px; border: solid #918f90 1px ;}
 .wid{width:60px; height:60px ; margin-left:20px ; margin-top:10px ; margin-bottom:10px ; float: left;}
 .img-bor-two{ border:solid #fff 1px ;border-radius: 30px; background-color:#fff ;}
-.t-p-tile{float: left; line-height:80px ; margin-left:10px ; font-size:22px ; color: #666;}
+.t-p-tile{float: left; line-height:80px ; margin-left:10px ; font-size:22px ; color: #666; font-weight: bold;}
 .xp-p-zi{ padding-left: 5px; padding-right:5px ; color:#333 ; margin-top:5px ;}
 .zh-good-x-p{ width:40px; float:left;height:30px; line-height:28px ; font-size: 18px; color:#fff ;}
 .zh-good-x-p-two{ float: right; margin-top:1px ;}.zh-good-x-p-two img{width:40%;}

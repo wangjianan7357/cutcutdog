@@ -20,7 +20,7 @@
 	        background-color:#efeff4;
 	    }
 		
-		.top_bg{ height:30px; background-color: #a669c0;opacity:0.5;}
+		.top_bg{ height:30px; background-color: #a669c0;opacity:0.8;}
 	</style>
     <script src="js/mui.min.js"></script>
     <script src="js/jquery.min.js"></script>
@@ -35,25 +35,29 @@
 		<div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
 	</header>
 
-	<div class="mui-content">
+	<div class="mui-content" style=" background:none; background-color:#fff ;">
 		<div class="top_bg"></div>
 
 		<div class="xp-tu">
-			
-
 			<ul id="list-view"></ul>
 			<script id="list-view-code" type="text/html">
 			<% for (var i in list) { %>
 				<li>
-					<a href="photo-detail.html?url=<%= list[i]["path"] %>" data-action="webview">
+					
+	
+			<img class="img-bor-two wid" src="images/muwu.jpg" /><span class="t-p-tile">Chung Chung,HK</span>
+		
+					
 						<div><img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></div>	
-						<div class="xp-tu-zi"><%= list[i]["name"] %></div>
+						
 
-						<div class="zh-good" style=" padding-top:2px ;">讚好</div>
-						<div class="zh-good" style=" margin-left:10px ;padding-top:2px ;">評論</div>
-						<div class="zh-good" style=" margin-left:10px ;padding-top:2px ;">分享</div>
-						<div class="z-hao-two"><%= list[i]["likes"] %></div>
-					</a>
+						<div class="xp-tu" style="margin-left:5px;">
+				<div class="zh-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
+				<div class="zh-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
+				<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
+				<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-info="detail.likes" id="likesCount">0</span></div>
+			</div>
+					
 				</li>
 			<% } %>
 			</script>
