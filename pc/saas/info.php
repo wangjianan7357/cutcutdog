@@ -39,6 +39,12 @@ if ($_REQUEST['action'] == 'list') {
 
         $getdata = $my_db->selectRow('id', 'catalog', array('type' => intval($_POST['type'])));
 
+    } else if ($_POST['type'] == 5) {
+        $member = array();
+        $getdata = $my_db->selectRow('src, name, id', 'member');
+        while ($result = mysql_fetch_array($getdata)) {
+            $member[$result['id']] = $result;
+        }
     }
 
     $where['valid'] = 1;
@@ -51,6 +57,7 @@ if ($_REQUEST['action'] == 'list') {
 
         if (isset($_POST['type']) && $_POST['type'] == 5) {
             $result['likes'] = $my_db->existRow('likes', array('atype' => $_POST['type'], 'aid' => $result['id'], 'valid' => 1));
+            $result['member'] = isset($member[$result['mid']]) ? $member[$result['mid']] : array();
         }
 
         $list[$result['id']] = $result;

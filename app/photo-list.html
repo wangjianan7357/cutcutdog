@@ -43,20 +43,17 @@
 			<script id="list-view-code" type="text/html">
 			<% for (var i in list) { %>
 				<li>
-					
-	
-			<img class="img-bor-two wid" src="images/muwu.jpg" /><span class="t-p-tile">Chung Chung,HK</span>
-		
-					
-						<div><img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></div>	
-						
+					<% if (list[i]["member"]["src"] || list[i]["member"]["name"]) { %>
+					<img class="img-bor-two wid" src="<%= getvarious("domain") + list[i]["member"]["src"] %>" /><span class="t-p-tile"><%= list[i]["member"]["name"] %></span>
+					<% } %>
+					<div><img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></div>	
 
-						<div class="xp-tu" style="margin-left:5px;">
-				<div class="zh-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
-				<div class="zh-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
-				<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
-				<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-info="detail.likes" id="likesCount">0</span></div>
-			</div>
+					<div class="xp-tu" style="margin-left:5px;">
+					<div class="zh-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
+					<div class="zh-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
+					<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
+					<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount"><%= list[i]["likes"] %></span></div>
+					</div>
 					
 				</li>
 			<% } %>
