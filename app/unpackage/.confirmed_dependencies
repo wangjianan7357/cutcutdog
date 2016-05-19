@@ -33,7 +33,8 @@
 			"photo-detail.html",
 			"info-category.html",
 			"service-list.html",
-			"buy.html"
+			"buy.html",
+			"setting.html"
 		]
 	},
 	"discuss-category.html": {
@@ -127,7 +128,8 @@
 			"images/photo-button-02.png",
 			"images/photo-button-03.png",
 			"images/photo-button-04.png",
-			"images/photo-button-01.png"
+			"images/photo-button-01.png",
+			"images/gif.gif"
 		],
 		"refer": [
 			"photo-detail.html",
@@ -189,7 +191,8 @@
 			"css/mui.min.css",
 			"images/home.png",
 			"css/mui.poppicker.css",
-			"images/Petchat.png"
+			"images/Petchat.png",
+			"service-detail.html"
 		],
 		"refer": [
 			"service-detail.html"
@@ -202,7 +205,11 @@
 			"js/mui.zoom.js",
 			"css/dzcss.css",
 			"js/mui.previewimage.js",
-			"images/bg_two.png"
+			"images/bg_two.png",
+			"service-list.html"
+		],
+		"refer": [
+			"service-list.html"
 		]
 	},
 	"buy.html": {
@@ -228,7 +235,75 @@
 			"images/Petchat.png"
 		],
 		"refer": [
+			"index.html",
+			"buy-list.html"
+		]
+	},
+	"login.html": {
+		"resources": [
+			"images/bg.png",
+			"css/style.css"
+		],
+		"refer": [
 			"index.html"
+		]
+	},
+	"setting.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"libs/easymob-webim-sdk/json2.js",
+			"images/top_bg.png",
+			"js/mui.locker.js",
+			"images/Petchat.png",
+			"css/feedback-page.css",
+			"images/user-photo.png",
+			"js/basic.js",
+			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+			"js/mui.view.js"
+		],
+		"refer": [
+			"login.html",
+			"publish-photo.html"
+		]
+	},
+	"buy-detail.html": {
+		"resources": [
+			"js/mui.zoom.js",
+			"css/dzcss.css",
+			"js/mui.previewimage.js",
+			"images/bg_two.png"
+		],
+		"refer": [
+			"buy-cart.html"
+		]
+	},
+	"buy-list.html": {
+		"resources": [
+			"images/shuijiao.jpg"
+		],
+		"refer": [
+			"buy-detail.html"
+		]
+	},
+	"buy-cart.html": {
+		"resources": [
+			"images/cbd.jpg",
+			"images/muwu.jpg",
+			"css/feedback-page.css"
+		],
+		"refer": [
+			"buy-address.html"
+		]
+	},
+	"publish-photo.html": {
+		"refer": [
+			"profile.html"
 		]
 	}
 }
