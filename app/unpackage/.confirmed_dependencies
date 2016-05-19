@@ -170,7 +170,25 @@
 			"images/bottom_01.jpg",
 			"js/mui.picker.js",
 			"js/mui.poppicker.js",
-			"images/Info_button-02.png"
+			"images/Info_button-02.png",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"images/bg.png",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"css/mui.indexedlist.css",
+			"css/mui.picker.css",
+			"js/basic.js",
+			"info-list.html",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"css/mui.poppicker.css",
+			"images/Petchat.png"
+		],
+		"refer": [
+			"info-list.html"
 		]
 	},
 	"service-list.html": {
@@ -209,7 +227,8 @@
 			"service-list.html"
 		],
 		"refer": [
-			"service-list.html"
+			"service-list.html",
+			"service-booking.html"
 		]
 	},
 	"buy.html": {
@@ -304,6 +323,44 @@
 	"publish-photo.html": {
 		"refer": [
 			"profile.html"
+		]
+	},
+	"info-list.html": {
+		"resources": [
+			"images/Info_icon_pin.png",
+			"images/Info_icon_home.png",
+			"images/Info_icon_tel.png",
+			"images/icon-10.png",
+			"info-detail.html",
+			"info-category.html"
+		],
+		"refer": [
+			"info-detail.html",
+			"info-category.html"
+		]
+	},
+	"info-detail.html": {
+		"resources": [
+			"images/cbd.jpg",
+			"js/mui.zoom.js",
+			"images/Info_icon_like.png",
+			"info-list.html",
+			"js/mui.previewimage.js"
+		],
+		"refer": [
+			"info-list.html"
+		]
+	},
+	"service-booking.html": {
+		"resources": [
+			"js/mui.picker.js",
+			"js/mui.picker.min.js",
+			"images/service-button-08.png",
+			"js/mui.poppicker.js",
+			"images/xz.png",
+			"images/service-button-09.png",
+			"css/mui.picker.min.css",
+			"images/Info_button-02.png"
 		]
 	}
 }
