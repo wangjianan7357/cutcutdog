@@ -100,7 +100,7 @@
         },
         "runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
         "signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
-        "distribute": {"plugins":{"share":{"weixin":{"appid":"wx70f7b9c1fdb764e8","appsecret":"","description":"可选，微信分享"},"qq":{"appid":"","description":"QQ分享"},"sina":{"appkey":"","appsecret":"","redirect_uri":"","description":"可选，新浪微博分享"},"tencent":{"appkey":"","appsecret":"","redirect_uri":"","description":"可选，腾讯微博分享"}}},
+        "distribute": {"plugins":{"share":{"weixin":{"appid":"","appsecret":"f0ee9b562a46a1b1f9545ffe6de358cd","description":"可选，微信分享"},"qq":{"appid":"","description":"QQ分享"},"sina":{"appkey":"","appsecret":"","redirect_uri":"","description":"可选，新浪微博分享"},"tencent":{"appkey":"","appsecret":"","redirect_uri":"","description":"可选，腾讯微博分享"}}},
             "apple": {
                 "appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
                 "mobileprovision": "",/*iOS应用打包配置文件*/
@@ -653,10 +653,13 @@
 					"images/photo-button-03.png",
 					"images/photo-button-04.png",
 					"images/photo-button-01.png",
-					"images/gif.gif"
+					"images/gif.gif",
+					"images/icon-10.png"
 				],
 				"refer": [
-					"image-list.html"
+					"image-list.html",
+					"publish-photo.html",
+					"my-photo.html"
 				],
 				"priority": 0
 			},

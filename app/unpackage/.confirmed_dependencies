@@ -129,11 +129,14 @@
 			"images/photo-button-03.png",
 			"images/photo-button-04.png",
 			"images/photo-button-01.png",
-			"images/gif.gif"
+			"images/gif.gif",
+			"images/icon-10.png"
 		],
 		"refer": [
 			"photo-detail.html",
-			"index.html"
+			"index.html",
+			"publish-photo.html",
+			"my-photo.html"
 		]
 	},
 	"photo-detail.html": {
@@ -323,6 +326,10 @@
 	"publish-photo.html": {
 		"refer": [
 			"profile.html"
+		],
+		"resources": [
+			"css/feedback-page.css",
+			"js/mui.view.js"
 		]
 	},
 	"info-list.html": {
@@ -361,6 +368,26 @@
 			"images/service-button-09.png",
 			"css/mui.picker.min.css",
 			"images/Info_button-02.png"
+		]
+	},
+	"my-photo.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"libs/easymob-webim-sdk/json2.js",
+			"images/top_bg.png",
+			"js/mui.locker.js",
+			"images/Petchat.png",
+			"css/feedback-page.css",
+			"images/user-photo.png",
+			"js/basic.js",
+			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+			"js/mui.view.js"
 		]
 	}
 }
