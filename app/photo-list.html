@@ -22,7 +22,7 @@
 		
 		.top_bg{ height:30px; background-color: #a669c0;opacity:0.8;}
 		#topPopover {
-			position: fixed;
+			position:absolute;
 			top: 16px;
 			right: 6px;
 		}
@@ -44,20 +44,24 @@
 		}
 		.mui-scroll ul{ margin: 0px; padding:0px ; margin-right: 10px;}
 		#comment-list {
-			padding:0px 5px 10px 5px;;
+			padding:0px 0px 0px 0px;;
 			background-color:#fff ;
 			text-align: left;
 			
 			color:#666 ;
 			font-size:12px ;
 			margin:0px 0px ;
+			border-radius:0px 0px 0px 0px;
 		}
 		#comment-list li {
-			border-bottom: 1px  solid #f5f5f5; list-style:none ;  padding-left: 5px;height:28px; padding-top:2px ;
+			border-bottom: 1px  solid #f5f5f5; list-style:none ; background-color:#fbfbfb ;  padding-left: 8px;height:27px; padding-top:2px ;
 		}
-		#comment-list li p{color:#666 ; }
+		#comment-list li p{color:#666 ;  font-size:12px ;}
+		#comment-list li p a{color:#b8b7b7 ; }
 	</style>
     <script src="js/mui.min.js"></script>
+	<script src="js/mui.zoom.js"></script>
+	<script src="js/mui.previewimage.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
@@ -96,6 +100,7 @@
 					<% for (var c in list[i]["comment"]) { %>
 						<li><p style=" text-indent: 0px;"><b><%= list[i]["comment"][c]["member"]["name"] %>：</b> <%= list[i]["comment"][c]["content"] %></p></li>
 					<% } %>
+					<li><p style=" text-align: center; border-bottom:none ;"><a href="photo-list-pl.html" data-action="openwindow">查看全部評論</a></p></li>
 					</ul>
 				</li>
 			<% } %>
@@ -227,6 +232,43 @@
 				}
 			});
 		});
+	</script>
+	<script type="text/javascript" charset="utf-8">
+		var cata_type = 5;
+		var member = {};
+	
+		
+		
+		mui.plusReady(function() {
+			member = myStorage.getItem("member");
+				
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/info.php",
+				dataType: "json",
+				data: {
+					action: "detail",
+					where: {path: getUrlParam("url"), type: cata_type}
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						if (json.detail.member) {
+							jQuery("#member-photo").html(template("member-photo-code", json));
+						}
+						jQuery("#detail-photo").html(template("detail-photo-code", json));
+						jQuery("#detail-view").html(template("detail-view-code", json));
+						assignTmpl(json);
+						initComment("promptBtn", "heart", "likesCount");
+							
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {}
+			});
+		});
+
 	</script>
 
 </body>

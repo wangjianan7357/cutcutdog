@@ -490,7 +490,12 @@
 					"images/tu_06.jpg",
 					"images/tu_02.jpg",
 					"images/tu_07.jpg",
-					"images/tu_05.jpg"
+					"images/tu_05.jpg",
+					"css/mui.indexedlist.css",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -654,7 +659,10 @@
 					"images/photo-button-04.png",
 					"images/photo-button-01.png",
 					"images/gif.gif",
-					"images/icon-10.png"
+					"images/icon-10.png",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js",
+					"photo-list-pl.html"
 				],
 				"refer": [
 					"image-list.html",
@@ -851,7 +859,16 @@
 					"images/bg_two.png",
 					"images/shuijiao.jpg",
 					"images/top_bg.png",
-					"buy-list.html"
+					"buy-list.html",
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"fonts/mui.ttf",
+					"js/basic.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/Petchat.png"
 				],
 				"refer": [
 					"buy-cart.html"
@@ -867,6 +884,27 @@
 				"refer": [
 					"buy-address.html"
 				],
+				"priority": 0
+			},
+			"photo-list-pl.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/muwu.jpg",
+					"images/shuijiao.jpg",
+					"css/feedback-page.css",
+					"photo-list.html",
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png",
+					"js/basic.js"
+				],
+				"refer": [],
 				"priority": 0
 			}
 		},

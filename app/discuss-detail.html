@@ -19,13 +19,23 @@
 			margin:10px 10px ;
 			
 		}
-		#comment-list li {
-			border-bottom: 1px  solid #f8f7f7; list-style:none ; padding-left: 5px;height:28px; 
+		#comment-list {
+			padding:0px 0px 0px 0px;;
+			background-color:#fff ;
+			text-align: left;
+			
+			color:#666 ;
+			font-size:12px ;
+			margin:0px 0px ;
 		}
-		#comment-list li p{color:#666 ;line-height:30px ;}
+		#comment-list li {
+			border-bottom: 1px  solid #f5f5f5; list-style:none ; background-color:#fbfbfb ;  padding-left: 5px;height:27px; padding-top:2px ;
+		}
+		#comment-list li p{color:#666 ;  font-size:12px ;}
+		#comment-list li p a{color:#b8b7b7 ; font-size:12px ;}
 		
 		#topPopover {
-			position: fixed;
+			position:absolute;
 			top: 16px;
 			right: 6px;
 		}
@@ -343,7 +353,7 @@ function shareHref(){
 			<ul id="comment-list" class="li-bg-san" style=" margin-top: 0px;">
 			<% for (var i in detail["comments"]) { %>
 				<li>
-					<p><b><%= detail["comments"][i]["member"]["name"] %>：</b> <%= detail["comments"][i]["content"] %></p>
+					<p style=" text-indent: 0px;"><b><%= detail["comments"][i]["member"]["name"] %>：</b> <%= detail["comments"][i]["content"] %></p>
 				</li>
 			<% } %>
 			</ul>

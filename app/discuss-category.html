@@ -8,6 +8,9 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<!--标准mui.css-->
 	<link rel="stylesheet" href="css/mui.min.css">
+	<link href="css/mui.indexedlist.css" rel="stylesheet" />
+	<link href="css/mui.picker.css" rel="stylesheet" />
+	<link href="css/mui.poppicker.css" rel="stylesheet" />
 	<style>
 		.title {
 			padding: 20px 15px 10px;
@@ -18,7 +21,7 @@
 		}
 		.top_bg{ height:25px; background-color: #ba9ec6;}
 		#topPopover {
-			position: fixed;
+			position:absolute;
 			top: 16px;
 			right: 6px;
 		}
@@ -40,6 +43,8 @@
 		}
 	</style>
 	<script src="js/mui.min.js"></script>
+	<script src="js/mui.zoom.js"></script>
+	<script src="js/mui.previewimage.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
@@ -93,6 +98,7 @@
 		</div>
 
 	</div>	
+	
 	<script>
 		(function(mui, doc) {
 			mui.init({
@@ -155,5 +161,6 @@
 			});
 		}(mui, document));
 	</script>
+	
 </body>
 </html>

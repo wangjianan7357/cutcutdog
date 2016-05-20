@@ -57,7 +57,12 @@
 			"images/CatDog.png",
 			"css/mui.min.css",
 			"images/home.png",
-			"images/Petchat.png"
+			"images/Petchat.png",
+			"css/mui.indexedlist.css",
+			"css/mui.picker.css",
+			"css/mui.poppicker.css",
+			"js/mui.zoom.js",
+			"js/mui.previewimage.js"
 		],
 		"refer": [
 			"discuss-list.html"
@@ -98,7 +103,17 @@
 			"discuss-detail.html",
 			"images/forum_bubble-a.png",
 			"images/bg.png",
-			"discuss-category.html"
+			"discuss-category.html",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"js/basic.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png"
 		],
 		"refer": [
 			"discuss-detail.html",
@@ -131,13 +146,17 @@
 			"images/photo-button-04.png",
 			"images/photo-button-01.png",
 			"images/gif.gif",
-			"images/icon-10.png"
+			"images/icon-10.png",
+			"js/mui.zoom.js",
+			"js/mui.previewimage.js",
+			"photo-list-pl.html"
 		],
 		"refer": [
 			"photo-detail.html",
 			"index.html",
 			"publish-photo.html",
-			"my-photo.html"
+			"my-photo.html",
+			"photo-list-pl.html"
 		]
 	},
 	"photo-detail.html": {
@@ -265,7 +284,9 @@
 	"login.html": {
 		"resources": [
 			"images/bg.png",
-			"css/style.css"
+			"css/style.css",
+			"fonts/mui.ttf",
+			"images/top_bg.png"
 		],
 		"refer": [
 			"index.html"
@@ -301,7 +322,18 @@
 			"js/mui.zoom.js",
 			"css/dzcss.css",
 			"js/mui.previewimage.js",
-			"images/bg_two.png"
+			"images/bg_two.png",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"fonts/mui.ttf",
+			"images/shuijiao.jpg",
+			"images/top_bg.png",
+			"js/basic.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png"
 		],
 		"refer": [
 			"buy-cart.html"
@@ -424,6 +456,28 @@
 	"profile.html": {
 		"resources": [
 			"images/user-photo.png"
+		]
+	},
+	"photo-list-pl.html": {
+		"resources": [
+			"images/cbd.jpg",
+			"images/muwu.jpg",
+			"images/shuijiao.jpg",
+			"css/feedback-page.css",
+			"photo-list.html",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"js/basic.js"
+		],
+		"refer": [
+			"photo-list.html"
 		]
 	}
 }
