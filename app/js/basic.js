@@ -132,40 +132,42 @@ function getUrlParam(name) {
 function uploadFileData(filepath, data, url, success) {
     //var datas = options.datas || [];
 
-    if(filepath){  
-        var task = plus.uploader.createUpload(domain + url, {  
-                method: "POST",  
-                blocksize: 204800,  
-                priority: 100  
-            },  
-            function(res, status){  
-                if (status == 200){
-                	var json = "";
-                	eval("json = (" + res.responseText + ")");
-                	
-                    if (!json.error) {
-	                    if (success) {
-	                    	success(json);
-	                    }
-	                }
-                } else {  
-                    //alert(JSON.stringify(res))
-                }  
+    var task = plus.uploader.createUpload(domain + url, {  
+            method: "POST",  
+            blocksize: 204800,  
+            priority: 100  
+        },  
+        function(res, status){  
+            if (status == 200){
+            	var json = "";
+            	eval("json = (" + res.responseText + ")");
+            	
+                if (!json.error) {
+                    if (success) {
+                    	success(json);
+                    }
+                }
+            } else {  
+                //alert(JSON.stringify(res))
             }  
-        );
+        }  
+    );
 
+    if(filepath){  
         task.addFile(filepath, {key: 'src'}); 
+    } else {
+        task.addData("src", ""); 
+    }
         
-        var member = myStorage.getItem("member");
-		task.addData("id", member.id); 
-        task.addData("name", member.name); 
-        
-        for (d in data) {
-        	task.addData(d, data[d]);  
-        }
-       
-        task.start();  
-    }  
+    var member = myStorage.getItem("member");
+	task.addData("id", member.id); 
+    task.addData("name", member.name); 
+    
+    for (d in data) {
+    	task.addData(d, data[d]);  
+    }
+   
+    task.start();  
 }
 
 function initComment(comment, likes, total) {

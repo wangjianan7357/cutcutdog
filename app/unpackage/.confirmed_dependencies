@@ -34,7 +34,8 @@
 			"info-category.html",
 			"service-list.html",
 			"buy.html",
-			"setting.html"
+			"setting.html",
+			"login.html"
 		]
 	},
 	"discuss-category.html": {
@@ -291,7 +292,8 @@
 		],
 		"refer": [
 			"login.html",
-			"publish-photo.html"
+			"publish-photo.html",
+			"publish-discuss.html"
 		]
 	},
 	"buy-detail.html": {
@@ -329,7 +331,17 @@
 		],
 		"resources": [
 			"css/feedback-page.css",
-			"js/mui.view.js"
+			"js/mui.view.js",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"js/basic.js"
 		]
 	},
 	"info-list.html": {
@@ -388,6 +400,30 @@
 			"js/basic.js",
 			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
 			"js/mui.view.js"
+		]
+	},
+	"publish-discuss.html": {
+		"resources": [
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"css/feedback-page.css",
+			"js/basic.js",
+			"js/mui.view.js"
+		],
+		"refer": [
+			"profile.html"
+		]
+	},
+	"profile.html": {
+		"resources": [
+			"images/user-photo.png"
 		]
 	}
 }
