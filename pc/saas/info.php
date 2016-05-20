@@ -58,6 +58,15 @@ if ($_REQUEST['action'] == 'list') {
         if (isset($_POST['type']) && $_POST['type'] == 5) {
             $result['likes'] = $my_db->existRow('likes', array('atype' => $_POST['type'], 'aid' => $result['id'], 'valid' => 1));
             $result['member'] = isset($member[$result['mid']]) ? $member[$result['mid']] : array();
+
+            $comments = array();
+            $getdata1 = $my_db->selectRow('content, mid', 'message', array('atype' => $_POST['type'], 'aid' => $result['id'], 'valid' => 1), array('field' => 'date', 'method' => 'DESC'));
+            while ($result1 = mysql_fetch_array($getdata1)) {
+                $result1['member'] = $member[$result1['mid']];
+                $comments[] = $result1;
+            }
+
+            $result['comment'] = $comments;
         }
 
         $list[$result['id']] = $result;
@@ -132,7 +141,7 @@ if ($_REQUEST['action'] == 'list') {
         'src' => $filename,
         'mid' => $_POST['id'],
         'name' => $_POST['sbt_name'],
-        'desp' => $_POST['sbt_desp'],
+        'desp' => isset($_POST['sbt_desp']) ? $_POST['sbt_desp'] : '',
         'cid' => $_POST['sbt_cid'] . ',',
         'valid' => 1,
         'path' => $chk_post->traFromName('name', array('name' => 'info', 'field' => 'path')),
