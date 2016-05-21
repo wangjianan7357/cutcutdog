@@ -48,21 +48,14 @@
 			</div>
 			
 			<div>
-				
 				<a href="buy-list.html" data-action="openwindow"><img src="images/trade-graphic-04.png"></a>
 				<div class="zh-good-xing" style=" text-align: center;">玩具</div>
-				
 			</div>
 			<div>
 				<a href="buy-list.html" data-action="openwindow"><img src="images/trade-graphic-03.png"></a>
 				<div class="zh-good-xing" style=" text-align: center;">用品</div>
 			</div>
-			
-         
 		</div>
-
-		
-
 	</div>
 
 	<script>
@@ -77,11 +70,9 @@
 			
 			mui.ajax({
 				type: "post",
-				url: domain + "saas/member.php",
+				url: domain + "saas/catalog.php",
 				dataType: "json",
 				data: {
-                    id: member.id,
-                    name: member.name,
                     action: "list", 
                     where: {type: 10}
                 },
