@@ -822,10 +822,12 @@
 					"images/trade-graphic-03.png",
 					"images/trade-graphic-04.png",
 					"buy-list.html",
-					"index.html"
+					"index.html",
+					"images/buy.png"
 				],
 				"refer": [
-					"service-detail.html"
+					"service-detail.html",
+					"cart.html"
 				],
 				"priority": 0
 			},
@@ -847,7 +849,8 @@
 					"css/mui.poppicker.css",
 					"images/Petchat.png",
 					"buy-detail.html",
-					"buy.html"
+					"buy.html",
+					"images/buy.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -870,7 +873,8 @@
 					"css/mui.min.css",
 					"images/home.png",
 					"images/Petchat.png",
-					"cart.html"
+					"cart.html",
+					"images/buy.png"
 				],
 				"refer": [
 					"buy-cart.html"
@@ -982,11 +986,49 @@
 				"resources": [
 					"images/cbd.jpg",
 					"images/muwu.jpg",
-					"css/feedback-page.css"
+					"css/feedback-page.css",
+					"buy-detail.html",
+					"images/shuijiao.jpg",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"css/mui.indexedlist.css",
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"fonts/mui.ttf",
+					"images/top_bg.png",
+					"js/basic.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/Petchat.png"
 				],
 				"refer": [
 					"buy-address.html"
 				],
+				"priority": 0
+			},
+			"buy-address.html": {
+				"resources": [
+					"js/template-native.js",
+					"images/cbd.jpg",
+					"images/muwu.jpg",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/shuijiao.jpg",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png",
+					"css/feedback-page.css",
+					"js/basic.js",
+					"css/mui.indexedlist.css",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css"
+				],
+				"refer": [],
 				"priority": 0
 			}
 		},
