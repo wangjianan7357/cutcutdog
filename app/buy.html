@@ -37,22 +37,20 @@
 		<div class="serv-fw-buy">
            
 			<div>
-				
-				<a href="buy-list.html" data-action="openwindow"><img src="images/trade-graphic-01.png"></a>
+				<a href="buy-list.html?cid=27,29," data-action="openwindow"><img src="images/trade-graphic-01.png"></a>
 				<div class="zh-good-xing" style=" text-align: center;">服飾</div>
-				
 			</div>
 			<div>
-				<a href="buy-list.html" data-action="openwindow"><img src="images/trade-graphic-02.png"></a>
+				<a href="buy-list.html?cid=27,30," data-action="openwindow"><img src="images/trade-graphic-02.png"></a>
 				<div class="zh-good-xing" style=" text-align: center;">食品</div>
 			</div>
 			
 			<div>
-				<a href="buy-list.html" data-action="openwindow"><img src="images/trade-graphic-04.png"></a>
+				<a href="buy-list.html?cid=27,31," data-action="openwindow"><img src="images/trade-graphic-04.png"></a>
 				<div class="zh-good-xing" style=" text-align: center;">玩具</div>
 			</div>
 			<div>
-				<a href="buy-list.html" data-action="openwindow"><img src="images/trade-graphic-03.png"></a>
+				<a href="buy-list.html?cid=27,32," data-action="openwindow"><img src="images/trade-graphic-03.png"></a>
 				<div class="zh-good-xing" style=" text-align: center;">用品</div>
 			</div>
 		</div>
@@ -67,29 +65,6 @@
 
 		mui.plusReady(function() {
 			member = myStorage.getItem("member");
-			
-			mui.ajax({
-				type: "post",
-				url: domain + "saas/catalog.php",
-				dataType: "json",
-				data: {
-                    action: "list", 
-                    where: {type: 10}
-                },
-				async: true,
-				success: function(json) {
-					if(!json.error) {
-						jQuery("#list-view").html(template('list-view-code', json));
-						//assignTmpl(json);
-						
-					} else {
-						plus.nativeUI.toast(json.message);
-					}
-				},
-				error: function(xhr, type, errorThrown) {
-					//alert(JSON.stringify(xhr))
-				}
-			});
 		});
 	</script>
 </body>

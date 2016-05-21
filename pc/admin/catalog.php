@@ -63,6 +63,8 @@ if($_GET['action'] == 'edt'){
 			$_POST['sbt_style'] = (int)$_POST['sbt_style'];
 			$_POST['sbt_valid'] = $_POST['sbt_valid'] ? 1 : 0;
 			$_POST['sbt_navi'] = $_POST['sbt_navi'] ? 1 : 0;
+			$_POST['sbt_parent'] = $_POST['sbt_parent'] ? $_POST['sbt_parent'] : '';
+			$_POST['sbt_fields'] = '';
 
 			$parent_arr = explode(',', $_POST['sbt_parent']);
 			switch($parent_arr[0]){

@@ -64,50 +64,14 @@
 
 				</li>
 				</a>
-				
-				<a href="buy-detail.html" data-action="webview">	
-				<li class="margin1">
-					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
-					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
-                    <div class="xp-tu-zi-buy-two">$31.54</div>
-					
-
-				</li>
-				</a>
-				
-				<a href="buy-detail.html" data-action="webview">	
-				<li class="margin1">
-					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
-					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
-                    <div class="xp-tu-zi-buy-two">$31.54</div>
-					
-
-				</li>
-				</a>
-				
-				<a href="buy-detail.html" data-action="webview">	
-				<li class="margin1">
-					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
-					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
-                    <div class="xp-tu-zi-buy-two">$31.54</div>
-					
-
-				</li>
-				</a>
-				
-				<a href="buy-detail.html" data-action="webview">	
-				<li class="margin1">
-					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
-					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
-                    <div class="xp-tu-zi-buy-two">$31.54</div>
-				</li>
-				</a>
 			</ul>
+
+			<ul id="list-view"></ul>
 
 			<script id="list-view-code" type="text/html">
 				<% for (var i in list) { %>
 				<li class="margin1">
-					<a href="buy-detail.html?url=<%= list[i]["path"]%>" data-action="webview">
+					<a href="buy-detail.html?id=<%= list[i]["id"]%>" data-action="webview">
 						<div><img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/product/prm" + list[i]["src"] %>"></div>	
 						<div class="xp-tu-zi-buy"><%= list[i]["name"] %></div>
 	                    <div class="xp-tu-zi-buy-two">$<%= list[i]["sale"] %></div>
@@ -127,13 +91,13 @@
 		mui.plusReady(function() {
 			mui.ajax({
 				type: "post",
-				url: domain + "saas/catalog.php",
+				url: domain + "saas/product.php",
 				dataType: "json",
-				data: {action: "detail", where: {cid: "15,"}, type: 7},
+				data: {action: "list", where: {cid: getUrlParam("cid")}},
 				async: true,
 				success: function(json) {
 					if(!json.error) {
-						//jQuery("#list-view").html(template('list-view-code', json));
+						jQuery("#list-view").html(template('list-view-code', json));
 						//assignTmpl(json);
 						
 					} else {

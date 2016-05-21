@@ -53,39 +53,36 @@
 	</header>
 	<div class="mui-content bg-two">
 		<div class="top_bg"></div>
+
+		<div id="detail-content"></div>
+		<script id="detail-content-code" type="text/html">
+			<div id="detail-photo"><img src="<%= getvarious("domain") + "uploads/pictures/product/prm" + detail["src"] %>"></div>
 		
-		
-			<div id="detail-photo"><img src="images/shuijiao.jpg"></div>
-			<script id="detail-photo-code" type="text/html">
-				<img src="images/shuijiao.jpg">
-			</script>
-            <div style=" padding:10px ; background-color:#fff ;">
-			<div class="serv-my-zi ming-he">
-				<a><strong>產品名稱：</strong></a>猫猫轉盤
+	        <div style=" padding:10px ; background-color:#fff ;">
+				<div class="serv-my-zi ming-he">
+					<a><strong>產品名稱：</strong></a><%= detail["name"] %>
+				</div>
+				
+				<div class="serv-my-zi ming-he">
+					<a><strong>價 錢：</a>$<%= detail["sale"] %></strong>
+				</div>
+				
+				<div class="serv-my-zi ming-he">
+					<a><strong>產品資料：</strong></a><%=# detail["desp"] %>
+				</div>
+				
+				<div style=" text-align: center; margin-top: 20px;">
+				   <div class="zh-good-go" id="heart" rel="like" style=" background-color:#5cbf90 ;"><a href="cart.html" data-action="openwindow">立即購買</a></div>
+				   <div class="zh-good-go" style=" margin-left:10px;background-color:#4ebdf4 ;" id="promptBtn"><a href="cart.html" data-action="openwindow">加入購物車</a></div>
+				   <div class="zh-good-go" style=" margin-left:10px;background-color:#9273bf ;"><a href="cart.html" data-action="openwindow">檢視購物車</a></div>
+			    </div>
 			</div>
-			
-			<div class="serv-my-zi ming-he">
-				<a><strong>價 錢：</a>$ 30</strong>
-			</div>
-			
-			<div class="serv-my-zi ming-he">
-				<a><strong>產品資料：</strong></a>我們以最合理的價格、最完善的服务、提供最優質，最優越的服務，以質量 第一，客户至上为經營理念，力求为客户提供更好的更專業的服务
-			</div>
-			
-			<div style=" text-align: center; margin-top: 20px;">
-			   <div class="zh-good-go" id="heart" rel="like" style=" background-color:#5cbf90 ;"><a href="buy-cart.html" data-action="openwindow">立即購買</a></div>
-			   <div class="zh-good-go" style=" margin-left:10px;background-color:#4ebdf4 ;" id="promptBtn"><a href="buy-cart.html" data-action="openwindow">加入購物車</a></div>
-			   <div class="zh-good-go" style=" margin-left:10px;background-color:#9273bf ;"><a href="buy-cart.html" data-action="openwindow">檢視購物車</a></div>
-			   
-		    </div>
-			
-			</div>
-		</div>	
-	</div>
+		</script>
+	</div>	
 
 	<script type="text/javascript" charset="utf-8">
 		var member = {};
-	
+
 		//mui初始化
 		mui.init({
 			swipeBack: true //启用右滑关闭功能
@@ -96,28 +93,24 @@
 
 			mui.ajax({
 				type: "post",
-				url: domain + "saas/member.php",
+				url: domain + "saas/product.php",
 				dataType: "json",
 				data: {
 					action: "detail",
-					name: member.name,
-					id: member.id,
 					where: {id: getUrlParam("id")}
 				},
 				async: true,
 				success: function(json) {
 					if(!json.error) {
-						json.member.link = "service-booking.html?id=" + json.member.id;
-
-						assignTmpl(json);
-						jQuery("#detail-photo").html(template("detail-photo-code", json));
-						jQuery("#service-list").html(template('service-list-code', json));
+						jQuery("#detail-content").html(template("detail-content-code", json));
 							
 					} else {
 						plus.nativeUI.toast(json.message);
 					}
 				},
-				error: function(xhr, type, errorThrown) {}
+				error: function(xhr, type, errorThrown) {
+					//alert(JSON.stringfy(xhr))
+				}
 			});
 		});
 	</script>

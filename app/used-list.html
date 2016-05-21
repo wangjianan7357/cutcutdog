@@ -50,8 +50,6 @@
 					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
 					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
                     <div class="xp-tu-zi-buy-two">$31.54</div>
-					
-
 				</li>
 				</a>
 				
@@ -60,56 +58,25 @@
 					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
 					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
                     <div class="xp-tu-zi-buy-two">$31.54</div>
-					
-
-				</li>
-				</a>
-				
-				<a href="buy-detail-es.html" data-action="webview">	
-				<li class="margin1">
-					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
-					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
-                    <div class="xp-tu-zi-buy-two">$31.54</div>
-					
-
-				</li>
-				</a>
-				
-				<a href="buy-detail-es.html" data-action="webview">	
-				<li class="margin1">
-					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
-					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
-                    <div class="xp-tu-zi-buy-two">$31.54</div>
-					
-
-				</li>
-				</a>
-				
-				<a href="buy-detail-es.html" data-action="webview">	
-				<li class="margin1">
-					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
-					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
-                    <div class="xp-tu-zi-buy-two">$31.54</div>
-					
-
-				</li>
-				</a>
-				
-				<a href="buy-detail-es.html" data-action="webview">	
-				<li class="margin1">
-					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
-					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
-                    <div class="xp-tu-zi-buy-two">$31.54</div>
-					
-
 				</li>
 				</a>
 				
 			</ul>
 
-			
-		</div>
+			<ul id="list-view"></ul>
 
+			<script id="list-view-code" type="text/html">
+				<% for (var i in list) { %>
+				<li class="margin1">
+					<a href="used-detail.html?id=<%= list[i]["id"]%>" data-action="webview">
+						<div><img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/product/prm" + list[i]["src"] %>"></div>	
+						<div class="xp-tu-zi-buy"><%= list[i]["name"] %></div>
+	                    <div class="xp-tu-zi-buy-two">$<%= list[i]["sale"] %></div>
+                    </a>
+				</li>
+				<% } %>
+			</script>
+		</div>
 	</div>
 
 	<script>
@@ -120,9 +87,9 @@
 		mui.plusReady(function() {
 			mui.ajax({
 				type: "post",
-				url: domain + "saas/info.php",
+				url: domain + "saas/product.php",
 				dataType: "json",
-				data: {action: "list", where: {cid: "15,"}, type: 5},
+				data: {action: "list", where: {cid: getUrlParam("cid")}},
 				async: true,
 				success: function(json) {
 					if(!json.error) {

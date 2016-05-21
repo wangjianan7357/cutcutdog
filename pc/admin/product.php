@@ -70,6 +70,29 @@ if($_GET['action'] == 'edt'){
 				mysql_query("COMMIT");
 				mysql_query("END");
 
+				if($_FILES['sbt_src']['tmp_name']){
+					$big_img = $product_src . $con_pic['suf']['big'] . $_POST['sbt_src'];
+					$mid_img = $product_src . $con_pic['suf']['mid'] . $_POST['sbt_src'];
+					$sml_img = $product_src . $con_pic['suf']['sml'] . $_POST['sbt_src'];
+
+					if(file_exists($big_img)) unlink($big_img);
+					if(file_exists($mid_img)) unlink($mid_img);
+					if(file_exists($sml_img)) unlink($sml_img);
+					if(file_exists($_POST['tmp_img'])) unlink($_POST['tmp_img']);
+					move_uploaded_file($_FILES['sbt_src']['tmp_name'], $big_img);
+
+					$size = array('big' => explode(',', systemConfig('img_big_size')), 'mid' => explode(',', systemConfig('img_mid_size')), 'sml' => explode(',', systemConfig('img_sml_size')));
+
+					$imgarr = array();
+					$imgop = new Graphic($big_img);
+					$imgarr['width'] = $imgop->getWidth();
+					$imgarr['height'] = $imgop->getHeight();
+
+					$imgop->resizeImage($big_img, $size['big'][0], $size['big'][1]);
+					$imgop->resizeImage($mid_img, $size['mid'][0], $size['mid'][1]);
+					$imgop->resizeImage($sml_img, $size['sml'][0], $size['sml'][1]);
+				}
+
 				$msg[0] = '提交成功';
 				$msg[1] = 'success';
 				$href = $_SERVER['PHP_SELF'] . '?action=lst' . preg_replace('/action=[^&]+|&num=\d+/', '', $_SERVER['QUERY_STRING']);
@@ -86,6 +109,17 @@ if($_GET['action'] == 'edt'){
 	}
 
 } else {
+	$where = 0;
+
+	$catalog_all = array();
+	$getdata = $my_db->selectRow('id, name, parent', 'catalog', array('type' => $catalog_type));
+	while($result = mysql_fetch_array($getdata)) {
+		$catalog_all[$result['id']] = $result;
+		$where .= ' OR `cid` LIKE "' . $result['id'] . ',%"';
+	}
+
+	$where = '(' . $where . ')';
+
 	$q_url = queryPart('date', 'desc');
 
 	$where = '1';
@@ -96,11 +130,15 @@ if($_GET['action'] == 'edt'){
 		}
 
 		function __call($method, $str) {
-			global $cms_flow_type;
+			global $catalog_type;
 
 			switch ($this->namespace . '_' . $method) {
 				case '1_fun1':
-					return '<font color="' . ($str[0] > 0 ? 'green' : 'red') . '">' . $cms_flow_type[$str[0]] . '</font>';
+					return catalogOption($catalog_type, $str[0]);
+				case '1_fun2':
+					global $catalog_all;
+					return $str[0] ? $catalog_all[preg_replace('/(^[\d,]+,|^)(\d+),$/', '\\2', $str[0])]['name'] : '<font color="red">未歸類</font>'; 
+					
 			}
 		}
 	}
