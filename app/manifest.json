@@ -663,7 +663,8 @@
 					"images/icon-10.png",
 					"js/mui.zoom.js",
 					"js/mui.previewimage.js",
-					"photo-list-pl.html"
+					"photo-list-pl.html",
+					"photo-comments.html"
 				],
 				"refer": [
 					"image-list.html",
@@ -1027,6 +1028,25 @@
 					"css/mui.indexedlist.css",
 					"css/mui.picker.css",
 					"css/mui.poppicker.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"photo-comments.html": {
+				"resources": [
+					"images/muwu.jpg",
+					"css/feedback-page.css",
+					"photo-list.html",
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png",
+					"js/basic.js"
 				],
 				"refer": [],
 				"priority": 0

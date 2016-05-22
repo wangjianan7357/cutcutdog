@@ -60,7 +60,7 @@ if ($_REQUEST['action'] == 'list') {
             $result['member'] = isset($member[$result['mid']]) ? $member[$result['mid']] : array();
 
             $comments = array();
-            $getdata1 = $my_db->selectRow('content, mid', 'message', array('atype' => $_POST['type'], 'aid' => $result['id'], 'valid' => 1), array('field' => 'date', 'method' => 'DESC'));
+            $getdata1 = $my_db->selectRow('content, mid', 'message', array('atype' => $_POST['type'], 'aid' => $result['id'], 'valid' => 1), array('field' => 'date', 'method' => 'DESC'), '0,2');
             while ($result1 = mysql_fetch_array($getdata1)) {
                 $result1['member'] = $member[$result1['mid']];
                 $comments[] = $result1;

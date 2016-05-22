@@ -23,16 +23,16 @@ if ($_REQUEST['action'] == 'send') {
 
 } else if ($_REQUEST['action'] == 'list') {
     $member = array();
-    $getdata = $my_db->selectRow('*', 'member');
+    $getdata = $my_db->selectRow('id, src, name', 'member');
     while ($result = mysql_fetch_array($getdata)) {
         $member[$result['id']] = $result;
     }
 
     $list = array();
-    $getdata = $my_db->selectRow('*', 'message', $_POST['where']);
+    $getdata = $my_db->selectRow('mid, content, date', 'message', $_POST['where']);
     while ($result = mysql_fetch_array($getdata)) {
         $result['member'] = $member[$result['mid']];
-        $list[$result['id']] = $result;
+        $list[] = $result;
     }
 
     callback(array('error' => 0, 'list' => $list));

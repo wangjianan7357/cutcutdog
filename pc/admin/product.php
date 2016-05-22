@@ -55,6 +55,7 @@ if($_GET['action'] == 'edt'){
 			$_POST['sbt_price'] = sprintf("%01.2f", $_POST['sbt_price']);
 			$_POST['sbt_sale'] = sprintf("%01.2f", $_POST['sbt_sale']);
 			$_POST['sbt_valid'] = $_POST['sbt_valid'] ? 1 : 0;
+			$_POST['sbt_desp'] = modEditorInfo($_POST['sbt_desp'], 'save');
 
 			mysql_query('BEGIN');
 

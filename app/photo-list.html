@@ -43,21 +43,18 @@
 			height: 150px;
 		}
 		.mui-scroll ul{ margin: 0px; padding:0px ; margin-right: 10px;}
-		#comment-list {
-			padding:0px 0px 0px 0px;;
+		.comment-list {
 			background-color:#fff ;
-			text-align: left;
-			
 			color:#666 ;
 			font-size:12px ;
-			margin:0px 0px ;
 			border-radius:0px 0px 0px 0px;
 		}
-		#comment-list li {
-			border-bottom: 1px  solid #f5f5f5; list-style:none ; background-color:#fbfbfb ;  padding-left: 8px;height:27px; padding-top:2px ;
+		.comment-list li {
+			text-align: left;
+			border-bottom: 1px solid #f5f5f5; list-style:none ; background-color:#fbfbfb ;  padding-left: 8px;height:27px; padding-top:2px ;
 		}
-		#comment-list li p{color:#666 ;  font-size:12px ;}
-		#comment-list li p a{color:#b8b7b7 ; }
+		.comment-list li p{color:#666 ;  font-size:12px ;}
+		.comment-list li p a{color:#b8b7b7 ; }
 	</style>
     <script src="js/mui.min.js"></script>
 	<script src="js/mui.zoom.js"></script>
@@ -87,20 +84,23 @@
 					<% } %>
 					
 					<div><img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></div>	
+					<input type="hidden" name="aid" value="<%= list[i]["id"] %>" />
 
 					<div class="xp-tu" style="margin-left:5px;">
-					<div class="zh-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
-					<div class="zh-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
+					<div class="zh-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
+					<div class="zh-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
 					<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
-					<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount"><%= list[i]["likes"] %></span></div>
+					<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-icon="likesCount"><%= list[i]["likes"] %></span></div>
 					</div>
-					<div id="detail-view"></div>
 		
-					<ul id="comment-list" class="li-bg-san">
+					<ul class="comment-list">
 					<% for (var c in list[i]["comment"]) { %>
 						<li><p style=" text-indent: 0px;"><b><%= list[i]["comment"][c]["member"]["name"] %>：</b> <%= list[i]["comment"][c]["content"] %></p></li>
 					<% } %>
-					<li><p style=" text-align: center; border-bottom:none ;"><a href="photo-list-pl.html" data-action="openwindow">查看全部評論</a></p></li>
+
+					<% if (list[i]["comment"].length >= 2) { %>
+						<li><p style=" text-align: center; border-bottom:none ;"><a href="photo-comments.html?atype=5&aid=<%= list[i]["id"] %>" data-action="openwindow">查看全部評論</a></p></li>
+					<% } %>
 					</ul>
 				</li>
 			<% } %>
@@ -123,10 +123,12 @@
 				</ul>
 			</div>
 		</div>
-
 	</div>
 	
 	<script>
+		var cata_type = 5;
+		var member = {};
+
 		mui.init({
 			swipeBack: true, //启用右滑关闭功能
 			pullRefresh: {
@@ -144,12 +146,9 @@
 		 * 下拉刷新具体业务实现
 		 */
 		function pulldownRefresh() {
-			alert("ddd")
 
 			setTimeout(function() {
 				mui('#pullrefresh').pullRefresh().endPulldownToRefresh((++ count > 4));
-				alert("ddd")
-
 				/*
 				var table = document.body.querySelector('.mui-table-view');
 				var cells = document.body.querySelectorAll('.mui-table-view-cell');
@@ -185,7 +184,7 @@
 						if(!json.error) {
 							count = 0;
 							jQuery("#list-view").html(jQuery("#list-view").html() + template('list-view-code', json));
-							//assignTmpl(json);
+							setComment();
 							
 						} else {
 							plus.nativeUI.toast(json.message);
@@ -211,7 +210,81 @@
 			});
 		}
 
+		function setComment() {
+			jQuery("[data-icon='promptBtn']").click(function() {
+				var self = jQuery(this);
+
+		        mui.prompt("請輸入您的評語：", "", "", ["取消", "提交"], function(e) {
+		            if (e.index == 1) {
+		                mui.ajax({
+		                    type: "post",
+		                    url: domain + "saas/message.php",
+		                    dataType: "json",
+		                    data: {
+		                        action: "send",
+		                        id: member.id,
+		                        name: member.name,
+		                        content: e.value,
+		                        atype: cata_type,
+		                        aid: self.parent().parent().find("[name='aid']").val()
+		                    },
+		                    async: true,
+		                    success: function(json) {
+		                    	plus.nativeUI.toast("評論成功");
+		                        //alert(JSON.stringify(json))
+		                    },
+		                    error: function(xhr, type, errorThrown) {
+		                        //alert(JSON.stringify(xhr))
+		                    }
+		                });
+		                
+		                //jQuery("#comment-list").prepend("<li><p><b>" + member.name + "：</b>" + e.value + "</p></li>");
+		            }
+		        })
+		    });
+		    
+		    var setLikes = function(action, obj) {
+		        mui.ajax({
+		            type: "post",
+		            url: domain + "saas/likes.php",
+		            dataType: "json",
+		            data: {
+		                action: action,
+		                id: member.id,
+		                name: member.name,
+		                atype: cata_type,
+		                aid: obj.val()
+		            },
+		            async: true,
+		            success: function(json) {
+		                //alert(JSON.stringify(json))
+		            },
+		            error: function(xhr, type, errorThrown) {
+		                //alert(JSON.stringify(xhr))
+		            }
+		        });
+		    };
+
+		    jQuery("[data-icon='heart']").click(function(){
+		    	var likes_obj = jQuery(this).parent().find("[data-icon='likesCount']");
+		    	var count = parseInt(likes_obj.html());
+		        var rel = $(this).attr("rel");
+		       
+		        if(rel == 'like') {      
+		            setLikes("insert", jQuery(this).parent().parent().find("[name='aid']"));
+		            likes_obj.html(count + 1);
+		            $(this).attr("rel", "unlike");
+		        } else {
+		            setLikes("delete", jQuery(this).parent().parent().find("[name='aid']"));
+		            likes_obj.html(count - 1);
+		            $(this).attr("rel", "like");
+		        }
+		    });
+		}
+
 		mui.plusReady(function() {
+			member = myStorage.getItem("member");
+
 			mui.ajax({
 				type: "post",
 				url: domain + "saas/info.php",
@@ -222,7 +295,8 @@
 					if(!json.error) {
 						jQuery("#list-view").html(template('list-view-code', json));
 						//assignTmpl(json);
-						
+						setComment();
+
 					} else {
 						plus.nativeUI.toast(json.message);
 					}
@@ -232,43 +306,6 @@
 				}
 			});
 		});
-	</script>
-	<script type="text/javascript" charset="utf-8">
-		var cata_type = 5;
-		var member = {};
-	
-		
-		
-		mui.plusReady(function() {
-			member = myStorage.getItem("member");
-				
-			mui.ajax({
-				type: "post",
-				url: domain + "saas/info.php",
-				dataType: "json",
-				data: {
-					action: "detail",
-					where: {path: getUrlParam("url"), type: cata_type}
-				},
-				async: true,
-				success: function(json) {
-					if(!json.error) {
-						if (json.detail.member) {
-							jQuery("#member-photo").html(template("member-photo-code", json));
-						}
-						jQuery("#detail-photo").html(template("detail-photo-code", json));
-						jQuery("#detail-view").html(template("detail-view-code", json));
-						assignTmpl(json);
-						initComment("promptBtn", "heart", "likesCount");
-							
-					} else {
-						plus.nativeUI.toast(json.message);
-					}
-				},
-				error: function(xhr, type, errorThrown) {}
-			});
-		});
-
 	</script>
 
 </body>

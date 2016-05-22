@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" href="css/feedback-page.css" />
+
+
+	<script src="js/mui.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+    <script src="js/basic.js"></script>
+    <style>
+    .top_bg{ height:25px; background-color: #ba9ec6;}
+	.mui-table-view-cell p {
+		margin-bottom: 0;
+		margin-top: 0px; 
+	    padding-left: 5px;
+	    white-space:pre-wrap;
+	    font-size:12px ;
+	    line-height:16px ;
+	   
+	}
+	.mui-media-body{width:80%; margin-top: 15px;}
+	.mui-table-view-cell { padding-left: 5px; padding-top:0px ; padding-bottom:0px ;}
+    </style>
+    
+</head>
+
+<body class="mui-fullscreen">
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
+		<h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
+		<div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
+	</header>
+
+	<!--页面主结构开始-->
+	<div id="app" class="mui-views" style=" margin-top:95px ;">
+		<div class="top_bg"></div>	
+		<div class="title p-top">全部评论(<span id="total"></span>条)</div>
+
+		<ul id="list-view" class="mui-table-view"></ul>
+		<script id="list-view-code" type="text/html">
+			<% for (var i in list) { %>
+				<li class="mui-table-view-cell mui-media">
+					<img class="img-bor-two wid-two" src="<%= getvarious("domain") + list[i]["member"]["src"] %>" />
+					<div class="mui-media-body">
+						<span class="jq-cart-co-zi"><%= list[i]["member"]["name"] %></span>
+						<p><%= list[i]["content"] %></p>
+					</div>
+				</li>
+			<% } %>
+		</script>
+	</div>
+
+	<script>
+		var member = {};
+
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+
+		mui.plusReady(function() {
+			member = myStorage.getItem("member");
+
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/message.php",
+				dataType: "json",
+				data: {
+					action: "list", 
+					where: {aid: getUrlParam("aid"), atype: getUrlParam("atype")}
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						jQuery("#list-view").html(template('list-view-code', json));
+						jQuery("#total").html(json.list.length);
+
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {
+					//alert(JSON.stringify(xhr))
+				}
+			});
+		});
+	</script>
+</body>
+</html>
