@@ -8,7 +8,9 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 	<link rel="stylesheet" href="css/mui.min.css">
-	<link rel="stylesheet" href="css/feedback-page.css" />
+	<link href="css/mui.indexedlist.css" rel="stylesheet" />
+	<link href="css/mui.picker.css" rel="stylesheet" />
+	<link href="css/mui.poppicker.css" rel="stylesheet" />
 
 
 	<script src="js/mui.min.js"></script>
@@ -40,7 +42,7 @@
 	</header>
 
 	<!--页面主结构开始-->
-	<div id="app" class="mui-views" style=" margin-top:95px ;">
+	<div class="mui-content" style=" background:none ; background-color:#efeff4 ;">
 		<div class="top_bg"></div>	
 		<div class="title p-top">全部评论(<span id="total"></span>条)</div>
 
@@ -50,7 +52,7 @@
 				<li class="mui-table-view-cell mui-media">
 					<img class="img-bor-two wid-two" src="<%= getvarious("domain") + list[i]["member"]["src"] %>" />
 					<div class="mui-media-body">
-						<span class="jq-cart-co-zi"><%= list[i]["member"]["name"] %></span>
+						<span class="jq-cart-co-zi"><strong><%= list[i]["member"]["name"] %></strong></span>
 						<p><%= list[i]["content"] %></p>
 					</div>
 				</li>

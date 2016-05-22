@@ -36,6 +36,39 @@
 		}
 		#comment-list li p{color:#666 ;}
 		.top_bg{ height:25px; background-color: #ba9ec6;}
+		#topPopover {
+			position:absolute;
+			top: 16px;
+			right: 6px;padding: 0px; margin:0px ;
+		}
+		#topPopover .mui-popover-arrow {
+			left: auto;
+			right: 6px;
+		}
+		p {
+			text-indent: 22px;
+		}
+		span.mui-icon {
+			font-size: 14px;
+			color: #007aff;
+			margin-left: -15px;
+			padding-right: 10px;
+		}
+		.mui-popover {
+			height: 150px;
+		}
+		.comment-list-two {
+			background-color:#fff ;
+			color:#666 ;
+			font-size:12px ;
+			border-radius:0px 0px 0px 0px;
+		}
+		.comment-list-two li {
+			text-align: left;
+			border-bottom: 1px solid #f5f5f5; list-style:none ; background-color:#fbfbfb ;  padding-left: 8px;height:27px; padding-top:2px ;
+		}
+		.comment-list-two li p{color:#666 ;  font-size:12px ;}
+		.comment-list-two li p a{color:#b8b7b7 ; }
 	</style>
 	<script src="js/mui.min.js"></script>
 	<script src="js/mui.zoom.js"></script>
@@ -49,7 +82,7 @@
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
 	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-	    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
+	    <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold;" href="#topPopover"></a>
 	</header>
 	<div class="mui-content bg-two">
 		<div class="top_bg"></div>
@@ -71,15 +104,45 @@
 					<a><strong>產品資料：</strong></a><%=# detail["desp"] %>
 				</div>
 				
-				<div style=" text-align: center; margin-top: 20px;">
-				   <div class="zh-good-go" id="heart" rel="like" style=" background-color:#5cbf90 ;"><a href="cart.html" data-action="openwindow">立即購買</a></div>
-				   <div class="zh-good-go" style=" margin-left:10px;background-color:#4ebdf4 ;" id="promptBtn"><a href="cart.html" data-action="openwindow">加入購物車</a></div>
-				   <div class="zh-good-go" style=" margin-left:10px;background-color:#9273bf ;"><a href="cart.html" data-action="openwindow">檢視購物車</a></div>
+				<div class="xp-tu" style="margin-left:0px; margin-top:20px ;">
+					<div class="zh-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
+					<div class="zh-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
+					<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
+					<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-icon="likesCount">0</span></div>
 			    </div>
+			    <ul class="comment-list-two" style=" padding: 0px; margin: 0px;">
+					
+						<li><p style=" text-indent: 0px;"><b>fgdfgdfg：</b> ghfghfgh</p></li>
+					
+
+				
+						<li><p style=" text-align: center; border-bottom:none ;"><a href="#" data-action="openwindow">查看全部評論</a></p></li>
+					
+					</ul>
 			</div>
 		</script>
 	</div>	
+<!--右上角弹出菜单-->
+	<div id="topPopover" class="mui-popover" >
+		<div class="mui-popover-arrow"></div>
+		<div class="mui-scroll-wrapper" style=" position: absolute; top:0px;">
+			<div class="mui-scroll">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a href="publish-discuss.html" class="mui-navigate-right" data-action="openwindow">發表產品</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="my-discuss.html" class="mui-navigate-right" data-action="openwindow">我的產品</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="setting.html" class="mui-navigate-right" data-action="openwindow">個人主頁</a>
+					</li>
+					<li class="mui-table-view-cell">
+					</li>
+					
+				</ul>
+			</div>
+		</div>
 
+	</div>
 	<script type="text/javascript" charset="utf-8">
 		var member = {};
 

@@ -44,27 +44,7 @@
 		<div class="top_bg"></div>
 
 		<div class="xp-tu-buy">
-			<ul>
-				<a href="buy-detail.html" data-action="webview">	
-				<li class="margin1">
-					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
-					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
-                    <div class="xp-tu-zi-buy-two">$31.54</div>
-					
-
-				</li>
-				</a>
-				
-				<a href="buy-detail.html" data-action="webview">	
-				<li class="margin1">
-					<div><img class="mui-media-object" src="images/shuijiao.jpg"></div>	
-					<div class="xp-tu-zi-buy">想要一间这样的木屋，静静的喝</div>
-                    <div class="xp-tu-zi-buy-two">$31.54</div>
-					
-
-				</li>
-				</a>
-			</ul>
+			
 
 			<ul id="list-view"></ul>
 
@@ -73,7 +53,7 @@
 				<li class="margin1">
 					<a href="buy-detail.html?id=<%= list[i]["id"]%>" data-action="webview">
 						<div><img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/product/prm" + list[i]["src"] %>"></div>	
-						<div class="xp-tu-zi-buy"><%= list[i]["name"] %></div>
+						<div class="xp-tu-zi-buy" style=" height: 45px; overflow: hidden;"><%= list[i]["name"] %></div>
 	                    <div class="xp-tu-zi-buy-two">$<%= list[i]["sale"] %></div>
                     </a>
 				</li>

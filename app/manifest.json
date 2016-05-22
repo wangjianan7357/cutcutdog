@@ -238,7 +238,8 @@
 					"slider-table-default.html",
 					"discuss-category-list.html",
 					"photo-detail.html",
-					"used.html"
+					"used.html",
+					"contact.html"
 				],
 				"priority": 0
 			},
@@ -959,7 +960,9 @@
 					"images/Petchat.png",
 					"used-detail.html"
 				],
-				"refer": [],
+				"refer": [
+					"publish-discuss.html"
+				],
 				"priority": 0
 			},
 			"used-detail.html": {
@@ -978,7 +981,12 @@
 					"images/CatDog.png",
 					"css/mui.min.css",
 					"images/home.png",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"cart.html",
+					"images/photo-button-02.png",
+					"images/photo-button-03.png",
+					"images/photo-button-04.png",
+					"images/photo-button-01.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -1002,7 +1010,8 @@
 					"images/CatDog.png",
 					"css/mui.min.css",
 					"images/home.png",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"used-detail.html"
 				],
 				"refer": [
 					"buy-address.html",
@@ -1048,7 +1057,10 @@
 					"images/home.png",
 					"images/top_bg.png",
 					"images/Petchat.png",
-					"js/basic.js"
+					"js/basic.js",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"css/mui.indexedlist.css"
 				],
 				"refer": [],
 				"priority": 0
@@ -1071,6 +1083,23 @@
 					"images/home.png",
 					"css/mui.poppicker.css",
 					"images/Petchat.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"contact.html": {
+				"resources": [
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png",
+					"css/feedback-page.css",
+					"js/basic.js"
 				],
 				"refer": [],
 				"priority": 0

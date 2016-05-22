@@ -36,7 +36,8 @@
 			"buy.html",
 			"setting.html",
 			"login.html",
-			"used.html"
+			"used.html",
+			"contact.html"
 		]
 	},
 	"discuss-category.html": {
@@ -440,7 +441,21 @@
 			"images/xz.png",
 			"images/service-button-09.png",
 			"css/mui.picker.min.css",
-			"images/Info_button-02.png"
+			"images/Info_button-02.png",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"fonts/mui.ttf",
+			"css/dzcss.css",
+			"images/top_bg.png",
+			"js/basic.js",
+			"images/bg_two.png",
+			"js/mui.zoom.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"js/mui.previewimage.js",
+			"images/Petchat.png"
 		]
 	},
 	"my-photo.html": {
@@ -554,7 +569,8 @@
 			"used-detail.html"
 		],
 		"refer": [
-			"used-detail.html"
+			"used-detail.html",
+			"publish-discuss.html"
 		]
 	},
 	"used-detail.html": {
@@ -573,10 +589,16 @@
 			"images/CatDog.png",
 			"css/mui.min.css",
 			"images/home.png",
-			"images/Petchat.png"
+			"images/Petchat.png",
+			"cart.html",
+			"images/photo-button-02.png",
+			"images/photo-button-03.png",
+			"images/photo-button-04.png",
+			"images/photo-button-01.png"
 		],
 		"refer": [
-			"used-list.html"
+			"used-list.html",
+			"cart.html"
 		]
 	},
 	"cart.html": {
@@ -598,13 +620,15 @@
 			"images/CatDog.png",
 			"css/mui.min.css",
 			"images/home.png",
-			"images/Petchat.png"
+			"images/Petchat.png",
+			"used-detail.html"
 		],
 		"refer": [
 			"buy-address.html",
 			"buy-detail.html",
 			"login.html",
-			"checkout.html"
+			"checkout.html",
+			"used-detail.html"
 		]
 	},
 	"buy-address.html": {
@@ -642,7 +666,10 @@
 			"images/home.png",
 			"images/top_bg.png",
 			"images/Petchat.png",
-			"js/basic.js"
+			"js/basic.js",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"css/mui.indexedlist.css"
 		],
 		"refer": [
 			"photo-list.html"
@@ -666,6 +693,21 @@
 			"images/home.png",
 			"css/mui.poppicker.css",
 			"images/Petchat.png"
+		]
+	},
+	"contact.html": {
+		"resources": [
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"css/feedback-page.css",
+			"js/basic.js"
 		]
 	}
 }

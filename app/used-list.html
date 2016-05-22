@@ -26,6 +26,27 @@
 			margin-right: 1px;
 			margin-bottom:1px ;
 		}
+		#topPopover {
+			position:absolute;
+			top: 16px;
+			right: 6px;padding: 0px; margin:0px ;
+		}
+		#topPopover .mui-popover-arrow {
+			left: auto;
+			right: 6px;
+		}
+		p {
+			text-indent: 22px;
+		}
+		span.mui-icon {
+			font-size: 14px;
+			color: #007aff;
+			margin-left: -15px;
+			padding-right: 10px;
+		}
+		.mui-popover {
+			height: 150px;
+		}
 	</style>
     <script src="js/mui.min.js"></script>
     <script src="js/jquery.min.js"></script>
@@ -37,7 +58,7 @@
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
 		<h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-		<div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
+		<a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold;" href="#topPopover"></a>
 	</header>
 
 	<div class="mui-content">
@@ -78,7 +99,27 @@
 			</script>
 		</div>
 	</div>
+<!--右上角弹出菜单-->
+	<div id="topPopover" class="mui-popover" >
+		<div class="mui-popover-arrow"></div>
+		<div class="mui-scroll-wrapper" style=" position: absolute; top:0px;">
+			<div class="mui-scroll">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a href="publish-discuss.html" class="mui-navigate-right" data-action="openwindow">發表產品</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="my-discuss.html" class="mui-navigate-right" data-action="openwindow">我的產品</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="setting.html" class="mui-navigate-right" data-action="openwindow">個人主頁</a>
+					</li>
+					<li class="mui-table-view-cell">
+					</li>
+					
+				</ul>
+			</div>
+		</div>
 
+	</div>
 	<script>
 		mui.init({
 			swipeBack:true //启用右滑关闭功能
