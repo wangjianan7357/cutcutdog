@@ -651,7 +651,21 @@
 	"checkout.html": {
 		"resources": [
 			"images/cbd.jpg",
-			"images/muwu.jpg"
+			"images/muwu.jpg",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"fonts/mui.ttf",
+			"images/shuijiao.jpg",
+			"images/top_bg.png",
+			"css/mui.indexedlist.css",
+			"css/mui.picker.css",
+			"js/basic.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"css/mui.poppicker.css",
+			"images/Petchat.png"
 		]
 	}
 }
