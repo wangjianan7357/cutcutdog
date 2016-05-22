@@ -459,6 +459,38 @@ function ajaxCache(params, refresh) {
 	} catch(e){}
 }
 
+function initCart() {
+    var cart = myStorage.getItem("cart");
+    if (cart) {
+        jQuery("[data-cart='number']").html(cart.length);
+    }
+
+    return cart;
+}
+
+function addCart(id, number) {
+    var cart = myStorage.getItem("cart");
+    if (cart) {
+        var exist = false;
+
+        for (var i = 0; i < cart.length; i ++) {
+            if (cart[i]["id"] == id) {
+                exist = true;
+                cart[i]["number"] = isNaN(number) ? 1 : number;
+            }
+        }
+
+        if (!exist) {
+            cart.push({id: id, number: isNaN(number) ? 1 : number});
+        }
+
+    } else {
+        cart = [{id: id, number: isNaN(number) ? 1 : number}];
+    }
+
+    myStorage.setItem("cart", cart);
+    plus.nativeUI.toast("添加完成");
+}
 
 function MD5(str){
     var hex_chr = "0123456789abcdef";

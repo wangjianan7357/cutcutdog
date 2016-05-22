@@ -602,7 +602,9 @@
 		],
 		"refer": [
 			"buy-address.html",
-			"buy-detail.html"
+			"buy-detail.html",
+			"login.html",
+			"checkout.html"
 		]
 	},
 	"buy-address.html": {
@@ -644,6 +646,12 @@
 		],
 		"refer": [
 			"photo-list.html"
+		]
+	},
+	"checkout.html": {
+		"resources": [
+			"images/cbd.jpg",
+			"images/muwu.jpg"
 		]
 	}
 }

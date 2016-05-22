@@ -1005,7 +1005,9 @@
 					"images/Petchat.png"
 				],
 				"refer": [
-					"buy-address.html"
+					"buy-address.html",
+					"login.html",
+					"checkout.html"
 				],
 				"priority": 0
 			},
@@ -1047,6 +1049,14 @@
 					"images/top_bg.png",
 					"images/Petchat.png",
 					"js/basic.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"checkout.html": {
+				"resources": [
+					"images/cbd.jpg",
+					"images/muwu.jpg"
 				],
 				"refer": [],
 				"priority": 0

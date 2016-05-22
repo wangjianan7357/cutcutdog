@@ -254,6 +254,7 @@ return array(
 	 */
 	'product' => '
 		`id` INT( 5 ) NOT NULL AUTO_INCREMENT , 
+        `mid` INT( 8 ) NOT NULL DEFAULT 0 , 
 		`cid` VARCHAR( 40 ) NOT NULL , 
 		`queue` INT( 7 ) NOT NULL DEFAULT 0 , 
         `recom` INT( 7 ) NOT NULL DEFAULT 0 , 

@@ -49,7 +49,7 @@
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
 	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-	    <div class="buy-cart"><a href="cart.html" data-action="openwindow"><img src="images/buy.png"><span>8</span></a></div>
+	    <div class="buy-cart"><a href="cart.html" data-action="openwindow"><img src="images/buy.png"><span data-cart="number">0</span></a></div>
 	</header>
 	<div class="mui-content bg-two">
 		<div class="top_bg"></div>
@@ -72,9 +72,9 @@
 				</div>
 				
 				<div style=" text-align: center; margin-top: 20px;">
-				   <div class="zh-good-go" id="heart" rel="like" style=" background-color:#5cbf90 ;"><a href="cart.html" data-action="openwindow">立即購買</a></div>
-				   <div class="zh-good-go" style=" margin-left:10px;background-color:#4ebdf4 ;" id="promptBtn"><a href="cart.html" data-action="openwindow">加入購物車</a></div>
-				   <div class="zh-good-go" style=" margin-left:10px;background-color:#9273bf ;"><a href="cart.html" data-action="openwindow">檢視購物車</a></div>
+				   <div class="zh-good-go" id="heart" rel="like" style="background-color: #5cbf90;"><a href="cart.html" data-action="openwindow">立即購買</a></div>
+				   <div class="zh-good-go" style="margin-left:10px; background-color: #4ebdf4;"><a href="javascript:;" onclick="addCart(<%= detail["id"] %>)">加入購物車</a></div>
+				   <div class="zh-good-go" style="margin-left:10px; background-color: #9273bf;"><a href="cart.html" data-action="openwindow">檢視購物車</a></div>
 			    </div>
 			</div>
 		</script>
@@ -89,6 +89,8 @@
 		});
 		
 		mui.plusReady(function() {
+			initCart();
+			
 			member = myStorage.getItem("member");
 
 			mui.ajax({
@@ -109,7 +111,7 @@
 					}
 				},
 				error: function(xhr, type, errorThrown) {
-					//alert(JSON.stringfy(xhr))
+					//alert(JSON.stringify(xhr));
 				}
 			});
 		});
