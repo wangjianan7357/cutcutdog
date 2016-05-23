@@ -492,6 +492,26 @@ function addCart(id, number) {
     plus.nativeUI.toast("添加完成");
 }
 
+function delCart(id) {
+    var cart = myStorage.getItem("cart");
+    if (cart) {
+        var tmp = [];
+
+        for (var i = 0; i < cart.length; i ++) {
+            if (cart[i]["id"] != id) {
+                tmp.push(cart[i]);
+            }
+        }
+    }
+
+    myStorage.setItem("cart", tmp);
+    plus.nativeUI.toast("刪除完成");
+
+    setTimeout(function(){
+        document.location.href = document.location.href;
+    }, 50);
+}
+
 function MD5(str){
     var hex_chr = "0123456789abcdef";
     this.rhex = function(num){

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="css/feedback-page.css" />
+
+	<script src="js/mui.min.js "></script>
+	<script src="js/mui.view.js "></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+    <script src="js/basic.js"></script>
+</head>
+
+<body class="mui-fullscreen">
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
+		<h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
+		<div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
+	</header>
+
+	<!--页面主结构开始-->
+	<div id="app" class="mui-views">
+		<div class="mui-view">
+			<div class="mui-navbar">
+
+			</div>
+			<div class="mui-pages">
+				<div id="account" class="mui-page">
+					<div class="mui-page-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a id="picture" class="mui-navigate-right" style=" line-height:40px ;">圖像
+											<span class="mui-pull-right head">
+												
+												<input type="hidden" id="picture-path" value="" />
+											</span>
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a>選擇類別
+											<select id="discuss-category"></select>
+											<script id="discuss-category-code" type="text/html">
+											<% for (var i in list) { %>
+												<option value="<%= list[i]["id"] %>"><%= list[i]["name"] %></option>
+											<% } %>
+											</script>
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a>標題
+											<input value="" id="discuss_name"  style=" height:30px ;width:90%;">
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a>
+											<textarea id="discuss_desp">描述</textarea>
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a id="submit-button">提交</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--页面主结构结束-->
+
+	<script>
+	mui.init();
+
+	var member = {};
+
+	mui.plusReady(function() {
+		member = myStorage.getItem("member");
+
+		mui.ajax({
+			type: "post",
+			url: domain + "saas/catalog.php",
+			dataType: "json",
+			data: {
+				action: "list",
+				where: {type: 8}
+			},
+			async: true,
+			success: function(json) {
+				if(!json.error) {
+					jQuery("#discuss-category").html(template('discuss-category-code', json));
+					
+				} else {
+					plus.nativeUI.toast(json.message);
+				}
+			},
+			error: function(xhr, type, errorThrown) {}
+		});
+
+	});
+	
+	//选择图片
+	mui(".mui-table-view-cell").on("tap", "#picture", function(e) {
+		if(mui.os.plus){
+			var a = [{
+				title: "从手机相册选择"
+			}];
+			plus.nativeUI.actionSheet({
+				title: "選擇圖片",
+				cancel: "取消",
+				buttons: a
+			}, function(b) {
+				switch (b.index) {
+					case 0:
+						break;
+					case 1:
+						getGalleryImg();
+						break;
+					default:
+						break
+				}
+			})	
+		}
+	});
+
+	function getGalleryImg() {
+		plus.gallery.pick(function(path) {
+			$("#picture-src").attr("src", path);
+			$("#picture-path").attr("value", path);
+		});
+	};
+	
+	document.getElementById("submit-button").addEventListener("tap", function(event) {
+		if(!jQuery("#discuss_name").val()) {
+			plus.nativeUI.toast("請輸入標題！");
+			return false;	
+		}
+		
+		var profilePage = mui.preload({
+			"id": "profile",
+			"url": "profile.html"
+		});
+		
+		uploadFileData(jQuery("#picture-path").val(), {
+				"action": "insert",
+				"sbt_name": jQuery("#discuss_name").val(),
+				"sbt_desp": jQuery("#discuss_desp").val(),
+				"sbt_cid": jQuery("#discuss-category").val()
+			}, 
+			"saas/info.php", 
+			function(res) {
+				if (!res.error) {
+					plus.nativeUI.toast("發表成功！");
+					
+					mui.fire(profilePage, "show", null);
+					setTimeout(function() {
+						mui.openWindow({
+							id: "profile",
+							show: {
+								aniShow: "pop-in"
+							},
+							waiting: {
+								autoShow: false
+							}
+						});
+					}, 0);
+					
+				} else {
+					plus.nativeUI.toast(res.message);
+				}
+			}
+		);
+
+	});
+	</script>
+
+</body>
+</html>

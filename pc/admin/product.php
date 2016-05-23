@@ -123,8 +123,6 @@ if($_GET['action'] == 'edt'){
 
 	$q_url = queryPart('date', 'desc');
 
-	$where = '1';
-
 	class FieldFun {
 		function __construct($namespace = 1){
 			$this->namespace = $namespace;
