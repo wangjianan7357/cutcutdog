@@ -6,6 +6,7 @@ if ($_REQUEST['action'] == 'list') {
     $list = array();
     $where = $_POST['where'];
     $catalog = array();
+    $limit = '';
 
     if ($_POST['type'] == 3) {
         $where = array();
@@ -45,11 +46,15 @@ if ($_REQUEST['action'] == 'list') {
         while ($result = mysql_fetch_array($getdata)) {
             $member[$result['id']] = $result;
         }
+
+        $_POST['page'] = isset($_POST['page']) ? intval($_POST['page']) : 1;
+
+        $limit = ($_POST['page'] - 1) * 5 . ',' . 5;
     }
 
     $where['valid'] = 1;
 
-    $getdata = $my_db->selectRow('*', 'info', $where);
+    $getdata = $my_db->selectRow('*', 'info', $where, array('field' => 'date', 'method' => 'desc'), $limit);
     while ($result = mysql_fetch_array($getdata)) {
         if (!empty($catalog) && !preg_match('/(^|,)(' . implode('|', $catalog) . '),$/', $result['cid'])) {
             continue;

@@ -178,13 +178,19 @@
 					type: "post",
 					url: domain + "saas/info.php",
 					dataType: "json",
-					data: {action: "list", where: {cid: "15,"}, type: 5},
+					data: {action: "list", where: {cid: "15,"}, type: 5, page: page},
 					async: true,
 					success: function(json) {
 						if(!json.error) {
-							count = 0;
+							page ++;
 							jQuery("#list-view").html(jQuery("#list-view").html() + template('list-view-code', json));
 							setComment();
+
+							if (1) {
+								count = 0;
+							} else {
+								count = 2;
+							}
 							
 						} else {
 							plus.nativeUI.toast(json.message);
@@ -289,10 +295,11 @@
 				type: "post",
 				url: domain + "saas/info.php",
 				dataType: "json",
-				data: {action: "list", where: {cid: "15,"}, type: 5},
+				data: {action: "list", where: {cid: "15,"}, type: 5, page: page},
 				async: true,
 				success: function(json) {
 					if(!json.error) {
+						page ++;
 						jQuery("#list-view").html(template('list-view-code', json));
 						//assignTmpl(json);
 						setComment();
