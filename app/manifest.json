@@ -672,7 +672,8 @@
 					"js/mui.zoom.js",
 					"js/mui.previewimage.js",
 					"photo-list-pl.html",
-					"photo-comments.html"
+					"photo-comments.html",
+					"personal.html"
 				],
 				"refer": [
 					"image-list.html",
@@ -1154,20 +1155,18 @@
 					"images/service-button-08.png",
 					"images/service-button-09.png",
 					"images/muwu.jpg",
-					"pet-
-profile.html"
+					"pet-profile.html",
+					"images/user-photo.png",
+					"photo-list.html"
 				],
 				"refer": [
 					"login.html",
 					"profile.html",
-					"pet-
-information.html",
-					"photo-list.html"
+					"pet-information.html"
 				],
 				"priority": 0
 			},
-			"pet-
-information.html": {
+			"pet-information.html": {
 				"resources": [
 					"js/mui.picker.js",
 					"js/mui.zoom.js",
@@ -1195,8 +1194,7 @@ information.html": {
 				"refer": [],
 				"priority": 0
 			},
-			"pet-
-profile.html": {
+			"pet-profile.html": {
 				"resources": [
 					"images/CatDog.png",
 					"images/home.png",

@@ -126,10 +126,10 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%}body{margin:0}article,
 .perso-top{ background: url(../images/perso-top.png); height:300px ; overflow: hidden; position: relative;}
 .perso-bg{ background-color:#000 ;opacity:0.5;height:300px ; padding:0px ; margin: 0px;}
 .perso-top-left{ float: left; padding-top: 15px; padding-left:10px ;}
-.perso-top-center{ float: left;display: inline-block; margin-left:20px ; color:#fff ;}
+.perso-top-center{ float: left;display: inline-block; margin-left:25px ; color:#fff ;}
 .perso-top-center ul li{ float: left; list-style:none ; padding:0px 10px 0px 10px ;}
-.perso-top-right{ float:right ;padding-top: 15px; padding-right:10px ;}
-.perso-top .perso-photo{color: #fff; position: absolute; top:80px; left:33%; text-align: center;}
+.perso-top-right{ float:right ;padding-top: 13px; padding-right:10px ;}
+.perso-top .perso-photo{color: #fff; position: absolute; top:80px; left:38%; text-align: center;}
 .perso-photo-img-bor-two{ border:solid #fff 1px ;border-radius: 42px; background-color:#fff ;}
 .perso-photo-wid{width:90px; height:90px ;margin-top:10px ; margin-bottom:10px ;}
 .perso-photo-tile{line-height:30px ;font-size:22px ; color: #fff; font-weight: bold;}
@@ -139,7 +139,9 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%}body{margin:0}article,
 .perso-top-center-two p{ color: #fff;}
 .perso-photo-tile-two{line-height:30px ;font-size:18px ; color: #fff; font-weight: bold; background-color:#6f6f6f ; padding:10px 0px 10px 10px ;}
 .m-boot{ margin-bottom: 30px;}
-
+.serv-fw-persona{overflow: hidden; background-color:#fff ; padding-left: 1px;}
+.serv-fw-persona div{float: left;width:33.1%; list-style:none ; margin-bottom:1px ;}
+.serv-fw-persona a, .serv-fw-persona img{ height:100px; display: block;}
 
 
 

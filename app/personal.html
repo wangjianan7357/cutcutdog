@@ -42,18 +42,18 @@
 			<div class="perso-bg">
 				<div style="overflow: hidden;">
 					<div class="perso-top-left">
-						<a href="index.html" data-action="openwindow"><span class="mui-icon mui-icon-home-filled" style=" color:#fff ; font-size:28px ;"></span></a>
+						<a href="index.html" data-action="webview"><span class="mui-icon mui-icon-home-filled" style=" color:#fff ; font-size:28px ;"></span></a>
 					</div>
 					
 					<div class="perso-top-center">
 						<ul>
-						<li><a href="pet-profile.html" data-action="openwindow"><span class="mui-icon mui-icon-qq" style=" color:#fff ; font-size:28px ;"></span></a></li>	
+						<li><a href="pet-profile.html" data-action="webview"><span class="mui-icon mui-icon-qq" style=" color:#fff ; font-size:28px ;"></span></a></li>	
 						<li><a href="#" data-action="openwindow"><span class="mui-icon mui-icon-qq" style=" color:#fff ; font-size:28px ;"></span></a></li>
-						<li><a href="pet-information.html" data-action="openwindow"><span class="mui-icon mui-icon-plus-filled" style=" color:#fff ; font-size:28px ;"></span></a></li>
+						<li><a href="pet-information.html" data-action="webview"><span class="mui-icon mui-icon-plus-filled" style=" color:#fff ; font-size:28px ;"></span></a></li>
 						</ul>	
 					</div>
 					<div class="perso-top-right">
-						<a href="profile.html" data-action="openwindow"><span class="mui-icon mui-icon-compose" style=" color:#fff ; font-size:34px ;"></span></a>
+						<a href="profile.html" data-action="webview"><span class="mui-icon mui-icon-compose" style=" color:#fff ; font-size:34px ;"></span></a>
 					</div>
 				</div>
 
@@ -72,7 +72,7 @@
 		</div>
 	<div>
 	<div class="perso-photo-tile-two">我的相片</div>	
-		<div class="serv-fw" style="padding-top: 1px;" id="list-view"></div>
+		<div class="serv-fw-persona" style="padding-top: 1px;" id="list-view"></div>
 		<script id="list-view-code" type="text/html">
 		<% for (var i in list) { %>
 			<div class="margin1"><a href="photo-list.html" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></a></div>
