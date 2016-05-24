@@ -75,8 +75,7 @@
 		<div class="top_bg"></div>
 
 		<div class="xp-tu" id="pullrefresh">
-			<ul id="list-view"></ul>
-			<div id="detail-photo" style=" text-align: center;"><img src="images/gif.gif" style="width: 32px; height:32px ;"></div>
+			<ul id="list-view"><li><img src="images/gif.gif" style="width: 32px; height:32px ;"></li></ul>
 			<script id="list-view-code" type="text/html">
 			<% for (var i in list) { %>
 				<li>
@@ -187,10 +186,10 @@
 							jQuery("#list-view").html(jQuery("#list-view").html() + template('list-view-code', json));
 							setComment();
 
-							if (1) {
+							if (jQuery(json.list).length) {
 								count = 0;
 							} else {
-								count = 2;
+								count = 3;
 							}
 							
 						} else {

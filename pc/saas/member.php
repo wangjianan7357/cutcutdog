@@ -124,6 +124,16 @@ if ($_REQUEST['action'] == 'login') {
     }
 
     callback(array('error' => 0, 'member' => $member));
-}
 
+} else if ($_REQUEST['action'] == 'my-photo') {
+    checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
+
+    $list = array();
+    $getdata = $my_db->selectRow('id, src', 'info', array('mid' => $_REQUEST['id']), array('field' => 'date', 'method' => 'desc'));
+    while ($result = mysql_fetch_array($getdata)) {
+        $list[] = $result;
+    }
+
+    callback(array('error' => 0, 'list' => $list));
+}
 

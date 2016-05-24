@@ -1154,17 +1154,20 @@
 					"images/service-button-08.png",
 					"images/service-button-09.png",
 					"images/muwu.jpg",
-					"Pet-profile.html"
+					"pet-
+profile.html"
 				],
 				"refer": [
 					"login.html",
 					"profile.html",
-					"Pet-information.html",
+					"pet-
+information.html",
 					"photo-list.html"
 				],
 				"priority": 0
 			},
-			"Pet-information.html": {
+			"pet-
+information.html": {
 				"resources": [
 					"js/mui.picker.js",
 					"js/mui.zoom.js",
@@ -1192,7 +1195,8 @@
 				"refer": [],
 				"priority": 0
 			},
-			"Pet-profile.html": {
+			"pet-
+profile.html": {
 				"resources": [
 					"images/CatDog.png",
 					"images/home.png",

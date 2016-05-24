@@ -155,7 +155,8 @@
 			"js/mui.zoom.js",
 			"js/mui.previewimage.js",
 			"photo-list-pl.html",
-			"photo-comments.html"
+			"photo-comments.html",
+			"personal.html"
 		],
 		"refer": [
 			"photo-detail.html",
@@ -163,7 +164,8 @@
 			"publish-photo.html",
 			"my-photo.html",
 			"photo-list-pl.html",
-			"photo-comments.html"
+			"photo-comments.html",
+			"personal.html"
 		]
 	},
 	"photo-detail.html": {
@@ -766,9 +768,11 @@
 		"refer": [
 			"login.html",
 			"profile.html",
-			"Pet-information.html",
-			"Pet-profile.html",
-			"photo-list.html"
+			"pet-\r\ninformation.html",
+			"pet-\r\nprofile.html",
+			"photo-list.html",
+			"pet-profile.html",
+			"pet-information.html"
 		],
 		"resources": [
 			"js/template-native.js",
@@ -784,10 +788,12 @@
 			"images/service-button-08.png",
 			"images/service-button-09.png",
 			"images/muwu.jpg",
-			"Pet-profile.html"
+			"pet-\r\nprofile.html",
+			"images/user-photo.png",
+			"photo-list.html"
 		]
 	},
-	"Pet-information.html": {
+	"pet-\r\ninformation.html": {
 		"resources": [
 			"js/mui.picker.js",
 			"js/mui.zoom.js",
@@ -813,7 +819,7 @@
 			"images/bg_two.png"
 		]
 	},
-	"Pet-profile.html": {
+	"pet-\r\nprofile.html": {
 		"resources": [
 			"images/CatDog.png",
 			"images/home.png",
@@ -831,6 +837,38 @@
 		],
 		"refer": [
 			"personal.html"
+		]
+	},
+	"pet-profile.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"css/feedback-page.css",
+			"js/basic.js",
+			"js/mui.view.js"
+		]
+	},
+	"pet-information.html": {
+		"resources": [
+			"js/mui.picker.js",
+			"js/mui.zoom.js",
+			"js/mui.picker.min.js",
+			"images/CatDog.png",
+			"js/mui.poppicker.js",
+			"css/dzcss.css",
+			"images/home.png",
+			"js/mui.previewimage.js",
+			"images/top_bg.png",
+			"css/mui.picker.min.css",
+			"images/Petchat.png",
+			"images/Info_button-02.png",
+			"images/bg_two.png"
 		]
 	}
 }
