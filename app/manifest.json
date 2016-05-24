@@ -1,7 +1,7 @@
 {
     "@platforms": ["android", "iPhone", "iPad"],
     "id": "H5600B080",/*应用的标识，创建应用时自动生成，勿手动修改*/
-    "name": "PetChat",/*应用名称，程序桌面图标名称*/
+    "name": "寵物潮流",/*应用名称，程序桌面图标名称*/
     "version": {
         "name": "1.0.0",/*应用版本名称*/
         "code": "83"
@@ -227,7 +227,8 @@
 					"info-category.html",
 					"login.html",
 					"photo-list.html",
-					"buy.html"
+					"buy.html",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"examples/imageviewer.html",
@@ -263,7 +264,8 @@
 					"css/mui.poppicker.css",
 					"css/mui.picker.css",
 					"css/mui.indexedlist.css",
-					"forget-password.html"
+					"forget-password.html",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"index.html",
@@ -423,7 +425,8 @@
 					"images/Info_icon_pin.png",
 					"css/mui.indexedlist.css",
 					"css/mui.picker.css",
-					"css/mui.poppicker.css"
+					"css/mui.poppicker.css",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"login.html",
@@ -459,7 +462,8 @@
 					"css/mui.picker.css",
 					"images/Info_button-02.png",
 					"css/style.css",
-					"index.html"
+					"index.html",
+					"images/bg_two.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -497,7 +501,8 @@
 					"css/mui.picker.css",
 					"css/mui.poppicker.css",
 					"js/mui.zoom.js",
-					"js/mui.previewimage.js"
+					"js/mui.previewimage.js",
+					"images/bg_two.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -597,7 +602,9 @@
 					"css/mui.poppicker.css",
 					"js/template-native.js",
 					"service-detail.html",
-					"service-booking.html"
+					"service-booking.html",
+					"images/bg_two.png",
+					"images/gif.gif"
 				],
 				"refer": [],
 				"priority": 0
@@ -825,7 +832,8 @@
 					"images/trade-graphic-04.png",
 					"buy-list.html",
 					"index.html",
-					"images/buy.png"
+					"images/buy.png",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"service-detail.html",
@@ -852,9 +860,13 @@
 					"images/Petchat.png",
 					"buy-detail.html",
 					"buy.html",
-					"images/buy.png"
+					"images/buy.png",
+					"images/gif.gif",
+					"images/bg_two.png"
 				],
-				"refer": [],
+				"refer": [
+					"cart.html"
+				],
 				"priority": 0
 			},
 			"buy-detail.html": {
@@ -876,7 +888,8 @@
 					"images/home.png",
 					"images/Petchat.png",
 					"cart.html",
-					"images/buy.png"
+					"images/buy.png",
+					"images/gif.gif"
 				],
 				"refer": [
 					"buy-cart.html"
@@ -988,7 +1001,9 @@
 					"images/photo-button-04.png",
 					"images/photo-button-01.png"
 				],
-				"refer": [],
+				"refer": [
+					"publish-product.html"
+				],
 				"priority": 0
 			},
 			"cart.html": {
@@ -1100,6 +1115,98 @@
 					"images/Petchat.png",
 					"css/feedback-page.css",
 					"js/basic.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"publish-product.html": {
+				"resources": [
+					"css/feedback-page.css",
+					"js/mui.view.js",
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png",
+					"js/basic.js"
+				],
+				"refer": [
+					"profile.html"
+				],
+				"priority": 0
+			},
+			"personal.html": {
+				"resources": [
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"css/mui.indexedlist.css",
+					"js/basic.js",
+					"images/perso-top.png",
+					"fonts/mui.ttf",
+					"images/service-button-08.png",
+					"images/service-button-09.png",
+					"images/muwu.jpg",
+					"Pet-profile.html"
+				],
+				"refer": [
+					"login.html",
+					"profile.html",
+					"Pet-information.html",
+					"photo-list.html"
+				],
+				"priority": 0
+			},
+			"Pet-information.html": {
+				"resources": [
+					"js/mui.picker.js",
+					"js/mui.zoom.js",
+					"js/mui.picker.min.js",
+					"images/service-button-08.png",
+					"js/mui.poppicker.js",
+					"css/dzcss.css",
+					"js/mui.previewimage.js",
+					"images/service-button-09.png",
+					"css/mui.picker.min.css",
+					"images/Info_button-02.png",
+					"images/xz.png",
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"js/basic.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/Petchat.png",
+					"fonts/mui.ttf",
+					"images/top_bg.png",
+					"images/bg_two.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"Pet-profile.html": {
+				"resources": [
+					"images/CatDog.png",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png",
+					"css/feedback-page.css",
+					"images/user-photo.png",
+					"js/mui.view.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/basic.js",
+					"personal.html"
 				],
 				"refer": [],
 				"priority": 0

@@ -41,6 +41,7 @@
 		<div class="top_bg"></div>
 		
 		<div class="serv-fw" id="list-view"></div>
+		<div id="detail-photo" style=" text-align: center;"><img src="images/gif.gif" style="width: 32px; height:32px ;"></div>
 		<script id="list-view-code" type="text/html">
 			<% for (var i in list) { %>
 				<div class="margin1"><a href="service-detail.html?id=<%= list[i]["id"] %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/member/me" + list[i]["src"] %>"></a></div>
