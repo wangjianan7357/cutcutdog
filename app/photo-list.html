@@ -178,7 +178,7 @@
 					type: "post",
 					url: domain + "saas/info.php",
 					dataType: "json",
-					data: {action: "list", where: {cid: "15,"}, type: 5, page: page},
+					data: {action: "list", where: {cid: "15,", mid: getUrlParam("mid")}, type: 5, page: page},
 					async: true,
 					success: function(json) {
 						if(!json.error) {
@@ -295,7 +295,7 @@
 				type: "post",
 				url: domain + "saas/info.php",
 				dataType: "json",
-				data: {action: "list", where: {cid: "15,"}, type: 5, page: page},
+				data: {action: "list", where: {cid: "15,", mid: getUrlParam("mid")}, type: 5, page: page},
 				async: true,
 				success: function(json) {
 					if(!json.error) {

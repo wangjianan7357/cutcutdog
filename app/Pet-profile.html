@@ -38,19 +38,19 @@
 								<ul class="mui-table-view">
 									
 									<li class="mui-table-view-cell">
-										<a>寵物類型<input value="" class="mui-pull-right" data-info="value=member.name"></a>
+										<a>寵物類型<input value="" class="mui-pull-right" name="params[type]"></a>
 									</li>
 									<li class="mui-table-view-cell">
-										<a>寵物size<span class="mui-pull-right" data-info="member.phone"></span></a>
+										<a>寵物size<span class="mui-pull-right" name="params[size]"></span></a>
 									</li>
 									<li class="mui-table-view-cell">
-										<a>名稱<span class="mui-pull-right" data-info="member.email"></span></a>
+										<a>名稱<span class="mui-pull-right" name="params[name]"></span></a>
 									</li>
 									<li class="mui-table-view-cell">
-										<a>備註<span class="mui-pull-right" data-info="member.address"></span></a>
+										<a>備註<span class="mui-pull-right" name="params[remark]"></span></a>
 									</li>
 									<li class="mui-table-view-cell">
-										<a>数量<span class="mui-pull-right" data-info="member.address"></span></a>
+										<a>数量<span class="mui-pull-right" name="params[number]"></span></a>
 									</li>
 								</ul>
 							</div>
@@ -105,14 +105,14 @@
 		initImgPreview();
 	}, 500);
 	
-	//更换头像
+	//更换图片
 	mui(".mui-table-view-cell").on("tap", "#head", function(e) {
 		if(mui.os.plus){
 			var a = [{
 				title: "从手机相册选择"
 			}];
 			plus.nativeUI.actionSheet({
-				title: "修改头像",
+				title: "修改图片",
 				cancel: "取消",
 				buttons: a
 			}, function(b) {

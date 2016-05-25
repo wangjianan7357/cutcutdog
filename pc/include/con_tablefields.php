@@ -42,6 +42,22 @@ return array(
         PRIMARY KEY ( `id` )',
 
     /** 
+     * 会员宠物
+     */
+    'mypet' => '
+        `id` int( 8 ) NOT NULL AUTO_INCREMENT,
+        `mid` INT( 8 ) NOT NULL DEFAULT 0 , 
+        `type` varchar( 16 ) NOT NULL DEFAULT "",
+        `size` varchar( 16 ) NOT NULL DEFAULT "",
+        `name` varchar( 16 ) NOT NULL DEFAULT "",
+        `src` varchar( 32 ) NOT NULL DEFAULT "",
+        `number` varchar( 10 ) NOT NULL DEFAULT "",
+        `remark` varchar( 256 ) NOT NULL DEFAULT "",
+        `valid` tinyint( 1 ) NOT NULL DEFAULT 0,
+        `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY ( `id` )',
+
+    /** 
      * 会员订单
      * mid 会员 id
      * type;

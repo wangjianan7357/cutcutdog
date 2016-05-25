@@ -63,6 +63,7 @@ $con_db_table = array(
 	'system'    => $child_pre . 'system',
 	'verify'    => $child_pre . 'verify',
 	'order'     => $child_pre . 'order',
+	'mypet'     => $child_pre . 'mypet',
 
 	'property_content' => $child_pre . 'property_content',
 

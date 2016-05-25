@@ -46,8 +46,8 @@
 									</li>
 									<li class="mui-table-view-cell">
 										<a>選擇類別
-											<select id="discuss-category"></select>
-											<script id="discuss-category-code" type="text/html">
+											<select id="product-category"></select>
+											<script id="product-category-code" type="text/html">
 											<% for (var i in list) { %>
 												<option value="<%= list[i]["id"] %>"><%= list[i]["name"] %></option>
 											<% } %>
@@ -56,12 +56,12 @@
 									</li>
 									<li class="mui-table-view-cell">
 										<a>標題
-											<input value="" id="discuss_name"  style=" height:30px ;width:90%;">
+											<input value="" id="product_name"  style=" height:30px ;width:90%;">
 										</a>
 									</li>
 									<li class="mui-table-view-cell">
 										<a>
-											<textarea id="discuss_desp">描述</textarea>
+											<textarea id="product_desp">描述</textarea>
 										</a>
 									</li>
 									<li class="mui-table-view-cell">
@@ -97,7 +97,7 @@
 			async: true,
 			success: function(json) {
 				if(!json.error) {
-					jQuery("#discuss-category").html(template('discuss-category-code', json));
+					jQuery("#product-category").html(template('product-category-code', json));
 					
 				} else {
 					plus.nativeUI.toast(json.message);
@@ -140,7 +140,7 @@
 	};
 	
 	document.getElementById("submit-button").addEventListener("tap", function(event) {
-		if(!jQuery("#discuss_name").val()) {
+		if(!jQuery("#product_name").val()) {
 			plus.nativeUI.toast("請輸入標題！");
 			return false;	
 		}
@@ -152,11 +152,11 @@
 		
 		uploadFileData(jQuery("#picture-path").val(), {
 				"action": "insert",
-				"sbt_name": jQuery("#discuss_name").val(),
-				"sbt_desp": jQuery("#discuss_desp").val(),
-				"sbt_cid": jQuery("#discuss-category").val()
+				"sbt_name": jQuery("#product_name").val(),
+				"sbt_desp": jQuery("#product_desp").val(),
+				"sbt_cid": jQuery("#product-category").val()
 			}, 
-			"saas/info.php", 
+			"saas/product.php", 
 			function(res) {
 				if (!res.error) {
 					plus.nativeUI.toast("發表成功！");
