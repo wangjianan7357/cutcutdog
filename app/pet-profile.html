@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="css/feedback-page.css" />
+
+	<script src="js/mui.min.js "></script>
+	<script src="js/mui.view.js "></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/basic.js"></script>
+</head>
+
+<body class="mui-fullscreen">
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
+		<h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
+		<div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
+	</header>
+
+	<!--页面主结构开始-->
+	<div id="app" class="mui-views">
+		<div class="mui-view">
+			<div class="mui-navbar">
+
+			</div>
+			<div class="mui-pages">
+				<!--单页面开始-->
+				<div id="account" class="mui-page">
+					<div class="mui-page-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									
+									<li class="mui-table-view-cell">
+										<a>寵物類型<input value="" class="mui-pull-right" name="params[type]"></a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a>寵物size<span class="mui-pull-right" name="params[size]"></span></a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a>名稱<span class="mui-pull-right" name="params[name]"></span></a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a>備註<span class="mui-pull-right" name="params[remark]"></span></a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a>数量<span class="mui-pull-right" name="params[number]"></span></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--页面主结构结束-->
+
+	<script>
+	mui.init();
+
+	//初始化单页的区域滚动
+	mui('.mui-scroll-wrapper').scroll();
+
+	//分享操作
+	var member = {};
+
+	mui.plusReady(function() {
+		member = myStorage.getItem("member");
+
+		mui.ajax({
+			type: "post",
+			url: domain + "saas/member.php",
+			dataType: "json",
+			data: {
+				action: "profile",
+				name: member.name,
+				id: member.id
+			},
+			async: true,
+			success: function(json) {
+				if(!json.error) {
+					assignTmpl(json);
+					initImgPreview();
+					
+				} else {
+					plus.nativeUI.toast(json.message);
+				}
+			},
+			error: function(xhr, type, errorThrown) {
+
+			}
+		});
+
+	});
+
+	setTimeout(function () {
+		initImgPreview();
+	}, 500);
+	
+	//更换图片
+	mui(".mui-table-view-cell").on("tap", "#head", function(e) {
+		if(mui.os.plus){
+			var a = [{
+				title: "从手机相册选择"
+			}];
+			plus.nativeUI.actionSheet({
+				title: "修改图片",
+				cancel: "取消",
+				buttons: a
+			}, function(b) {
+				switch (b.index) {
+					case 0:
+						break;
+					case 1:
+						getGalleryImg();
+						break;
+					default:
+						break
+				}
+			})	
+		}
+		
+	});
+
+	function getGalleryImg() {
+		plus.gallery.pick(function(path) {
+			uploadFileData(path, {"action": "update"}, "saas/member.php", function(res) {
+				assignTmpl(res);
+				initImgPreview();				
+			});
+		});
+	};
+
+	document.getElementById("head-img1").addEventListener('tap', function(e) {
+		e.stopPropagation();
+	});
+
+	function initImgPreview() {
+		var imgs = document.querySelectorAll("img.mui-action-preview");
+		imgs = mui.slice.call(imgs);
+		if (imgs && imgs.length > 0) {
+			if (document.getElementById("__mui-imageview__")) {
+				document.body.removeChild(document.getElementById("__mui-imageview__"));
+			}
+			
+			var slider = document.createElement("div");
+			slider.setAttribute("id", "__mui-imageview__");
+			slider.classList.add("mui-slider");
+			slider.classList.add("mui-fullscreen");
+			slider.style.display = "none";
+			slider.addEventListener("tap", function() {
+				slider.style.display = "none";
+			});
+			slider.addEventListener("touchmove", function(event) {
+				event.preventDefault();
+			});
+			var slider_group = document.createElement("div");
+			slider_group.setAttribute("id", "__mui-imageview__group");
+			slider_group.classList.add("mui-slider-group");
+			imgs.forEach(function(value, index, array) {
+				//给图片添加点击事件，触发预览显示；
+				value.addEventListener('tap', function() {
+					slider.style.display = "block";
+					_slider.refresh();
+					_slider.gotoItem(index, 0);
+				})
+				var item = document.createElement("div");
+				item.classList.add("mui-slider-item");
+				var a = document.createElement("a");
+				var img = document.createElement("img");
+				img.setAttribute("src", value.src);
+				a.appendChild(img)
+				item.appendChild(a);
+				slider_group.appendChild(item);
+			});
+			slider.appendChild(slider_group);
+			document.body.appendChild(slider);
+			var _slider = mui(slider).slider();
+		}
+	}
+	</script>
+
+</body>
+</html>
