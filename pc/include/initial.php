@@ -12,7 +12,7 @@ $cur_catalog = array();
 
 // catalog information
 $info_list = array();
-$products_list = array();
+$product_list = array();
 $links_list = array();
 $catalog_list = array();
 
@@ -115,7 +115,7 @@ if ($cur_catalog) {
 // recommend products
 $products_recom = array();
 
-$getdata = $my_db->selectRow('*', 'products', array('recom > 0 AND valid = 1'), array('field' => 'recom', 'method' => 'DESC'));
+$getdata = $my_db->selectRow('*', 'product', array('recom > 0 AND valid = 1'), array('field' => 'recom', 'method' => 'DESC'));
 while($result = mysql_fetch_array($getdata)){
 	if (isset($result['price'])) {
 		$result['price'] = number_format($result['price'], 2, '.', ',');

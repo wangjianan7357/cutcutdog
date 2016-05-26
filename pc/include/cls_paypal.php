@@ -12,9 +12,9 @@ class Paypal {
 		global $con_lang_current;
 
 		$this->api = 'https://www.paypal.com/cgi-bin/webscr';
-		$this->api = 'https://www.sandbox.paypal.com/cgi-bin/webscr';	// 测试
+		//$this->api = 'https://www.sandbox.paypal.com/cgi-bin/webscr';	// 测试
 
-		$this->account = 'wangjianan7357-facilitator@163.com'; //systemConfig('paypal_setting');
+		$this->account = 'petchat2016@gmail.com'; //systemConfig('paypal_setting');
 		$this->exchange_rate = 1; //systemConfig('exchange_rate');
 		$this->language = $con_lang_current;
 	}
@@ -79,7 +79,7 @@ class Paypal {
 		$form_text .= '<input type="hidden" name="notify_url" value="' . $notify_url . '" />';
 
 		// 语言地区
-		if($this->language == 'tw'){
+		if($this->language == 'tw' || $this->language == 'cn'){
 			$form_text .= '<input type="hidden" name="lc" value="Chinese" />';
 			$form_text .= '<input type="hidden" name="locale.x" value="zh_HK" />';
 

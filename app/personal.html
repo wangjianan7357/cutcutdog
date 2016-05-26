@@ -75,7 +75,7 @@
 		<div class="serv-fw-persona" style="padding-top: 1px;" id="list-view"></div>
 		<script id="list-view-code" type="text/html">
 		<% for (var i in list) { %>
-			<div class="margin1"><a href="photo-list.html?mid=<%= member.id %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></a></div>
+			<div class="margin1"><a href="photo-list.html?id=<%= list[i]["id"] %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></a></div>
 		<% } %>
 		</script>
 	</div>	
