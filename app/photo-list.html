@@ -167,6 +167,16 @@
 
 		var page = 1;
 		var count = 0;
+		var where =  {cid: "15,"};
+
+		if (getUrlParam("mid")) {
+			where["mid"] = getUrlParam("mid");
+		}
+
+		if (getUrlParam("id")) {
+			where["id"] = getUrlParam("id");
+		}
+
 		/**
 		 * 上拉加载具体业务实现
 		 */
@@ -174,11 +184,12 @@
 			setTimeout(function() {
 				mui('#pullrefresh').pullRefresh().endPullupToRefresh((++ count > 2)); //参数为true代表没有更多数据了。
 
+
 				mui.ajax({
 					type: "post",
 					url: domain + "saas/info.php",
 					dataType: "json",
-					data: {action: "list", where: {cid: "15,", mid: getUrlParam("mid")}, type: 5, page: page},
+					data: {action: "list", where: where, type: 5, page: page},
 					async: true,
 					success: function(json) {
 						if(!json.error) {
@@ -295,7 +306,7 @@
 				type: "post",
 				url: domain + "saas/info.php",
 				dataType: "json",
-				data: {action: "list", where: {cid: "15,", mid: getUrlParam("mid")}, type: 5, page: page},
+				data: {action: "list", where: where, type: 5, page: page},
 				async: true,
 				success: function(json) {
 					if(!json.error) {
