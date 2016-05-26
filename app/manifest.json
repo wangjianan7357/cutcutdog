@@ -948,7 +948,8 @@
 					"css/mui.min.css",
 					"images/home.png",
 					"css/mui.poppicker.css",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"used-list.html"
@@ -1162,7 +1163,8 @@
 				"refer": [
 					"login.html",
 					"profile.html",
-					"pet-information.html"
+					"pet-information.html",
+					"index.html"
 				],
 				"priority": 0
 			},
