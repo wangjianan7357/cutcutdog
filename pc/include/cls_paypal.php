@@ -27,7 +27,7 @@ class Paypal {
 		$this->data['number'] 	= $result['number'];
 		$this->data['amount']	= sprintf("%01.2f", $result['amount'] / $this->exchange_rate);
 		$this->data['num']		= 1;
-		$this->data['name']		= 'Dnaber auto parts';
+		$this->data['name']		= 'Pets';
 	}
 
 	//生成数据信封

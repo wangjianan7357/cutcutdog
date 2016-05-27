@@ -39,6 +39,6 @@ $my_db->saveRow('order', $submit);
 
 if ($amount > 0) {
     $payment = new Paypal();
-    $payment->getOrderData($_POST['sbt_number']);
+    $payment->getOrderData($_POST['sbt_id']);
     echo $payment->createForm();
 }
