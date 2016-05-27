@@ -9,11 +9,24 @@ $_POST['sbt_status'] = 1;
 $_POST['sbt_read'] = 0;
 $_POST['sbt_fields']['products'] = array();
 
-$account = 0;
-foreach ($_POST['product'] as $key => $val) {
-    $_POST['sbt_fields']['products'][] = $product_list[$key];
-    $account += $product_list[$key]['sale'] * $val;
+$_POST['sbt_id'] = $my_db->selectMax('order') + 1;
+$_POST['sbt_id'] = ($_POST['sbt_id'] < 1000000) ? ($_POST['sbt_id'] + 1000000) : $_POST['sbt_id'];
+
+$amount = 0;
+foreach ($_POST['sbt_product'] as $key => $val) {
+    $product = array();
+    $product['name'] = $product_list[$key]['name'];
+    $product['id'] = $product_list[$key]['id'];
+    $product['sale'] = $product_list[$key]['sale'];
+    $product['number'] = $val;
+
+    $_POST['sbt_fields']['products'][] = $product;
+    $amount += $product_list[$key]['sale'] * $val;
 }
+
+$_POST['sbt_amount'] = $amount;
+$_POST['sbt_fields'] = json_encode($_POST['sbt_fields']);
+$_POST['sbt_number'] = $_POST['sbt_id'] . time();
 
 $submit = array();
 $submit_arr = array('id', 'number', 'mid', 'email', 'name', 'phone', 'address', 'amount', 'fields', 'status', 'read');
@@ -24,8 +37,8 @@ for($i = 0; $i < count($submit_arr); $i++){
 
 $my_db->saveRow('order', $submit);
 
-if ($cur_order['amount'] > 0) {
+if ($amount > 0) {
     $payment = new Paypal();
-    $payment->getOrderData($cur_order['id']);
-    //echo $payment->createForm();
+    $payment->getOrderData($_POST['sbt_number']);
+    echo $payment->createForm();
 }

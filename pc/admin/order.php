@@ -12,6 +12,7 @@ if($_GET['action'] == 'edt'){
 
 	if($_GET['num']){
 		$outcome = $my_db->fetchOne('order', array('id' => $_GET['num']));
+		$outcome['fields'] = json_decode($outcome['fields'], true);
 	}
 
 	if($_POST['del'] == 'true'){
@@ -72,6 +73,7 @@ if($_GET['action'] == 'edt'){
 		function __call($method, $str) {
 			switch ($this->namespace . '_' . $method) {
 				case '1_fun1':
+					return '$' . $str[0];
 					
 			}
 		}
@@ -81,13 +83,11 @@ if($_GET['action'] == 'edt'){
 		array(
 			array('__all', 'edit'),
 			'id' => 'ID', 
-			'type' => array('類型', 'select', array($cms_member_type)),
 			'number' => array('訂單號', 'text'), 
-			'email' => '郵箱', 
-			'mobile' => '電話', 
-			'date' => array('加入時間', 'read'), 
-			'amount' => array('總價', 'read', array(new FieldFun(2))), 
-			'valid' => array('有效', 'checkbox'),
+			'name' => '姓名', 
+			'phone' => '電話', 
+			'amount' => array('總價', 'read', array(new FieldFun(1))), 
+			'date' => array('購買時間', 'read'), 
 			array('__edit', 'edit', array('power' => 'order', 'method' => array('quick' => 2, 'detail' => 2)))
 		),
 		array(
