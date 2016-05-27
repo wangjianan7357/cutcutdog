@@ -60,6 +60,11 @@
 										</a>
 									</li>
 									<li class="mui-table-view-cell">
+										<a>價格
+											<input value="" id="product_sale"  style=" height:30px ;width:90%;">
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
 										<a>
 											<textarea id="product_desp">描述</textarea>
 										</a>
@@ -153,6 +158,7 @@
 		uploadFileData(jQuery("#picture-path").val(), {
 				"action": "insert",
 				"sbt_name": jQuery("#product_name").val(),
+				"sbt_sale": jQuery("#product_sale").val(),
 				"sbt_desp": jQuery("#product_desp").val(),
 				"sbt_cid": jQuery("#product-category").val()
 			}, 

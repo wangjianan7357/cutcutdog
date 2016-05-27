@@ -88,6 +88,7 @@ if ($_REQUEST['action'] == 'list') {
         'src' => $filename,
         'mid' => $_POST['id'],
         'name' => $_POST['sbt_name'],
+        'sale' => $_POST['sbt_sale'],
         'desp' => isset($_POST['sbt_desp']) ? $_POST['sbt_desp'] : '',
         'cid' => $_POST['sbt_cid'] . ',',
         'valid' => 1,
