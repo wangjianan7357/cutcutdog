@@ -29,6 +29,7 @@
 			<div class="mui-navbar">
 
 			</div>
+
 			<div class="mui-pages">
 				<!--单页面开始-->
 				<div id="account" class="mui-page">
@@ -36,21 +37,20 @@
 						<div class="mui-scroll-wrapper">
 							<div class="mui-scroll">
 								<ul class="mui-table-view">
-									
 									<li class="mui-table-view-cell">
-										<a>寵物類型<input value="" class="mui-pull-right" name="params[type]"></a>
+										<a>寵物類型 <span class="mui-pull-right" data-info="mypet.type"></span></a>
 									</li>
 									<li class="mui-table-view-cell">
-										<a>寵物size<span class="mui-pull-right" name="params[size]"></span></a>
+										<a>寵物size<span class="mui-pull-right" data-info="mypet.size"></span></a>
 									</li>
 									<li class="mui-table-view-cell">
-										<a>名稱<span class="mui-pull-right" name="params[name]"></span></a>
+										<a>名稱<span class="mui-pull-right" data-info="mypet.name"></span></a>
 									</li>
 									<li class="mui-table-view-cell">
-										<a>備註<span class="mui-pull-right" name="params[remark]"></span></a>
+										<a>備註<span class="mui-pull-right" data-info="mypet.remark"></span></a>
 									</li>
 									<li class="mui-table-view-cell">
-										<a>数量<span class="mui-pull-right" name="params[number]"></span></a>
+										<a>数量<span class="mui-pull-right" data-info="mypet.number"></span></a>
 									</li>
 								</ul>
 							</div>
@@ -77,18 +77,18 @@
 
 		mui.ajax({
 			type: "post",
-			url: domain + "saas/member.php",
+			url: domain + "saas/mypet.php",
 			dataType: "json",
 			data: {
 				action: "profile",
 				name: member.name,
-				id: member.id
+				id: member.id,
+				where: {id: getUrlParam("id")}
 			},
 			async: true,
 			success: function(json) {
 				if(!json.error) {
 					assignTmpl(json);
-					initImgPreview();
 					
 				} else {
 					plus.nativeUI.toast(json.message);

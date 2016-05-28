@@ -902,7 +902,8 @@
 			"js/basic.js",
 			"js/mui.min.js",
 			"css/mui.min.css",
-			"personal.html"
+			"personal.html",
+			"images/xz.png"
 		],
 		"refer": [
 			"personal.html"

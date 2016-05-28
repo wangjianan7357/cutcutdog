@@ -77,7 +77,7 @@
 				<div class="floa"><input type="text" class="input1" id="sbt_type" placeholder="品種填寫"></div>
 			</div>
 			<div class="serv-my-zi mtop m-boot">
-				<div class="floa">寵物size</div>
+				<div class="floa">寵物Size</div>
 				<div class="floa sa" data-action="select">
 					<div class="sw-size"><strong>XS</strong><BR><font>&lt;3kg</font></div>
 					<input type="hidden" name="sbt_size" value="XS" data-active="false">
@@ -133,6 +133,16 @@
 		mui.plusReady(function() {
 			member = myStorage.getItem("member");
 
+			jQuery("[data-action='select']").click(function() {
+				if ($(this).html().indexOf("<div class=\"sh_bg\"></div>") != -1) {
+					$(this).html($(this).html().replace("<div class=\"sh_bg\"></div>", ""));
+					$(this).find("input").attr("data-active", "false");
+				} else {
+					$(this).html($(this).html() + "<div class=\"sh_bg\"></div>");
+					$(this).find("input").attr("data-active", "true");
+				}
+			});
+
 			// 数量
 			var numberPicker = new mui.PopPicker({layer: 1});
 			numberPicker.setData([{value: 1, text: 1}, {value: 2, text: 2}, {value: 3, text: 3}, {value: 4, text: 4}, {value: 5, text: 5}, {value: 6, text: 6}, {value: 7, text: 7}, {value: 8, text: 8}, {value: 9, text: 9}, {value: 10, text: 10}]);
@@ -146,15 +156,15 @@
 			}, false);
 
 			document.getElementById("submit-mypet").addEventListener("tap", function(e) {
-				var pet = "";
-				$("[name='sbt_pet']").each(function(){
+				var size = "";
+				$("[name='sbt_size']").each(function(){
 					if ($(this).attr("data-active") == "true" && $(this).val()) {
-						pet += (pet ? ", " : "") + $(this).val();
+						size += (size ? ", " : "") + $(this).val();
 					}
 				});
 
-				if (!pet) {
-					plus.nativeUI.toast("請選擇寵物類型");
+				if (!size) {
+					plus.nativeUI.toast("請選擇寵物Size");
 					return;
 				}
 
