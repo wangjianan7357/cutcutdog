@@ -892,7 +892,8 @@
 					"images/Petchat.png",
 					"cart.html",
 					"images/buy.png",
-					"images/gif.gif"
+					"images/gif.gif",
+					"checkout.html"
 				],
 				"refer": [
 					"buy-cart.html"

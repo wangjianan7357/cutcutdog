@@ -365,12 +365,14 @@
 			"buy-list.html",
 			"cart.html",
 			"images/buy.png",
-			"images/gif.gif"
+			"images/gif.gif",
+			"checkout.html"
 		],
 		"refer": [
 			"buy-cart.html",
 			"buy-list.html",
-			"cart.html"
+			"cart.html",
+			"checkout.html"
 		]
 	},
 	"buy-list.html": {
