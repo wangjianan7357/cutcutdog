@@ -397,7 +397,9 @@
 					"images/icon-10.png",
 					"css/mui.poppicker.css",
 					"css/dzcss.css",
-					"js/mui.view.js"
+					"js/mui.view.js",
+					"images/gif.gif",
+					"images/bg_two.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -1161,12 +1163,12 @@
 					"images/muwu.jpg",
 					"pet-profile.html",
 					"images/user-photo.png",
-					"photo-list.html"
+					"photo-list.html",
+					"pet-information.html"
 				],
 				"refer": [
 					"login.html",
 					"profile.html",
-					"pet-information.html",
 					"index.html"
 				],
 				"priority": 0
@@ -1194,7 +1196,8 @@
 					"images/Petchat.png",
 					"fonts/mui.ttf",
 					"images/top_bg.png",
-					"images/bg_two.png"
+					"images/bg_two.png",
+					"personal.html"
 				],
 				"refer": [],
 				"priority": 0
