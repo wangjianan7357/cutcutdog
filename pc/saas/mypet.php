@@ -22,6 +22,15 @@ if ($_REQUEST['action'] == 'send') {
         callback(array('error' => 4));
     }
 
+} else if ($_REQUEST['action'] == 'profile') {
+    $mypet = $my_db->fetchOne('mypet', array('id' => $_POST['where']['id']));
+
+    if (!empty($mypet)) {
+        callback(array('error' => 0, 'mypet' => $mypet));
+    } else {
+        callback(array('error' => 5));
+    }
+
 } else if ($_REQUEST['action'] == 'list') {
     checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
 
