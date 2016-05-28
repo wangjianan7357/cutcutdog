@@ -52,12 +52,12 @@
 			</li>
 			<li class="mui-table-view-cell mui-media">
 				<a href="javascript:;">
-					聯繫電話：<input name="sbt_phone" value="">
+					聯繫電話：<input name="sbt_phone" value="" data-info="value=member.phone">
 				</a>
 			</li>
 			<li class="mui-table-view-cell mui-media">
 				<a href="javascript:;">
-					住所地址：<input name="sbt_address" value="">
+					住所地址：<input name="sbt_address" value="" data-info="value=member.address">
 				</a>
 			</li>
 		</ul>
@@ -99,6 +99,29 @@
 			var cart = initCart();
 			jQuery("[name='sbt_mid']").val(member.id);
 			jQuery("[name='sbt_name']").val(member.name);
+
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/member.php",
+				dataType: "json",
+				data: {
+					action: "profile",
+					name: member.name,
+					id: member.id
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						assignTmpl(json);
+						
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {
+
+				}
+			});
 
 			if (cart) {
 				mui.ajax({
