@@ -46,11 +46,14 @@
 					</div>
 					
 					<div class="perso-top-center">
-						<ul>
-						<li><a href="pet-profile.html" data-action="webview"><span class="mui-icon mui-icon-qq" style=" color:#fff ; font-size:28px ;"></span></a></li>	
-						<li><a href="#" data-action="openwindow"><span class="mui-icon mui-icon-qq" style=" color:#fff ; font-size:28px ;"></span></a></li>
-						<li><a href="pet-information.html" data-action="webview"><span class="mui-icon mui-icon-plus-filled" style=" color:#fff ; font-size:28px ;"></span></a></li>
-						</ul>	
+						<ul id="pet-list"></ul>
+						<script id="pet-list-code" type="text/html">
+						<% for (var i in mypet) { %>
+							<li><a href="pet-profile.html?id=<%= mypet[i]["id"] %>" data-action="webview"><span class="mui-icon mui-icon-qq" style=" color:#fff ; font-size:28px ;"></span></a></li>	
+						<% } %>
+
+						<li><a href="pet-information.html" data-action="webview"><span class="mui-icon mui-icon-plus-filled" style=" color:#fff; font-size:28px;"></span></a></li>
+						</script>
 					</div>
 					<div class="perso-top-right">
 						<a href="profile.html" data-action="webview"><span class="mui-icon mui-icon-compose" style=" color:#fff ; font-size:34px ;"></span></a>
@@ -60,9 +63,9 @@
 				<div style=" height:200px ;"> </div>
 			    <div class="perso-top-center-two">
 					<ul>
-						<li>1549<p>帖子</p></li>	
-						<li>100<p>相片</p></li>
-						<li>300<p>讚好</p></li>
+						<li>154<p>帖子</p></li>	
+						<li>10<p>相片</p></li>
+						<li>30<p>讚好</p></li>
 					</ul>	
 				</div>
 			</div>
@@ -116,8 +119,6 @@
 
 			jQuery("[data-personal='name']").html(member.name);
 
-
-
 			mui.ajax({
 				type: "post",
 				url: domain + "saas/member.php",
@@ -125,12 +126,14 @@
 				data: {
 					action: "profile",
 					name: member.name,
-					id: member.id
+					id: member.id,
+					need: "mypet"
 				},
 				async: true,
 				success: function(json) {
 					if(!json.error) {
 						assignTmpl(json);
+						jQuery("#pet-list").html(template('pet-list-code', json));
 						
 					} else {
 						plus.nativeUI.toast(json.message);
@@ -153,7 +156,7 @@
 				async: true,
 				success: function(json) {
 					if(!json.error) {
-						jQuery("#list-view").html(jQuery("#list-view").html() + template('list-view-code', json));
+						jQuery("#list-view").html(template('list-view-code', json));
 						
 					} else {
 						plus.nativeUI.toast(json.message);

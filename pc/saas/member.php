@@ -50,6 +50,21 @@ if ($_REQUEST['action'] == 'login') {
 
     $member = $my_db->fetchOne('member', $submit);
 
+    if ($_POST['need']) {
+        $need = explode(',', $_POST['need']);
+
+        foreach ($need as $val) {
+            if ($val == 'mypet') {
+                $member['mypet'] = array();
+
+                $getdata = $my_db->selectRow('id, name', 'mypet', $where);
+                while ($result = mysql_fetch_array($getdata)) {
+                    $member['mypet'][$result['id']] = $result;
+                }
+            }
+        }
+    }
+
     if (!empty($member)) {
         callback(array('error' => 0, 'member' => $member));
     } else {

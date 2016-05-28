@@ -72,10 +72,9 @@
 		<div class="top_bg"></div>
 		
 		<div class="mui-content-padded" style=" margin:0px; padding:10px;">
-			
-		<div class="serv-my-zi mar m-boot">
+			<div class="serv-my-zi mar m-boot">
 				<div class="floa">寵物類型</div>
-				<div class="floa"><input type="text" class="input1" id="sbt_name" placeholder="品種填寫"></div>
+				<div class="floa"><input type="text" class="input1" id="sbt_type" placeholder="品種填寫"></div>
 			</div>
 			<div class="serv-my-zi mtop m-boot">
 				<div class="floa">寵物size</div>
@@ -103,9 +102,8 @@
 			
 			<div class="serv-my-zi mar m-boot">
 				<div class="floa">名稱</div>
-				<div class="floa"><input type="text" class="input1" id="sbt_name" placeholder="姓名填寫"></div>
+				<div class="floa"><input type="text" class="input1" id="sbt_name" placeholder="名稱填寫"></div>
 			</div>
-
 
 			<div class="serv-my-zi mar m-boot">
 				<div class="floa">備註</div>
@@ -113,15 +111,13 @@
 			</div>
             
             <div class="serv-my-zi mar" id="showNumberPicker">
-				<button  class="mui-btn mui-btn-block-two" type="button"><span data-picker="number">数量</span></button>
-				
+				<button class="mui-btn mui-btn-block-two" type="button"><span data-picker="number">数量</span></button>
 				<div class="butt_right-two" ><img src="images/Info_button-02.png"></div>
+				<input type="hidden" id="sbt_number" value="1">
 			</div>
            
-			
-			
-			<div class="serv-my-zi mar"><span class="serv-ljyy-two" id="submit-booking">提交</span></div>
-			<div style=" height:90px ;"> </div>
+			<div class="serv-my-zi mar"><span class="serv-ljyy-two" id="submit-mypet">提交</span></div>
+			<div style="height:90px ;"> </div>
 		</div>	
 	</div>
 
@@ -149,53 +145,7 @@
 				});
 			}, false);
 
-			mui.ajax({
-				type: "post",
-				url: domain + "saas/member.php",
-				dataType: "json",
-				data: {
-					action: "detail",
-					name: member.name,
-					id: member.id,
-					where: {id: getUrlParam("id")}
-				},
-				async: true,
-				success: function(json) {
-					if(!json.error) {
-
-						assignTmpl(json);
-						jQuery("#service-list").html(template('service-list-code', json));
-
-						jQuery("[data-action='select']").click(function() {
-							if ($(this).html().indexOf("<div class=\"sh_bg\"></div>") != -1) {
-								$(this).html($(this).html().replace("<div class=\"sh_bg\"></div>", ""));
-								$(this).find("input").attr("data-active", "false");
-							} else {
-								$(this).html($(this).html() + "<div class=\"sh_bg\"></div>");
-								$(this).find("input").attr("data-active", "true");
-							}
-						});
-							
-					} else {
-						plus.nativeUI.toast(json.message);
-					}
-				},
-				error: function(xhr, type, errorThrown) {}
-			});
-
-			document.getElementById("submit-booking").addEventListener("tap", function(e) {
-				var service = "";
-				$("[name='sbt_service']").each(function(){
-					if ($(this).attr("data-active") == "true" && $(this).val()) {
-						service += (service ? ", " : "") + $(this).val();
-					}
-				});
-
-				if (!service) {
-					plus.nativeUI.toast("請選擇服務類型");
-					return;
-				}
-
+			document.getElementById("submit-mypet").addEventListener("tap", function(e) {
 				var pet = "";
 				$("[name='sbt_pet']").each(function(){
 					if ($(this).attr("data-active") == "true" && $(this).val()) {
@@ -208,44 +158,17 @@
 					return;
 				}
 
-				var size = "";
-				$("[name='sbt_size']").each(function(){
-					if ($(this).attr("data-active") == "true" && $(this).val()) {
-						size += (size ? ", " : "") + $(this).val();
-					}
-				});
-
-				if (!size) {
-					plus.nativeUI.toast("請選擇尺寸");
-					return;
-				}
-
 				if (!jQuery("#sbt_name").val()) {
-					plus.nativeUI.toast("請填寫姓名");
-					return;
-				}
-
-				if (!jQuery("#sbt_phone").val()) {
-					plus.nativeUI.toast("請填寫電話");
-					return;
-				}
-
-				if (!jQuery("#sbt_address").val()) {
-					plus.nativeUI.toast("請填寫地址");
-					return;
-				}
-
-				if (!jQuery("#sbt_time").val()) {
-					plus.nativeUI.toast("請填寫上門日期");
+					plus.nativeUI.toast("請填寫名稱");
 					return;
 				}
 
 				submitting = true;
-				$("#submit-booking").html("正在提交");
+				$("#submit-mypet").html("正在提交");
 
 				mui.ajax({
                     type: "post",
-                    url: domain + "saas/booking.php",
+                    url: domain + "saas/mypet.php",
                     dataType: "json",
                     data: {
                         action: "send",
@@ -253,31 +176,27 @@
                         name: member.name,
                         params: {
                         	tid: getUrlParam("id"),
-                        	service: service,
-                        	pet: pet,
                         	size: size,
+                        	type: jQuery("#sbt_type").val(),
                         	name: jQuery("#sbt_name").val(),
-                        	phone: jQuery("#sbt_phone").val(),
-                        	address: jQuery("#sbt_address").val(),
                         	number: jQuery("#sbt_number").val(),
-                        	time: jQuery("#sbt_time").val(),
                         	remark: jQuery("#sbt_remark").val()
                         }
                     },
                     async: true,
                     success: function(json) {
                         if(!json.error) {
-                        	alert("預約成功！");
+                        	alert("添加成功！");
 
                         	setTimeout(function(){
-                        		document.location.href = "service-list.html";
+                        		document.location.href = "personal.html";
                         	}, 10);
 
                         } else {
 							plus.nativeUI.toast(json.message);
 
 							submitting = false;
-							$("#submit-booking").html("提交");
+							$("#submit-mypet").html("提交");
 						}
                     },
                     error: function(xhr, type, errorThrown) {
