@@ -8,6 +8,7 @@ if ($_REQUEST['action'] == 'send') {
     $submit = array(
         'mid' => $_POST['id'],
         'src' => '',
+        'type' => $_POST['params']['type'],
         'size' => $_POST['params']['size'],
         'name' => $_POST['params']['name'],
         'number' => $_POST['params']['number'],

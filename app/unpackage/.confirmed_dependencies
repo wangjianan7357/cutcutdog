@@ -819,7 +819,8 @@
 			"pet-\r\nprofile.html",
 			"images/user-photo.png",
 			"photo-list.html",
-			"pet-information.html"
+			"pet-information.html",
+			"pet-profile.html"
 		]
 	},
 	"pet-\r\ninformation.html": {
@@ -880,7 +881,11 @@
 			"images/Petchat.png",
 			"css/feedback-page.css",
 			"js/basic.js",
-			"js/mui.view.js"
+			"js/mui.view.js",
+			"personal.html"
+		],
+		"refer": [
+			"personal.html"
 		]
 	},
 	"pet-information.html": {

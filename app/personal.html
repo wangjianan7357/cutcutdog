@@ -133,7 +133,7 @@
 				success: function(json) {
 					if(!json.error) {
 						assignTmpl(json);
-						jQuery("#pet-list").html(template('pet-list-code', json));
+						jQuery("#pet-list").html(template('pet-list-code', json.member));
 						
 					} else {
 						plus.nativeUI.toast(json.message);

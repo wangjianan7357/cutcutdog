@@ -57,7 +57,7 @@ if ($_REQUEST['action'] == 'login') {
             if ($val == 'mypet') {
                 $member['mypet'] = array();
 
-                $getdata = $my_db->selectRow('id, name', 'mypet', $where);
+                $getdata = $my_db->selectRow('id, name', 'mypet', array('mid' => $_REQUEST['id']));
                 while ($result = mysql_fetch_array($getdata)) {
                     $member['mypet'][$result['id']] = $result;
                 }
