@@ -70,7 +70,9 @@
 			"images/bg_two.png"
 		],
 		"refer": [
-			"discuss-list.html"
+			"discuss-list.html",
+			"publish-discuss.html",
+			"my-discuss.html"
 		]
 	},
 	"discuss-detail.html": {
@@ -167,7 +169,8 @@
 			"my-photo.html",
 			"photo-list-pl.html",
 			"photo-comments.html",
-			"personal.html"
+			"personal.html",
+			"setting.html"
 		]
 	},
 	"photo-detail.html": {
@@ -914,6 +917,17 @@
 		],
 		"refer": [
 			"personal.html"
+		]
+	},
+	"my-discuss.html": {
+		"resources": [
+			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+			"libs/easymob-webim-sdk/json2.js",
+			"js/mui.locker.js",
+			"css/feedback-page.css",
+			"images/user-photo.png",
+			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+			"js/mui.view.js"
 		]
 	}
 }

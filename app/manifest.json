@@ -361,7 +361,8 @@
 					"discuss-category.html",
 					"images/pl_top_bg.png",
 					"images/forum_bubble-a.png",
-					"images/forum_bubble-b.png"
+					"images/forum_bubble-b.png",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"discuss-list-nr.html"
@@ -506,7 +507,10 @@
 					"js/mui.previewimage.js",
 					"images/bg_two.png"
 				],
-				"refer": [],
+				"refer": [
+					"publish-discuss.html",
+					"my-discuss.html"
+				],
 				"priority": 0
 			},
 			"profile.html": {
@@ -580,7 +584,9 @@
 					"images/muwu.jpg",
 					"js/common.js"
 				],
-				"refer": [],
+				"refer": [
+					"publish-discuss.html"
+				],
 				"priority": 0
 			},
 			"service-list.html": {
@@ -680,7 +686,8 @@
 				"refer": [
 					"image-list.html",
 					"publish-photo.html",
-					"my-photo.html"
+					"my-photo.html",
+					"setting.html"
 				],
 				"priority": 0
 			},
