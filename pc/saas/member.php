@@ -86,23 +86,32 @@ if ($_REQUEST['action'] == 'login') {
         'id' => $_REQUEST['id'],
     );
 
+    $filename = '';
+
     if ($_FILES['src']['tmp_name']) {
         preg_match('/(\.[\w]{3,4})$/', $_FILES['src']['name'], $match);
 
-        $filename = '_pic_' . $_REQUEST['id'] . '_' . rand(0, 10) . $match[1];
-        if (file_exists('../' . systemConfig('member_img_path') . $con_pic['pre']['member'] . $filename)) {
-            unlink('../' . systemConfig('member_img_path') . $con_pic['pre']['member'] . $filename);
+        $filename = systemConfig('member_img_path') . $con_pic['pre']['member'] . '_pic_' . $_REQUEST['id'] . '_' . rand(0, 10) . $match[1];
+        if (file_exists('../' . $filename)) {
+            unlink('../' . $filename);
         }
 
-        move_uploaded_file($_FILES['src']['tmp_name'], '../' . systemConfig('member_img_path') . $con_pic['pre']['member'] . $filename);
-
-        $member = $my_db->saveRow('member', array('src' => systemConfig('member_img_path') . $con_pic['pre']['member'] . $filename), $where);
+        move_uploaded_file($_FILES['src']['tmp_name'], '../' . $filename);
     }
 
-    $member = $my_db->fetchOne('member', $where);
+    $submit = array(
+        'name' => $_POST['sbt_name'],
+        'phone' => $_POST['sbt_phone'],
+        'email' => $_POST['sbt_email'],
+        'address' => $_POST['sbt_address'],
+    );
 
-    if (!empty($member)) {
-        callback(array('error' => 0, 'member' => $member));
+    if ($filename) {
+        $submit['src'] = $filename;
+    }
+
+    if ($my_db->saveRow('member', $submit, $where)) {
+        callback(array('error' => 0));
     } else {
         callback(array('error' => 5));
     }
