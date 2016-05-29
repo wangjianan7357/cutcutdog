@@ -72,7 +72,8 @@
 		"refer": [
 			"discuss-list.html",
 			"publish-discuss.html",
-			"my-discuss.html"
+			"my-discuss.html",
+			"personal.html"
 		]
 	},
 	"discuss-detail.html": {
@@ -634,7 +635,8 @@
 			"used-detail.html",
 			"publish-discuss.html",
 			"publish-product.html",
-			"setting.html"
+			"setting.html",
+			"my-product.html"
 		]
 	},
 	"used-detail.html": {
@@ -920,6 +922,17 @@
 		]
 	},
 	"my-discuss.html": {
+		"resources": [
+			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+			"libs/easymob-webim-sdk/json2.js",
+			"js/mui.locker.js",
+			"css/feedback-page.css",
+			"images/user-photo.png",
+			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+			"js/mui.view.js"
+		]
+	},
+	"my-product.html": {
 		"resources": [
 			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
 			"libs/easymob-webim-sdk/json2.js",

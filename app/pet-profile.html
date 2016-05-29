@@ -53,8 +53,8 @@
 										<a>数量<span class="mui-pull-right rihg-mr" data-info="mypet.number"></span></a>
 									</li>
 									<li class="mui-table-view-cell">
-										 <div class="zh-good-go" style=" float:right;background-color: #9273bf; text-align: center; margin-top:5px ; margin-bottom:7px ;">
-										 	<a href="cart.html" data-action="openwindow">删 除</a></div>
+										<div class="zh-good-go" style=" float:right;background-color: #9273bf; text-align: center; margin-top:5px ; margin-bottom:7px ;">
+										<a href="javascript:;" data-delete="0">删 除</a></div>
 									</li>
 								</ul>
 							</div>
@@ -103,8 +103,36 @@
 			}
 		});
 
+		jQuery("[data-delete]").click(function() {
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/mypet.php",
+				dataType: "json",
+				data: {
+					action: "delete",
+					name: member.name,
+					id: member.id,
+					where: {id: getUrlParam("id")}
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						alert("刪除成功！");
+						document.location.href = "personal.html";
+						
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {
+
+				}
+			});
+		});
+
 	});
 
+	/*
 	setTimeout(function () {
 		initImgPreview();
 	}, 500);
@@ -190,6 +218,7 @@
 			var _slider = mui(slider).slider();
 		}
 	}
+	*/
 	</script>
 
 </body>

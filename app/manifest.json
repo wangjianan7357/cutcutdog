@@ -509,7 +509,8 @@
 				],
 				"refer": [
 					"publish-discuss.html",
-					"my-discuss.html"
+					"my-discuss.html",
+					"personal.html"
 				],
 				"priority": 0
 			},
@@ -989,7 +990,8 @@
 				"refer": [
 					"publish-discuss.html",
 					"publish-product.html",
-					"setting.html"
+					"setting.html",
+					"my-product.html"
 				],
 				"priority": 0
 			},
@@ -1225,6 +1227,19 @@
 					"css/mui.min.css",
 					"js/basic.js",
 					"personal.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"my-product.html": {
+				"resources": [
+					"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+					"libs/easymob-webim-sdk/json2.js",
+					"js/mui.locker.js",
+					"css/feedback-page.css",
+					"images/user-photo.png",
+					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+					"js/mui.view.js"
 				],
 				"refer": [],
 				"priority": 0

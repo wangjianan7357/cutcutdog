@@ -61,6 +61,13 @@ if ($_REQUEST['action'] == 'login') {
                 while ($result = mysql_fetch_array($getdata)) {
                     $member['mypet'][$result['id']] = $result;
                 }
+            } else if ($val == 'statistic') {
+                $statistic = array();
+                $statistic['photo'] = $my_db->existRow('info', array('mid' => $_REQUEST['id'], 'cid' => '15,'));
+                $statistic['discuss'] = $my_db->existRow('info', array('mid = ' . intval($_REQUEST['id']) . ' AND (cid = "13," OR cid = "14," OR cid = "16," OR cid = "17," OR cid = "18," OR cid = "19,")'));
+                $statistic['likes'] = $my_db->existRow('likes', array('mid' => $_REQUEST['id']));
+
+                $member['statistic'] = $statistic;
             }
         }
     }

@@ -23,6 +23,16 @@ if ($_REQUEST['action'] == 'send') {
         callback(array('error' => 4));
     }
 
+} else if ($_REQUEST['action'] == 'delete') {
+    checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
+
+    if($my_db->deleteRow('mypet', array('id' => $_POST['where']['id']))){
+        callback(array('error' => 0));
+
+    } else {
+        callback(array('error' => 4));
+    }
+
 } else if ($_REQUEST['action'] == 'profile') {
     $mypet = $my_db->fetchOne('mypet', array('id' => $_POST['where']['id']));
 
