@@ -227,7 +227,8 @@
 			"images/bg_two.png"
 		],
 		"refer": [
-			"info-list.html"
+			"info-list.html",
+			"publish-discuss.html"
 		]
 	},
 	"service-list.html": {
@@ -444,7 +445,18 @@
 			"images/Info_icon_tel.png",
 			"images/icon-10.png",
 			"info-detail.html",
-			"info-category.html"
+			"info-category.html",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"js/basic.js",
+			"images/bg_two.png",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png"
 		],
 		"refer": [
 			"info-detail.html",
@@ -759,7 +771,11 @@
 			"css/mui.min.css",
 			"images/home.png",
 			"css/mui.poppicker.css",
-			"images/Petchat.png"
+			"images/Petchat.png",
+			"buy-detail.html"
+		],
+		"refer": [
+			"buy-detail.html"
 		]
 	},
 	"contact.html": {

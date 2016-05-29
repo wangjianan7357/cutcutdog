@@ -334,7 +334,8 @@
 					"images/Info_icon_tel.png",
 					"images/icon-10.png",
 					"images/tu_01.jpg",
-					"images/bg.png"
+					"images/bg.png",
+					"images/bg_two.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -468,7 +469,9 @@
 					"index.html",
 					"images/bg_two.png"
 				],
-				"refer": [],
+				"refer": [
+					"publish-discuss.html"
+				],
 				"priority": 0
 			},
 			"discuss-category.html": {
@@ -1114,7 +1117,8 @@
 					"css/mui.min.css",
 					"images/home.png",
 					"css/mui.poppicker.css",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"buy-detail.html"
 				],
 				"refer": [],
 				"priority": 0

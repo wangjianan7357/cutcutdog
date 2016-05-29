@@ -13,6 +13,7 @@
 
 	<!--App自定义的css-->
 	<style type="text/css">
+	
 		#comment-list {
 			padding:10px 5px 10px 5px;;
 			text-align: left;
@@ -24,7 +25,25 @@
 			border-bottom: 1px  solid #f8f7f7; list-style:none ; padding-left: 5px;height:28px; 
 		}
 		#comment-list li p{color:#666 ;line-height:30px ;}
+		#topPopover {
+			position:absolute;
+			top: 16px;
+			right: 6px;padding: 0px; margin:0px ;
+		}
+		#topPopover .mui-popover-arrow {
+			left: auto;
+			right: 6px;
+		}
 		
+		span.mui-icon {
+			font-size: 14px;
+			color: #007aff;
+			margin-left: -15px;
+			padding-right: 10px;
+		}
+		.mui-popover {
+			height: 150px;
+		}
 	</style>
 	
 	<script src="js/mui.min.js"></script>
@@ -40,7 +59,7 @@
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
 	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-	    <div style="float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
+	    <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold;" href="#topPopover"></a>
 	</header>
 	<div class="mui-content"  style=" padding-bottom:20px ;">
 		<div id="detail-photo" style=" text-align: center;"><img src="images/gif.gif" style="width: 32px; height:32px ;"></div>
@@ -55,7 +74,7 @@
 			<div class="mui-tal" style="margin-top: 15px;" id="phone-detail"></div>
 
 			<script id="phone-detail-code" type="text/html">
-				<a href="tel:<%= detail["tel"] %>"><%= detail["tel"] %></a>
+				<a href="tel:<%= detail["tel"] %>" style=" color:#333 ;"><%= detail["tel"] %></a>
 			</script>
 
 			<input type="hidden" id="aid" data-info="value=detail.id" value="">
@@ -79,7 +98,27 @@
 		</ul>
 	</script>
 	</div>
-	
+	<!--右上角弹出菜单-->
+	<div id="topPopover" class="mui-popover" >
+		<div class="mui-popover-arrow"></div>
+		<div class="mui-scroll-wrapper" style=" position: absolute; top:0px;">
+			<div class="mui-scroll">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a href="publish-discuss.html" class="mui-navigate-right" data-action="openwindow">新增店鋪資料</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="personal.html" class="mui-navigate-right" data-action="openwindow">我的店鋪</a>
+					</li>
+					<li class="mui-table-view-cell"><a href="personal.html" class="mui-navigate-right" data-action="openwindow">個人主頁</a>
+					</li>
+					<li class="mui-table-view-cell">
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+
+	</div>
 	<script type="text/javascript" charset="utf-8">
 		var cata_type = 3;
 		var member = {};
