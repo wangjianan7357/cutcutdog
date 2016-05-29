@@ -470,7 +470,8 @@
 					"images/bg_two.png"
 				],
 				"refer": [
-					"publish-discuss.html"
+					"publish-discuss.html",
+					"personal.html"
 				],
 				"priority": 0
 			},
@@ -1244,6 +1245,29 @@
 					"images/user-photo.png",
 					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
 					"js/mui.view.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"publish-shop.html": {
+				"resources": [
+					"css/feedback-page.css",
+					"js/mui.view.js",
+					"js/template-native.js",
+					"js/mui.picker.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"js/mui.poppicker.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png",
+					"images/Info_button-02.png",
+					"js/basic.js",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css"
 				],
 				"refer": [],
 				"priority": 0
