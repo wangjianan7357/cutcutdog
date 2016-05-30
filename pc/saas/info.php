@@ -146,6 +146,8 @@ if ($_REQUEST['action'] == 'list') {
         'src' => $filename,
         'mid' => $_POST['id'],
         'name' => $_POST['sbt_name'],
+        'tel' => isset($_POST['sbt_tel']) ? $_POST['sbt_tel'] : '',
+        'address' => isset($_POST['sbt_address']) ? $_POST['sbt_address'] : '',
         'desp' => isset($_POST['sbt_desp']) ? $_POST['sbt_desp'] : '',
         'cid' => rtrim($_POST['sbt_cid'], ',') . ',',
         'valid' => 1,
