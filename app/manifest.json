@@ -334,7 +334,8 @@
 					"images/Info_icon_tel.png",
 					"images/icon-10.png",
 					"images/tu_01.jpg",
-					"images/bg.png"
+					"images/bg.png",
+					"images/bg_two.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -361,7 +362,8 @@
 					"discuss-category.html",
 					"images/pl_top_bg.png",
 					"images/forum_bubble-a.png",
-					"images/forum_bubble-b.png"
+					"images/forum_bubble-b.png",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"discuss-list-nr.html"
@@ -467,7 +469,10 @@
 					"index.html",
 					"images/bg_two.png"
 				],
-				"refer": [],
+				"refer": [
+					"publish-discuss.html",
+					"personal.html"
+				],
 				"priority": 0
 			},
 			"discuss-category.html": {
@@ -506,7 +511,11 @@
 					"js/mui.previewimage.js",
 					"images/bg_two.png"
 				],
-				"refer": [],
+				"refer": [
+					"publish-discuss.html",
+					"my-discuss.html",
+					"personal.html"
+				],
 				"priority": 0
 			},
 			"profile.html": {
@@ -580,7 +589,9 @@
 					"images/muwu.jpg",
 					"js/common.js"
 				],
-				"refer": [],
+				"refer": [
+					"publish-discuss.html"
+				],
 				"priority": 0
 			},
 			"service-list.html": {
@@ -680,7 +691,8 @@
 				"refer": [
 					"image-list.html",
 					"publish-photo.html",
-					"my-photo.html"
+					"my-photo.html",
+					"setting.html"
 				],
 				"priority": 0
 			},
@@ -982,7 +994,8 @@
 				"refer": [
 					"publish-discuss.html",
 					"publish-product.html",
-					"setting.html"
+					"setting.html",
+					"my-product.html"
 				],
 				"priority": 0
 			},
@@ -1105,7 +1118,8 @@
 					"css/mui.min.css",
 					"images/home.png",
 					"css/mui.poppicker.css",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"buy-detail.html"
 				],
 				"refer": [],
 				"priority": 0
@@ -1218,6 +1232,42 @@
 					"css/mui.min.css",
 					"js/basic.js",
 					"personal.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"my-product.html": {
+				"resources": [
+					"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+					"libs/easymob-webim-sdk/json2.js",
+					"js/mui.locker.js",
+					"css/feedback-page.css",
+					"images/user-photo.png",
+					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+					"js/mui.view.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"publish-shop.html": {
+				"resources": [
+					"css/feedback-page.css",
+					"js/mui.view.js",
+					"js/template-native.js",
+					"js/mui.picker.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"js/mui.poppicker.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png",
+					"images/Info_button-02.png",
+					"js/basic.js",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css"
 				],
 				"refer": [],
 				"priority": 0

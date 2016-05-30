@@ -63,9 +63,9 @@
 				<div style=" height:200px ;"> </div>
 			    <div class="perso-top-center-two">
 					<ul>
-						<li>154<p>帖子</p></li>	
-						<li>10<p>相片</p></li>
-						<li>30<p>讚好</p></li>
+						<li><span data-info="member.statistic.discuss">0</span><p>帖子</p></li>	
+						<li><span data-info="member.statistic.photo">0</span><p>相片</p></li>
+						<li><span data-info="member.statistic.likes">0</span><p>讚好</p></li>
 					</ul>	
 				</div>
 			</div>
@@ -127,13 +127,13 @@
 					action: "profile",
 					name: member.name,
 					id: member.id,
-					need: "mypet"
+					need: "mypet,statistic"
 				},
 				async: true,
 				success: function(json) {
 					if(!json.error) {
 						assignTmpl(json);
-						jQuery("#pet-list").html(template('pet-list-code', json));
+						jQuery("#pet-list").html(template('pet-list-code', json.member));
 						
 					} else {
 						plus.nativeUI.toast(json.message);

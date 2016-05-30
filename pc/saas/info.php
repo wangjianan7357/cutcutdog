@@ -147,7 +147,7 @@ if ($_REQUEST['action'] == 'list') {
         'mid' => $_POST['id'],
         'name' => $_POST['sbt_name'],
         'desp' => isset($_POST['sbt_desp']) ? $_POST['sbt_desp'] : '',
-        'cid' => $_POST['sbt_cid'] . ',',
+        'cid' => rtrim($_POST['sbt_cid'], ',') . ',',
         'valid' => 1,
         'path' => $chk_post->traFromName('name', array('name' => 'info', 'field' => 'path')),
         'fields' => ''

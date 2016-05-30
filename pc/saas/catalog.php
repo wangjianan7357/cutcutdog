@@ -53,6 +53,7 @@ if ($_REQUEST['action'] == 'list') {
 
             $result['summary'] = cutString(strip_tags($result['desp']), 30);
             $result['member'] = $member[$result['mid']];
+            $result['date'] = substr($result['date'], 0, 10);
             $list[$result['id']] = $result;
         }
     }

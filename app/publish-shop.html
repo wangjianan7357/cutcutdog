@@ -9,10 +9,14 @@
 
 	<link rel="stylesheet" href="css/mui.min.css">
 	<link rel="stylesheet" type="text/css" href="css/feedback-page.css" />
+	<link href="css/mui.picker.css" rel="stylesheet" />
+	<link href="css/mui.poppicker.css" rel="stylesheet" />
 
 	<script src="js/mui.min.js "></script>
 	<script src="js/mui.view.js "></script>
     <script src="js/jquery.min.js"></script>
+	<script src="js/mui.picker.js"></script>
+	<script src="js/mui.poppicker.js"></script>
     <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
 </head>
@@ -45,8 +49,20 @@
 										</a>
 									</li>
 									<li class="mui-table-view-cell">
+										<div style="width:100%; padding-left: 4%;" id="showCityPicker">
+											<button class="mui-btn mui-btn-block" type="button"><span data-picker="city">地區</span></button>
+											<input type="hidden" name="req_cid" value="" id="info_cid" value="" />
+											<div class="butt_right" ><img src="images/Info_button-02.png"></div>
+										</div>
+									</li>
+									<li class="mui-table-view-cell">
 										<a>標題
-											<input value="" id="discuss_name"  style=" height:30px ;width:90%;">
+											<input value="" id="info_name"  style=" height:30px ;width:90%;">
+										</a>
+									</li>
+									<li class="mui-table-view-cell">
+										<a>
+											<textarea id="info_desp">描述</textarea>
 										</a>
 									</li>
 									<li class="mui-table-view-cell">
@@ -70,6 +86,75 @@
 
 	mui.plusReady(function() {
 		member = myStorage.getItem("member");
+
+		mui.ajax({
+			type: "post",
+			url: domain + "saas/catalog.php",
+			dataType: "json",
+			data: {
+				action: "list",
+				where: {type: 3}
+			},
+			async: true,
+			success: function(json) {
+				if (!json.error) {
+					var city = [];
+					var service = [];
+
+					for (p in json.list) {
+						if (json.list[p]["parent"] == "") {
+							var tmp = {value: json.list[p]["id"], text: json.list[p]["name"], children: []};
+
+							for (q in json.list) {
+								if (json.list[q]["parent"] == json.list[p]["id"] + ",") {
+									var child = {value: json.list[q]["id"], text: json.list[q]["name"]};
+									tmp.children.push(child); 
+								}
+							}
+
+							city.push(tmp);
+						}
+					}
+
+					for (p in json.service) {
+						var tmp = {value: json.service[p]["id"], text: json.service[p]["name"]};
+						service.push(tmp);
+					}
+
+					// 城市
+					var cityPicker = new mui.PopPicker({layer: 2});
+					cityPicker.setData(city);
+
+					var showCityPickerButton = document.getElementById("showCityPicker");
+					showCityPickerButton.addEventListener("tap", function(event) {
+						cityPicker.show(function(items) {
+							jQuery("[data-picker='city']").html(items[0].text + " " + items[1].text);
+							jQuery("#info_cid").val(items[1].value);
+						});
+					}, false);
+
+					// 服务
+					/*
+					var servicePicker = new mui.PopPicker({layer: 1});
+					servicePicker.setData(service);
+
+					var showServicePickerButton = document.getElementById("showServicePicker");
+					showServicePickerButton.addEventListener("tap", function(event) {
+						servicePicker.show(function(items) {
+							jQuery("[data-picker='service']").html(items[0].text);
+							jQuery("#req_service").val(items[0].value);
+						});
+					}, false);
+					*/
+					
+				} else {
+					//plus.nativeUI.toast(json.message);
+				}
+			},
+			error: function(xhr, type, errorThrown) {
+
+			}
+		});
 	});
 	
 	//选择图片
@@ -104,13 +189,18 @@
 	};
 	
 	document.getElementById("submit-button").addEventListener("tap", function(event) {
-		if(!jQuery("#discuss_name").val()) {
+		if(!jQuery("#info_name").val()) {
 			plus.nativeUI.toast("請輸入標題！");
 			return false;	
 		}
 		
 		if(!jQuery("#picture-path").val()) {
 			plus.nativeUI.toast("請輸入圖片！");
+			return false;	
+		}
+		
+		if(!jQuery("#info_cid").val()) {
+			plus.nativeUI.toast("請選擇地區！");
 			return false;	
 		}
 		
@@ -121,8 +211,9 @@
 		
 		uploadFileData(jQuery("#picture-path").val(), {
 				"action": "insert",
-				"sbt_name": jQuery("#discuss_name").val(),
-				"sbt_cid" : "15"
+				"sbt_name": jQuery("#info_name").val(),
+				"sbt_cid" : jQuery("#info_cid").val(),
+				"sbt_desp" : jQuery("#info_desp").val()
 			}, 
 			"saas/info.php", 
 			function(res) {

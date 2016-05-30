@@ -8,6 +8,7 @@ if ($_REQUEST['action'] == 'send') {
     $submit = array(
         'mid' => $_POST['id'],
         'src' => '',
+        'type' => $_POST['params']['type'],
         'size' => $_POST['params']['size'],
         'name' => $_POST['params']['name'],
         'number' => $_POST['params']['number'],
@@ -16,6 +17,16 @@ if ($_REQUEST['action'] == 'send') {
     );
 
     if($my_db->saveRow('mypet', $submit)){
+        callback(array('error' => 0));
+
+    } else {
+        callback(array('error' => 4));
+    }
+
+} else if ($_REQUEST['action'] == 'delete') {
+    checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
+
+    if($my_db->deleteRow('mypet', array('id' => $_POST['where']['id']))){
         callback(array('error' => 0));
 
     } else {

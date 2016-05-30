@@ -70,7 +70,10 @@
 			"images/bg_two.png"
 		],
 		"refer": [
-			"discuss-list.html"
+			"discuss-list.html",
+			"publish-discuss.html",
+			"my-discuss.html",
+			"personal.html"
 		]
 	},
 	"discuss-detail.html": {
@@ -167,7 +170,8 @@
 			"my-photo.html",
 			"photo-list-pl.html",
 			"photo-comments.html",
-			"personal.html"
+			"personal.html",
+			"setting.html"
 		]
 	},
 	"photo-detail.html": {
@@ -223,7 +227,9 @@
 			"images/bg_two.png"
 		],
 		"refer": [
-			"info-list.html"
+			"info-list.html",
+			"publish-discuss.html",
+			"personal.html"
 		]
 	},
 	"service-list.html": {
@@ -440,7 +446,18 @@
 			"images/Info_icon_tel.png",
 			"images/icon-10.png",
 			"info-detail.html",
-			"info-category.html"
+			"info-category.html",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"js/basic.js",
+			"images/bg_two.png",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/Petchat.png"
 		],
 		"refer": [
 			"info-detail.html",
@@ -631,7 +648,8 @@
 			"used-detail.html",
 			"publish-discuss.html",
 			"publish-product.html",
-			"setting.html"
+			"setting.html",
+			"my-product.html"
 		]
 	},
 	"used-detail.html": {
@@ -754,7 +772,11 @@
 			"css/mui.min.css",
 			"images/home.png",
 			"css/mui.poppicker.css",
-			"images/Petchat.png"
+			"images/Petchat.png",
+			"buy-detail.html"
+		],
+		"refer": [
+			"buy-detail.html"
 		]
 	},
 	"contact.html": {
@@ -819,7 +841,8 @@
 			"pet-\r\nprofile.html",
 			"images/user-photo.png",
 			"photo-list.html",
-			"pet-information.html"
+			"pet-information.html",
+			"pet-profile.html"
 		]
 	},
 	"pet-\r\ninformation.html": {
@@ -880,7 +903,11 @@
 			"images/Petchat.png",
 			"css/feedback-page.css",
 			"js/basic.js",
-			"js/mui.view.js"
+			"js/mui.view.js",
+			"personal.html"
+		],
+		"refer": [
+			"personal.html"
 		]
 	},
 	"pet-information.html": {
@@ -909,6 +936,49 @@
 		],
 		"refer": [
 			"personal.html"
+		]
+	},
+	"my-discuss.html": {
+		"resources": [
+			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+			"libs/easymob-webim-sdk/json2.js",
+			"js/mui.locker.js",
+			"css/feedback-page.css",
+			"images/user-photo.png",
+			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+			"js/mui.view.js"
+		]
+	},
+	"my-product.html": {
+		"resources": [
+			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+			"libs/easymob-webim-sdk/json2.js",
+			"js/mui.locker.js",
+			"css/feedback-page.css",
+			"images/user-photo.png",
+			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+			"js/mui.view.js"
+		]
+	},
+	"publish-shop.html": {
+		"resources": [
+			"css/feedback-page.css",
+			"js/mui.view.js",
+			"js/template-native.js",
+			"js/mui.picker.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"js/mui.poppicker.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"images/home.png",
+			"images/top_bg.png",
+			"images/Petchat.png",
+			"images/Info_button-02.png",
+			"js/basic.js",
+			"css/mui.picker.css",
+			"css/mui.poppicker.css"
 		]
 	}
 }

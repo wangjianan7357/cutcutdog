@@ -39,21 +39,27 @@
 									<li class="mui-table-view-cell">
 										<a id="head" class="mui-navigate-right">頭像
 											<span class="mui-pull-right head">
-												<img class="head-img mui-action-preview" id="head-img1" src="images/user-photo.png" data-before-info="domain" data-info="src=member.src" />
+												<img class="head-img mui-action-preview" id="picture-src" src="images/user-photo.png" data-before-info="domain" data-info="src=member.src" />
+												<input type="hidden" id="picture-path" value="" />
 											</span>
 										</a>
 									</li>
 									<li class="mui-table-view-cell">
-										<a>姓名<input value="" class="mui-pull-right" data-info="value=member.name"></a>
+										<a>姓名<input value="" id="mem_name" class="mui-pull-right" data-info="value=member.name"></a>
 									</li>
 									<li class="mui-table-view-cell">
-										<a>手機號<span class="mui-pull-right" data-info="member.phone"></span></a>
+										<a>手機號<input value="" id="mem_phone" class="mui-pull-right" data-info="value=member.phone"></a>
 									</li>
 									<li class="mui-table-view-cell">
-										<a>郵箱<span class="mui-pull-right" data-info="member.email"></span></a>
+										<a>郵箱<input value="" id="mem_email" class="mui-pull-right" data-info="value=member.email"></a>
 									</li>
 									<li class="mui-table-view-cell">
-										<a>地址<span class="mui-pull-right" data-info="member.address"></span></a>
+										<a>地址<input value="" id="mem_address" class="mui-pull-right" data-info="value=member.address"></a>
+									</li>
+									<li class="mui-table-view-cell">
+										<div class="zh-good-go" style=" float:right;background-color: #9273bf; text-align: center; margin-top:5px ; margin-bottom:7px ;">
+										<a id="submit-button">保 存</a>
+										</div>
 									</li>
 								</ul>
 							</div>
@@ -135,14 +141,48 @@
 
 	function getGalleryImg() {
 		plus.gallery.pick(function(path) {
-			uploadFileData(path, {"action": "update"}, "saas/member.php", function(res) {
-				assignTmpl(res);
-				initImgPreview();				
-			});
+			$("#picture-src").attr("src", path);
+			$("#picture-path").attr("value", path);
 		});
 	};
 
-	document.getElementById("head-img1").addEventListener('tap', function(e) {
+	document.getElementById("submit-button").addEventListener("tap", function(event) {
+		if(!jQuery("#mem_name").val()) {
+			plus.nativeUI.toast("請輸入姓名！");
+			return false;	
+		}
+
+		if(!jQuery("#mem_phone").val()) {
+			plus.nativeUI.toast("請輸入電話！");
+			return false;	
+		}
+
+		if(!jQuery("#mem_email").val()) {
+			plus.nativeUI.toast("請輸入郵箱！");
+			return false;	
+		}
+		
+		uploadFileData(jQuery("#picture-path").val(), {
+				"action": "update",
+				"sbt_name": jQuery("#mem_name").val(),
+				"sbt_phone": jQuery("#mem_phone").val(),
+				"sbt_email": jQuery("#mem_email").val(),
+				"sbt_address": jQuery("#mem_address").val()
+			}, 
+			"saas/member.php", 
+			function(res) {
+				if (!res.error) {
+					plus.nativeUI.toast("修改成功！");
+					
+				} else {
+					plus.nativeUI.toast(res.message);
+				}
+			}
+		);
+
+	});
+
+	document.getElementById("picture-src").addEventListener('tap', function(e) {
 		e.stopPropagation();
 	});
 
