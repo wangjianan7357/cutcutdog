@@ -471,7 +471,8 @@
 				],
 				"refer": [
 					"publish-discuss.html",
-					"personal.html"
+					"personal.html",
+					"publish-shop.html"
 				],
 				"priority": 0
 			},
