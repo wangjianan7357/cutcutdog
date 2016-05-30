@@ -468,7 +468,7 @@ function initCart() {
     return cart;
 }
 
-function addCart(id, number) {
+function addCart(id, number, url) {
     var cart = myStorage.getItem("cart");
     if (cart) {
         var exist = false;
@@ -489,7 +489,24 @@ function addCart(id, number) {
     }
 
     myStorage.setItem("cart", cart);
-    plus.nativeUI.toast("添加完成");
+
+    if (url) {
+        mui.openWindow({
+            url: url,
+            id: url.replace(/\.[\w]{2,6}$/, ""),
+            show: {
+                aniShow: 'pop-in'
+            },
+            styles: {
+                popGesture: 'hide'
+            },
+            waiting: {
+                autoShow: false
+            }
+        });
+    } else {
+        plus.nativeUI.toast("添加完成");
+    }
 }
 
 function delCart(id) {
