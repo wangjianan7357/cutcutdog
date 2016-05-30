@@ -134,7 +134,7 @@
 					showCityPickerButton.addEventListener("tap", function(event) {
 						cityPicker.show(function(items) {
 							jQuery("[data-picker='city']").html(items[0].text + " " + items[1].text);
-							jQuery("#info_cid").val(items[1].value);
+							jQuery("#info_cid").val(items[0] + "," + items[1].value);
 						});
 					}, false);
 
@@ -194,6 +194,10 @@
 	};
 	
 	document.getElementById("submit-button").addEventListener("tap", function(event) {
+		if (jQuery("#submit-button").html() != "提交") {
+			return;
+		}
+
 		if(!jQuery("#info_name").val()) {
 			plus.nativeUI.toast("請輸入標題！");
 			return false;	
@@ -208,6 +212,8 @@
 			plus.nativeUI.toast("請選擇地區！");
 			return false;	
 		}
+
+		jQuery("#submit-button").html("提交中...");
 		
 		var profilePage = mui.preload({
 			"id": "profile",
@@ -241,6 +247,7 @@
 					
 				} else {
 					plus.nativeUI.toast(res.message);
+					jQuery("#submit-button").html("提交");
 				}
 			}
 		);
