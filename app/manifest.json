@@ -1273,7 +1273,8 @@
 					"css/mui.poppicker.css"
 				],
 				"refer": [
-					"profile.html"
+					"profile.html",
+					"info-category.html"
 				],
 				"priority": 0
 			}

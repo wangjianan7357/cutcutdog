@@ -254,10 +254,12 @@
 			"images/Petchat.png",
 			"service-detail.html",
 			"images/bg_two.png",
-			"images/gif.gif"
+			"images/gif.gif",
+			"service-booking.html"
 		],
 		"refer": [
-			"service-detail.html"
+			"service-detail.html",
+			"service-booking.html"
 		]
 	},
 	"service-detail.html": {
@@ -520,7 +522,11 @@
 			"css/mui.min.css",
 			"images/home.png",
 			"js/mui.previewimage.js",
-			"images/Petchat.png"
+			"images/Petchat.png",
+			"service-list.html"
+		],
+		"refer": [
+			"service-list.html"
 		]
 	},
 	"my-photo.html": {
@@ -983,7 +989,8 @@
 			"css/mui.poppicker.css"
 		],
 		"refer": [
-			"profile.html"
+			"profile.html",
+			"info-category.html"
 		]
 	}
 }
