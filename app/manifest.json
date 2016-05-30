@@ -337,7 +337,9 @@
 					"images/bg.png",
 					"images/bg_two.png"
 				],
-				"refer": [],
+				"refer": [
+					"publish-shop.html"
+				],
 				"priority": 0
 			},
 			"discuss-list.html": {
@@ -1270,7 +1272,9 @@
 					"css/mui.picker.css",
 					"css/mui.poppicker.css"
 				],
-				"refer": [],
+				"refer": [
+					"profile.html"
+				],
 				"priority": 0
 			}
 		},

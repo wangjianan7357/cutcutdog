@@ -462,7 +462,8 @@
 		],
 		"refer": [
 			"info-detail.html",
-			"info-category.html"
+			"info-category.html",
+			"publish-shop.html"
 		]
 	},
 	"info-detail.html": {
@@ -980,6 +981,9 @@
 			"js/basic.js",
 			"css/mui.picker.css",
 			"css/mui.poppicker.css"
+		],
+		"refer": [
+			"profile.html"
 		]
 	}
 }
