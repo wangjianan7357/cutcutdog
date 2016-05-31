@@ -265,10 +265,10 @@
 					"css/mui.picker.css",
 					"css/mui.indexedlist.css",
 					"forget-password.html",
-					"images/bg_two.png"
+					"images/bg_two.png",
+					"index.html"
 				],
 				"refer": [
-					"index.html",
 					"reg.html",
 					"forget_password.html"
 				],
@@ -1122,7 +1122,8 @@
 					"images/home.png",
 					"css/mui.poppicker.css",
 					"images/Petchat.png",
-					"buy-detail.html"
+					"buy-detail.html",
+					"payment.html"
 				],
 				"refer": [],
 				"priority": 0
@@ -1182,10 +1183,10 @@
 					"pet-profile.html",
 					"images/user-photo.png",
 					"photo-list.html",
-					"pet-information.html"
+					"pet-information.html",
+					"login.html"
 				],
 				"refer": [
-					"login.html",
 					"profile.html",
 					"index.html"
 				],
@@ -1276,6 +1277,24 @@
 					"profile.html",
 					"info-category.html"
 				],
+				"priority": 0
+			},
+			"payment.html": {
+				"resources": [
+					"checkout.html",
+					"css/feedback-page.css",
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"js/mui.min.js",
+					"images/CatDog.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/home.png",
+					"images/top_bg.png",
+					"images/Petchat.png",
+					"js/basic.js"
+				],
+				"refer": [],
 				"priority": 0
 			}
 		},

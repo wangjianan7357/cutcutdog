@@ -547,7 +547,8 @@
       "js/basic.js",
       "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
       "js/mui.view.js"
-    ]
+    ],
+    "refer": []
   },
   "publish-discuss.html": {
     "resources": [
@@ -582,7 +583,8 @@
       "fonts/mui.ttf",
       "css/mui.min.css",
       "js/basic.js"
-    ]
+    ],
+    "refer": []
   },
   "photo-list-pl.html": {
     "resources": [
@@ -738,7 +740,8 @@
       "css/mui.indexedlist.css",
       "css/mui.picker.css",
       "css/mui.poppicker.css"
-    ]
+    ],
+    "refer": []
   },
   "photo-comments.html": {
     "resources": [
@@ -781,10 +784,12 @@
       "images/home.png",
       "css/mui.poppicker.css",
       "images/Petchat.png",
-      "buy-detail.html"
+      "buy-detail.html",
+      "payment.html"
     ],
     "refer": [
-      "buy-detail.html"
+      "buy-detail.html",
+      "payment.html"
     ]
   },
   "contact.html": {
@@ -800,7 +805,8 @@
       "images/Petchat.png",
       "css/feedback-page.css",
       "js/basic.js"
-    ]
+    ],
+    "refer": []
   },
   "publish-product.html": {
     "resources": [
@@ -877,7 +883,8 @@
       "fonts/mui.ttf",
       "images/top_bg.png",
       "images/bg_two.png"
-    ]
+    ],
+    "refer": []
   },
   "pet-\r\nprofile.html": {
     "resources": [
@@ -955,7 +962,8 @@
       "images/user-photo.png",
       "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
       "js/mui.view.js"
-    ]
+    ],
+    "refer": []
   },
   "my-product.html": {
     "resources": [
@@ -966,7 +974,8 @@
       "images/user-photo.png",
       "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
       "js/mui.view.js"
-    ]
+    ],
+    "refer": []
   },
   "publish-shop.html": {
     "resources": [
@@ -991,6 +1000,25 @@
     "refer": [
       "profile.html",
       "info-category.html"
+    ]
+  },
+  "payment.html": {
+    "resources": [
+      "checkout.html",
+      "css/feedback-page.css",
+      "js/template-native.js",
+      "js/jquery.min.js",
+      "js/mui.min.js",
+      "images/CatDog.png",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "images/home.png",
+      "images/top_bg.png",
+      "images/Petchat.png",
+      "js/basic.js"
+    ],
+    "refer": [
+      "checkout.html"
     ]
   }
 }

@@ -1,0 +1,1 @@
+<script language="javascript">document.location.href = "H5600B080://"; </script>

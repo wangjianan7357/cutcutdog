@@ -116,42 +116,25 @@
 		<div class="mui-content-padded oauth-area"></div>
 	</div>
 	<script>
-		(function($, doc) {
-			$.init({
-				statusBarBackground: "#f7f7f7"
+		var member = {};
+
+		mui.init({
+			statusBarBackground: "#f7f7f7"
+		});
+		
+		mui.plusReady(function() {
+			plus.screen.lockOrientation("portrait-primary");
+
+			var mainPage = mui.preload({
+				"id": "index",
+				"url": "index.html?" + Date.parse(new Date())
 			});
-			
-			$.plusReady(function() {
-				plus.screen.lockOrientation("portrait-primary");
 
-				var mainPage = $.preload({
-					"id": "index",
-					"url": "index.html"
-				});
-
-				var toMain = function() {
-					$.fire(mainPage, "show", null);
-					setTimeout(function() {
-						$.openWindow({
-							id: "index",
-							show: {
-								aniShow: "pop-in"
-							},
-							waiting: {
-								autoShow: false
-							}
-						});
-					}, 0);
-				};
-				
-				//检查 "登录状态/锁屏状态" 开始
-				/*
-				var state = app.getState();
-
-				if (settings.autoLogin && state.token && settings.gestures) {
-					$.openWindow({
-						url: "unlock.html",
-						id: "unlock",
+			var toMain = function() {
+				mui.fire(mainPage, "show", null);
+				setTimeout(function() {
+					mui.openWindow({
+						id: "index",
 						show: {
 							aniShow: "pop-in"
 						},
@@ -159,88 +142,106 @@
 							autoShow: false
 						}
 					});
-				} else if (settings.autoLogin && state.token) {
-					toMain();
-				}
-				*/
-				
-				if (getUrlParam("action") == "logout") {
-					myStorage.setItem("member", "");
-					myStorage.setItem("autologin", false);
-				}
-				
-				var member = myStorage.getItem("member");
-				if (myStorage.getItem("autologin") && member && member.id && member.name) {
-					toMain();
-				}
-				
-				// 关闭 splash
-				setTimeout(function() {
-					plus.navigator.closeSplashscreen();
-				}, 600);
-				
-				//检查 "登录状态/锁屏状态" 结束
-				var loginButton = doc.getElementById("login");
-				var passwordBox = doc.getElementById("password");
-				var autoLoginButton = doc.getElementById("autoLogin");
-				
-				loginButton.addEventListener("tap", function(event) {
-					if (!jQuery("#account").val()) {
-						plus.nativeUI.toast("請輸入賬號");
-						return;
+				}, 0);
+			};
+			
+			//检查 "登录状态/锁屏状态" 开始
+			/*
+			var state = app.getState();
+
+			if (settings.autoLogin && state.token && settings.gestures) {
+				mui.openWindow({
+					url: "unlock.html",
+					id: "unlock",
+					show: {
+						aniShow: "pop-in"
+					},
+					waiting: {
+						autoShow: false
 					}
-					
-					if (!passwordBox.value) {
-						plus.nativeUI.toast("請輸入密碼");
-						return;
-					}
-					
-					$.ajax({
-						type: "post",
-						url: domain + "saas/member.php",
-						dataType: "json",
-						data: {
-							action: "login",
-							account: jQuery("#account").val(),
-							password: passwordBox.value
-						},
-						async: true,
-						success: function(json) {
-							if(!json.error) {
-								myStorage.setItem("member", {id: json.member.id, name: json.member.name});		
-								toMain();
-							} else {
-								plus.nativeUI.toast(json.message);
-							}
-						},
-						error: function(xhr, type, errorThrown) {
-							//alert(JSON.stringify(xhr));
-						}
-					});
 				});
+			} else if (settings.autoLogin && state.token) {
+				toMain();
+			}
+			*/
+			
+			if (getUrlParam("action") == "logout") {
+				myStorage.setItem("member", "");
+				myStorage.setItem("autologin", false);
+			}
+			
+			member = myStorage.getItem("member");
+			if (myStorage.getItem("autologin") && member && member.id && member.name) {
+				toMain();
+			}
+			
+			// 关闭 splash
+			setTimeout(function() {
+				plus.navigator.closeSplashscreen();
+			}, 600);
+			
+			//检查 "登录状态/锁屏状态" 结束
+			var loginButton = document.getElementById("login");
+			var passwordBox = document.getElementById("password");
+			var autoLoginButton = document.getElementById("autoLogin");
+			
+			loginButton.addEventListener("tap", function(event) {
+				if (!jQuery("#account").val()) {
+					plus.nativeUI.toast("請輸入賬號");
+					return;
+				}
 				
-				autoLoginButton.addEventListener("toggle", function(event) {
-					setTimeout(function() {
-						var isActive = event.detail.isActive;
-						myStorage.setItem("autologin", isActive);
-					}, 50);
-				}, false);
+				if (!passwordBox.value) {
+					plus.nativeUI.toast("請輸入密碼");
+					return;
+				}
 				
-				var backButtonPress = 0;
-				$.back = function(event) {
-					backButtonPress++;
-					if (backButtonPress > 1) {
-						plus.runtime.quit();
-					} else {
-						plus.nativeUI.toast("再按一次退出應用");
+				mui.ajax({
+					type: "post",
+					url: domain + "saas/member.php",
+					dataType: "json",
+					data: {
+						action: "login",
+						account: jQuery("#account").val(),
+						password: passwordBox.value
+					},
+					async: true,
+					success: function(json) {
+						if(!json.error) {
+							myStorage.setItem("member", {id: json.member.id, name: json.member.name});
+							document.location.href = "index.html?" + Date.parse(new Date());
+
+						} else {
+							plus.nativeUI.toast(json.message);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						//alert(JSON.stringify(xhr));
 					}
-					setTimeout(function() {
-						backButtonPress = 0;
-					}, 1000);
-					return false;
-				};
+				});
 			});
-		}(mui, document));
+			
+			autoLoginButton.addEventListener("toggle", function(event) {
+				setTimeout(function() {
+					var isActive = event.detail.isActive;
+					myStorage.setItem("autologin", isActive);
+				}, 50);
+			}, false);
+			
+			var backButtonPress = 0;
+			mui.back = function(event) {
+				backButtonPress++;
+				if (backButtonPress > 1) {
+					plus.runtime.quit();
+				} else {
+					plus.nativeUI.toast("再按一次退出應用");
+				}
+				setTimeout(function() {
+					backButtonPress = 0;
+				}, 1000);
+				return false;
+			};
+		});
 	</script>
 </body>
 </html>

@@ -101,20 +101,13 @@
 			var toLogin = function() {
 				mui.fire(loginPage, "show", null);
 				setTimeout(function() {
-					mui.openWindow({
-						id: "login",
-						show: {
-							aniShow: "pop-in"
-						},
-						waiting: {
-							autoShow: false
-						}
-					});
+					document.location.href = "login.html";
 				}, 0);
 			};
 
 			if (!member || !member.name) {
 				toLogin();
+				return;
 			}
 
 			jQuery("[data-personal='name']").html(member.name);

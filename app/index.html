@@ -137,7 +137,7 @@
                     </a>
                 </li>
                 <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                    <a href="personal.html" data-action="openwindow">
+                    <a href="personal.html" data-action="openwindow" data-href="personal">
                         <span class="mui-icon mui-icon-gear"><img src="images/icon-07.png"></span>
                         <div class="mui-media-body">個人主頁</div>
                     </a>
@@ -180,6 +180,12 @@
     */
 
     $.plusReady(function() {
+        var member = myStorage.getItem("member");
+
+        if (!member) {
+            jQuery("[data-href='personal']").attr("href", "login.html");
+        }
+
         $.ajax({
             type: "post",
             url: domain + "saas/catalog.php",

@@ -32,8 +32,9 @@ class Paypal {
 
 	//生成数据信封
 	function createForm(){
-		$comfirm_url = 'http://' . $_SERVER['SERVER_NAME'] . '/member/pay_success.php';
-		$notify_url = 'http://' . $_SERVER['SERVER_NAME'] . '/member/pay_notify.php';
+		$comfirm_url = 'http://' . $_SERVER['SERVER_NAME'] . '/pay_success.php';
+		$notify_url = 'http://' . $_SERVER['SERVER_NAME'] . '/pay_notify.php';
+		$cancel_url = 'http://' . $_SERVER['SERVER_NAME'] . '/cancel.php';
 
 		// PAYPAL 接口
 		$form_text = '<form method="post" name="pay_form" action="' . $this->api . '">';

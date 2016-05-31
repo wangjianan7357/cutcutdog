@@ -58,6 +58,11 @@ if (typeof(template) != "undefined") {
     });
 }
 
+$("[data-randon]").each(function(){
+    var tmp = $(this).attr($(this).attr("data-randon"));
+    //$(this).attr(tmp, $(this).attr(tmp) + "?ver=" + (new Date().getTime()));
+});
+
 function assignTmpl(json, sign) {
     if (!sign) {
         sign = "#";
