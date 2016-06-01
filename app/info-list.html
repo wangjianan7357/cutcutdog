@@ -91,9 +91,6 @@
 				swipeBack: true, //启用右滑关闭功能
 				pullRefresh: {
 					container: '#pullrefresh',
-					down: {
-						callback: pulldownRefresh
-					},
 					up: {
 						contentrefresh: '正在加载...',
 						callback: pullupRefresh
@@ -103,14 +100,18 @@
 
 			var page = 1;
 			var count = 0;
-			var where =  {cid: "15,"};
+			var where =  {};
 
-			if (getUrlParam("mid")) {
-				where["mid"] = getUrlParam("mid");
+			if (getUrlParam("req_cid")) {
+				where["cid"] = getUrlParam("req_cid");
 			}
 
-			if (getUrlParam("id")) {
-				where["id"] = getUrlParam("id");
+			if (getUrlParam("req_service")) {
+				where["service"] = getUrlParam("req_service");
+			}
+
+			if (getUrlParam("req_name")) {
+				where["name"] = {like: "%" + getUrlParam("req_name") + "%"};
 			}
 
 			/**
@@ -131,7 +132,6 @@
 							if(!json.error) {
 								page ++;
 								jQuery("#list-view").html(jQuery("#list-view").html() + template('list-view-code', json));
-								setComment();
 
 								if (jQuery(json.list).length) {
 									count = 0;
@@ -172,11 +172,12 @@
 					data: {
 						action: "list",
 						type: 3,
-						where: {name: {like: "%" + getUrlParam("req_name") + "%"}, cid: getUrlParam("req_cid"), service: getUrlParam("req_service")}
+						where: where
 					},
 					async: true,
 					success: function(json) {
 						if(!json.error) {
+							page ++;
 							jQuery("#list-view").html(template('list-view-code', json));
 							assignTmpl(json);
 							

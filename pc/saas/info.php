@@ -42,7 +42,7 @@ if ($_REQUEST['action'] == 'list') {
 
         $_POST['page'] = isset($_POST['page']) ? intval($_POST['page']) : 1;
 
-        $limit = ($_POST['page'] - 1) * 5 . ',' . 5;
+        $limit = ($_POST['page'] - 1) * 4 . ',' . 4;
 
         //$getdata = $my_db->selectRow('id', 'catalog', array('type' => intval($_POST['type'])));
 
