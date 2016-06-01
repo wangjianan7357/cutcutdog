@@ -289,7 +289,8 @@
 					"images/CatDog.png",
 					"images/home.png",
 					"images/top_bg.png",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"images/bg_two.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -536,7 +537,9 @@
 					"js/basic.js",
 					"js/mui.view.js"
 				],
-				"refer": [],
+				"refer": [
+					"login.html"
+				],
 				"priority": 0
 			},
 			"publish-discuss.html": {
