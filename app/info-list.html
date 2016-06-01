@@ -46,23 +46,23 @@
 	<div class="mui-content">
 		<div class="top_bg"></div>
 		
-		
-		<ul class="mui-table-view mui-table-view-chevron" id="list-view" style="background: none; padding: 0 2% 10px; margin-top: 20px;"></ul>
-		<script id="list-view-code" type="text/html">
-			<% for (var i in list) { %>
-			<li class="mui-table-view-cell-img mui-media li-bg">
-				<a class="mui-navigate-right" href="info-detail.html?url=<%= list[i]["path"] %>" data-action="webview">
-					<img class="mui-pull-left img-bor img-wid" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>" />
-					<div class="mui-media-body zi-heig">
-						<div class="za-zi mui-ellipsis"><%= list[i]["name"] %></div>
-						<p class='mui-ellipsis pp'><%= list[i]["address"] %></p>
-						<div class="mui-tal"><%= list[i]["tel"] %></div>
-					</div>
-				</a>
-			</li>
-			<% } %>
-			
-		</script>
+		<div id="pullrefresh">
+			<ul class="mui-table-view mui-table-view-chevron" id="list-view" style="background: none; padding: 0 2% 10px; margin-top: 20px;"></ul>
+			<script id="list-view-code" type="text/html">
+				<% for (var i in list) { %>
+				<li class="mui-table-view-cell-img mui-media li-bg">
+					<a class="mui-navigate-right" href="info-detail.html?url=<%= list[i]["path"] %>" data-action="webview">
+						<img class="mui-pull-left img-bor img-wid" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>" />
+						<div class="mui-media-body zi-heig">
+							<div class="za-zi mui-ellipsis"><%= list[i]["name"] %></div>
+							<p class='mui-ellipsis pp'><%= list[i]["address"] %></p>
+							<div class="mui-tal"><%= list[i]["tel"] %></div>
+						</div>
+					</a>
+				</li>
+				<% } %>
+			</script>
+		</div>
 	</div>
 <!--右上角弹出菜单-->
 	<div id="topPopover" class="mui-popover" >
@@ -88,8 +88,81 @@
 	<script>
 		(function($, doc) {
 			$.init({
-				swipeBack:true //启用右滑关闭功能
+				swipeBack: true, //启用右滑关闭功能
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
 			});
+
+			var page = 1;
+			var count = 0;
+			var where =  {cid: "15,"};
+
+			if (getUrlParam("mid")) {
+				where["mid"] = getUrlParam("mid");
+			}
+
+			if (getUrlParam("id")) {
+				where["id"] = getUrlParam("id");
+			}
+
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++ count > 2)); //参数为true代表没有更多数据了。
+
+
+					mui.ajax({
+						type: "post",
+						url: domain + "saas/info.php",
+						dataType: "json",
+						data: {action: "list", where: where, type: 3, page: page},
+						async: true,
+						success: function(json) {
+							if(!json.error) {
+								page ++;
+								jQuery("#list-view").html(jQuery("#list-view").html() + template('list-view-code', json));
+								setComment();
+
+								if (jQuery(json.list).length) {
+									count = 0;
+								} else {
+									count = 3;
+								}
+								
+							} else {
+								plus.nativeUI.toast(json.message);
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							//alert(JSON.stringify(xhr))
+						}
+					});
+
+				}, 2000);
+			}
+
+			if (mui.os.plus) {
+				mui.plusReady(function() {
+					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().pullupLoading();
+					}, 1000);
+
+				});
+			} else {
+				mui.ready(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				});
+			}
 
 			$.plusReady(function() {
 				$.ajax({

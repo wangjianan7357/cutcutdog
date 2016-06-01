@@ -66,7 +66,7 @@ class MyData {
 				if(gettype($key) == 'string') {
 					if (is_array($value)) {
 						if (strtolower(key($value)) == 'in') {
-							$v = addslashes(current($value));
+							$v = current($value);
 						} else {
 							$v = '"' . addslashes(current($value)) . '"';
 						}

@@ -18,10 +18,12 @@ if ($_REQUEST['action'] == 'list') {
         if ($_POST['where']['cid']) {
             $where['cid'] = array('like' => '%,' . $_POST['where']['cid'] . ',');
         } else {
-            $getdata = $my_db->selectRow('id', 'catalog', array('type' => $_POST['type']));
+            $getdata = $my_db->selectRow('id, parent', 'catalog', array('type' => $_POST['type']));
             while ($result = mysql_fetch_array($getdata)) {
-                $catalog[] = $result['id'];
+                $catalog[] = $result['parent'] . $result['id'] . ',';
             }
+
+            $where['cid'] = array('in' => '("' . implode('", "', $catalog) . '")');
         }
 
         if (intval($_POST['where']['service'])) {
@@ -38,7 +40,11 @@ if ($_REQUEST['action'] == 'list') {
             }
         }
 
-        $getdata = $my_db->selectRow('id', 'catalog', array('type' => intval($_POST['type'])));
+        $_POST['page'] = isset($_POST['page']) ? intval($_POST['page']) : 1;
+
+        $limit = ($_POST['page'] - 1) * 5 . ',' . 5;
+
+        //$getdata = $my_db->selectRow('id', 'catalog', array('type' => intval($_POST['type'])));
 
     } else if ($_POST['type'] == 5) {
         $member = array();
@@ -56,10 +62,6 @@ if ($_REQUEST['action'] == 'list') {
 
     $getdata = $my_db->selectRow('*', 'info', $where, array('field' => 'date', 'method' => 'desc'), $limit);
     while ($result = mysql_fetch_array($getdata)) {
-        if (!empty($catalog) && !preg_match('/(^|,)(' . implode('|', $catalog) . '),$/', $result['cid'])) {
-            continue;
-        }
-
         if (isset($_POST['type']) && $_POST['type'] == 5) {
             $result['likes'] = $my_db->existRow('likes', array('atype' => $_POST['type'], 'aid' => $result['id'], 'valid' => 1));
             $result['member'] = isset($member[$result['mid']]) ? $member[$result['mid']] : array();
