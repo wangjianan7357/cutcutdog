@@ -84,8 +84,33 @@
 				var emailBox = doc.getElementById('email');
 				
 				regButton.addEventListener('tap', function(event) {
+					if (!jQuery("#account").val()) {
+						plus.nativeUI.toast("請輸入賬號");
+						return;
+					}
+					
+					if (!jQuery("#password").val()) {
+						plus.nativeUI.toast("請輸入密碼");
+						return;
+					}
+
 					if (jQuery("#password_confirm").val() != jQuery("#password").val()) {
 						plus.nativeUI.toast('密碼兩次輸入不一致');
+						return;
+					}
+					
+					if (!jQuery("#email").val()) {
+						plus.nativeUI.toast("請輸入郵箱");
+						return;
+					}
+					
+					if (!jQuery("#address").val()) {
+						plus.nativeUI.toast("請輸入地址");
+						return;
+					}
+					
+					if (!jQuery("#phone").val()) {
+						plus.nativeUI.toast("請輸入電話");
 						return;
 					}
 				
