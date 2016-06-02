@@ -22,6 +22,12 @@ function plusReady(){
     $("[data-action='openwindow']").click(function(){
         var link = $(this).attr("href");
 
+        if (link.indexOf("?") != -1) {
+            link += "&" + Date.parse(new Date());
+        } else {
+            link += "?" + Date.parse(new Date());
+        }
+
         mui.openWindow({
             url: link,
             id: link.replace(/\.[\w]{2,6}$/, ""),
