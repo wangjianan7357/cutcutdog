@@ -121,6 +121,11 @@ if ($_REQUEST['action'] == 'list') {
         $info['total']['comments'] = count($comments);
 
         $info['likes'] = $my_db->existRow('likes', array('atype' => $_POST['where']['type'], 'aid' => $info['id'], 'valid' => 1));
+        $info['liked'] = 0;
+
+        if ($_POST['where']['member_id']){
+            $info['liked'] = $my_db->existRow('likes', array('atype' => $_POST['where']['type'], 'aid' => $info['id'], 'valid' => 1, 'mid' => $_POST['where']['member_id']));
+        }
 
     } else {
         callback(array('error' => 4));

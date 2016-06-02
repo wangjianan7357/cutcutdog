@@ -243,6 +243,10 @@ function initComment(comment, likes, total) {
             setLikes("delete");
             $("#" + total).html(count - 1);
             $(this).attr("rel", "like");
+
+            if (cata_type == 3) {
+                $(this).html("攢好");
+            }
         }
     });
 }

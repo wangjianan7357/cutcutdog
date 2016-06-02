@@ -11,7 +11,8 @@ class Graphic {
 
 		preg_match('/(.[\w]+)$/is', $original, $match);
 		switch(strtolower($match[1])){
-			case '.jpg': $this->img = imagecreatefromjpeg($original); break;
+			case '.jpg':
+			case '.jpeg': $this->img = imagecreatefromjpeg($original); break;
 			case '.png': $this->img = imagecreatefrompng($original); break;
 			case '.gif': $this->img = imagecreatefromgif($original); break;
 			default: exit;
@@ -57,7 +58,8 @@ class Graphic {
 
 	protected function export($path = null) {
 		switch($this->type){
-			case '.jpg': imagejpeg($this->img, $path, $this->quality); break;
+			case '.jpg':
+			case '.jpeg': imagejpeg($this->img, $path, $this->quality); break;
 			case '.png': imagepng($this->img, $path, intval($this->quality / 10)); break;
 			case '.gif': imagegif($this->img, $path, $this->quality); break;
 			default: exit;

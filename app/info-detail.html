@@ -137,11 +137,16 @@
 				dataType: "json",
 				data: {
 					action: "detail",
-					where: {type: cata_type, path: getUrlParam("url")}
+					where: {type: cata_type, path: getUrlParam("url"), member_id: member.id}
 				},
 				async: true,
 				success: function(json) {
 					if(!json.error) {
+						if (json.detail.liked != 0) {
+							jQuery("#heart").attr("rel", "unlike");
+							jQuery("#heart").html("取消");
+						}
+
 						jQuery("#detail-view").html(template("detail-view-code", json));
 						jQuery("#phone-detail").html(template("phone-detail-code", json));
 						jQuery("#detail-photo").html(template("detail-photo-code", json));
