@@ -130,7 +130,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%}body{margin:0}article,
 .perso-top-center ul li{ float: left; list-style:none ; padding:0px 10px 0px 10px ;}
 .perso-top-right{ float:right ;padding-top: 13px; padding-right:10px ;}
 .perso-top .perso-photo{color: #fff; position: absolute; top:80px; left:38%; text-align: center;}
-.perso-photo-img-bor-two{ border:solid #fff 1px ;border-radius: 42px; background-color:#fff ;}
+.perso-photo-img-bor-two{ border:solid #fff 2px ;border-radius: 42px; background-color:#fff ;}
 .perso-photo-wid{width:90px; height:90px ;margin-top:10px ; margin-bottom:10px ;}
 .perso-photo-tile{line-height:30px ;font-size:22px ; color: #fff; font-weight: bold;}
 .perso-top-center-two{ color:#fff ; margin:0px ; padding: 0px; text-align: center;}
@@ -144,7 +144,16 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%}body{margin:0}article,
 .serv-fw-persona a, .serv-fw-persona img{ height:100px; display: block;}
 .rihg-mr{ padding-right:20px ;}
 
-
+#tbox{width:47px; height:73px; float:right; position:fixed;
+_position:absolute;
+_bottom:auto;
+_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+_margin-bottom:10px;
+}/*解决IE6下不兼容 position:fixed 的问题*/
+#jianyi{ width:47px; height:25px; background:url(../images/suggest.png) no-repeat; position:absolute; bottom:0px; cursor:pointer}
+#gotop{ width:47px; height:47px; background:url(../images/top01.png) no-repeat; position:absolute; top:0px; display:none; cursor:pointer} 
+#jianyi:hover{ background:url(../images/suggest.png) no-repeat 0px -26px;}
+#gotop:hover{ background:url(../images/top02.png) no-repeat;}
 
 
 

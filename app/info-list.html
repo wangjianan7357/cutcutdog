@@ -27,7 +27,7 @@
 			padding-right: 10px;
 		}
 		.mui-popover {
-			width:50%;
+			
 			height: 150px;
 		}
 		
@@ -35,7 +35,9 @@
 	<script src="js/mui.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/template-native.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/basic.js"></script>
+    <script type="text/javascript" src="js/js.js"></script>
 </head>
 
 <body>
@@ -44,7 +46,7 @@
 	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
 	    <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold;" href="#topPopover"></a>
 	</header>
-	<div class="mui-content">
+	<div class="mui-content" id="main">
 		<div class="top_bg"></div>
 		
 		<div id="pullrefresh">
@@ -86,6 +88,12 @@
 		</div>
 
 	</div>
+	<!-- 代码开始 -->
+<div id="tbox">
+	<a id="gotop" href="javascript:void(0)"></a>
+	
+</div>
+<!-- 代码结束 -->
 	<script>
 		(function($, doc) {
 			$.init({

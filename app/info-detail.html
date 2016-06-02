@@ -144,7 +144,7 @@
 					if(!json.error) {
 						if (json.detail.liked != 0) {
 							jQuery("#heart").attr("rel", "unlike");
-							jQuery("#heart").html("取消");
+							jQuery("#heart").html("消讚");
 						}
 
 						jQuery("#detail-view").html(template("detail-view-code", json));

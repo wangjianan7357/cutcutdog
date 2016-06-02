@@ -336,7 +336,9 @@
 					"images/icon-10.png",
 					"images/tu_01.jpg",
 					"images/bg.png",
-					"images/bg_two.png"
+					"images/bg_two.png",
+					"js/js.js",
+					"images/top01.png"
 				],
 				"refer": [
 					"publish-shop.html"
@@ -694,7 +696,11 @@
 					"js/mui.previewimage.js",
 					"photo-list-pl.html",
 					"photo-comments.html",
-					"personal.html"
+					"personal.html",
+					"js/js.js",
+					"images/top01.png",
+					"js/jquery-1.4.2.min.js",
+					"images/top02.png"
 				],
 				"refer": [
 					"image-list.html",
@@ -1190,11 +1196,11 @@
 					"images/user-photo.png",
 					"photo-list.html",
 					"pet-information.html",
-					"login.html"
+					"login.html",
+					"index.html"
 				],
 				"refer": [
-					"profile.html",
-					"index.html"
+					"profile.html"
 				],
 				"priority": 0
 			},

@@ -62,6 +62,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
+    <script type="text/javascript" src="js/js.js"></script>
 </head>
 
 <body>
@@ -71,7 +72,7 @@
 		<a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold;" href="#topPopover"></a>
 	</header>
 
-	<div class="mui-content" style="background:#fff;">
+	<div class="mui-content" id="main" style="background:#fff;">
 		<div class="top_bg"></div>
 
 		<div class="xp-tu" id="pullrefresh">
@@ -124,7 +125,12 @@
 			</div>
 		</div>
 	</div>
+	<!-- 代码开始 -->
+<div id="tbox">
+	<a id="gotop" href="javascript:void(0)"></a>
 	
+</div>
+<!-- 代码结束 -->
 	<script>
 		var cata_type = 5;
 		var member = {};
