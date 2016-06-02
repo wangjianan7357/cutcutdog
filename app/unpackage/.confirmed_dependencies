@@ -127,7 +127,8 @@
 		],
 		"refer": [
 			"discuss-detail.html",
-			"discuss-category.html"
+			"discuss-category.html",
+			"publish-discuss.html"
 		]
 	},
 	"photo-list.html": {
@@ -569,7 +570,8 @@
 			"js/mui.view.js"
 		],
 		"refer": [
-			"profile.html"
+			"profile.html",
+			"discuss-category.html"
 		]
 	},
 	"profile.html": {

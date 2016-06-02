@@ -369,7 +369,8 @@
 					"images/bg_two.png"
 				],
 				"refer": [
-					"discuss-list-nr.html"
+					"discuss-list-nr.html",
+					"publish-discuss.html"
 				],
 				"priority": 0
 			},
@@ -558,7 +559,8 @@
 					"js/template-native.js"
 				],
 				"refer": [
-					"profile.html"
+					"profile.html",
+					"discuss-category.html"
 				],
 				"priority": 0
 			},
