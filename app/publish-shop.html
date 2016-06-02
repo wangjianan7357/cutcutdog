@@ -134,7 +134,7 @@
 					showCityPickerButton.addEventListener("tap", function(event) {
 						cityPicker.show(function(items) {
 							jQuery("[data-picker='city']").html(items[0].text + " " + items[1].text);
-							jQuery("#info_cid").val(items[0] + "," + items[1].value);
+							jQuery("#info_cid").val(items[0].value + "," + items[1].value);
 						});
 					}, false);
 
