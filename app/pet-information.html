@@ -156,6 +156,10 @@
 			}, false);
 
 			document.getElementById("submit-mypet").addEventListener("tap", function(e) {
+				if (submitting) {
+					return;
+				}
+
 				var size = "";
 				$("[name='sbt_size']").each(function(){
 					if ($(this).attr("data-active") == "true" && $(this).val()) {
@@ -174,7 +178,7 @@
 				}
 
 				submitting = true;
-				$("#submit-mypet").html("正在提交");
+				jQuery("#submit-mypet").html("正在提交");
 
 				mui.ajax({
                     type: "post",

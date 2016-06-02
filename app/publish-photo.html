@@ -67,6 +67,7 @@
 	mui.init();
 
 	var member = {};
+	var submitting = false;
 
 	mui.plusReady(function() {
 		member = myStorage.getItem("member");
@@ -104,6 +105,10 @@
 	};
 	
 	document.getElementById("submit-button").addEventListener("tap", function(event) {
+		if (submitting) {
+			return;
+		}
+		
 		if(!jQuery("#discuss_name").val()) {
 			plus.nativeUI.toast("請輸入標題！");
 			return false;	
@@ -113,6 +118,9 @@
 			plus.nativeUI.toast("請輸入圖片！");
 			return false;	
 		}
+
+		submitting = true;
+		$("#submit-button").html("正在提交");
 		
 		var profilePage = mui.preload({
 			"id": "profile",
@@ -144,6 +152,9 @@
 					
 				} else {
 					plus.nativeUI.toast(res.message);
+
+					submitting = false;
+					jQuery("#submit-button").html("提交");
 				}
 			}
 		);
