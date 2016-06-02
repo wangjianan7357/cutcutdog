@@ -429,7 +429,8 @@
 	},
 	"publish-photo.html": {
 		"refer": [
-			"profile.html"
+			"profile.html",
+			"photo-list.html"
 		],
 		"resources": [
 			"css/feedback-page.css",

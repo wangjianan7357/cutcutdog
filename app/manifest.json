@@ -772,7 +772,8 @@
 					"js/mui.view.js"
 				],
 				"refer": [
-					"profile.html"
+					"profile.html",
+					"photo-list.html"
 				],
 				"priority": 0
 			},
