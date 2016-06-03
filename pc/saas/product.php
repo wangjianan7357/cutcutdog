@@ -1,6 +1,7 @@
 <?php
 require('../include/common.php');
 require('../include/fun_saas.php');
+require('../include/cls_graphic.php');
 
 if ($_REQUEST['action'] == 'list') {
     $list = array();
@@ -80,6 +81,16 @@ if ($_REQUEST['action'] == 'list') {
         }
 
         move_uploaded_file($_FILES['src']['tmp_name'], $filepath);
+
+        $imgarr = array();
+        $imgop = new Graphic($filepath);
+        $imgarr['width'] = $imgop->getWidth();
+        $imgarr['height'] = $imgop->getHeight();
+
+        if($imgarr['width'] > 500 || $imgarr['height'] > 500){
+            $imgop = new Graphic($filepath);
+            $imgop->resizeImage($filepath, 500, 500);
+        }
     }
 
     $chk_post = new ChkRequest('sbt_');
