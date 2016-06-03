@@ -26,7 +26,8 @@
 			"images/Petchat.png",
 			"photo-list.html",
 			"buy.html",
-			"images/bg_two.png"
+			"images/bg_two.png",
+			"personal.html"
 		],
 		"refer": [
 			"discuss-category.html",
