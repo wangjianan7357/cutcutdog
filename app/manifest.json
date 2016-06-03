@@ -409,7 +409,9 @@
 					"images/gif.gif",
 					"images/bg_two.png"
 				],
-				"refer": [],
+				"refer": [
+					"publish-shop.html"
+				],
 				"priority": 0
 			},
 			"setting.html": {
