@@ -155,7 +155,13 @@ _margin-bottom:10px;
 #jianyi:hover{ background:url(../images/suggest.png) no-repeat 0px -26px;}
 #gotop:hover{ background:url(../images/top02.png) no-repeat;}
 
+.mui-content ul.mui-grid-9 {
+    padding: 0 5%;
+}
 
+.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+    padding: 0;
+}
 
 
 
