@@ -163,7 +163,8 @@ _margin-bottom:10px;
     padding: 0;
 }
 
-
+.dp_zl{width:40%;background-color: #9273bf;border-radius: 10px; height:30px ;  line-height:32px;text-align: center; margin:0 auto;}
+.dp_zl a{ color:#fff ;}
 
 
 
