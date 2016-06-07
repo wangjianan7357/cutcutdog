@@ -45,7 +45,7 @@ if ($_REQUEST['action'] == 'list') {
             $member[$result['id']] = $result;
         }
 
-        $getdata = $my_db->selectRow('*', $cms_cata_type[$category['type']]['db'], array('`cid` LIKE "%,' . $category['id'] . '," OR `cid` = "' . $category['id'] . ',"'));
+        $getdata = $my_db->selectRow('*', $cms_cata_type[$category['type']]['db'], array('`cid` LIKE "%,' . $category['id'] . '," OR `cid` = "' . $category['id'] . ',"'), array('field' => 'date', 'method' => 'desc'));
         while ($result = mysql_fetch_array($getdata)) {
             if (!isset($member[$result['mid']])) {
                 $member[$result['mid']] = array('name' => '');
@@ -54,7 +54,7 @@ if ($_REQUEST['action'] == 'list') {
             $result['summary'] = cutString(strip_tags($result['desp']), 30);
             $result['member'] = $member[$result['mid']];
             $result['date'] = substr($result['date'], 0, 10);
-            $list[$result['id']] = $result;
+            $list[] = $result;
         }
     }
 

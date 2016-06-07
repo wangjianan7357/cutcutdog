@@ -99,7 +99,7 @@
 				dataType: "json",
 				data: {
 					action: "detail",
-					where: {type: cata_type, path: getUrlParam("url"), member_id: member.id}
+					where: {type: cata_type, path: getUrlParam("url"), member_id: member ? member.id : 0}
 				},
 				async: true,
 				success: function(json) {
