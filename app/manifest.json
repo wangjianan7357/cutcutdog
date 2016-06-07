@@ -702,7 +702,8 @@
 					"js/js.js",
 					"images/top01.png",
 					"js/jquery-1.4.2.min.js",
-					"images/top02.png"
+					"images/top02.png",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"image-list.html",
