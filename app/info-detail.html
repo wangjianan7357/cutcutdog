@@ -13,7 +13,7 @@
 
 	<!--App自定义的css-->
 	<style type="text/css">
-	
+	.top_bg{ height:25px; background-color: #bc9dc9;clear: both;}
 		#comment-list {
 			padding:10px 5px 10px 5px;;
 			text-align: left;
@@ -38,25 +38,31 @@
 </head>
 
 <body>
-	<header class="mui-bar mui-bar-nav">
-		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-	    
-	</header>
+	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
+	<div style=" height:21px ; overflow: hidden;">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo" style=" color:#333 ; font-size:24px ; font-weight: bold;"></span></a>
+   
+   </div>
+    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+    <div class="top_bg"></div>
+</header>
 	<div class="mui-content"  style=" padding-bottom:20px ;">
 		<div id="detail-photo" style=" text-align: center;"><img src="images/gif.gif" style="width: 32px; height:32px ;"></div>
+		
 		<script id="detail-photo-code" type="text/html">
-			<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>" style="height:300px ;">
+			<div style=" height:280px ; overflow: hidden;">
+			<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>">
+			</div>
 		</script>
-
+       
 		<div class="z-hao" id="likesCount" data-info="detail.likes">0</div>
 		<div class="li-bg-san fl-mar" style=" margin-left: 10px; margin-right:10px ;">
 			<div class="pl_two_zi za-zi" data-info="detail.name"></div>
-			<div class="dz-add" style="margin-top: 15px;" data-info="detail.address"></div>
-			<div class="mui-tal" style="margin-top: 15px;" id="phone-detail"></div>
+			<div class="dz-add" data-info="detail.address"></div>
+			<div class="mui-tal" style="font-size:14px ;" id="phone-detail"></div>
 
 			<script id="phone-detail-code" type="text/html">
-				<a href="tel:<%= detail["tel"] %>" style=" color:#333 ;"><%= detail["tel"] %></a>
+				<a href="tel:<%= detail["tel"] %>" style="color:#333 ;"><%= detail["tel"] %></a>
 			</script>
 
 			<input type="hidden" id="aid" data-info="value=detail.id" value="">
@@ -65,7 +71,7 @@
 		<div style=" text-align: center;">
 			<div class="zh-good" id="heart" rel="like">讚好</div>
 			<div class="zh-good" style=" margin-left:10px;" id="promptBtn">評論</div>
-			<div class="zh-good" style=" margin-left:10px;">分享</div>
+			<div class="zh-good" style="margin-left:10px;">分享</div>
 		</div>
 
 

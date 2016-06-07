@@ -9,6 +9,7 @@
 	<!--标准mui.css-->
 	<link rel="stylesheet" href="css/mui.min.css">
 	<style>
+	.top_bg{ height:25px; background-color: #bc9dc9;clear: both;}
 		.title {
 			padding: 20px 15px 10px;
 			color: #333;
@@ -47,14 +48,17 @@
 </head>
 
 <body>
-	<header class="mui-bar mui-bar-nav">
-		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-	    <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold;" href="#topPopover"></a>
-	</header>
+	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
+	<div style=" height:21px ; overflow: hidden;">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo" style=" color:#333 ; font-size:24px ; font-weight: bold;"></span></a>
+    <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold; margin-right:0px ;" href="#topPopover"> </a>
+   </div>
+    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+    <div class="top_bg"></div>
+</header>
 
-	<div class="mui-content">
-		<div class="top_bg"></div>
+	<div class="mui-content" style=" padding-top:108px ;">
+		
 
 		<div id="list-view"></div>
 		<script id="list-view-code" type="text/html">

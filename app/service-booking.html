@@ -63,15 +63,18 @@
 
 </head>
 <body>
-	<header class="mui-bar mui-bar-nav">
-		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-	    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
-	</header>
+	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
+	<div style=" height:21px ; overflow: hidden;">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo" style=" color:#333 ; font-size:24px ; font-weight: bold;"></span></a>
+   
+   </div>
+    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+    <div class="top_bg"></div>
+</header>
 	<div class="mui-content bg-two">
-		<div class="top_bg"></div>
 		
-		<div class="mui-content-padded" style=" margin:0px; padding:10px;">
+		
+		<div class="mui-content-padded" style=" margin:0px; padding:10px; margin-top:10px ;">
 			
 			<div class="serv-my-zi mar">
 				<div class="floa">服務類型</div>
@@ -148,20 +151,19 @@
 				<div class="floa">備註</div>
 				<div class="floa"><input type="text" class="input1" id="sbt_remark" placeholder="備註填寫"></div>
 			</div>
-            
-            <div class="serv-my-zi mar" id="showNumberPicker">
-				<button  class="mui-btn mui-btn-block-two" type="button"><span data-picker="number">数量</span></button>
+            <div style=" overflow: hidden;">
+            <div class="serv-my-zi mar" id="showNumberPicker" style=" float: left;">
+				<button  class="mui-btn mui-btn-block-two" type="button"><span data-picker="number" style="padding-right:85px ;">数量</span></button>
 				<input type="hidden" id="sbt_number" value="1" />
 				<div class="butt_right-two" ><img src="images/Info_button-02.png"></div>
 			</div>
-            
-			<div class="serv-my-zi mar">
+            <div class="serv-my-zi mar" style=" float: right; width: 200px;">
 				<button class="mui-btn mui-btn-block-two" type='button'><span data-info="member.name"></span></button>
 				<div class="butt_right-two" ><img src="images/Info_button-02.png"></div>
 			</div>
 			
-			
-			<div class="serv-my-zi mar"><span class="serv-ljyy-two" id="submit-booking">提交</span></div>
+			</div>
+			<div class="serv-my-zi mar" style=" clear: both;"><span class="serv-ljyy-two" id="submit-booking">提交</span></div>
 			
 		</div>	
 	</div>

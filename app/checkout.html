@@ -30,22 +30,26 @@
     
 </head>
 
-<body class="mui-fullscreen">
-	<header class="mui-bar mui-bar-nav">
-		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-		<h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-		<div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
-	</header>
-
+<body class="mui-fullscreen" style=" background-color:#fff;">
+	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
+	<div style=" height:21px ; overflow: hidden;">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo" style=" color:#333 ; font-size:24px ; font-weight: bold;"></span></a>
+    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
+   </div>
+    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+    <div class="top_bg"></div>
+</header>
+	  
+	<div class="mui-content" id="main" style=" padding-top:30%;">
 	<!--页面主结构开始-->
 	<form class="mui-content" style=" background:none ; background-color:#efeff4 ;" target="_blank" method="post" action="http://dog.ideal-max.com/checkout.php">
 		<input type="hidden" name="sbt_mid" value="">
 
-		<div class="top_bg"></div>	
+	
 		<div class="title p-top">確認地址資訊</div>
 
-		<ul class="mui-table-view">
-			<li class="mui-table-view-cell mui-media">
+		<ul class="mui-table-view" style=" background-color:#fff;">
+			<li class="mui-table-view-cell mui-media" >
 				<a href="javascript:;">
 					姓名：<input name="sbt_name" value="">
 				</a>
@@ -64,7 +68,7 @@
 
 		<div class="title p-top">購物車清單</div>
 		
-		<ul class="mui-table-view" id="list-view"></ul>
+		<ul class="mui-table-view" id="list-view" style=" background-color:#fff;"></ul>
 		<script id="list-view-code" type="text/html">
 			<% for (var i in list) { %>
 			<li class="mui-table-view-cell mui-media">
@@ -85,7 +89,7 @@
 			<input type="submit" class="zh-good-go" style="background-color:#4ebdf4 ; float: right; text-align: center;margin-bottom: 0px;" value="確認付款">
 		</div>
 	</form>
-
+</div>
 	<script>
 		var member = {};
 		

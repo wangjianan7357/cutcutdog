@@ -16,12 +16,12 @@
 				background-color: #efeff4;
 			}
 			.mui-pages {
-				top: 46px;
+				top: 40px;
 				height: auto;
 			}
 			.mui-scroll-wrapper,
 			.mui-scroll {
-				background-color: #efeff4;
+				background-color: #fff;
 			}
 			.mui-page.mui-transitioning {
 				-webkit-transition: -webkit-transform 300ms ease;

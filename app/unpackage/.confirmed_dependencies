@@ -100,7 +100,8 @@
 			"css/mui.min.css",
 			"images/home.png",
 			"images/Petchat.png",
-			"js/common.js"
+			"js/common.js",
+			"images/bg_two.png"
 		],
 		"refer": [
 			"discuss-list.html",
@@ -277,7 +278,17 @@
 			"css/dzcss.css",
 			"js/mui.previewimage.js",
 			"images/bg_two.png",
-			"service-list.html"
+			"service-list.html",
+			"images/home.png",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"js/basic.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"images/Petchat.png"
 		],
 		"refer": [
 			"service-list.html",
@@ -728,7 +739,8 @@
 			"css/mui.min.css",
 			"images/home.png",
 			"images/Petchat.png",
-			"used-detail.html"
+			"used-detail.html",
+			"images/bg_two.png"
 		],
 		"refer": [
 			"buy-address.html",
@@ -802,7 +814,8 @@
 			"css/mui.poppicker.css",
 			"images/Petchat.png",
 			"buy-detail.html",
-			"payment.html"
+			"payment.html",
+			"images/bg_two.png"
 		],
 		"refer": [
 			"buy-detail.html",
@@ -1013,7 +1026,8 @@
 			"images/Info_button-02.png",
 			"js/basic.js",
 			"css/mui.picker.css",
-			"css/mui.poppicker.css"
+			"css/mui.poppicker.css",
+			"images/bg_two.png"
 		],
 		"refer": [
 			"profile.html",

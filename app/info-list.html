@@ -9,7 +9,7 @@
 	<!--标准mui.css-->
 	<link rel="stylesheet" href="css/mui.min.css">
 	<style>
-		.top_bg{ height:25px; background-color: #bc9dc9;}
+		.top_bg{ height:25px; background-color: #bc9dc9;clear: both;}
 		
 		
 	</style>
@@ -22,16 +22,18 @@
 </head>
 
 <body>
-	<header class="mui-bar mui-bar-nav">
-		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-	   
-	</header>
-	<div class="mui-content" id="main">
-		<div class="top_bg"></div>
-		
+	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
+	<div style=" height:21px ; overflow: hidden;">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo" style=" color:#333 ; font-size:24px ; font-weight: bold;"></span></a>
+   
+   </div>
+    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+    <div class="top_bg"></div>
+</header>
+	  
+	<div class="mui-content" id="main" style=" padding-top:30%;">
 		<div id="pullrefresh">
-			<ul class="mui-table-view mui-table-view-chevron" id="list-view" style="background: none; padding: 0 2% 10px; margin-top: 20px;"></ul>
+			<ul class="mui-table-view mui-table-view-chevron" id="list-view" style="background: none; padding: 0 5% 10px; margin-top: 20px;"></ul>
 			<script id="list-view-code" type="text/html">
 				<% for (var i in list) { %>
 				<li class="mui-table-view-cell-img mui-media li-bg">

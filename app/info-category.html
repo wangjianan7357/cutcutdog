@@ -17,7 +17,7 @@
 			padding: 20px 15px 10px;
 			color: #4f4d4e;
 			font-size: 20px;
-			margin-top: 20px;
+			margin-top: 0px;
 			
 		}
 		.top_bg{ height:25px; background-color: #bc9dc9;}
@@ -51,10 +51,12 @@
 
 <body>
 	<header class="mui-bar mui-bar-nav">
-		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-	    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-	    
-	</header>
+	<div style=" height:21px ; overflow: hidden;">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo" style=" color:#333 ; font-size:24px ; font-weight: bold;"></span></a>
+    
+   </div>
+    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+</header>
 	<form class="mui-content" action="info-list.html">
 		<div class="top_bg"></div>
 		<div style=" overflow: hidden;">
@@ -63,13 +65,13 @@
 			<div><input type="text" placeholder="店鋪名稱" style="width:68%;" name="req_name"></div>
 		</div>
 
-		<div style="width:100%; padding-left: 4%;" id="showCityPicker">
+		<div style="width:100%; padding-left: 4%;margin-top:0px;" id="showCityPicker">
 			<button class="mui-btn mui-btn-block" type="button"><span data-picker="city">地區</span></button>
 			<input type="hidden" name="req_cid" value="" id="req_cid" />
 			<div class="butt_right" ><img src="images/Info_button-02.png"></div>
 		</div>
 				
-		<div style="width:100%; padding-left: 4%; margin-top:20px;" id="showServicePicker">
+		<div style="width:100%; padding-left: 4%; margin-top:15px;" id="showServicePicker">
 			<button class="mui-btn mui-btn-block" type="button"><span data-picker="service">服務範圍</span></button>
 			<input type="hidden" name="req_service" value="" id="req_service" />
 			<div class="butt_right" ><img src="images/Info_button-02.png"></div>

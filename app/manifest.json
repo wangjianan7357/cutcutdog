@@ -599,7 +599,8 @@
 					"images/photo-button-04.png",
 					"images/photo-button-01.png",
 					"images/muwu.jpg",
-					"js/common.js"
+					"js/common.js",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"publish-discuss.html"
@@ -1065,7 +1066,8 @@
 					"css/mui.min.css",
 					"images/home.png",
 					"images/Petchat.png",
-					"used-detail.html"
+					"used-detail.html",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"buy-address.html",
@@ -1138,7 +1140,8 @@
 					"css/mui.poppicker.css",
 					"images/Petchat.png",
 					"buy-detail.html",
-					"payment.html"
+					"payment.html",
+					"images/bg_two.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -1286,7 +1289,8 @@
 					"images/Info_button-02.png",
 					"js/basic.js",
 					"css/mui.picker.css",
-					"css/mui.poppicker.css"
+					"css/mui.poppicker.css",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"profile.html",

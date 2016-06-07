@@ -20,7 +20,7 @@
 	        background-color:#efeff4;
 	    }
 		
-		.top_bg{ height:30px; background-color: #a669c0;opacity:0.8;}
+		.top_bg{ height:25px; background-color: #bc9dc9;clear: both;}
 		#topPopover {
 			position:absolute;
 			top: 16px;
@@ -66,11 +66,14 @@
 </head>
 
 <body>
-	<header class="mui-bar mui-bar-nav">
-		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-		<h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-		<a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold;" href="#topPopover"></a>
-	</header>
+	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
+	<div style=" height:21px ; overflow: hidden;">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo" style=" color:#333 ; font-size:24px ; font-weight: bold;"></span></a>
+   <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold; margin-right:0px ;" href="#topPopover"></a>
+   </div>
+    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+    <div class="top_bg"></div>
+</header>
 
 	<div class="mui-content" id="main" style="background:#fff;">
 		<div class="top_bg"></div>
@@ -84,7 +87,10 @@
 					<img class="img-bor-two wid" src="<%= getvarious("domain") + list[i]["member"]["src"] %>" /><span class="t-p-tile"><%= list[i]["member"]["name"] %></span>
 					<% } %>
 					
-					<div><img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></div>	
+					<div style=" clear: both; height:280px ; overflow: hidden;">
+					
+				    <img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>">
+					</div>
 					<input type="hidden" name="aid" value="<%= list[i]["id"] %>" />
 
 					<div class="xp-tu" style="margin-left:5px;">
