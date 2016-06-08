@@ -608,7 +608,8 @@
 			"js/mui.min.js",
 			"fonts/mui.ttf",
 			"css/mui.min.css",
-			"js/basic.js"
+			"js/basic.js",
+			"images/bg_two.png"
 		],
 		"refer": [
 			"login.html"
@@ -740,7 +741,8 @@
 			"images/home.png",
 			"images/Petchat.png",
 			"used-detail.html",
-			"images/bg_two.png"
+			"images/bg_two.png",
+			"images/buy.png"
 		],
 		"refer": [
 			"buy-address.html",
@@ -815,7 +817,8 @@
 			"images/Petchat.png",
 			"buy-detail.html",
 			"payment.html",
-			"images/bg_two.png"
+			"images/bg_two.png",
+			"images/buy.png"
 		],
 		"refer": [
 			"buy-detail.html",
@@ -834,7 +837,8 @@
 			"images/top_bg.png",
 			"images/Petchat.png",
 			"css/feedback-page.css",
-			"js/basic.js"
+			"js/basic.js",
+			"images/bg_two.png"
 		],
 		"refer": []
 	},
@@ -887,7 +891,8 @@
 			"photo-list.html",
 			"pet-information.html",
 			"pet-profile.html",
-			"index.html"
+			"index.html",
+			"images/bg_two.png"
 		]
 	},
 	"pet-\r\ninformation.html": {

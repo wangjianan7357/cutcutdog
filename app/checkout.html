@@ -30,11 +30,11 @@
     
 </head>
 
-<body class="mui-fullscreen" style=" background-color:#fff;">
+<body class="mui-fullscreen">
 	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
 	<div style=" height:21px ; overflow: hidden;">
     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo" style=" color:#333 ; font-size:24px ; font-weight: bold;"></span></a>
-    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
+    <div class="buy-cart" style=" float: right; margin-top: 3px; font-weight: 600; color: #333; margin-right:5px ;"><img src="images/buy.png"><span>0</span></div>
    </div>
     <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
     <div class="top_bg"></div>
@@ -75,7 +75,7 @@
 				<a href="javascript:;">
 					<img class="mui-media-object mui-pull-left" src="<%= getvarious("domain") + "uploads/pictures/product/prm" + list[i]["src"] %>">
 					<div class="mui-media-body">
-						<div class="jq-cart-co">價 錢：$<%= list[i]["sale"] %> <span style=" margin-left:5px ;">數量：<%= list[i]["number"] %></span></div>
+						<div class="jq-cart-co">價 錢：$<%= list[i]["sale"] %> <span style=" margin-left:5px ;">數量：<%= list[i]["number"] %></span><span style=" margin-left:15px ; color:#fb9879 ; font-size:14px ;" onclick="delCart(<%= list[i]["id"] %>)">删除</span></div>
 						<p class='mui-ellipsis'><%= list[i]["name"] %></p>
 						<input type="hidden" name="sbt_product[<%= list[i]["id"] %>]" value="<%= list[i]["number"] %>">
 					</div>
