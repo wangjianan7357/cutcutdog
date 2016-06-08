@@ -517,7 +517,8 @@
 			"css/mui.min.css",
 			"images/home.png",
 			"css/mui.poppicker.css",
-			"images/Petchat.png"
+			"images/Petchat.png",
+			"images/cartoon-dog.png"
 		],
 		"refer": [
 			"info-list.html",

@@ -407,7 +407,8 @@
 					"css/dzcss.css",
 					"js/mui.view.js",
 					"images/gif.gif",
-					"images/bg_two.png"
+					"images/bg_two.png",
+					"images/cartoon-dog.png"
 				],
 				"refer": [
 					"publish-shop.html"
