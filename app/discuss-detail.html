@@ -97,7 +97,7 @@
 		<div class="discuss-title" data-info="detail.name"></div>
 		<div class="discuss-title-right">1樓</div>
 		</div>
-		<div style=" padding-left:10px ; overflow: hidden;">
+		<div style=" padding-left:10px ; overflow: hidden; padding-bottom:5px;border-bottom: solid 1px #efefef ;">
 			<div class="discuss-zi-wz">來自：<span data-info="detail.catalog.name"></span></div>
 			<div class="discuss-zi-wz-flo">
 				<div style="float: left;">
@@ -111,8 +111,8 @@
 			</div>
 		</div>
 		
-		
-		<div class="li-bg-san fl-mar discuss-bg" style=" margin-bottom:0px ;">
+		<div style=" overflow: hidden; border-bottom: solid 1px #efefef ;">
+		<div class="li-bg-san fl-mar" style=" margin-bottom:0px ;">
 			<div style=" overflow: hidden; margin-bottom:20px ;">	
 			    <div id="member-photo" style="float: left;"></div>
 				<script id="member-photo-code" type="text/html">
@@ -132,24 +132,46 @@
 		</script>
 
 		
-		<div class="xp-tu" style="margin-left:5px;">
-			<div class="zh-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
-			<div class="zh-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
-			<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount" data-info="detail.likes">0</span></div>
+		<div class="xp-tu" style="margin-left:5px; margin-top: 5px;">
+			<div class="discu-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
+			<div class="discu-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
+			<div class="discu-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount" data-info="detail.likes">0</span></div>
 			
 		</div>
 	
 		
-		<div id="detail-view"></div>
-		<script id="detail-view-code" type="text/html">
-			<ul id="comment-list" class="li-bg-san" style=" margin-top: 0px;">
-			<% for (var i in detail["comments"]) { %>
-				<li>
-					<p style=" text-indent: 0px;"><b><%= detail["comments"][i]["member"]["name"] %>：</b> <%= detail["comments"][i]["content"] %></p>
-				</li>
-			<% } %>
-			</ul>
-		</script>
+		
+		</div>
+		
+		<div style=" overflow: hidden; border-bottom: solid 1px #efefef ;">
+		<div class="li-bg-san fl-mar" style=" margin-bottom:0px ;">
+			<div style=" overflow: hidden; margin-bottom:20px ;">	
+			    <div id="member-photo" style="float: left;">
+				
+					<img class="img-bor-two wid" src="images/muwu.jpg" /><span class="t-p-tile">jhkjjkjj</span>
+				</div>
+                <div style="float: right; padding-right:10px; color: #666; font-size: 14px; text-align: right;"> 
+                 <div style="padding-right:10px;">2樓</div>	
+			    <div style="padding-right:10px; color: #666; font-size: 14px;" data-info="detail.date"></div>
+			    </div>
+			</div>
+
+			<div class="pl_two_zi" data-info="detail.desp"></div>
+			<input type="hidden" id="aid" data-info="value=detail.id" value="">
+		</div>
+		
+		
+
+		
+		<div class="xp-tu" style="margin-left:5px; margin-top: 5px;">
+			<div class="discu-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
+			<div class="discu-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
+			<div class="discu-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount" data-info="detail.likes">0</span></div>
+			
+		</div>
+	
+		
+		
 	</div>
 	<!--右上角弹出菜单-->
 	<div id="topPopover" class="mui-popover" >

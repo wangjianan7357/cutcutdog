@@ -706,7 +706,9 @@
 					"images/top01.png",
 					"js/jquery-1.4.2.min.js",
 					"images/top02.png",
-					"images/bg_two.png"
+					"images/bg_two.png",
+					"images/menu.png",
+					"images/cartoon-dog.gif"
 				],
 				"refer": [
 					"image-list.html",
@@ -781,7 +783,8 @@
 					"images/Petchat.png",
 					"css/feedback-page.css",
 					"js/basic.js",
-					"js/mui.view.js"
+					"js/mui.view.js",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"profile.html",
