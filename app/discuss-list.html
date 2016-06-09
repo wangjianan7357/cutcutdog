@@ -76,8 +76,6 @@
 				</li>
 			<% } %>
 
-				
-			
 			</ul>
 		</script>
 	</div>
@@ -124,6 +122,20 @@
 						if(!json.error) {
 							jQuery("#list-view").html(template('list-view-code', json));
 							assignTmpl(json);
+
+							if (json.detail.id == 14) {
+								jQuery(".pl-list-two > li:nth-child(2n)").css({background: "#f9a578"});
+							} else if (json.detail.id == 15) {
+								jQuery(".pl-list-two > li:nth-child(2n)").css({background: "#fff577"});
+							} else if (json.detail.id == 16) {
+								jQuery(".pl-list-two > li:nth-child(2n)").css({background: "#94d9f8"});
+							} else if (json.detail.id == 17) {
+								jQuery(".pl-list-two > li:nth-child(2n)").css({background: "#c376b1"});
+							} else if (json.detail.id == 18) {
+								jQuery(".pl-list-two > li:nth-child(2n)").css({background: "#bddc93"});
+							} else if (json.detail.id == 19) {
+								jQuery(".pl-list-two > li:nth-child(2n)").css({background: "#ffd386"});
+							}
 							
 						} else {
 							plus.nativeUI.toast(json.message);
