@@ -4,20 +4,10 @@ require('../include/fun_admin.php');
 require('../include/cls_graphic.php');
 
 $err = '';
-$msg = array();
+$msg = $_GET['msg'] ? $_GET['msg'] : array();
 
-if ($_GET['type'] == 2) {
-	$power_key = 'info';
-	$picture_src = '../' . systemConfig('info_img_path') . $con_pic['pre']['info'];
-}
-else if ($_GET['type'] == 3) {
-	$power_key = 'products';
-	$picture_src = '../' . systemConfig('products_img_path') . $con_pic['pre']['products'];
-}
-
-if ($_GET['type']) {
-	$res = $my_db->fetchOne($cms_cata_type[$_GET['type']]['db'], array('id' => $_GET['oid']));
-	$res['fields'] = json_decode($res['fields'], true);
+if ($_GET['type'] == 7) {
+	$picture_src = '../' . systemConfig('property_img_path') . $con_pic['pre']['property'];
 }
 
 if ($_GET['action'] == 'upload'){
@@ -35,157 +25,114 @@ if ($_GET['action'] == 'upload'){
 	else $power_id = 1;
 
 	if($_GET['num']){
-		$picture_arr['src'] = $res['fields']['picture'][$_GET['num']];
+		$outcome = $my_db->fetchOne('property_content', array('id' => $_GET['num']));
+		$_GET['sort'] = $outcome['sort'];
+		$_GET['pid'] = $outcome['pid'];
 	}
 
 	if($_POST['del'] == 'true'){
-		if(!adminPower($power_key, $power_id)) warning('權限不足');
-		else {
-			$done = 1;
-			$imgarr = array();
-			$fields = $res['fields'];
+		$done = 1;
+		$imgarr = array();
 
-			foreach($_POST as $key => $value){
-				$tmp = explode('chk_', $key);
+		foreach($_POST as $key => $value){
+			$tmp = explode('chk_', $key);
 
-				if ((int)$tmp[1] > 0) {
-					$exist = true;
+			if ((int)$tmp[1] > 0) {
+				$exist = true;
 
-					array_push($imgarr, $res['fields']['picture'][$tmp[1]]);
-					unset($fields['picture'][$tmp[1]]);
-				}
-			}
-
-			$done &= $my_db->saveRow($cms_cata_type[$_GET['type']]['db'], array('fields' => json_encode($fields)), array('id' => $_GET['oid']));
-
-			$getdata = $my_db->selectRow('*', 'language', array('connect' => $con_lang_current));
-			while($result = mysql_fetch_array($getdata)){
-				$done &= $my_db->saveRow($cms_cata_type[$_GET['type']]['db'], array('fields' => json_encode($fields)), array('id' => $_GET['oid']), $result['abbr']);
-			}
-
-			if($done && $exist){
-				mysql_query("COMMIT");
-				mysql_query("END");
-
-				for($i = 0; $i < count($imgarr); $i++){
-					if (strpos($imgarr[$i], 'video_') === 0) {
-						if(file_exists($picture_src . $imgarr[$i])) unlink($picture_src . $imgarr[$i]);
-					}
-					else {
-						$big_img = $picture_src . $con_pic['suf']['big'] . $imgarr[$i];
-						$mid_img = $picture_src . $con_pic['suf']['mid'] . $imgarr[$i];
-						$sml_img = $picture_src . $con_pic['suf']['sml'] . $imgarr[$i];
-
-						if(file_exists($big_img)) unlink($big_img);
-						if(file_exists($mid_img)) unlink($mid_img);
-						if(file_exists($sml_img)) unlink($sml_img);
-					}
+				$getdata = $my_db->selectRow('*', 'property_content', array('id' => $tmp[1]));
+				$res = mysql_fetch_array($getdata);
+				if($res['content']) {
+					array_push($imgarr, $res['content']);
 				}
 
-				$msg[0] = '相册删除成功';
-				instructLog('相册删除', 'del');
+				$done &= $my_db->deleteRow('property_content', array('id' => $tmp[1]));
 			}
-			else {
-				mysql_query("ROLLBACK");
-				mysql_query("END");
+		}
 
-				if(!$exist){
-					$msg[0] = '未选择要删除的项目';
-					$msg[1] = 'warn';
+		if($done && $exist){
+			mysql_query("COMMIT");
+			mysql_query("END");
+
+			for($i = 0; $i < count($imgarr); $i++){
+				if (strpos($imgarr[$i], 'video_') === 0) {
+					if(file_exists($picture_src . $imgarr[$i])) unlink($picture_src . $imgarr[$i]);
 				}
 				else {
-					$msg[0] = '相册删除失败';
-					$msg[1] = 'fail';
+					$big_img = $picture_src . $con_pic['suf']['big'] . $imgarr[$i];
+					$mid_img = $picture_src . $con_pic['suf']['mid'] . $imgarr[$i];
+					//$sml_img = $picture_src . $con_pic['suf']['sml'] . $imgarr[$i];
+
+					if(file_exists($big_img)) unlink($big_img);
+					if(file_exists($mid_img)) unlink($mid_img);
+					//if(file_exists($sml_img)) unlink($sml_img);
 				}
 			}
 
-			$href = $_SERVER['PHP_SELF'] . '?action=lst' . preg_replace('/action=[^&]*&/', '&', $_SERVER['QUERY_STRING']);
-			header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
+			$msg[0] = '相冊刪除成功';
+			instructLog('相冊刪除', 'del');
 		}
+		else {
+			mysql_query("ROLLBACK");
+			mysql_query("END");
+
+			if(!$exist){
+				$msg[0] = '未選擇要刪除的項目';
+				$msg[1] = 'warn';
+			}
+			else {
+				$msg[0] = '相冊刪除失敗';
+				$msg[1] = 'fail';
+			}
+		}
+
+		$href = $_SERVER['PHP_SELF'] . '?action=lst' . preg_replace('/action=[^&]*&/', '&', $_SERVER['QUERY_STRING']);
+		header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
 	}
 	else if($_POST['save'] == 'true'){
-		if(!adminPower($power_key, $power_id)) warning('權限不足');
-
 		$chk_post = new ChkRequest('sbt_');
 
 		$format = 'image';
-		$_POST['sbt_queue'] = min(max((int)$_POST['sbt_queue'], 0), $cms_max_num['queue']);
+		//$_POST['sbt_queue'] = min(max((int)$_POST['sbt_queue'], 0), $cms_max_num['queue']);
 
-		if (strpos($_FILES['sbt_img']['type'], 'video/') === 0) {
-			// 视频格式
-			$format = 'video';
-			$valid_type = array('x-flv');
-			$type = strtr($_FILES['sbt_img']['type'], array('video/' => ''));
+		// 圖片格式
+		$_POST['sbt_content'] = $chk_post->chkImage('img');
 
-			if (!in_array($type, $valid_type)) {
-				warning('视频格式不支持');
-			}
-			else {
-				$_POST['sbt_src'] = 'video_' . $chk_post->createName($_FILES['sbt_img']['name']);
-			}
-		}
-		else {
-			// 图片格式
-			$_POST['sbt_src'] = $chk_post->chkImage('img');
-		}
-
-		if ($picture_arr['src']) {
-			preg_match('/(\.[\w]{3,4})$/', $_POST['sbt_src'], $match);
+		if ($outcome['content']) {
+			preg_match('/(\.[\w]{3,4})$/', $_POST['sbt_content'], $match);
 
 			if ($match[1]) {
-				$_POST['sbt_src'] = preg_replace('/\.[\w]{3,4}$/', '', $picture_arr['src']) . $match[1];
-				$picture_arr['src'] = $_POST['sbt_src'];
+				$_POST['sbt_content'] = preg_replace('/\.[\w]{3,4}$/', '', $outcome['content']) . $match[1];
+				$outcome['content'] = $_POST['sbt_content'];
 			} else {
-				$_POST['sbt_src'] = $picture_arr['src'];
+				$_POST['sbt_content'] = $outcome['content'];
 			}
 		}
 
-		if ($_POST['sbt_queue'] != $_GET['num'] && array_key_exists($_POST['sbt_queue'], $res['fields']['picture']))  {
-			warning('序列号已存在');
-		}
+		$_POST['sbt_vid'] = ($_POST['property'] && $_POST['sbt_vid']) ? intval($_POST['sbt_vid']) : 0;
+		$_GET['sort'] = 7;
 
 		if(!$err){
 			$num = 1;
-
-			if (isset($res['fields']['picture'])) {
-				// 取出最大的鍵值
-				$tmp1 = $res['fields']['picture'];
-				krsort($tmp1);
-				$num = key(array_slice($tmp1, 0, 1, true));
-				$num ++;
-			}
-			else {
-				$res['fields']['picture'] = array();
-			}
-
 			$done = 1;
 
-			if (!$_GET['num'] || $_POST['sbt_queue'] != $_GET['num']) {
-				if ($_POST['sbt_queue'] != $_GET['num']) {
-					unset($res['fields']['picture'][$_GET['num']]);
-					$num = $_POST['sbt_queue'];
-				}
-
-				$res['fields']['picture'][$num] = $_POST['sbt_src'];
-				$done &= $my_db->saveRow($cms_cata_type[$_GET['type']]['db'], array('fields' => json_encode($res['fields'])), array('id' => $_GET['oid']));
-				
-				$getdata = $my_db->selectRow('*', 'language', array('connect' => $con_lang_current));
-				while($result = mysql_fetch_array($getdata)){
-					$done &= $my_db->saveRow($cms_cata_type[$_GET['type']]['db'], array('fields' => json_encode($res['fields'])), array('id' => $_GET['oid']), $result['abbr']);
-				}
+			if ($_POST['sbt_vid']) {
+				$done &= $my_db->deleteRow('property_content', array('vid' => $_POST['sbt_vid'], 'pid' => $_POST['sbt_pid'], 'sort' => $_GET['sort']));
 			}
 
+			$done &= $my_db->saveRow('property_content', array('content' => $_POST['sbt_content'], 'vid' => $_POST['sbt_vid'], 'pid' => $_POST['sbt_pid'], 'sort' => $_GET['sort']), $_GET['num'] ? array('id' => $_GET['num']) : '');
+				
 			if($done){
-				if($_FILES['sbt_img']['tmp_name']){
 
+				if($_FILES['sbt_img']['tmp_name']) {
 					if ($format == 'image') {
-						$big_img = $picture_src . $con_pic['suf']['big'] . $_POST['sbt_src'];
-						$mid_img = $picture_src . $con_pic['suf']['mid'] . $_POST['sbt_src'];
-						$sml_img = $picture_src . $con_pic['suf']['sml'] . $_POST['sbt_src'];
+						$big_img = $picture_src . $con_pic['suf']['big'] . $_POST['sbt_content'];
+						//$mid_img = $picture_src . $con_pic['suf']['mid'] . $_POST['sbt_content'];
+						//$sml_img = $picture_src . $con_pic['suf']['sml'] . $_POST['sbt_content'];
 
 						if(file_exists($big_img)) unlink($big_img);
-						if(file_exists($mid_img)) unlink($mid_img);
-						if(file_exists($sml_img)) unlink($sml_img);
+						//if(file_exists($mid_img)) unlink($mid_img);
+						//if(file_exists($sml_img)) unlink($sml_img);
 						if(file_exists($_POST['tmp_img'])) unlink($_POST['tmp_img']);
 						move_uploaded_file($_FILES['sbt_img']['tmp_name'], $big_img);
 
@@ -193,122 +140,98 @@ if ($_GET['action'] == 'upload'){
 
 						$imgop = new Graphic($big_img);
 
-						$imgop->resizeImage($big_img, $size['big'], $size['big']);
-						$imgop->resizeImage($mid_img, $size['mid'], $size['mid']);
-						$imgop->resizeImage($sml_img, $size['sml'], $size['sml']);
+						$imgop->resizeImage($big_img, 500, 500);
+						//$imgop->resizeImage($mid_img, $size['mid'], $size['mid']);
+						//$imgop->resizeImage($sml_img, $size['sml'], $size['sml']);
 					} 
 					else if ($format == 'video') {
-						move_uploaded_file($_FILES['sbt_img']['tmp_name'], $picture_src . $_POST['sbt_src']);
+						move_uploaded_file($_FILES['sbt_img']['tmp_name'], $picture_src . $_POST['sbt_content']);
 					}
 				}
 
-				instructLog('相册编辑', ($poser_id == 1 ? 'add' : 'edt'));
-				$msg[0] = '相册编辑輯成功';
+				instructLog('相冊編輯', ($poser_id == 1 ? 'add' : 'edt'));
+				$msg[0] = '相冊編輯成功';
+				$msg[1] = 'success';
 
-				if($_GET['num']){
-					$href = $_SERVER['PHP_SELF'] . '?action=lst' . preg_replace('/action=[^&]+|&num=\d+/', '', $_SERVER['QUERY_STRING']);
-					header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
-				}
+				$href = $_SERVER['PHP_SELF'] . '?action=lst&pid=' . $_POST['sbt_pid'] . preg_replace('/action=[^&]+|&num=\d+/', '', $_SERVER['QUERY_STRING']);
+				header('Location: ' . $href . '&msg[]=' . urlencode($msg[0]) . '&msg[]=' . $msg[1]);
 			}
 			else {
-				$msg[0] = '相册编辑失败';
+				$msg[0] = '相冊編輯失敗';
 				$msg[1] = 'fail';
 			}
 		}
 	}
 
-	require('templates/head.html');
-	require('templates/picture.html');
-}
-else if($_GET['action'] == 'lst'){
-	require('templates/head.html');
+	$property_list = array();
+	$property_value = array();
+	$property_content = array();
 
-	if(!$_GET['page']) $_GET['page'] = 1;
-	if(!$_GET['display']) $_GET['display'] = systemConfig('cms_display_qty');
+	/*
+	$getdata = $my_db->selectRow('id, name', 'property', array('type' => $_GET['type']));
+	while($result = mysql_fetch_array($getdata)) {
+		$property_list[$result['id']] = $result['name'];
+	}
 
-	$q_url = '&display=' . $_GET['display'] . '&type=' . $_GET['type'] . '&oid=' . $_GET['oid'];
+	$getdata = $my_db->selectRow('id, pid, value', 'property_value', array('valid' => 1));
+	while($result = mysql_fetch_array($getdata)) {
+		if (!isset($property_value[$result['pid']])) {
+			$property_value[$result['pid']] = array();
+		}
 
-?>
-<body id="adminbody1">
-<form action="<?=$_SERVER['PHP_SELF'] . '?action=edt&page=' . $_GET['page'] . $q_url;?>" method="post">
+		$property_value[$result['pid']][] = $result;
+	}
 
-	<div id="inner_form">
-		<table width="99%" cellspacing="2">
-			<tbody align="center">
-				<tr bgcolor="#eaeaea" class="titletr">
-					<td><input type="checkbox" name="chk_all" /> 全选</td>
-					<td>缩略图</td>
-					<td>操作</td>
-				</tr>
-				<?php
-					$total = 0;
-					if ($res['fields']['picture']) {
-						foreach ($res['fields']['picture'] as $key => $value) {
-							if($total < $_GET['display'] * $_GET['page'] && $total >= $_GET['display'] * ($_GET['page'] - 1)){
+	$getdata = $my_db->selectRow('vid, content', 'property_content', array('sort' => 1, 'pid' => $_GET['pid']));
+	while($result = mysql_fetch_array($getdata)) {
+		$property_content[] = $result['vid'];
+	}
+	*/
 
-								$table = '<tr bgcolor="' . (($total % 2) ? '#ebeff1' : '#e8f2f8') . '">';
-								$table .= '<td><input type="checkbox" name="chk_' . $key . '" /></td>';
+} else {
 
-								$src = '';
-								if (strpos($value, 'video_') === 0) {
-									$src = 'images/video-icon.png';
-								}
-								else {
-									$src = $picture_src . $con_pic['suf']['sml'] . $value;
-								}
-								
-								$table .= '<td><img src="' . $src . '" height="80" /></td>';
-							
-								$table .= '<td>';
-								if(adminPower($cms_cata_type[$_GET['type']]['db'], 2)){
-									$table .= '<a href="' . $_SERVER['PHP_SELF'] . '?action=edt&num=' . $key . '&page=' . $_GET['page'] . $q_url . '">详细</a>';
-								}
+	$q_url = queryPart('id', 'desc');
 
-								echo $table . '</td></tr>';
-							}
+	$where = 'sort = 7' . ($_GET['pid'] ? ' AND pid = ' . $_GET['pid'] : '');
 
-							$total ++;
-						}
+	class FieldFun {
+		function __construct($namespace = 1){
+			$this->namespace = $namespace;
+		}
+
+		function __call($method, $str) {
+			global $picture_src;
+			global $con_pic;
+			global $my_db;
+
+			switch ($this->namespace . '_' . $method) {
+				case '1_fun1':
+					return '<img src="' . $picture_src . $con_pic['suf']['big'] . $str[0] . '" height="50" />';
+				case '2_fun1':
+					if ($str[0]) {
+						$result = $my_db->fetchOne('property_value', array('id' => $str[0]));
+						return $result['value'];
 					}
-				?>
-			</tbody>
-		</table>
-	</div>
+			}
+		}
+	}
 
-	<div class="d_operate" id="d_operate">
-		<div class="d_ico2">
-			<a href="<?=$_SERVER['PHP_SELF'] .'?action=edt' . $q_url;?>" title="新增" class="t_new"></a>
-			<a onclick="deleteSth()" href="javascript:void(0);" title="删除" class="t_del"></a>
-			<a class="f_list" title="返回列表页" href="#"></a>
-
-			<?php if ($_GET['page'] == 1) { ?>
-			<a class="f_prev" title="上一页" href="#"></a>
-			<?php } else { ?>
-			<a class="t_prev" title="上一页" href="<?=$_SERVER['PHP_SELF'] . '?action=lst&page=' . ($_GET['page'] - 1) . $q_url;?>"></a>
-			<?php } ?>
-
-			<?php if($_GET['page'] < ceil($total / $_GET['display'])){ ?>
-			<a class="t_next" title="下一页" href="<?=$_SERVER['PHP_SELF'] . '?action=lst&page=' . ($_GET['page'] + 1) . $q_url;?>"></a>';
-			<?php } else { ?>
-			<a class="f_next" title="下一页" href="#"></a>
-			<?php } ?>
-
-			<a class="t_page" title="跳转到第几页" href="javascript:void(0);" onclick="operateInput(this, <?=$_GET['page'];?>)"></a>
-			<a class="t_show" title="每页显示数量" href="javascript:void(0);" onclick="operateInput(this, <?=$_GET['display'];?>)"></a>
-			<a class="f_search" title="搜索" href="#"></a>
-			<a class="t_fresh" title="刷新页面" href="javascript:void(0);" onclick="window.location.reload();"></a>
-		</div>
-
-		<div class="d_page">
-			<?=$_GET['page'] . '/' . ceil($total / $_GET['display']) . ' 页 &nbsp; 共 ' . $total . ' 条记录';?>
-		</div>
-	</div>
-
-</form>
-<?php
+	$code_table = tableFields(
+		array(
+			array('__all', 'edit'),
+			'id' => 'ID', 
+			'pid' => '產品ID',
+			//'vid' => array('屬性', 'read', array(new FieldFun(2))),
+			'content' => array('縮略圖', 'read', array(new FieldFun())),
+			array('__edit', 'edit', array('power' => $cms_cata_type[$_GET['type']]['db'], 'method' => array('detail' => 2)))
+		),
+		array(
+			'where' => $where,
+			'table' => 'property_content',
+		)
+	);
 }
-?>
-<script src="javascript/common.js" language="javascript"></script>
-<script src="javascript/admin.js" language="javascript"></script>
-</body>
-</html>
+
+require('templates/head.html');
+require('templates/picture.html');
+require('templates/foot.html');

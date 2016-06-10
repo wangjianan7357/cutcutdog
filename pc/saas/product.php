@@ -59,6 +59,17 @@ if ($_REQUEST['action'] == 'list') {
             $product['total']['comments'] = count($comments);
 
             $product['likes'] = $my_db->existRow('likes', array('atype' => $_POST['where']['type'], 'aid' => $product['id'], 'valid' => 1));
+
+        } else {
+            $where = 'sort = 7 AND pid = ' . $product['id'];
+
+            $product['picture'] = array();
+            $product['picture'][] = systemConfig('product_img_path') . $con_pic['pre']['product'] . $con_pic['suf']['mid'] . $product['src'];
+
+            $getdata = $my_db->selectRow('content', 'property_content', array($where));
+            while($result = mysql_fetch_array($getdata)) {
+                $product['picture'][] = systemConfig('property_img_path') . $con_pic['pre']['property'] . $con_pic['suf']['big'] . $result['content'];
+            }
         }
 
     } else {

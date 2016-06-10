@@ -42,7 +42,8 @@ $con_pic = array(
 		'info' => 'im',
 		'product' => 'pr',
 		'service' => 'se',
-		'member' => 'me'
+		'member' => 'me',
+		'property' => 'pp',
 	)
 );
 

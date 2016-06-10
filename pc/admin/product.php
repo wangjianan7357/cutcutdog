@@ -137,6 +137,16 @@ if($_GET['action'] == 'edt'){
 				case '1_fun2':
 					global $catalog_all;
 					return $str[0] ? $catalog_all[preg_replace('/(^[\d,]+,|^)(\d+),$/', '\\2', $str[0])]['name'] : '<font color="red">未歸類</font>'; 
+				case '2_fun1':
+					return '$' . $str[0]; 
+				case '3_fun1':
+					$code = '<a href="' . $_SERVER['PHP_SELF'] . '?action=edt&num=' . $str[0]['id'] . $q_url['24567'] . '&flag=' . $_GET['flag'] . '">編輯</a>';
+
+					if ($catalog_type == 7) {
+						$code .= ' &nbsp; <a href="picture.php?action=lst&pid=' . $str[0]['id'] . '&type=' . $catalog_type . '">相冊</a>';
+					}
+
+					return $code;
 					
 			}
 		}
@@ -150,9 +160,9 @@ if($_GET['action'] == 'edt'){
 			'name' => '名稱',
 			'cid' => array('分类', 'select', array(new FieldFun())),
 			'path' => 'URL', 
-			'sale' => '售價',
+			'sale' => array('售價', 'read', array(new FieldFun(2))),
 			'valid' => array('狀態', 'checkbox'),
-			array('__edit', 'edit', array('power' => 'product', 'method' => array('detail' => 2)))
+			array('__edit', 'edit', array(new FieldFun(3))),
 		),
 		array(
 			'where' => $where,

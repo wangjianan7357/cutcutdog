@@ -192,7 +192,7 @@ return array(
      */
     'property_content' => '
         `id` INT( 8 ) NOT NULL AUTO_INCREMENT , 
-        `sort` INT( 8 ) NOT NULL DEFAULT 1 COMMENT "1：资料库服务所属，2：资料库相册，3：美容师服务所属", 
+        `sort` INT( 8 ) NOT NULL DEFAULT 1 COMMENT "1：资料库服务所属，2：资料库相册，3：美容师服务所属，7：產品相冊", 
         `vid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "属性值ID", 
         `pid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "内容ID", 
         `content` VARCHAR( 80 ) NOT NULL DEFAULT "" , 

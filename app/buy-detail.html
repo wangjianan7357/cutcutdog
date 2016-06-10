@@ -47,15 +47,55 @@
 </head>
 <body style="background-color:#fff ;">
 	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
-	<div style=" height:21px ; overflow: hidden;">
-    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
-    <div class="buy-cart" style=" float: right; margin-top: 3px; font-weight: 600; color: #333; margin-right:5px ;"><a href="cart.html" data-action="openwindow"><img src="images/buy.png"><span>0</span></div></a>
-   </div>
-    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
-    <div class="top_bg"></div>
-</header>
+		<div style=" height:21px ; overflow: hidden;">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
+	    <div class="buy-cart" style=" float: right; margin-top: 3px; font-weight: 600; color: #333; margin-right:5px ;"><a href="cart.html" data-action="openwindow"><img src="images/buy.png"><span data-cart="number">0</span></div></a>
+	   </div>
+	    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+	    <div class="top_bg"></div>
+	</header>
 	<div class="mui-content" style=" overflow: hidden;">
-		
+		<div id="slider" class="mui-slider" >
+            <div class="mui-slider-group mui-slider-loop" id="list-view">
+            	<a class="active">
+					<span class="mui-spinner"></span>
+				</a>
+            </div>
+            <script id="list-view-code" type="text/html">
+            <% for (var i in list_last) { %>
+            	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="<%= getvarious("domain") + list_last[i] %>">
+                    </a>
+                </div>
+            <% } %>
+
+            <% for (var i in list) { %>
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="<%= getvarious("domain") + list[i] %>">
+                    </a>
+                </div>
+            <% } %>
+
+            <% for (var i in list) { %>
+            	<!-- 额外增加的一个节点(循环轮播：最后一张节点是第一个轮播) -->
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="<%= getvarious("domain") + list[i] %>">
+                    </a>
+                </div>
+            <% break; } %>
+            </script>
+            
+            <div class="mui-slider-indicator" id="list-dot"></div>
+            <script id="list-dot-code" type="text/html">
+            <% for (var i in list) { %>
+                <div class="mui-indicator"></div>
+            <% } %>
+            </script>
+        </div>
 
 		<div id="detail-content"></div>
 		<script id="detail-content-code" type="text/html">
@@ -107,7 +147,27 @@
 				async: true,
 				success: function(json) {
 					if(!json.error) {
+						var pics = {};
+						var last = [];
+	                	for (var k in json.detail.picture) {
+	                		last = json.detail.picture[k];
+	                	}
+
+	                	pics.list_last = [last];
+	                	pics.list = json.detail.picture;
+
+	                	jQuery("#list-view").html(template('list-view-code', pics));
+                    	jQuery("#list-dot").html(template('list-dot-code', pics));
+
 						jQuery("#detail-content").html(template("detail-content-code", json));
+
+						mui('.mui-slider').slider();
+						mui('.mui-scroll-wrapper.mui-slider-indicator.mui-segmented-control').scroll({
+							scrollY: false,
+							scrollX: true,
+							indicators: false,
+							snap: '.mui-control-item'
+						});
 							
 					} else {
 						plus.nativeUI.toast(json.message);
