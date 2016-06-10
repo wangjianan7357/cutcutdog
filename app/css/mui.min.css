@@ -44,7 +44,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;background:url(../imag
 .pl-tilte-two{ font-size:18px ; color: #333; line-height:38px ; font-weight: bold;}
 .pl-tilte ul{padding-left:0px ; margin-left:0px ;}
 .pl-tilte ul li{ list-style: none; height: 25px; float:left;padding-left:0px ;width:auto ; color:#666; background:none ; font-size:13px;margin-left:0px ;padding-right:20px ;padding-top:0px ;padding-bottom:0px ;}
-.pl-list-two-top{ height:50px; background: url(../images/pl_top_bg.png) no-repeat center; background-color:#f9a577 ; padding-left:10px ; border-bottom:solid 2px #56bf96 ;border-top:solid 2px #56bf96 ; line-height:48px; text-align: center;color:#333 ; font-size:25px ;}
+.pl-list-two-top{ height:50px; background: url(../images/pl_top_bg.png) no-repeat center;  padding-left:10px ; border-bottom:solid 2px #56bf96 ;border-top:solid 2px #56bf96 ; line-height:48px; text-align: center;color:#333 ; font-size:25px ;}
 .pl_two_zi{ color:#333 ; font-weight: bold; font-size:16px ;}
 .li-bg-san{ background: url(../images/icon-10.png);margin-bottom:20px ;border-radius:10px; line-height:25px; padding-bottom:10px;overflow: hidden;}
 .xp-tu{ margin:0px;overflow: hidden;text-align: center; padding: 0px;}

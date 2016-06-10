@@ -1044,7 +1044,8 @@
 					"images/photo-button-02.png",
 					"images/photo-button-03.png",
 					"images/photo-button-04.png",
-					"images/photo-button-01.png"
+					"images/photo-button-01.png",
+					"im-chat.html"
 				],
 				"refer": [
 					"publish-product.html"
@@ -1321,6 +1322,27 @@
 					"images/top_bg.png",
 					"images/Petchat.png",
 					"js/basic.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"im-chat.html": {
+				"resources": [
+					"js/mui.imageViewer.js",
+					"css/app.css",
+					"css/mui.imageviewer.css",
+					"js/arttmpl.js",
+					"used-detail.html",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/top_bg.png",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"css/mui.indexedlist.css",
+					"images/bg_two.png",
+					"images/CatDog.png",
+					"images/Petchat.png"
 				],
 				"refer": [],
 				"priority": 0
