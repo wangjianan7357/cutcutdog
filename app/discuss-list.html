@@ -64,7 +64,13 @@
 			<% for (var i in list) { %>
 				<li>
 					<a href="discuss-detail.html?url=<%= list[i]["path"] %>" data-action="openwindow">
-						<div class="pl-list-two-img"><img src="images/forum_bubble-a.png"></div>	
+						<div class="pl-list-two-img">
+						<% if (list[i]["read"] == '1') { %>
+							<img src="images/forum_bubble-b.png">
+						<% } else { %>
+							<img src="images/forum_bubble-a.png">
+						<% } %>
+						</div>	
 						<div class="pl-tilte">
 							<div class="pl-tilte-two mui-ellipsis"><%= list[i]["name"] %></div>
 							<ul>

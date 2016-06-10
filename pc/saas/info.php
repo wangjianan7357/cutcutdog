@@ -127,6 +127,8 @@ if ($_REQUEST['action'] == 'list') {
             $info['liked'] = $my_db->existRow('likes', array('atype' => $_POST['where']['type'], 'aid' => $info['id'], 'valid' => 1, 'mid' => $_POST['where']['member_id']));
         }
 
+        $my_db->saveRow('info', array('read' => 1), array('id' => $info['id']));
+
     } else {
         callback(array('error' => 4));
     }

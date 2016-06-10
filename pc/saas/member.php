@@ -1,6 +1,7 @@
 <?php
 require('../include/common.php');
 require('../include/fun_saas.php');
+require('../include/cls_graphic.php');
 
 if ($_REQUEST['action'] == 'login') {
     $submit = array(
@@ -97,6 +98,16 @@ if ($_REQUEST['action'] == 'login') {
         }
 
         move_uploaded_file($_FILES['src']['tmp_name'], '../' . $filename);
+
+        $imgarr = array();
+        $imgop = new Graphic('../' . $filename);
+        $imgarr['width'] = $imgop->getWidth();
+        $imgarr['height'] = $imgop->getHeight();
+
+        if($imgarr['width'] > 500 || $imgarr['height'] > 500){
+            $imgop = new Graphic('../' . $filename);
+            $imgop->resizeImage('../' . $filename, 500, 500);
+        }
     }
 
     $submit = array(
@@ -160,7 +171,7 @@ if ($_REQUEST['action'] == 'login') {
     checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
 
     $list = array();
-    $getdata = $my_db->selectRow('id, src', 'info', array('cid' => '15,', 'mid' => $_REQUEST['id']), array('field' => 'date', 'method' => 'desc'));
+    $getdata = $my_db->selectRow('id, src', 'info', array('cid' => '13,', 'mid' => $_REQUEST['id']), array('field' => 'date', 'method' => 'desc'));
     while ($result = mysql_fetch_array($getdata)) {
         $list[] = $result;
     }
