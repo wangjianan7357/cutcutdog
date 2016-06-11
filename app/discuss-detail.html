@@ -12,12 +12,10 @@
 	<style type="text/css">
 	#comment-list {
 		padding:10px 5px 10px 5px;;
-		
 		text-align: left;
 		color:#666 ;
 		font-size:14px ;
 		margin:10px 10px ;
-		
 	}
 	#comment-list {
 		padding:0px 0px 0px 0px;;
@@ -29,7 +27,7 @@
 		margin:0px 0px ;
 	}
 	#comment-list li {
-		border-bottom: 1px  solid #f5f5f5; list-style:none ; background-color:#fbfbfb ;  padding-left: 5px;height:27px; padding-top:2px ;
+		border-bottom: 1px solid #f5f5f5; list-style:none ; background-color:#fbfbfb ;  padding-left: 5px;height:27px; padding-top:2px ;
 	}
 	#comment-list li p{color:#666 ;  font-size:12px ;}
 	#comment-list li p a{color:#b8b7b7 ; font-size:12px ;}
@@ -103,11 +101,13 @@
 			<div class="discuss-zi-wz-flo">
 				<div style="float: left;">
 				<span class="mui-icon mui-icon-chat" style="color: #b8e5fa; font-size:12px ;">
-					<a style=" color:#a9a9a9 ;" data-info="detail.total.comments">0</a>
+					<a style="color:#a9a9a9;" data-info="detail.total.comments">0</a>
 				</span>
 				</div>
-				<div style="float: left; padding-left:10px ;"><span class="mui-icon mui-icon-eye" style="color: #b8e5fa; font-size:14px ;">
-					<a style=" color:#a9a9a9 ; font-size:12 ;" data-info="detail.likes">0</a></span>
+				<div style="float: left; padding-left:10px ;">
+                <span class="mui-icon mui-icon-eye" style="color: #b8e5fa;">
+					<a style="color:#a9a9a9 ; font-size:12px;" data-info="detail.likes">0</a>
+                </span>
 				</div>
 			</div>
 		</div>
@@ -124,54 +124,53 @@
 				</div>
 
 				<div class="pl_two_zi" data-info="detail.desp"></div>
-				<input type="hidden" id="aid" data-info="value=detail.id" value="">
+				<input type="hidden" name="aid" id="aid" data-info="value=detail.id" value="">
 			</div>
 			
 			<div id="detail-photo" style=" text-align: center;"><img src="images/gif.gif" style="width: 32px; height:32px ;"></div>
 			<script id="detail-photo-code" type="text/html">
 			<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>" style="width:95%; height: 40%;">
 			</script>
-
 			
 			<div class="xp-tu" style="margin-left:5px; margin-top: 5px;">
-				<div class="discu-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
-				<div class="discu-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
+				<div class="discu-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
+				<div class="discu-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
 				<div class="discu-good-x-p-two">
 					<img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount" data-info="detail.likes">0</span>
 				</div>
-				
 			</div>
 		</div>
-		
-		<div style=" overflow: hidden; border-bottom: solid 1px #efefef ;">
-			<div class="li-bg-san fl-mar" style=" margin-bottom:0px ;">
-				<div style=" overflow: hidden; margin-bottom:20px ;">	
-				    <div id="member-photo" style="float: left;">
-					
-						<img class="img-bor-two wid" src="images/muwu.jpg" /><span class="t-p-tile">jhkjjkjj</span>
-					</div>
-	                <div style="float: right; padding-right:10px; color: #666; font-size: 14px; text-align: right;"> 
-	                 <div style="padding-right:10px;">2樓</div>	
-				    <div style="padding-right:10px; color: #666; font-size: 14px;" data-info="detail.date"></div>
-				    </div>
-				</div>
 
-				<div class="pl_two_zi" data-info="detail.desp"></div>
-				<input type="hidden" id="aid" data-info="value=detail.id" value="">
-			</div>
+        <div id="comment-list"></div>
+        <script id="comment-list-code" type="text/html">
+        <% for (var i in comments) { %>
+    		<div style="overflow: hidden; border-bottom: solid 1px #efefef ;">
+    			<div class="li-bg-san fl-mar" style=" margin-bottom:0px ;">
+    				<div style=" overflow: hidden; margin-bottom:20px ;">	
+    				    <div id="member-photo" style="float: left;">
+    						<img class="img-bor-two wid" src="<%= getvarious("domain") + comments[i]["member"]["src"] %>" /><span class="t-p-tile"><%= comments[i]["member"]["name"] %></span>
+    					</div>
+    	                <div style="float: right; padding-right:10px; color: #666; font-size: 14px; text-align: right;"> 
+                        <div style="padding-right:10px;"><%= parseInt(i) + 2 %>樓</div>	
+    				    <div style="padding-right:10px; color: #666; font-size: 14px;"><%= comments[i]["date"] %></div>
+    			    </div>
+    			</div>
 
-		<div class="xp-tu" style="margin-left:5px; margin-top: 5px;">
-			<div class="discu-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
-			<div class="discu-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
-			<div class="discu-good-x-p-two">
-				<img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount" data-info="detail.likes">0</span>
-		</div>
-			
-		</div>
-	
-		
-		
-	</div>
+    			<div class="pl_two_zi"><%= comments[i]["content"] %></div>
+    		</div>
+            <input type="hidden" name="aid" value="<%= comments[i]["id"] %>" rel="message" />
+
+    		<div class="xp-tu" style="margin-left:5px; margin-top: 5px;">
+    			<div class="discu-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
+    			<div class="discu-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
+    			<div class="discu-good-x-p-two">
+    				<img src="images/photo-button-04.png" style=" float: left;"><span data-icon="likesCount"><%= comments[i]["likes"] %></span>
+                </div>
+            </div>
+    	</div>
+    <% } %>
+    </script>
+
 	<!--右上角弹出菜单-->
 	<div id="topPopover" class="mui-popover" >
 		<div class="mui-popover-arrow"></div>
@@ -222,10 +221,13 @@
 						if (!json.detail.src) {
 							jQuery("#detail-photo").hide();
 						}
-						jQuery("#detail-view").html(template("detail-view-code", json));
 						jQuery("#detail-photo").html(template("detail-photo-code", json));
+
+                        //alert(JSON.stringify(json))
+
+                        jQuery("#comment-list").html(template("comment-list-code", json.detail));
 						assignTmpl(json);
-						initComment("promptBtn", "heart", "likesCount");
+                        setComment();
 							
 					} else {
 						plus.nativeUI.toast(json.message);
@@ -234,6 +236,79 @@
 				error: function(xhr, type, errorThrown) {}
 			});
 		});
+
+        function setComment() {
+            jQuery("[data-icon='promptBtn']").click(function() {
+                var self = jQuery(this);
+
+                mui.prompt("請輸入您的評語：", "", "", ["取消", "提交"], function(e) {
+                    if (e.index == 1) {
+                        mui.ajax({
+                            type: "post",
+                            url: domain + "saas/message.php",
+                            dataType: "json",
+                            data: {
+                                action: "send",
+                                id: member.id,
+                                name: member.name,
+                                content: e.value,
+                                atype: cata_type,
+                                aid: jQuery("#aid").val()
+                            },
+                            async: true,
+                            success: function(json) {
+                                plus.nativeUI.toast("評論成功");
+                                document.location.href = document.location.href;
+                                //alert(JSON.stringify(json))
+                            },
+                            error: function(xhr, type, errorThrown) {
+                                //alert(JSON.stringify(xhr))
+                            }
+                        });
+                        
+                        //jQuery("#comment-list").prepend("<li><p><b>" + member.name + "：</b>" + e.value + "</p></li>");
+                    }
+                })
+            });
+            
+            var setLikes = function(action, obj) {
+                mui.ajax({
+                    type: "post",
+                    url: domain + "saas/likes.php",
+                    dataType: "json",
+                    data: {
+                        action: action,
+                        id: member.id,
+                        name: member.name,
+                        atype: cata_type + (obj.attr("rel") == "message" ? 10 : 0),
+                        aid: obj.val()
+                    },
+                    async: true,
+                    success: function(json) {
+                        //alert(JSON.stringify(json))
+                    },
+                    error: function(xhr, type, errorThrown) {
+                        //alert(JSON.stringify(xhr))
+                    }
+                });
+            };
+
+            jQuery("[data-icon='heart']").click(function(){
+                var likes_obj = jQuery(this).parent().find("[data-icon='likesCount']");
+                var count = parseInt(likes_obj.html());
+                var rel = $(this).attr("rel");
+               
+                if(rel == 'like') {      
+                    setLikes("insert", jQuery(this).parent().parent().find("[name='aid']"));
+                    likes_obj.html(count + 1);
+                    $(this).attr("rel", "unlike");
+                } else {
+                    setLikes("delete", jQuery(this).parent().parent().find("[name='aid']"));
+                    likes_obj.html(count - 1);
+                    $(this).attr("rel", "like");
+                }
+            });
+        }
 	</script>
 	
 	

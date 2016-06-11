@@ -208,7 +208,7 @@
 					async: true,
 					success: function(json) {
 						if(!json.error) {
-							myStorage.setItem("member", {id: json.member.id, name: json.member.name});
+							myStorage.setItem("member", {id: json.member.id, name: json.member.name, src: json.member.src});
 							document.location.href = "index.html?" + Date.parse(new Date());
 
 						} else {

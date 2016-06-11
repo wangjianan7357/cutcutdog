@@ -64,6 +64,10 @@ if (typeof(template) != "undefined") {
         eval("various = " + name);
         return various;
     });
+
+    template.helper("parseInt", function (value) {
+        return parseInt(value);
+    });
 }
 
 $("[data-randon]").each(function(){

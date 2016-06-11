@@ -89,9 +89,16 @@ if ($_REQUEST['action'] == 'list') {
 
         $cid = explode(',', trim($info['cid'], ','));
 
+        if ($_POST['where']['type'] == 4) {
+            $order = array('field' => 'date', 'method' => 'ASC');
+        } else {
+            $order = array('field' => 'date', 'method' => 'DESC');
+        }
+
         $comments = array();
-        $getdata = $my_db->selectRow('*', 'message', array('atype' => $_POST['where']['type'], 'aid' => $info['id'], 'valid' => 1), array('field' => 'date', 'method' => 'DESC'));
+        $getdata = $my_db->selectRow('*', 'message', array('atype' => $_POST['where']['type'], 'aid' => $info['id'], 'valid' => 1), $order);
         while ($result = mysql_fetch_array($getdata)) {
+            $result['likes'] = $my_db->existRow('likes', array('aid' => $result['id'], 'valid' => 1));
             $comments[] = $result;
         }
 
@@ -102,12 +109,9 @@ if ($_REQUEST['action'] == 'list') {
         if (!empty($comments)) {
             // 添加会员名
             $member = array();
-            $getdata = $my_db->selectRow('*', 'member');
+            $getdata = $my_db->selectRow('id, name, src', 'member');
             while ($result = mysql_fetch_array($getdata)) {
-                $temp = array();
-                $temp['name'] = $result['name'];
-
-                $member[$result['id']] = $temp;
+                $member[$result['id']] = $result;
             }
 
             foreach ($comments as &$value) {
