@@ -124,4 +124,6 @@ if ($_REQUEST['action'] == 'list') {
         callback(array('error' => 4));
     }
 
+} else if ($_REQUEST['action'] == 'chat') {
+
 }

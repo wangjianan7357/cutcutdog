@@ -133,7 +133,7 @@
 			</script>
 			
 			<div class="xp-tu" style="margin-left:5px; margin-top: 5px;margin-bottom:5px ;">
-				<div class="discu-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png" style=" float: left;"><span id="likesCount" data-info="detail.likes">0</span></div>
+				<div class="discu-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png" style=" float: left;"><span id="likesCount" data-info="detail.likes" data-icon="likesCount">0</span></div>
 				<div class="discu-good-x-p-two" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png" style=" float: left;"><span>評論</span></div>
 				
 			</div>
@@ -159,7 +159,7 @@
             <input type="hidden" name="aid" value="<%= comments[i]["id"] %>" rel="message" />
 
     		<div class="xp-tu" style="margin-left:5px; margin-top: 5px;margin-bottom:5px ;">
-				<div class="discu-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png" style=" float: left;"><span id="likesCount" data-info="detail.likes">0</span></div>
+				<div class="discu-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png" style=" float: left;"><span data-icon="likesCount"><%= comments[i]["likes"] %></span></div>
 				<div class="discu-good-x-p-two" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png" style=" float: left;"><span>評論</span></div>
 				
 			</div>

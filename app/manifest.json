@@ -1346,7 +1346,10 @@
 					"images/CatDog.png",
 					"images/Petchat.png",
 					"images/logo.png",
-					"images/shuijiao.jpg"
+					"images/shuijiao.jpg",
+					"js/template-native.js",
+					"js/jquery.min.js",
+					"js/basic.js"
 				],
 				"refer": [],
 				"priority": 0

@@ -58,6 +58,7 @@ $con_db_table = array(
 	'booking'   => $child_pre . 'booking',
 	'message'   => $child_pre . 'message',
 	'likes'   	=> $child_pre . 'likes',
+	'chat'   	=> $child_pre . 'chat',
 	'language'  => $child_pre . 'language',
 	'constant'  => $child_pre . 'constant',
 	'log'       => $child_pre . 'log',
@@ -128,6 +129,9 @@ $cms_cata_style = array(1 => '内容整页显示', 2 => '标题列表显示');
 
 /* 会员类型 */
 $cms_member_type = array(1 => '會員', 10 => '美容師');
+
+/* 服务类型 */
+$cms_service_type = array(1 => '商店', 2 => '醫院', 3 => '其他服務');
 
 /* 交互模块 */
 $cms_msg_type = array(1 => '在線評論');

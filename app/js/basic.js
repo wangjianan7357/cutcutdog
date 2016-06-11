@@ -188,37 +188,39 @@ function uploadFileData(filepath, data, url, success) {
 }
 
 function initComment(comment, likes, total) {
-    document.getElementById(comment).addEventListener("tap", function(e) {
-        //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
-        e.detail.gesture.preventDefault();
+    if(comment) {
+        document.getElementById(comment).addEventListener("tap", function(e) {
+            //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
+            e.detail.gesture.preventDefault();
 
-        mui.prompt("請輸入您的評語：", "", "", ["取消", "提交"], function(e) {
-            if (e.index == 1) {
-                mui.ajax({
-                    type: "post",
-                    url: domain + "saas/message.php",
-                    dataType: "json",
-                    data: {
-                        action: "send",
-                        id: member.id,
-                        name: member.name,
-                        content: e.value,
-                        atype: cata_type,
-                        aid: jQuery("#aid").val()
-                    },
-                    async: true,
-                    success: function(json) {
-                        //alert(JSON.stringify(json))
-                    },
-                    error: function(xhr, type, errorThrown) {
-                        //alert(JSON.stringify(xhr))
-                    }
-                });
-                
-                jQuery("#comment-list").prepend("<li><p><b>" + member.name + "：</b>" + e.value + "</p></li>");
-            }
-        })
-    });
+            mui.prompt("請輸入您的評語：", "", "", ["取消", "提交"], function(e) {
+                if (e.index == 1) {
+                    mui.ajax({
+                        type: "post",
+                        url: domain + "saas/message.php",
+                        dataType: "json",
+                        data: {
+                            action: "send",
+                            id: member.id,
+                            name: member.name,
+                            content: e.value,
+                            atype: cata_type,
+                            aid: jQuery("#aid").val()
+                        },
+                        async: true,
+                        success: function(json) {
+                            //alert(JSON.stringify(json))
+                        },
+                        error: function(xhr, type, errorThrown) {
+                            //alert(JSON.stringify(xhr))
+                        }
+                    });
+                    
+                    jQuery("#comment-list").prepend("<li><p><b>" + member.name + "：</b>" + e.value + "</p></li>");
+                }
+            })
+        });
+    }
     
     var setLikes = function(action) {
         mui.ajax({

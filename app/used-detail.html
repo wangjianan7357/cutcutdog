@@ -75,14 +75,14 @@
 </head>
 <body style=" background-color:#fff ; height:100% ; overflow: hidden;">
 	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
-	<div style=" height:21px ; overflow: hidden;">
-    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
-    <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold; margin-right:0px ;" href="#topPopover"></a>
-   </div>
-    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
-    <div class="top_bg"></div>
-</header>
-	
+		<div style=" height:21px ; overflow: hidden;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
+			<a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" style=" color:#333 ; font-weight: bold; margin-right:0px ;" href="#topPopover"></a>
+		</div>
+		<div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+		<div class="top_bg"></div>
+	</header>
+		
 	<div class="mui-content bg-two">
 		<div class="top_bg"></div>
 		
@@ -90,7 +90,7 @@
 		<script id="detail-content-code" type="text/html">
 			<div id="detail-photo" style="height:280px ; overflow: hidden;"><img src="<%= getvarious("domain") + "uploads/pictures/product/prm" + detail["src"] %>"></div>
 		
-	        <div style=" padding:10px ; background-color:#fff ;">
+		    <div style=" padding:10px ; background-color:#fff ;">
 				<div class="serv-my-zi ming-he">
 					<a><strong>產品名稱：</strong></a><%= detail["name"] %>
 				</div>
@@ -107,7 +107,7 @@
 
 	            <div class="xp-tu" style="margin-left:0px; margin-top:20px;">
 	                <div class="zh-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
-	                <div class="zh-good-x-p" style="margin-left:10px;"><a href="im-chat.html" data-action="openwindow"><img src="images/photo-button-02.png"></a></div>
+	                <div class="zh-good-x-p" style="margin-left:10px;"><a href="im-chat.html?id=<%= detail["id"] %>" data-href="im-chat" data-action="openwindow"><img src="images/photo-button-02.png"></a></div>
 	                
 	                <div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount"><%= detail["likes"] %></span></div>
 	            </div>
@@ -168,7 +168,11 @@
 				success: function(json) {
 					if(!json.error) {
 						jQuery("#detail-content").html(template("detail-content-code", json));
-						initComment("promptBtn", "heart", "likesCount");
+						initComment("", "heart", "likesCount");
+
+						if (!member) {
+				            jQuery("[data-href='im-chat']").attr("href", "login.html");
+				        }
 							
 					} else {
 						plus.nativeUI.toast(json.message);
