@@ -57,7 +57,7 @@
 
 		<div id="list-view"></div>
 		<script id="list-view-code" type="text/html">
-			<div class="pl-list-two-top" style="background-color:#f9a577 ;"><%= detail["name"] %></div>
+			<div class="pl-list-two-top" id="discuss_name" style="background-color:#f9a577;"><%= detail["name"] %></div>
 			
 			<ul class="pl-list-two">
 
@@ -131,16 +131,28 @@
 
 							if (json.detail.id == 14) {
 								jQuery(".pl-list-two > li:nth-child(2n)").css({background: "#feddcb"});
+								jQuery("#discuss_name").css({backgroundColor: "#feddcb"});
+
 							} else if (json.detail.id == 15) {
 								jQuery(".pl-list-two > li:nth-child(2n)").css({background: "#fef9b9"});
+								jQuery("#discuss_name").css({backgroundColor: "#feddcb"});
+
 							} else if (json.detail.id == 16) {
 								jQuery(".pl-list-two > li:nth-child(2n)").css({background: "#d5f1fe"});
+								jQuery("#discuss_name").css({backgroundColor: "#feddcb"});
+
 							} else if (json.detail.id == 17) {
 								jQuery(".pl-list-two > li:nth-child(2n)").css({background: "#ffdbf7"});
+								jQuery("#discuss_name").css({backgroundColor: "#feddcb"});
+								
 							} else if (json.detail.id == 18) {
 								jQuery(".pl-list-two > li:nth-child(2n)").css({background: "#edfed7"});
+								jQuery("#discuss_name").css({backgroundColor: "#feddcb"});
+								
 							} else if (json.detail.id == 19) {
 								jQuery(".pl-list-two > li:nth-child(2n)").css({background: "#fdefd6"});
+								jQuery("#discuss_name").css({backgroundColor: "#feddcb"});
+								
 							}
 							
 						} else {
