@@ -275,7 +275,7 @@ return array(
 		`valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 
         `read` INT( 1 ) NOT NULL DEFAULT 0 , 
 		`desp` TEXT NOT NULL , 
-		`fields` TEXT NOT NULL , 
+        `type` INT( 1 ) NOT NULL DEFAULT 0 , 
 		`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
 		PRIMARY KEY ( `id` )',
 

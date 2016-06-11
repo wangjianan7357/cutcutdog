@@ -70,12 +70,12 @@
                         
                         <?php if ($_GET['type'] == 3) { ?>
                         <div class="form-group">
-                            <label for="sbt_path">服務類型</label>
+                            <label for="sbt_type">服務類型</label>
 
-                            <select class="form-control" name="sbt_cid" id="sbt_cid" required="required">
-                                <option value="">-- 請選擇 --</option>
+                            <select class="form-control" name="sbt_type">
+                                <option value="0">-- 請選擇 --</option>
                                 <?php foreach ($cms_service_type as $key => $value) { ?>
-                                <option value="<?= $key; ?>"><?= $value; ?></option>
+                                <option value="<?= $key; ?>" <?=$outcome['type'] == $key ? 'selected="selected"' : '';?>><?= $value; ?></option>
                                 <?php } ?>
                             </select>
                         </div>

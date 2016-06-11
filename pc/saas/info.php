@@ -28,6 +28,7 @@ if ($_REQUEST['action'] == 'list') {
         }
 
         if (intval($_POST['where']['service'])) {
+            /*
             $pids = array();
             $getdata = $my_db->selectRow('pid', 'property_content', array('sort' => 1, 'vid' => intval($_POST['where']['service'])));
             while ($result = mysql_fetch_array($getdata)) {
@@ -39,6 +40,9 @@ if ($_REQUEST['action'] == 'list') {
             } else {
                 callback(array('error' => 0, 'list' => $list));
             }
+            */
+
+            $where['type'] = intval($_POST['where']['service']);
         }
 
         $_POST['page'] = isset($_POST['page']) ? intval($_POST['page']) : 1;

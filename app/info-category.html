@@ -120,7 +120,7 @@
 							}
 
 							for (p in json.service) {
-								var tmp = {value: json.service[p]["id"], text: json.service[p]["name"]};
+								var tmp = {value: p, text: json.service[p]};
 								service.push(tmp);
 							}
 

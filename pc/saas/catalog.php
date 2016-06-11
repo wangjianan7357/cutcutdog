@@ -23,10 +23,7 @@ if ($_REQUEST['action'] == 'list') {
             $list[$result['id']] = $result;
         }
 
-        $getdata = $my_db->selectRow('*', 'service', array('valid' => 1));
-        while ($result = mysql_fetch_array($getdata)) {
-            $service[$result['id']] = $result;
-        }
+        $service = $cms_service_type;
 
     } else {
         callback(array('error' => 5));
