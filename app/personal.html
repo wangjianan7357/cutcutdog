@@ -59,7 +59,6 @@
 						<a href="index.html" data-action="webview"><span class="mui-icon mui-icon-home-filled" style=" color:#fff ; font-size:28px ;"></span></a>
 					</div>
 					
-					
 					<div class="perso-top-right">
 						<a href="profile.html" data-action="webview"><span class="mui-icon mui-icon-compose" style=" color:#fff ; font-size:34px ;"></span></a>
 					</div>
@@ -71,7 +70,7 @@
 						<li><span data-info="member.statistic.discuss">0</span><p>帖子</p></li>	
 						<li><span data-info="member.statistic.photo">0</span><p>相片</p></li>
 						<li><span data-info="member.statistic.likes">0</span><p>讚好</p></li>
-						<li><a id="menu" class="mui-icon-bars-two" href="#topPopover"><span>0</span><p>私信</p></a></li>
+						<li><a id="menu" class="mui-icon-bars-two" href="#topPopover"><span data-info="member.statistic.chat">0</span><p>私信</p></a></li>
 					</ul>	
 				</div>
 			</div>
@@ -88,14 +87,17 @@
 		<% } %>
 		</script>
 	</div>
-<!--右上角弹出菜单-->
+
+	<!--右上角弹出菜单-->
 	<div id="topPopover" class="mui-popover" >
 		<div class="mui-popover-arrow"></div>
-		<div class="mui-scroll-wrapper" style=" position: absolute; top:0px;">
-			<div class="mui-scroll">
-			 <div class="per-img-two"><a href="im-chat.html" data-action="openwindow"><img class="img-bor-two wid" src="images/shuijiao.jpg" /><span class="per-p-tile">1</span></a></div>
-			 <div class="per-img-two"><a href="im-chat.html" data-action="openwindow"><img class="img-bor-two wid" src="images/muwu.jpg" /><span class="per-p-tile">2</span></a></div>
-			</div>
+		<div class="mui-scroll-wrapper" style="position: absolute; top:0px;">
+			<div class="mui-scroll" id="chat-list"></div>
+			<script id="chat-list-code" type="text/html">
+			<% for (var i in list) { %>
+				<div class="per-img-two"><a href="im-chat.html?tid=<%= list[i]["mid"] %>" data-action="openwindow"><img class="img-bor-two wid" src="<%= getvarious("domain") + list[i]["src"] %>" /><span class="per-p-tile"><%= list[i]["number"] %></span></a></div>
+			<% } %>
+			</script>
 		</div>
 
 	</div>
@@ -176,7 +178,28 @@
 				}
 			});
 
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/member.php",
+				dataType: "json",
+				data: {
+					action: "chat",
+					name: member.name,
+					id: member.id
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						jQuery("#chat-list").html(template('chat-list-code', json));
+						
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {
 
+				}
+			});
 		});
 
 	</script>

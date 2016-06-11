@@ -67,6 +67,7 @@ if ($_REQUEST['action'] == 'login') {
                 $statistic['photo'] = $my_db->existRow('info', array('mid' => $_REQUEST['id'], 'cid' => '15,'));
                 $statistic['discuss'] = $my_db->existRow('info', array('mid = ' . intval($_REQUEST['id']) . ' AND (cid = "13," OR cid = "14," OR cid = "16," OR cid = "17," OR cid = "18," OR cid = "19,")'));
                 $statistic['likes'] = $my_db->existRow('likes', array('mid' => $_REQUEST['id']));
+                $statistic['chat'] = $my_db->existRow('chat', array('tid' => $_REQUEST['id'], 'read' => 0, 'valid' => 1));
 
                 $member['statistic'] = $statistic;
             }
@@ -80,7 +81,7 @@ if ($_REQUEST['action'] == 'login') {
     }
 
 } else if ($_REQUEST['action'] == 'update') {
-    checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
+    checkMember(array('id' => $_POST['id'], 'name' => urldecode($_POST['name'])));
     
     $where = array(
         'name' => urldecode($_REQUEST['name']),
@@ -168,7 +169,7 @@ if ($_REQUEST['action'] == 'login') {
     callback(array('error' => 0, 'member' => $member));
 
 } else if ($_REQUEST['action'] == 'my-photo') {
-    checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
+    checkMember(array('id' => $_POST['id'], 'name' => urldecode($_POST['name'])));
 
     $list = array();
     $getdata = $my_db->selectRow('id, src', 'info', array('cid' => '13,', 'mid' => $_REQUEST['id']), array('field' => 'date', 'method' => 'desc'));
@@ -177,5 +178,16 @@ if ($_REQUEST['action'] == 'login') {
     }
 
     callback(array('error' => 0, 'list' => $list, 'member' => array('id' => $_POST['id'])));
+
+} else if ($_REQUEST['action'] == 'chat') {
+    checkMember(array('id' => $_POST['id'], 'name' => urldecode($_POST['name'])));
+
+    $list = array();
+    $getdata = $my_db->myQuery('SELECT COUNT(`chat`.id) AS `number`, `chat`.mid, `member`.src FROM `cut_chat` AS `chat` JOIN `cut_member` AS `member` ON `mid` = `member`.id WHERE `tid` = ' . intval($_POST['id']) . ' AND `read` = 0 GROUP BY `mid`');
+    while ($result = mysql_fetch_array($getdata)) {
+        $list[] = $result;
+    }
+
+    callback(array('error' => 0, 'list' => $list));
 }
 

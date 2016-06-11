@@ -129,6 +129,7 @@
 		}
 		.msg-item .msg-content .msg-content-inner {
 			overflow-x: hidden;
+			font-size: 18px;
 		}
 		.msg-item .msg-content .msg-content-arrow {
 			position: absolute;
@@ -341,74 +342,109 @@
 		<div id="list-view"></div>
 		<script id="list-view-code" type="text/html">
 		<% for (var i in list) { %>
-
-			<div class="msg-item">
-				<img class="msg-user-img" src="images/logo.png" alt=""  width="75" height="75"/>
+			<% if (list[i]["me"]) { %>
+			<div class="msg-item" style="float: right;">
+				<img class="msg-user-img" data-user="me" src=""  width="75" height="75" style="float: right;"/>
 				
 				<div class="msg-content">
-					<div class="msg-content-inner">
-						<div style="font-size: 18px;">您好！在吗？我对你的宠物衣服很感兴趣</div>
-							</div>
-					<div class="msg-content-arrow"></div>
-				</div>
-				
-			</div>
-			
-			<div class="msg-item" style=" float: right;">
-				<img class="msg-user-img" src="images/shuijiao.jpg" alt="" width="75" height="75"  style="float: right;"/>
-				
-				<div class="msg-content">
-					<div class="msg-content-inner">
-						<div style="font-size: 18px;">您好！很高兴跟你联系</div>
-							</div>
+					<div class="msg-content-inner"><%= list[i]["content"] %></div>
 					<div class="msg-content-arrow-two"></div>
 				</div>
-				
 			</div>
+
+			<% } else { %>
+			
+			<div class="msg-item">
+				<img class="msg-user-img" data-user="him" src="" width="75" height="75" />
+				
+				<div class="msg-content">
+					<div class="msg-content-inner"><%= list[i]["content"] %></div>
+					<div class="msg-content-arrow"></div>
+				</div>
+			</div>
+			<% } %>
 		<% } %>
 		</script>
 
 		<footer>
 			<div class="footer-center">
-				<textarea id='msg-text' type="text" class='input-text'></textarea>
+				<textarea id="msg-text" type="text" class="input-text"></textarea>
 			</div>
-			<label for="" class="footer-right" style="line-height:30px ;">
-				发送
-			</label>
+			<label class="footer-right" style="line-height:30px ;" data-action="send">发送</label>
 		</footer>
 		
 	</div>
 
 	<script>
-		(function(mui) {
-			mui.init({
-				swipeBack:true //启用右滑关闭功能
-			});
+		var member = {};
+		var cata_type = 8;
 
-			mui.plusReady(function() {
-				ajaxCache({
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+
+		mui.plusReady(function() {
+			member = myStorage.getItem("member");
+
+			ajaxCache({
+				type: "post",
+				url: domain + "saas/chat.php",
+				dataType: "json",
+				data: {
+					action: "list",
+				    id: member.id,
+				    name: member.name,
+				    tid: getUrlParam("tid")
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						jQuery("#list-view").html(template('list-view-code', json));
+						assignTmpl(json);
+
+						jQuery("[data-user='me']").attr("src", domain + member.src);
+						jQuery("[data-user='him']").attr("src", domain + json.member.src);
+
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {}
+			}, true);
+		});
+
+		jQuery("[data-action='send']").click(function(){
+			if (jQuery("#msg-text").val()) {
+
+				mui.ajax({
 					type: "post",
-					url: domain + "saas/catalog.php",
+					url: domain + "saas/chat.php",
 					dataType: "json",
 					data: {
-						action: "detail",
-						where: {type: 4, path: getUrlParam("url")}
+					    action: "send",
+					    id: member.id,
+					    name: member.name,
+					    content: jQuery("#msg-text").val(),
+					    tid: getUrlParam("tid")
 					},
 					async: true,
 					success: function(json) {
-						if(!json.error) {
-							jQuery("#list-view").html(template('list-view-code', json));
-							assignTmpl(json);
-
-							
-						} else {
-							plus.nativeUI.toast(json.message);
-						}
+					    //alert(JSON.stringify(json))
 					},
-					error: function(xhr, type, errorThrown) {}
-				}, true);
-			});
-		}(mui));
+					error: function(xhr, type, errorThrown) {
+					    //alert(JSON.stringify(xhr))
+					}
+		        });
+
+				jQuery("#list-view").append('<div class="msg-item" style="float: right;"><img class="msg-user-img" data-user="me" src="" width="75" height="75" style="float: right;"/><div class="msg-content"><div class="msg-content-inner">' + jQuery("#msg-text").val() + '</div><div class="msg-content-arrow-two"></div></div></div>');
+				jQuery("[data-user='me']").attr("src", domain + member.src);
+
+				jQuery("#msg-text").val("");
+
+			}
+
+        });
+
 	</script>
 </body>
 </html>

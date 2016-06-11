@@ -40,12 +40,9 @@ if ($_REQUEST['action'] == 'list') {
             if (!empty($comments)) {
                 // 添加会员名
                 $member = array();
-                $getdata = $my_db->selectRow('*', 'member');
+                $getdata = $my_db->selectRow('id, name', 'member');
                 while ($result = mysql_fetch_array($getdata)) {
-                    $temp = array();
-                    $temp['name'] = $result['name'];
-
-                    $member[$result['id']] = $temp;
+                    $member[$result['id']] = $result;
                 }
 
                 foreach ($comments as &$value) {
@@ -123,7 +120,5 @@ if ($_REQUEST['action'] == 'list') {
     } else {
         callback(array('error' => 4));
     }
-
-} else if ($_REQUEST['action'] == 'chat') {
 
 }
