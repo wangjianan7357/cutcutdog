@@ -108,18 +108,10 @@
 	            <div class="xp-tu" style="margin-left:0px; margin-top:20px;">
 	                <div class="zh-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
 	                <div class="zh-good-x-p" style="margin-left:10px;" id="chat"><a href="im-chat.html?tid=<%= detail["member"]["id"] %>" data-href="im-chat" data-action="openwindow"><img src="images/photo-button-02.png"></a></div>
-	                
 	                <div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount"><%= detail["likes"] %></span></div>
 	            </div>
 
-	            <ul class="comment-list-two" style="padding: 0px; margin: 0px;" id="comment-list">
-	            <% for (var i in detail["comments"]) { %>
-	                <li>
-	                    <p><b><%= detail["comments"][i]["member"]["name"] %>：</b> <%= detail["comments"][i]["content"] %></p>
-	                </li>
-	            <% } %>
-	            	<!-- <li><p style=" text-align: center; border-bottom:none ;"><a href="#" data-action="openwindow">查看全部評論</a></p></li> -->
-	            </ul>
+	           
 			</div>
 		</script>
 	</div>	

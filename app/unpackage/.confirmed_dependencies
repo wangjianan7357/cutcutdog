@@ -903,7 +903,8 @@
 			"pet-profile.html",
 			"index.html",
 			"images/bg_two.png",
-			"images/shuijiao.jpg"
+			"images/shuijiao.jpg",
+			"im-chat.html"
 		]
 	},
 	"pet-\r\ninformation.html": {
@@ -1112,10 +1113,12 @@
 			"images/shuijiao.jpg",
 			"js/template-native.js",
 			"js/jquery.min.js",
-			"js/basic.js"
+			"js/basic.js",
+			"personal.html"
 		],
 		"refer": [
-			"used-detail.html"
+			"used-detail.html",
+			"personal.html"
 		]
 	}
 }

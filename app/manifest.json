@@ -1215,11 +1215,11 @@
 					"login.html",
 					"index.html",
 					"images/bg_two.png",
-					"images/shuijiao.jpg"
+					"images/shuijiao.jpg",
+					"im-chat.html"
 				],
 				"refer": [
-					"profile.html",
-					"im-chat.html"
+					"profile.html"
 				],
 				"priority": 0
 			},
@@ -1350,7 +1350,8 @@
 					"images/shuijiao.jpg",
 					"js/template-native.js",
 					"js/jquery.min.js",
-					"js/basic.js"
+					"js/basic.js",
+					"personal.html"
 				],
 				"refer": [],
 				"priority": 0

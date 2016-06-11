@@ -320,6 +320,7 @@
 		.cancel {
 			background-color: darkred;
 		}
+		.top_bg{ height:25px; background-color: #bc9dc9;clear: both;}
 	</style>
 
 	<script src="js/mui.min.js"></script>
@@ -330,14 +331,16 @@
 </head>
 
 <body contextmenu="return false;">
-	<header class="mui-bar mui-bar-nav">
-		<div style=" height:21px ; overflow: hidden;">
-	    	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
-		</div>
-	    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
-	</header>
+	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
+	<div style=" height:21px ; overflow: hidden;">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
+   
+   </div>
+    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+    <div class="top_bg"></div>
+</header>
 	
-	<div class="mui-content" style=" padding-top:100px ; overflow: hidden;">
+	<div class="mui-content" style=" padding-top:108px ; overflow: hidden;">
 
 		<div id="list-view"></div>
 		<script id="list-view-code" type="text/html">
