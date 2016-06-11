@@ -31,13 +31,27 @@
 			margin-left: 1px; 
 			margin-right: 1px;
 		}
+		#topPopover {
+			position:absolute;
+			top: 16px;
+			right: 6px;padding: 0px; margin:0px ;
+		}
+		#topPopover .mui-popover-arrow {
+			left: auto;
+			right: 6px;
+		}
+		
+		
+		.mui-popover {
+			height: 150px;
+		}
     </style>
     
 </head>
 
-<body style="  background-color:#fff ;height:100% ; overflow: hidden;">
+<body style="background-color:#fff ;height:100% ; overflow: hidden;">
 	<!--页面主结构开始-->
-	<div class="mui-content" >
+	<div class="mui-content">
 		<div class="perso-top">
 			<div class="perso-bg">
 				<div style="overflow: hidden;">
@@ -57,6 +71,7 @@
 						<li><span data-info="member.statistic.discuss">0</span><p>帖子</p></li>	
 						<li><span data-info="member.statistic.photo">0</span><p>相片</p></li>
 						<li><span data-info="member.statistic.likes">0</span><p>讚好</p></li>
+						<li><a id="menu" class="mui-icon-bars-two" href="#topPopover"><span>0</span><p>私信</p></a></li>
 					</ul>	
 				</div>
 			</div>
@@ -72,8 +87,18 @@
 			<div class="margin1"><a href="photo-list.html?id=<%= list[i]["id"] %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></a></div>
 		<% } %>
 		</script>
-	</div>	
+	</div>
+<!--右上角弹出菜单-->
+	<div id="topPopover" class="mui-popover" >
+		<div class="mui-popover-arrow"></div>
+		<div class="mui-scroll-wrapper" style=" position: absolute; top:0px;">
+			<div class="mui-scroll">
+			 <div class="per-img-two"><a href="im-chat.html" data-action="openwindow"><img class="img-bor-two wid" src="images/shuijiao.jpg" /><span class="per-p-tile">1</span></a></div>
+			 <div class="per-img-two"><a href="im-chat.html" data-action="openwindow"><img class="img-bor-two wid" src="images/muwu.jpg" /><span class="per-p-tile">2</span></a></div>
+			</div>
+		</div>
 
+	</div>
 	<script>
 		var member = {};
 

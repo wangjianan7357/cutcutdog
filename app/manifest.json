@@ -1213,10 +1213,12 @@
 					"pet-information.html",
 					"login.html",
 					"index.html",
-					"images/bg_two.png"
+					"images/bg_two.png",
+					"images/shuijiao.jpg"
 				],
 				"refer": [
-					"profile.html"
+					"profile.html",
+					"im-chat.html"
 				],
 				"priority": 0
 			},
@@ -1342,7 +1344,9 @@
 					"css/mui.indexedlist.css",
 					"images/bg_two.png",
 					"images/CatDog.png",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"images/logo.png",
+					"images/shuijiao.jpg"
 				],
 				"refer": [],
 				"priority": 0

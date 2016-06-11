@@ -878,7 +878,8 @@
 			"photo-list.html",
 			"pet-profile.html",
 			"pet-information.html",
-			"index.html"
+			"index.html",
+			"im-chat.html"
 		],
 		"resources": [
 			"js/template-native.js",
@@ -900,7 +901,8 @@
 			"pet-information.html",
 			"pet-profile.html",
 			"index.html",
-			"images/bg_two.png"
+			"images/bg_two.png",
+			"images/shuijiao.jpg"
 		]
 	},
 	"pet-\r\ninformation.html": {
@@ -1104,7 +1106,9 @@
 			"css/mui.indexedlist.css",
 			"images/bg_two.png",
 			"images/CatDog.png",
-			"images/Petchat.png"
+			"images/Petchat.png",
+			"images/logo.png",
+			"images/shuijiao.jpg"
 		],
 		"refer": [
 			"used-detail.html"

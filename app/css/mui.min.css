@@ -54,9 +54,9 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;background:url(../imag
 .xp-tu .zh-good{ background-color:#8f72b4 ;border-radius: 10px;width:55px; float:left;height:30px; line-height:28px ; font-size: 18px; color:#fff ; margin-top: 10px;}
 .xp-tu .z-hao-two{ float: right;width:30%;  background: url(../images/Info_icon_like_two.png) no-repeat 0px 0px; height:60px ; line-height:52px ; text-indent:40px ; font-size:20px; color:#666 ;}
 .m10{ margin: 0px; border: solid #918f90 1px ;}
-.wid{width:60px; height:60px ; margin-left:20px ; margin-top:10px ; margin-bottom:10px ; float: left;}
+.wid{width:55px; height:55px ; margin-left:10px ; margin-top:10px ; margin-bottom:10px ; float: left;}
 .img-bor-two{ border:solid #fff 1px ;border-radius: 30px; background-color:#fff ;}
-.t-p-tile{float: left; line-height:80px ; margin-left:10px ; font-size:22px ; color: #666; font-weight: bold;}
+.t-p-tile{float: left; line-height:75px ; margin-left:10px ; font-size:18px ; color: #666; font-weight: bold; }
 .xp-p-zi{ padding-left: 5px; padding-right:5px ; color:#333 ; margin-top:5px ;}
 .zh-good-x-p{ width:40px; float:left;height:30px; line-height:28px ; font-size: 18px; color:#fff ;}
 .zh-good-x-p-two{ float: right; margin-top:0px ;}.zh-good-x-p-two img{width:38%; margin-left: 30%;}
@@ -138,8 +138,10 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;background:url(../imag
 .perso-photo-wid{width:90px; height:90px ;margin-top:10px ; margin-bottom:10px ;}
 .perso-photo-tile{line-height:30px ;font-size:22px ; color: #fff; font-weight: bold;}
 .perso-top-center-two{ color:#fff ; margin:0px ; padding: 0px; text-align: center;}
-.perso-top-center-two ul{margin:0px ; padding: 0px;text-indent:0px ;}
+.perso-top-center-two ul{margin:0px ; padding: 0px;text-indent:0px ; text-align: center;}
 .perso-top-center-two ul li{display: inline-block; list-style:none ; padding:0px 10px 0px 10px ; margin:0px ; text-indent:0px ;}
+.perso-top-center-two ul li a{ color: #fff;}
+
 .perso-top-center-two p{ color: #fff;}
 .perso-photo-tile-two{line-height:30px ;font-size:18px ; color: #fff; font-weight: bold; background-color:#6f6f6f ; padding:10px 0px 10px 10px ;}
 .m-boot{ margin-bottom: 30px;}
@@ -197,5 +199,6 @@ _margin-bottom:10px;
 .btn2.open{bottom:150px;right:62px;}
 .btn3.open{bottom:105px;right:112px;}
 .btn4.open{bottom:40px;right:140px;}
-
-
+.mui-icon-bars-two:before{content:none;}
+.per-img-two{ float: left; position: relative;}
+.per-p-tile{ position:absolute ; right:3%; top:0px; background-color:red ; color:#fff ;border-radius: 20px; padding:1px 7px 0px 7px;}
