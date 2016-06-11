@@ -1185,7 +1185,8 @@
 					"images/home.png",
 					"images/top_bg.png",
 					"images/Petchat.png",
-					"js/basic.js"
+					"js/basic.js",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"profile.html"
