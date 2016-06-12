@@ -2,6 +2,7 @@
 require('../include/common.php');
 require('../include/fun_saas.php');
 require('../include/cls_graphic.php');
+require('../include/cls_emailer.php');
 
 if ($_REQUEST['action'] == 'list') {
     $list = array();
@@ -179,12 +180,20 @@ if ($_REQUEST['action'] == 'list') {
         'address' => isset($_POST['sbt_address']) ? $_POST['sbt_address'] : '',
         'desp' => isset($_POST['sbt_desp']) ? $_POST['sbt_desp'] : '',
         'cid' => rtrim($_POST['sbt_cid'], ',') . ',',
-        'valid' => 1,
+        'valid' => $_POST['where']['type'] == 3 ? 0 : 1,
         'path' => $chk_post->traFromName('name', array('name' => 'info', 'field' => 'path')),
         'fields' => ''
     );
 
     if ($my_db->saveRow('info', $submit)) {
+
+        if ($_POST['where']['type'] == 3) {
+            $mail = new Emailer($con_mail_set);
+            $mail->resetFields(array('name' => '會員', 'desp' => '描述', 'tel' => '電話', 'address' => '地址'));
+            $mail->content($submit, '店鋪提交');
+            $mail->send();
+        }
+
         callback(array('error' => 0));
     } else {
         callback(array('error' => 4));

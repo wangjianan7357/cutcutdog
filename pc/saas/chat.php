@@ -32,12 +32,12 @@ if ($_REQUEST['action'] == 'send') {
         }
         $list[] = $result;
 
-        if (empty($member) && $result['tid'] && $result['mid']) {
-            $member = $my_db->fetchOne('member', array('id' => $result['tid']));
+        if (empty($member) && $result['mid'] != $_POST['id']) {
+            $member = $my_db->fetchOne('member', array('id' => $result['mid']));
         }
     }
 
-    $my_db->saveRow('chat', array('read' => 1), array('read' => 0, 'tid' => $_POST['id']));
+    $my_db->saveRow('chat', array('read' => 1), array('read' => 0, 'mid' => intval($_POST['tid']), 'tid' => $_POST['id']));
 
     callback(array('error' => 0, 'list' => $list, 'member' => $member));
 

@@ -74,15 +74,19 @@ class Emailer {
 		$this->fields = array_merge($this->fields, $fields);
 	}
 
-	public function content($data = array()){
-		$this->mail->Subject = '上門服務：' . $data['service'];
+	public function resetFields($fields = array()){
+		$this->fields = $fields;
+	}
+
+	public function content($data = array(), $subject=''){
+		$this->mail->Subject = $subject;
 		$this->mail->FromName = $data['name'];
 		
 		$html = '
 			<table width="95%" border="0" cellspacing="2" cellpadding="4">
 				<tbody align="left">
 					<tr>
-						<td colspan="2" style="height:30px; padding:0 0 0 20px; background:#288fd7; color:white;"><strong>上門服務：</strong></td>
+						<td colspan="2" style="height:30px; padding:0 0 0 20px; background:#288fd7; color:white;"><strong>' . $subject . '：</strong></td>
 					</tr>';
 
 		$i = 0;
