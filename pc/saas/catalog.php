@@ -35,8 +35,8 @@ if ($_REQUEST['action'] == 'list') {
     $list = array();
     $category = array();
 
-    if ($_POST['where']['path']) {
-        $category = $my_db->fetchOne('catalog', array('type' => $_POST['where']['type'], 'path' => $_POST['where']['path']));
+    if (!$_POST['where']['search']) {
+        $category = $my_db->fetchOne('catalog', $_POST['where']);
     }
 
     if (!empty($category)) {

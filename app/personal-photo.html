@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<link rel="stylesheet" href="css/mui.min.css">
+	<link href="css/mui.indexedlist.css" rel="stylesheet" />
+	<link href="css/mui.picker.css" rel="stylesheet" />
+	<link href="css/mui.poppicker.css" rel="stylesheet" />
+
+	<script src="js/mui.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+    <script src="js/basic.js"></script>
+    <style>
+    .top_bg{ height:25px; background-color: #ba9ec6;}
+	.mui-table-view-cell p {
+	    margin-bottom: 0;
+	   margin-top: 0px; 
+	    font-size: 14px; 
+	    padding-left: 0px;
+	   
+	}
+	.mui-media-body{width:80%;}
+	.margin1:nth-child(3n+2) {
+			margin-left: 1px; 
+			margin-right: 1px;
+		}
+		#topPopover {
+			position:absolute;
+			top: 16px;
+			right: 6px;padding: 0px; margin:0px ;
+		}
+		#topPopover .mui-popover-arrow {
+			left: auto;
+			right: 6px;
+		}
+		
+		
+		.mui-popover {
+			height: 150px;
+		}
+    </style>
+    
+</head>
+
+<body style="background-color:#fff ;height:100%;">
+	<!--页面主结构开始-->
+	<div class="mui-content">
+		<div class="perso-top">
+			<div class="perso-bg">
+				<div style="overflow: hidden;">
+					<div class="perso-top-left">
+						<a href="index.html" data-action="webview"><span class="mui-icon mui-icon-home-filled" style=" color:#fff ; font-size:28px ;"></span></a>
+					</div>
+					
+					<div class="perso-top-right">
+						
+					</div>
+				</div>
+
+				<div style=" height:200px ;"> </div>
+			    <div class="perso-top-center-two">
+                <!--
+					<ul>
+						<li><span data-info="member.statistic.discuss">0</span><p>帖子</p></li>	
+						<li><span data-info="member.statistic.photo">0</span><p>相片</p></li>
+						<li><span data-info="member.statistic.likes">0</span><p>讚好</p></li>
+						<li><a id="menu" class="mui-icon-bars-two" href="#topPopover"><span data-info="member.statistic.chat">0</span><p>私信</p></a></li>
+					</ul>	
+                -->
+				</div>
+			</div>
+			<div class="perso-photo"><img class="perso-photo-img-bor-two perso-photo-wid" src="images/user-photo.png" data-before-info="domain" data-info="src=member.src"/>
+				<div class="perso-photo-tile" data-personal="name"></div>
+			</div>
+		</div>
+	<div>
+	<div class="perso-photo-tile-two">我的相片</div>	
+		<div class="serv-fw-persona" style="padding-top: 1px;" id="list-view"></div>
+		<script id="list-view-code" type="text/html">
+		<% for (var i in list) { %>
+			<div class="margin1"><a href="photo-list.html?id=<%= list[i]["id"] %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></a></div>
+		<% } %>
+		</script>
+	</div>
+
+	<!--右上角弹出菜单-->
+
+	<script>
+		var member = {};
+
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+
+		mui.plusReady(function() {
+			member = myStorage.getItem("member");
+
+			jQuery("[data-personal='name']").html(getUrlParam("name"));
+
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/member.php",
+				dataType: "json",
+				data: {
+					action: "profile",
+					name: getUrlParam("name"),
+					id: getUrlParam("id")
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						assignTmpl(json);
+						//jQuery("#pet-list").html(template('pet-list-code', json.member));
+						
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {
+
+				}
+			});
+
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/member.php",
+				dataType: "json",
+				data: {
+					action: "my-photo",
+                    name: getUrlParam("name"),
+                    id: getUrlParam("id")
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						jQuery("#list-view").html(template('list-view-code', json));
+						
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {
+
+				}
+			});
+
+		});
+
+	</script>
+	
+</body>
+</html>

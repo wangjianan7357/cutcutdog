@@ -178,7 +178,8 @@
 			"images/cartoon-dog.gif",
 			"js/iscroll.js",
 			"js/pullToRefresh.js",
-			"js/iscroll-probe.js"
+			"js/iscroll-probe.js",
+			"personal-photo.html"
 		],
 		"refer": [
 			"photo-detail.html",
@@ -188,7 +189,8 @@
 			"photo-list-pl.html",
 			"photo-comments.html",
 			"personal.html",
-			"setting.html"
+			"setting.html",
+			"personal-photo.html"
 		]
 	},
 	"photo-detail.html": {
@@ -1173,11 +1175,33 @@
 			"images/photo-button-01.png",
 			"images/cartoon-dog.gif",
 			"images/top02.png",
-			"photo-comments.html"
+			"photo-comments.html",
+			"personal-photo.html"
 		],
 		"refer": [
 			"publish-photo.html",
-			"photo-comments.html"
+			"photo-comments.html",
+			"personal-photo.html"
+		]
+	},
+	"personal-photo.html": {
+		"resources": [
+			"fonts/mui.ttf",
+			"images/user-photo.png",
+			"images/perso-top.png",
+			"js/template-native.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"css/mui.indexedlist.css",
+			"js/basic.js",
+			"images/bg_two.png",
+			"photo-list.html"
+		],
+		"refer": [
+			"photo-list.html"
 		]
 	}
 }
