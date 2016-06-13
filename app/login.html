@@ -69,7 +69,7 @@
 			border: solid 1px #aaa;
 		}
 		.mui-input-group .inp-heg{ height:50px ;}
-		.top_bg{ height:25px; background-color: #bc9dc9;margin-bottom:20px ;}
+		.top_bg{ height:25px; background-color: #bc9dc9;clear: both;}
 	</style>
 	<script src="js/mui.min.js"></script>
 	<script src="js/jquery.min.js"></script>
@@ -77,14 +77,17 @@
 </head>
 
 <body>
-	<header class="mui-bar mui-bar-nav">
-		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><img src="images/home.png"></a>
-    <h1 class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></h1>
-    <div style=" float: right; margin-top: 10px; font-weight: 600; color: #333;"></div>
-	</header>
+	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
+	<div style=" height:21px ; overflow: hidden;">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
+   
+   </div>
+    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+    <div class="top_bg"></div>
+</header>
 	
-	<div class="mui-content">
-		<div class="top_bg"></div>
+	<div class="mui-content" style=" padding-top: 108px;">
+		
 		<form id="login-form" class="mui-input-group">
 			<div class="mui-input-row  inp-heg">
 				<label>賬號</label>

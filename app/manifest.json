@@ -240,7 +240,9 @@
 					"discuss-category-list.html",
 					"photo-detail.html",
 					"used.html",
-					"contact.html"
+					"contact.html",
+					"pullrefresh_main.html",
+					"pullrefresh_sub.html"
 				],
 				"priority": 0
 			},
@@ -563,7 +565,8 @@
 					"css/feedback-page.css",
 					"js/basic.js",
 					"js/mui.view.js",
-					"js/template-native.js"
+					"js/template-native.js",
+					"images/bg_two.png"
 				],
 				"refer": [
 					"profile.html",
@@ -788,7 +791,8 @@
 					"css/feedback-page.css",
 					"js/basic.js",
 					"js/mui.view.js",
-					"images/bg_two.png"
+					"images/bg_two.png",
+					"js/js.js"
 				],
 				"refer": [
 					"profile.html",
@@ -1049,7 +1053,8 @@
 					"images/photo-button-03.png",
 					"images/photo-button-04.png",
 					"images/photo-button-01.png",
-					"im-chat.html"
+					"im-chat.html",
+					"login.html"
 				],
 				"refer": [
 					"publish-product.html"
@@ -1310,7 +1315,8 @@
 					"js/basic.js",
 					"css/mui.picker.css",
 					"css/mui.poppicker.css",
-					"images/bg_two.png"
+					"images/bg_two.png",
+					"js/js.js"
 				],
 				"refer": [
 					"profile.html",
@@ -1361,6 +1367,51 @@
 					"personal.html"
 				],
 				"refer": [],
+				"priority": 0
+			},
+			"pullrefresh_main.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"images/top_bg.png",
+					"images/bg_two.png",
+					"pullrefresh_sub.html",
+					"fonts/mui.ttf",
+					"images/CatDog.png",
+					"images/Petchat.png"
+				],
+				"refer": [
+					"photo-list.html"
+				],
+				"priority": 0
+			},
+			"pullrefresh_sub.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/bg_two.png",
+					"js/template-native.js",
+					"js/js.js",
+					"js/mui.zoom.js",
+					"js/jquery.min.js",
+					"js/mui.previewimage.js",
+					"js/basic.js",
+					"images/gif.gif",
+					"css/mui.poppicker.css",
+					"css/mui.picker.css",
+					"css/mui.indexedlist.css",
+					"images/photo-button-02.png",
+					"images/photo-button-03.png",
+					"images/photo-button-04.png",
+					"images/photo-button-01.png",
+					"images/cartoon-dog.gif",
+					"images/top02.png",
+					"photo-comments.html"
+				],
+				"refer": [
+					"publish-photo.html"
+				],
 				"priority": 0
 			}
 		},
