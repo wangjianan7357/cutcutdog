@@ -182,7 +182,7 @@ if ($_REQUEST['action'] == 'list') {
         'cid' => rtrim($_POST['sbt_cid'], ',') . ',',
         'valid' => $_POST['where']['type'] == 3 ? 0 : 1,
         'path' => $chk_post->traFromName('name', array('name' => 'info', 'field' => 'path')),
-        'fields' => ''
+        'type' => isset($_POST['sbt_service']) ? intval($_POST['sbt_service']) : 0,
     );
 
     if ($my_db->saveRow('info', $submit)) {

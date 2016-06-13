@@ -33,7 +33,11 @@ if ($_REQUEST['action'] == 'list') {
 
 } else if ($_REQUEST['action'] == 'detail') {
     $list = array();
-    $category = $my_db->fetchOne('catalog', $_POST['where']);
+    $category = array();
+
+    if ($_POST['where']['path']) {
+        $category = $my_db->fetchOne('catalog', array('type' => $_POST['where']['type'], 'path' => $_POST['where']['path']));
+    }
 
     if (!empty($category)) {
         $member = array();
@@ -43,6 +47,20 @@ if ($_REQUEST['action'] == 'list') {
         }
 
         $getdata = $my_db->selectRow('*', $cms_cata_type[$category['type']]['db'], array('`cid` LIKE "%,' . $category['id'] . '," OR `cid` = "' . $category['id'] . ',"'), array('field' => 'date', 'method' => 'desc'));
+        while ($result = mysql_fetch_array($getdata)) {
+            if (!isset($member[$result['mid']])) {
+                $member[$result['mid']] = array('name' => '');
+            }
+
+            $result['summary'] = cutString(strip_tags($result['desp']), 30);
+            $result['member'] = $member[$result['mid']];
+            $result['date'] = substr($result['date'], 0, 10);
+            $list[] = $result;
+        }
+    } else if ($_POST['where']['search']) {
+        $category['name'] = $_POST['where']['search'];
+
+        $getdata = $my_db->selectRow('*', 'info', array('`name` LIKE "%' . addslashes($category['name']) . '%" OR `desp` LIKE "%' . addslashes($category['name']) . '%"'), array('field' => 'date', 'method' => 'desc'));
         while ($result = mysql_fetch_array($getdata)) {
             if (!isset($member[$result['mid']])) {
                 $member[$result['mid']] = array('name' => '');

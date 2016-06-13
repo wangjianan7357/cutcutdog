@@ -121,7 +121,7 @@
 					dataType: "json",
 					data: {
 						action: "detail",
-						where: {type: 4, path: getUrlParam("url")}
+						where: {type: 4, path: getUrlParam("url"), search: getUrlParam("q")}
 					},
 					async: true,
 					success: function(json) {
