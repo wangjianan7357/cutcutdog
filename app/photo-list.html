@@ -117,8 +117,8 @@
 
 		refresher.init({
 			id: "pullrefresh",
-			pullDownAction: pulldownRefresh,
-			pullUpAction: pullupLoading
+			pullDownAction: pullDownRefresh,
+			pullUpAction: pullUpLoading
 		});	
 
 		var page = 1;
@@ -136,10 +136,10 @@
 		/**
 		 * 下拉刷新具体业务实现
 		 */															
-		function pulldownRefresh() {																
+		function pullDownRefresh() {																
 			setTimeout(function () {
 				document.location.href = document.location.href;
-				
+
 			}, 1000);
 		}
 
