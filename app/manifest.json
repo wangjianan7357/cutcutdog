@@ -338,7 +338,8 @@
 					"images/bg.png",
 					"images/bg_two.png",
 					"js/js.js",
-					"images/top01.png"
+					"images/top01.png",
+					"images/top02.png"
 				],
 				"refer": [
 					"publish-shop.html"

@@ -491,7 +491,8 @@
 			"images/home.png",
 			"images/Petchat.png",
 			"js/js.js",
-			"images/top01.png"
+			"images/top01.png",
+			"images/top02.png"
 		],
 		"refer": [
 			"info-detail.html",
