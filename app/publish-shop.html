@@ -27,13 +27,12 @@
 
 <body>
 	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
-	<div style=" height:21px ; overflow: hidden;">
-    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
-   
-   </div>
-    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
-    <div class="top_bg"></div>
-</header>
+		<div style=" height:21px ; overflow: hidden;">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
+		</div>
+	    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+	    <div class="top_bg"></div>
+	</header>
 
 	<!--页面主结构开始-->
 	<div class="mui-content bg-two" style="background:none ; background-color:#fff ; padding-top:85px ;">
@@ -63,9 +62,9 @@
 										</div>
 									</li>
 									<li class="mui-table-view-cell">
-										<div style="width:100%; padding-left: 4%; border:#edebec solid 1px;" id="showCityPicker">
-											<button class="mui-btn mui-btn-block" type="button" ><span data-picker="city">點擊選擇服務範圍</span></button>
-											<input type="hidden" name="req_cid" value="" id="info_cid" value="" />
+										<div style="width:100%; padding-left: 4%; border:#edebec solid 1px;" id="showServicePicker">
+											<button class="mui-btn mui-btn-block" type="button" ><span data-picker="service">點擊選擇服務範圍</span></button>
+											<input type="hidden" name="req_service" value="" id="info_service" value="" />
 											
 										</div>
 									</li>
@@ -136,7 +135,7 @@
 					}
 
 					for (p in json.service) {
-						var tmp = {value: json.service[p]["id"], text: json.service[p]["name"]};
+						var tmp = {value: p, text: json.service[p]};
 						service.push(tmp);
 					}
 
@@ -153,7 +152,7 @@
 					}, false);
 
 					// 服务
-					/*
+
 					var servicePicker = new mui.PopPicker({layer: 1});
 					servicePicker.setData(service);
 
@@ -164,7 +163,6 @@
 							jQuery("#req_service").val(items[0].value);
 						});
 					}, false);
-					*/
 					
 				} else {
 					//plus.nativeUI.toast(json.message);
@@ -226,6 +224,11 @@
 			plus.nativeUI.toast("請選擇地區！");
 			return false;	
 		}
+		
+		if(!jQuery("#info_service").val()) {
+			plus.nativeUI.toast("請選擇服務！");
+			return false;	
+		}
 
 		jQuery("#submit-button").html("提交中...");
 		
@@ -238,6 +241,7 @@
 				"action": "insert",
 				"sbt_name": jQuery("#info_name").val(),
 				"sbt_cid" : jQuery("#info_cid").val(),
+				"sbt_service" : jQuery("#info_service").val(),
 				"sbt_tel" : jQuery("#info_tel").val(),
 				"sbt_address" : jQuery("#info_address").val()
 			}, 
