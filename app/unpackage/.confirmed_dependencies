@@ -173,7 +173,9 @@
 			"images/top02.png",
 			"images/bg_two.png",
 			"images/menu.png",
-			"images/cartoon-dog.gif"
+			"images/cartoon-dog.gif",
+			"js/iscroll.js",
+			"js/pullToRefresh.js"
 		],
 		"refer": [
 			"photo-detail.html",
