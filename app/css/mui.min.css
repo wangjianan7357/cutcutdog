@@ -208,6 +208,35 @@ _margin-bottom:10px;
 	height: 100%;
 	width: 100%;
 }
+#pullrefresh {
+	position: absolute;
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+}
+.xp-tu{
+	position: absolute;
+	z-index: 1;
+	/*	-webkit-touch-callout:none;*/
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	width: 100%;
+	padding: 0;
+}
+.xp-tu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	text-align: left;
+}
+.xp-tu li {
+	min-height:50px;
+	background-color: #fafafa;
+	font-size: 14px;
+	padding:5px;
+	line-height:50px ;
+}
+
 .scroller {
 	position: absolute;
 	z-index: 1;
