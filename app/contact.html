@@ -16,110 +16,75 @@
     <script src="js/basic.js"></script>
     <script src="js/iscroll.js"></script>
     <script src="js/pullToRefresh.js"></script>
-    <script src="js/colorful.js"></script>
     <style>
     .mui-navigate-right:after, .mui-push-right:after {
 	    right: 15px;
 	    content: no-close-quote;
 	}
-   .top_bg{ height:25px; background-color: #bc9dc9;clear: both;}
-		 	
+	.top_bg{ height:25px; background-color: #bc9dc9;clear: both;}	 	
     </style>
     
 </head>
 
 <body style=" height:100% ; background-color:#fff ; overflow: hidden;">
 	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
-	<div style=" height:21px ; overflow: hidden;">
-    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
-   
-   </div>
-    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
-    <div class="top_bg"></div>
-</header>
+		<div style=" height:21px ; overflow: hidden;">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
+		</div>
+	    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+	    <div class="top_bg"></div>
+	</header>
 
 	<!--页面主结构开始-->
-	<div class="mui-views" style=" margin-top:10px ;background:none ;">
-		<div class="mui-view" style=" background:none ;">
-			
-			<div class="mui-pages" style=" background:none ;">
+	<div class="mui-views" style=" margin-top:30px ;background:none ;">
 
-				<!--单页面开始-->
-				<div id="setting" class="mui-page" style=" background:none ;">
-					
-					<!--页面主内容区开始-->
-					<div class="mui-page-content" style=" background:none ;">
-						<div class="mui-scroll-wrapper" style=" background:none ;">
-							<div class="conta" style=" background:none ;" id="wrapper">
-								
-								<ul  style=" padding-top: 20px;">
-									<li>
-										公司介紹
-										<p>我們以最合理的價格、最完善的服务、提供最優質，最優越的服務，以質量 第一，客户至上为經營理念，力求为客户提供更好的更專業的服务</p>
-									</li>
-									<li>
-										聯繫電話：　<span>14714529086</span>
-									</li>
-									<li>
-										公司地址：　<span>客户至上为經營理念力求为客户</span>
-									</li>
-									<li>
-										郵箱地址：　<span>Machinglun@gmail.com</span>
-									</li>
-								</ul>
-								
-								
-							</div>
-						</div>
-					</div>
-					<!--页面主内容区结束-->
-				</div>
-				<!--单页面结束-->
-
+		<!--页面主内容区开始-->
+		<div class="mui-scroll-wrapper">
+			<div id="wrapper">
+				
+				<ul  style=" padding-top: 20px;">
+					<li>
+						公司介紹
+						<p>我們以最合理的價格、最完善的服务、提供最優質，最優越的服務，以質量 第一，客户至上为經營理念，力求为客户提供更好的更專業的服务</p>
+					</li>
+					<li>
+						聯繫電話：　<span>14714529086</span>
+					</li>
+					<li>
+						公司地址：　<span>客户至上为經營理念力求为客户</span>
+					</li>
+					<li>
+						郵箱地址：　<span>Machinglun@gmail.com</span>
+					</li>
+				</ul>
+				
+				
 			</div>
 		</div>
 	</div>
-<script>
-for(var i=0;i<document.querySelectorAll("#wrapper ul li").length;i++){
-document.querySelectorAll("#wrapper ul li")[i].colorfulBg(); }
-refresher.init({
-	id:"wrapper",//<------------------------------------------------------------------------------------┐
-	pullDownAction:Refresh,                                                            
-	pullUpAction:Load 																			
-	});																						
-var generatedCount = 0;																			
-function Refresh() {																
-	setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
-		var el, li, i;																		
-		el =document.querySelector("#wrapper ul");									
-		el.innerHTML='';																
-		for (i=0; i<11; i++) {																		 
-			li = document.createElement('li');													
-			li.appendChild(document.createTextNode('async row ' + (++generatedCount)));				
-		el.insertBefore(li, el.childNodes[0]);														
-		}																							 
-		wrapper.refresh();/****remember to refresh after  action completed！ ---yourId.refresh(); ----| ****/
-			for(var i=0;i<document.querySelectorAll("#wrapper ul li").length;i++){
-		document.querySelectorAll("#wrapper ul li")[i].colorfulBg(); }
-	}, 1000);
+	<!--单页面结束-->
 
-}
+	<script>
 
-function Load() {
-	setTimeout(function () {// <-- Simulate network congestion, remove setTimeout from production!
-		var el, li, i;
-		el =document.querySelector("#wrapper ul");
-		for (i=0; i<2; i++) {
-			li = document.createElement('li');
-			li.appendChild(document.createTextNode('async row ' + (++generatedCount)));
-			el.appendChild(li, el.childNodes[0]);
-		}
-		wrapper.refresh();/****remember to refresh after action completed！！！   ---id.refresh(); --- ****/
-		for(var i=0;i<document.querySelectorAll("#wrapper ul li").length;i++){
-		document.querySelectorAll("#wrapper ul li")[i].colorfulBg(); }
-	}, 1000);	
-}
-</script>
+	refresher.init({
+		id:"wrapper",
+		pullDownAction:Refresh,                                                            
+		pullUpAction:Load 																			
+	});			
+
+	function Refresh() {																
+		setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
+			
+		}, 1000);
+
+	}
+
+	function Load() {
+		setTimeout(function () {// <-- Simulate network congestion, remove setTimeout from production!
+			
+		}, 1000);	
+	}
+	</script>
 
 </body>
 </html>

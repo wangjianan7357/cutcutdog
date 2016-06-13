@@ -5,11 +5,11 @@
  */
 var refresher = {
 	info: {
-		"pullDownLable": "Pull down to refresh...",
-		"pullingDownLable": "Release to refresh...",
-		"pullUpLable": "Pull up to load more...",
-		"pullingUpLable": "Release to load more...",
-		"loadingLable": "Loading..."
+		"pullDownLable": "下拉刷新...",
+		"pullingDownLable": "釋放以更新...",
+		"pullUpLable": "上拉加載更多...",
+		"pullingUpLable": "釋放以加載更多..",
+		"loadingLable": "加載中..."
 	},
 	init: function(parameter) {
 		var wrapper = document.getElementById(parameter.id);

@@ -711,7 +711,8 @@
 					"images/menu.png",
 					"images/cartoon-dog.gif",
 					"js/iscroll.js",
-					"js/pullToRefresh.js"
+					"js/pullToRefresh.js",
+					"js/iscroll-probe.js"
 				],
 				"refer": [
 					"image-list.html",

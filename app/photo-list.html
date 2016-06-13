@@ -18,6 +18,36 @@
 	        text-indent: 12px;
 	        background-color:#efeff4;
 	    }
+
+	    .mui-content {
+	    	height: 100%;
+			width: 100%;
+			top: 0;
+			overflow: hidden;
+			position: absolute;
+	    }
+
+	    #scroller {
+			position: absolute;
+			z-index: 1;
+			-webkit-tap-highlight-color: rgba(0,0,0,0);
+			width: 100%;
+			-webkit-transform: translateZ(0);
+			-moz-transform: translateZ(0);
+			-ms-transform: translateZ(0);
+			-o-transform: translateZ(0);
+			transform: translateZ(0);
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			-webkit-text-size-adjust: none;
+			-moz-text-size-adjust: none;
+			-ms-text-size-adjust: none;
+			-o-text-size-adjust: none;
+			text-size-adjust: none;
+		}
 		
 		.top_bg{ height:25px; background-color: #bc9dc9;clear: both;}
 		
@@ -36,13 +66,10 @@
 		.comment-list li p a{color:#b8b7b7 ; }
 	</style>
     <script src="js/mui.min.js"></script>
-	<script src="js/mui.zoom.js"></script>
-	<script src="js/mui.previewimage.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/template-native.js"></script>
-    <script src="js/iscroll.js"></script>
-    <script src="js/pullToRefresh.js"></script>
     <script src="js/basic.js"></script>
+    <script src="js/iscroll-probe.js"></script>
     <script src="js/js.js"></script>
 </head>
 
@@ -50,63 +77,64 @@
 	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
 		<div style=" height:21px ; overflow: hidden;">
 	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
-	   
 	   </div>
 	    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
 	    <div class="top_bg"></div>
 	</header>
 
-	<div class="mui-content" id="main" >
-		<div class="top_bg"></div>
+	<div class="mui-content" id="main">
+		<!--页面主内容区开始-->
+		<div id="scroller">
 
-		<div class="xp-tu" id="pullrefresh">
-			<ul id="list-view"><li><img src="images/gif.gif" style="width: 32px; height:32px ;"></li></ul>
-			<script id="list-view-code" type="text/html">
-			<% for (var i in list) { %>
-				<li>
-					<% if (list[i]["member"]["src"] || list[i]["member"]["name"]) { %>
-					<img class="img-bor-two wid" src="<%= getvarious("domain") + list[i]["member"]["src"] %>" /><span class="t-p-tile"><%= list[i]["member"]["name"] %></span>
-					<% } %>
-					
-					<div style=" clear: both; height:280px; overflow: hidden;">
-					
-				    <img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>">
-					</div>
-					<input type="hidden" name="aid" value="<%= list[i]["id"] %>" />
+			<div class="xp-tu">
+				<ul id="list-view"></ul>
+				<script id="list-view-code" type="text/html">
+				<% for (var i in list) { %>
+					<li>
+						<% if (list[i]["member"]["src"] || list[i]["member"]["name"]) { %>
+						<img class="img-bor-two wid" src="<%= getvarious("domain") + list[i]["member"]["src"] %>" /><span class="t-p-tile"><%= list[i]["member"]["name"] %></span>
+						<% } %>
+						
+						<div style=" clear: both; height:280px; overflow: hidden;">
+						
+					    <img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>">
+						</div>
+						<input type="hidden" name="aid" value="<%= list[i]["id"] %>" />
 
-					<div class="xp-tu" style="margin-left:5px;">
-					<div class="zh-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
-					<div class="zh-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
-					<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
-					<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-icon="likesCount"><%= list[i]["likes"] %></span></div>
-					</div>
-		
-					<ul class="comment-list">
-					<% for (var c in list[i]["comment"]) { %>
-						<li><p style=" text-indent: 0px;"><b><%= list[i]["comment"][c]["member"]["name"] %>：</b> <%= list[i]["comment"][c]["content"] %></p></li>
-					<% } %>
+						<div class="xp-tu" style="margin-left:5px;">
+						<div class="zh-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
+						<div class="zh-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
+						<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
+						<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-icon="likesCount"><%= list[i]["likes"] %></span></div>
+						</div>
 
-					<% if (list[i]["comment"].length >= 2) { %>
-						<li><p style=" text-align: center; border-bottom:none ;"><a href="photo-comments.html?atype=5&aid=<%= list[i]["id"] %>" data-action="openwindow">查看全部評論</a></p></li>
-					<% } %>
-					</ul>
-				</li>
-			<% } %>
-			</script>
+						<ul class="comment-list">
+						<% for (var c in list[i]["comment"]) { %>
+							<li><p style=" text-indent: 0px;"><b><%= list[i]["comment"][c]["member"]["name"] %>：</b> <%= list[i]["comment"][c]["content"] %></p></li>
+						<% } %>
+
+						<% if (list[i]["comment"].length >= 2) { %>
+							<li><p style=" text-align: center; border-bottom:none ;"><a href="photo-comments.html?atype=5&aid=<%= list[i]["id"] %>" data-action="openwindow">查看全部評論</a></p></li>
+						<% } %>
+						</ul>
+					</li>
+				<% } %>
+				</script>
+				
+			</div>
+
 		</div>
 	</div>
 	
-	
 	<!-- 代码开始 -->
-<div id="tbox">
-	<a id="gotop" href="javascript:void(0)"></a>
-	
-</div>
-<div class="wrap">
-	<div class="menu"><a href="publish-photo.html" data-action="openwindow"><img class="icon_menu" src="images/cartoon-dog.gif" /><span></span></a></div>
-	
-</div>
-<!-- 代码结束 -->
+	<div id="tbox">
+		<a id="gotop" href="javascript:void(0)"></a>
+	</div>
+	<div class="wrap">
+		<div class="menu"><a href="publish-photo.html" data-action="openwindow"><img class="icon_menu" src="images/cartoon-dog.gif" /><span></span></a></div>
+	</div>
+	<!-- 代码结束 -->
+
 	<script>
 		var cata_type = 5;
 		var member = {};
@@ -115,14 +143,11 @@
 			swipeBack: true //启用右滑关闭功能
 		});
 
-		refresher.init({
-			id: "pullrefresh",
-			pullDownAction: pullDownRefresh,
-			pullUpAction: pullUpLoading
-		});	
-
 		var page = 1;
 		var count = 0;
+		var myScroll;
+		var loading = false;
+		var scrollposi = 0;
 		var where =  {cid: "13,"};
 
 		if (getUrlParam("mid")) {
@@ -133,14 +158,24 @@
 			where["id"] = getUrlParam("id");
 		}
 
+		function pullRefresh() {
+			if (this.y > 50) {
+				pullDownRefresh();
+			} else if (this.y + 50 < this.maxScrollY) {
+				if (!loading) {
+					loading = true;
+					pullUpLoading();
+				}
+			}
+		}
+
 		/**
 		 * 下拉刷新具体业务实现
 		 */															
 		function pullDownRefresh() {																
 			setTimeout(function () {
 				document.location.href = document.location.href;
-
-			}, 1000);
+			}, 500);
 		}
 
 		/**
@@ -159,6 +194,14 @@
 							if(!json.error) {
 								page ++;
 								jQuery("#list-view").html(jQuery("#list-view").html() + template('list-view-code', json));
+								loading = false;
+
+								myScroll.destroy();
+								myScroll = new IScroll('#main', { probeType: 1});
+								myScroll.scrollTo(0, scrollposi);
+								myScroll.on('scroll', pullRefresh);
+								scrollposi = myScroll.maxScrollY;
+
 								setComment();
 
 								if (jQuery(json.list).length) {
@@ -181,7 +224,7 @@
 		}
 
 		function setComment() {
-			jQuery("[data-icon='promptBtn']").click(function() {
+			jQuery("[data-icon='promptBtn']").on("tap", function() {
 				var self = jQuery(this);
 
 		        mui.prompt("請輸入您的評語：", "", "", ["取消", "提交"], function(e) {
@@ -235,7 +278,7 @@
 		        });
 		    };
 
-		    jQuery("[data-icon='heart']").click(function(){
+		    jQuery("[data-icon='heart']").on("tap", function(){
 		    	var likes_obj = jQuery(this).parent().find("[data-icon='likesCount']");
 		    	var count = parseInt(likes_obj.html());
 		        var rel = $(this).attr("rel");
@@ -265,7 +308,12 @@
 					if(!json.error) {
 						page ++;
 						jQuery("#list-view").html(template('list-view-code', json));
-						//assignTmpl(json);
+
+						myScroll = new IScroll('#main', { probeType: 1});
+						myScroll.scrollTo(0, scrollposi);
+						myScroll.on('scroll', pullRefresh);
+						scrollposi = myScroll.maxScrollY;
+
 						setComment();
 
 					} else {
