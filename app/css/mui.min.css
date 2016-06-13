@@ -168,7 +168,7 @@ _top:expression(eval(document.documentElement.scrollTop+document.documentElement
 _margin-bottom:10px;
 }/*解决IE6下不兼容 position:fixed 的问题*/
 
-#gotop{ width:47px; height:47px; background:url(../images/top02.png) no-repeat; position:absolute; top:0px; display:none; cursor:pointer} 
+#gotop{ width:47px; height:47px; background:url(../images/top02.png) no-repeat; position:absolute; top:0px; display:none; cursor:pointer; z-index:99999 ;} 
 
 .mui-content ul.mui-grid-9 {
     padding: 0 5%;
