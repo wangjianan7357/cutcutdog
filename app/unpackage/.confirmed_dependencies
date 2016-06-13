@@ -846,7 +846,10 @@
 			"images/Petchat.png",
 			"css/feedback-page.css",
 			"js/basic.js",
-			"images/bg_two.png"
+			"images/bg_two.png",
+			"js/iscroll.js",
+			"js/pullToRefresh.js",
+			"js/colorful.js"
 		],
 		"refer": []
 	},

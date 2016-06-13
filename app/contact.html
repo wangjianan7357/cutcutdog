@@ -14,6 +14,9 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
+    <script src="js/iscroll.js"></script>
+    <script src="js/pullToRefresh.js"></script>
+    <script src="js/colorful.js"></script>
     <style>
     	.mui-navigate-right:after, .mui-push-right:after {
     right: 15px;
@@ -25,7 +28,7 @@
     
 </head>
 
-<body>
+<body style=" height:100% ; background-color:#fff ; overflow: hidden;">
 	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
 	<div style=" height:21px ; overflow: hidden;">
     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
@@ -47,33 +50,24 @@
 					<!--页面主内容区开始-->
 					<div class="mui-page-content" style=" background:none ;">
 						<div class="mui-scroll-wrapper" style=" background:none ;">
-							<div class="mui-scroll" style=" background:none ;">
+							<div style=" background:none ;" id="wrapper">
 								
-								<ul class="conta" style=" margin-top:30px;">
+								<ul class="conta" style=" padding-top: 20px;">
 									<li>
 										公司介紹
 										<p>我們以最合理的價格、最完善的服务、提供最優質，最優越的服務，以質量 第一，客户至上为經營理念，力求为客户提供更好的更專業的服务</p>
 									</li>
-								</ul>
-								<ul class="conta">
 									<li>
 										聯繫電話：　<span>14714529086</span>
 									</li>
-									
-								</ul>
-								<ul class="conta">
 									<li>
 										公司地址：　<span>客户至上为經營理念力求为客户</span>
 									</li>
-									
-								</ul>
-								
-				                <ul class="conta">
 									<li>
 										郵箱地址：　<span>Machinglun@gmail.com</span>
 									</li>
-									
 								</ul>
+								
 								
 							</div>
 						</div>
@@ -85,6 +79,47 @@
 			</div>
 		</div>
 	</div>
-	
+	<script>
+for(var i=0;i<document.querySelectorAll("#wrapper ul li").length;i++){
+document.querySelectorAll("#wrapper ul li")[i].colorfulBg(); }
+refresher.init({
+	id:"wrapper",//<------------------------------------------------------------------------------------┐
+	pullDownAction:Refresh,                                                            
+	pullUpAction:Load 																			
+	});																						
+var generatedCount = 0;																			
+function Refresh() {																
+	setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
+		var el, li, i;																		
+		el =document.querySelector("#wrapper ul");									
+		el.innerHTML='';																
+		for (i=0; i<11; i++) {																		 
+			li = document.createElement('li');													
+			li.appendChild(document.createTextNode('async row ' + (++generatedCount)));				
+		el.insertBefore(li, el.childNodes[0]);														
+		}																							 
+		wrapper.refresh();/****remember to refresh after  action completed！ ---yourId.refresh(); ----| ****/
+			for(var i=0;i<document.querySelectorAll("#wrapper ul li").length;i++){
+		document.querySelectorAll("#wrapper ul li")[i].colorfulBg(); }
+	}, 1000);
+
+}
+
+function Load() {
+	setTimeout(function () {// <-- Simulate network congestion, remove setTimeout from production!
+		var el, li, i;
+		el =document.querySelector("#wrapper ul");
+		for (i=0; i<2; i++) {
+			li = document.createElement('li');
+			li.appendChild(document.createTextNode('async row ' + (++generatedCount)));
+			el.appendChild(li, el.childNodes[0]);
+		}
+		wrapper.refresh();/****remember to refresh after action completed！！！   ---id.refresh(); --- ****/
+		for(var i=0;i<document.querySelectorAll("#wrapper ul li").length;i++){
+		document.querySelectorAll("#wrapper ul li")[i].colorfulBg(); }
+	}, 1000);	
+}
+</script>
+
 </body>
 </html>
