@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<title></title>
@@ -19,35 +20,6 @@
 	        background-color:#efeff4;
 	    }
 
-	    .mui-content {
-	    	height: 100%;
-			width: 100%;
-			top: 0;
-			overflow: hidden;
-			position: absolute;
-	    }
-
-	    #scroller {
-			position: absolute;
-			z-index: 0;
-			-webkit-tap-highlight-color: rgba(0,0,0,0);
-			width: 100%;
-			-webkit-transform: translateZ(0);
-			-moz-transform: translateZ(0);
-			-ms-transform: translateZ(0);
-			-o-transform: translateZ(0);
-			transform: translateZ(0);
-			-webkit-touch-callout: none;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
-			-webkit-text-size-adjust: none;
-			-moz-text-size-adjust: none;
-			-ms-text-size-adjust: none;
-			-o-text-size-adjust: none;
-			text-size-adjust: none;
-		}
 		
 		.top_bg{ height:25px; background-color: #bc9dc9;clear: both;}
 		
@@ -66,88 +38,118 @@
 		.comment-list li p a{color:#b8b7b7 ; }
 	</style>
     <script src="js/mui.min.js"></script>
+	<script src="js/mui.zoom.js"></script>
+	<script src="js/mui.previewimage.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
-    
-    <script src="js/js.js"></script>
+    <script type="text/javascript" src="js/js.js"></script>
+
 </head>
 
 <body style="background:#fff; height:100% ; overflow: hidden;">
 	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
-		<div style=" height:21px ; overflow: hidden;">
-	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
-	   </div>
-	    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
-	    <div class="top_bg"></div>
-	</header>
+	<div style=" height:21px ; overflow: hidden;">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
+   
+   </div>
+    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+    <div class="top_bg"></div>
+</header>
 
-	<div class="mui-content" id="main">
-		<!--页面主内容区开始-->
-		<div >
 
-			<div class="xp-tu">
-				<ul id="list-view"></ul>
-				<script id="list-view-code" type="text/html">
-				<% for (var i in list) { %>
-					<li>
-						<% if (list[i]["member"]["src"] || list[i]["member"]["name"]) { %>
-						<img class="img-bor-two wid" src="<%= getvarious("domain") + list[i]["member"]["src"] %>" /><span class="t-p-tile"><%= list[i]["member"]["name"] %></span>
-						<% } %>
-						
-						<div style=" clear: both; height:280px; overflow: hidden;">
-						
-					    <img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>">
-						</div>
-						<input type="hidden" name="aid" value="<%= list[i]["id"] %>" />
+	<div class="mui-content" id="main" style=" padding-top:108px ;">
+		
+		<div class="xp-tu" id="pullrefresh">
+			<ul id="list-view"><li><img src="images/gif.gif" style="width: 32px; height:32px ;"></li></ul>
+			<script id="list-view-code" type="text/html">
+			<% for (var i in list) { %>
+				<li>
+					<% if (list[i]["member"]["src"] || list[i]["member"]["name"]) { %>
+					<img class="img-bor-two wid" src="<%= getvarious("domain") + list[i]["member"]["src"] %>" /><span class="t-p-tile"><%= list[i]["member"]["name"] %></span>
+					<% } %>
+					
+					<div style=" clear: both; height:280px; overflow: hidden;">
+					
+				    <img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>">
+					</div>
+					<input type="hidden" name="aid" value="<%= list[i]["id"] %>" />
 
-						<div class="xp-tu" style="margin-left:5px;">
-						<div class="zh-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
-						<div class="zh-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
-						<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
-						<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-icon="likesCount"><%= list[i]["likes"] %></span></div>
-						</div>
+					<div class="xp-tu" style="margin-left:5px;">
+					<div class="zh-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
+					<div class="zh-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
+					<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
+					<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-icon="likesCount"><%= list[i]["likes"] %></span></div>
+					</div>
+		
+					<ul class="comment-list">
+					<% for (var c in list[i]["comment"]) { %>
+						<li><p style=" text-indent: 0px;"><b><%= list[i]["comment"][c]["member"]["name"] %>：</b> <%= list[i]["comment"][c]["content"] %></p></li>
+					<% } %>
 
-						<ul class="comment-list">
-						<% for (var c in list[i]["comment"]) { %>
-							<li><p style=" text-indent: 0px;"><b><%= list[i]["comment"][c]["member"]["name"] %>：</b> <%= list[i]["comment"][c]["content"] %></p></li>
-						<% } %>
-
-						<% if (list[i]["comment"].length >= 2) { %>
-							<li><p style=" text-align: center; border-bottom:none ;"><a href="photo-comments.html?atype=5&aid=<%= list[i]["id"] %>" data-action="openwindow">查看全部評論</a></p></li>
-						<% } %>
-						</ul>
-					</li>
-				<% } %>
-				</script>
-				
-			</div>
-
+					<% if (list[i]["comment"].length >= 2) { %>
+						<li><p style=" text-align: center; border-bottom:none ;"><a href="photo-comments.html?atype=5&aid=<%= list[i]["id"] %>" data-action="openwindow">查看全部評論</a></p></li>
+					<% } %>
+					</ul>
+				</li>
+			<% } %>
+			</script>
 		</div>
 	</div>
 	
+	
 	<!-- 代码开始 -->
-	<div id="tbox">
-		<a id="gotop" href="javascript:void(0)"></a>
-	</div>
-	<div class="wrap">
-		<div class="menu"><a href="publish-photo.html" data-action="openwindow"><img class="icon_menu" src="images/cartoon-dog.gif" /><span></span></a></div>
-	</div>
-	<!-- 代码结束 -->
-
+<div id="tbox">
+	<a id="gotop" href="javascript:void(0)"></a>
+	
+</div>
+<div class="wrap">
+	<div class="menu"><a href="publish-photo.html" data-action="openwindow"><img class="icon_menu" src="images/cartoon-dog.gif" /><span></span></a></div>
+	
+</div>
+<!-- 代码结束 -->
 	<script>
 		var cata_type = 5;
 		var member = {};
 
 		mui.init({
-			swipeBack: true //启用右滑关闭功能
+			swipeBack: true, //启用右滑关闭功能
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+					callback: pulldownRefresh
+				},
+				up: {
+					contentrefresh: '正在加载...',
+					callback: pullupRefresh
+				}
+			}
 		});
+		/**
+		 * 下拉刷新具体业务实现
+		 */
+		function pulldownRefresh() {
+
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh((++ count > 4));
+				/*
+				var table = document.body.querySelector('.mui-table-view');
+				var cells = document.body.querySelectorAll('.mui-table-view-cell');
+				for (var i = cells.length, len = i + 3; i < len; i++) {
+					var li = document.createElement('li');
+					li.className = 'mui-table-view-cell';
+					li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+					//下拉刷新，新纪录插到最前面；
+					table.insertBefore(li, table.firstChild);
+				}
+				 //refresh completed
+				 */
+
+			}, 1500);
+		}
 
 		var page = 1;
 		var count = 0;
-		var myScroll;
-		var loading = false;
-		var scrollposi = 0;
 		var where =  {cid: "13,"};
 
 		if (getUrlParam("mid")) {
@@ -158,73 +160,58 @@
 			where["id"] = getUrlParam("id");
 		}
 
-		function pullRefresh() {
-			if (this.y > 50) {
-				pullDownRefresh();
-			} else if (this.y + 50 < this.maxScrollY) {
-				if (!loading) {
-					loading = true;
-					pullUpLoading();
-				}
-			}
-		}
-
-		/**
-		 * 下拉刷新具体业务实现
-		 */															
-		function pullDownRefresh() {																
-			setTimeout(function () {
-				document.location.href = document.location.href;
-			}, 500);
-		}
-
 		/**
 		 * 上拉加载具体业务实现
 		 */
-		function pullUpLoading() {
-			if (count < 2) {
-				setTimeout(function () {// <-- Simulate network congestion, remove setTimeout from production!
-					mui.ajax({
-						type: "post",
-						url: domain + "saas/info.php",
-						dataType: "json",
-						data: {action: "list", where: where, type: 5, page: page},
-						async: true,
-						success: function(json) {
-							if(!json.error) {
-								page ++;
-								jQuery("#list-view").html(jQuery("#list-view").html() + template('list-view-code', json));
-								loading = false;
+		function pullupRefresh() {
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh((++ count > 2)); //参数为true代表没有更多数据了。
 
-								myScroll.destroy();
-								myScroll = new IScroll('#main', { probeType: 1});
-								myScroll.scrollTo(0, scrollposi);
-								myScroll.on('scroll', pullRefresh);
-								scrollposi = myScroll.maxScrollY;
 
-								setComment();
+				mui.ajax({
+					type: "post",
+					url: domain + "saas/info.php",
+					dataType: "json",
+					data: {action: "list", where: where, type: 5, page: page},
+					async: true,
+					success: function(json) {
+						if(!json.error) {
+							page ++;
+							jQuery("#list-view").html(jQuery("#list-view").html() + template('list-view-code', json));
+							setComment();
 
-								if (jQuery(json.list).length) {
-									count = 0;
-								} else {
-									count = 3;
-								}
-								
+							if (jQuery(json.list).length) {
+								count = 0;
 							} else {
-								plus.nativeUI.toast(json.message);
+								count = 3;
 							}
-						},
-						error: function(xhr, type, errorThrown) {
-							//alert(JSON.stringify(xhr))
+							
+						} else {
+							plus.nativeUI.toast(json.message);
 						}
-					});
+					},
+					error: function(xhr, type, errorThrown) {
+						//alert(JSON.stringify(xhr))
+					}
+				});
 
+			}, 2000);
+		}
+		if (mui.os.plus) {
+			mui.plusReady(function() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
 				}, 1000);
-			}
+
+			});
+		} else {
+			mui.ready(function() {
+				mui('#pullrefresh').pullRefresh().pullupLoading();
+			});
 		}
 
 		function setComment() {
-			jQuery("[data-icon='promptBtn']").on("tap", function() {
+			jQuery("[data-icon='promptBtn']").click(function() {
 				var self = jQuery(this);
 
 		        mui.prompt("請輸入您的評語：", "", "", ["取消", "提交"], function(e) {
@@ -278,7 +265,7 @@
 		        });
 		    };
 
-		    jQuery("[data-icon='heart']").on("tap", function(){
+		    jQuery("[data-icon='heart']").click(function(){
 		    	var likes_obj = jQuery(this).parent().find("[data-icon='likesCount']");
 		    	var count = parseInt(likes_obj.html());
 		        var rel = $(this).attr("rel");
@@ -308,12 +295,7 @@
 					if(!json.error) {
 						page ++;
 						jQuery("#list-view").html(template('list-view-code', json));
-
-						myScroll = new IScroll('#main', { probeType: 1});
-						myScroll.scrollTo(0, scrollposi);
-						myScroll.on('scroll', pullRefresh);
-						scrollposi = myScroll.maxScrollY;
-
+						//assignTmpl(json);
 						setComment();
 
 					} else {

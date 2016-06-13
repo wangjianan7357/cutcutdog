@@ -221,12 +221,7 @@ _margin-bottom:10px;
 	height: 100%;
 	width: 100%;
 }
-#pullrefresh {
-	position: absolute;
-	z-index: 1;
-	height: 100%;
-	width: 100%;
-}
+
 
 .scroller {
 	position: absolute;
