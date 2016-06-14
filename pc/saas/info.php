@@ -172,6 +172,9 @@ if ($_REQUEST['action'] == 'list') {
 
     $chk_post = new ChkRequest('sbt_');
 
+    $cid = explode(',', trim($_POST['sbt_cid']));
+    $catalog = $my_db->fetchOne('catalog', array('id' => $cid[0]));
+
     $submit = array(
         'src' => $filename,
         'mid' => $_POST['id'],
@@ -180,16 +183,16 @@ if ($_REQUEST['action'] == 'list') {
         'address' => isset($_POST['sbt_address']) ? $_POST['sbt_address'] : '',
         'desp' => isset($_POST['sbt_desp']) ? $_POST['sbt_desp'] : '',
         'cid' => rtrim($_POST['sbt_cid'], ',') . ',',
-        'valid' => $_POST['where']['type'] == 3 ? 0 : 1,
+        'valid' => $catalog['type'] == 3 ? 0 : 1,
         'path' => $chk_post->traFromName('name', array('name' => 'info', 'field' => 'path')),
         'type' => isset($_POST['sbt_service']) ? intval($_POST['sbt_service']) : 0,
     );
 
     if ($my_db->saveRow('info', $submit)) {
 
-        if ($_POST['where']['type'] == 3) {
+        if ($catalog['type'] == 3) {
             $mail = new Emailer($con_mail_set);
-            $mail->resetFields(array('name' => '會員', 'desp' => '描述', 'tel' => '電話', 'address' => '地址'));
+            $mail->resetFields(array('name' => '標題', 'desp' => '描述', 'tel' => '電話', 'address' => '地址'));
             $mail->content($submit, '店鋪提交');
             $mail->send();
         }
