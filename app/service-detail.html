@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<!--标准mui.css-->
@@ -57,15 +57,15 @@
 	<div class="mui-content bg-two">
 		<div class="top_bg"></div>
 		
-		<div class="mui-content-padded" style=" margin:0px; padding:20px;">
+		<div class="mui-content-padded padd-heig">
 			<div id="detail-photo" style=" text-align: center;"><img src="images/gif.gif" style="width: 32px; height:32px ;"></div>
 			<script id="detail-photo-code" type="text/html">
-				<img src="<%= getvarious("domain") + "uploads/member/me" + member["src"] %>">
+				<img src="<%= getvarious("domain") + "uploads/member/me" + member["src"] %>" class="serv-wiw">
 			</script>
 
 			<div class="serv-my-zi mar">美容師名：<a data-info="member.name" style=" color:#333 ;"></a></div>
-			<div class="serv-my-zi mar">年資：<a data-info="member.fields.experience" style=" color:#333 ;"></a></div>
-			<div class="serv-my-zi">
+			<div class="serv-my-zi">年資：<a data-info="member.fields.experience" style=" color:#333 ;"></a></div>
+			<div class="serv-my-zi se-tsn">
 				<span>服務範圍：</span>
 				<div id="service-list"></div>
 				<script id="service-list-code" type="text/html">
@@ -77,7 +77,7 @@
 			<div class="serv-my-zi">
 				查詢電話：<a data-info="member.phone" style=" color:#333 ;"></a> <a href="" data-info="href=member.link" data-action="openwindow"><span class="serv-ljyy">立即預約</span></a>
 			</div>
-			<div data-info="member.desp"></div>
+			<div data-info="member.desp" style="margin-top:5px ; font-size: 14px;"></div>
                
             
 			
