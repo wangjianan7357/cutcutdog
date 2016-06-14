@@ -159,7 +159,7 @@
 					showServicePickerButton.addEventListener("tap", function(event) {
 						servicePicker.show(function(items) {
 							jQuery("[data-picker='service']").html(items[0].text);
-							jQuery("#req_service").val(items[0].value);
+							jQuery("#info_service").val(items[0].value);
 						});
 					}, false);
 					
