@@ -179,7 +179,10 @@
 			"js/iscroll.js",
 			"js/pullToRefresh.js",
 			"js/iscroll-probe.js",
-			"personal-photo.html"
+			"personal-photo.html",
+			"images/cartoon-dog-two.png",
+			"images/cartoon-dog-one.png",
+			"publish-photo.html"
 		],
 		"refer": [
 			"photo-detail.html",
@@ -474,7 +477,8 @@
 			"images/Petchat.png",
 			"js/basic.js",
 			"images/bg_two.png",
-			"js/js.js"
+			"js/js.js",
+			"photo-list.html"
 		]
 	},
 	"info-list.html": {

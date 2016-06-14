@@ -716,11 +716,13 @@
 					"js/iscroll.js",
 					"js/pullToRefresh.js",
 					"js/iscroll-probe.js",
-					"personal-photo.html"
+					"personal-photo.html",
+					"images/cartoon-dog-two.png",
+					"images/cartoon-dog-one.png",
+					"publish-photo.html"
 				],
 				"refer": [
 					"image-list.html",
-					"publish-photo.html",
 					"my-photo.html",
 					"setting.html"
 				],
@@ -793,11 +795,11 @@
 					"js/basic.js",
 					"js/mui.view.js",
 					"images/bg_two.png",
-					"js/js.js"
+					"js/js.js",
+					"photo-list.html"
 				],
 				"refer": [
-					"profile.html",
-					"photo-list.html"
+					"profile.html"
 				],
 				"priority": 0
 			},
