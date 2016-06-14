@@ -101,15 +101,21 @@
 	
 	
 	<!-- 代码开始 -->
-<div id="tbox">
-	<a id="gotop" href="javascript:void(0)"></a>
-	
-</div>
-<div class="wrap">
-	<div class="menu"><a href="publish-photo.html" data-action="openwindow"><img class="icon_menu" src="images/cartoon-dog.gif" /><span></span></a></div>
-	
-</div>
-<!-- 代码结束 -->
+	<div id="tbox">
+		<a id="gotop" href="javascript:void(0)"></a>
+	</div>
+
+	<div class="wrap">
+		<!--
+		<div class="menu">
+			<a href="publish-photo.html" data-action="openwindow"><img class="icon_menu" src="images/cartoon-dog.gif" /><span></span></a>
+		</div>
+		-->
+		<div class="menu">
+			<img class="icon_menu" src="images/cartoon-dog-two.png" data-action="upload" />
+		</div>
+	</div>
+	<!-- 代码结束 -->
 	<script>
 		var cata_type = 5;
 		var member = {};
@@ -127,6 +133,21 @@
 				}
 			}
 		});
+
+		jQuery("[data-action='upload']").click(function(){
+			var self = jQuery(this);
+
+			if (jQuery(this).attr("src") == "images/cartoon-dog-one.png") {
+				document.location.href = "publish-photo.html";
+			} else {
+				jQuery(this).attr("src", "images/cartoon-dog-one.png");
+			}
+
+			setTimeout(function(){
+				self.attr("src", "images/cartoon-dog-two.png");
+			}, 2000);
+		});
+
 		/**
 		 * 下拉刷新具体业务实现
 		 */
