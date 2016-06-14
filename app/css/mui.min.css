@@ -230,6 +230,8 @@ _margin-bottom:10px;
 .mui-icon-search:before {
     content: '\e466';
 }
+.conta ul{ padding:0px ; margin:0px ;}
+.conta ul li{ list-style: none; line-height:50px ; padding-bottom:0px ; border-bottom: solid #eeeeee 1px;}
 
 #wrapper {
 	position: absolute;
