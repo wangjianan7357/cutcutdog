@@ -1201,7 +1201,8 @@
 			"photo-list.html"
 		],
 		"refer": [
-			"photo-list.html"
+			"photo-list.html",
+			"index.html"
 		]
 	}
 }

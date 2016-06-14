@@ -1432,7 +1432,9 @@
 					"images/bg_two.png",
 					"photo-list.html"
 				],
-				"refer": [],
+				"refer": [
+					"index.html"
+				],
 				"priority": 0
 			}
 		},
