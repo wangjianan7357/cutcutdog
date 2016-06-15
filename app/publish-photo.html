@@ -77,6 +77,11 @@
 
 	mui.plusReady(function() {
 		member = myStorage.getItem("member");
+		
+		if(!member) {
+			plus.nativeUI.toast("請先登錄！");
+			return false;	
+		}
 	});
 	
 	//选择图片
@@ -113,6 +118,11 @@
 	document.getElementById("submit-button").addEventListener("tap", function(event) {
 		if (submitting) {
 			return;
+		}
+		
+		if(!member) {
+			plus.nativeUI.toast("請先登錄！");
+			return false;	
 		}
 		
 		if(!jQuery("#discuss_name").val()) {

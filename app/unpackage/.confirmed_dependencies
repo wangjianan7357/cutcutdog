@@ -27,7 +27,8 @@
 			"photo-list.html",
 			"buy.html",
 			"images/bg_two.png",
-			"personal.html"
+			"personal.html",
+			"login.html"
 		],
 		"refer": [
 			"discuss-category.html",

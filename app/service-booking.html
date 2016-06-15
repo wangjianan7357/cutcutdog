@@ -209,6 +209,11 @@
 								$(this).html($(this).html().replace("<div class=\"sh_bg\"></div>", ""));
 								$(this).find("input").attr("data-active", "false");
 							} else {
+								$(this).parent().find("[data-action='select']").each(function(){
+									$(this).html($(this).html().replace("<div class=\"sh_bg\"></div>", ""));
+									$(this).find("input").attr("data-active", "false");
+								});
+
 								$(this).html($(this).html() + "<div class=\"sh_bg\"></div>");
 								$(this).find("input").attr("data-active", "true");
 							}
