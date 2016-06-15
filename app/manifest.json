@@ -664,11 +664,10 @@
 					"images/Petchat.png",
 					"images/user-photo.png",
 					"service-list.html",
-					"images/gif.gif"
-				],
-				"refer": [
+					"images/gif.gif",
 					"service-booking.html"
 				],
+				"refer": [],
 				"priority": 0
 			},
 			"photo-list.html": {
@@ -799,7 +798,8 @@
 					"photo-list.html"
 				],
 				"refer": [
-					"profile.html"
+					"profile.html",
+					"index.html"
 				],
 				"priority": 0
 			},
@@ -830,7 +830,10 @@
 					"js/mui.picker.min.js",
 					"css/mui.picker.min.css",
 					"js/mui.picker.js",
-					"js/mui.poppicker.js"
+					"js/mui.poppicker.js",
+					"service-detail.html",
+					"service-booking.html",
+					"index.html"
 				],
 				"refer": [],
 				"priority": 0
