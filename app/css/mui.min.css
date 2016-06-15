@@ -116,14 +116,7 @@ body{font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:17px;line-heigh
 .serv-my-zi .serv-ljyy-two{float:right;background-color:#58bced ; padding:0px 20px 0px 20px ;border-radius: 10px; color: #fff; margin-right:20px; margin-top:10px ;}
 .img-wid{width:95px; height:95px ; overflow: hidden;}
 .ser-wiw{float: right; width: 200px;}
-@media (min-width: 300px) and (max-width: 350px) {
-  .img-wid{width:80px; height:80px ; overflow: hidden;}
-  
-  
-  
-  
-  
-}
+
 
 .mui-table-view-cell-img {
     position: relative;
@@ -349,7 +342,7 @@ to {
 }
 }
 
-@media (min-width: 360px){
+@media (min-width: 360px) and (max-width: 370px) {
   .img-wid{width:85px; height:85px ; overflow: hidden;}
   .za-zi{background: url(../images/Info_icon_home.png) no-repeat 0px 0px; font-size: 16px; color:#333 ; margin-top:5px; padding-left: 30px;height:24px ; line-height:18px ;}
   .zi-heig{    padding: 3px 8px;}
@@ -425,7 +418,39 @@ to {
 .h-sanwu img{ height:210px;}  
 }
 
+@media (min-width: 380px) and (max-width: 450px){
+  .img-wid{width:96px; height:96px ; overflow: hidden;}
+  .za-zi{background: url(../images/Info_icon_home.png) no-repeat 0px 0px; font-size: 16px; color:#333 ; margin-top:8px; padding-left: 30px;height:24px ; line-height:18px ;}
+  .zi-heig{    padding: 3px 8px;}
+.pp{margin-bottom:5px; margin-top:5px ; font-size:16px ; background: url(../images/Info_icon_pin.png) no-repeat 3px 0px; padding-left:30px ; line-height:20px ;}
+ .mui-tal{ background: url(../images/Info_icon_tel.png) no-repeat 3px 0px; height:20px ; margin-top:2px ; padding-left:33px ; font-size:16px;color: #333; line-height:25px ;} 
+ .li-bg{ background: url(../images/icon-10.png);margin-bottom:8%;margin-top:4%;border-radius:10px; height:100%;} 
+ .muing li img{width:60%;}
+ .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+ 	
+    font-size: 14px;
+    line-height: 20px;
+    display: block;
+    width: 100%;
+    margin-top: 0px;
+    text-overflow: ellipsis;
+    color: #333;
+    font-weight: 600;
+    
+}
+.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+    padding: 0; margin: 0;
+    overflow: hidden;
+    
+}
+.pl-list-two{margin-top:0px ; padding-left:0px ; margin-left:0px ; overflow: hidden;}
+.pl-list-two li{list-style:none ; width:100% ; height: 90px; background-color:#fff;padding-left:0px ; margin-left:0px ; padding-top:10px ; padding-bottom:10px ; overflow: hidden;}
+.pl-list-two-img{ float: left;width:25%;}.pl-list-two-img img{width:100%;}
+.h-sanwu{height:300px; overflow: hidden;}  
+.h-sanwu img{ height:300px;}  
 
+
+}
 
 
 
