@@ -35,7 +35,8 @@ if ($_REQUEST['action'] == 'list') {
     $list = array();
     $category = array();
 
-    if (!$_POST['where']['search']) {
+    if (!$_POST['where']['search'] || strtolower($_POST['where']['search']) == 'null') {
+        unset($_POST['where']['search']);
         $category = $my_db->fetchOne('catalog', $_POST['where']);
     }
 
@@ -60,7 +61,7 @@ if ($_REQUEST['action'] == 'list') {
     } else if ($_POST['where']['search']) {
         $category['name'] = $_POST['where']['search'];
 
-        $getdata = $my_db->selectRow('*', 'info', array('`name` LIKE "%' . addslashes($category['name']) . '%" OR `desp` LIKE "%' . addslashes($category['name']) . '%"'), array('field' => 'date', 'method' => 'desc'));
+        $getdata = $my_db->selectRow('*', 'info', array('`name` LIKE "%' . addslashes($category['name']) . '%"'), array('field' => 'date', 'method' => 'desc'));
         while ($result = mysql_fetch_array($getdata)) {
             if (!isset($member[$result['mid']])) {
                 $member[$result['mid']] = array('name' => '');
