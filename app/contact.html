@@ -40,32 +40,19 @@
 
 		<!--页面主内容区开始-->
 		
-			<div class="conta" style=" padding:10px ; margin: 0px;">
-				
-				<ul  style=" padding:0px ; margin: 0px;">
-					<li>
-						公司介紹
-						<p>我們以最合理的價格、最完善的服务、提供最優質，最優越的服務，以質量 第一，客户至上为經營理念，力求为客户提供更好的更專業的服务</p>
-					</li>
-					<li>
-						聯繫電話：　<span>14714529086</span>
-					</li>
-					<li>
-						公司地址：　<span>客户至上为經營理念力求为客户</span>
-					</li>
-					<li>
-						郵箱地址：　<span>Machinglun@gmail.com</span>
-					</li>
-				</ul>
-				
-				
-			</div>
+		<div class="conta" style="padding:10px ; margin: 0px;" id="list-view"></div>
+		<script id="list-view-code" type="text/html">
+		<% for (var i in list) { %>
+			<%=# list[i]["desp"] %>
+		<% } %>
+		</script>
 	
 	</div>
 	<!--单页面结束-->
 
 	<script>
 
+	/*
 	refresher.init({
 		id:"wrapper",
 		pullDownAction:Refresh,                                                            
@@ -84,6 +71,30 @@
 			
 		}, 1000);	
 	}
+	*/
+
+	mui.plusReady(function() {
+		ajaxCache({
+			type: "post",
+			url: domain + "saas/catalog.php",
+			dataType: "json",
+			data: {
+				action: "detail",
+				where: {type: 6, id: 38}
+			},
+			async: true,
+			success: function(json) {
+				if(!json.error) {
+					jQuery("#list-view").html(template('list-view-code', json));
+					//assignTmpl(json);
+					
+				} else {
+					plus.nativeUI.toast(json.message);
+				}
+			},
+			error: function(xhr, type, errorThrown) {}
+		}, true);
+	});
 	</script>
 
 </body>

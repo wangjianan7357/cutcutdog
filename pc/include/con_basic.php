@@ -120,6 +120,7 @@ $cms_cata_type = array(
 	3 => array('txt' => '資料庫', 'db' => 'info', 'ico' => 'fa-briefcase'), 
 	4 => array('txt' => '討論區', 'db' => 'info', 'ico' => 'fa-quote-left'), 
 	5 => array('txt' => '圖片區', 'db' => 'info', 'ico' => 'fa-camera'), 
+	6 => array('txt' => '資訊信息', 'db' => 'info', 'ico' => 'fa-pencil-square-o'), 
 	7 => array('txt' => '產品', 'db' => 'product', 'ico' => 'fa-shopping-cart'),
 	8 => array('txt' => '二手交易', 'db' => 'product', 'ico' => 'fa-angellist'),
 );
