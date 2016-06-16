@@ -6,7 +6,7 @@ class Graphic {
 
 	public $quality;
 
-	function __construct($original, $quality = 70){
+	function __construct($original, $quality = 90){
 		$this->quality = $quality;
 
 		preg_match('/(.[\w]+)$/is', $original, $match);

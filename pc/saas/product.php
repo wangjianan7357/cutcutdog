@@ -95,9 +95,9 @@ if ($_REQUEST['action'] == 'list') {
         $imgarr['width'] = $imgop->getWidth();
         $imgarr['height'] = $imgop->getHeight();
 
-        if($imgarr['width'] > 500 || $imgarr['height'] > 500){
+        if($imgarr['width'] > 640 || $imgarr['height'] > 640){
             $imgop = new Graphic($filepath);
-            $imgop->resizeImage($filepath, 500, 500);
+            $imgop->resizeImage($filepath, 640, 640);
         }
     }
 
