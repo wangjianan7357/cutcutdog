@@ -247,6 +247,15 @@ _margin-bottom:10px;
 .conta ul{ padding:0px ; margin:0px ;}
 .conta ul li{ list-style: none; line-height:50px ; padding-bottom:0px ; border-bottom: solid #eeeeee 1px;}
 
+.square-pic {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+}
+
 #wrapper {
 	position: absolute;
 	z-index: 1;

@@ -49,14 +49,13 @@
 
 <body style="background:#fff; height:100% ; overflow: hidden;">
 	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
-	<div style=" height:21px ; overflow: hidden;">
-    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
-   
-   </div>
-    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
-    <div class="top_bg"></div>
-</header>
-
+		<div style=" height:21px ; overflow: hidden;">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
+	   
+	   </div>
+	    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+	    <div class="top_bg"></div>
+	</header>
 
 	<div class="mui-content" id="main" style=" padding-top:108px ;">
 		
@@ -71,10 +70,10 @@
 					</a>
 					<% } %>
 					
-					<div class="square" style="background-image: url(<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>)">
-					
-				    
+					<div class="square-pic" style="background-image: url(<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>)">
+				
 					</div>
+
 					<input type="hidden" name="aid" value="<%= list[i]["id"] %>" />
 
 					<div class="xp-tu" style="margin-left:5px;">
