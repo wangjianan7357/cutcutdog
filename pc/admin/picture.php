@@ -6,7 +6,10 @@ require('../include/cls_graphic.php');
 $err = '';
 $msg = $_GET['msg'] ? $_GET['msg'] : array();
 
-if ($_GET['type'] == 7) {
+if ($_GET['type'] == 21) {
+	$picture_src = '../uploads/member/album/' . $con_pic['pre']['property'];
+
+} else {
 	$picture_src = '../' . systemConfig('property_img_path') . $con_pic['pre']['property'];
 }
 
@@ -27,6 +30,7 @@ if ($_GET['action'] == 'upload'){
 	if($_GET['num']){
 		$outcome = $my_db->fetchOne('property_content', array('id' => $_GET['num']));
 		$_GET['sort'] = $outcome['sort'];
+		$_GET['type'] = $outcome['sort'];
 		$_GET['pid'] = $outcome['pid'];
 	}
 
@@ -110,17 +114,16 @@ if ($_GET['action'] == 'upload'){
 		}
 
 		$_POST['sbt_vid'] = ($_POST['property'] && $_POST['sbt_vid']) ? intval($_POST['sbt_vid']) : 0;
-		$_GET['sort'] = 7;
 
 		if(!$err){
 			$num = 1;
 			$done = 1;
 
 			if ($_POST['sbt_vid']) {
-				$done &= $my_db->deleteRow('property_content', array('vid' => $_POST['sbt_vid'], 'pid' => $_POST['sbt_pid'], 'sort' => $_GET['sort']));
+				$done &= $my_db->deleteRow('property_content', array('vid' => $_POST['sbt_vid'], 'pid' => $_POST['sbt_pid'], 'sort' => $_POST['sort']));
 			}
 
-			$done &= $my_db->saveRow('property_content', array('content' => $_POST['sbt_content'], 'vid' => $_POST['sbt_vid'], 'pid' => $_POST['sbt_pid'], 'sort' => $_GET['sort']), $_GET['num'] ? array('id' => $_GET['num']) : '');
+			$done &= $my_db->saveRow('property_content', array('content' => $_POST['sbt_content'], 'vid' => $_POST['sbt_vid'], 'pid' => $_POST['sbt_pid'], 'sort' => $_POST['sort']), $_GET['num'] ? array('id' => $_GET['num']) : '');
 				
 			if($done){
 
@@ -192,7 +195,7 @@ if ($_GET['action'] == 'upload'){
 
 	$q_url = queryPart('id', 'desc');
 
-	$where = 'sort = 7' . ($_GET['pid'] ? ' AND pid = ' . $_GET['pid'] : '');
+	$where = 'sort = ' . $_GET['type'] . ($_GET['pid'] ? ' AND pid = ' . $_GET['pid'] : '');
 
 	class FieldFun {
 		function __construct($namespace = 1){
@@ -220,7 +223,7 @@ if ($_GET['action'] == 'upload'){
 		array(
 			array('__all', 'edit'),
 			'id' => 'ID', 
-			'pid' => '產品ID',
+			'pid' => '關聯ID',
 			//'vid' => array('屬性', 'read', array(new FieldFun(2))),
 			'content' => array('縮略圖', 'read', array(new FieldFun())),
 			array('__edit', 'edit', array('power' => $cms_cata_type[$_GET['type']]['db'], 'method' => array('detail' => 2)))

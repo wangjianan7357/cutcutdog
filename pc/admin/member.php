@@ -135,8 +135,15 @@ if($_GET['action'] == 'edt'){
 		}
 
 		function __call($method, $str) {
+			global $q_url;
+
 			switch ($this->namespace . '_' . $method) {
-				case '1_fun1':
+				case '3_fun1':
+					$code = '<a href="' . $_SERVER['PHP_SELF'] . '?action=edt&num=' . $str[0]['id'] . $q_url['24567'] . '&flag=' . $_GET['flag'] . '">編輯</a>';
+
+					$code .= ' &nbsp; <a href="picture.php?action=lst&pid=' . $str[0]['id'] . '&type=21">相冊</a>';
+
+					return $code;
 					
 			}
 		}
@@ -151,7 +158,7 @@ if($_GET['action'] == 'edt'){
 			'email' => array('電郵', 'text'), 
 			'date' => array('加入時間', 'read'), 
 			'valid' => array('有效', 'checkbox'),
-			array('__edit', 'edit', array('power' => 'member', 'method' => array('quick' => 2, 'detail' => 2)))
+			array('__edit', 'edit', array(new FieldFun(3))),
 		),
 		array(
 			'where' => $where,

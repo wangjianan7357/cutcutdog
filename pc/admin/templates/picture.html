@@ -28,7 +28,7 @@
                 <?php if ($_GET['action'] == 'edt') { ?>
                 <form role="form" enctype="multipart/form-data" action="<?=$_SERVER['REQUEST_URI'];?>" method="post">
                     <input type="hidden" name="save" value="true" />
-                    <input type="hidden" name="type" value="<?=$_GET['type'];?>" />
+                    <input type="hidden" name="sort" value="<?=$_GET['type'];?>" />
                     <input type="hidden" name="sbt_pid" value="<?=$_GET['pid'] ? $_GET['pid'] : $outcome['pid'];?>" />
 
                     <div class="box-header">

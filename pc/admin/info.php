@@ -145,6 +145,7 @@ if($_GET['action'] == 'edt'){
 
 		function __call($method, $str) {
 			global $catalog_type;
+			global $q_url;
 
 			switch ($this->namespace . '_' . $method) {
 				case '1_fun1':
@@ -152,6 +153,14 @@ if($_GET['action'] == 'edt'){
 				case '1_fun2':
 					global $catalog_all;
 					return $str[0] ? $catalog_all[preg_replace('/(^[\d,]+,|^)(\d+),$/', '\\2', $str[0])]['name'] : '<font color="red">未歸類</font>'; 
+				case '3_fun1':
+					$code = '<a href="' . $_SERVER['PHP_SELF'] . '?action=edt&num=' . $str[0]['id'] . $q_url['24567'] . '&flag=' . $_GET['flag'] . '">編輯</a>';
+
+					if ($catalog_type == 3) {
+						$code .= ' &nbsp; <a href="picture.php?action=lst&pid=' . $str[0]['id'] . '&type=2">相冊</a>';
+					}
+
+					return $code;
 					
 			}
 		}
@@ -166,7 +175,7 @@ if($_GET['action'] == 'edt'){
 			'cid' => array('分类', 'select', array(new FieldFun())),
 			//'path' => 'URL', 
 			'valid' => array('狀態', 'checkbox'),
-			array('__edit', 'edit', array('power' => 'info', 'method' => array('detail' => 2)))
+			array('__edit', 'edit', array(new FieldFun(3))),
 		),
 		array(
 			'where' => $where,
