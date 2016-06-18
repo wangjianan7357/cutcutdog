@@ -44,11 +44,12 @@ body{font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:17px;line-heigh
 .za-zi{background: url(../images/Info_icon_home.png) no-repeat 0px 0px; font-size: 16px; color:#333 ; margin-top:6px; padding-left: 30px; height:24px ; line-height:22px ;}
 .mui-tal{ background: url(../images/Info_icon_tel.png) no-repeat 3px 0px; height:26px ; margin-top:5px ; padding-left:33px ; font-size:16px;color: #333; line-height:25px ;}
 .mui-media-body{width:52%;}
-.z-hao{ text-align: center; background: url(../images/cartoon-dog.png) no-repeat center; height:60px ; margin-top:5px ; line-height:60px ;font-size:20px;text-indent:80px ; color:#333 ; margin-bottom: 5px;}
+.z-hao{ text-align: center;width:100%; height:60px ; position: relative; margin-top:5px ; line-height:20px ;font-size:20px;text-indent:10px ; color:#333 ; margin-bottom: 0px;}
+.z-hao img{width:12%; padding: 0px; margin: 0px;}
 .dz-add{margin-top:6px ; font-size:14px ; background: url(../images/Info_icon_pin.png) no-repeat 3px 0px; padding-left:30px ; height:26px ; color:#333 ;line-height:20px ; padding-right:5px;}
 .fl-mar{padding-top:10px ; padding-left: 10px;}
 .li-bg-two{ background: url(../images/icon-10.png);margin-bottom:20px ;border-radius:10px; height:130px ; overflow: hidden;}
-.zh-good{ background-color:#8f72b4 ;border-radius: 10px;width:75px; display: inline-block;height:33px; line-height:35px ; font-size: 18px; color:#fff ; margin-bottom:20px ;}
+.zh-good{ background-color:#8f72b4 ;border-radius: 10px;width:70px; display: inline-block;height:30px; line-height:32px ; font-size: 16px; color:#fff ; margin-bottom:20px ;}
 .pl-cs{border-radius: 10px;background-color:#fff ;height: 46px; border: solid #56bf94 2px; width:80%; margin:0 auto ;margin-top:5%;}
 .pl-cs-left{ float:left;background-color:#f9a578 ;width:50%;height: 42px;  border-radius: 8px 0px 0px 8px; padding-top:3px ; border-right: solid 3px #57bf95;}
 .pl-cs-left img{width:67%; margin-left: 5px;}
@@ -194,7 +195,7 @@ _top:expression(eval(document.documentElement.scrollTop+document.documentElement
 _margin-bottom:10px;
 }/*解决IE6下不兼容 position:fixed 的问题*/
 
-#gotop{ width:47px; height:47px; background:url(../images/top02.png) no-repeat; position:absolute; top:0px; display:none; cursor:pointer; z-index:99999 ;} 
+#gotop{ width:50px; height:50px;  position:absolute; top:0px; display:none; cursor:pointer; z-index:99999 ;} 
 
 .mui-content ul.mui-grid-9 {
     padding: 0 5%;

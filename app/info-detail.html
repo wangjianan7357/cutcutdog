@@ -55,14 +55,14 @@
 			</div>
 		</script>
        
-		<div class="z-hao" id="likesCount" data-info="detail.likes">0</div>
+		<div class="z-hao" ><img src="images/cartoon-dog.png" /><span id="likesCount" data-info="detail.likes" style=" position: absolute; right:35%;top:30%;">0</span></div>
 		<div class="li-bg-san fl-mar" style=" margin-left: 10px; margin-right:10px ;">
 			<div class="pl_two_zi za-zi" style=" padding-left:9%; color:#333 ;" data-info="detail.name"></div>
 			<div class="dz-add" data-info="detail.address"></div>
-			<div class="mui-tal" style="font-size:14px ;" id="phone-detail"></div>
+			<div class="mui-tal" style="font-size:14px ;margin-top:5px ;" id="phone-detail"></div>
 
 			<script id="phone-detail-code" type="text/html">
-				<a href="tel:<%= detail["tel"] %>" style="color:#333 ;"><%= detail["tel"] %></a>
+				<a href="tel:<%= detail["tel"] %>" style="color:#333 ; line-height:30px ;font-size:14px ; "><%= detail["tel"] %></a>
 			</script>
 
 			<input type="hidden" id="aid" data-info="value=detail.id" value="">
