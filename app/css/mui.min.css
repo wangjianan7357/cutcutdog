@@ -58,9 +58,9 @@ body{font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:17px;line-heigh
 .pl-list-two li{list-style:none ; width:100% ; height: 80px; background-color:#fff;padding-left:0px ; margin-left:0px ; padding-top:10px ; padding-bottom:10px ; overflow: hidden;}
 .pl-list-two-img{ float: left;width:25%;}.pl-list-two-img img{width:100%;}
 .pl-tilte{ overflow: hidden;}
-.pl-tilte-two{ font-size:18px ; color: #333; line-height:38px ; font-weight: bold;}
-.pl-tilte ul{padding-left:0px ; margin-left:0px ;}
-.pl-tilte ul li{ list-style: none; height: 25px; float:left;padding-left:0px ;width:auto ; color:#666; background:none ; font-size:13px;margin-left:0px ;padding-right:20px ;padding-top:0px ;padding-bottom:0px ;}
+.pl-tilte-two{ font-size:16px ; color: #333; line-height:30px ; font-weight: bold;}
+.pl-tilte ul{padding-left:0px ; margin-left:0px ; padding:0px ; margin: 0px;}
+.pl-tilte ul li{ list-style: none; height: 21px; float:left;padding-left:0px ;width:auto ; line-height:15px ;color:#666; background:none ;font-size:12px;margin-left:0px ;padding-right:20px ;padding-top:0px ;padding-bottom:0px ;}
 .pl-list-two-top{ height:50px; background: url(../images/pl_top_bg.png) no-repeat center;  padding-left:10px ; border-bottom:solid 2px #56bf96 ;border-top:solid 2px #56bf96 ; line-height:48px; text-align: center;color:#333 ; font-size:25px ;}
 .pl_two_zi{ color:#333 ; font-weight: bold; font-size:14px ; padding-left:5px ;}
 .li-bg-san{ background: url(../images/icon-10.png);margin-bottom:20px ;border-radius:10px; line-height:25px; padding-bottom:10px;overflow: hidden;}

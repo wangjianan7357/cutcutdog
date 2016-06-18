@@ -50,11 +50,7 @@
 											</span>
 										</a>
 									</li>
-									<li class="mui-table-view-cell">
-										<a>標題
-											<input value="" id="discuss_name"  style=" height:30px ;width:90%;">
-										</a>
-									</li>
+									
 									<li class="mui-table-view-cell">
 										<a id="submit-button">提交</a>
 									</li>
@@ -125,10 +121,7 @@
 			return false;	
 		}
 		
-		if(!jQuery("#discuss_name").val()) {
-			plus.nativeUI.toast("請輸入標題！");
-			return false;	
-		}
+		
 		
 		if(!jQuery("#picture-path").val()) {
 			plus.nativeUI.toast("請輸入圖片！");
