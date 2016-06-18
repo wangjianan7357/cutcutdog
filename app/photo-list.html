@@ -64,12 +64,13 @@
 			<script id="list-view-code" type="text/html">
 			<% for (var i in list) { %>
 				<li>
+					<div style=" overflow: hidden;">
 					<% if (list[i]["member"]["src"] || list[i]["member"]["name"]) { %>
 					<a href="personal-photo.html?id=<%= list[i]["member"]["id"] %>&name=<%= list[i]["member"]["name"] %>" data-action="openwindow">
 					<img class="img-bor-two wid" src="<%= getvarious("domain") + list[i]["member"]["src"] %>" /><span class="t-p-tile"><%= list[i]["member"]["name"] %></span>
 					</a>
 					<% } %>
-					
+					</div>
 					<div class="square-pic" style="background-image: url(<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>)">
 				
 					</div>
