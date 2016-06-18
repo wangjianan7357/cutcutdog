@@ -112,7 +112,7 @@
 			</div>
 		</div>
 		
-		<div style=" overflow: hidden; border-bottom: solid 2px #efefef ;">
+		<div style=" overflow: hidden; border-bottom: solid 2px #efefef ; background-color:#fff ; ">
 			<div class="li-bg-san fl-mar" style=" margin-bottom:0px ;">
 				<div style=" overflow: hidden; margin-bottom:20px ;">	
 				    <div id="member-photo" style="float: left;"></div>
@@ -128,8 +128,11 @@
 			</div>
 			
 			<div id="detail-photo" style=" text-align: center;"><img src="images/gif.gif" style="width: 32px; height:32px ;"></div>
+			
 			<script id="detail-photo-code" type="text/html">
-			<img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>" style="width:95%; height: 40%;">
+			  <div class="square-pic-san" style="background-image: url(<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>)">
+			   
+			  </div>
 			</script>
 			
 			<div class="xp-tu-dicc" style="margin-left:5px; margin-top: 5px;margin-bottom:5px ;overflow: hidden;">
@@ -142,7 +145,7 @@
         <div id="comment-list"></div>
         <script id="comment-list-code" type="text/html">
         <% for (var i in comments) { %>
-    		<div style="overflow: hidden; border-bottom: solid 2px #efefef ; margin-top:5px ;">
+    		<div style="overflow: hidden; border-bottom: solid 2px #efefef ; padding-top:5px ;background-color:#fff ;">
     			<div class="li-bg-san" style=" margin-bottom:0px ;">
     				<div style=" overflow: hidden; margin-bottom:20px ;">	
     				    <div id="member-photo" style="float: left;">
@@ -154,7 +157,7 @@
     			    </div>
     			</div>
 
-    			<div class="pl_two_zi" style=" padding-left:10px ;"><%= comments[i]["content"] %></div>
+    			<div class="pl_two_zi" style=" padding-left:10px ;padding-right:10px ;"><%= comments[i]["content"] %></div>
     		</div>
             <input type="hidden" name="aid" value="<%= comments[i]["id"] %>" rel="message" />
 

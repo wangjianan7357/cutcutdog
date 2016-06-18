@@ -63,7 +63,7 @@ body{font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:17px;line-heigh
 .pl-tilte ul{padding-left:0px ; margin-left:0px ; padding:0px ; margin: 0px;}
 .pl-tilte ul li{ list-style: none; height: 21px; float:left;padding-left:0px ;width:auto ; line-height:15px ;color:#666; background:none ;font-size:12px;margin-left:0px ;padding-right:20px ;padding-top:0px ;padding-bottom:0px ;}
 .pl-list-two-top{ height:50px; background: url(../images/pl_top_bg.png) no-repeat center;  padding-left:10px ; border-bottom:solid 2px #56bf96 ;border-top:solid 2px #56bf96 ; line-height:48px; text-align: center;color:#333 ; font-size:25px ;}
-.pl_two_zi{ color:#333 ; font-weight: bold; font-size:14px ; padding-left:5px ;}
+.pl_two_zi{ color:#333 ; font-weight: bold; font-size:14px ; padding-left:5px ; padding-right:5px ;}
 .li-bg-san{ background: url(../images/icon-10.png);margin-bottom:20px ;border-radius:10px; line-height:25px; padding-bottom:10px;overflow: hidden;}
 .xp-tu{ margin:0px;overflow: hidden;text-align: center; padding: 0px;}
 .xp-tu ul{ padding-left:0px;padding-right:0px;text-align: center;padding: 0px; margin:0px;}
@@ -187,6 +187,7 @@ body{font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:17px;line-heigh
 .serv-fw-persona a, .serv-fw-persona img{ height:100px; display: block;}
 .rihg-mr{ padding-right:20px ;}
 .serv-wiw{width:100%;}
+.mui-table-view.mui-grid-view .ind-wi{width: 33.33333333%;}
 
 #tbox{width:47px; height:73px; float:right; position:fixed;
 _position:absolute;
@@ -263,6 +264,15 @@ _margin-bottom:10px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50%;
+}
+.square-pic-san {
+    width: 100%;
+    height: 0;
+    padding-bottom: 72%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    
 }
 
 #wrapper {
