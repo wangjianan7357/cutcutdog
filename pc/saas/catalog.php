@@ -40,37 +40,50 @@ if ($_REQUEST['action'] == 'list') {
         $category = $my_db->fetchOne('catalog', $_POST['where']);
     }
 
-    if (!empty($category)) {
-        $member = array();
-        $getdata = $my_db->selectRow('*', 'member');
-        while ($result = mysql_fetch_array($getdata)) {
-            $member[$result['id']] = $result;
+    $member = array();
+    $getdata = $my_db->selectRow('*', 'member');
+    while ($result = mysql_fetch_array($getdata)) {
+        $member[$result['id']] = $result;
+    }
+
+    function infoModify($result) {
+        global $member;
+        global $my_db;
+
+        if (!isset($member[$result['mid']])) {
+            $member[$result['mid']] = array('name' => '');
         }
 
-        $getdata = $my_db->selectRow('*', $cms_cata_type[$category['type']]['db'], array('`cid` LIKE "%,' . $category['id'] . '," OR `cid` = "' . $category['id'] . ',"'), array('field' => 'date', 'method' => 'desc'));
-        while ($result = mysql_fetch_array($getdata)) {
-            if (!isset($member[$result['mid']])) {
-                $member[$result['mid']] = array('name' => '');
+        $result['summary'] = cutString(strip_tags($result['desp']), 30);
+        $result['member'] = $member[$result['mid']];
+        $result['date'] = substr($result['date'], 0, 10);
+
+        if ($_POST['where']['type'] == 4) {
+            $result['total'] = $my_db->existRow('message', array('atype' => $_POST['where']['type'], 'aid' => $result['id'], 'valid' => 1));
+
+            $latest = $my_db->fetchOne('message', array('atype' => $_POST['where']['type'], 'aid' => $result['id'], 'valid' => 1), array('field' => 'date', 'method' => 'DESC'), '0,1');
+
+            if (!isset($member[$latest['mid']])) {
+                $member[$latest['mid']] = array('name' => '');
             }
 
-            $result['summary'] = cutString(strip_tags($result['desp']), 30);
-            $result['member'] = $member[$result['mid']];
-            $result['date'] = substr($result['date'], 0, 10);
-            $list[] = $result;
+            $result['latest'] = $member[$latest['mid']];
+        }
+
+        return $result;
+    }
+
+    if (!empty($category)) {
+        $getdata = $my_db->selectRow('*', $cms_cata_type[$category['type']]['db'], array('`cid` LIKE "%,' . $category['id'] . '," OR `cid` = "' . $category['id'] . ',"'), array('field' => 'date', 'method' => 'desc'));
+        while ($result = mysql_fetch_array($getdata)) {
+            $list[] = infoModify($result);
         }
     } else if ($_POST['where']['search']) {
         $category['name'] = $_POST['where']['search'];
 
         $getdata = $my_db->selectRow('*', 'info', array('`name` LIKE "%' . addslashes($category['name']) . '%"'), array('field' => 'date', 'method' => 'desc'));
         while ($result = mysql_fetch_array($getdata)) {
-            if (!isset($member[$result['mid']])) {
-                $member[$result['mid']] = array('name' => '');
-            }
-
-            $result['summary'] = cutString(strip_tags($result['desp']), 30);
-            $result['member'] = $member[$result['mid']];
-            $result['date'] = substr($result['date'], 0, 10);
-            $list[] = $result;
+            $list[] = infoModify($result);
         }
     }
 
