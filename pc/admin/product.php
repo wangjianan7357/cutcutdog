@@ -130,6 +130,7 @@ if($_GET['action'] == 'edt'){
 
 		function __call($method, $str) {
 			global $catalog_type;
+			global $q_url;
 
 			switch ($this->namespace . '_' . $method) {
 				case '1_fun1':

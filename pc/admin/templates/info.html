@@ -59,6 +59,8 @@
                             <label for="sbt_path">路徑</label>
                             <input type="text" class="form-control" name="sbt_path" id="sbt_path" placeholder="路徑" readonly="readonly" value="<?= $outcome['path']; ?>">
                         </div>
+
+                        <?php if ($_GET['type'] == 3) { ?>
                         <div class="form-group">
                             <label for="sbt_tel">電話</label>
                             <input type="text" class="form-control" name="sbt_tel" id="sbt_tel" placeholder="電話" value="<?= $outcome['tel']; ?>">
@@ -67,8 +69,6 @@
                             <label for="sbt_address">地址</label>
                             <input type="text" class="form-control" name="sbt_address" id="sbt_address" placeholder="地址" value="<?= $outcome['address']; ?>">
                         </div>
-                        
-                        <?php if ($_GET['type'] == 3) { ?>
                         <div class="form-group">
                             <label for="sbt_type">服務類型</label>
 
