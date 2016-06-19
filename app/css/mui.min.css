@@ -220,6 +220,7 @@ _margin-bottom:10px;
 .discu-good-x-p-two span{color:#666 ; float: left; line-height:20px ; font-size:12px ;}
 .padd-heig{margin:0px; padding:5%;}
 .imgg-heig{height:280px ; overflow: hidden;}
+.h-serv{height:56%;overflow: hidden;}
 
 .h-siimg{height:41%;overflow: hidden;}
 
@@ -291,6 +292,16 @@ _margin-bottom:10px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50%;
+}
+.square-pic-serv {
+   width: 90%;
+    
+    padding-bottom: 90%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    margin:5% ;
+    
 }
 
 #wrapper {
@@ -470,6 +481,7 @@ to {
 }
 .h-sanwu{height:45%; overflow: hidden;}  
 .h-sanlu{height:45%; overflow: hidden;} 
+.h-serv{height:53%;overflow: hidden;}
 
 .square-pic-si {
     width: 100%;
@@ -481,6 +493,16 @@ to {
     
 }
 .pro_zi_sa{ line-height:25px ; font-size:16px ; padding:3px ;}
+.square-pic-serv {
+   width: 90%;
+    
+    padding-bottom: 88%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    margin:5% ;
+    
+}
 
 }
 
