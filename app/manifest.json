@@ -162,7 +162,7 @@
                     "iphone": {
                         "default": "", /*iPhone3启动图片选，分辨率：320x480*/
                         "retina35": "",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-                        "retina40": "","retina55l":"C:/Users/Administrator/Desktop/splash2208x1242.png"/*4.0 英寸设备(iPhone5)启动图片，分辨率：640x1136*/
+                        "retina40": "","retina55l":"F:/Pet App 0904/Pet App 0904/splash2204x1242.png"/*4.0 英寸设备(iPhone5)启动图片，分辨率：640x1136*/
                     },
                     "ipad": {
                         "portrait": "", /*iPad竖屏启动图片，分辨率：768x1004*/
@@ -176,11 +176,11 @@
                     }
                 },
                 "android": {
-                    "mdpi": "C:/Users/Administrator/Desktop/240.png", /*普通屏启动图片，分辨率：240x282*/
-                    "ldpi": "C:/Users/Administrator/Desktop/320.png", /*大屏启动图片，分辨率：320x442*/
-                    "hdpi": "C:/Users/Administrator/Desktop/480.png", /*高分屏启动图片，分辨率：480x762*/
-                    "xhdpi": "C:/Users/Administrator/Desktop/splash720x1242.png", /*720P高分屏启动图片，分辨率：720x1242*/
-                    "xxhdpi": "C:/Users/Administrator/Desktop/splash1080x1882.png"/*1080P高分屏启动图片，分辨率：1080x1882*/
+                    "mdpi": "F:/Pet App 0904/Pet App 0904/splash240x282png.png", /*普通屏启动图片，分辨率：240x282*/
+                    "ldpi": "F:/Pet App 0904/Pet App 0904/splash320x442.png", /*大屏启动图片，分辨率：320x442*/
+                    "hdpi": "F:/Pet App 0904/Pet App 0904/splash480x762.png", /*高分屏启动图片，分辨率：480x762*/
+                    "xhdpi": "F:/Pet App 0904/Pet App 0904/splash768x1024.png", /*720P高分屏启动图片，分辨率：720x1242*/
+                    "xxhdpi": "F:/Pet App 0904/Pet App 0904/splash1080x1882.png"/*1080P高分屏启动图片，分辨率：1080x1882*/
                 }
             }
         }
