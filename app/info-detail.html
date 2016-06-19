@@ -39,7 +39,7 @@
 
 <body>
 	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
-	<div style=" height:21px ; overflow: hidden;">
+	<div style=" height:21px;">
     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
    
    </div>
@@ -47,7 +47,7 @@
     <div class="top_bg"></div>
 </header>
 	<div class="mui-content"  style="padding-top:108px ; padding-bottom:20px ;">
-		<div id="slider" class="mui-slider h-sanwu">
+		<div id="slider" class="mui-slider h-siimg">
             <div class="mui-slider-group mui-slider-loop" id="list-view">
             	<a class="active">
 					<span class="mui-spinner"></span>
@@ -58,16 +58,16 @@
             	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
                 <div class="mui-slider-item">
                     <a href="#">
-                        <img src="<%= getvarious("domain") + list_last[i] %>">
-                    </a>
+                    	<div class="square-pic-two" style="background-image: url(<%= getvarious("domain") + list_last[i] %>)"></div>
+                       </a>
                 </div>
             <% } %>
 
             <% for (var i in list) { %>
                 <div class="mui-slider-item">
                     <a href="#">
-                        <img src="<%= getvarious("domain") + list[i] %>">
-                    </a>
+                    	<div class="square-pic-two" style="background-image: url(<%= getvarious("domain") + list[i] %>)"></div>
+                       </a>
                 </div>
             <% } %>
 
@@ -75,7 +75,8 @@
             	<!-- 额外增加的一个节点(循环轮播：最后一张节点是第一个轮播) -->
                 <div class="mui-slider-item">
                     <a href="#">
-                        <img src="<%= getvarious("domain") + list[i] %>">
+                    	<div class="square-pic-two" style="background-image: url(<%= getvarious("domain") + list[i] %>)"></div>
+                        
                     </a>
                 </div>
             <% break; } %>

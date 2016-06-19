@@ -272,7 +272,8 @@
 				],
 				"refer": [
 					"reg.html",
-					"forget_password.html"
+					"forget_password.html",
+					"login.html"
 				],
 				"priority": 0
 			},

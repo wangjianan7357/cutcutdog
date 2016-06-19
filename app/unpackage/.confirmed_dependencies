@@ -361,7 +361,8 @@
 		"refer": [
 			"index.html",
 			"forget-password.html",
-			"register.html"
+			"register.html",
+			"login.html"
 		]
 	},
 	"setting.html": {
