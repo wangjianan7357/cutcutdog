@@ -117,7 +117,10 @@
 				<div style=" overflow: hidden; margin-bottom:20px ;">	
 				    <div id="member-photo" style="float: left;"></div>
 					<script id="member-photo-code" type="text/html">
-						<img class="img-bor-two wid" src="<%= getvarious("domain") + detail["member"]["src"] %>" style=" margin-left:0px ;" /><span class="t-p-tile"><%= detail["member"]["name"] %></span>
+						<a href="personal-photo.html?id=<%= detail["member"]["id"] %>&name=<%= detail["member"]["name"] %>" data-action="openwindow">
+                            <img class="img-bor-two wid" src="<%= getvarious("domain") + detail["member"]["src"] %>" style=" margin-left:0px ;" />
+                            <span class="t-p-tile"><%= detail["member"]["name"] %></span>
+                        </a>
 					</script>
 
 				    <div style="float: right; padding-right:10px; line-height:80px; color: #666; font-size: 12px;" data-info="detail.date"></div>

@@ -3992,7 +3992,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			this.wrapperHeight = clientHeight - paddingTop - paddingBottom;
 
 			this.maxScrollX = Math.min(this.wrapperWidth - this.scrollerWidth, 0);
-			this.maxScrollY = Math.min(this.wrapperHeight - this.scrollerHeight, 0);
+			this.maxScrollY = Math.min(document.body.offsetHeight - document.getElementsByTagName("header")[0].offsetHeight - this.scrollerHeight, 0);
 			this.hasHorizontalScroll = this.options.scrollX && this.maxScrollX < 0;
 			this.hasVerticalScroll = this.options.scrollY && this.maxScrollY < 0;
 			this._reLayout();
