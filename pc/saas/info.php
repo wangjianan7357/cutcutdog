@@ -136,6 +136,18 @@ if ($_REQUEST['action'] == 'list') {
             $info['liked'] = $my_db->existRow('likes', array('atype' => $_POST['where']['type'], 'aid' => $info['id'], 'valid' => 1, 'mid' => $_POST['where']['member_id']));
         }
 
+        if ($_POST['where']['type'] == 3) {
+            $where = 'sort = 2 AND pid = ' . $info['id'];
+
+            $info['picture'] = array();
+            $info['picture'][] = systemConfig('info_img_path') . $con_pic['pre']['info'] . $con_pic['suf']['mid'] . $info['src'];
+
+            $getdata = $my_db->selectRow('content', 'property_content', array($where));
+            while($result = mysql_fetch_array($getdata)) {
+                $info['picture'][] = systemConfig('property_img_path') . $con_pic['pre']['property'] . $con_pic['suf']['big'] . $result['content'];
+            }
+        }
+
         $my_db->saveRow('info', array('read' => 1), array('id' => $info['id']));
 
     } else {

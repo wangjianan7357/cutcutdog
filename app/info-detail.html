@@ -47,7 +47,47 @@
     <div class="top_bg"></div>
 </header>
 	<div class="mui-content"  style="padding-top:108px ; padding-bottom:20px ;">
-		<div id="detail-photo" style=" text-align: center;"><img src="images/gif.gif" style="width: 32px; height:32px ;"></div>
+		<div id="slider" class="mui-slider h-sanwu">
+            <div class="mui-slider-group mui-slider-loop" id="list-view">
+            	<a class="active">
+					<span class="mui-spinner"></span>
+				</a>
+            </div>
+            <script id="list-view-code" type="text/html">
+            <% for (var i in list_last) { %>
+            	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="<%= getvarious("domain") + list_last[i] %>">
+                    </a>
+                </div>
+            <% } %>
+
+            <% for (var i in list) { %>
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="<%= getvarious("domain") + list[i] %>">
+                    </a>
+                </div>
+            <% } %>
+
+            <% for (var i in list) { %>
+            	<!-- 额外增加的一个节点(循环轮播：最后一张节点是第一个轮播) -->
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="<%= getvarious("domain") + list[i] %>">
+                    </a>
+                </div>
+            <% break; } %>
+            </script>
+            
+            <div class="mui-slider-indicator" id="list-dot"></div>
+            <script id="list-dot-code" type="text/html">
+            <% for (var i in list) { %>
+                <div class="mui-indicator"></div>
+            <% } %>
+            </script>
+        </div>
 		
 		<script id="detail-photo-code" type="text/html">
 			<div class="square-pic-two" style="background-image: url(<%= getvarious("domain") + "uploads/pictures/info/imm" + detail["src"] %>)">
@@ -110,6 +150,26 @@
 				async: true,
 				success: function(json) {
 					if(!json.error) {
+						var pics = {};
+						var last = [];
+	                	for (var k in json.detail.picture) {
+	                		last = json.detail.picture[k];
+	                	}
+
+	                	pics.list_last = [last];
+	                	pics.list = json.detail.picture;
+
+	                	jQuery("#list-view").html(template('list-view-code', pics));
+                    	jQuery("#list-dot").html(template('list-dot-code', pics));
+
+                    	mui('.mui-slider').slider();
+						mui('.mui-scroll-wrapper.mui-slider-indicator.mui-segmented-control').scroll({
+							scrollY: false,
+							scrollX: true,
+							indicators: false,
+							snap: '.mui-control-item'
+						});
+                    	
 						if (json.detail.liked != 0) {
 							jQuery("#heart").attr("rel", "unlike");
 							jQuery("#heart").html("消讚");
