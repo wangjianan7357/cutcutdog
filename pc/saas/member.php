@@ -166,6 +166,22 @@ if ($_REQUEST['action'] == 'login') {
         $member['service'][] = $service[$result['vid']];
     }
 
+    // 多图相册
+    $where = 'sort = 21 AND pid = ' . $member['id'];
+
+    $member['picture'] = array();
+
+    if (strpos($member['src'], 'uploads/') === 0) {
+        $member['picture'][] = $member['src'];
+    } else {
+        $member['picture'][] = systemConfig('member_img_path') . $con_pic['pre']['member'] . $member['src'];
+    }
+
+    $getdata = $my_db->selectRow('content', 'property_content', array($where));
+    while($result = mysql_fetch_array($getdata)) {
+        $member['picture'][] = 'uploads/member/album/' . $con_pic['pre']['property'] . $con_pic['suf']['big'] . $result['content'];
+    }
+
     callback(array('error' => 0, 'member' => $member));
 
 } else if ($_REQUEST['action'] == 'my-photo') {
