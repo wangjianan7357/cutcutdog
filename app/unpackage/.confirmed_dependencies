@@ -728,7 +728,8 @@
 			"publish-discuss.html",
 			"publish-product.html",
 			"setting.html",
-			"my-product.html"
+			"my-product.html",
+			"publish-shop.html"
 		]
 	},
 	"used-detail.html": {
@@ -903,7 +904,10 @@
 			"images/top_bg.png",
 			"images/Petchat.png",
 			"js/basic.js",
-			"images/bg_two.png"
+			"images/bg_two.png",
+			"js/common.js",
+			"css/common.css",
+			"js/immersed.js"
 		],
 		"refer": [
 			"profile.html"

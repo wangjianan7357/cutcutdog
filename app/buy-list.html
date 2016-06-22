@@ -60,7 +60,8 @@
 					<a href="buy-detail.html?id=<%= list[i]["id"]%>" data-action="webview">
 						<div><img class="mui-media-object" src="<%= getvarious("domain") + "uploads/pictures/product/prm" + list[i]["src"] %>"></div>	
 						<div class="xp-tu-zi-buy" style=" height: 45px; overflow: hidden;"><%= list[i]["name"] %></div>
-	                    <div class="xp-tu-zi-buy-two">$<%= list[i]["sale"] %></div>
+	                    <div class="xp-tu-zi-buy-two" style=" float: left;">$<%= list[i]["sale"] %></div>
+	                    <div class="xp-tu-zi-buy-two-yj">原價:$100</div>
                     </a>
 				</li>
 				<% } %>

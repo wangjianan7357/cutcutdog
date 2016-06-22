@@ -31,15 +31,15 @@
 </header>
 
 	<!--页面主结构开始-->
-	<div class="mui-content" style=" background:none;z-index:0 ; overflow:auto;">
+	<div class="mui-content" style=" background:none; ">
 		
 			
-			<div class="mui-pages" style=" background:none;z-index:0 ;">
+			<div class="mui-pages" style=" background:none;">
 				<!--单页面开始-->
 				
-					<div class="mui-page-content" style=" background:none;z-index:0 ;">
-						<div class="mui-scroll-wrapper" style=" background:none;z-index:0 ;">
-							<div class="mui-scroll" style="background:none; z-index:0 ;">
+					<div class="mui-page-content" style=" background:none;">
+						
+							<div class="mui-scroll" style="background:none;margin-top:42px ;">
 								<ul class="mui-table-view">
 									<li class="mui-table-view-cell pro_zi_sa">
 										<a id="head" class="mui-navigate-right">頭像
@@ -50,7 +50,7 @@
 										</a>
 									</li>
 									<li class="mui-table-view-cell pro_zi_sa">
-										<a>會員名稱:<input value="" id="mem_name" class="prof_sty" data-info="value=member.name"></a>
+										<a>會員名稱:<input readonly value="" id="mem_name" class="prof_sty" data-info="value=member.name"></a>
 									</li>
 									<li class="mui-table-view-cell pro_zi_sa">
 										<a>真實姓名:<input value="" id="mem_name" class="prof_sty" data-info="value=member.name"></a>
@@ -70,7 +70,8 @@
 										</div>
 									</li>
 									<li class="mui-table-view-cell mui-plus-visible pro_zi_sa">
-								      <a id="update" class="mui-navigate-right">检查更新</a>
+								      <a id="update" class="mui-navigate-right" style=" float: left;">检查更新</a>
+								      <a style=" float: right; color: #666;">1.07</a>
 							        </li>
 									<li class="mui-table-view-cell pro_zi_sa" style="text-align: center;">
 										<a href="login.html?action=logout" data-action="openwindow" id="logout">退出登錄</a>
@@ -79,7 +80,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+			
 
 			
 		
