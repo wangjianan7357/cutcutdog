@@ -609,7 +609,8 @@
 					"images/photo-button-01.png",
 					"images/muwu.jpg",
 					"js/common.js",
-					"images/bg_two.png"
+					"images/bg_two.png",
+					"personal-photo.html"
 				],
 				"refer": [
 					"publish-discuss.html"
@@ -1454,7 +1455,8 @@
 					"css/mui.indexedlist.css",
 					"js/basic.js",
 					"images/bg_two.png",
-					"photo-list.html"
+					"photo-list.html",
+					"discuss-detail.html"
 				],
 				"refer": [
 					"index.html"

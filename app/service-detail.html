@@ -131,6 +131,11 @@
 		mui.plusReady(function() {
 			member = myStorage.getItem("member");
 
+            if(!member) {
+                plus.nativeUI.toast("請先登錄！");
+                return false;   
+            }
+
 			mui.ajax({
 				type: "post",
 				url: domain + "saas/member.php",

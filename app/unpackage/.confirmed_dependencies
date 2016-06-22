@@ -28,7 +28,8 @@
 			"buy.html",
 			"images/bg_two.png",
 			"personal.html",
-			"login.html"
+			"login.html",
+			"discuss-category.html"
 		],
 		"refer": [
 			"discuss-category.html",
@@ -73,13 +74,15 @@
 			"css/mui.poppicker.css",
 			"js/mui.zoom.js",
 			"js/mui.previewimage.js",
-			"images/bg_two.png"
+			"images/bg_two.png",
+			"index.html"
 		],
 		"refer": [
 			"discuss-list.html",
 			"publish-discuss.html",
 			"my-discuss.html",
-			"personal.html"
+			"personal.html",
+			"index.html"
 		]
 	},
 	"discuss-detail.html": {
@@ -107,11 +110,13 @@
 			"images/Petchat.png",
 			"js/common.js",
 			"images/bg_two.png",
-			"images/muwu.jpg"
+			"images/muwu.jpg",
+			"personal-photo.html"
 		],
 		"refer": [
 			"discuss-list.html",
-			"publish-discuss.html"
+			"publish-discuss.html",
+			"personal-photo.html"
 		]
 	},
 	"discuss-list.html": {
@@ -1232,11 +1237,13 @@
 			"css/mui.indexedlist.css",
 			"js/basic.js",
 			"images/bg_two.png",
-			"photo-list.html"
+			"photo-list.html",
+			"discuss-detail.html"
 		],
 		"refer": [
 			"photo-list.html",
-			"index.html"
+			"index.html",
+			"discuss-detail.html"
 		]
 	}
 }
