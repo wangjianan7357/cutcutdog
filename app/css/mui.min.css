@@ -165,8 +165,8 @@ body{font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:17px;line-heigh
 .buy-cart{float: right; margin-top: 7px; font-weight: 600; color: #333; position: relative;}
 .buy-cart img{width:20px;}
 .buy-cart span{ background-color:#fff ;width:13px;height:13px;border-radius: 100px; line-height:15px;position: absolute; left:-5px ; font-size: 12px;opacity:0.9; color:#f28bba; text-align: center;}
-.perso-top{ background: url(../images/perso-top.png); height:300px ; overflow: hidden; position: relative;}
-.perso-bg{ background-color:#000 ;opacity:0.5;height:300px ; padding:0px ; margin: 0px;}
+.perso-top{ background: url(../images/bg_two.png); height:300px ; overflow: hidden; position: relative;}
+.perso-bg{ height:300px ; padding:0px ; margin: 0px;}
 .perso-top-left{ float: left; padding-top: 15px; padding-left:10px ;}
 .perso-top-center{ float: left;display: inline-block; margin-left:25px ; color:#fff ;}
 .perso-top-center ul li{ float: left; list-style:none ; padding:0px 10px 0px 10px ;}
