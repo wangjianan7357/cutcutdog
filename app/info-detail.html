@@ -116,16 +116,16 @@
 		</div>
 
 
-	<div id="detail-view"></div>
-	<script id="detail-view-code" type="text/html">
-		<ul id="comment-list" class="li-bg-san">
-		<% for (var i in detail["comments"]) { %>
-			<li>
-				<p><b><%= detail["comments"][i]["member"]["name"] %>：</b> <%= detail["comments"][i]["content"] %></p>
-			</li>
-		<% } %>
-		</ul>
-	</script>
+    	<div id="detail-view"></div>
+    	<script id="detail-view-code" type="text/html">
+    		<ul id="comment-list" class="li-bg-san">
+    		<% for (var i in detail["comments"]) { %>
+    			<li>
+    				<p><b><%= detail["comments"][i]["member"]["name"] %>：</b> <%= detail["comments"][i]["content"] %></p>
+    			</li>
+    		<% } %>
+    		</ul>
+    	</script>
 	</div>
 	
 	<script type="text/javascript" charset="utf-8">

@@ -93,15 +93,18 @@
 					
 						</div>
 
-						<input type="hidden" name="aid" value="<%= list[i]["id"] %>" />
-
-						<div class="xp-tu" style="margin-left:5px;">
-						<div class="zh-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
-						<div class="zh-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
-						<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
-						<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-icon="likesCount"><%= list[i]["likes"] %></span></div>
-						</div>
+						<div><%= list[i]["name"] %></div>
+						<div><%= list[i]["sale"] %></div>
 					</a>
+
+					<input type="hidden" name="aid" value="<%= list[i]["id"] %>" />
+
+					<div class="xp-tu" style="margin-left:5px;">
+					<div class="zh-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
+					<div class="zh-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
+					<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
+					<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-icon="likesCount"><%= list[i]["likes"] %></span></div>
+					</div>
 		
 					<ul class="comment-list">
 					<% for (var c in list[i]["comment"]) { %>
@@ -109,7 +112,7 @@
 					<% } %>
 
 					<% if (list[i]["comment"].length >= 2) { %>
-						<li><p style=" text-align: center; border-bottom:none ;"><a href="photo-comments.html?atype=5&aid=<%= list[i]["id"] %>" data-action="openwindow">查看全部評論</a></p></li>
+						<li><p style=" text-align: center; border-bottom:none ;"><a href="used-detail.html?id=<%= list[i]["id"]%>" data-action="openwindow">查看全部評論</a></p></li>
 					<% } %>
 					</ul>
 				</li>
@@ -126,8 +129,6 @@
 					<li class="mui-table-view-cell">
 						<a href="publish-product.html" class="mui-navigate-right" data-action="openwindow" data-href="publish-discuss">發表產品</a>
 					</li>
-					
-					
 				</ul>
 			</div>
 		</div>
@@ -204,22 +205,11 @@
 
 		var page = 1;
 		var count = 0;
-		var where =  {cid: "13,"};
-
-		if (getUrlParam("mid")) {
-			where["mid"] = getUrlParam("mid");
-		}
-
-		if (getUrlParam("id")) {
-			where["id"] = getUrlParam("id");
-		}
 
 		/**
 		 * 上拉加载具体业务实现
 		 */
 		function pullupRefresh() {
-			return;
-
 			setTimeout(function() {
 				mui('#pullrefresh').pullRefresh().endPullupToRefresh((++ count > 2)); //参数为true代表没有更多数据了。
 
@@ -227,7 +217,7 @@
 					type: "post",
 					url: domain + "saas/product.php",
 					dataType: "json",
-					data: {action: "list", where: {cid: getUrlParam("cid")}, type: cata_type, page: page},
+					data: {action: "list", where: {cid: "33,|34,|35,|36,"}, type: cata_type, page: page},
 					async: true,
 					success: function(json) {
 						if(!json.error) {
@@ -344,7 +334,7 @@
 				type: "post",
 				url: domain + "saas/product.php",
 				dataType: "json",
-				data: {action: "list", where: {cid: getUrlParam("cid")}, type: cata_type, page: page},
+				data: {action: "list", where: {cid: "33,|34,|35,|36,"}, type: cata_type, page: page},
 				async: true,
 				success: function(json) {
 					if(!json.error) {

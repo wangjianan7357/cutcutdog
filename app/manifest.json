@@ -243,7 +243,8 @@
 					"contact.html",
 					"pullrefresh_main.html",
 					"pullrefresh_sub.html",
-					"buy-list.html"
+					"buy-list.html",
+					"used-list.html"
 				],
 				"priority": 0
 			},
@@ -1038,7 +1039,8 @@
 					"js/mui.previewimage.js",
 					"images/photo-button-04.png",
 					"images/photo-button-01.png",
-					"images/top02.png"
+					"images/top02.png",
+					"photo-comments.html"
 				],
 				"refer": [
 					"publish-discuss.html",
@@ -1072,7 +1074,8 @@
 					"images/photo-button-04.png",
 					"images/photo-button-01.png",
 					"im-chat.html",
-					"login.html"
+					"login.html",
+					"images/icon-10.png"
 				],
 				"refer": [
 					"publish-product.html"
@@ -1150,7 +1153,8 @@
 					"js/basic.js",
 					"css/mui.poppicker.css",
 					"css/mui.picker.css",
-					"css/mui.indexedlist.css"
+					"css/mui.indexedlist.css",
+					"used-list.html"
 				],
 				"refer": [],
 				"priority": 0

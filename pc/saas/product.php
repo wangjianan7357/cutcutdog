@@ -6,8 +6,7 @@ require('../include/cls_graphic.php');
 if ($_REQUEST['action'] == 'list') {
     $list = array();
     $where = $_POST['where'];
-
-    $where['valid'] = 1;
+    $limit = '';
 
     if (!isset($where['cid'])) {
         callback(array('error' => 5));
@@ -19,9 +18,15 @@ if ($_REQUEST['action'] == 'list') {
         while ($result = mysql_fetch_array($getdata)) {
             $member[$result['id']] = $result;
         }
+
+        $where = array();
+        $where['cid'] = array('in' => '("' . implode('", "', explode('|', $_POST['where']['cid'])) . '")');
+        $limit = ($_POST['page'] - 1) * 5 . ',' . 5;
     }
 
-    $getdata = $my_db->selectRow('*', 'product', $where);
+    $where['valid'] = 1;
+
+    $getdata = $my_db->selectRow('*', 'product', $where, array('field' => 'date', 'method' => 'desc'), $limit);
     while ($result = mysql_fetch_array($getdata)) {
         if (isset($_POST['type']) && $_POST['type'] == 8) {
             $result['likes'] = $my_db->existRow('likes', array('atype' => $_POST['type'], 'aid' => $result['id'], 'valid' => 1));

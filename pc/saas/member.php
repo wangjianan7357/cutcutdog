@@ -24,6 +24,7 @@ if ($_REQUEST['action'] == 'login') {
         'salt' => '',
         'src' => '',
         'sex' => '',
+        'realname' => '',
         'email' => trim(urldecode($_REQUEST['email'])),
         'address' => trim(urldecode($_REQUEST['address'])),
         'phone' => trim(urldecode($_REQUEST['phone'])),
@@ -113,6 +114,7 @@ if ($_REQUEST['action'] == 'login') {
 
     $submit = array(
         'name' => $_POST['sbt_name'],
+        'realname' => $_POST['sbt_realname'],
         'phone' => $_POST['sbt_phone'],
         'email' => $_POST['sbt_email'],
         'address' => $_POST['sbt_address'],

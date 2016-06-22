@@ -44,7 +44,8 @@
 			"personal.html",
 			"pullrefresh_main.html",
 			"pullrefresh_sub.html",
-			"buy-list.html"
+			"buy-list.html",
+			"used-list.html"
 		]
 	},
 	"discuss-category.html": {
@@ -721,7 +722,8 @@
 			"js/mui.previewimage.js",
 			"images/photo-button-04.png",
 			"images/photo-button-01.png",
-			"images/top02.png"
+			"images/top02.png",
+			"photo-comments.html"
 		],
 		"refer": [
 			"used-detail.html",
@@ -729,7 +731,8 @@
 			"publish-product.html",
 			"setting.html",
 			"my-product.html",
-			"publish-shop.html"
+			"publish-shop.html",
+			"photo-comments.html"
 		]
 	},
 	"used-detail.html": {
@@ -755,7 +758,8 @@
 			"images/photo-button-04.png",
 			"images/photo-button-01.png",
 			"im-chat.html",
-			"login.html"
+			"login.html",
+			"images/icon-10.png"
 		],
 		"refer": [
 			"used-list.html",
@@ -836,10 +840,12 @@
 			"js/basic.js",
 			"css/mui.poppicker.css",
 			"css/mui.picker.css",
-			"css/mui.indexedlist.css"
+			"css/mui.indexedlist.css",
+			"used-list.html"
 		],
 		"refer": [
-			"photo-list.html"
+			"photo-list.html",
+			"used-list.html"
 		]
 	},
 	"checkout.html": {

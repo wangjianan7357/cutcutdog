@@ -107,13 +107,24 @@
 
 	            <div class="xp-tu" style="margin-left:0px; margin-top:3%;">
 	                <div class="zh-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
-	                <div class="zh-good-x-p" style="margin-left:10px;" id="chat"><a href="im-chat.html?tid=<%= detail["member"]["id"] %>" data-href="im-chat" data-action="openwindow"><img src="images/photo-button-02.png"></a></div>
+	                <div class="zh-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
 	                <div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount"><%= detail["likes"] %></span></div>
 	            </div>
 
 	           
 			</div>
 		</script>
+
+		<div id="detail-view"></div>
+    	<script id="detail-view-code" type="text/html">
+    		<ul id="comment-list" class="li-bg-san">
+    		<% for (var i in detail["comments"]) { %>
+    			<li>
+    				<p><b><%= detail["comments"][i]["member"]["name"] %>：</b> <%= detail["comments"][i]["content"] %></p>
+    			</li>
+    		<% } %>
+    		</ul>
+    	</script>
 	</div>	
 <!--右上角弹出菜单-->
 	<div id="topPopover" class="mui-popover" >
@@ -124,8 +135,6 @@
 					<li class="mui-table-view-cell">
 						<a href="publish-product.html" class="mui-navigate-right" data-action="openwindow">發表產品</a>
 					</li>
-					
-					
 				</ul>
 			</div>
 		</div>
@@ -155,7 +164,8 @@
 				success: function(json) {
 					if(!json.error) {
 						jQuery("#detail-content").html(template("detail-content-code", json));
-						initComment("", "heart", "likesCount");
+						jQuery("#detail-view").html(template("detail-view-code", json));
+						initComment("promptBtn", "heart", "likesCount");
 
 						if (!member) {
 				            jQuery("[data-href='im-chat']").attr("href", "login.html");
