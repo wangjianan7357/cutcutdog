@@ -1227,7 +1227,8 @@
 					"js/immersed.js"
 				],
 				"refer": [
-					"profile.html"
+					"profile.html",
+					"index.html"
 				],
 				"priority": 0
 			},

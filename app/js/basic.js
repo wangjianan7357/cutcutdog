@@ -170,8 +170,14 @@ function uploadFileData(filepath, data, url, success) {
         }  
     );
 
-    if(filepath){  
+    if(typeof(filepath) == "object"){  
+        for (var i = 0; i < filepath.length; i ++) {
+            task.addFile(filepath[i], {key: 'src' + i}); 
+        }
+
+    } else if (filepath) {
         task.addFile(filepath, {key: 'src'}); 
+
     } else {
         task.addData("src", ""); 
     }
