@@ -38,6 +38,7 @@
 		.comment-list li p a{color:#b8b7b7 ; }
 		#topPopover {
 			position:absolute;
+			
 			top: 16px;
 			right: 6px;padding: 0px; margin:0px ;
 		}
@@ -45,9 +46,7 @@
 			left: auto;
 			right: 6px;
 		}
-		p {
-			text-indent: 22px;
-		}
+		
 		
 		.mui-popover {
 			height: 70px;
@@ -93,13 +92,13 @@
 					
 						</div>
 
-						<div><%= list[i]["name"] %></div>
-						<div><%= list[i]["sale"] %></div>
+						<div class="xp-tu-zi-buy" style=" float: left; font-weight: bold; font-size:12px ;"><%= list[i]["name"] %></div>
+						<div class="xp-tu-zi-buy-two" style=" float: right; padding-right:2% ;font-size:12px ;">$<%= list[i]["sale"] %></div>
 					</a>
 
 					<input type="hidden" name="aid" value="<%= list[i]["id"] %>" />
 
-					<div class="xp-tu" style="margin-left:5px;">
+					<div class="xp-tu" style=" clear:both;margin-left:5px;">
 					<div class="zh-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
 					<div class="zh-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
 					<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
@@ -123,7 +122,7 @@
 	<!--右上角弹出菜单-->
 	<div id="topPopover" class="mui-popover" >
 		<div class="mui-popover-arrow"></div>
-		<div class="mui-scroll-wrapper" style=" position: absolute; top:0px;">
+		<div class="mui-scroll-wrapper" style=" position: absolute; top:0px;width:100%;">
 			<div class="mui-scroll">
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell">

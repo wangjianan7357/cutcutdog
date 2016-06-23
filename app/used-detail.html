@@ -23,18 +23,19 @@
 		}
 		.active span{line-height: 40px;}
 		#comment-list {
-			padding:10px 0px 10px 5px;;
+			width:100%;
 			background-color:#fff ;
 			text-align: left;
 			
 			color:#666 ;
 			font-size:14px ;
-			margin:0px 0px ;
+			margin:0px;
+			padding: 10px;
 		}
 		#comment-list li {
-			border-bottom: 1px  solid #ebebed; list-style:none ; background-color: #f8f8f9; padding-left: 5px;height:28px;
+			border-bottom: 1px  solid #ebebed; list-style:none ; background-color: #f8f8f9; height:27px; padding-top:1px ; padding-left:0px ; text-indent:0px ;
 		}
-		#comment-list li p{color:#666 ;}
+		#comment-list li p{color:#666 ; font-size: 12px; padding-left:0px ; text-indent:10px ;}
 		.top_bg{ height:25px; background-color: #ba9ec6;}
 		#topPopover {
 			position:absolute;
@@ -45,9 +46,7 @@
 			left: auto;
 			right: 6px;
 		}
-		p {
-			text-indent: 22px;
-		}
+		
 		
 		.mui-popover {
 			height: 70px;
@@ -83,7 +82,7 @@
 		<div class="top_bg"></div>
 	</header>
 		
-	<div class="mui-content bg-two">
+	<div class="mui-content" style=" padding-top:108px ;">
 		<div id="slider" class="mui-slider h-sanwu">
             <div class="mui-slider-group mui-slider-loop" id="list-view">
             	<a class="active">
@@ -143,7 +142,7 @@
 
 				<input type="hidden" id="aid" value="<%= detail["id"] %>">
 
-	            <div class="xp-tu" style="margin-left:0px; margin-top:3%;">
+	            <div class="xp-tu" style="margin-left:0px; margin-top:3%; height: 25px; overflow: hidden;">
 	                <div class="zh-good-x-p" id="heart" rel="like"><img src="images/photo-button-01.png"></div>
 	                <div class="zh-good-x-p" style="margin-left:10px;" id="promptBtn"><img src="images/photo-button-02.png"></div>
 	                <div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span id="likesCount"><%= detail["likes"] %></span></div>
