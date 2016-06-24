@@ -83,7 +83,7 @@
 		<div class="serv-fw-persona" style="padding-top: 1px;" id="list-view"></div>
 		<script id="list-view-code" type="text/html">
 		<% for (var i in list) { %>
-			<div class="margin1"><a href="photo-list.html?id=<%= list[i]["id"] %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></a></div>
+			<div class="margin1" style=" position: relative;"><a href="photo-list.html?id=<%= list[i]["id"] %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></a><span class="per-p-tile">x</span></div>
 		<% } %>
 		</script>
 	</div>

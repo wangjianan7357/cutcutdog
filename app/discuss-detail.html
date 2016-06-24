@@ -93,7 +93,7 @@
 	<div class="mui-content" style=" padding-top:108px ;background-color:#fff; height: 100%;">
 		<div style=" overflow: hidden;">
 			<div class="discuss-title" data-info="detail.name"></div>
-			<div class="discuss-title-right">1樓</div>
+			<div class="discuss-title-right" style=" position: relative;">1樓<span class="per-p-tile-two">删除</span></div>
 		</div>
 
 		<div style=" padding-left:10px ; overflow: hidden; padding-bottom:5px;border-bottom: solid 3px #efefef ;overflow: hidden;">
@@ -155,7 +155,7 @@
     						<img class="img-bor-two wid" src="<%= getvarious("domain") + comments[i]["member"]["src"] %>" /><span class="t-p-tile"><%= comments[i]["member"]["name"] %></span>
     					</div>
     	                <div style="float: right; padding-right:10px; color: #666; font-size: 14px; text-align: right;"> 
-                        <div style="font-size:12px ;"><%= parseInt(i) + 2 %>樓</div>	
+                        <div style="font-size:12px ;"><%= parseInt(i) + 2 %>樓  <span style="color:#f38bb9;">删除</span></div>	
     				    <div style="color: #666; font-size: 12px;"><%= comments[i]["date"] %></div>
     			    </div>
     			</div>

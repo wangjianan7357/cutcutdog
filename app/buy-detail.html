@@ -105,11 +105,13 @@
 				<div class="serv-my-zi ming-he">
 					<a><strong>產品名稱：</strong></a><%= detail["name"] %>
 				</div>
-				
-				<div class="serv-my-zi ming-he">
+				<div style=" overflow: hidden;">
+				<div class="serv-my-zi ming-he" style=" float: left;">
 					<a><strong>價 錢：</a>$<%= detail["sale"] %></strong>
 				</div>
-				<div style=" text-align: center; margin-top: 10px;">
+				<div class="xp-tu-zi-buy-two-yj" style=" line-height:35px ;">原價:$<%= detail["price"] %></div>
+				</div>
+				<div style=" clear: both; text-align: center; margin-top: 10px;">
 				   <div class="zh-good-go" id="heart" rel="like" style="background-color: #5cbf90; font-size:14px ;"><a href="javascript:;" onclick="addCart(<%= detail["id"] %>, 1, 'checkout.html')" data-action="openwindow">立即購買</a></div>
 				   <div class="zh-good-go" style="margin-left:10px; background-color: #4ebdf4;font-size:14px ;"><a href="javascript:;" onclick="addCart(<%= detail["id"] %>)">加入購物車</a></div>
 				   <div class="zh-good-go" style="margin-left:10px; background-color: #9273bf;font-size:14px ;"><a href="cart.html" data-action="openwindow">檢視購物車</a></div>
