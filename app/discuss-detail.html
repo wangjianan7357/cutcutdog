@@ -93,7 +93,7 @@
 	<div class="mui-content" style=" padding-top:108px ;background-color:#fff; height: 100%;">
 		<div style=" overflow: hidden;">
 			<div class="discuss-title" data-info="detail.name"></div>
-			<div class="discuss-title-right" style=" position: relative;">1樓<span class="per-p-tile-two">删除</span></div>
+			<div class="discuss-title-right" style=" position: relative;">1樓<span style="display: none;" class="per-p-tile-two" data-id="0" data-info="data-id=detail.id">删除</span></div>
 		</div>
 
 		<div style=" padding-left:10px ; overflow: hidden; padding-bottom:5px;border-bottom: solid 3px #efefef ;overflow: hidden;">
@@ -148,27 +148,28 @@
         <div id="comment-list"></div>
         <script id="comment-list-code" type="text/html">
         <% for (var i in comments) { %>
-    		<div style="overflow: hidden; border-bottom: solid 2px #efefef ; padding-top:5px ;background-color:#fff ;">
-    			<div class="li-bg-san" style=" margin-bottom:0px ;">
-    				<div style=" overflow: hidden; margin-bottom:20px ;">	
-    				    <div id="member-photo" style="float: left;">
-    						<img class="img-bor-two wid" src="<%= getvarious("domain") + comments[i]["member"]["src"] %>" /><span class="t-p-tile"><%= comments[i]["member"]["name"] %></span>
-    					</div>
-    	                <div style="float: right; padding-right:10px; color: #666; font-size: 14px; text-align: right;"> 
-                        <div style="font-size:12px ;"><%= parseInt(i) + 2 %>樓  <span style="color:#f38bb9;">删除</span></div>	
-    				    <div style="color: #666; font-size: 12px;"><%= comments[i]["date"] %></div>
-    			    </div>
+            <div>
+        		<div style="overflow: hidden; border-bottom: solid 2px #efefef ; padding-top:5px ;background-color:#fff ;">
+        			<div class="li-bg-san" style=" margin-bottom:0px ;">
+        				<div style=" overflow: hidden; margin-bottom:20px ;">	
+        				    <div id="member-photo" style="float: left;">
+        						<img class="img-bor-two wid" src="<%= getvarious("domain") + comments[i]["member"]["src"] %>" /><span class="t-p-tile"><%= comments[i]["member"]["name"] %></span>
+        					</div>
+        	                <div style="float: right; padding-right:10px; color: #666; font-size: 14px; text-align: right;"> 
+                            <div style="font-size:12px ;"><%= parseInt(i) + 2 %>樓  <span style="color:#f38bb9; display: none;" member-id="<%= comments[i]["mid"] %>" message-id="<%= comments[i]["id"] %>">删除</span></div>	
+        				    <div style="color: #666; font-size: 12px;"><%= comments[i]["date"] %></div>
+        			    </div>
+        			</div>
+
+        			<div class="pl_two_zi" style=" padding-left:10px ;padding-right:10px ;"><%= comments[i]["content"] %></div>
+        		</div>
+                <input type="hidden" name="aid" value="<%= comments[i]["id"] %>" rel="message" />
+
+        		<div class="xp-tu" style="margin-left:5px; margin-top: 5px;margin-bottom:5px ;">
+    				<div class="discu-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png" style=" float: left;"><span data-icon="likesCount"><%= comments[i]["likes"] %></span></div>
+    				<div class="discu-good-x-p-two" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png" style=" float: left;"><span>評論</span></div>
     			</div>
-
-    			<div class="pl_two_zi" style=" padding-left:10px ;padding-right:10px ;"><%= comments[i]["content"] %></div>
-    		</div>
-            <input type="hidden" name="aid" value="<%= comments[i]["id"] %>" rel="message" />
-
-    		<div class="xp-tu" style="margin-left:5px; margin-top: 5px;margin-bottom:5px ;">
-				<div class="discu-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png" style=" float: left;"><span data-icon="likesCount"><%= comments[i]["likes"] %></span></div>
-				<div class="discu-good-x-p-two" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png" style=" float: left;"><span>評論</span></div>
-				
-			</div>
+            </div>
     	</div>
     <% } %>
     </script>
@@ -225,6 +226,58 @@
                         jQuery("#comment-list").html(template("comment-list-code", json.detail));
 						assignTmpl(json);
                         setComment();
+
+                        if (json.detail.mid == member.id) {
+                            jQuery("[data-id]").show();
+                        }
+
+                        jQuery("[data-id]").click(function(){
+                            var self = jQuery(this);
+
+                            if (confirm("確定要刪除嗎？")) {
+                                mui.ajax({
+                                    type: "post",
+                                    url: domain + "saas/info.php",
+                                    dataType: "json",
+                                    data: {
+                                        action: "delete",
+                                        name: member.name,
+                                        id: member.id,
+                                        where: {id: self.attr("data-id")}
+                                    },
+                                    success: function(result) {
+                                        if(!result.error) {
+                                            mui.back();
+                                        }
+                                    }
+                                });
+                            }
+                        });
+
+                        jQuery("[member-id='" + member.id + "']").show();
+
+                        jQuery("[message-id]").click(function(){
+                            var self = jQuery(this);
+
+                            if (confirm("確定要刪除嗎？")) {
+                                mui.ajax({
+                                    type: "post",
+                                    url: domain + "saas/message.php",
+                                    dataType: "json",
+                                    data: {
+                                        action: "delete",
+                                        name: member.name,
+                                        id: member.id,
+                                        where: {id: self.attr("message-id")}
+                                    },
+                                    success: function(result) {
+                                        if(!result.error) {
+                                            self.parent().parent().parent().parent().parent().remove();
+                                        }
+                                    }
+                                });
+                            }
+                        });
 							
 					} else {
 						plus.nativeUI.toast(json.message);

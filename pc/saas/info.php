@@ -214,4 +214,27 @@ if ($_REQUEST['action'] == 'list') {
         callback(array('error' => 4));
     }
 
+} else if ($_REQUEST['action'] == 'delete') {
+    checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
+    $current = $my_db->fetchOne('info', array('id' => $_POST['where']['id'], 'mid' => $_POST['id']));
+
+    if (!empty($current)) {
+        $my_db->deleteRow('info', array('id' => $_POST['where']['id'], 'mid' => $_POST['id']));
+        $my_db->deleteRow('message', array('aid = ' . intval($_POST['where']['id']) . ' AND atype < 7'));
+        $my_db->deleteRow('likes', array('aid = ' . intval($_POST['where']['id']) . ' AND atype < 7'));
+
+        $big_img = '../' . systemConfig('info_img_path') . $con_pic['pre']['info'] . $con_pic['suf']['big'] . $current['src'];
+        $mid_img = '../' . systemConfig('info_img_path') . $con_pic['pre']['info'] . $con_pic['suf']['mid'] . $current['src'];
+        $sml_img = '../' . systemConfig('info_img_path') . $con_pic['pre']['info'] . $con_pic['suf']['sml'] . $current['src'];
+
+        if(file_exists($big_img)) unlink($big_img);
+        if(file_exists($mid_img)) unlink($mid_img);
+        if(file_exists($sml_img)) unlink($sml_img);
+
+
+        callback(array('error' => 0));
+    }
+
+    callback(array('error' => 4));
+
 }

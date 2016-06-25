@@ -83,7 +83,7 @@
 		<div class="serv-fw-persona" style="padding-top: 1px;" id="list-view"></div>
 		<script id="list-view-code" type="text/html">
 		<% for (var i in list) { %>
-			<div class="margin1" style=" position: relative;"><a href="photo-list.html?id=<%= list[i]["id"] %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></a><span class="per-p-tile">x</span></div>
+			<div class="margin1" style=" position: relative;"><a href="photo-list.html?id=<%= list[i]["id"] %>" data-action="openwindow"><img src="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>"></a><span class="per-p-tile" data-id=<%= list[i]["id"] %>>x</span></div>
 		<% } %>
 		</script>
 	</div>
@@ -168,6 +168,29 @@
 				success: function(json) {
 					if(!json.error) {
 						jQuery("#list-view").html(template('list-view-code', json));
+
+						jQuery("[data-id]").click(function(){
+							var self = jQuery(this);
+
+							if (confirm("確定要刪除嗎？")) {
+								mui.ajax({
+									type: "post",
+									url: domain + "saas/info.php",
+									dataType: "json",
+									data: {
+										action: "delete",
+										name: member.name,
+										id: member.id,
+										where: {id: self.attr("data-id")}
+									},
+									success: function(result) {
+										if(!result.error) {
+											self.parent().remove();
+										}
+									}
+								});
+							}
+						});
 						
 					} else {
 						plus.nativeUI.toast(json.message);

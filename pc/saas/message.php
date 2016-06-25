@@ -37,4 +37,15 @@ if ($_REQUEST['action'] == 'send') {
 
     callback(array('error' => 0, 'list' => $list));
 
+} else if ($_REQUEST['action'] == 'delete') {
+    checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
+
+    if ($my_db->existRow('message', array('id' => $_POST['where']['id'], 'mid' => $_POST['id']))) {
+        $my_db->deleteRow('message', array('id' => $_POST['where']['id'], 'mid' => $_POST['id']));
+
+        callback(array('error' => 0));
+    }
+
+    callback(array('error' => 4));
+
 }

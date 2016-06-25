@@ -457,6 +457,8 @@ function delSelectedData($table, $power=array(), $src = ''){
 
 	$page_union = isset($cms_page_union[$table]) ? true : false;
 
+	$property_src = '../' . systemConfig('property_img_path') . $con_pic['pre']['property'];
+
 	foreach($_POST as $key => $value){
 		$tmp = explode('chk_', $key);
 
@@ -500,6 +502,29 @@ function delSelectedData($table, $power=array(), $src = ''){
 						$done &= $my_db->deleteRow('page', array('id' => ($tmp[1] + $cms_page_union[$table]['id'])), $result_lan['abbr']);
 					}
 				}
+			}
+
+			if ($table == 'product') {
+				// 删除属性图片
+				$getdata = $my_db->selectRow('*', 'property_content', array('pid' => $tmp[1]));
+				while($res = mysql_fetch_array($getdata)) {
+					if($res['content']) {
+						$big_img = $property_src . $con_pic['suf']['big'] . $res['content'];
+						$mid_img = $property_src . $con_pic['suf']['mid'] . $res['content'];
+
+						if(file_exists($big_img)) unlink($big_img);
+						if(file_exists($mid_img)) unlink($mid_img);
+					}
+				}
+
+				$done &= $my_db->deleteRow('property_content', array('pid' => $tmp[1]));
+				$done &= $my_db->deleteRow('message', array('aid = ' . $tmp[1] . ' AND atype IN (7, 8)'));
+				$done &= $my_db->deleteRow('likes', array('aid = ' . $tmp[1] . ' AND atype IN (7, 8)'));
+
+			} else if ($table == 'info') {
+				$done &= $my_db->deleteRow('message', array('aid = ' . $tmp[1] . ' AND atype < 7'));
+				$done &= $my_db->deleteRow('likes', array('aid = ' . $tmp[1] . ' AND atype < 7'));
+
 			}
 		}
 	}
