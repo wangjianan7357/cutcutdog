@@ -42,7 +42,7 @@
 	  
 	<div class="mui-content" id="main" style=" padding-top:30%;">
 	<!--页面主结构开始-->
-	<form class="mui-content" style=" background:none ; background-color:#efeff4 ;" target="_blank" method="post" action="http://dog.ideal-max.com/checkout.php">
+	<form class="mui-content" style=" background:none ; background-color:#efeff4 ;" target="_blank" method="post" action="">
 		<input type="hidden" name="sbt_mid" value="">
 
 	
@@ -86,7 +86,7 @@
 			
 		<div class="mui-table-view-cell mui-media">
 			<div class="jq-cart-co" style=" float: left; line-height:35px ;">總價錢：$<span data-info="total">0.00</span></div>
-			<input type="submit" class="zh-good-go" style="background-color:#4ebdf4 ; float: right; text-align: center;margin-bottom: 0px;" value="確認付款">
+			<input type="button" id="submit" class="zh-good-go" style="background-color:#4ebdf4 ; float: right; text-align: center;margin-bottom: 0px;" value="確認付款">
 		</div>
 	</form>
 </div>
@@ -150,6 +150,13 @@
 						//alert(JSON.stringify(xhr));
 					}
 				});
+
+				jQuery("#submit").click(function(){
+					data = jQuery("form").serialize();
+					plus.runtime.openURL(domain + "checkout.php?" + data);
+
+				});
+				
 			}
 		});
 	</script>
