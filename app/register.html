@@ -40,7 +40,7 @@
 </head>
 <body>
 	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
-	<div style=" height:21px ; overflow: hidden;">
+	<div style=" height:21px ;">
     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
    
    </div>
@@ -53,11 +53,11 @@
 		<form class="mui-input-group">
 			<div class="mui-input-row">
 				<label>賬號 <span style=" color:red ;">*</span></label>
-				<input id='account' type="text" class="mui-input-clear mui-input" placeholder="请输入賬號">
+				<input id='account' type="text" class="mui-input-clear mui-input" placeholder="請輸入賬號">
 			</div>
 			<div class="mui-input-row">
 				<label>密碼 <span style=" color:red ;">*</span></label>
-				<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入密碼">
+				<input id='password' type="password" class="mui-input-clear mui-input" placeholder="請輸入密碼">
 			</div>
 			<div class="mui-input-row">
 				<label>確認 <span style=" color:red ;">*</span></label>
@@ -68,7 +68,7 @@
 				<input id='phone' type="text" class="mui-input-clear mui-input" placeholder="請輸入電話">
 			</div>
 			<div class="mui-input-row">
-				<label>郵箱</label>
+				<label>郵箱 <span style=" color:red ;">*</span></label>
 				<input id='email' type="email" class="mui-input-clear mui-input" placeholder="請輸入郵箱">
 			</div>
 			<div class="mui-input-row">
@@ -107,6 +107,11 @@
 					
 					if (!jQuery("#phone").val()) {
 						plus.nativeUI.toast("請輸入電話");
+						return;
+					}
+					
+					if (!jQuery("#email").val()) {
+						plus.nativeUI.toast("請輸入郵箱");
 						return;
 					}
 				

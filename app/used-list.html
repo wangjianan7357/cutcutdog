@@ -51,6 +51,15 @@
 		.mui-popover {
 			height: 70px;
 		}
+		.margin1:nth-child(1n+1) {
+			
+			margin-right: 0px;
+			margin-bottom:0px ;
+			margin-left:0px ;
+			border-right: solid #d2d2d2 1px;
+			
+			
+		}
 	</style>
     <script src="js/mui.min.js"></script>
 	<script src="js/mui.zoom.js"></script>
@@ -62,7 +71,7 @@
 
 </head>
 
-<body style="background:#fff; height:100% ; overflow: hidden;">
+<body>
 	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
 		<div style=" height:21px ;">
 	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
@@ -74,46 +83,21 @@
 
 	<div class="mui-content" id="main" style=" padding-top:108px ;">
 		
-		<div class="xp-tu" id="pullrefresh">
-			<ul id="list-view"><li><img src="images/gif.gif" style="width: 32px; height:32px ;"></li></ul>
+		<div class="xp-tu-buy" id="pullrefresh">
+			<ul id="list-view"><li class="jiz"><img src="images/gif.gif" style="width: 32px; height:32px ;"></li></ul>
 			<script id="list-view-code" type="text/html">
 			<% for (var i in list) { %>
-				<li>
-					<div style=" overflow: hidden;">
-					<% if (list[i]["member"]["src"] || list[i]["member"]["name"]) { %>
-					<a href="personal-photo.html?id=<%= list[i]["member"]["id"] %>&name=<%= list[i]["member"]["name"] %>" data-action="openwindow">
-					<img class="img-bor-two wid" src="<%= getvarious("domain") + list[i]["member"]["src"] %>" /><span class="t-p-tile"><%= list[i]["member"]["name"] %></span>
-					</a>
-					<% } %>
-					</div>
+				<li class="margin1">
+					
 
 					<a href="used-detail.html?id=<%= list[i]["id"]%>">
 						<div class="square-pic" style="background-image: url(<%= getvarious("domain") + "uploads/pictures/product/prm" + list[i]["src"] %>)">
 					
 						</div>
 
-						<div class="xp-tu-zi-buy" style=" float: left; font-weight: bold; font-size:12px ;"><%= list[i]["name"] %></div>
-						<div class="xp-tu-zi-buy-two" style=" float: right; padding-right:2% ;font-size:12px ;">$<%= list[i]["sale"] %></div>
+						<div class="xp-tu-zi-buy" style=" height: 45px; overflow: hidden;"><%= list[i]["name"] %></div>
+						<div class="xp-tu-zi-buy-two">$<%= list[i]["sale"] %></div>
 					</a>
-
-					<input type="hidden" name="aid" value="<%= list[i]["id"] %>" />
-
-					<div class="xp-tu" style=" clear:both;margin-left:5px;">
-					<div class="zh-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
-					<div class="zh-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
-					<div class="zh-good-x-p" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
-					<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-icon="likesCount"><%= list[i]["likes"] %></span></div>
-					</div>
-		
-					<ul class="comment-list">
-					<% for (var c in list[i]["comment"]) { %>
-						<li><p style=" text-indent: 0px;"><b><%= list[i]["comment"][c]["member"]["name"] %>：</b> <%= list[i]["comment"][c]["content"] %></p></li>
-					<% } %>
-
-					<% if (list[i]["comment"].length >= 2) { %>
-						<li><p style=" text-align: center; border-bottom:none ;"><a href="used-detail.html?id=<%= list[i]["id"]%>" data-action="openwindow">查看全部評論</a></p></li>
-					<% } %>
-					</ul>
 				</li>
 			<% } %>
 			</script>
@@ -160,7 +144,7 @@
 					callback: pulldownRefresh
 				},
 				up: {
-					contentrefresh: '正在加载...',
+					contentrefresh: '正在載入...',
 					callback: pullupRefresh
 				}
 			}
