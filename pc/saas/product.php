@@ -21,7 +21,7 @@ if ($_REQUEST['action'] == 'list') {
 
         $where = array();
         $where['cid'] = array('in' => '("' . implode('", "', explode('|', $_POST['where']['cid'])) . '")');
-        $limit = ($_POST['page'] - 1) * 5 . ',' . 5;
+        $limit = ($_POST['page'] - 1) * 4 . ',' . 4;
     }
 
     $where['valid'] = 1;
