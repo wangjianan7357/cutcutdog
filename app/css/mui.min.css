@@ -64,7 +64,7 @@ body{font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:17px;line-heigh
 .pl-tilte ul li{ list-style: none; height: 21px; float:left;padding-left:0px ;width:auto ; line-height:15px ;color:#666; background:none ;font-size:12px;margin-left:0px ;padding-right:20px ;padding-top:0px ;padding-bottom:0px ;}
 .pl-list-two-top{ height:50px; background: url(../images/pl_top_bg.png) no-repeat center;  padding-left:10px ; border-bottom:solid 2px #56bf96 ;border-top:solid 2px #56bf96 ; line-height:48px; text-align: center;color:#333 ; font-size:25px ;}
 .pl_two_zi{ color:#333 ; font-weight: bold; font-size:14px ; padding-left:5px ; padding-right:5px ;}
-.li-bg-san{ background: url(../images/icon-10.png);margin-bottom:0px ;line-height:28px; padding-bottom:10px;overflow: hidden;}
+.li-bg-san{ background: url(../images/icon-10.png);margin-bottom:0px ;line-height:28px; padding-bottom:10px;border-radius:10px;overflow: hidden;}
 .xp-tu{ margin:0px;overflow: hidden;text-align: center; padding: 0px;}
 .xp-tu ul{ padding-left:0px;padding-right:0px;text-align: center;padding: 0px; margin:0px;}
 .xp-tu ul li{ list-style:none ; width:100%; overflow: hidden; background-color:#ffffff ;}
@@ -224,7 +224,7 @@ _margin-bottom:10px;
 .imgg-heig{height:280px ; overflow: hidden;}
 .h-serv{height:56%;overflow: hidden;}
 
-.h-siimg{height:41%;overflow: hidden;}
+.h-siimg{height:42%;overflow: hidden;}
 
 
 /* wrap */
@@ -246,7 +246,7 @@ _margin-bottom:10px;
 .btn4.open{bottom:40px;right:140px;}
 .mui-icon-bars-two:before{content:none;}
 .per-img-two{ float: left; position: relative;}
-.per-p-tile{ position:absolute ; right:3%; top:0px; background-color:#f38bb9 ; color:#fff ;border-radius: 20px;width:15px; height:15px ; line-height:12px ; text-align: center; padding:0px 1px 0px 1px; font-size: 12px;}
+.per-p-tile{ position:absolute ; right:3%; top:0px; background-color:#f38bb9 ; color:#fff ;border-radius: 20px;width:15px; height:15px ; line-height:12px ; text-align: center; padding:0px 1px 0px 1px; font-size: 16px;}
 .per-p-tile-two{ position:absolute ; right:0%; top:70%;  color:#f38bb9;width:44px; height:20px ; line-height:12px ; text-align: center; padding:0px 1px 0px 1px; font-size: 12px;}
 .mui-icon-search:before {
     content: '\e466';
