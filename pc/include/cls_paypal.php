@@ -65,7 +65,7 @@ class Paypal {
 		$form_text .= '<input type="hidden" name="no_shipping" value="1" />';
 
 		// 定义币种以标示货币变量 值可以为 "USD"、"EUR"、"GBP"、"CAD"、"JPY"。 
-		$form_text .= '<input type="hidden" name="currency_code" value="USD" />';
+		$form_text .= '<input type="hidden" name="currency_code" value="HKD" />';
 		
 		// 字符编码
 		$form_text .= '<input type="hidden" name="charset" value="utf-8" />';
