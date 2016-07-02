@@ -227,7 +227,7 @@
 						assignTmpl(json);
                         setComment();
 
-                        if (json.detail.mid == member.id) {
+                        if (member && json.detail.mid == member.id) {
                             jQuery("[data-id]").show();
                         }
 
@@ -253,8 +253,10 @@
                                 });
                             }
                         });
-
-                        jQuery("[member-id='" + member.id + "']").show();
+                        
+                        if (member) {
+                            jQuery("[member-id='" + member.id + "']").show();
+                        }
 
                         jQuery("[message-id]").click(function(){
                             var self = jQuery(this);
