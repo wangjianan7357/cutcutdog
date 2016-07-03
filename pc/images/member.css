@@ -3598,6 +3598,7 @@ to {
     height:587px;
     padding:26px 0 0;
     background:#fafafa url(../images/regist_bg.jpg) repeat-x;
+	text-align: center;
 }
 .nobg_wrap {
     height:auto;
@@ -3721,15 +3722,16 @@ to {
     background:url(../images/regist.png) no-repeat 0 0;
 }
 .regist_form ul {
-    padding:0 36px 0 185px;
+       margin-top: 30px;
 }
 .regist_form li {
     position:relative;
     z-index:100;
-    width:494px;
+    width:300px;
     margin-bottom:-1px;
     font-family:"Microsoft YaHei";
     font-size:14px;
+	margin: 0 auto;
 }
 .regist_form li .form_item {
     position:relative;

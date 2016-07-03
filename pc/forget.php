@@ -49,7 +49,7 @@ if($href) echo '<script language="javascript">document.location.href = "' . $hre
 <div class="regist_wrap">	        	
     <div class="regist_tab">
         <ul class="clearfix">
-            <li><i class="r_mail"></i><span>找回密码</span></li>
+            <li><i class="r_mail"></i><strong><span>找回密码</span></strong></li>
         </ul>
         <p class="cur_tab cur"><em></em></p>
     </div>
