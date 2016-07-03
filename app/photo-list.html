@@ -37,25 +37,25 @@
 		.comment-list li p{color:#666 ;  font-size:12px ;}
 		.comment-list li p a{color:#b8b7b7 ; }
 		#sharecontent{
-	width:80%;
-	-webkit-user-select:text;
-	border: 1px solid #6C6C6C;
-	-webkit-border-radius: 2px;
-	border-radius: 2px;
-}
-#pic{
-	width:100px;
-	height:100px;
-	/*border: 1px dashed #CCCCCC;*/
-}
-.sharehref{
-	width:80%;
-	-webkit-user-select:text;
-	border: 1px solid #6C6C6C;
-	-webkit-border-radius: 2px;
-	border-radius: 2px;
-	margin-bottom: .5em;
-}
+			width:80%;
+			-webkit-user-select:text;
+			border: 1px solid #6C6C6C;
+			-webkit-border-radius: 2px;
+			border-radius: 2px;
+		}
+		#pic{
+			width:100px;
+			height:100px;
+			/*border: 1px dashed #CCCCCC;*/
+		}
+		.sharehref{
+			width:80%;
+			-webkit-user-select:text;
+			border: 1px solid #6C6C6C;
+			-webkit-border-radius: 2px;
+			border-radius: 2px;
+			margin-bottom: .5em;
+		}
 	</style>
     <script src="js/mui.min.js"></script>
 	<script src="js/mui.zoom.js"></script>
@@ -65,52 +65,65 @@
     <script src="js/basic.js"></script>
     <script type="text/javascript" src="js/js.js"></script>
     <script type="text/javascript">
-var shares=null,bhref=false;
-var Intent=null,File=null,Uri=null,main=null;
-// H5 plus事件处理
-function plusReady(){
-	updateSerivces();
-	if(plus.os.name=="Android"){
-		main = plus.android.runtimeMainActivity();
-		Intent = plus.android.importClass("android.content.Intent");
-		File = plus.android.importClass("java.io.File");
-		Uri = plus.android.importClass("android.net.Uri");
-	}
-}
-if(window.plus){
-	plusReady();
-}else{
-	document.addEventListener("plusready",plusReady,false);
-}
-/**
- * 更新分享服务
- */
-function updateSerivces(){
-	plus.share.getServices( function(s){
-		shares={};
-		for(var i in s){
-			var t=s[i];
-			shares[t.id]=t;
+	var shares = null, bhref = false;
+	var Intent = null, File = null, Uri = null, main = null;
+	// H5 plus事件处理
+	function plusReady(){
+		updateSerivces();
+		if(plus.os.name=="Android"){
+			main = plus.android.runtimeMainActivity();
+			Intent = plus.android.importClass("android.content.Intent");
+			File = plus.android.importClass("java.io.File");
+			Uri = plus.android.importClass("android.net.Uri");
 		}
-	}, function(e){
-		outSet( "获取分享服务列表失败："+e.message );
-	} );
-}
-// 分析链接
-function shareHref(){
-	var shareBts=[];
-	// 更新分享列表
-	var ss=shares['weixin'];
-	ss&&ss.nativeClient&&(shareBts.push({title:'Facebook'}),
-	shareBts.push({title:'Twitter'}));
-	ss=shares['qq'];
-	ss&&ss.nativeClient&&shareBts.push({title:'Google+'});
-	// 弹出分享列表
-	shareBts.length>0?plus.nativeUI.actionSheet({title:'分享圖片',cancel:'取消',buttons:shareBts},function(e){
-		(e.index>0)&&shareAction(shareBts[e.index-1],true);
-	}):plus.nativeUI.alert('当前环境无法支持分享链接操作!');
-}
-		</script>
+	}
+	if(window.plus){
+		plusReady();
+	}else{
+		document.addEventListener("plusready",plusReady,false);
+	}
+	/**
+	 * 更新分享服务
+	 */
+	function updateSerivces(){
+		plus.share.getServices( function(s){
+			shares={};
+			for(var i in s){
+				var t=s[i];
+				shares[t.id]=t;
+			}
+		}, function(e){
+			outSet( "获取分享服务列表失败："+e.message );
+		} );
+	}
+	// 分析链接
+	function shareHref(url){
+		var shareBts = [];
+		shareBts.push({title: "Facebook", link: "http://www.facebook.com/sharer.php?u="});
+		shareBts.push({title: "Twitter", link: "http://twitter.com/home?status="});
+		shareBts.push({title: "Google", link: "https://plus.google.com/share?url="});
+
+		// 更新分享列表
+		/*
+		var ss=shares['weixin'];
+		ss&&ss.nativeClient&&(),
+		shareBts.push({title:'Twitter'}));
+		ss=shares['qq'];
+		ss&&ss.nativeClient&&shareBts.push({title:'Google+'});
+		*/
+
+		// 弹出分享列表
+		shareBts.length > 0 ? plus.nativeUI.actionSheet({
+			title: "分享圖片", 
+			cancel: "取消",
+			buttons: shareBts
+		}, function(e){
+			plus.runtime.openURL(shareBts[e.index - 1].link + url);
+
+		}):plus.nativeUI.alert('当前环境无法支持分享链接操作!');
+
+	}
+	</script>
 
 </head>
 
@@ -150,7 +163,7 @@ function shareHref(){
 					<div class="xp-tu" style="margin-left:5px;">
 					<div class="zh-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
 					<div class="zh-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
-					<div class="zh-good-x-p" style="margin-left:10px;" onclick="shareHref()"><img src="images/photo-button-03.png"></div>
+					<div class="zh-good-x-p" style="margin-left:10px;" onclick="shareHref('<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>')"><img src="images/photo-button-03.png"></div>
 					<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-icon="likesCount"><%= list[i]["likes"] %></span></div>
 					</div>
 		
