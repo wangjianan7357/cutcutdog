@@ -107,6 +107,12 @@ class Emailer {
 		$this->mail->MsgHTML($html);
 	}
 
+	public function resetContent($content, $subject=''){
+		$this->mail->Subject = $subject;
+		$this->mail->WordWrap = 80;
+		$this->mail->MsgHTML($content);
+	}
+
 	public function clear(){
 		$this->mail->ClearAddresses();
 	}
