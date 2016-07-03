@@ -10,25 +10,25 @@ require_once('include/initial.php');
 $err = '';
 
 if ($_POST['reset'] == 'true') {
-    $verify = $my_db->fetchOne('verify', array('sign = "' . $_POST['token'] . '" AND type = 1 AND created > ' . (time() - 1800)));
-    if (!$verify) {
-        $err = '该链接验证已失效，请重新提交！';
+    $verify = $my_db->fetchOne('verify', array('sign = "' . addslashes($_GET['token']) . '" AND type = 1 AND time > ' . (time() - 1800)));
+    if (!$verify || md5($verify['email']) != $_GET['m']) {
+        $err = '該鏈接驗證已失效，請重新提交！';
     }
 
     $chk_post = new ChkRequest('sbt_');
-    $chk_post->chkPassword(array('password' => '密码'), array('confirm' => '确认密码'));
+    $chk_post->chkPassword(array('password' => '密碼'), array('confirm' => '確認密碼'));
 
     if(!$err){
-        $my_db->saveRow('member', array('password' => md5($_POST['sbt_password'])), array('email' => $verify['account']));
+        $my_db->saveRow('member', array('pass' => md5($_POST['sbt_password'])), array('email' => $verify['email']));
         $my_db->deleteRow('verify', array('id' => $verify['id']));
 
-        $msg = '密码修改成功！';
+        $msg = '密碼修改成功！';
     }
 
 } else if ($_GET['token']) {
-    $getdata = $my_db->fetchOne('verify', array('sign = "' . $_GET['token'] . '" AND type = 1 AND created > ' . (time() - 1800)));
+    $getdata = $my_db->fetchOne('verify', array('sign = "' . addslashes($_GET['token']) . '" AND type = 1 AND time > ' . (time() - 1800)));
     if (!$getdata) {
-        $err = '该链接验证已失效，请重新提交！';
+        $err = '該鏈接驗證已失效，請重新提交！';
     }
 }
 
@@ -49,26 +49,25 @@ if($href) echo '<script language="javascript">document.location.href = "' . $hre
 <div class="regist_wrap">	        	
     <div class="regist_tab">
         <ul class="clearfix">
-            <li><i class="r_mail"></i><strong><span>找回密码</span></strong></li>
+            <li><i class="r_mail"></i><strong><span>找回密碼</span></strong></li>
         </ul>
         <p class="cur_tab cur"><em></em></p>
     </div>
 
-    <form class="regist_form mobile_register_form" action="forget.php" method="post">
+    <form class="regist_form mobile_register_form" action="forget.php?token=<?= strip_tags($_GET['token']); ?>&m=<?= strip_tags($_GET['m']); ?>" method="post">
         <input type="hidden" value="true" name="reset">
-        <input type="hidden" value="<?=$_GET['token'];?>" name="code">
 
         <ul class="clearfix">
             <li>
                 <div class="form_item">
-                    <label>新密码：</label>
-                    <input type="text" name="sbt_password" class="ipt ipt_phone" placeholder="">
+                    <label>新密碼：</label>
+                    <input type="password" name="sbt_password" class="ipt ipt_phone" placeholder="">
                 </div>
             </li>
             <li>
                 <div class="form_item">
-                    <label>确认密码：</label>
-                    <input type="text" name="sbt_confirm" class="ipt ipt_phone" placeholder="">
+                    <label>確認密碼：</label>
+                    <input type="password" name="sbt_confirm" class="ipt ipt_phone" placeholder="">
                 </div>
             </li>
             <li class="regist_btn">

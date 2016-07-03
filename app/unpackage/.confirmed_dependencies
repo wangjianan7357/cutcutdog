@@ -1128,7 +1128,18 @@
 	},
 	"forget-password.html": {
 		"resources": [
-			"js/app.js"
+			"js/app.js",
+			"images/home.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"images/CatDog.png",
+			"css/mui.min.css",
+			"css/style.css",
+			"images/Petchat.png",
+			"js/basic.js",
+			"fonts/mui.ttf",
+			"images/top_bg.png",
+			"images/bg_two.png"
 		],
 		"refer": []
 	},

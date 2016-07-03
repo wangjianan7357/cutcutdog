@@ -314,7 +314,8 @@
 					"js/basic.js",
 					"images/CatDog.png",
 					"images/home.png",
-					"images/Petchat.png"
+					"images/Petchat.png",
+					"images/bg_two.png"
 				],
 				"refer": [],
 				"priority": 0

@@ -149,7 +149,7 @@ return array(
      */
     'verify' => '
         `id` int( 8 ) NOT NULL AUTO_INCREMENT,
-        `mid` INT( 8 ) NOT NULL DEFAULT 0 COMMENT "会员ID" ,
+        `email` VARCHAR( 32 ) NOT NULL DEFAULT "" COMMENT "会员EMAIL" ,
         `sign` char( 64 ) NOT NULL,
         `time` INT( 10 ) NOT NULL DEFAULT 0 COMMENT "有效时间" ,
         `valid` tinyint( 1 ) NOT NULL DEFAULT 0,
