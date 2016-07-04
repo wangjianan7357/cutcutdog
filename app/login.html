@@ -177,7 +177,6 @@
 			//检查 "登录状态/锁屏状态" 结束
 			var loginButton = document.getElementById("login");
 			var passwordBox = document.getElementById("password");
-			var autoLoginButton = document.getElementById("autoLogin");
 			
 			loginButton.addEventListener("tap", function(event) {
 				if (!jQuery("#account").val()) {
@@ -215,12 +214,16 @@
 				});
 			});
 			
-			autoLoginButton.addEventListener("toggle", function(event) {
-				setTimeout(function() {
-					var isActive = event.detail.isActive;
-					myStorage.setItem("autologin", isActive);
-				}, 50);
-			}, false);
+			var autoLoginButton = document.getElementById("autoLogin");
+
+			if (autoLoginButton) {
+				autoLoginButton.addEventListener("toggle", function(event) {
+					setTimeout(function() {
+						var isActive = event.detail.isActive;
+						myStorage.setItem("autologin", isActive);
+					}, 50);
+				}, false);
+			}
 			
 			var backButtonPress = 0;
 			mui.back = function(event) {
