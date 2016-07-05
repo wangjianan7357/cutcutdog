@@ -351,6 +351,11 @@
             };
 
             jQuery("[data-icon='heart']").click(function(){
+                if(!member) {
+                    plus.nativeUI.toast("請先登錄！");
+                    return;
+                }
+
                 var likes_obj = jQuery(this).parent().find("[data-icon='likesCount']");
                 var count = parseInt(likes_obj.html());
                 var rel = $(this).attr("rel");

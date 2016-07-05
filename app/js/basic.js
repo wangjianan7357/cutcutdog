@@ -196,6 +196,11 @@ function uploadFileData(filepath, data, url, success) {
 function initComment(comment, likes, total) {
     if(comment) {
         document.getElementById(comment).addEventListener("tap", function(e) {
+            if(!member) {
+                plus.nativeUI.toast("請先登錄！");
+                return;
+            }
+
             //修复iOS 8.x平台存在的bug，使用plus.nativeUI.prompt会造成输入法闪一下又没了
             e.detail.gesture.preventDefault();
 
@@ -251,6 +256,11 @@ function initComment(comment, likes, total) {
     };
 
     $("body").on("click", "#" + likes, function() {
+        if(!member) {
+            plus.nativeUI.toast("請先登錄！");
+            return;
+        }
+        
         var count = parseInt($("#" + total).html());
         
         var rel = $(this).attr("rel");
