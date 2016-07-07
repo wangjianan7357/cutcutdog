@@ -65,8 +65,8 @@ if ($_REQUEST['action'] == 'login') {
                 }
             } else if ($val == 'statistic') {
                 $statistic = array();
-                $statistic['photo'] = $my_db->existRow('info', array('mid' => $_REQUEST['id'], 'cid' => '15,'));
-                $statistic['discuss'] = $my_db->existRow('info', array('mid = ' . intval($_REQUEST['id']) . ' AND (cid = "13," OR cid = "14," OR cid = "16," OR cid = "17," OR cid = "18," OR cid = "19,")'));
+                $statistic['photo'] = $my_db->existRow('info', array('mid' => $_REQUEST['id'], 'cid' => '13,'));
+                $statistic['discuss'] = $my_db->existRow('info', array('mid = ' . intval($_REQUEST['id']) . ' AND (cid = "14," OR cid = "15," OR cid = "16," OR cid = "17," OR cid = "18," OR cid = "19,")'));
                 $statistic['likes'] = $my_db->existRow('likes', array('mid' => $_REQUEST['id']));
                 $statistic['chat'] = $my_db->existRow('chat', array('tid' => $_REQUEST['id'], 'read' => 0, 'valid' => 1));
 
