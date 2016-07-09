@@ -59,100 +59,70 @@
 </div>
 <!-- 代码结束 -->
 	<script>
-		(function($, doc) {
-			$.init({
-				swipeBack: true, //启用右滑关闭功能
-				pullRefresh: {
-					container: '#pullrefresh',
-					up: {
-						contentrefresh: '正在載入...',
-						callback: pullupRefresh
-					}
+		mui.init({
+			swipeBack: true, //启用右滑关闭功能
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+					callback: pulldownRefresh
+				},
+				up: {
+					contentrefresh: '正在載入...',
+					callback: pullupRefresh
 				}
-			});
-
-			var page = 1;
-			var count = 0;
-			var where =  {};
-
-			if (getUrlParam("req_cid")) {
-				where["cid"] = getUrlParam("req_cid");
 			}
+		});
 
-			if (getUrlParam("req_service")) {
-				where["service"] = getUrlParam("req_service");
-			}
+		var page = 1;
+		var count = 0;
+		var perpage = 4;
+		var where = {};
 
-			if (getUrlParam("req_name")) {
-				where["name"] = {like: "%" + getUrlParam("req_name") + "%"};
-			}
+		if (getUrlParam("req_cid")) {
+			where["cid"] = getUrlParam("req_cid");
+		}
 
-			/**
-			 * 上拉加载具体业务实现
-			 */
-			function pullupRefresh() {
-				setTimeout(function() {
-					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++ count > 2)); //参数为true代表没有更多数据了。
+		if (getUrlParam("req_service")) {
+			where["service"] = getUrlParam("req_service");
+		}
 
+		if (getUrlParam("req_name")) {
+			where["name"] = {like: "%" + getUrlParam("req_name") + "%"};
+		}
 
-					mui.ajax({
-						type: "post",
-						url: domain + "saas/info.php",
-						dataType: "json",
-						data: {action: "list", where: where, type: 3, page: page},
-						async: true,
-						success: function(json) {
-							if(!json.error) {
-								page ++;
-								jQuery("#list-view").html(jQuery("#list-view").html() + template('list-view-code', json));
+		/**
+		 * 下拉刷新具体业务实现
+		 */
+		function pulldownRefresh() {
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh((++ count > 4));
 
-								if (jQuery(json.list).length) {
-									count = 0;
-								} else {
-									count = 3;
-								}
-								
-							} else {
-								plus.nativeUI.toast(json.message);
-							}
-						},
-						error: function(xhr, type, errorThrown) {
-							//alert(JSON.stringify(xhr))
-						}
-					});
+			}, 1500);
+		}
 
-				}, 2000);
-			}
+		/**
+		 * 上拉加载具体业务实现
+		 */
+		function pullupRefresh() {
+			setTimeout(function() {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh((++ count > 2)); //参数为true代表没有更多数据了。
 
-			if (mui.os.plus) {
-				mui.plusReady(function() {
-					setTimeout(function() {
-						mui('#pullrefresh').pullRefresh().pullupLoading();
-					}, 1000);
-
-				});
-			} else {
-				mui.ready(function() {
-					mui('#pullrefresh').pullRefresh().pullupLoading();
-				});
-			}
-
-			$.plusReady(function() {
-				$.ajax({
+				mui.ajax({
 					type: "post",
 					url: domain + "saas/info.php",
 					dataType: "json",
-					data: {
-						action: "list",
-						type: 3,
-						where: where
-					},
+					data: {action: "list", where: where, type: 3, page: page},
 					async: true,
 					success: function(json) {
 						if(!json.error) {
 							page ++;
-							jQuery("#list-view").html(template('list-view-code', json));
-							assignTmpl(json);
+							jQuery("#list-view").html(jQuery("#list-view").html() + template('list-view-code', json));
+
+							if (jQuery(json.list).length < perpage) {
+								count = 0;
+							} else {
+								count = 3;
+							}
 							
 						} else {
 							plus.nativeUI.toast(json.message);
@@ -162,8 +132,53 @@
 						//alert(JSON.stringify(xhr))
 					}
 				});
+
+			}, 2000);
+		}
+
+		if (mui.os.plus) {
+			mui.plusReady(function() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				}, 1000);
+
 			});
-		}(mui, document));
+		} else {
+			mui.ready(function() {
+				mui('#pullrefresh').pullRefresh().pullupLoading();
+			});
+		}
+
+		mui.plusReady(function() {
+			mui.ajax({
+				type: "post",
+				url: domain + "saas/info.php",
+				dataType: "json",
+				data: {
+					action: "list",
+					type: 3,
+					where: where
+				},
+				async: true,
+				success: function(json) {
+					if(!json.error) {
+						page ++;
+						jQuery("#list-view").html(template('list-view-code', json));
+						assignTmpl(json);
+
+						if (jQuery(json.list).length < perpage) {
+							count = 3;
+						}
+						
+					} else {
+						plus.nativeUI.toast(json.message);
+					}
+				},
+				error: function(xhr, type, errorThrown) {
+					//alert(JSON.stringify(xhr))
+				}
+			});
+		});
 	</script>
 
 </body>

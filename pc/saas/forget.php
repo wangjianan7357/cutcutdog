@@ -23,7 +23,7 @@ if ($_REQUEST['action'] == 'send') {
             $content = '您好，請打開以下鏈接進行密碼重置：<br>';
             $content .= '<a href="http://' . $_SERVER['SERVER_NAME'] . '/forget.php?token=' . $submit['sign'] . '&m=' . md5($submit['email']) . '">';
             $content .= 'http://' . $_SERVER['SERVER_NAME'] . '/forget.php?token=' . $submit['sign'] . '&m=' . md5($submit['email']) . '</a><br>';
-            $content .= '郵件來自：愛寵潮流';
+            $content .= '郵件來自：寵物潮流';
 
             $mail->resetContent($content, '重置密碼');
             $mail->send($_POST['email']);
