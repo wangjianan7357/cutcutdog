@@ -415,7 +415,8 @@
 					"js/mui.view.js",
 					"images/gif.gif",
 					"images/bg_two.png",
-					"images/cartoon-dog.png"
+					"images/cartoon-dog.png",
+					"images/Info_icon_www.png"
 				],
 				"refer": [
 					"publish-shop.html"

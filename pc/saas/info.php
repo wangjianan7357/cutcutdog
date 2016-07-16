@@ -193,6 +193,7 @@ if ($_REQUEST['action'] == 'list') {
         'name' => $_POST['sbt_name'],
         'tel' => isset($_POST['sbt_tel']) ? $_POST['sbt_tel'] : '',
         'address' => isset($_POST['sbt_address']) ? $_POST['sbt_address'] : '',
+        'website' => isset($_POST['sbt_website']) ? $_POST['sbt_website'] : '',
         'desp' => isset($_POST['sbt_desp']) ? $_POST['sbt_desp'] : '',
         'cid' => rtrim($_POST['sbt_cid'], ',') . ',',
         'valid' => $catalog['type'] == 3 ? 0 : 1,
@@ -204,7 +205,7 @@ if ($_REQUEST['action'] == 'list') {
 
         if ($catalog['type'] == 3) {
             $mail = new Emailer($con_mail_set);
-            $mail->resetFields(array('name' => '標題', 'desp' => '描述', 'tel' => '電話', 'address' => '地址'));
+            $mail->resetFields(array('name' => '標題', 'desp' => '描述', 'tel' => '電話', 'address' => '地址', 'website' => '網址'));
             $mail->content($submit, '店鋪提交');
             $mail->send();
         }

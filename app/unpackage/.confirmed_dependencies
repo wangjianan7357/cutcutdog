@@ -547,7 +547,8 @@
 			"images/home.png",
 			"css/mui.poppicker.css",
 			"images/Petchat.png",
-			"images/cartoon-dog.png"
+			"images/cartoon-dog.png",
+			"images/Info_icon_www.png"
 		],
 		"refer": [
 			"info-list.html",

@@ -47,6 +47,7 @@ body{font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:17px;line-heigh
 .z-hao{ text-align: center;width:100%; height:60px ; position: relative; margin-top:5px ; line-height:20px ;font-size:20px;text-indent:10px ; color:#333 ; margin-bottom: 0px;}
 .z-hao img{width:12%; padding: 0px; margin: 0px;}
 .dz-add{margin-top:6px ; font-size:14px ; background: url(../images/Info_icon_pin.png) no-repeat 3px 0px; padding-left:30px ; height:26px ; color:#333 ;line-height:20px ; padding-right:5px;}
+.website{margin-top:6px ; font-size:14px ; background: url(../images/Info_icon_www.png) no-repeat 3px 0px; padding-left:30px ; height:26px ; color:#333 ;line-height:20px ; padding-right:5px;}
 .fl-mar{padding-top:10px ; padding-left: 10px;}
 .li-bg-two{ background: url(../images/icon-10.png);margin-bottom:20px ;border-radius:10px; height:130px ; overflow: hidden;}
 .zh-good{ background-color:#8f72b4 ;border-radius: 10px;width:70px; display: inline-block;height:30px; line-height:32px ; font-size: 16px; color:#fff ; margin-bottom:20px ;}

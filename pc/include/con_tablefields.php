@@ -269,6 +269,7 @@ return array(
 		`path` VARCHAR( 50 ) NOT NULL DEFAULT "" , 
         `tel` VARCHAR( 20 ) NOT NULL DEFAULT "" , 
         `address` VARCHAR( 128 ) NOT NULL DEFAULT "" , 
+        `website` VARCHAR( 128 ) NOT NULL DEFAULT "" , 
 		`src` VARCHAR( 60 ) NOT NULL DEFAULT "" , 
 		`visitor` INT( 6 ) NOT NULL DEFAULT 0 , 
 		`valid` TINYINT( 1 ) NOT NULL DEFAULT 0 , 

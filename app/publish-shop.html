@@ -83,6 +83,11 @@
 									</a>
 								</li>
 								<li class="mui-table-view-cell">
+									<a>網址
+										<input value="" id="info_website"  style=" height:30px ;width:90%;">
+									</a>
+								</li>
+								<li class="mui-table-view-cell">
 									<a id="submit-button">提交</a>
 								</li>
 							</ul>
@@ -228,6 +233,11 @@
 			return false;	
 		}
 		
+		if(!jQuery("#info_website").val()) {
+			plus.nativeUI.toast("請輸入網址！");
+			return false;	
+		}
+		
 		if(!jQuery("#info_cid").val()) {
 			plus.nativeUI.toast("請選擇地區！");
 			return false;	
@@ -251,7 +261,8 @@
 				"sbt_cid" : jQuery("#info_cid").val(),
 				"sbt_service" : jQuery("#info_service").val(),
 				"sbt_tel" : jQuery("#info_tel").val(),
-				"sbt_address" : jQuery("#info_address").val()
+				"sbt_address" : jQuery("#info_address").val(),
+				"sbt_website" : jQuery("#info_website").val()
 			}, 
 			"saas/info.php", 
 			function(res) {

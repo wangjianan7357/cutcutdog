@@ -47,7 +47,7 @@
     <div class="top_bg"></div>
 </header>
 	<div class="mui-content"  style="padding-top:108px ; padding-bottom:20px ;">
-		<div id="slider" class="mui-slider h-siimg">
+		<div id="slider" class="mui-slider h-siimg" style="height: 38%;">
             <div class="mui-slider-group mui-slider-loop" id="list-view">
             	<a class="active">
 					<span class="mui-spinner"></span>
@@ -101,6 +101,7 @@
 			<div class="pl_two_zi za-zi" style=" padding-left:9%; color:#333 ;" data-info="detail.name"></div>
 			<div class="dz-add" data-info="detail.address"></div>
 			<div class="mui-tal" style="font-size:14px ;margin-top:5px ;" id="phone-detail"></div>
+            <div class="website" data-info="detail.website"></div>
 
 			<script id="phone-detail-code" type="text/html">
 				<a href="tel:<%= detail["tel"] %>" style="color:#333 ; line-height:30px ;font-size:14px ; "><%= detail["tel"] %></a>
