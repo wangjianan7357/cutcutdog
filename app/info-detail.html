@@ -101,7 +101,7 @@
 			<div class="pl_two_zi za-zi" style=" padding-left:9%; color:#333 ;" data-info="detail.name"></div>
 			<div class="dz-add" data-info="detail.address"></div>
 			<div class="mui-tal" style="font-size:14px ;margin-top:5px ;" id="phone-detail"></div>
-            <a href="" onclick="plus.runtime.openURL('https://www.facebook.com/petchat2016/');"><div class="website" data-info="detail.website"></div></a>
+            <a href="javascript:;"  id="website"><div class="website" data-info="detail.website"></div></a>
 
 			<script id="phone-detail-code" type="text/html">
 				<a href="tel:<%= detail["tel"] %>" style="color:#333 ; line-height:30px ;font-size:14px ; "><%= detail["tel"] %></a>
@@ -182,6 +182,10 @@
 						jQuery("#detail-photo").html(template("detail-photo-code", json));
 						assignTmpl(json);
 						initComment("promptBtn", "heart", "likesCount");
+
+                        jQuery("#website").click(function(){
+                             plus.runtime.openURL(jQuery(this).find("div").html());
+                        });
 							
 					} else {
 						plus.nativeUI.toast(json.message);

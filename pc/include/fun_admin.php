@@ -313,7 +313,7 @@ function tableFields($fields = array(), $table = array()){
 		if ($q_url['page'] == $i) {
 			$code .= '<li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">' . $i . '</a></li>';
 		} else {
-			$code .= '<li class="paginate_button"><a href="' . $q_url['1256'] . '&flag=' . $_GET['flag'] . '&page=' . $i . '">' . $i . '</a></li>';
+			$code .= '<li class="paginate_button"><a href="' . $q_url['1256'] . $q_url['7'] . '&flag=' . $_GET['flag'] . '&page=' . $i . '">' . $i . '</a></li>';
 		}
 	}
 

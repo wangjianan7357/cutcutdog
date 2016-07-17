@@ -169,7 +169,7 @@ if($_GET['action'] == 'edt'){
 	$getdata = $my_db->selectRow('*', 'catalog', array('type' => $catalog_type));
 	while($result = mysql_fetch_array($getdata)) $catalog_all[$result['id']] = $result;
 
-	$q_url = queryPart('date', 'desc');
+	$q_url = queryPart('date', 'desc', array('type'));
 
 	$cata_order = explode('|', systemConfig('info_order'));
 	unset($cata_order[0]);
