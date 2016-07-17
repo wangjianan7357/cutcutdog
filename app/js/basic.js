@@ -284,13 +284,17 @@ function initComment(comment, likes, total) {
             setLikes("insert");
             $("#" + total).html(count + 1);
             $(this).attr("rel", "unlike");
+
+            if (cata_type == 3) {
+                $(this).html("消讚");
+            }
         } else {
             setLikes("delete");
             $("#" + total).html(count - 1);
             $(this).attr("rel", "like");
 
             if (cata_type == 3) {
-                $(this).html("攢好");
+                $(this).html("讚好");
             }
         }
     });
