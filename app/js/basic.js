@@ -13,10 +13,25 @@ if(window.plus){
 // H5 plus事件处理
 function plusReady(){
     // 创建并显示新窗口
-    $("[data-action='webview']").click(function(){
-        var w = plus.webview.open($(this).attr("href"));
-        return false;
-    });
+    if (mui.os.plus) {
+        var move = false;
+        $("[data-action='webview']").on("touchend", function(){
+            if (move) {
+                move = false;
+            } else {
+                var w = plus.webview.open($(this).attr("href"));
+                return false;
+            }
+        });
+        $("[data-action='webview']").on("touchmove", function(){
+            move = true;
+        });
+    } else {
+        $("[data-action='webview']").click(function(){
+            var w = plus.webview.open($(this).attr("href"));
+            return false;
+        });
+    }
     
     // 创建并滑动出新窗口
     $("[data-action='openwindow']").click(function(){
