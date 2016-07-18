@@ -183,13 +183,13 @@
 						assignTmpl(json);
 						initComment("promptBtn", "heart", "likesCount");
 
-                        if (mui.os.plus) {
+                        if (mui.os.ios) {
                             jQuery("#website").on("touchend", function(){
-                                 plus.runtime.openURL(jQuery(this).find("div").html());
+                                plus.runtime.openURL(jQuery(this).find("div").html());
                             });
                         } else {
-                            jQuery("#website").on("click", function(){
-                                 plus.runtime.openURL(jQuery(this).find("div").html());
+                            jQuery("#website").click(function(){
+                                plus.runtime.openURL(jQuery(this).find("div").html());
                             });
                         }
 							
