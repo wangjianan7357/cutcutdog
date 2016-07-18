@@ -13,7 +13,7 @@ if(window.plus){
 // H5 plus事件处理
 function plusReady(){
     // 创建并显示新窗口
-    if (mui.os.plus) {
+    if (mui.os.ios) {
         var move = false;
         $("[data-action='webview']").on("touchend", function(){
             if (move) {
