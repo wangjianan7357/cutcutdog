@@ -163,7 +163,7 @@
 					<div class="xp-tu" style="margin-left:5px;">
 					<div class="zh-good-x-p" data-icon="heart" rel="like"><img src="images/photo-button-01.png"></div>
 					<div class="zh-good-x-p" style="margin-left:10px;" data-icon="promptBtn"><img src="images/photo-button-02.png"></div>
-					<div class="zh-good-x-p" style="margin-left:10px;" onclick="shareHref('<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>')"><img src="images/photo-button-03.png"></div>
+					<div class="zh-good-x-p" data-action="share" data-href="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>" style="margin-left:10px;"><img src="images/photo-button-03.png"></div>
 					<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-icon="likesCount"><%= list[i]["likes"] %></span></div>
 					</div>
 		
@@ -284,6 +284,16 @@
 							page ++;
 							jQuery("#list-view").html(jQuery("#list-view").html() + template('list-view-code', json));
 							setComment();
+
+							if (mui.os.ios) {
+								jQuery("[data-action='share']").on("touchend", function(){
+									shareHref(jQuery(this).attr("data-href"));
+								});
+							} else {
+								jQuery("[data-action='share']").on("click", function(){
+									shareHref(jQuery(this).attr("data-href"));
+								});
+							}
 
 							if (jQuery(json.list).length) {
 								count = 0;
@@ -412,6 +422,16 @@
 						jQuery("#list-view").html(template('list-view-code', json));
 						//assignTmpl(json);
 						setComment();
+
+						if (mui.os.ios) {
+							jQuery("[data-action='share']").on("touchend", function(){
+								shareHref(jQuery(this).attr("data-href"));
+							});
+						} else {
+							jQuery("[data-action='share']").on("click", function(){
+								shareHref(jQuery(this).attr("data-href"));
+							});
+						}
 
 					} else {
 						plus.nativeUI.toast(json.message);
