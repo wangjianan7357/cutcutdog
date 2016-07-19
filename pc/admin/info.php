@@ -124,6 +124,80 @@ if($_GET['action'] == 'edt'){
 		}
 	}
 
+} else if ($_GET['action'] == 'import') {
+
+	if($_POST['save'] == 'true'){
+
+		if (1) {
+
+		}
+
+		preg_match('/(\.[\w]{3,4})$/', $_FILES['sbt_file']['name'], $match);
+		$file = time() . $match[1];
+
+		move_uploaded_file($_FILES['sbt_file']['tmp_name'], '../' . systemConfig('file_path') . $file);
+
+		require_once '../include/excel/PHPExcel.php';
+	    require_once '../include/excel/PHPExcel/IOFactory.php';
+	    require_once '../include/excel/PHPExcel/Reader/Excel5.php';
+
+		$objReader = PHPExcel_IOFactory::createReader('Excel5'); //use excel2007 for 2007 format 
+		$objPHPExcel = $objReader->load('../' . systemConfig('file_path') . $file); 
+		$sheet = $objPHPExcel->getSheet(0); 
+		$highestRow = $sheet->getHighestRow();
+		$highestColumn = $sheet->getHighestColumn();
+
+		for ($j = 2; $j <= $highestRow; $j ++) { 
+			$submit = array();
+            for ($k = 'A'; $k <= $highestColumn; $k ++) {
+                $cell = $objPHPExcel->getActiveSheet()->getCell("$k$j")->getValue();
+
+                switch ($k) {
+                    case 'A':
+                        foreach ($department as $did => $v) {
+                            if ($v == trim($cell)) {
+                                $submit['did'] = $did;
+                                break;
+                            }
+                        }
+                    break;
+                	case 'B':
+                		foreach ($classes as $cid => $v) {
+                			if ($v == trim($cell)) {
+                				$submit['cid'] = $cid;
+                				break;
+                			}
+                		}
+                	break;
+                	case 'C':
+                		$submit['number'] = $cell;
+                	break;
+                	case 'D':
+                		$submit['name'] = $cell;
+                	break;
+                	case 'E':
+                		if ($cell == '男') {
+                			$cell = 1;
+                		} else if ($cell == '女') {
+                			$cell = 2;
+                		} else {
+                			$cell = 0;
+                		}
+                		$submit['sex'] = $cell;
+                	break;
+                	case 'F':
+                		$submit['phone'] = $cell;
+                	break;
+                }
+            }
+            
+            $submit['pass'] = '';
+            $submit['valid'] = 1;
+
+            //$my_db->saveRow('info', $submit);
+        }
+	}
+
 } else {
 	$where = 0;
 
