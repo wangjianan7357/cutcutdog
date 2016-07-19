@@ -34,6 +34,66 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
+    <script type="text/javascript">
+	var shares = null, bhref = false;
+	var Intent = null, File = null, Uri = null, main = null;
+	// H5 plus事件处理
+	function plusReady(){
+		updateSerivces();
+		if(plus.os.name=="Android"){
+			main = plus.android.runtimeMainActivity();
+			Intent = plus.android.importClass("android.content.Intent");
+			File = plus.android.importClass("java.io.File");
+			Uri = plus.android.importClass("android.net.Uri");
+		}
+	}
+	if(window.plus){
+		plusReady();
+	}else{
+		document.addEventListener("plusready",plusReady,false);
+	}
+	/**
+	 * 更新分享服务
+	 */
+	function updateSerivces(){
+		plus.share.getServices( function(s){
+			shares={};
+			for(var i in s){
+				var t=s[i];
+				shares[t.id]=t;
+			}
+		}, function(e){
+			outSet( "获取分享服务列表失败："+e.message );
+		} );
+	}
+	// 分析链接
+	function shareHref(url){
+		var shareBts = [];
+		shareBts.push({title: "Facebook", link: "http://www.facebook.com/sharer.php?u="});
+		shareBts.push({title: "Twitter", link: "http://twitter.com/home?status="});
+		shareBts.push({title: "Google", link: "https://plus.google.com/share?url="});
+
+		// 更新分享列表
+		/*
+		var ss=shares['weixin'];
+		ss&&ss.nativeClient&&(),
+		shareBts.push({title:'Twitter'}));
+		ss=shares['qq'];
+		ss&&ss.nativeClient&&shareBts.push({title:'Google+'});
+		*/
+
+		// 弹出分享列表
+		shareBts.length > 0 ? plus.nativeUI.actionSheet({
+			title: "分享圖片", 
+			cancel: "取消",
+			buttons: shareBts
+		}, function(e){
+			plus.runtime.openURL(shareBts[e.index - 1].link + url);
+
+		}):plus.nativeUI.alert('当前环境无法支持分享链接操作!');
+
+	}
+	</script>
 
 </head>
 
@@ -113,7 +173,7 @@
 		<div style=" text-align: center; margin-top:3% ;">
 			<div class="zh-good" id="heart" rel="like">讚好</div>
 			<div class="zh-good" style=" margin-left:10px;" id="promptBtn">評論</div>
-			<div class="zh-good" style="margin-left:10px;">分享</div>
+			<div class="zh-good"  style="margin-left:10px;" data-href="<%= getvarious("domain") + "uploads/pictures/info/imm" + list[i]["src"] %>">分享</div>
 		</div>
 
 

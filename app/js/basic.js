@@ -2,7 +2,7 @@
  * 基本配置脚本
  **/
 
-var domain = "http://petchat.com.hk/";
+var domain = "http://dog.ideal-max.com/";
 
 if(window.plus){
     plusReady();
