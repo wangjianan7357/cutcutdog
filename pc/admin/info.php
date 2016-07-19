@@ -147,54 +147,84 @@ if($_GET['action'] == 'edt'){
 		$highestRow = $sheet->getHighestRow();
 		$highestColumn = $sheet->getHighestColumn();
 
-		for ($j = 2; $j <= $highestRow; $j ++) { 
-			$submit = array();
+        $catalog = array();
+        $getdata = $my_db->selectRow('*', 'info', array('valid' => 1, 'type' => 3));
+        while ($result = mysql_fetch_array($getdata)) {
+            $catalog[$result['id']] = $result;
+        }
+
+		$error = array();
+
+        for ($j = 1; $j <= $highestRow; $j ++) { 
+            $error[$j] = '';
+
+			$submit = array(
+                'cid' => '',
+                'valid' => 1,
+            );
+
             for ($k = 'A'; $k <= $highestColumn; $k ++) {
-                $cell = $objPHPExcel->getActiveSheet()->getCell("$k$j")->getValue();
+                $cell = trim($objPHPExcel->getActiveSheet()->getCell("$k$j")->getValue());
 
                 switch ($k) {
                     case 'A':
-                        foreach ($department as $did => $v) {
-                            if ($v == trim($cell)) {
-                                $submit['did'] = $did;
-                                break;
-                            }
+                        if ($my_db->fetchOne('info', array('path' => strtolower($cell)))) {
+                            $submit['path'] = time();
+                        } else {
+                            $submit['path'] = strtolower($cell);
                         }
                     break;
-                	case 'B':
-                		foreach ($classes as $cid => $v) {
-                			if ($v == trim($cell)) {
-                				$submit['cid'] = $cid;
-                				break;
-                			}
-                		}
-                	break;
+                    case 'B':
+                        if (!$cell) {
+                            $error[$j] .= '店鋪名為空；';
+                        } else {
+                            $submit['name'] = $cell;
+                        }
+                    break;
                 	case 'C':
-                		$submit['number'] = $cell;
+                        if (!$cell) {
+                            $error[$j] .= '一級地區分類為空；';
+
+                        } else {
+                            foreach ($catalog as $cid => $v) {
+                                if ($v == $cell) {
+                                    $submit['cid'] .= $cid . ',';
+                                    break;
+                                }
+                            }
+                        }
                 	break;
                 	case 'D':
-                		$submit['name'] = $cell;
+                		if (!$cell) {
+                            $error[$j] .= '二級地區分類為空；';
+
+                        } else {
+                            foreach ($catalog as $cid => $v) {
+                                if ($v == $cell) {
+                                    $submit['cid'] .= $cid . ',';
+                                    break;
+                                }
+                            }
+                        }
                 	break;
                 	case 'E':
-                		if ($cell == '男') {
-                			$cell = 1;
-                		} else if ($cell == '女') {
-                			$cell = 2;
-                		} else {
-                			$cell = 0;
-                		}
-                		$submit['sex'] = $cell;
+                		$submit['address'] = $cell;
                 	break;
                 	case 'F':
-                		$submit['phone'] = $cell;
+                		$submit['tel'] = $cell;
                 	break;
+                    case 'H':
+                        $submit['website'] = $cell;
+                    break;
+                    case 'I':
+                        $submit['desp'] = $cell;
+                    break;
                 }
             }
-            
-            $submit['pass'] = '';
-            $submit['valid'] = 1;
 
-            //$my_db->saveRow('info', $submit);
+            if (!$error[$j]) {
+                $my_db->saveRow('info', $submit);
+            }
         }
 	}
 
