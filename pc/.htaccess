@@ -7,6 +7,8 @@ RewriteRule ^([^\/]+)\-c(\d+).html catalog\.php\?path=$1&page=$2 [L]
 
 RewriteRule ^([^\/]+)\-p.html products\.php\?path=$1 [L]
 RewriteRule ^([^\/]+)\-i.html info\.php\?path=$1 [L]
+RewriteRule ^share-info-([^\/]+).html share_info\.php\?id=$1 [L]
+RewriteRule ^share-photo-([^\/]+).html share_photo\.php\?id=$1 [L]
 
 RewriteRule ^([^\/]+).html $1.php [L]
 

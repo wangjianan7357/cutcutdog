@@ -127,10 +127,25 @@
                     <input type="hidden" name="type" value="<?=$_GET['type'];?>" />
 
                     <div class="box-body">
+                        <?php if ($_POST['save'] != 'true') { ?>
                         <div class="form-group">
-                            <label for="sbt_name">文檔（.xls）</label>
+                            <label for="sbt_name">文件（.xls）</label>
                             <input type="file" name="sbt_file" />
                         </div>
+                        <?php } else { ?>
+                        <div class="form-group">
+                            <label for="sbt_name">結果</label>
+                            <div>
+                            <?php
+                                foreach ($error as $key => $value) {
+                                    if ($value) {
+                                        echo '<p>行' . $key . '：' . $value . '</p>';
+                                    }
+                                }
+                            ?>
+                            </div>
+                        </div>
+                        <?php } ?>
 
                     </div><!-- /.box-body -->
 

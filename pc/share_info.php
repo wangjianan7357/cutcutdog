@@ -1,3 +1,10 @@
+<?php
+require_once('include/fun_web.php');
+require_once('include/common.php');
+
+$cur_data = $my_db->fetchOne('info', array('id' => $_GET['id']));
+$info_img_path = systemConfig('info_img_path');
+?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -10,16 +17,16 @@
 </style>
 </head>
 <body>
-<div style="overflow:hidden; border:#CCC solid 1px; padding:10px;">
-<div class="tu_stlye">
-<img src="images/tu_01.jpg" />
-</div>
-<div class="tu_stlye_zi">
- <div>名稱: 最強寵物店</div>
- <div>電話: 99909992</div>
- <div>地址: 旺角勝利道在雄才大略博士五橱柜奇巧苯基棋梆梆枯枯椅有志者事竟成</div>
- <div>網址: http://www.baidu.com</div>
-</div>
-</div>
+    <div style="overflow:hidden; border:#CCC solid 1px; padding:10px;">
+        <div class="tu_stlye">
+            <img src="<?= $info_img_path . $con_pic['pre']['info'] . $con_pic['suf']['mid'] . $cur_data['src']; ?>" />
+        </div>
+        <div class="tu_stlye_zi">
+            <div>名稱: <?= $cur_data['name'] ;?></div>
+            <div>電話: <?= $cur_data['tel'] ;?></div>
+            <div>地址: <?= $cur_data['address'] ;?></div>
+            <div>網址: <?= $cur_data['website'] ;?></div>
+        </div>
+    </div>
 </body>
 </html>

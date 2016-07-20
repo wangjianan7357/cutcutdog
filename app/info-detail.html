@@ -173,7 +173,7 @@
 		<div style=" text-align: center; margin-top:3% ;">
 			<div class="zh-good" id="heart" rel="like">讚好</div>
 			<div class="zh-good" style=" margin-left:10px;" id="promptBtn">評論</div>
-			<div class="zh-good"  style="margin-left:10px;" data-action="share" data-href="" data-info="data-href=detail.path">分享</div>
+			<div class="zh-good"  style="margin-left:10px;" data-action="share" data-href="" data-info="data-href=detail.id">分享</div>
 		</div>
 
 
@@ -249,7 +249,7 @@
                             });
 
                             jQuery("[data-action='share']").on("touchend", function(){
-                                shareHref(jQuery(this).attr("data-href"));
+                                shareHref(domain + "share-info-" + jQuery(this).attr("data-href") + ".html");
                             });
                         } else {
                             jQuery("#website").click(function(){
@@ -257,7 +257,7 @@
                             });
 
                             jQuery("[data-action='share']").on("click", function(){
-                                shareHref(jQuery(this).attr("data-href"));
+                                shareHref(domain + "share-info-" + jQuery(this).attr("data-href") + ".html");
                             });
                         }
 							
