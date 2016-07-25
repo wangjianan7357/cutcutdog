@@ -128,102 +128,118 @@ if($_GET['action'] == 'edt'){
 
 	if($_POST['save'] == 'true'){
 
-		if (1) {
+        preg_match('/(\.[\w]{3,4})$/', $_FILES['sbt_file']['name'], $match);
+        $file = time() . $match[1];
 
-		}
+		if ($match[1] != '.xls') {
+            $err = '上傳文件格式無效';
 
-		preg_match('/(\.[\w]{3,4})$/', $_FILES['sbt_file']['name'], $match);
-		$file = time() . $match[1];
+		} else {
 
-		move_uploaded_file($_FILES['sbt_file']['tmp_name'], '../' . systemConfig('file_path') . $file);
+    		move_uploaded_file($_FILES['sbt_file']['tmp_name'], '../' . systemConfig('file_path') . $file);
 
-		require_once '../include/excel/PHPExcel.php';
-	    require_once '../include/excel/PHPExcel/IOFactory.php';
-	    require_once '../include/excel/PHPExcel/Reader/Excel5.php';
+    		require_once '../include/excel/PHPExcel.php';
+    	    require_once '../include/excel/PHPExcel/IOFactory.php';
+    	    require_once '../include/excel/PHPExcel/Reader/Excel5.php';
 
-		$objReader = PHPExcel_IOFactory::createReader('Excel5'); //use excel2007 for 2007 format 
-		$objPHPExcel = $objReader->load('../' . systemConfig('file_path') . $file); 
-		$sheet = $objPHPExcel->getSheet(0); 
-		$highestRow = $sheet->getHighestRow();
-		$highestColumn = $sheet->getHighestColumn();
+    		$objReader = PHPExcel_IOFactory::createReader('Excel5'); //use excel2007 for 2007 format 
+    		$objPHPExcel = $objReader->load('../' . systemConfig('file_path') . $file); 
+    		$sheet = $objPHPExcel->getSheet(0); 
+    		$highestRow = $sheet->getHighestRow();
+    		$highestColumn = $sheet->getHighestColumn();
 
-        $catalog = array();
-        $getdata = $my_db->selectRow('*', 'info', array('valid' => 1, 'type' => 3));
-        while ($result = mysql_fetch_array($getdata)) {
-            $catalog[$result['id']] = $result;
-        }
-
-		$error = array();
-
-        for ($j = 1; $j <= $highestRow; $j ++) { 
-            $error[$j] = '';
-
-			$submit = array(
-                'cid' => '',
-                'valid' => 1,
-            );
-
-            for ($k = 'A'; $k <= $highestColumn; $k ++) {
-                $cell = trim($objPHPExcel->getActiveSheet()->getCell("$k$j")->getValue());
-
-                switch ($k) {
-                    case 'A':
-                        if ($my_db->fetchOne('info', array('path' => strtolower($cell)))) {
-                            $submit['path'] = time();
-                        } else {
-                            $submit['path'] = strtolower($cell);
-                        }
-                    break;
-                    case 'B':
-                        if (!$cell) {
-                            $error[$j] .= '店鋪名為空；';
-                        } else {
-                            $submit['name'] = $cell;
-                        }
-                    break;
-                	case 'C':
-                        if (!$cell) {
-                            $error[$j] .= '一級地區分類為空；';
-
-                        } else {
-                            foreach ($catalog as $cid => $v) {
-                                if ($v == $cell) {
-                                    $submit['cid'] .= $cid . ',';
-                                    break;
-                                }
-                            }
-                        }
-                	break;
-                	case 'D':
-                		if (!$cell) {
-                            $error[$j] .= '二級地區分類為空；';
-
-                        } else {
-                            foreach ($catalog as $cid => $v) {
-                                if ($v == $cell) {
-                                    $submit['cid'] .= $cid . ',';
-                                    break;
-                                }
-                            }
-                        }
-                	break;
-                	case 'E':
-                		$submit['address'] = $cell;
-                	break;
-                	case 'F':
-                		$submit['tel'] = $cell;
-                	break;
-                    case 'H':
-                        $submit['website'] = $cell;
-                    break;
-                    case 'I':
-                        $submit['desp'] = $cell;
-                    break;
-                }
+            $catalog = array();
+            $getdata = $my_db->selectRow('*', 'catalog', array('valid' => 1, 'type' => 3));
+            while ($result = mysql_fetch_array($getdata)) {
+                $catalog[$result['id']] = $result['name'];
             }
 
-            if (!$error[$j]) {
-                $my_db->saveRow('info', $submit);
+    		$error = array();
+
+            for ($j = 1; $j <= $highestRow; $j ++) { 
+                $error[$j] = '';
+
+    			$submit = array(
+                    'cid' => '',
+                    'valid' => 1,
+                    'desp' => '',
+                );
+
+                for ($k = 'A'; $k <= $highestColumn; $k ++) {
+                    $cell = trim($objPHPExcel->getActiveSheet()->getCell("$k$j")->getValue());
+
+                    switch ($k) {
+                        case 'A':
+                            if ($my_db->fetchOne('info', array('path' => strtolower($cell)))) {
+                                $submit['path'] = time();
+                            } else {
+                                $submit['path'] = strtolower($cell);
+                            }
+                        break;
+                        case 'B':
+                            if (!$cell) {
+                                $error[$j] .= '店鋪名為空；';
+                            } else {
+                                $submit['name'] = $cell;
+                            }
+                        break;
+                    	case 'C':
+
+                            if (!$cell) {
+                                $error[$j] .= '一級地區分類為空；';
+
+                            } else {
+                                $exist = false;
+                                foreach ($catalog as $cid => $v) {
+                                    if ($v == $cell) {
+                                        $exist = true;
+                                        $submit['cid'] .= $cid . ',';
+                                        break;
+                                    }
+                                }
+
+                                if (!$exist) {
+                                    $error[$j] .= '查不到一級地區分類；';
+                                }
+                            }
+                    	break;
+                    	case 'D':
+                    		if (!$cell) {
+                                $error[$j] .= '二級地區分類為空；';
+
+                            } else {
+                                $exist = false;
+                                foreach ($catalog as $cid => $v) {
+                                    if ($v == $cell) {
+                                        $exist = true;
+                                        $submit['cid'] .= $cid . ',';
+                                        break;
+                                    }
+                                }
+
+                                if (!$exist) {
+                                    $error[$j] .= '查不到二級地區分類；';
+                                }
+                            }
+                    	break;
+                    	case 'E':
+                    		$submit['address'] = $cell;
+                    	break;
+                    	case 'F':
+                    		$submit['tel'] = $cell;
+                    	break;
+                        case 'H':
+                            $submit['website'] = $cell;
+                        break;
+                        case 'I':
+                            $submit['desp'] = $cell;
+                        break;
+                    }
+                }
+
+                if (!$error[$j]) {
+                    $my_db->saveRow('info', $submit);
+                }
             }
         }
 	}
