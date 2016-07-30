@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+body{font-family: Arial;
+font: 12px/1.5 arial;
+color: #666; margin: 0; padding:0}
+
+h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd,form,img,p{
+margin:0; padding:0; border:none; list-style-type:none;
+}
+a{ text-decoration:none; color:#3f3f3f;}
+a:hover{ color:#ff6599; text-decoration:none;}
+html{background:url(../images/bg.png);}
+.wed_width{width:950px; margin:0 auto;position:relative;}
+
+
+.wed_top{ height:125px;background:url(../images/top_bg.png); border-bottom:#bb9eca solid 17px;}
+.wed_top_logo{width:236px; height:91px; float:left; margin-top:40px;}
+.wed_top_logo_right{width:235px; height:93px; float:right;margin-top:47px;}
+.wed_top_f{ position:absolute; top: 10px;right: -38px; z-index:99999;}
+
+.wed_left {width:696px; margin-top:10px; float:left; overflow:hidden;}
+.wed_menu_ul{ height:85px;}
+.wed_menu_ul li{width:88px; background-color:#5cbeed; height:85px;border-radius: 5px; float:left; margin-right:10px; display:inline; text-align:center;}
+.wed_menu_ul li a{ color:#FFF; font-size:14px; line-height:30px; font-weight:bold;}
+
+.banner{width:690px; height:190px; background-color:#bb9eca; margin-top:20px;}
+.wed_tlq{width:695px; height:205px; margin-top:20px; background:url(../images/tu_01.jpg) no-repeat; text-align:left; }
+.wed_tite{ line-height:55px; font-size:16px; color:#FFF; padding-left:30px; font-weight:700;}
+.wed_tite_zi{width:200px;font-size:14px; color:#000; padding-left:30px; }
+
+.wed_xpq{width:696px; height:205px; margin-top:20px; background:url(../images/tu_02.jpg) no-repeat; text-align:left; }
+.wed_xpq_tite{ line-height:55px; font-size:16px; color:#5dbeeb; padding-left:210px; font-weight:700;}
+.wed_xpq_zi{width:160px;font-size:14px; color:#000; padding-left:210px; }
+
+.wed_buy{width:696px; height:205px; margin-top:20px; background:url(../images/tu_03.jpg) no-repeat; text-align:left; }
+.wed_buy_tite{ line-height:55px; font-size:16px; color:#5dbeeb; padding-left:20px; font-weight:700;}
+.wed_buy_zi{width:160px;font-size:14px; color:#000; padding-left:20px; }
+
+.wed_right{width:210px; float:right;margin-top:10px;}
+.wed_right_grzx{width:200px; height:80px; background-color:#59bf97; border:#fff46a solid 5px;border-radius: 5px; text-align:center;}
+.wed_right_sece{ margin-top:30px;}
+.wed_right_sece span{ font-weight:bold;}
+.text1{width:150px; border:none; border:#5cbeed solid 2px;border-radius: 10px; height:25px;}
+
+.demo{width:210px;margin:10px auto 0 auto;}
+
+/* select */
+.select{position:relative;margin:20px 10px;}
+.select dt{height:26px;display:inline-block;border:#5cbeed solid 2px;border-radius: 10px;background:#fcfcfb url(../images/ico.gif) no-repeat 159px center;line-height:28px;font-weight:bold;padding-left:10px;cursor:pointer;width:170px;padding-right:12px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;position:relative;z-index:99;}
+
+.select dd{position:absolute;left:0;top:29px;background:#fff;display:none; z-index:9999;}
+.select dd ul{padding:4px;width:170px;max-height:250px;overflow:auto;}
+.select dd ul li a{line-height:28px;display:block;padding:0 8px;}
+.select dd ul li a:hover{background:#f5f5f5;}
+.wed_right_soso{width:150px; height:25px; text-align:center; background-color:#9073b3;border-radius: 10px; color:#fff; margin:0 auto; line-height:25px; font-weight:bold;}
+
+.wed_dpzl{ margin-top:20px; overflow:hidden; text-align:center;}
+.wed_dpzl ul li{ list-style:none; margin-bottom:20px; overflow:hidden;}
+.wed_dpzl ul li .tu_border img{width:180px; height:180px; background-color:#FFF; border:#FFF 2px solid;border-radius: 20px;padding: 5px;}
+.wed_right_sece .wed_dpzl_zi{ text-align:left; margin-top:5px; padding-left:10px;}
+.wed_right_sece .wed_dpzl_zi span{ font-weight:normal; font-size:13px; vertical-align:top; padding-left:5px;}
+.wed_dpzl_sxy{ overflow:hidden; height:30px; text-align:center;}
+.wed_dpzl_sxy ul li{ list-style:none; margin-left:10px; display:inline-block; background-color:#FFF;border-radius: 10px;width:70px; text-align:center;}
+
+.foot{ clear:both;width: 950px;margin: 0 auto;  padding-top:10px;}
+.foot_bg{ background-color:#FFF;height:100px; text-align:center;}
+.foot_bg ul{ padding-top:20px;}
+.foot_bg ul li{ list-style:none; display:inline-block; padding:0px 10px 0px 10px;}

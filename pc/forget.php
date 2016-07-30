@@ -37,7 +37,7 @@ if ($_POST['reset'] == 'true') {
 <html lang="zh-CN" class="root61">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="images/member.css" type="text/css" />
+<link rel="stylesheet" href="css/member.css" type="text/css" />
 <?php
 $script = '';
 if($err) echo '<script language="javascript">alert("' . $err . '"); history.go(-1); </script>';
