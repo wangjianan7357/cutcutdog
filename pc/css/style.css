@@ -10,8 +10,10 @@ margin:0; padding:0; border:none; list-style-type:none;
 a{ text-decoration:none; color:#3f3f3f;}
 a:hover{ color:#ff6599; text-decoration:none;}
 html{background:url(../images/bg.png);}
-.wed_width{width:950px; margin:0 auto;position:relative;}
 
+.mgt25 {margin-top: 25px;}
+
+.wed_width{width:950px; margin:0 auto;position:relative;}
 
 .wed_top{ height:125px;background:url(../images/top_bg.png); border-bottom:#bb9eca solid 17px;}
 .wed_top_logo{width:236px; height:91px; float:left; margin-top:40px;}
@@ -68,3 +70,5 @@ html{background:url(../images/bg.png);}
 .foot_bg ul li{ list-style:none; display:inline-block; padding:0px 10px 0px 10px;}
 
 .title1 .txt {display: inline-block; background: #f79b76; border-radius: 5px; color: white; padding: 4px 10px; line-height: normal; font-size: 20px;}
+
+.buy_catalog img {border: 1px solid #222;}

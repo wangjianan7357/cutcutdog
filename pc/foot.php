@@ -8,7 +8,7 @@
             <li><a href="#">討論區</a></li>
             <li><a href="#">相片區</a></li>
             <li><a href="#">上門服務</a></li>
-            <li><a href="#">買賣平台</a></li>
+            <li><a href="buy.html">買賣平台</a></li>
             <li><a href="#">二手平台</a></li>
             <li><a href="#">聯繫我們</a></li>
         </ul>
