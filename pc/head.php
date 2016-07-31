@@ -22,54 +22,71 @@
         <div class="wed_right_grzx">
             <a href="#"><img src="images/tu_04.jpg" /></a>
         </div>
-        <div class="wed_right_sece">
-            <p><span>店舖名稱</span> <input name="text" type="text" value="" class="text1"></p>
+
+        <form class="wed_right_sece" action="info.php">
+            <p>
+                <span>店舖名稱</span> 
+                <input name="name" type="text" value="" class="text1">
+            </p>
 
             <div class="demo">
+                <input type="hidden" name="cid" value="">
                 <dl class="select">
                     <dt>地區</dt>
                     <dd>
                         <ul>
-                            <li><a href="#">12131</a></li>
-                            <li><a href="#">下拉2</a></li>
-                            <li><a href="#">下拉3</a></li>
-                            <li><a href="#">下拉4</a></li>
-                            <li><a href="#">下拉5</a></li>
-                            <li><a href="#">下拉6</a></li>
+                        <?php
+                            $getdata = $my_db->selectRow('id, name, parent', 'catalog', array('type' => 3, 'parent' => ''));
+                            while ($result = mysql_fetch_array($getdata)) {
+                        ?>
+                            <li><a href="javascript:;" name-cid="<?= $result['id']; ?>,"><?= $result['name']; ?></a></li>
+                        <?php
+                            $getdata1 = $my_db->selectRow('id, name, parent', 'catalog', array('type' => 3, 'parent' => $result['id'] . ','));
+                            while ($result1 = mysql_fetch_array($getdata1)) {
+                        ?>
+                            <li><a href="javascript:;" name-cid="<?= $result['id']; ?>,<?= $result1['id']; ?>,"><?= $result['name'] . ' - ' . $result1['name']; ?></a></li>
+                        <?php }} ?>
                         </ul>
                     </dd>
                 </dl>
     
+                <input type="hidden" name="service" value="">
                 <dl class="select">
                     <dt>服務範圍</dt>
                     <dd>
                         <ul>
-                            <li><a href="#">商店</a></li>
-                            <li><a href="#">醫院</a></li>
-                            <li><a href="#">其他服務</a></li>
+                        <?php foreach ($cms_service_type as $key => $value) { ?>
+                            <li><a href="javascript:;" name-service="<?= $key; ?>"><?= $value; ?></a></li>
+                        <?php } ?>
                         </ul>
                     </dd>
                 </dl>
     
-                <a href="#"><div class="wed_right_soso">搜 尋</div></a> 
+                <button class="wed_right_soso">搜 尋</button>
             </div>
 
             <div class="wed_dpzl">
                 <ul>
+                <?php
+                    $getdata = $my_db->selectRow('id, parent', 'catalog', array('type' => 3));
+                    while ($result = mysql_fetch_array($getdata)) {
+                        $catalog[] = $result['parent'] . $result['id'] . ',';
+                    }
+
+                    $where = array('valid' => 1);
+                    $where['cid'] = array('in' => '("' . implode('", "', $catalog) . '")');
+
+                    $getdata = $my_db->selectRow('*', 'info', $where, array('method' => 'DESC', 'field' => 'date'), '0,2');
+                    while ($result = mysql_fetch_array($getdata)) {
+                ?>
                     <li>
                         <div class="tu_border"><img src="images/tu_05.jpg" /></div>
-                        <div class="wed_dpzl_zi"><img src="images/info_icon_home.png" /><span>最強寵物店</span></div>
-                        <div class="wed_dpzl_zi"><img src="images/info_icon_pin.png" /><span>旺角勝利道在雄才大略博</span></div>
-                        <div class="wed_dpzl_zi"><img src="images/info_icon_tel.png" /><span>99909992</span></div>
-                        <div class="wed_dpzl_zi"><a href="http://www.baidu.com" target="_blank"><img src="images/info_icon_www.png" /><span>http://www.baidu.com</span></a></div>
+                        <div class="wed_dpzl_zi"><img src="images/info_icon_home.png" /><span><?= $result['name']; ?></span></div>
+                        <div class="wed_dpzl_zi"><img src="images/info_icon_pin.png" /><span><?= $result['address']; ?></span></div>
+                        <div class="wed_dpzl_zi"><img src="images/info_icon_tel.png" /><span><?= $result['tel']; ?></span></div>
+                        <div class="wed_dpzl_zi"><a href="<?= $result['website']; ?>" target="_blank"><img src="images/info_icon_www.png" /><span><?= $result['website']; ?></span></a></div>
                     </li>
-                    <li>
-                        <div class="tu_border"><img src="images/tu_05.jpg" /></div>
-                        <div class="wed_dpzl_zi"><img src="images/info_icon_home.png" /><span>最強寵物店</span></div>
-                        <div class="wed_dpzl_zi"><img src="images/info_icon_pin.png" /><span>旺角勝利道在雄才大略博</span></div>
-                        <div class="wed_dpzl_zi"><img src="images/info_icon_tel.png" /><span>99909992</span></div>
-                        <div class="wed_dpzl_zi"><a href="http://www.baidu.com" target="_blank"><img src="images/info_icon_www.png" /><span>http://www.baidu.com</span></a></div>
-                    </li>
+                <?php } ?>
                 </ul>
             </div>
 
@@ -79,7 +96,7 @@
                     <li><a href="#">下一頁</a></li>
                 </ul>
             </div>
-        </div>
+        </form>
     </div>
  
     <div class="wed_left">
@@ -88,7 +105,7 @@
             <li><a href="#">討論區 <img src="images/ico_02.png" /></a></li>
             <li><a href="#">相片區 <img src="images/ico_03.png" /></a></li>
             <li><a href="#">上門服務 <img src="images/ico_04.png" /></a></li>
-            <li><a href="#">買賣平台 <img src="images/ico_05.png" /></a></li>
+            <li><a href="buy.html">買賣平台 <img src="images/ico_05.png" /></a></li>
             <li><a href="#">二手平台 <img src="images/ico_06.png" /></a></li>
             <li><a href="#">聯繫我們 <img src="images/ico_07.png" /></a></li>
         </ul>

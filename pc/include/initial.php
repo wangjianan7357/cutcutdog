@@ -40,6 +40,7 @@ while($result = mysql_fetch_array($getdata)){
 		$cur_catalog = $result;
 	}
 
+	/*
 	$order = array();
 	switch($result['order']){
 		case 1: $order = array('field' => 'id', 'method' => 'ASC'); break;
@@ -63,9 +64,10 @@ while($result = mysql_fetch_array($getdata)){
 			}
 		}
 	}
+	*/
 }
 
-
+/*
 foreach ($cms_cata_type as $value) {
 	$check_page = false;
 
@@ -95,7 +97,7 @@ foreach ($cms_cata_type as $value) {
 		exit;
 	}
 }
-
+*/
 
 if ($cur_catalog) {
 	$modules = explode(',', $cur_catalog['parent']);
@@ -106,25 +108,73 @@ if ($cur_catalog) {
 	}
 
 	$cur_module[] = $cur_catalog;
+
+	if ($cur_catalog['type'] == 3) {
+		if ($cur_data = $my_db->fetchOne($cms_cata_type[$cur_catalog['type']]['db'], array('valid = 1 AND cid REGEXP "(^|,)' . $cur_catalog['id'] . ',$"'), array('`queue` DESC, `date` DESC'))) {
+
+		} else {
+			$child = $my_db->fetchOne('catalog', array('valid = 1 AND parent = "' . $cur_catalog['parent'] . $cur_catalog['id'] . ',"'), array('`queue` DESC, `date` ASC'));
+
+			if ($child && $cur_data = $my_db->fetchOne($cms_cata_type[$child['type']]['db'], array('valid = 1 AND cid REGEXP "(^|,)' . $child['id'] . ',$"'), array('`queue` DESC, `date` DESC'))) {
+
+			} else {
+				header('HTTP/1.0 404 Not Found');
+				exit;
+			}
+		}
+	} else {
+		$cur_data['page'] = array();
+		$cur_data['list'] = array();
+
+		$_GET['page'] = $_GET['page'] ? (int)$_GET['page'] : 1;
+
+		if ($cur_catalog['type'] > 5) {
+			$qty = systemConfig('product_list_qty');
+		} else {
+			$qty = systemConfig('info_list_qty');
+		}
+
+		$cur_data['page']['current'] = $_GET['page'];
+		$cur_data['page']['total'] = ceil($my_db->existRow($cms_cata_type[$cur_catalog['type']]['db'], array('`valid` = 1 AND `cid` REGEXP "(^|,)' . $cur_catalog['id'] . ',"')) / $qty);
+
+		$getdata = $my_db->selectRow('*', $cms_cata_type[$cur_catalog['type']]['db'], array('`valid` = 1 AND `cid` REGEXP "(^|,)' . $cur_catalog['id'] . ',"'), array('`queue` DESC, `date` DESC'), ($_GET['page'] - 1) * $qty . ',' . $qty);
+		while ($result = mysql_fetch_array($getdata)) {
+			$cur_data['list'][] = resultFormat($result);
+		}
+	}
 	
+} else if ($cur_page == 'info' || $cur_page == 'product') {
+	if ($cur_data = $my_db->fetchOne($cur_page, array('valid' => 1, 'path' => $_GET['path']), array('`queue` DESC, `date` DESC'))) {
+
+	} else {
+		header('HTTP/1.0 404 Not Found');
+		exit;
+	}
+
 } else if ($cur_page == 'catalog' && $_GET['path']){
 	header('HTTP/1.0 404 Not Found');
 	exit;
-}
 
-// recommend products
-$products_recom = array();
+} else if ($cur_page == 'search') {
+	if($_GET['q']){
+		$cur_data['page'] = array();
+		$cur_data['list'] = array();
 
-$getdata = $my_db->selectRow('*', 'product', array('recom > 0 AND valid = 1'), array('field' => 'recom', 'method' => 'DESC'));
-while($result = mysql_fetch_array($getdata)){
-	if (isset($result['price'])) {
-		$result['price'] = number_format($result['price'], 2, '.', ',');
+		$_GET['page'] = $_GET['page'] ? (int)$_GET['page'] : 1;
+		$_GET['q'] = strip_tags($_GET['q']);
+
+		$qty = systemConfig('product_list_qty');
+
+		$sql = '(`name` LIKE "%' . addslashes($_GET['q']) . '%" OR `desp` LIKE "%' . addslashes($_GET['q']) . '%") AND `valid` = 1';
+
+		$cur_data['page']['current'] = $_GET['page'];
+		$cur_data['page']['total'] = ceil($my_db->existRow('product', array($sql)) / $qty);
+
+		$getdata = $my_db->selectRow('*', 'product', array($sql), array(), ($_GET['page'] - 1) * $qty . ', ' . $qty);
+		while($result = mysql_fetch_array($getdata)) {
+			$cur_data['list'][] = resultFormat($result);
+		}
 	}
-	if (isset($result['sale'])) {
-		$result['sale'] = number_format($result['sale'], 2, '.', ',');
-	}
-
-	$products_recom[$result['id']] = $result;
 }
 
 
