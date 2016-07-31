@@ -228,11 +228,16 @@ if($_GET['action'] == 'edt'){
                     	case 'F':
                     		$submit['tel'] = $cell;
                     	break;
-                        case 'H':
+                        case 'G':
                             $submit['website'] = $cell;
                         break;
-                        case 'I':
-                            $submit['desp'] = $cell;
+                        case 'H':
+                            foreach ($cms_service_type as $sk => $sv) {
+                                if ($cell == $sv) {
+                                    $submit['type'] = $sk;
+                                    break;
+                                }
+                            }
                         break;
                     }
                 }

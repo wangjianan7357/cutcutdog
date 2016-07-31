@@ -43,6 +43,12 @@ class MyData {
 		return $this->sql;
 	}
 
+	public function getLastInsertId() {
+		$getdata = $this->myQuery('SELECT LAST_INSERT_ID()');
+		$result = mysql_fetch_array($getdata);
+		return $result[0];
+	}
+
 	public function setTableName($table, $lang = null){
 		// $child_pre 给数据表加前缀
 		global $child_pre;
