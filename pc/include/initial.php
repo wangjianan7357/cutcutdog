@@ -109,7 +109,7 @@ if ($cur_catalog) {
 
 	$cur_module[] = $cur_catalog;
 
-	if ($cur_catalog['type'] == 3) {
+	if ($cur_catalog['type'] == 3 || $cur_catalog['type'] == 6) {
 		if ($cur_data = $my_db->fetchOne($cms_cata_type[$cur_catalog['type']]['db'], array('valid = 1 AND cid REGEXP "(^|,)' . $cur_catalog['id'] . ',$"'), array('`queue` DESC, `date` DESC'))) {
 
 		} else {

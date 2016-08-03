@@ -101,13 +101,13 @@
  
     <div class="wed_left">
         <ul class="wed_menu_ul">
-            <li><a href="#">資料庫 <img src="images/ico_01.png" /></a></li>
-            <li><a href="#">討論區 <img src="images/ico_02.png" /></a></li>
-            <li><a href="#">相片區 <img src="images/ico_03.png" /></a></li>
-            <li><a href="#">上門服務 <img src="images/ico_04.png" /></a></li>
-            <li><a href="buy.html">買賣平台 <img src="images/ico_05.png" /></a></li>
-            <li><a href="#">二手平台 <img src="images/ico_06.png" /></a></li>
-            <li><a href="#">聯繫我們 <img src="images/ico_07.png" /></a></li>
+            <li><a href="info.php">資料庫 <img src="images/ico_01.png" /></a></li>
+            <li><a href="discuss.php">討論區 <img src="images/ico_02.png" /></a></li>
+            <li><a href="photo.php">相片區 <img src="images/ico_03.png" /></a></li>
+            <li><a href="service.php">上門服務 <img src="images/ico_04.png" /></a></li>
+            <li><a href="buy.php">買賣平台 <img src="images/ico_05.png" /></a></li>
+            <li><a href="used.php">二手平台 <img src="images/ico_06.png" /></a></li>
+            <li><a href="contact.php">聯繫我們 <img src="images/ico_07.png" /></a></li>
         </ul>
   
         <div class="banner">ff</div>

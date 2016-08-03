@@ -4,13 +4,13 @@
 <div class="foot">
     <div class="foot_bg">
         <ul>
-            <li><a href="#">資料庫</a></li>
-            <li><a href="#">討論區</a></li>
-            <li><a href="#">相片區</a></li>
-            <li><a href="#">上門服務</a></li>
-            <li><a href="buy.html">買賣平台</a></li>
-            <li><a href="#">二手平台</a></li>
-            <li><a href="#">聯繫我們</a></li>
+            <li><a href="info.php">資料庫</a></li>
+            <li><a href="discuss.php">討論區</a></li>
+            <li><a href="photo.php">相片區</a></li>
+            <li><a href="service.php">上門服務</a></li>
+            <li><a href="buy.php">買賣平台</a></li>
+            <li><a href="used.php">二手平台</a></li>
+            <li><a href="contact.php">聯繫我們</a></li>
         </ul>
         <p style="margin-top:20px;">Copyrights 2016-2019 . PetChat-寵物潮流 </p>
     </div>

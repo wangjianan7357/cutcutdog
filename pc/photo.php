@@ -13,7 +13,7 @@ require('head.php');
 ?>
 
 <div class="title1">
-    <div class="txt">討論區</div>
+    <div class="txt">相片區</div>
 </div>
 
 <br>
@@ -38,7 +38,7 @@ require('head.php');
 
             <a class="list cl1" href="">
                 <div class="name"><?= $result1['name']; ?></div>
-                <div class="detail"><?= cutString(trim(strip_tags($result1['desp'])), 90); ?></div>
+                <div class="detail"><?= $result1['desp']; ?></div>
 
                 <div class="member">
                     發帖人：<?= $member_list[$result1['mid']]['name']; ?>
