@@ -89,3 +89,7 @@ html{background:url(../images/bg.png);}
 .discuss .list .name {width: 70px; height: 20px; overflow: hidden;}
 .discuss .list .detail {width: 280px; height: 20px; overflow: hidden; padding: 0 20px 0 0;}
 .discuss .list .member {color: #666;}
+
+.photo .list {border-right: 1px solid #fff; border-bottom: 1px solid #fff; float: left;}
+
+.two1 {position: absolute; top: 313px; height: 65px; overflow: hidden; left: 520px; }

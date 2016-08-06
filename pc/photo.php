@@ -18,37 +18,18 @@ require('head.php');
 
 <br>
 
-<div class="bd1 discuss">
+<div class="two1"><img src="images/two.png"></div>
+
+<div class="photo">
 <?php
-    $i = 0;
-    $getdata = $my_db->selectRow('*', 'catalog', array('type' => 4));
+    $getdata = $my_db->selectRow('*', 'info', array('cid' => '13,'), array('method' => 'DESC', 'field' => 'date'), '0,18');
     while ($result = mysql_fetch_array($getdata)) {
-        $i ++;
 ?>
-    <div class="row cl1">
-        <div class="cap cell<?= $i; ?>">
-            <p><img src="images/discuss-<?= $i; ?>.gif"></p>
-            <p><?= $result['name']; ?></p>
-        </div>
-        <div class="desc">
-        <?php
-            $getdata1 = $my_db->selectRow('*', 'info', array('cid' => $result['id'] . ','), array('method' => 'DESC', 'field' => 'date'), '0,3');
-            while ($result1 = mysql_fetch_array($getdata1)) {
-        ?>
 
-            <a class="list cl1" href="">
-                <div class="name"><?= $result1['name']; ?></div>
-                <div class="detail"><?= $result1['desp']; ?></div>
+    <a class="list" href=""><img src="<?= PIC_INFO_M . $result['src']; ?>" width="231" height="231" /></a>
 
-                <div class="member">
-                    發帖人：<?= $member_list[$result1['mid']]['name']; ?>
-                </div>
-            </a>
-
-        <?php } ?>
-        </div>
-    </div>
 <?php } ?>
+
 </div>
 
 <?php require('foot.php'); ?>

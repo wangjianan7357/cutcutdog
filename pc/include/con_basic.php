@@ -14,8 +14,8 @@ if($_SERVER['SERVER_ADDR'] == "127.0.0.1" || $_SERVER['SERVER_ADDR'] == "::1"){
 	$con_db_name = 'cutcutdog';
 }
 else {
-	$con_db_set = array('host' => 'localhost', 'user' => 'a0514105203', 'pass' => '959c8037');
-	$con_db_name = 'a0514105203';
+	$con_db_set = array('host' => 'localhost', 'user' => 'petchat.com.hk', 'pass' => '62petc02h');
+	$con_db_name = 'petchat_com_hk';
 }
 
 /* 设置语言 */
