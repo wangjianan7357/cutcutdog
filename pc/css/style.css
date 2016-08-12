@@ -93,3 +93,5 @@ html{background:url(../images/bg.png);}
 .photo .list {border-right: 1px solid #fff; border-bottom: 1px solid #fff; float: left;}
 
 .two1 {position: absolute; top: 313px; height: 65px; overflow: hidden; left: 520px; }
+
+.service_detail {font-size: 14px; line-height: 26px;}

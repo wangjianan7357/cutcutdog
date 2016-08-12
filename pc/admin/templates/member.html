@@ -60,7 +60,7 @@
                                 <input type="file" name="sbt_src" onChange="selectImg(this, 0, 0)" />
                                 <iframe id="post_frame" name="post_frame" style="display:none;" src="viewimg.php"></iframe>
                                 <div class="help-block">
-                                    <img id="showimg" height="200" src="<?=$outcome['src'] ? $member_src . $outcome['src'] : 'dist/img/no-photo.jpg';?>" />
+                                    <img id="showimg" height="200" src="<?=$outcome['src'] ? '../' . $outcome['src'] : 'dist/img/no-photo.jpg';?>" />
                                 </div>
                             </div>
                         </div>

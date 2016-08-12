@@ -5,7 +5,7 @@ require('../include/fun_admin.php');
 $err = '';
 $msg = $_GET['msg'] ? $_GET['msg'] : array();
 
-$member_src = '../' . systemConfig('member_img_path') . $con_pic['pre']['member'];
+$member_src = systemConfig('member_img_path') . $con_pic['pre']['member'];
 
 if($_GET['action'] == 'edt'){
 	if($_GET['num']) $power_id = 2;
@@ -53,21 +53,18 @@ if($_GET['action'] == 'edt'){
 			$_POST['sbt_pass'] = md5(trim($_POST['sbt_pass']));
 		}
 
-		$_POST['sbt_src'] = $chk_post->chkImage('src');
-		
-		if ($outcome['src']) {
-			if ($_POST['sbt_src']) {
-				preg_match('/(\.[\w]{3,4})$/', $_POST['sbt_src'], $match);
-				$_POST['sbt_src'] = preg_replace('/\.[\w]{3,4}$/', '', $outcome['src']) . $match[1];
-				$outcome['src'] = $_POST['sbt_src'];
-			}
-			else $_POST['sbt_src'] = $outcome['src'];
+		$_POST['sbt_id'] = $_GET['num'] ? $_GET['num'] : ($my_db->selectMax('member') + 1);
+
+		if ($_POST['sbt_src'] = $chk_post->chkImage('src')) {
+			preg_match('/(\.[\w]{3,4})$/', $_POST['sbt_src'], $match);
+			$outcome['src'] = $member_src . '_pic_' . $_POST['sbt_id'] . '_' . rand(0, 10) . $match[1];
 		}
+
+		$_POST['sbt_src'] = $outcome['src'];
 
 		if(!$err){
 			$submit_arr = initSubmitColumns('member', $_GET['num']);
 
-			$_POST['sbt_id'] = $_GET['num'] ? $_GET['num'] : ($my_db->selectMax('member') + 1);
 			$_POST['sbt_salt'] = '';
 			$_POST['sbt_sex'] = '';
 			$_POST['sbt_address'] = '';
@@ -101,13 +98,12 @@ if($_GET['action'] == 'edt'){
 				mysql_query("END");
 
 				if($_FILES['sbt_src']['tmp_name']){
-					$imgpath = $member_src . $_POST['sbt_src'];
+					$imgpath = '../' . $_POST['sbt_src'];
 					if(file_exists($imgpath)) unlink($imgpath);
 					if(file_exists($_POST['tmp_img'])) unlink($_POST['tmp_img']);
 
 					move_uploaded_file($_FILES['sbt_src']['tmp_name'], $imgpath);
 				}
-
 
 				instructLog($cms_admin_power['member'][$power_id] . $_POST['sbt_name'], ($poser_id == 1 ? 'add' : 'edt'));
 				$msg[0] = $cms_admin_power['member'][$power_id] . '成功';
