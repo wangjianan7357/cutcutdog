@@ -11,7 +11,7 @@
 <body>
 <div class="wed_top">
     <div class="wed_width">
-        <div class="wed_top_logo"><img src="images/petchat.png" /></div>
+        <div class="wed_top_logo"><a href="/"><img src="images/petchat.png" /></a></div>
         <div class="wed_top_logo_right"><img src="images/catdog.png" /></div>
         <div class="wed_top_f"><a href="https://www.facebook.com/petchat2016/" target="_blank"><img src="images/f.jpg" /></a></div>
     </div>

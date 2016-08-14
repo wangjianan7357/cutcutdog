@@ -9,6 +9,7 @@ a{ text-decoration:none; color:#3f3f3f;}
 a:hover{ color:#ff6599; text-decoration:none;}
 html{background:url(../images/bg.png);}
 
+.mgt10 {margin-top: 10px;}
 .mgt25 {margin-top: 25px;}
 .cl1 {clear: both; overflow: hidden;}
 .bd1 {border-left: 1px solid #000000; border-top: 1px solid #000000; }
@@ -104,5 +105,10 @@ html{background:url(../images/bg.png);}
 .photo .list {border-right: 1px solid #fff; border-bottom: 1px solid #fff; float: left;}
 
 .two1 {position: absolute; top: 313px; height: 65px; overflow: hidden; left: 520px; }
+
+.member_detail .desc { width: 260px; line-height: 34px; font-size: 18px; }
+.member_detail .desc .txt {height: 230px;}
+.member_detail .btn {background: url(../images/service-button.png); width: 135px; padding: 0 0 0 20px; height: 35px; display: inline-block; color: white; line-height: 34px; }
+.member_detail .service img { vertical-align: middle; }
 
 .service_detail {font-size: 14px; line-height: 26px;}
