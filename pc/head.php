@@ -23,7 +23,7 @@
             <a href="#"><img src="images/tu_04.jpg" /></a>
         </div>
 
-        <form class="wed_right_sece" action="info.php">
+        <div class="wed_right_sece">
             <p>
                 <span>店舖名稱</span> 
                 <input name="name" type="text" value="" class="text1">
@@ -49,7 +49,7 @@
                         </ul>
                     </dd>
                 </dl>
-    
+
                 <input type="hidden" name="service" value="">
                 <dl class="select">
                     <dt>服務範圍</dt>
@@ -61,12 +61,12 @@
                         </ul>
                     </dd>
                 </dl>
-    
-                <button class="wed_right_soso">搜 尋</button>
+
+                <button class="wed_right_soso" data-action="search">搜 尋</button>
             </div>
 
             <div class="wed_dpzl">
-                <ul>
+                <ul data-list="info">
                 <?php
                     $getdata = $my_db->selectRow('id, parent', 'catalog', array('type' => 3));
                     while ($result = mysql_fetch_array($getdata)) {
@@ -80,7 +80,7 @@
                     while ($result = mysql_fetch_array($getdata)) {
                 ?>
                     <li>
-                        <div class="tu_border"><img src="images/tu_05.jpg" /></div>
+                        <div class="tu_border"><img src="<?= PIC_INFO_M . $result['src'];?>" /></div>
                         <div class="wed_dpzl_zi"><img src="images/info_icon_home.png" /><span><?= $result['name']; ?></span></div>
                         <div class="wed_dpzl_zi"><img src="images/info_icon_pin.png" /><span><?= $result['address']; ?></span></div>
                         <div class="wed_dpzl_zi"><img src="images/info_icon_tel.png" /><span><?= $result['tel']; ?></span></div>
@@ -92,12 +92,63 @@
 
             <div class="wed_dpzl_sxy">
                 <ul>
-                    <li><a href="#">上一頁</a></li>
-                    <li><a href="#">下一頁</a></li>
+                    <li><a href="javascript:;" data-action="prev">上一頁</a></li>
+                    <li><a href="javascript:;" data-action="next">下一頁</a></li>
                 </ul>
             </div>
-        </form>
+        </div>
     </div>
+
+    <script type="text/javascript">
+        var info_page = 1;
+        var info_total = <?= ceil($my_db->existRow('info', $where) / 2); ?>;
+
+        function searchInfo() {
+            $.ajax({
+                type: "get",
+                url: "ajax.php",
+                dataType: "json",
+                data: {
+                    action: "info-list",
+                    name: $("[name='name']").val(),
+                    cid: $("[name='cid']").val(),
+                    service: $("[name='service']").val(),
+                    pages: info_page
+                },
+                async: true,
+                success: function(json) {
+                    info_total = json.total;
+                    $("[data-list='info']").html("");
+
+                    $.each(json.list, function(con, val){
+                        var code = '<li><div class="tu_border"><img src="' + val.src + '" /></div><div class="wed_dpzl_zi"><img src="images/info_icon_home.png" /><span>' + val.name + '</span></div><div class="wed_dpzl_zi"><img src="images/info_icon_pin.png" /><span>' + val.address + '</span></div><div class="wed_dpzl_zi"><img src="images/info_icon_tel.png" /><span>' + val.tel + '</span></div><div class="wed_dpzl_zi"><a href="' + val.website + '" target="_blank"><img src="images/info_icon_www.png" /><span>' + val.website + '</span></a></div></li>';
+
+                        $("[data-list='info']").append(code);
+                    });
+                }
+            })
+        }
+
+        $("[data-action='search']").click(function(){
+            info_page = 1;
+            searchInfo();
+        });
+
+        $("[data-action='prev']").click(function(){
+            if (info_page > 1) {
+                info_page --;
+                searchInfo();
+            }
+        });
+
+        $("[data-action='next']").click(function(){
+            if (info_page < info_total) {
+                info_page ++;
+                searchInfo();
+            }
+        });
+
+    </script>
  
     <div class="wed_left">
         <ul class="wed_menu_ul">

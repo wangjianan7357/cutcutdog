@@ -32,7 +32,7 @@ if($_GET['action'] == 'set'){
 				case 'receive_email':
 					$email_arr = explode(';', $value);
 					foreach ($email_arr as $email) {
-						preg_match('/^[a-z0-9]+([._\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*){2,63}\.[a-z0-9]+$/i', $email, $match);
+						preg_match('/^[a-z0-9]+([._\-]*[a-z0-9])*@([a-z0-9\.]+[-a-z0-9]*){2,63}\.[a-z0-9]+$/i', $email, $match);
 						if(!$match){
 							warning($result['info'] . '格式有误');
 							break;
