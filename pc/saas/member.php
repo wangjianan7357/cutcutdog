@@ -136,6 +136,10 @@ if ($_REQUEST['action'] == 'login') {
     $list = array();
     $getdata = $my_db->selectRow('id, src, name, phone, email', 'member', $where);
     while ($result = mysql_fetch_array($getdata)) {
+        if ($where['type'] == 10) {
+            $result['src'] = strtr($result['src'], array('uploads/member/me' => ''));
+        }
+
         $list[$result['id']] = $result;
     }
 

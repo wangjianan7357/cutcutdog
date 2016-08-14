@@ -12,6 +12,9 @@ html{background:url(../images/bg.png);}
 .mgt25 {margin-top: 25px;}
 .cl1 {clear: both; overflow: hidden;}
 .bd1 {border-left: 1px solid #000000; border-top: 1px solid #000000; }
+.bd2 {border: 1px solid #000000; }
+.fl {float: left;}
+.fr {float: right;}
 
 .wed_width{width:950px; margin:0 auto;position:relative;}
 
@@ -70,6 +73,7 @@ html{background:url(../images/bg.png);}
 .foot_bg ul li{ list-style:none; display:inline-block; padding:0px 10px 0px 10px;}
 
 .title1 .txt {display: inline-block; background: #f79b76; border-radius: 5px; color: white; padding: 4px 10px; line-height: normal; font-size: 20px;}
+.title1 .arrow_right {width: 0; height: 0; border-bottom: 7px solid transparent; border-top: 7px solid transparent; border-left: 9px solid #f79b76; font-size: 0; line-height: 0; display: inline-block; margin: 0 10px;}
 
 .buy_catalog img {border: 1px solid #222;}
 
@@ -89,6 +93,13 @@ html{background:url(../images/bg.png);}
 .discuss .list .name {width: 70px; height: 20px; overflow: hidden;}
 .discuss .list .detail {width: 280px; height: 20px; overflow: hidden; padding: 0 20px 0 0;}
 .discuss .list .member {color: #666;}
+
+.discuss .list2 li {background-image: url(../images/discuss-btn-read.png); background-repeat: no-repeat; background-position: 41px 20px; background-color: white; height: 82px; padding: 0 0 0 125px;}
+.discuss .list2 li:nth-child(2) { background-color: #fffcd3; }
+.discuss .list2 li.new { background-image: url(../images/discuss-btn-new.png); }
+.discuss .list2 li .name { font-size: 18px; padding: 6px 0 0 0; color: #111; }
+.discuss .list2 li .cl1 { color: #555; line-height: 21px; }
+.discuss .list2 li .fr { width: 320px; }
 
 .photo .list {border-right: 1px solid #fff; border-bottom: 1px solid #fff; float: left;}
 

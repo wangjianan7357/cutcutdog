@@ -27,8 +27,10 @@ require('head.php');
 ?>
     <div class="row cl1">
         <div class="cap cell<?= $i; ?>">
-            <p><img src="images/discuss-<?= $i; ?>.gif"></p>
-            <p><?= $result['name']; ?></p>
+            <a href="discuss-list.php?id=<?= $result['id']; ?>">
+                <p><img src="images/discuss-<?= $i; ?>.gif"></p>
+                <p><?= $result['name']; ?></p>
+            </a>
         </div>
         <div class="desc">
         <?php
