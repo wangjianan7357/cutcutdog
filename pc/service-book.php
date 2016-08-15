@@ -49,7 +49,7 @@ require('head.php');
                 ?>
             </p>
             <p>查詢電話：<?= $member_arr['phone']; ?></p>
-            <p class="mgt10"><a href="service-book.php?id=<?= intval($_GET['id']); ?>" class="btn">立即預約</a></p>
+            <p class="mgt10"><a href="" class="btn">立即預約</a></p>
         </div>
 
         <p><img src="images/dog.png"></p>
