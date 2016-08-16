@@ -119,3 +119,5 @@ html{background:url(../images/bg.png);}
 .service_booking .input1 {height: 43px; line-height: 43px; padding: 0 0 8px;}
 .service_booking .cap {float: left; width: 110px; padding: 0 0 0 80px; font-size: 18px; letter-spacing: 4px;}
 .service_booking .input1 input.bd3 {height: 28px; margin: 5px 0 0 0;}
+
+.p_list1 .list { float: left; margin: 5px 8px 10px; font-size: 14px; height: 245px;}
