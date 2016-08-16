@@ -17,48 +17,92 @@ while ($result = mysql_fetch_array($getdata)) {
     $service[$result['id']] = $result;
 }
 
-$member_arr['service'] = array();
-$getdata = $my_db->selectRow('vid', 'property_content', array('pid' => $member_arr['id'], 'sort' => 3));
-while($result = mysql_fetch_array($getdata)) {
-    $member_arr['service'][] = $service[$result['vid']];
-}
-
 require('head.php');
 ?>
 
 <div class="title1">
     <div class="txt">上門服務</div>
+    <div class="arrow_right"></div>
+    <div class="txt">預約</div>
 </div>
 
 <br>
 
-<div class="member_detail cl1">
-    <div class="fl">
-        <img src="<?= $member_arr['src']; ?>" width="400">
-    </div>
-    <div class="fr desc">
-        <div class="txt">
-            <p>美容師名：<?= $member_arr['name']; ?></p>
-            <p>年資：<?= $member_arr['fields']['experience']; ?>年</p>
-            <p class="service">
-                服務範圍：
-                <?php 
-                    foreach ($member_arr['service'] as $val) {
-                        echo '<img src="' . PIC_SERVICE . $val['icon'] . '" height="40"> ';
-                    }
-                ?>
+<div class="service_booking cl1">
+    <div class="cl1 input1">
+        <div class="cap">服務類型</div>
+        <div class="">
+            <p class="fl">
+                <img src="images/service-icon-1.png" class="vc"> &nbsp;
+                寵物洗澡 &nbsp;&nbsp;&nbsp;
             </p>
-            <p>查詢電話：<?= $member_arr['phone']; ?></p>
-            <p class="mgt10"><a href="" class="btn">立即預約</a></p>
+            <p class="fl">
+                <img src="images/service-icon-2.png" class="vc"> &nbsp;
+                上門美容 &nbsp;&nbsp;&nbsp;
+            </p>
+            <p class="fl">
+                <img src="images/service-icon-3.png" class="vc"> &nbsp;
+                寵物傳心 &nbsp;&nbsp;&nbsp;
+            </p>
         </div>
-
-        <p><img src="images/dog.png"></p>
     </div>
+    <div class="cl1 input1">
+        <div class="cap">寵物類型</div>
+        <div>
+            <p class="fl">
+                <img src="images/service-icon-4.png" class="vc"> &nbsp;&nbsp;&nbsp;
+            </p>
+            <p class="fl">
+                <img src="images/service-icon-5.png" class="vc"> &nbsp;&nbsp;&nbsp;
+            </p>
+            <input class="fl bd3" size="30" placeholder="品種請填寫">
+        </div>
+    </div>
+    <div class="cl1 input1">
+        <div class="cap">寵物SIZE</div>
+        <div></div>
+    </div>
+    <div class="cl1 input1">
+        <div class="cap">姓名</div>
+        <div>
+            <input class="fl bd3" size="50" name="">
+        </div>
+    </div>
+    <div class="cl1 input1">
+        <div class="cap">電話</div>
+        <div>
+            <input class="fl bd3" size="50" name="">
+        </div>
+    </div>
+    <div class="cl1 input1">
+        <div class="cap">地址</div>
+        <div>
+            <input class="fl bd3" size="50" name="">
+        </div>
+    </div>
+    <div class="cl1 input1">
+        <div class="cap">上門日期</div>
+        <div>
+            <input class="fl bd3" size="50" name="">
+        </div>
+    </div>
+    <div class="cl1 input1">
+        <div class="cap">備註</div>
+        <div>
+            <input class="fl bd3" size="50" name="">
+        </div>
+    </div>
+    <div class="cl1 input1">
+        <div class="cap"></div>
+        <div>
+            <input class="fl bd3" size="50" name="">
+        </div>
+    </div>
+
+   
+        <p><img src="images/dog.png"></p>
+
 
 </div><br>
-
-<div class="service_detail">
-    <?= $member_arr['desp']; ?>
-</div>
 
 <?php require('foot.php'); ?>

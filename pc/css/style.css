@@ -14,8 +14,10 @@ html{background:url(../images/bg.png);}
 .cl1 {clear: both; overflow: hidden;}
 .bd1 {border-left: 1px solid #000000; border-top: 1px solid #000000; }
 .bd2 {border: 1px solid #000000; }
+.bd3 {border-radius: 8px; border: 2px solid #ef59a1;}
 .fl {float: left;}
 .fr {float: right;}
+.vc {vertical-align: middle;}
 
 .wed_width{width:950px; margin:0 auto;position:relative;}
 
@@ -112,3 +114,8 @@ html{background:url(../images/bg.png);}
 .member_detail .service img { vertical-align: middle; }
 
 .service_detail {font-size: 14px; line-height: 26px;}
+
+.service_booking {font-size: 14px; line-height: 26px;}
+.service_booking .input1 {height: 43px; line-height: 43px; padding: 0 0 8px;}
+.service_booking .cap {float: left; width: 110px; padding: 0 0 0 80px; font-size: 18px; letter-spacing: 4px;}
+.service_booking .input1 input.bd3 {height: 28px; margin: 5px 0 0 0;}
