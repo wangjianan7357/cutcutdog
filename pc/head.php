@@ -31,8 +31,11 @@
 
             <div class="demo">
                 <input type="hidden" name="cid" value="">
-                <dl class="select">
-                    <dt>地區</dt>
+                <dl class="select" data-select>
+                    <dt>
+                        <span class="fl">地區</span>
+                        <b></b>
+                    </dt>
                     <dd>
                         <ul>
                         <?php
@@ -51,8 +54,11 @@
                 </dl>
 
                 <input type="hidden" name="service" value="">
-                <dl class="select">
-                    <dt>服務範圍</dt>
+                <dl class="select" data-select>
+                    <dt>
+                        <span class="fl">服務範圍</span>
+                        <b></b>
+                    </dt>
                     <dd>
                         <ul>
                         <?php foreach ($cms_service_type as $key => $value) { ?>

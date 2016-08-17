@@ -1,13 +1,13 @@
 @charset "utf-8";
 /* CSS Document */
-body{font-family: Arial; font: 12px/1.5 arial; color: #666; margin: 0; padding:0}
+body{font-family: Arial; font: 12px/1.5 arial; color: #666; margin: 0; padding: 0}
 
 h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd,form,img,p{
-margin:0; padding:0; border:none; list-style-type:none;
+margin: 0; padding: 0; border: none; list-style-type: none;
 }
-a{ text-decoration:none; color:#3f3f3f;}
-a:hover{ color:#ff6599; text-decoration:none;}
-html{background:url(../images/bg.png);}
+a{ text-decoration: none; color:#3f3f3f;}
+a:hover{ color:#ff6599; text-decoration: none;}
+html{background: url(../images/bg.png);}
 
 .mgt10 {margin-top: 10px;}
 .mgt25 {margin-top: 25px;}
@@ -19,61 +19,69 @@ html{background:url(../images/bg.png);}
 .fr {float: right;}
 .vc {vertical-align: middle;}
 
-.wed_width{width:950px; margin:0 auto;position:relative;}
+.wed_width{width: 950px; margin: 0 auto; position: relative;}
 
-.wed_top{ height:125px;background:url(../images/top_bg.png); border-bottom:#bb9eca solid 17px;}
-.wed_top_logo{width:236px; height:91px; float:left; margin-top:40px;}
-.wed_top_logo_right{width:235px; height:93px; float:right;margin-top:47px;}
-.wed_top_f{ position:absolute; top: 10px;right: -38px; z-index:99999;}
+.wed_top{ height: 125px; background: url(../images/top_bg.png); border-bottom:#bb9eca solid 17px;}
+.wed_top_logo{width: 236px; height: 91px; float: left; margin-top: 40px;}
+.wed_top_logo_right{width: 235px; height: 93px; float: right; margin-top: 47px;}
+.wed_top_f{ position: absolute; top: 10px; right: -38px; z-index: 99999;}
 
-.wed_left {width:696px; margin-top:10px; float:left; overflow:hidden;}
-.wed_menu_ul{ height:85px;}
-.wed_menu_ul li{width:88px; background-color:#5cbeed; height:85px;border-radius: 5px; float:left; margin-right:10px; display:inline; text-align:center;}
-.wed_menu_ul li a{ color:#FFF; font-size:14px; line-height:30px; font-weight:bold;}
+.wed_left {width: 696px; margin-top: 10px; float: left; overflow: hidden;}
+.wed_menu_ul{ height: 85px;}
+.wed_menu_ul li{width: 88px; background-color:#5cbeed; height: 85px; border-radius: 5px; float: left; margin-right: 10px; display: inline; text-align: center;}
+.wed_menu_ul li a{ color:#FFF; font-size: 14px; line-height: 30px; font-weight: bold;}
 
-.banner{width:690px; height:190px; background-color:#bb9eca; margin:20px 0;}
-.wed_tlq{width:695px; height:205px; background:url(../images/tu_01.jpg) no-repeat; text-align:left; }
-.wed_tite{ line-height:55px; font-size:16px; color:#FFF; padding-left:30px; font-weight:700;}
-.wed_tite_zi{width:200px;font-size:14px; color:#000; padding-left:30px; }
+.banner{width: 690px; height: 190px; background-color:#bb9eca; margin: 20px 0;}
+.wed_tlq{width: 695px; height: 205px; background: url(../images/tu_01.jpg) no-repeat; text-align: left; }
+.wed_tite{ line-height: 55px; font-size: 16px; color:#FFF; padding-left: 30px; font-weight: 700;}
+.wed_tite_zi{width: 200px; font-size: 14px; color:#000; padding-left: 30px; }
 
-.wed_xpq{width:696px; height:205px; margin-top:20px; background:url(../images/tu_02.jpg) no-repeat; text-align:left; }
-.wed_xpq_tite{ line-height:55px; font-size:16px; color:#5dbeeb; padding-left:210px; font-weight:700;}
-.wed_xpq_zi{width:160px;font-size:14px; color:#000; padding-left:210px; }
+.wed_xpq{width: 696px; height: 205px; margin-top: 20px; background: url(../images/tu_02.jpg) no-repeat; text-align: left; }
+.wed_xpq_tite{ line-height: 55px; font-size: 16px; color:#5dbeeb; padding-left: 210px; font-weight: 700;}
+.wed_xpq_zi{width: 160px; font-size: 14px; color:#000; padding-left: 210px; }
 
-.wed_buy{width:696px; height:205px; margin-top:20px; background:url(../images/tu_03.jpg) no-repeat; text-align:left; }
-.wed_buy_tite{ line-height:55px; font-size:16px; color:#5dbeeb; padding-left:20px; font-weight:700;}
-.wed_buy_zi{width:160px;font-size:14px; color:#000; padding-left:20px; }
+.wed_buy{width: 696px; height: 205px; margin-top: 20px; background: url(../images/tu_03.jpg) no-repeat; text-align: left; }
+.wed_buy_tite{ line-height: 55px; font-size: 16px; color:#5dbeeb; padding-left: 20px; font-weight: 700;}
+.wed_buy_zi{width: 160px; font-size: 14px; color:#000; padding-left: 20px; }
 
-.wed_right{width:210px; float:right;margin-top:10px;}
-.wed_right_grzx{width:200px; height:80px; background-color:#59bf97; border:#fff46a solid 5px;border-radius: 5px; text-align:center;}
-.wed_right_sece{ margin-top:30px;}
-.wed_right_sece span{ font-weight:bold;}
-.text1{width:150px; border:none; border:#5cbeed solid 2px;border-radius: 10px; height:25px;}
+.wed_right{width: 210px; float: right; margin-top: 10px;}
+.wed_right_grzx{width: 200px; height: 80px; background-color:#59bf97; border: #fff46a solid 5px; border-radius: 5px; text-align: center;}
+.wed_right_sece{ margin-top: 30px;}
+.wed_right_sece span{ font-weight: bold;}
+.text1{width: 150px; border: none; border: #5cbeed solid 2px; border-radius: 10px; height: 25px;}
 
-.demo{width:210px;margin:10px auto 0 auto;}
+.demo{width: 210px; margin: 10px auto 0 auto;}
 
 /* select */
-.select{position:relative;margin:20px 10px;}
-.select dt{height:26px;display:inline-block;border:#5cbeed solid 2px;border-radius: 10px;background:#fcfcfb url(../images/ico.gif) no-repeat 159px center;line-height:28px;font-weight:bold;padding-left:10px;cursor:pointer;width:170px;padding-right:12px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;position:relative;z-index:99;}
+.select {position: relative; margin: 20px 10px;}
+.select dt{height: 26px; display: inline-block; border: #5cbeed solid 2px; border-radius: 10px; line-height: 26px; font-weight: bold; padding-left: 10px; cursor: pointer; width: 170px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; position: relative; z-index: 99; background: white; }
+.select dt b {background: url(../images/ico.png) no-repeat center center #5cbeed; float: right; width: 26px; height: 26px;}
 
-.select dd{position:absolute;left:0;top:29px;background:#fff;display:none; z-index:9999;}
-.select dd ul{padding:4px;width:170px;max-height:250px;overflow:auto;}
-.select dd ul li a{line-height:28px;display:block;padding:0 8px;}
-.select dd ul li a:hover{background:#f5f5f5;}
-.wed_right_soso{width:150px; height:25px; text-align:center; background-color:#9073b3; border-radius: 10px; color:#fff; margin:0 auto; font-weight:bold; border: none; display: block; cursor: pointer;}
+.select dd {position: absolute; left: 0; top: 29px; background: #fff; display: none; z-index: 9999;}
+.select dd ul {padding: 4px; width: 170px; max-height: 250px; overflow: auto;}
+.select dd ul li a{line-height: 28px; display: block; padding: 0 8px;}
+.select dd ul li a:hover{background: #f5f5f5;}
+.wed_right_soso{width: 150px; height: 25px; text-align: center; background-color:#9073b3; border-radius: 10px; color:#fff; margin: 0 auto; font-weight: bold; border: none; display: block; cursor: pointer;}
 
-.wed_dpzl{ margin-top:20px; overflow:hidden; text-align:center;}
-.wed_dpzl ul li{ list-style:none; margin-bottom:20px; overflow:hidden;}
-.wed_dpzl ul li .tu_border img{width:180px; height:180px; background-color:#FFF; border:#FFF 2px solid;border-radius: 20px;padding: 5px;}
-.wed_right_sece .wed_dpzl_zi{ text-align:left; margin-top:5px; padding-left:10px;}
-.wed_right_sece .wed_dpzl_zi span{ font-weight:normal; font-size:13px; vertical-align:top; padding-left:5px;}
-.wed_dpzl_sxy{ overflow:hidden; height:30px; text-align:center;}
-.wed_dpzl_sxy ul li{ list-style:none; margin-left:10px; display:inline-block; background-color:#FFF;border-radius: 10px;width:70px; text-align:center;}
+.select_book {margin: 10px 0;}
+.select_book dt {border: 2px solid #ef59a1; width: 310px; line-height: 32px; height: 32px;}
+.select_book dt b {background-color: #ef59a1; height: 32px;}
 
-.foot{ clear:both;width: 950px;margin: 0 auto; padding-top:10px;}
-.foot_bg{ background-color:#FFF;height:100px; text-align:center;}
-.foot_bg ul{ padding-top:20px;}
-.foot_bg ul li{ list-style:none; display:inline-block; padding:0px 10px 0px 10px;}
+.select_book dd {top: 36px;}
+.select_book dd ul {width: 290px;}
+
+.wed_dpzl{ margin-top: 20px; overflow: hidden; text-align: center;}
+.wed_dpzl ul li{ list-style: none; margin-bottom: 20px; overflow: hidden;}
+.wed_dpzl ul li .tu_border img{width: 180px; height: 180px; background-color:#FFF; border: #FFF 2px solid; border-radius: 20px; padding: 5px;}
+.wed_right_sece .wed_dpzl_zi{ text-align: left; margin-top: 5px; padding-left: 10px;}
+.wed_right_sece .wed_dpzl_zi span{ font-weight: normal; font-size: 13px; vertical-align: top; padding-left: 5px;}
+.wed_dpzl_sxy{ overflow: hidden; height: 30px; text-align: center;}
+.wed_dpzl_sxy ul li{ list-style: none; margin-left: 10px; display: inline-block; background-color:#FFF; border-radius: 10px; width: 70px; text-align: center;}
+
+.foot{ clear: both; width: 950px; margin: 0 auto; padding-top: 10px;}
+.foot_bg{ background-color:#FFF; height: 100px; text-align: center;}
+.foot_bg ul{ padding-top: 20px;}
+.foot_bg ul li{ list-style: none; display: inline-block; padding: 0px 10px 0px 10px;}
 
 .title1 .txt {display: inline-block; background: #f79b76; border-radius: 5px; color: white; padding: 4px 10px; line-height: normal; font-size: 20px;}
 .title1 .arrow_right {width: 0; height: 0; border-bottom: 7px solid transparent; border-top: 7px solid transparent; border-left: 9px solid #f79b76; font-size: 0; line-height: 0; display: inline-block; margin: 0 10px;}
@@ -98,7 +106,7 @@ html{background:url(../images/bg.png);}
 .discuss .list .member {color: #666;}
 
 .discuss .list2 li {background-image: url(../images/discuss-btn-read.png); background-repeat: no-repeat; background-position: 41px 20px; background-color: white; height: 82px; padding: 0 0 0 125px;}
-.discuss .list2 li:nth-child(2) { background-color: #fffcd3; }
+.discuss .list2 li: nth-child(2) { background-color: #fffcd3; }
 .discuss .list2 li.new { background-image: url(../images/discuss-btn-new.png); }
 .discuss .list2 li .name { font-size: 18px; padding: 6px 0 0 0; color: #111; }
 .discuss .list2 li .cl1 { color: #555; line-height: 21px; }
@@ -107,6 +115,7 @@ html{background:url(../images/bg.png);}
 .photo .list {border-right: 1px solid #fff; border-bottom: 1px solid #fff; float: left;}
 
 .two1 {position: absolute; top: 313px; height: 65px; overflow: hidden; left: 520px; }
+.two2 {position: absolute; top: 423px; left: 10px; }
 
 .member_detail .desc { width: 260px; line-height: 34px; font-size: 18px; }
 .member_detail .desc .txt {height: 230px;}
@@ -115,9 +124,12 @@ html{background:url(../images/bg.png);}
 
 .service_detail {font-size: 14px; line-height: 26px;}
 
-.service_booking {font-size: 14px; line-height: 26px;}
+.service_booking {font-size: 14px; line-height: 26px; position: relative; min-height: 600px;}
 .service_booking .input1 {height: 43px; line-height: 43px; padding: 0 0 8px;}
 .service_booking .cap {float: left; width: 110px; padding: 0 0 0 80px; font-size: 18px; letter-spacing: 4px;}
 .service_booking .input1 input.bd3 {height: 28px; margin: 5px 0 0 0;}
+.service_booking .size .fl {color: #ef59a1; background: url(../images/service-icon-10.png); width: 58px; height: 36px; text-align: center; line-height: 16px; font-size: 12px; padding: 3px 0 0 0; margin: 0 10px 0 0;}
+.service_booking .size .fl b {font-size: 14px;}
+.service_booking .input2 {float: right; background: #ef59a1; border-radius: 8px; font-size: 17px; font-weight: bold; border: none; color: white; padding: 7px 18px; margin: 15px 185px 0 0; cursor: pointer;}
 
 .p_list1 .list { float: left; margin: 5px 8px 10px; font-size: 14px; height: 245px;}

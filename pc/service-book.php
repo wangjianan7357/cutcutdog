@@ -28,7 +28,7 @@ require('head.php');
 
 <br>
 
-<div class="service_booking cl1">
+<form class="service_booking cl1">
     <div class="cl1 input1">
         <div class="cap">服務類型</div>
         <div class="">
@@ -60,7 +60,13 @@ require('head.php');
     </div>
     <div class="cl1 input1">
         <div class="cap">寵物SIZE</div>
-        <div></div>
+        <div class="size">
+            <p class="fl"><b>XS</b><br>&lt;3KG</p>
+            <p class="fl"><b>S</b><br>3-7KG</p>
+            <p class="fl"><b>M</b><br>8-12KG</p>
+            <p class="fl"><b>L</b><br>13-20KG</p>
+            <p class="fl"><b>XL</b><br>&gt;21KG</p>
+        </div>
     </div>
     <div class="cl1 input1">
         <div class="cap">姓名</div>
@@ -92,17 +98,31 @@ require('head.php');
             <input class="fl bd3" size="50" name="">
         </div>
     </div>
-    <div class="cl1 input1">
-        <div class="cap"></div>
-        <div>
-            <input class="fl bd3" size="50" name="">
+    <div class="input1">
+        <div class="cap">&nbsp;</div>
+        <div class="fl">
+            <dl class="select select_book" data-select>
+                <dt>
+                    <span class="fl">没有指定美容師</span>
+                    <b></b>
+                </dt>
+                <dd>
+                    <ul>
+                    <?php foreach ($cms_service_type as $key => $value) { ?>
+                        <li><a href="javascript:;" name-service="<?= $key; ?>"><?= $value; ?></a></li>
+                    <?php } ?>
+                    </ul>
+                </dd>
+            </dl>
         </div>
     </div>
+    <div class="cl1"></div>
+    <div class="cl1">
+        <input type="submit" value="提交" class="input2">
+    </div>
 
-   
-        <p><img src="images/dog.png"></p>
+    <p class="two2"><img src="images/two.png"></p>
 
-
-</div><br>
+</form><br>
 
 <?php require('foot.php'); ?>
