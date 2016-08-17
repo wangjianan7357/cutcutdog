@@ -5,6 +5,9 @@ require('include/initial.php');
 
 $cur_data = $my_db->fetchOne('product', array('id' => $_GET['id']));
 
+$cid = explode(',', $cur_data['cid']);
+$cur_catalog = $my_db->fetchOne('catalog', array('id' => $cid[count($cid) - 2]));
+
 require('head.php');
 ?>
 
@@ -14,15 +17,20 @@ require('head.php');
     <div class="txt"><?= $cur_catalog['name']; ?></div>
 </div>
 
-<div class="photo">
-<?php
-    $getdata = $my_db->selectRow('*', 'product', array('cid' => $_GET['id'] . ','), array('method' => 'DESC', 'field' => 'date'), '0,18');
-    while ($result = mysql_fetch_array($getdata)) {
-?>
+<div class="product_detail mgt10">
+    <div>
+        <img src="<?= PIC_PRODUCT_M . $cur_data['src']; ?>" width="500">
+    </div>
 
-    <a class="list" href=""><img src="<?= PIC_PRODUCT_M . $result['src']; ?>" width="231" height="231" /></a>
-
-<?php } ?>
+    <div>
+        產品名稱：<?= $cur_data['name']; ?>
+    </div>
+    <div>
+        價錢：$<?= $cur_data['sale']; ?>
+    </div>
+    <div>
+        產品資料：<?= $cur_data['desc']; ?>
+    </div>
 
 </div>
 

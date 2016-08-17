@@ -133,3 +133,5 @@ html{background: url(../images/bg.png);}
 .service_booking .input2 {float: right; background: #ef59a1; border-radius: 8px; font-size: 17px; font-weight: bold; border: none; color: white; padding: 7px 18px; margin: 15px 185px 0 0; cursor: pointer;}
 
 .p_list1 .list { float: left; margin: 5px 8px 10px; font-size: 14px; height: 245px;}
+
+.product_detail {background: white; padding: 10px;}
