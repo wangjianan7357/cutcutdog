@@ -11,12 +11,6 @@ Function.prototype.bind = function() {
 	};
 };
 
-
-function verifyImg(path){
-	var d = new Date();
-	document.getElementById('verify').src = path + "verifyimg.php?t=" + d.toTimeString();
-}
-
 function setTab(name, cur){
 	for(i = 1; i <= 100; i++){
 		if(!document.getElementById(name + i)) break;
@@ -28,3 +22,23 @@ function setTab(name, cur){
 	}
 }
 
+
+function addToCart(id, url) {
+    var num = 1;
+
+    $.ajax({
+        type: "post",
+        url: "/ajax.php?action=add_cart&num=" + num + "&id=" + id,
+        data: {
+            wanturl: window.location.href
+        },
+        success: function (data) {
+        	if (url) {
+        		document.location.href = url;
+        	} else {
+        		alert("成功加入！");
+        	}
+            //refreshCart();
+        }
+    });
+}

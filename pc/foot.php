@@ -16,6 +16,7 @@
     </div>
 </div> 
 
+<script type="text/javascript" src="javascript/script.js"></script>
 <script type="text/javascript">
 $("[data-select]").each(function(){
     var s = $(this);

@@ -22,14 +22,14 @@ require('head.php');
         <img src="<?= PIC_PRODUCT_M . $cur_data['src']; ?>" width="500">
     </div>
 
-    <div>
-        產品名稱：<?= $cur_data['name']; ?>
+    <div class="desc1">
+        <b class="cap">產品名稱：</b><?= $cur_data['name']; ?>
     </div>
-    <div>
-        價錢：$<?= $cur_data['sale']; ?>
+    <div class="desc1">
+        <b class="cap">價錢：</b>$<?= $cur_data['sale']; ?>
     </div>
-    <div>
-        產品資料：<?= $cur_data['desc']; ?>
+    <div class="desc1">
+        <b class="cap">產品資料：</b><?= $cur_data['desc']; ?>
     </div>
 
 </div>

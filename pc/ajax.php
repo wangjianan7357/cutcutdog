@@ -4,7 +4,17 @@ require_once('include/fun_web.php');
 require_once('include/common.php');
 require_once('include/initial.php');
 
-if ($_REQUEST['action'] == 'info-list') {
+if ($_REQUEST['action'] == 'add_cart') {
+    $product = array();
+    $product['id'] = $_REQUEST['id'];
+    $product['num'] = $_REQUEST['num'];
+
+    if ($cur_data = $my_db->fetchOne('product', array('id' => intval($_REQUEST['id']), 'valid' => 1))) {
+        $cart = new Cart();
+        $cart->addCart($product);
+    }
+
+} else if ($_REQUEST['action'] == 'info-list') {
 
     $data = array();
 
