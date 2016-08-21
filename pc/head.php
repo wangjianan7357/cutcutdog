@@ -5,7 +5,11 @@
 <title>PetChat-寵物潮流</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="javascript/jquery.min.js"></script>
-
+<?php
+    if($err) echo '<script language="javascript">alert("' . $err . '"); history.go(-1); </script>';
+    if($msg) echo '<script language="javascript">alert("' . $msg . '"); </script>';
+    if($href) echo '<script language="javascript">document.location.href = "' . $href . '"; </script>';
+?>
 </head>
 
 <body>

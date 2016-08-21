@@ -18,6 +18,7 @@ html{background: url(../images/bg.png);}
 .bd3 {border-radius: 8px; border: 2px solid #ef59a1;}
 .fl {float: left;}
 .fr {float: right;}
+.xc {text-align: center;}
 .vc {vertical-align: middle;}
 
 .wed_width{width: 950px; margin: 0 auto; position: relative;}
@@ -148,3 +149,8 @@ html{background: url(../images/bg.png);}
 .cart_frame .btn_next {background: #9073b3; display: inline-block; padding: 4px 10px; color: white; border-radius: 5px; font-size: 16px; }
 .cart_frame .btn_refresh {background: #59be96; display: inline-block; padding: 4px 10px; color: white; border-radius: 5px; font-size: 16px; }
 .cart_frame .all { padding: 4px 15px; font-size: 16px; display: inline-block; }
+
+.form_item {padding: 8px; width: 280px; margin: 0 auto; font-size: 15px; line-height: 26px;}
+.form_item .input_txt {height: 24px; width: 210px; }
+.form_item label {display: inline-block; padding: 0 10px; width: 30px; }
+.form_item .btn_login {background: #56bf96; border-radius: 5px; border: none; width: 90%; color: white; line-height: 34px; font-size: 16px; cursor: pointer;}

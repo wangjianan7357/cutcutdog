@@ -5,17 +5,16 @@ function loginTimeout(){
 	session_start();
 	header('Cache-control: private');
 
-	if(!$_COOKIE['cookie']['memberid'] || !$_COOKIE['cookie']['password']){
+	if(!$_COOKIE['cookie']['memberid'] || !$_COOKIE['cookie']['pass']){
 		header('Content-type:text/html;charset=utf-8');
 		setcookie('cookie[wanturl]', $_SERVER['REQUEST_URI'], time() + 99999, '/');
 		echo '<script language="javascript">alert("請先登錄"); top.location.href = "' . L_PATH . 'login.php";</script>';
 		exit();
 	}
 	else {
-		setcookie('cookie[password]', $_COOKIE['cookie']['password'], time() + systemConfig('cms_login_time') * 60, '/');
+		setcookie('cookie[password]', $_COOKIE['cookie']['pass'], time() + systemConfig('cms_login_time') * 60, '/');
 		setcookie('cookie[memberid]', $_COOKIE['cookie']['memberid'], time() + systemConfig('cms_login_time') * 60, '/');
-		setcookie('cookie[firstname]', $_COOKIE['cookie']['firstname'], time() + systemConfig('cms_login_time') * 60, '/');
-		setcookie('cookie[lastname]', $_COOKIE['cookie']['lastname'], time() + systemConfig('cms_login_time') * 60, '/');
+		setcookie('cookie[name]', $_COOKIE['cookie']['name'], time() + systemConfig('cms_login_time') * 60, '/');
 	}
 }
 
