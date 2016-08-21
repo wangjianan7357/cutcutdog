@@ -32,6 +32,13 @@ require('head.php');
         <b class="cap">產品資料：</b><?= $cur_data['desc']; ?>
     </div>
 
+    <div class="cl1 cart_btn mgt5">
+        <a href="javascript:;" onclick="addToCart(<?= $cur_data['id']; ?>, 'cart.php')" style="background: #59be96;">立即購買</a>
+        <a href="cart.php" style="background: #5abeef;">檢視購物車</a>
+        <a href="javascript:;" onclick="addToCart(<?= $cur_data['id']; ?>)" style="background: #9073b3;">加入購物車</a>
+        <!--<a href="" style="background: #f89a76;">收藏</a>-->
+    </div>
+
 </div>
 
 <?php require('foot.php'); ?>
