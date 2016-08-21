@@ -42,3 +42,19 @@ function addToCart(id, url) {
         }
     });
 }
+
+function submitFormAddAttr(id, attr){
+    var attrs = eval(attr);
+    var getform = document.getElementById(id);
+
+    for (k in attrs) {
+        var hidden = document.createElement("input");
+
+        hidden.setAttribute("type", "hidden");
+        hidden.setAttribute("name", k);
+        hidden.setAttribute("value", attrs[k]);
+        getform.appendChild(hidden);
+    }
+
+    getform.submit();
+}

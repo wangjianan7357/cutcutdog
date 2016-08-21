@@ -69,7 +69,8 @@ require('head.php');
             <input type="password" class="input_txt" name="sbt_pass">
         </div>
         <div class="form_item xc">
-            <input type="submit" class="btn_login" value="登录">
+            <input type="submit" class="btn_login" value="登錄">
+            <p><a href="register.php">免費註冊</a></p>
         </div>
     </form>
 </div>

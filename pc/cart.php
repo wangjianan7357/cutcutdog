@@ -183,23 +183,23 @@ require('head.php');
 
         <?php } else if ($step == 2) { ?>
 
-        <div class="mod_person_edit_top clearfix">
-            <div class="header_img edit_name">
+        <div class="cl1">
+            <div class="form_item">
                 <label>姓名：</label>
                 <input type="text" name="sbt_name" class="input_txt" value="">
             </div>
-            <div class="header_img edit_name">
+            <div class="form_item">
                 <label>聯繫電話：</label>
                 <input type="text" name="sbt_phone" class="input_txt" value="">
             </div>
-            <div style="width: 600px;" class="header_img edit_name">
+            <div class="form_item">
                 <label>住所地址：</label>
-                <input type="text" style="width: 500px;" name="sbt_address" class="input_txt" value="">
+                <textarea style="width: 250px;" name="sbt_address"></textarea>
             </div>
         </div>
         
         <div class="cl1"> 
-            <div class="fr"> <a href="javascript:;" class="btn_next" onclick="cart.submit()">確認付款</a> </div> 
+            <div class="fr"><a href="javascript:;" class="btn_next" onclick="cart.submit()">確認付款</a> </div> 
         </div> 
 
         <?php } ?>
