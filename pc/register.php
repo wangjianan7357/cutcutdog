@@ -13,13 +13,30 @@ header('Cache-control: private');
 if($_POST['register'] == 'true'){
     $_POST['sbt_email'] = trim($_POST['sbt_email']);
 
-    $chk_post = new ChkRequest('sbt_', $con_lang_current);
-    $chk_post->chkExist(array('email' => '電子郵箱', 'phone' => '聯繫電話'), array('name' => 'member'));
-    $chk_post->chkFormat(array('email' => '电子邮箱'), 'define:email');
-    $chk_post->chkPassword(array('password' => '密码'), array('confirm' => '确认密码'));
-    //$chk_post->chkEmpty(array('firstname' => C_FIRST_NAME, 'lastname' => C_LAST_NAME, 'address' => C_ADDRESS));
+    if (!$_POST['sbt_account']) {
+        $err = '請輸入賬號';
+    }
     
-    $_POST['sbt_username'] = $_POST['sbt_email'];
+    if (!$_POST['sbt_pass']) {
+        $err = '請輸入密碼';
+    }
+
+    if ($_POST['sbt_pass'] != $_POST['sbt_confirm']) {
+        $err = '密碼兩次輸入不一致';
+    }
+    
+    
+    if (!$_POST['sbt_phone']) {
+        $err = '請輸入電話';
+    }
+    
+    if (!$_POST['sbt_email']) {
+        $err = '請輸入郵箱';
+    }
+    
+    if ($my_db->existRow('member', array('name' => $_POST['sbt_account']))) {
+        $err = '賬號已被使用';
+    }
 
     if(!$err){
         $_POST['sbt_id'] = 100000;
@@ -27,27 +44,21 @@ if($_POST['register'] == 'true'){
             $_POST['sbt_id'] = $my_db->selectMax('member') + 1;
         }
 
-        $_POST['sbt_valid'] = 1;
-        $_POST['sbt_money'] = 0;
-        $_POST['sbt_status'] = 0;
-        $_POST['sbt_password'] = md5($_POST['sbt_password']);
-
-        $tmp = array();
-        foreach($_POST as $key => $value){
-            if(strpos($key, 'sbt_fields_') === 0){
-                $tmp[strtr($key, array('sbt_fields_' => ''))] = $value;
-            }
-        }
-        $_POST['sbt_fields'] = json_encode_un($tmp);
-
-        $submit = array();
-        $submit_arr = array('id', 'email', 'password', 'username', 'sex', 'mobile', 'country', 'city', 'postcode', 'address', 'money', 'fields', 'status', 'valid');
-
-        for($i = 0; $i < count($submit_arr); $i++){
-            if (isset($_POST['sbt_' . $submit_arr[$i]])) {
-                $submit += array($submit_arr[$i] => $_POST['sbt_' . $submit_arr[$i]]);
-            }
-        }
+        $submit = array(
+            'id' => $_POST['sbt_id'],
+            'name' => trim($_POST['sbt_account']),
+            'pass' => md5(trim($_POST['sbt_pass'])),
+            'salt' => '',
+            'src' => '',
+            'sex' => '',
+            'realname' => '',
+            'email' => trim($_POST['sbt_email']),
+            'address' => trim($_POST['sbt_address']),
+            'phone' => trim($_POST['sbt_phone']),
+            'type' => 1,
+            'fields' => '',
+            'desp' => ''
+        );
 
         if ($my_db->saveRow('member', $submit)) {
             $_SESSION['memberid'] = $_POST['sbt_id'];
@@ -56,7 +67,7 @@ if($_POST['register'] == 'true'){
             setcookie('cookie[pass]', $_POST['sbt_pass'], time() + systemConfig('cms_login_time') * 60, '/');
             setcookie('cookie[name]', $_POST['sbt_name'], time() + systemConfig('cms_login_time') * 60, '/');
 
-            header('Location: index.html');
+            header('Location: index.php');
             exit;
         }
         else {
@@ -73,19 +84,36 @@ require('head.php');
 </div>
 
 <div class="mgt10">
-    <form method="post" action="login.php">
-        <input type="hidden" name="login" value="true">
+    <form method="post" action="register.php">
+        <input type="hidden" name="register" value="true">
 
         <div class="form_item">
-            <label>賬號</label>
-            <input type="text" class="input_txt" name="sbt_account">
+            <label>賬號 <span style=" color:red ;">*</span></label>
+            <input type="text" class="input_txt" name="sbt_account" placeholder="請輸入賬號">
         </div>
         <div class="form_item">
-            <label>密碼</label>
-            <input type="password" class="input_txt" name="sbt_pass">
+            <label>密碼 <span style=" color:red ;">*</span></label>
+            <input type="password" class="input_txt" name="sbt_pass" placeholder="請輸入密碼">
         </div>
+        <div class="form_item">
+            <label>確認 <span style=" color:red ;">*</span></label>
+            <input type="password" class="input_txt" name="sbt_confirm" placeholder="請確認密碼">
+        </div>
+        <div class="form_item">
+            <label>電話 <span style=" color:red ;">*</span></label>
+            <input type="text" class="input_txt" name="sbt_phone" placeholder="請輸入電話">
+        </div>
+        <div class="form_item">
+            <label>郵箱 <span style=" color:red ;">*</span></label>
+            <input type="text" class="input_txt" name="sbt_email" placeholder="請輸入郵箱">
+        </div>
+        <div class="form_item">
+            <label>地址 <span style=" color:red ;">*</span></label>
+            <input type="text" class="input_txt" name="sbt_address" placeholder="請輸入地址">
+        </div>
+
         <div class="form_item xc">
-            <input type="submit" class="btn_login" value="登录">
+            <input type="submit" class="btn_login" value="註冊">
             <p><a href="login.php">登錄</a></p>
         </div>
     </form>

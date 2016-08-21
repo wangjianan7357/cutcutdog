@@ -152,7 +152,7 @@ html{background: url(../images/bg.png);}
 
 .form_item {padding: 8px; width: 280px; margin: 0 auto; font-size: 15px; line-height: 26px;}
 .form_item .input_txt {height: 24px; width: 210px; }
-.form_item label {display: inline-block; padding: 0 10px; width: 30px; }
+.form_item label {display: inline-block; padding: 0 10px; width: 40px; }
 .form_item .btn_login {background: #56bf96; border-radius: 5px; border: none; width: 90%; color: white; line-height: 34px; font-size: 16px; cursor: pointer;}
 
 .cart_frame .form_item {width: 400px;}
