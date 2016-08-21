@@ -177,41 +177,96 @@ require('head.php');
     <div class="txt">購物車</div>
 </div>
 
-    <ul class="mui-table-view" id="list-view" style=" background-color:#fff;">
-        <?php
-            $code = '';
-            $amonut = 0;
+<div class="cart_frame mgt10">
+    <form method="post" action="cart.php" id="cart" <?=$step == 3 ? 'target="_blank"' : '';?>>
+        <input type="hidden" name="step" value="<?=$step;?>" />
 
-            if ($goods = $cart->getCart()) {
-                foreach ($goods as $value) {
-                    $amonut += $value['sale'] * $value['num'];
-        ?>
+        <?php if ($step == 1) { ?>
+        <table class="cart_list">
+            <?php
+                $code = '';
+                $amount = 0;
 
-        <li class="cart_list"> 
-            <a class="pic inblock" href="<?=L_PATH . $value['path'];?>-p.html" target="_blank"> 
-                <img src="<?=PIC_PRODUCT_M . $value['src'];?>"> 
-            </a> 
-            <div class="tit inblock item_name_block inblock_top"> 
-                <a href="<?=L_PATH . $value['path'];?>-p.html" target="_blank">
-                    <?= $value['name']; ?><br>
-                </a> 
+                if ($goods = $cart->getCart()) {
+                    foreach ($goods as $value) {
+                        $amount += $value['sale'] * $value['num'];
+            ?>
+            <tr> 
+                <td>
+                    <a class="pic" href="<?=L_PATH . $value['path'];?>-p.html" target="_blank"> 
+                        <img src="<?=PIC_PRODUCT_M . $value['src'];?>" width="150"> 
+                    </a> 
+                </td>
+                <td class="cap"><?= $value['name']; ?></td> 
+                <td class="num">
+                    <input name="product[<?=$value['id'];?>][num]" type="text" value="<?=$value['num'];?>" size="4"> 
+                </td> 
+                <td class="count">$<?= sprintf("%01.2f", $value['sale'] * $value['num']);?></td> 
+                <td class="btn"> 
+                    <a href="cart.php?delete=<?=$value['id'];?>">刪除</a> 
+                </td>
+            </tr>  
+            <?php } } ?>
+
+        </table>
+
+        <div class="cl1"> 
+            <div class="fr"> <a href="javascript:;" class="btn_next" onclick="cart.submit()">下一步</a> </div> 
+            <div class="fr">
+                <span class="all">總價 $<?=sprintf("%01.2f", $amount);?></span>
             </div> 
+            <div class="fr"> <a href="javascript:;" class="btn_refresh" onclick="submitFormAddAttr('cart', '({method:\'refresh\'})')">刷新購物車</a></div>
+        </div>
 
-            <span class="price inblock"><?= $value['sale']; ?></span> 
-            <div class="num inblock">
-                <input name="product[<?=$value['id'];?>][num]" type="text" value="<?=$value['num'];?>" class="inblock" style="border: 1px solid #c8c7cc;"> 
+        <?php } else if ($step == 2) { ?>
+
+        <div class="cart3_tit"> 
+            <div class="cart3_tit_l dyq_index"> 
+                <em class="cart3_icon cart3_icon1"></em> 
+                <a class="fl label" href="#">客户联系方式</a> 
             </div> 
+        </div>
 
-            <span class="inblock count"> <strong><?= $value['sale'] * $value['num'];?></strong> </span> 
-            <!--<span class="weight inblock"> <span>0.37kg</span> </span> -->
-           
-            <span class="cart3_btn inblock" style=" padding-left:80px;"> 
-                <a href="cart.php?delete=<?=$value['id'];?>" style=" color:#F00;">刪除</a> 
-            </span>
-        </li>  
-        <?php } } ?>
+        <div class="mod_person_edit_top clearfix" style="margin: 0 0 0 300px;">
+            <!--
+            <div class="header_img edit_name">
+                <label for="">电子邮件：</label>
+                <input type="text" name="sbt_email" class="input_txt" value="<?=$cur_member['email'];?>">
+            </div>
+            -->
+            <div class="header_img edit_name">
+                <label for="">姓名：</label>
+                <input type="text" name="sbt_name" class="input_txt" value="<?=$cur_address['name'];?>">
+            </div>
+            <div class="header_img edit_name">
+                <label for="">电话：</label>
+                <input type="text" name="sbt_phone" class="input_txt" value="<?=$cur_address['phone'];?>">
+            </div>
+            <div style="width: 600px;" class="header_img edit_name">
+                <label for="">地址：</label>
+                <input type="text" style="width: 500px;" name="sbt_address" class="input_txt" value="<?=$cur_address['address'];?>">
+            </div>
+            <div class="header_img edit_name">
+                <label for="">邮编：</label>
+                <input type="text" name="sbt_code" class="input_txt" value="<?=$cur_address['code'];?>">
+            </div>
+            <div style="width: 600px;" class="header_img edit_name">
+                <label for="">备注：</label>
+                <input type="text" style="width: 500px;" name="sbt_remark" class="input_txt" value="">
+            </div>
+        </div>
+        
+        <div style="margin: 30px auto; width: 200px;"> 
+            <input type="submit" class="cart_btn1" style="margin: 0 40px 0 0;" value="下一步">
+        </div> 
 
-    </ul>
+        <?php } else if ($step == 3) { ?>
+
+
+        <?php } ?>
+
+    </form>
+</div>
 
 <div class="mui-table-view-cell mui-media" id="checkout" style="display: none;">
     <a href="checkout.html" data-action="openwindow">

@@ -8,7 +8,7 @@ function loginTimeout(){
 	if(!$_COOKIE['cookie']['memberid'] || !$_COOKIE['cookie']['password']){
 		header('Content-type:text/html;charset=utf-8');
 		setcookie('cookie[wanturl]', $_SERVER['REQUEST_URI'], time() + 99999, '/');
-		echo '<script language="javascript">alert("' . C_PLEASE_LOGIN . '"); top.location.href = "' . L_PATH . 'member/login.php";</script>';
+		echo '<script language="javascript">alert("請先登錄"); top.location.href = "' . L_PATH . 'login.php";</script>';
 		exit();
 	}
 	else {
