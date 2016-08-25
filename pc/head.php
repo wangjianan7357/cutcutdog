@@ -171,4 +171,4 @@
             <li><a href="contact.php">聯繫我們 <img src="images/ico_07.png" /></a></li>
         </ul>
   
-        <div class="banner">ff</div>
+        <div class="banner"><img src="images/banner1.jpg"></div>
