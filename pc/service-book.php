@@ -3,6 +3,8 @@ require('include/fun_web.php');
 require('include/common.php');
 require('include/initial.php');
 
+loginTimeout();
+
 $member_arr = $my_db->fetchOne('member', array('id' => intval($_GET['id']), 'type' => 10));
 $member_arr['fields'] = json_decode($member_arr['fields'], true);
 
@@ -17,6 +19,35 @@ while ($result = mysql_fetch_array($getdata)) {
     $service[$result['id']] = $result;
 }
 
+if ($_POST['book'] == 'send') {
+    $submit = array(
+        'mid' => $_COOKIE['cookie']['memberid'],
+        'tid' => $_POST['params']['tid'],
+        'service' => $_POST['params']['service'],
+        'pet' => $_POST['params']['pet'],
+        'size' => $_POST['params']['size'],
+        'name' => $_POST['params']['name'],
+        'phone' => $_POST['params']['phone'],
+        'address' => $_POST['params']['address'],
+        'number' => $_POST['params']['number'],
+        'time' => $_POST['params']['time'],
+        'remark' => $_POST['params']['remark'],
+    );
+
+    if($my_db->saveRow('booking', $submit)){
+        $technician = $my_db->fetchOne('member', array('id' => $_POST['params']['tid']));
+        $submit['technician'] = $technician['name'];
+
+        $mail = new Emailer($con_mail_set);
+        $mail->setFields(array('technician' => '美容師'));
+        $mail->content($submit, '上門服務：' . $submit['service']);
+
+        if($mail->send()) {
+
+        }
+    }
+}
+
 require('head.php');
 ?>
 
@@ -28,10 +59,11 @@ require('head.php');
 
 <br>
 
-<form class="service_booking cl1">
+<form class="service_booking cl1" method="post" action="service-book.php?id=<?= intval($_GET['id']); ?>">
     <div class="cl1 input1">
         <div class="cap">服務類型</div>
         <div class="">
+            <input type="hidden" name="sbt_service">
             <p class="fl">
                 <img src="images/service-icon-1.png" class="vc"> &nbsp;
                 寵物洗澡 &nbsp;&nbsp;&nbsp;
@@ -71,36 +103,38 @@ require('head.php');
     <div class="cl1 input1">
         <div class="cap">姓名</div>
         <div>
-            <input class="fl bd3" size="50" name="">
+            <input class="fl bd3" size="50" name="sbt_name">
         </div>
     </div>
     <div class="cl1 input1">
         <div class="cap">電話</div>
         <div>
-            <input class="fl bd3" size="50" name="">
+            <input class="fl bd3" size="50" name="sbt_phone">
         </div>
     </div>
     <div class="cl1 input1">
         <div class="cap">地址</div>
         <div>
-            <input class="fl bd3" size="50" name="">
+            <input class="fl bd3" size="50" name="sbt_address">
         </div>
     </div>
     <div class="cl1 input1">
         <div class="cap">上門日期</div>
         <div>
-            <input class="fl bd3" size="50" name="">
+            <input class="fl bd3" size="50" name="sbt_time">
         </div>
     </div>
     <div class="cl1 input1">
         <div class="cap">備註</div>
         <div>
-            <input class="fl bd3" size="50" name="">
+            <input class="fl bd3" size="50" name="sbt_remark">
         </div>
     </div>
     <div class="input1">
         <div class="cap">&nbsp;</div>
         <div class="fl">
+            <input type="hidden" name="sbt_tid">
+
             <dl class="select select_book" data-select>
                 <dt>
                     <span class="fl">没有指定美容師</span>
@@ -108,8 +142,11 @@ require('head.php');
                 </dt>
                 <dd>
                     <ul>
-                    <?php foreach ($cms_service_type as $key => $value) { ?>
-                        <li><a href="javascript:;" name-service="<?= $key; ?>"><?= $value; ?></a></li>
+                    <?php
+                        $getdata = $my_db->selectRow('*', 'member', array('valid' => 1, 'type' => 10), array('method' => 'DESC', 'field' => 'date'));
+                        while ($result = mysql_fetch_array($getdata)) {
+                    ?>
+                        <li><a href="javascript:;" name-member="<?= $result['id']; ?>"><?= $result['name']; ?></a></li>
                     <?php } ?>
                     </ul>
                 </dd>

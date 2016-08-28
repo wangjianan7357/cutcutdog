@@ -121,7 +121,7 @@ html{background: url(../images/bg.png);}
 
 .photo .list {border-right: 1px solid #fff; border-bottom: 1px solid #fff; float: left;}
 
-.two1 {position: absolute; top: 313px; height: 65px; overflow: hidden; left: 520px; }
+.two1 {position: absolute; top: 366px; height: 65px; overflow: hidden; left: 520px; }
 .two2 {position: absolute; top: 423px; left: 10px; }
 
 .member_detail .desc { width: 260px; line-height: 34px; font-size: 18px; }
