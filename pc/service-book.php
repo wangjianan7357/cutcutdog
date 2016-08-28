@@ -22,20 +22,20 @@ while ($result = mysql_fetch_array($getdata)) {
 if ($_POST['book'] == 'send') {
     $submit = array(
         'mid' => $_COOKIE['cookie']['memberid'],
-        'tid' => $_POST['params']['tid'],
-        'service' => $_POST['params']['service'],
-        'pet' => $_POST['params']['pet'],
-        'size' => $_POST['params']['size'],
-        'name' => $_POST['params']['name'],
-        'phone' => $_POST['params']['phone'],
-        'address' => $_POST['params']['address'],
-        'number' => $_POST['params']['number'],
-        'time' => $_POST['params']['time'],
-        'remark' => $_POST['params']['remark'],
+        'tid' => $_POST['sbt_tid'],
+        'service' => $_POST['sbt_service'],
+        'pet' => $_POST['sbt_pet'],
+        'size' => $_POST['sbt_size'],
+        'name' => $_POST['sbt_name'],
+        'phone' => $_POST['sbt_phone'],
+        'address' => $_POST['sbt_address'],
+        'number' => $_POST['sbt_number'],
+        'time' => $_POST['sbt_time'],
+        'remark' => $_POST['sbt_remark'],
     );
 
     if($my_db->saveRow('booking', $submit)){
-        $technician = $my_db->fetchOne('member', array('id' => $_POST['params']['tid']));
+        $technician = $my_db->fetchOne('member', array('id' => $_POST['sbt_tid']));
         $submit['technician'] = $technician['name'];
 
         $mail = new Emailer($con_mail_set);
@@ -60,44 +60,72 @@ require('head.php');
 <br>
 
 <form class="service_booking cl1" method="post" action="service-book.php?id=<?= intval($_GET['id']); ?>">
+    <input type="hidden" name="book" value="true">
+    <input type="hidden" name="sbt_number" value="1">
+
     <div class="cl1 input1">
         <div class="cap">服務類型</div>
-        <div class="">
+        <div class="input_select1" data-action="service">
             <input type="hidden" name="sbt_service">
-            <p class="fl">
+
+            <div class="fl" data-value="寵物洗澡">
+                <p class="pic" style="display: none;"><img src="images/xz.png"></p>
                 <img src="images/service-icon-1.png" class="vc"> &nbsp;
                 寵物洗澡 &nbsp;&nbsp;&nbsp;
-            </p>
-            <p class="fl">
+            </div>
+            <div class="fl" data-value="上門美容">
+                <p class="pic" style="display: none;"><img src="images/xz.png"></p>
                 <img src="images/service-icon-2.png" class="vc"> &nbsp;
                 上門美容 &nbsp;&nbsp;&nbsp;
-            </p>
-            <p class="fl">
+            </div>
+            <div class="fl" data-value="寵物傳心">
+                <p class="pic" style="display: none;"><img src="images/xz.png"></p>
                 <img src="images/service-icon-3.png" class="vc"> &nbsp;
                 寵物傳心 &nbsp;&nbsp;&nbsp;
-            </p>
+            </div>
         </div>
     </div>
     <div class="cl1 input1">
         <div class="cap">寵物類型</div>
-        <div>
-            <p class="fl">
+        <div class="input_select1" data-action="pet">
+            <input type="hidden" name="sbt_pet[]">
+
+            <div class="fl" data-value="狗">
+                <p class="pic" style="display: none;"><img src="images/xz.png"></p>
                 <img src="images/service-icon-4.png" class="vc"> &nbsp;&nbsp;&nbsp;
-            </p>
-            <p class="fl">
+            </div>
+            <div class="fl" data-value="貓">
+                <p class="pic" style="display: none;"><img src="images/xz.png"></p>
                 <img src="images/service-icon-5.png" class="vc"> &nbsp;&nbsp;&nbsp;
-            </p>
-            <input class="fl bd3" size="30" placeholder="品種請填寫">
+            </div>
+            <input class="fl bd3" size="30" placeholder="品種請填寫" name="sbt_pet[]">
         </div>
     </div>
     <div class="cl1 input1">
         <div class="cap">寵物SIZE</div>
-        <div class="size">
-            <p class="fl"><b>XS</b><br>&lt;3KG</p>
-            <p class="fl"><b>S</b><br>3-7KG</p>
-            <p class="fl"><b>M</b><br>8-12KG</p>
-            <p class="fl"><b>L</b><br>13-20KG</p>
-            <p class="fl"><b>XL</b><br>&gt;21KG</p>
+        <div class="size input_select2" data-action="size">
+            <input type="hidden" name="sbt_size">
+
+            <div class="fl" data-value="XS">
+                <p class="pic" style="display: none;"><img src="images/xz.png"></p>
+                <b>XS</b><br>&lt;3KG
+            </div>
+            <div class="fl" data-value="S">
+                <p class="pic" style="display: none;"><img src="images/xz.png"></p>
+                <b>S</b><br>3-7KG
+            </div>
+            <div class="fl" data-value="M">
+                <p class="pic" style="display: none;"><img src="images/xz.png"></p>
+                <b>M</b><br>8-12KG
+            </div>
+            <div class="fl" data-value="L">
+                <p class="pic" style="display: none;"><img src="images/xz.png"></p>
+                <b>L</b><br>13-20KG
+            </div>
+            <div class="fl" data-value="XL">
+                <p class="pic" style="display: none;"><img src="images/xz.png"></p>
+                <b>XL</b><br>&gt;21KG
+            </div>
         </div>
     </div>
     <div class="cl1 input1">
@@ -133,11 +161,11 @@ require('head.php');
     <div class="input1">
         <div class="cap">&nbsp;</div>
         <div class="fl">
-            <input type="hidden" name="sbt_tid">
+            <input type="hidden" name="sbt_tid" value="<?= $member_arr['id']; ?>">
 
             <dl class="select select_book" data-select>
                 <dt>
-                    <span class="fl">没有指定美容師</span>
+                    <span class="fl"><?= $member_arr['name']; ?></span>
                     <b></b>
                 </dt>
                 <dd>
@@ -161,5 +189,26 @@ require('head.php');
     <p class="two2"><img src="images/two.png"></p>
 
 </form><br>
+
+<script type="text/javascript">
+$("[data-action='service'] div").click(function(){
+    $("[name='sbt_service']").val($(this).attr("data-value"));
+    $(this).parent().find(".pic").hide();
+    $(this).find(".pic").show();
+});
+
+$("[data-action='pet'] div").click(function(){
+    $("[name='sbt_pet[]'][type='hidden']").val($(this).attr("data-value"));
+    $(this).parent().find(".pic").hide();
+    $(this).find(".pic").show();
+});
+
+$("[data-action='size'] div").click(function(){
+    $("[name='sbt_size']").val($(this).attr("data-value"));
+    $(this).parent().find(".pic").hide();
+    $(this).find(".pic").show();
+});
+
+</script>
 
 <?php require('foot.php'); ?>
