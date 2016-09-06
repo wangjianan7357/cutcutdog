@@ -38,13 +38,26 @@ html{background: url(../images/bg.png);}
 .wed_tite{ line-height: 55px; font-size: 16px; color:#FFF; padding-left: 30px; font-weight: 700;}
 .wed_tite_zi{width: 200px; font-size: 14px; color:#000; padding-left: 30px; }
 
-.wed_xpq{width: 696px; height: 205px; margin-top: 20px; background: url(../images/tu_02.jpg) no-repeat; text-align: left; }
+.wed_xpq{width: 696px; height: 205px; margin-top: 20px; background: url(../images/tu_02.jpg) no-repeat; text-align: left; position: relative; }
 .wed_xpq_tite{ line-height: 55px; font-size: 16px; color:#5dbeeb; padding-left: 210px; font-weight: 700;}
 .wed_xpq_zi{width: 160px; font-size: 14px; color:#000; padding-left: 210px; }
 
-.wed_buy{width: 696px; height: 205px; margin-top: 20px; background: url(../images/tu_03.jpg) no-repeat; text-align: left; }
+.wed_xpq_photo {position: absolute; height: 192px; overflow: hidden; width: 340px; right: 11px; top: 0;}
+.wed_xpq_photo .pic1 { transform: rotate(17deg); right: 25px; top: 1px; width: 138px; height: 162px; background: white; position: absolute; padding: 6px; z-index: 9; box-shadow: 1px 1px 4px #aaa;}
+.wed_xpq_photo .pic2 { transform: rotate(-17deg); right: 151px; top: 32px; width: 138px; height: 162px; background: white; position: absolute; padding: 6px; }
+
+.wed_buy{width: 696px; height: 205px; margin-top: 20px; background: url(../images/tu_03.jpg) no-repeat; text-align: left; position: relative;}
 .wed_buy_tite{ line-height: 55px; font-size: 16px; color:#5dbeeb; padding-left: 20px; font-weight: 700;}
 .wed_buy_zi{width: 160px; font-size: 14px; color:#000; padding-left: 20px; }
+
+.wed_buy_photo {position: absolute; height: 192px; overflow: hidden; width: 500px; left: 100px; top: 0;}
+.wed_buy_photo .pic { background: white; position: absolute; padding: 6px; box-shadow: 1px 1px 4px #aaa; z-index: 9; }
+.wed_buy_photo .pic1 { transform: rotate(14deg); left: 79px; top: 34px; width: 132px; height: 159px; }
+.wed_buy_photo .pic1 img { width: 132px; height: 159px; }
+.wed_buy_photo .pic2 { transform: rotate(-22deg); left: 254px; top: 88px; width: 91px; height: 110px; }
+.wed_buy_photo .pic2 img { width: 91px; height: 110px; }
+.wed_buy_photo .pic3 { transform: rotate(-41deg); left: 205px; top: -17px; width: 105px; height: 127px; z-index: 7; }
+.wed_buy_photo .pic3 img { width: 105px; height: 127px; }
 
 .wed_right{width: 210px; float: right; margin-top: 10px;}
 .wed_right_grzx{width: 200px; height: 80px; background-color:#59bf97; border: #fff46a solid 5px; border-radius: 5px; text-align: center;}

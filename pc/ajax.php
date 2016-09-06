@@ -19,7 +19,7 @@ if ($_REQUEST['action'] == 'add_cart') {
     $data = array();
 
     if ($_GET['cid']) {
-        $where = '`cid` = ' . intval($_GET['cid']);
+        $where = '`cid` = "' . addslashes($_GET['cid']) . '"';
 
     } else {
         $getdata = $my_db->selectRow('id, parent', 'catalog', array('type' => 3));

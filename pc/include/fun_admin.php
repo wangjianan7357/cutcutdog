@@ -164,7 +164,7 @@ function tableFields($fields = array(), $table = array()){
             $code .= '<th>' . $value[0] . '</th>';
         }
 		else {
-			$code .= '<th class="sorting' . ($_GET['field'] == $key ? '_' . $_GET['flag'] : '') . '"><a href="' . $q_url['134567'] . '&field=' . $key . '">' . $value[0] . '</a></th>';
+			$code .= '<th style="cursor: default;" class="sorting' . ($_GET['field'] == $key ? '_' . $_GET['flag'] : '') . '"><a href="' . $q_url['134567'] . '&field=' . $key . '">' . $value[0] . '</a></th>';
 		}
 	}
 	$code .= '</tr></thead><tbody>';

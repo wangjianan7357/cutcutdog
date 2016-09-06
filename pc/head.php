@@ -42,6 +42,7 @@
                     </dt>
                     <dd>
                         <ul>
+                            <li><a href="javascript:;" name-cid="">全选</a></li>
                         <?php
                             $getdata = $my_db->selectRow('id, name, parent', 'catalog', array('type' => 3, 'parent' => ''));
                             while ($result = mysql_fetch_array($getdata)) {
@@ -65,6 +66,7 @@
                     </dt>
                     <dd>
                         <ul>
+                            <li><a href="javascript:;" name-service="">全选</a></li>
                         <?php foreach ($cms_service_type as $key => $value) { ?>
                             <li><a href="javascript:;" name-service="<?= $key; ?>"><?= $value; ?></a></li>
                         <?php } ?>
