@@ -26,7 +26,7 @@ require('head.php');
     while ($result = mysql_fetch_array($getdata)) {
 ?>
 
-    <a class="list" href=""><img src="<?= PIC_INFO_M . $result['src']; ?>" width="231" height="231" /></a>
+    <a class="list" href="<?= PIC_INFO_M . $result['src']; ?>" target="_blank"><img src="<?= PIC_INFO_M . $result['src']; ?>" width="231" height="231" /></a>
 
 <?php } ?>
 
