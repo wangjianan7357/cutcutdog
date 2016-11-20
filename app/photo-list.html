@@ -332,8 +332,6 @@
                     return;
                 }
 
-				var self = jQuery(this);
-
 		        mui.prompt("請輸入您的評語：", "", "", ["取消", "提交"], function(e) {
 		            if (e.index == 1) {
 		                mui.ajax({
@@ -346,7 +344,7 @@
 		                        name: member.name,
 		                        content: e.value,
 		                        atype: cata_type,
-		                        aid: self.parent().parent().find("[name='aid']").val()
+		                        aid: obj.parent().parent().find("[name='aid']").val()
 		                    },
 		                    async: true,
 		                    success: function(json) {
