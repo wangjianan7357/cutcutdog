@@ -20,14 +20,16 @@ $_POST['sbt_id'] = ($_POST['sbt_id'] < 1000000) ? ($_POST['sbt_id'] + 1000000) :
 
 $amount = 0;
 foreach ($_POST['sbt_product'] as $key => $val) {
+    $result = $my_db->fetchOne('product', array('id' => $key));
+
     $product = array();
-    $product['name'] = $product_list[$key]['name'];
-    $product['id'] = $product_list[$key]['id'];
-    $product['sale'] = $product_list[$key]['sale'];
+    $product['name'] = $result['name'];
+    $product['id'] = $result['id'];
+    $product['sale'] = $result['sale'];
     $product['number'] = $val;
 
     $_POST['sbt_fields']['products'][] = $product;
-    $amount += $product_list[$key]['sale'] * $val;
+    $amount += $result['sale'] * $val;
 }
 
 $_POST['sbt_amount'] = $amount;

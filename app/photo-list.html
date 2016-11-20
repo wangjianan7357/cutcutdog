@@ -326,8 +326,8 @@
 		}
 
 		function setComment() {
-			jQuery("[data-icon='promptBtn']").click(function() {
-                if(!member) {
+			function clickComment(obj){
+				if(!member) {
                     plus.nativeUI.toast("請先登錄！");
                     return;
                 }
@@ -360,8 +360,8 @@
 		                
 		                //jQuery("#comment-list").prepend("<li><p><b>" + member.name + "：</b>" + e.value + "</p></li>");
 		            }
-		        })
-		    });
+		        });
+			}
 		    
 		    var setLikes = function(action, obj) {
 		        mui.ajax({
@@ -384,27 +384,45 @@
 		            }
 		        });
 		    };
-
-		    jQuery("[data-icon='heart']").click(function(){
-                if(!member) {
+		    
+		    function clickHeart(obj) {
+		    	if(!member) {
                     plus.nativeUI.toast("請先登錄！");
                     return;
                 }
 
-		    	var likes_obj = jQuery(this).parent().find("[data-icon='likesCount']");
+		    	var likes_obj = obj.parent().find("[data-icon='likesCount']");
 		    	var count = parseInt(likes_obj.html());
-		        var rel = $(this).attr("rel");
+		        var rel = obj.attr("rel");
 		       
 		        if(rel == 'like') {      
-		            setLikes("insert", jQuery(this).parent().parent().find("[name='aid']"));
+		            setLikes("insert", obj.parent().parent().find("[name='aid']"));
 		            likes_obj.html(count + 1);
-		            $(this).attr("rel", "unlike");
+		            obj.attr("rel", "unlike");
 		        } else {
-		            setLikes("delete", jQuery(this).parent().parent().find("[name='aid']"));
+		            setLikes("delete", obj.parent().parent().find("[name='aid']"));
 		            likes_obj.html(count - 1);
-		            $(this).attr("rel", "like");
+		            obj.attr("rel", "like");
 		        }
-		    });
+		    }
+		    
+		    if (mui.os.ios) {
+				jQuery("[data-icon='heart']").on("touchend", function(){
+					clickHeart(jQuery(this));
+				});
+			
+				jQuery("[data-icon='promptBtn']").on("touchend", function() {
+					clickComment(jQuery(this));
+			    });
+			} else {
+				jQuery("[data-icon='heart']").on("click", function(){
+					clickHeart(jQuery(this));
+				});
+			
+				jQuery("[data-icon='promptBtn']").click(function() {
+					clickComment(jQuery(this));
+			    });
+			}
 		}
 
 		mui.plusReady(function() {
