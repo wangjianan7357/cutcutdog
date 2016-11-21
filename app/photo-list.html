@@ -349,7 +349,7 @@
 		                    async: true,
 		                    success: function(json) {
 		                    	plus.nativeUI.toast("評論成功");
-		                    	obj.parent().parent().find("[data-content='comment']").append("<li><p style='text-indent: 0px;'><b>" + member.name + "：</b> " + e.value + "</p></li>");
+		                    	obj.parent().parent().find("[data-content='comment']").prepend("<li><p style='text-indent: 0px;'><b>" + member.name + "：</b> " + e.value + "</p></li>");
 		                        //alert(JSON.stringify(json))
 		                    },
 		                    error: function(xhr, type, errorThrown) {
