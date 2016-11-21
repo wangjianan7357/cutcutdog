@@ -269,35 +269,45 @@ function initComment(comment, likes, total) {
             }
         });
     };
-
-    $("body").on("click", "#" + likes, function() {
-        if(!member) {
+    
+    function clickLikes(obj) {
+    	if(!member) {
             plus.nativeUI.toast("請先登錄！");
             return;
         }
         
         var count = parseInt($("#" + total).html());
         
-        var rel = $(this).attr("rel");
+        var rel = obj.attr("rel");
        
         if(rel == 'like') {      
             setLikes("insert");
             $("#" + total).html(count + 1);
-            $(this).attr("rel", "unlike");
+            obj.attr("rel", "unlike");
 
             if (cata_type == 3) {
-                $(this).html("消讚");
+                obj.html("消讚");
             }
         } else {
             setLikes("delete");
             $("#" + total).html(count - 1);
-            $(this).attr("rel", "like");
+            obj.attr("rel", "like");
 
             if (cata_type == 3) {
-                $(this).html("讚好");
+                obj.html("讚好");
             }
         }
-    });
+    }
+    
+    if (mui.os.ios) {
+        jQuery("#" + likes).on("touchend", function(){
+            clickLikes(jQuery(this));
+        });
+    } else {
+        jQuery("#" + likes).on("click", function(){
+            clickLikes(jQuery(this));
+        });
+    }
 }
 
 (function(mui, com) {
