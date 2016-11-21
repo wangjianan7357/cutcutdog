@@ -167,7 +167,7 @@
 					<div class="zh-good-x-p-two"><img src="images/photo-button-04.png" style=" float: left;"><span data-icon="likesCount"><%= list[i]["likes"] %></span></div>
 					</div>
 		
-					<ul class="comment-list">
+					<ul class="comment-list" data-content="comment">
 					<% for (var c in list[i]["comment"]) { %>
 						<li><p style=" text-indent: 0px;"><b><%= list[i]["comment"][c]["member"]["name"] %>：</b> <%= list[i]["comment"][c]["content"] %></p></li>
 					<% } %>
@@ -349,6 +349,7 @@
 		                    async: true,
 		                    success: function(json) {
 		                    	plus.nativeUI.toast("評論成功");
+		                    	obj.parent().parent().find("[data-content='comment']").append("<li><p style='text-indent: 0px;'><b>" + member.name + "：</b> " + e.value + "</p></li>");
 		                        //alert(JSON.stringify(json))
 		                    },
 		                    error: function(xhr, type, errorThrown) {
@@ -359,6 +360,26 @@
 		                //jQuery("#comment-list").prepend("<li><p><b>" + member.name + "：</b>" + e.value + "</p></li>");
 		            }
 		        });
+			}
+			
+			function clickLink(obj) {
+		        var link =obj.attr("href");
+		
+		        mui.openWindow({
+		            url: link,
+		            id: link.replace(/\.[\w]{2,6}$/, ""),
+		            show: {
+		                aniShow: 'pop-in'
+		            },
+		            styles: {
+		                popGesture: 'hide'
+		            },
+		            waiting: {
+		                autoShow: false
+		            }
+		        });
+		
+		        return false;
 			}
 		    
 		    var setLikes = function(action, obj) {
@@ -412,6 +433,10 @@
 				jQuery("[data-icon='promptBtn']").on("touchend", function() {
 					clickComment(jQuery(this));
 			    });
+			    
+			    jQuery("[data-action='openwindow']").on("touchend", function() {
+					clickLink(jQuery(this));
+			    });
 			} else {
 				jQuery("[data-icon='heart']").on("click", function(){
 					clickHeart(jQuery(this));
@@ -419,6 +444,10 @@
 			
 				jQuery("[data-icon='promptBtn']").click(function() {
 					clickComment(jQuery(this));
+			    });
+			    
+			    jQuery("[data-action='openwindow']").click(function() {
+					clickLink(jQuery(this));
 			    });
 			}
 		}
