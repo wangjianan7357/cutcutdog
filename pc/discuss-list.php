@@ -34,7 +34,7 @@ require('head.php');
             $i ++;
     ?>
         <li<?= $result['read'] ? '' : ' class="new"'; ?>>
-            <a href="">
+            <a href="discuss-detail.php?id=<?= $result['id']; ?>">
                 <div class="name"><?= $result['name']; ?></div>
                 <div class="cl1">
                     <div class="fl">

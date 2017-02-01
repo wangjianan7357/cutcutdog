@@ -38,7 +38,7 @@ require('head.php');
             while ($result1 = mysql_fetch_array($getdata1)) {
         ?>
 
-            <a class="list cl1" href="">
+            <a class="list cl1" href="discuss-detail.php?id=<?= $result1['id']; ?>">
                 <div class="name"><?= $result1['name']; ?></div>
                 <div class="detail"><?= cutString(trim(strip_tags($result1['desp'])), 90); ?></div>
 
