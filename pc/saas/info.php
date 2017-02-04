@@ -157,6 +157,8 @@ if ($_REQUEST['action'] == 'list') {
     callback(array('error' => 0, 'detail' => $info));
 
 } else if ($_REQUEST['action'] == 'insert') {
+    set_time_limit(1800);
+
     checkMember(array('name' => urldecode($_POST['name']), 'id' => $_POST['id']));
 
     $filename = '';

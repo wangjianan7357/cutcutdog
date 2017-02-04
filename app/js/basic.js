@@ -166,9 +166,10 @@ function uploadFileData(filepath, data, url, success) {
 
     var task = plus.uploader.createUpload(domain + url, {  
             method: "POST",  
-            blocksize: 204800,  
-            priority: 100  
-        },  
+            blocksize: 20480000,  
+            priority: 100,
+            timeout: 1000 * 60 * 30
+        },
         function(res, status){  
             if (status == 200){
             	var json = "";
@@ -179,7 +180,11 @@ function uploadFileData(filepath, data, url, success) {
                     	success(json);
                     }
                 }
-            } else {  
+            } else {
+                var json = {error: 1, message: "文件过大，上传失败！"};
+                if (success) {
+                    success(json);
+                }
                 //alert(JSON.stringify(res))
             }  
         }  
