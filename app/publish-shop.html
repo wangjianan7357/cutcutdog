@@ -23,274 +23,272 @@
 	<script src="js/mui.poppicker.js"></script>
     <script src="js/template-native.js"></script>
     <script src="js/basic.js"></script>
+    <script src="js/binaryajax.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/exif.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/canvasResize.js" type="text/javascript" charset="utf-8"></script>
   
 </head>
 
 <body>
-	<header class="mui-bar mui-bar-nav" style=" height: 108px;">
-		<div style=" height:21px ;">
-	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
-		</div>
-	    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
-	    <div class="top_bg"></div>
-	</header>
+<header class="mui-bar mui-bar-nav" style=" height: 108px;">
+	<div style=" height:21px ;">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span class="mui-icon mui-icon-undo fhui"></span></a>
+	</div>
+    <div class="mui-title"><img src="images/Petchat.png"> <img src="images/CatDog.png"></div>
+    <div class="top_bg"></div>
+</header>
 
-	<!--页面主结构开始-->
+<!--页面主结构开始-->
+
+<div class="mui-content">
 	
-	<div class="mui-content">
-		
-		<div class="mui-pages">
-			<div id="account" class="mui-page">
-				<div class="mui-page-content">
-					<div class="mui-scroll-wrapper" style=" margin-top: 18px; z-index:0 ;">
-						<div class="mui-scroll">
-							<ul class="mui-table-view">
-								<li class="mui-table-view-cell">
-									<a id="picture" class="mui-navigate-right" style=" line-height:40px ;">圖像
-										<span class="mui-pull-right head">
-											<img class="head-img mui-action-preview" id="picture-src" src="" />
-											<input type="hidden" id="picture-path" value="" />
-										</span>
-									</a>
-								</li>
-								<li class="mui-table-view-cell">
-									<div style="width:100%; padding-left: 4%; border:#edebec solid 1px;" id="showCityPicker">
-										<button class="mui-btn mui-btn-block" type="button" ><span data-picker="city">點擊選擇地區</span></button>
-										<input type="hidden" name="req_cid" value="" id="info_cid" value="" />
-										
-									</div>
-								</li>
-								<li class="mui-table-view-cell">
-									<div style="width:100%; padding-left: 4%; border:#edebec solid 1px;" id="showServicePicker">
-										<button class="mui-btn mui-btn-block" type="button" ><span data-picker="service">點擊選擇服務範圍</span></button>
-										<input type="hidden" name="req_service" value="" id="info_service" value="" />
-										
-									</div>
-								</li>
-								<li class="mui-table-view-cell">
-									<a>標題
-										<input type="text" value="" id="info_name" style=" height:30px ;width:90%;">
-									</a>
-								</li>
-								<li class="mui-table-view-cell">
-									<a>電話
-										<input type="text" value="" id="info_tel" style=" height:30px ;width:90%;">
-									</a>
-								</li>
-								<li class="mui-table-view-cell">
-									<a>地址
-										<input type="text" value="" id="info_address" style=" height:30px ;width:90%;">
-									</a>
-								</li>
-								<li class="mui-table-view-cell">
-									<a>網址
-										<input type="text" value="" id="info_website" style=" height:30px ;width:90%;">
-									</a>
-								</li>
-								<li class="mui-table-view-cell">
-									<a id="submit-button">提交</a>
-								</li>
-							</ul>
-						</div>
+	<div class="mui-pages">
+		<div id="account" class="mui-page">
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper" style=" margin-top: 18px; z-index:0 ;">
+					<div class="mui-scroll">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<a id="picture" class="mui-navigate-right" style=" line-height:40px ;">圖像
+									<span class="mui-pull-right head">
+										<img class="head-img mui-action-preview" id="picture-src" src="" />
+										<input type="hidden" id="picture-path" value="" />
+										<input type="hidden" id="picture-base64" value="" />
+									</span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<div style="width:100%; padding-left: 4%; border:#edebec solid 1px;" id="showCityPicker">
+									<button class="mui-btn mui-btn-block" type="button" ><span data-picker="city">點擊選擇地區</span></button>
+									<input type="hidden" name="req_cid" value="" id="info_cid" value="" />
+									
+								</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<div style="width:100%; padding-left: 4%; border:#edebec solid 1px;" id="showServicePicker">
+									<button class="mui-btn mui-btn-block" type="button" ><span data-picker="service">點擊選擇服務範圍</span></button>
+									<input type="hidden" name="req_service" value="" id="info_service" value="" />
+									
+								</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<a>標題
+									<input type="text" value="" id="info_name" style=" height:30px ;width:90%;">
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a>電話
+									<input type="text" value="" id="info_tel" style=" height:30px ;width:90%;">
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a>地址
+									<input type="text" value="" id="info_address" style=" height:30px ;width:90%;">
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a>網址
+									<input type="text" value="" id="info_website" style=" height:30px ;width:90%;">
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a id="submit-button">提交</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
-
 		</div>
+
 	</div>
+</div>
 
-	<!--页面主结构结束-->
+<!--页面主结构结束-->
 
-	<script>
-	mui.init();
+<script>
+mui.init();
 
-	var member = {};
+var member = {};
 
-	mui.plusReady(function() {
-		member = myStorage.getItem("member");
-		
-		if(!member) {
-			plus.nativeUI.toast("請先登錄！");
-		}
+mui.plusReady(function() {
+	member = myStorage.getItem("member");
+	
+	if(!member) {
+		plus.nativeUI.toast("請先登錄！");
+	}
 
-		mui.ajax({
-			type: "post",
-			url: domain + "saas/catalog.php",
-			dataType: "json",
-			data: {
-				action: "list",
-				where: {type: 3}
-			},
-			async: true,
-			success: function(json) {
-				if (!json.error) {
-					var city = [];
-					var service = [];
+	mui.ajax({
+		type: "post",
+		url: domain + "saas/catalog.php",
+		dataType: "json",
+		data: {
+			action: "list",
+			where: {type: 3}
+		},
+		async: true,
+		success: function(json) {
+			if (!json.error) {
+				var city = [];
+				var service = [];
 
-					for (p in json.list) {
-						if (json.list[p]["parent"] == "") {
-							var tmp = {value: json.list[p]["id"], text: json.list[p]["name"], children: []};
+				for (p in json.list) {
+					if (json.list[p]["parent"] == "") {
+						var tmp = {value: json.list[p]["id"], text: json.list[p]["name"], children: []};
 
-							for (q in json.list) {
-								if (json.list[q]["parent"] == json.list[p]["id"] + ",") {
-									var child = {value: json.list[q]["id"], text: json.list[q]["name"]};
-									tmp.children.push(child); 
-								}
+						for (q in json.list) {
+							if (json.list[q]["parent"] == json.list[p]["id"] + ",") {
+								var child = {value: json.list[q]["id"], text: json.list[q]["name"]};
+								tmp.children.push(child); 
 							}
-
-							city.push(tmp);
 						}
+
+						city.push(tmp);
 					}
-
-					for (p in json.service) {
-						var tmp = {value: p, text: json.service[p]};
-						service.push(tmp);
-					}
-
-					// 城市
-					var cityPicker = new mui.PopPicker({layer: 2});
-					cityPicker.setData(city);
-
-					var showCityPickerButton = document.getElementById("showCityPicker");
-					showCityPickerButton.addEventListener("tap", function(event) {
-						cityPicker.show(function(items) {
-							jQuery("[data-picker='city']").html(items[0].text + " " + items[1].text);
-							jQuery("#info_cid").val(items[0].value + "," + items[1].value);
-						});
-					}, false);
-
-					// 服务
-
-					var servicePicker = new mui.PopPicker({layer: 1});
-					servicePicker.setData(service);
-
-					var showServicePickerButton = document.getElementById("showServicePicker");
-					showServicePickerButton.addEventListener("tap", function(event) {
-						servicePicker.show(function(items) {
-							jQuery("[data-picker='service']").html(items[0].text);
-							jQuery("#info_service").val(items[0].value);
-						});
-					}, false);
-					
-				} else {
-					//plus.nativeUI.toast(json.message);
 				}
-			},
-			error: function(xhr, type, errorThrown) {
 
+				for (p in json.service) {
+					var tmp = {value: p, text: json.service[p]};
+					service.push(tmp);
+				}
+
+				// 城市
+				var cityPicker = new mui.PopPicker({layer: 2});
+				cityPicker.setData(city);
+
+				var showCityPickerButton = document.getElementById("showCityPicker");
+				showCityPickerButton.addEventListener("tap", function(event) {
+					cityPicker.show(function(items) {
+						jQuery("[data-picker='city']").html(items[0].text + " " + items[1].text);
+						jQuery("#info_cid").val(items[0].value + "," + items[1].value);
+					});
+				}, false);
+
+				// 服务
+
+				var servicePicker = new mui.PopPicker({layer: 1});
+				servicePicker.setData(service);
+
+				var showServicePickerButton = document.getElementById("showServicePicker");
+				showServicePickerButton.addEventListener("tap", function(event) {
+					servicePicker.show(function(items) {
+						jQuery("[data-picker='service']").html(items[0].text);
+						jQuery("#info_service").val(items[0].value);
+					});
+				}, false);
+				
+			} else {
+				//plus.nativeUI.toast(json.message);
 			}
-		});
+		},
+		error: function(xhr, type, errorThrown) {
+
+		}
+	});
+});
+
+//选择图片
+mui(".mui-table-view-cell").on("tap", "#picture", function(e) {
+	if(mui.os.plus){
+		var a = [{
+			title: "從手機相冊選擇"
+		}];
+		plus.nativeUI.actionSheet({
+			title: "選擇圖片",
+			cancel: "取消",
+			buttons: a
+		}, function(b) {
+			switch (b.index) {
+				case 0:
+					break;
+				case 1:
+					getGalleryImg($("#picture-src"), $("#picture-path"), $("#picture-base64"));
+					break;
+				default:
+					break
+			}
+		})	
+	}
+});
+
+document.getElementById("submit-button").addEventListener("tap", function(event) {
+	if (jQuery("#submit-button").html() != "提交") {
+		return;
+	}
+	
+	if(!member) {
+		plus.nativeUI.toast("請先登錄！");
+		return false;	
+	}
+
+	if(!jQuery("#info_name").val()) {
+		plus.nativeUI.toast("請輸入標題！");
+		return false;	
+	}
+	
+	if(!jQuery("#picture-path").val() && !jQuery("#picture-base64").val()) {
+		plus.nativeUI.toast("請輸入圖片！");
+		return false;	
+	}
+	
+	if(!jQuery("#info_website").val()) {
+		plus.nativeUI.toast("請輸入網址！");
+		return false;	
+	}
+	
+	if(!jQuery("#info_cid").val()) {
+		plus.nativeUI.toast("請選擇地區！");
+		return false;	
+	}
+	
+	if(!jQuery("#info_service").val()) {
+		plus.nativeUI.toast("請選擇服務！");
+		return false;	
+	}
+
+	jQuery("#submit-button").html("提交中...");
+	
+	var profilePage = mui.preload({
+		"id": "profile",
+		"url": "index.html"
 	});
 	
-	//选择图片
-	mui(".mui-table-view-cell").on("tap", "#picture", function(e) {
-		if(mui.os.plus){
-			var a = [{
-				title: "從手機相冊選擇"
-			}];
-			plus.nativeUI.actionSheet({
-				title: "選擇圖片",
-				cancel: "取消",
-				buttons: a
-			}, function(b) {
-				switch (b.index) {
-					case 0:
-						break;
-					case 1:
-						getGalleryImg();
-						break;
-					default:
-						break
-				}
-			})	
-		}
-	});
-
-	function getGalleryImg() {
-		plus.gallery.pick(function(path) {
-			$("#picture-src").attr("src", path);
-			$("#picture-path").attr("value", path);
-		});
-	};
-	
-	document.getElementById("submit-button").addEventListener("tap", function(event) {
-		if (jQuery("#submit-button").html() != "提交") {
-			return;
-		}
-		
-		if(!member) {
-			plus.nativeUI.toast("請先登錄！");
-			return false;	
-		}
-
-		if(!jQuery("#info_name").val()) {
-			plus.nativeUI.toast("請輸入標題！");
-			return false;	
-		}
-		
-		if(!jQuery("#picture-path").val()) {
-			plus.nativeUI.toast("請輸入圖片！");
-			return false;	
-		}
-		
-		if(!jQuery("#info_website").val()) {
-			plus.nativeUI.toast("請輸入網址！");
-			return false;	
-		}
-		
-		if(!jQuery("#info_cid").val()) {
-			plus.nativeUI.toast("請選擇地區！");
-			return false;	
-		}
-		
-		if(!jQuery("#info_service").val()) {
-			plus.nativeUI.toast("請選擇服務！");
-			return false;	
-		}
-
-		jQuery("#submit-button").html("提交中...");
-		
-		var profilePage = mui.preload({
-			"id": "profile",
-			"url": "index.html"
-		});
-		
-		uploadFileData(jQuery("#picture-path").val(), {
-				"action": "insert",
-				"sbt_name": jQuery("#info_name").val(),
-				"sbt_cid" : jQuery("#info_cid").val(),
-				"sbt_service" : jQuery("#info_service").val(),
-				"sbt_tel" : jQuery("#info_tel").val(),
-				"sbt_address" : jQuery("#info_address").val(),
-				"sbt_website" : jQuery("#info_website").val()
-			}, 
-			"saas/info.php", 
-			function(res) {
-				if (!res.error) {
-					plus.nativeUI.toast("發表成功！");
-					
-					mui.fire(profilePage, "show", null);
-					setTimeout(function() {
-						mui.openWindow({
-							id: "profile",
-							show: {
-								aniShow: "pop-in"
-							},
-							waiting: {
-								autoShow: false
-							}
-						});
-					}, 0);
-					
-				} else {
-					plus.nativeUI.toast(res.message);
-					jQuery("#submit-button").html("提交");
-				}
+	uploadFileData(jQuery("#picture-path").val(), {
+			"action": "insert",
+			"sbt_name": jQuery("#info_name").val(),
+			"sbt_cid" : jQuery("#info_cid").val(),
+			"sbt_service" : jQuery("#info_service").val(),
+			"sbt_tel" : jQuery("#info_tel").val(),
+			"sbt_address" : jQuery("#info_address").val(),
+			"sbt_website" : jQuery("#info_website").val(),
+			"sbt_imgbase": jQuery("#picture-base64").val()
+		}, 
+		"saas/info.php", 
+		function(res) {
+			if (!res.error) {
+				plus.nativeUI.toast("發表成功！");
+				
+				mui.fire(profilePage, "show", null);
+				setTimeout(function() {
+					mui.openWindow({
+						id: "profile",
+						show: {
+							aniShow: "pop-in"
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+				}, 0);
+				
+			} else {
+				plus.nativeUI.toast(res.message);
+				jQuery("#submit-button").html("提交");
 			}
-		);
+		}
+	);
 
-	});
-	</script>
+});
+</script>
 
 </body>
 </html>

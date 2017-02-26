@@ -182,6 +182,29 @@ if ($_REQUEST['action'] == 'list') {
             $imgop = new Graphic($filepath);
             $imgop->resizeImage($filepath, 640, 640);
         }
+
+    } else if ($_POST['sbt_imgbase']) {
+        //post的数据里面，加号会被替换为空格，需要重新替换回来，如果不是post的数据，则注释掉这一行
+        $base64_image = str_replace(' ', '+', $_POST['sbt_imgbase']);
+        
+        if (preg_match('/^(data:\s*image\/(\w+);base64,)/', $base64_image, $result)){
+            //匹配成功
+            $filename = substr(time(), -8, 8) . rand(10, 99);
+            if($result[2] == 'jpeg'){
+                //纯粹是看jpeg不爽才替换的
+                $filename .= '.jpg';
+            } else {
+                $filename .= '.' . $result[2];
+            }
+
+            $filepath = '../' . systemConfig('info_img_path') . $con_pic['pre']['info'] . $con_pic['suf']['mid'] . $filename;
+
+            if (file_exists($filepath)) {
+                unlink($filepath);
+            }
+
+            file_put_contents($filepath, base64_decode(str_replace($result[1], '', $base64_image)));
+        }
     }
 
     $chk_post = new ChkRequest('sbt_');

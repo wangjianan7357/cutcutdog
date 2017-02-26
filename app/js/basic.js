@@ -161,6 +161,69 @@ function getUrlParam(name) {
     }
 }
 
+function getGalleryImg(imgsrc, imgpath, imgbase) {
+    plus.gallery.pick(function(url) {
+        // 兼容以“file:”开头的情况
+        if (url.toString().indexOf("file://") != 0) {
+            url = "file://" + url;
+        }
+
+        imgpath.attr("value", "");
+        imgbase.attr("value", "");
+
+        var _img_ = new Image();
+        _img_.src = url; // 传过来的图片路径在这里用。
+        // _img_.onclick = function() {
+        //  plus.runtime.openFile(url);
+        // };
+
+        _img_.onload = function() {
+            var tmph = _img_.height;
+            var tmpw = _img_.width;
+            var isHorizon = tmpw > tmph;
+            var max = Math.max(tmpw, tmph);
+            var min = Math.min(tmpw, tmph);
+            var bili = min / max;
+            if (max > 800) {
+                max = 800;
+                min = Math.floor(bili * max);
+            } else {
+                imgsrc.attr("src", url);
+                imgpath.attr("value", url);
+                return;
+            }
+
+            tmph = isHorizon ? min : max;
+            tmpw = isHorizon ? max : min;
+            _img_.onload = null;
+
+            plus.io.resolveLocalFileSystemURL(url, function(entry) {
+                entry.file(function(file) {
+                    console.log(file.size + '--' + file.name);
+                    canvasResize(file, {
+                        width: tmpw,
+                        height: tmph,
+                        crop: false,
+                        quality: 50, //压缩质量
+                        rotate: 0,
+                        callback: function(data, width, height) {
+                            //_img_.src = data;
+                            imgsrc.attr("src", data);
+                            imgbase.attr("value", data);
+
+                            plus.nativeUI.closeWaiting();
+                        }
+                    });
+                });
+            },
+            function(e) {
+                plus.nativeUI.closeWaiting();
+                console.log(e.message);
+            });
+        }
+    });
+}
+
 function uploadFileData(filepath, data, url, success) {
     //var datas = options.datas || [];
 
@@ -201,6 +264,7 @@ function uploadFileData(filepath, data, url, success) {
     } else {
         task.addData("src", ""); 
     }
+   
         
     var member = myStorage.getItem("member");
 	task.addData("id", member.id); 
